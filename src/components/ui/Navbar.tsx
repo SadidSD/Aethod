@@ -116,7 +116,7 @@ export function Navbar() {
             {/* Shadow Separation Line */}
             <div className="w-full relative z-20">
                 {/* White line with inner shadow from top */}
-                <div className="h-[2px] w-full bg-white relative z-10"></div>
+                <div className="h-[4px] w-full bg-white shadow-[inset_0_4px_6px_-1px_rgba(0,0,0,0.1)] relative z-10"></div>
             </div>
         </header>
     )
