@@ -19,7 +19,7 @@ export default function StudioPage() {
                 </div>
 
                 {/* Serpentine Path & Nodes Container */}
-                <div className="relative w-full" style={{ height: '480px' }}>
+                <div className="relative w-full -mt-16" style={{ height: '480px' }}>
                     {/* SVG Serpentine Path — Exact Figma CSS shadows */}
                     <svg
                         className="absolute inset-0 w-full h-full overflow-visible"
