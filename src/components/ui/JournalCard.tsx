@@ -9,14 +9,18 @@ interface JournalCardProps {
     excerpt: string;
     image: string;
     className?: string;
+    style?: React.CSSProperties;
 }
 
-export const JournalCard = ({ title, date, excerpt, image, className }: JournalCardProps) => {
+export const JournalCard = ({ title, date, excerpt, image, className, style }: JournalCardProps) => {
     return (
-        <div className={cn(
-            "group relative flex flex-col bg-neo-bg rounded-[32px] p-6 shadow-neo-card border border-white/20 transition-all duration-500 hover:scale-[1.02]",
-            className
-        )}>
+        <div
+            className={cn(
+                "group relative flex flex-col bg-neo-bg rounded-[32px] p-6 shadow-neo-card border border-white/20 transition-all duration-500 hover:scale-[1.02]",
+                className
+            )}
+            style={style}
+        >
             {/* Image Container */}
             <div className="relative h-[240px] w-full rounded-[24px] overflow-hidden bg-gray-100 shadow-neo-concave mb-6">
                 <Image
