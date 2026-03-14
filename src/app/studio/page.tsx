@@ -20,54 +20,69 @@ export default function StudioPage() {
 
                 {/* Serpentine Path & Nodes Container */}
                 <div className="relative w-full" style={{ height: '520px' }}>
-                    {/* SVG Serpentine Path */}
+                    {/* SVG Serpentine Path — Exact Figma export */}
                     <svg
                         className="absolute inset-0 w-full h-full overflow-visible"
-                        viewBox="0 0 1200 500"
+                        viewBox="0 0 1166 365"
                         fill="none"
-                        preserveAspectRatio="none"
+                        preserveAspectRatio="xMidYMid meet"
                         xmlns="http://www.w3.org/2000/svg"
                     >
-                        {/* Shadow layer for depth */}
-                        <path
-                            d="M -40,400 C 100,400 180,390 300,360 C 420,330 480,310 540,280 C 600,250 650,220 720,200 C 790,180 850,170 950,140 C 1050,110 1100,100 1260,80"
-                            stroke="rgba(0,0,0,0.06)"
-                            strokeWidth="40"
-                            strokeLinecap="round"
-                            fill="none"
-                        />
-
-                        {/* Main outer path - thick neomorphic stroke */}
-                        <path
-                            d="M -40,400 C 100,400 180,390 300,360 C 420,330 480,310 540,280 C 600,250 650,220 720,200 C 790,180 850,170 950,140 C 1050,110 1100,100 1260,80"
-                            stroke="#E8E6E3"
-                            strokeWidth="32"
-                            strokeLinecap="round"
-                            fill="none"
-                        />
-
-                        {/* Inner path - gradient accent */}
-                        <path
-                            d="M -40,400 C 100,400 180,390 300,360 C 420,330 480,310 540,280 C 600,250 650,220 720,200 C 790,180 850,170 950,140 C 1050,110 1100,100 1260,80"
-                            stroke="url(#pathGradient)"
-                            strokeWidth="12"
-                            strokeLinecap="round"
-                            fill="none"
-                            className="opacity-30"
-                        />
-
                         <defs>
-                            <linearGradient id="pathGradient" x1="0" y1="400" x2="1200" y2="80" gradientUnits="userSpaceOnUse">
-                                <stop stopColor="#5A69EA" />
-                                <stop offset="1" stopColor="#BF8BCA" />
-                            </linearGradient>
+                            <filter id="filter0_ddiiii_145_123" x="0" y="0" width="1166" height="364.928" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
+                                <feFlood floodOpacity="0" result="BackgroundImageFix"/>
+                                <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+                                <feOffset dx="-1" dy="-1"/>
+                                <feGaussianBlur stdDeviation="1"/>
+                                <feColorMatrix type="matrix" values="0 0 0 0 0.713726 0 0 0 0 0.709804 0 0 0 0 0.701961 0 0 0 0.5 0"/>
+                                <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_145_123"/>
+                                <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+                                <feOffset dx="1" dy="1"/>
+                                <feGaussianBlur stdDeviation="1"/>
+                                <feColorMatrix type="matrix" values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.3 0"/>
+                                <feBlend mode="normal" in2="effect1_dropShadow_145_123" result="effect2_dropShadow_145_123"/>
+                                <feBlend mode="normal" in="SourceGraphic" in2="effect2_dropShadow_145_123" result="shape"/>
+                                <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+                                <feOffset dx="3" dy="3"/>
+                                <feGaussianBlur stdDeviation="4"/>
+                                <feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1"/>
+                                <feColorMatrix type="matrix" values="0 0 0 0 0.713726 0 0 0 0 0.709804 0 0 0 0 0.701961 0 0 0 0.9 0"/>
+                                <feBlend mode="normal" in2="shape" result="effect3_innerShadow_145_123"/>
+                                <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+                                <feOffset dx="-3" dy="-3"/>
+                                <feGaussianBlur stdDeviation="3"/>
+                                <feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1"/>
+                                <feColorMatrix type="matrix" values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.9 0"/>
+                                <feBlend mode="normal" in2="effect3_innerShadow_145_123" result="effect4_innerShadow_145_123"/>
+                                <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+                                <feOffset dx="3" dy="-3"/>
+                                <feGaussianBlur stdDeviation="3"/>
+                                <feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1"/>
+                                <feColorMatrix type="matrix" values="0 0 0 0 0.713726 0 0 0 0 0.709804 0 0 0 0 0.701961 0 0 0 0.2 0"/>
+                                <feBlend mode="normal" in2="effect4_innerShadow_145_123" result="effect5_innerShadow_145_123"/>
+                                <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+                                <feOffset dx="-3" dy="3"/>
+                                <feGaussianBlur stdDeviation="3"/>
+                                <feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1"/>
+                                <feColorMatrix type="matrix" values="0 0 0 0 0.713726 0 0 0 0 0.709804 0 0 0 0 0.701961 0 0 0 0.2 0"/>
+                                <feBlend mode="normal" in2="effect5_innerShadow_145_123" result="effect6_innerShadow_145_123"/>
+                            </filter>
                         </defs>
+
+                        <g filter="url(#filter0_ddiiii_145_123)">
+                            <path
+                                d="M10.502 301.037C10.502 301.037 278.19 379.737 387.502 346.037C465.301 322.052 519.222 255.036 594.502 224.037C717.17 173.524 741.006 227.347 853.502 157.037C933.502 107.037 953.502 83.0367 953.502 83.0367C953.502 83.0367 999.582 34.0816 1081.5 16.9464C1123.96 8.06441 1155.5 10.9464 1155.5 10.9464"
+                                stroke="#B2CEFE"
+                                strokeWidth="15"
+                                strokeLinecap="round"
+                            />
+                        </g>
                     </svg>
 
-                    {/* Node 1: Systems Architecture — bottom-left */}
+                    {/* Node 1: Systems Architecture — bottom-left on curve */}
                     <div
                         className="absolute z-30"
-                        style={{ left: '15%', top: '68%', transform: 'translate(-50%, -50%)' }}
+                        style={{ left: '8%', top: '75%', transform: 'translate(-50%, -50%)' }}
                     >
                         <StudioNode />
                         <div className="absolute top-full left-1/2 -translate-x-1/2 mt-6 min-w-[260px] text-center">
@@ -81,10 +96,10 @@ export default function StudioPage() {
                         </div>
                     </div>
 
-                    {/* Node 2: AI-Driven Automation — middle */}
+                    {/* Node 2: AI-Driven Automation — middle of curve */}
                     <div
                         className="absolute z-30"
-                        style={{ left: '48%', top: '50%', transform: 'translate(-50%, -50%)' }}
+                        style={{ left: '42%', top: '58%', transform: 'translate(-50%, -50%)' }}
                     >
                         <StudioNode />
                         <div className="absolute top-full left-full ml-4 mt-2 min-w-[260px]">
@@ -99,10 +114,10 @@ export default function StudioPage() {
                         </div>
                     </div>
 
-                    {/* Node 3: Applied Research — top-right */}
+                    {/* Node 3: Applied Research — top-right of curve */}
                     <div
                         className="absolute z-30"
-                        style={{ left: '75%', top: '32%', transform: 'translate(-50%, -50%)' }}
+                        style={{ left: '72%', top: '28%', transform: 'translate(-50%, -50%)' }}
                     >
                         <StudioNode />
                         <div className="absolute bottom-full left-full ml-4 mb-2 min-w-[280px]">
