@@ -1,26 +1,96 @@
 @import "tailwindcss";
 
+@theme {
+  --font-sora: "Sora", sans-serif;
+  --font-roboto-serif: "Roboto Serif", serif;
+
+  --color-neo-bg: #F2F1EF;
+  --color-neo-text: #404040;
+  --color-neo-accent: #3B82F6;
+
+  /* Precise purple-to-blue gradient from Figma */
+  --color-neo-purple: #5A69EA;
+  --color-neo-blue: #BF8BCA;
+
+  /* Button specific shadows from Figma */
+  --shadow-neo-button: 2px 2px 5px 0px rgba(145, 145, 143, 0.89),
+    -2px -2px 4px 0px rgba(255, 255, 255, 0.90),
+    2px -2px 4px 0px rgba(145, 145, 143, 0.20),
+    -2px 2px 4px 0px rgba(145, 145, 143, 0.20),
+    inset -1px -1px 2px 0px rgba(145, 145, 143, 0.50),
+    inset 1px 1px 2px 0px rgba(255, 255, 255, 0.30);
+
+  /* Concave (Inset, used for search bar/pressed states) */
+  --shadow-neo-concave: inset 3px 3px 8px 0px rgba(206, 205, 203, 0.90),
+    inset -3px -3px 6px 0px rgba(255, 255, 255, 0.90),
+    inset 3px -3px 6px 0px rgba(206, 205, 203, 0.20),
+    inset -3px 3px 6px 0px rgba(206, 205, 203, 0.20),
+    -1px -1px 2px 0px rgba(206, 205, 203, 0.50),
+    1px 1px 2px 0px rgba(255, 255, 255, 0.30);
+
+  --radius-neo: 64px;
+
+  /* Nav Specific Shadows */
+  --shadow-neo-nav: 5px 5px 13px 0px rgba(215, 214, 213, 0.9),
+    -5px -5px 10px 0px rgba(255, 255, 255, 0.9),
+    5px -5px 10px 0px rgba(215, 214, 213, 0.2),
+    -5px 5px 10px 0px rgba(215, 214, 213, 0.2),
+    inset -1px -1px 2px 0px rgba(215, 214, 213, 0.5),
+    inset 1px 1px 2px 0px rgba(255, 255, 255, 0.3);
+
+  /* Card Shadows */
+  --shadow-neo-card: 8px 8px 16px 0px rgba(215, 214, 213, 0.9),
+    -8px -8px 12px 0px rgba(255, 255, 255, 0.9),
+    inset -2px -2px 4px 0px rgba(215, 214, 213, 0.5),
+    inset 2px 2px 4px 0px rgba(255, 255, 255, 0.3);
+}
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --background: #F2F1EF;
+  --foreground: #404040;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sora);
+  -webkit-font-smoothing: antialiased;
 }
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-roboto-serif);
+}
+
+.text-neo-gradient {
+  background: linear-gradient(135deg, #5A69EA 0%, #BF8BCA 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.border-neo-gradient {
+  background: linear-gradient(#F2F1EF, #F2F1EF) padding-box,
+    linear-gradient(135deg, #5A69EA, #BF8BCA) border-box;
+  border: 3px solid transparent;
+  /* Thinner border for image 911 */
+}
+
+.shadow-neo-button-outer {
+  box-shadow: 0 0 10px rgba(90, 105, 234, 0.15);
+  /* Very subtle glow */
+}
+
+.shadow-neo-button-inner {
+  box-shadow: inset 2px 2px 4px rgba(0, 0, 0, 0.05),
+    inset -2px -2px 4px rgba(255, 255, 255, 0.7);
+}
+
+.icon-gradient {
+  background: linear-gradient(135deg, #5A69EA 0%, #BF8BCA 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}.shadow-neo-nav { box-shadow: var(--shadow-neo-nav); } 
+.shadow-neo-card { box-shadow: var(--shadow-neo-card); } 
+.shadow-neo-well { box-shadow: inset 4px 4px 8px 0px rgba(215, 214, 213, 0.2), inset -4px -4px 6px 0px rgba(255, 255, 255, 0.9); }

@@ -39,3 +39,8 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# figma secrets & debug data
+scripts/
+figma-debug.json
+figma-studio-debug.json
