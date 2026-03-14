@@ -107,7 +107,7 @@ export default function StudioPage() {
                     {/* Node 1: Systems Architecture — bottom-left on curve */}
                     <div
                         className="absolute z-30"
-                        style={{ left: '8%', top: '75%', transform: 'translate(-50%, -50%)' }}
+                        style={{ left: '10%', top: '78%', transform: 'translate(-50%, -50%)' }}
                     >
                         <StudioNode />
                         <div className="absolute top-full left-1/2 -translate-x-1/2 mt-6 min-w-[260px] text-center">
@@ -124,7 +124,7 @@ export default function StudioPage() {
                     {/* Node 2: AI-Driven Automation — middle of curve */}
                     <div
                         className="absolute z-30"
-                        style={{ left: '42%', top: '58%', transform: 'translate(-50%, -50%)' }}
+                        style={{ left: '40%', top: '64%', transform: 'translate(-50%, -50%)' }}
                     >
                         <StudioNode />
                         <div className="absolute top-full left-full ml-4 mt-2 min-w-[260px]">
@@ -142,10 +142,10 @@ export default function StudioPage() {
                     {/* Node 3: Applied Research — top-right of curve */}
                     <div
                         className="absolute z-30"
-                        style={{ left: '72%', top: '28%', transform: 'translate(-50%, -50%)' }}
+                        style={{ left: '70%', top: '38%', transform: 'translate(-50%, -50%)' }}
                     >
                         <StudioNode />
-                        <div className="absolute bottom-full left-full ml-4 mb-2 min-w-[280px]">
+                        <div className="absolute bottom-full left-1/2 -translate-x-1/4 mb-4 min-w-[280px]">
                             <h3 className="text-[24px] font-light leading-tight">
                                 Applied <span className="text-[#5A69EA] opacity-60 font-normal">Research</span>
                             </h3>
