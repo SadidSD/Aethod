@@ -20,7 +20,7 @@ export default function StudioPage() {
 
                 {/* Serpentine Path & Nodes Container */}
                 <div className="relative w-full" style={{ height: '520px' }}>
-                    {/* SVG Serpentine Path — Enhanced with white border & shadows */}
+                    {/* SVG Serpentine Path — Exact Figma CSS shadows */}
                     <svg
                         className="absolute inset-0 w-full h-full overflow-visible"
                         viewBox="0 0 1166 420"
@@ -29,72 +29,71 @@ export default function StudioPage() {
                         xmlns="http://www.w3.org/2000/svg"
                     >
                         <defs>
-                            {/* Filter for the white outer border — inner shadow at bottom */}
-                            <filter id="whiteBorderFilter" x="-20%" y="-20%" width="140%" height="160%" filterUnits="objectBoundingBox" colorInterpolationFilters="sRGB">
+                            {/* Exact Figma CSS: box-shadow with 2 drop shadows + 4 inner shadows */}
+                            <filter id="figmaCurveFilter" x="-5%" y="-15%" width="110%" height="140%" filterUnits="objectBoundingBox" colorInterpolationFilters="sRGB">
                                 <feFlood floodOpacity="0" result="BackgroundImageFix"/>
-                                {/* Bottom drop shadow for the whole curve */}
+
+                                {/* Drop shadow 1: 1px 1px 2px rgba(255,255,255,0.3) */}
                                 <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
-                                <feOffset dx="0" dy="6"/>
-                                <feGaussianBlur stdDeviation="5"/>
-                                <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.15 0"/>
-                                <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow"/>
-                                {/* White highlight on top */}
-                                <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
-                                <feOffset dx="0" dy="-2"/>
+                                <feOffset dx="1" dy="1"/>
                                 <feGaussianBlur stdDeviation="1"/>
-                                <feColorMatrix type="matrix" values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.4 0"/>
-                                <feBlend mode="normal" in2="effect1_dropShadow" result="effect2_dropShadow"/>
-                                <feBlend mode="normal" in="SourceGraphic" in2="effect2_dropShadow" result="shape"/>
-                                {/* Inner shadow at bottom of white border */}
+                                <feColorMatrix type="matrix" values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.3 0"/>
+                                <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow"/>
+
+                                {/* Drop shadow 2: -1px -1px 2px rgba(182,181,179,0.5) */}
                                 <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
-                                <feOffset dx="0" dy="4"/>
+                                <feOffset dx="-1" dy="-1"/>
+                                <feGaussianBlur stdDeviation="1"/>
+                                <feColorMatrix type="matrix" values="0 0 0 0 0.713726 0 0 0 0 0.709804 0 0 0 0 0.701961 0 0 0 0.5 0"/>
+                                <feBlend mode="normal" in2="effect1_dropShadow" result="effect2_dropShadow"/>
+
+                                <feBlend mode="normal" in="SourceGraphic" in2="effect2_dropShadow" result="shape"/>
+
+                                {/* Inset 1: inset -3px 3px 6px rgba(182,181,179,0.2) */}
+                                <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+                                <feOffset dx="-3" dy="3"/>
                                 <feGaussianBlur stdDeviation="3"/>
                                 <feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1"/>
-                                <feColorMatrix type="matrix" values="0 0 0 0 0.6 0 0 0 0 0.59 0 0 0 0 0.58 0 0 0 0.35 0"/>
+                                <feColorMatrix type="matrix" values="0 0 0 0 0.713726 0 0 0 0 0.709804 0 0 0 0 0.701961 0 0 0 0.2 0"/>
                                 <feBlend mode="normal" in2="shape" result="effect3_innerShadow"/>
-                                {/* Inner shadow at top for depth */}
-                                <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
-                                <feOffset dx="0" dy="-2"/>
-                                <feGaussianBlur stdDeviation="2"/>
-                                <feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1"/>
-                                <feColorMatrix type="matrix" values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.7 0"/>
-                                <feBlend mode="normal" in2="effect3_innerShadow" result="effect4_innerShadow"/>
-                            </filter>
 
-                            {/* Filter for the blue inner path — neomorphic inner shadows */}
-                            <filter id="bluePathFilter" x="-10%" y="-10%" width="120%" height="140%" filterUnits="objectBoundingBox" colorInterpolationFilters="sRGB">
-                                <feFlood floodOpacity="0" result="BackgroundImageFix"/>
-                                <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
-                                {/* Inner shadow at bottom of blue stroke */}
+                                {/* Inset 2: inset 3px -3px 6px rgba(182,181,179,0.2) */}
                                 <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
-                                <feOffset dx="0" dy="3"/>
-                                <feGaussianBlur stdDeviation="2.5"/>
+                                <feOffset dx="3" dy="-3"/>
+                                <feGaussianBlur stdDeviation="3"/>
                                 <feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1"/>
-                                <feColorMatrix type="matrix" values="0 0 0 0 0.4 0 0 0 0 0.45 0 0 0 0 0.7 0 0 0 0.4 0"/>
-                                <feBlend mode="normal" in2="shape" result="effect1_innerShadow"/>
-                                {/* Subtle top highlight */}
+                                <feColorMatrix type="matrix" values="0 0 0 0 0.713726 0 0 0 0 0.709804 0 0 0 0 0.701961 0 0 0 0.2 0"/>
+                                <feBlend mode="normal" in2="effect3_innerShadow" result="effect4_innerShadow"/>
+
+                                {/* Inset 3: inset -3px -3px 6px rgba(255,255,255,0.9) */}
                                 <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
-                                <feOffset dx="0" dy="-2"/>
-                                <feGaussianBlur stdDeviation="2"/>
+                                <feOffset dx="-3" dy="-3"/>
+                                <feGaussianBlur stdDeviation="3"/>
                                 <feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1"/>
-                                <feColorMatrix type="matrix" values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.6 0"/>
-                                <feBlend mode="normal" in2="effect1_innerShadow" result="effect2_innerShadow"/>
+                                <feColorMatrix type="matrix" values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.9 0"/>
+                                <feBlend mode="normal" in2="effect4_innerShadow" result="effect5_innerShadow"/>
+
+                                {/* Inset 4: inset 3px 3px 8px rgba(182,181,179,0.9) */}
+                                <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+                                <feOffset dx="3" dy="3"/>
+                                <feGaussianBlur stdDeviation="4"/>
+                                <feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1"/>
+                                <feColorMatrix type="matrix" values="0 0 0 0 0.713726 0 0 0 0 0.709804 0 0 0 0 0.701961 0 0 0 0.9 0"/>
+                                <feBlend mode="normal" in2="effect5_innerShadow" result="effect6_innerShadow"/>
                             </filter>
                         </defs>
 
-                        {/* Layer 1: Thick white outer border with bottom inner shadow */}
-                        <g filter="url(#whiteBorderFilter)">
-                            <path
-                                d="M10.502 301.037C10.502 301.037 278.19 379.737 387.502 346.037C465.301 322.052 519.222 255.036 594.502 224.037C717.17 173.524 741.006 227.347 853.502 157.037C933.502 107.037 953.502 83.0367 953.502 83.0367C953.502 83.0367 999.582 34.0816 1081.5 16.9464C1123.96 8.06441 1155.5 10.9464 1155.5 10.9464"
-                                stroke="white"
-                                strokeWidth="32"
-                                strokeLinecap="round"
-                                fill="none"
-                            />
-                        </g>
+                        {/* Thick white outer border behind the blue path */}
+                        <path
+                            d="M10.502 301.037C10.502 301.037 278.19 379.737 387.502 346.037C465.301 322.052 519.222 255.036 594.502 224.037C717.17 173.524 741.006 227.347 853.502 157.037C933.502 107.037 953.502 83.0367 953.502 83.0367C953.502 83.0367 999.582 34.0816 1081.5 16.9464C1123.96 8.06441 1155.5 10.9464 1155.5 10.9464"
+                            stroke="white"
+                            strokeWidth="36"
+                            strokeLinecap="round"
+                            fill="none"
+                        />
 
-                        {/* Layer 2: Blue inner path with bottom inner shadow */}
-                        <g filter="url(#bluePathFilter)">
+                        {/* Blue path with exact Figma neomorphic shadows */}
+                        <g filter="url(#figmaCurveFilter)">
                             <path
                                 d="M10.502 301.037C10.502 301.037 278.19 379.737 387.502 346.037C465.301 322.052 519.222 255.036 594.502 224.037C717.17 173.524 741.006 227.347 853.502 157.037C933.502 107.037 953.502 83.0367 953.502 83.0367C953.502 83.0367 999.582 34.0816 1081.5 16.9464C1123.96 8.06441 1155.5 10.9464 1155.5 10.9464"
                                 stroke="#B2CEFE"
