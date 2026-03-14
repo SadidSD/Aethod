@@ -7,9 +7,9 @@ export default function StudioPage() {
         <main className="min-h-screen bg-neo-bg overflow-hidden text-neo-text">
             <Navbar />
 
-            <section className="relative container mx-auto max-w-[1440px] pt-32 px-10 pb-20">
+            <section className="relative container mx-auto max-w-[1440px] pt-20 px-10 pb-10">
                 {/* Heading Area */}
-                <div className="max-w-lg mb-8">
+                <div className="max-w-lg mb-0">
                     <h1 className="text-[64px] font-medium tracking-tight leading-[1.1]">
                         What We <span className="text-[#5A69EA] opacity-60">Actually</span> Do
                     </h1>
@@ -19,7 +19,7 @@ export default function StudioPage() {
                 </div>
 
                 {/* Serpentine Path & Nodes Container */}
-                <div className="relative w-full" style={{ height: '520px' }}>
+                <div className="relative w-full" style={{ height: '480px' }}>
                     {/* SVG Serpentine Path — Exact Figma CSS shadows */}
                     <svg
                         className="absolute inset-0 w-full h-full overflow-visible"
