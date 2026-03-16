@@ -24,8 +24,9 @@ export default function Home() {
         </button>
       </div>
 
-      <main className="container mx-auto max-w-[1352px] px-6 mt-32">
-        <div className="flex flex-col lg:flex-row items-center justify-between gap-16">
+      {/* Hero Section - Full Height */}
+      <main className="container mx-auto max-w-[1352px] px-6 min-h-screen flex items-center justify-center">
+        <div className="flex flex-col lg:flex-row items-center justify-between gap-16 w-full -mt-20">
 
           {/* Left Column... */}
           <section className="flex-1 text-left max-w-[650px]">
@@ -63,7 +64,8 @@ export default function Home() {
         </div>
       </main>
 
-      <section className="relative container mx-auto max-w-[1440px] pt-20 px-10 pb-10">
+      {/* What We Do Section - Full Height */}
+      <section className="relative container mx-auto max-w-[1440px] px-10 min-h-screen flex flex-col justify-center">
                 {/* Heading Area */}
                 <div className="max-w-lg mb-0">
                     <h1 className="text-[64px] font-medium tracking-tight leading-[1.1]">
