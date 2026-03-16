@@ -110,7 +110,7 @@ export default function StudioPage() {
                         style={{ left: '10%', top: '78%', transform: 'translate(-50%, -50%)' }}
                     >
                         <StudioNode />
-                        <div className="absolute top-full left-1/2 -translate-x-1/2 mt-6 min-w-[260px] text-center">
+                        <div className="absolute top-full left-0 mt-6 min-w-[260px] text-left">
                             <h3 className="text-[24px] font-light leading-tight">
                                 Systems <span className="text-[#5A69EA] opacity-60 font-normal">Architecture</span>
                             </h3>
@@ -127,7 +127,7 @@ export default function StudioPage() {
                         style={{ left: '40%', top: '64%', transform: 'translate(-50%, -50%)' }}
                     >
                         <StudioNode />
-                        <div className="absolute top-full left-1/2 -translate-x-1/2 mt-6 min-w-[260px] text-center">
+                        <div className="absolute top-full left-0 mt-6 min-w-[260px] text-left">
                             <h3 className="text-[24px] font-light leading-tight">
                                 AI-Driven <span className="text-[#5A69EA] opacity-60 font-normal">Automation</span>
                             </h3>
@@ -145,7 +145,7 @@ export default function StudioPage() {
                         style={{ left: '70%', top: '38%', transform: 'translate(-50%, -50%)' }}
                     >
                         <StudioNode />
-                        <div className="absolute top-full left-1/2 -translate-x-1/2 mt-6 min-w-[280px] text-center">
+                        <div className="absolute top-full left-0 mt-6 min-w-[280px] text-left">
                             <h3 className="text-[24px] font-light leading-tight">
                                 Applied <span className="text-[#5A69EA] opacity-60 font-normal">Research</span>
                             </h3>
