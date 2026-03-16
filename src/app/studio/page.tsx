@@ -19,7 +19,7 @@ export default function StudioPage() {
                 </div>
 
                 {/* Serpentine Path & Nodes Container */}
-                <div className="relative w-full -mt-16" style={{ height: '480px' }}>
+                <div className="relative w-full -mt-50" style={{ height: '480px' }}>
                     {/* SVG Serpentine Path — Exact Figma CSS shadows */}
                     <svg
                         className="absolute inset-0 w-full h-full overflow-visible"
@@ -31,55 +31,55 @@ export default function StudioPage() {
                         <defs>
                             {/* Exact Figma CSS: box-shadow with 2 drop shadows + 4 inner shadows */}
                             <filter id="figmaCurveFilter" x="-5%" y="-15%" width="110%" height="140%" filterUnits="objectBoundingBox" colorInterpolationFilters="sRGB">
-                                <feFlood floodOpacity="0" result="BackgroundImageFix"/>
+                                <feFlood floodOpacity="0" result="BackgroundImageFix" />
 
                                 {/* Drop shadow 1: 1px 1px 2px rgba(255,255,255,0.3) */}
-                                <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
-                                <feOffset dx="1" dy="1"/>
-                                <feGaussianBlur stdDeviation="1"/>
-                                <feColorMatrix type="matrix" values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.3 0"/>
-                                <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow"/>
+                                <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
+                                <feOffset dx="1" dy="1" />
+                                <feGaussianBlur stdDeviation="1" />
+                                <feColorMatrix type="matrix" values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.3 0" />
+                                <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow" />
 
                                 {/* Drop shadow 2: -1px -1px 2px rgba(182,181,179,0.5) */}
-                                <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
-                                <feOffset dx="-1" dy="-1"/>
-                                <feGaussianBlur stdDeviation="1"/>
-                                <feColorMatrix type="matrix" values="0 0 0 0 0.713726 0 0 0 0 0.709804 0 0 0 0 0.701961 0 0 0 0.5 0"/>
-                                <feBlend mode="normal" in2="effect1_dropShadow" result="effect2_dropShadow"/>
+                                <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
+                                <feOffset dx="-1" dy="-1" />
+                                <feGaussianBlur stdDeviation="1" />
+                                <feColorMatrix type="matrix" values="0 0 0 0 0.713726 0 0 0 0 0.709804 0 0 0 0 0.701961 0 0 0 0.5 0" />
+                                <feBlend mode="normal" in2="effect1_dropShadow" result="effect2_dropShadow" />
 
-                                <feBlend mode="normal" in="SourceGraphic" in2="effect2_dropShadow" result="shape"/>
+                                <feBlend mode="normal" in="SourceGraphic" in2="effect2_dropShadow" result="shape" />
 
                                 {/* Inset 1: inset -3px 3px 6px rgba(182,181,179,0.2) */}
-                                <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
-                                <feOffset dx="-3" dy="3"/>
-                                <feGaussianBlur stdDeviation="3"/>
-                                <feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1"/>
-                                <feColorMatrix type="matrix" values="0 0 0 0 0.713726 0 0 0 0 0.709804 0 0 0 0 0.701961 0 0 0 0.2 0"/>
-                                <feBlend mode="normal" in2="shape" result="effect3_innerShadow"/>
+                                <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
+                                <feOffset dx="-3" dy="3" />
+                                <feGaussianBlur stdDeviation="3" />
+                                <feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1" />
+                                <feColorMatrix type="matrix" values="0 0 0 0 0.713726 0 0 0 0 0.709804 0 0 0 0 0.701961 0 0 0 0.2 0" />
+                                <feBlend mode="normal" in2="shape" result="effect3_innerShadow" />
 
                                 {/* Inset 2: inset 3px -3px 6px rgba(182,181,179,0.2) */}
-                                <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
-                                <feOffset dx="3" dy="-3"/>
-                                <feGaussianBlur stdDeviation="3"/>
-                                <feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1"/>
-                                <feColorMatrix type="matrix" values="0 0 0 0 0.713726 0 0 0 0 0.709804 0 0 0 0 0.701961 0 0 0 0.2 0"/>
-                                <feBlend mode="normal" in2="effect3_innerShadow" result="effect4_innerShadow"/>
+                                <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
+                                <feOffset dx="3" dy="-3" />
+                                <feGaussianBlur stdDeviation="3" />
+                                <feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1" />
+                                <feColorMatrix type="matrix" values="0 0 0 0 0.713726 0 0 0 0 0.709804 0 0 0 0 0.701961 0 0 0 0.2 0" />
+                                <feBlend mode="normal" in2="effect3_innerShadow" result="effect4_innerShadow" />
 
                                 {/* Inset 3: inset -3px -3px 6px rgba(255,255,255,0.9) */}
-                                <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
-                                <feOffset dx="-3" dy="-3"/>
-                                <feGaussianBlur stdDeviation="3"/>
-                                <feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1"/>
-                                <feColorMatrix type="matrix" values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.9 0"/>
-                                <feBlend mode="normal" in2="effect4_innerShadow" result="effect5_innerShadow"/>
+                                <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
+                                <feOffset dx="-3" dy="-3" />
+                                <feGaussianBlur stdDeviation="3" />
+                                <feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1" />
+                                <feColorMatrix type="matrix" values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.9 0" />
+                                <feBlend mode="normal" in2="effect4_innerShadow" result="effect5_innerShadow" />
 
                                 {/* Inset 4: inset 3px 3px 8px rgba(182,181,179,0.9) */}
-                                <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
-                                <feOffset dx="3" dy="3"/>
-                                <feGaussianBlur stdDeviation="4"/>
-                                <feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1"/>
-                                <feColorMatrix type="matrix" values="0 0 0 0 0.713726 0 0 0 0 0.709804 0 0 0 0 0.701961 0 0 0 0.9 0"/>
-                                <feBlend mode="normal" in2="effect5_innerShadow" result="effect6_innerShadow"/>
+                                <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
+                                <feOffset dx="3" dy="3" />
+                                <feGaussianBlur stdDeviation="4" />
+                                <feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1" />
+                                <feColorMatrix type="matrix" values="0 0 0 0 0.713726 0 0 0 0 0.709804 0 0 0 0 0.701961 0 0 0 0.9 0" />
+                                <feBlend mode="normal" in2="effect5_innerShadow" result="effect6_innerShadow" />
                             </filter>
                         </defs>
 
@@ -127,7 +127,7 @@ export default function StudioPage() {
                         style={{ left: '40%', top: '64%', transform: 'translate(-50%, -50%)' }}
                     >
                         <StudioNode />
-                        <div className="absolute top-full left-full ml-4 mt-2 min-w-[260px]">
+                        <div className="absolute top-full left-1/2 -translate-x-1/2 mt-6 min-w-[260px] text-center">
                             <h3 className="text-[24px] font-light leading-tight">
                                 AI-Driven <span className="text-[#5A69EA] opacity-60 font-normal">Automation</span>
                             </h3>
@@ -145,7 +145,7 @@ export default function StudioPage() {
                         style={{ left: '70%', top: '38%', transform: 'translate(-50%, -50%)' }}
                     >
                         <StudioNode />
-                        <div className="absolute bottom-full left-1/2 -translate-x-1/4 mb-4 min-w-[280px]">
+                        <div className="absolute top-full left-1/2 -translate-x-1/2 mt-6 min-w-[280px] text-center">
                             <h3 className="text-[24px] font-light leading-tight">
                                 Applied <span className="text-[#5A69EA] opacity-60 font-normal">Research</span>
                             </h3>
