@@ -86,7 +86,7 @@ export default function StudioPage() {
                         {/* Thick white outer border behind the blue path */}
                         <path
                             d="M10.502 301.037C10.502 301.037 278.19 379.737 387.502 346.037C465.301 322.052 519.222 255.036 594.502 224.037C717.17 173.524 741.006 227.347 853.502 157.037C933.502 107.037 953.502 83.0367 953.502 83.0367C953.502 83.0367 999.582 34.0816 1081.5 16.9464C1123.96 8.06441 1155.5 10.9464 1155.5 10.9464"
-                            stroke="white"
+                            stroke="#F2F1EF"
                             strokeWidth="36"
                             strokeLinecap="round"
                             fill="none"
