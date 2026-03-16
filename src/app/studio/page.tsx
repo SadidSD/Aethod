@@ -29,7 +29,58 @@ export default function StudioPage() {
                         xmlns="http://www.w3.org/2000/svg"
                     >
                         <defs>
-                            {/* Exact Figma CSS: box-shadow with 2 drop shadows + 4 inner shadows */}
+                            {/* Exact Figma CSS for Vector 1 (Outer Border): 4 drop shadows + 2 inner shadows */}
+                            <filter id="figmaCurveBorderFilter" x="-5%" y="-15%" width="110%" height="140%" filterUnits="objectBoundingBox" colorInterpolationFilters="sRGB">
+                                <feFlood floodOpacity="0" result="BackgroundImageFix" />
+
+                                {/* Drop shadow 1: -3px 3px 6px rgba(194, 193, 191, 0.2) */}
+                                <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
+                                <feOffset dx="-3" dy="3" />
+                                <feGaussianBlur stdDeviation="3" />
+                                <feColorMatrix type="matrix" values="0 0 0 0 0.76078 0 0 0 0 0.75686 0 0 0 0 0.74902 0 0 0 0.2 0" />
+                                <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_border" />
+
+                                {/* Drop shadow 2: 3px -3px 6px rgba(194, 193, 191, 0.2) */}
+                                <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
+                                <feOffset dx="3" dy="-3" />
+                                <feGaussianBlur stdDeviation="3" />
+                                <feColorMatrix type="matrix" values="0 0 0 0 0.76078 0 0 0 0 0.75686 0 0 0 0 0.74902 0 0 0 0.2 0" />
+                                <feBlend mode="normal" in2="effect1_dropShadow_border" result="effect2_dropShadow_border" />
+
+                                {/* Drop shadow 3: -3px -3px 6px rgba(255, 255, 255, 0.9) */}
+                                <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
+                                <feOffset dx="-3" dy="-3" />
+                                <feGaussianBlur stdDeviation="3" />
+                                <feColorMatrix type="matrix" values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.9 0" />
+                                <feBlend mode="normal" in2="effect2_dropShadow_border" result="effect3_dropShadow_border" />
+
+                                {/* Drop shadow 4: 3px 3px 8px rgba(194, 193, 191, 0.9) */}
+                                <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
+                                <feOffset dx="3" dy="3" />
+                                <feGaussianBlur stdDeviation="4" />
+                                <feColorMatrix type="matrix" values="0 0 0 0 0.76078 0 0 0 0 0.75686 0 0 0 0 0.74902 0 0 0 0.9 0" />
+                                <feBlend mode="normal" in2="effect3_dropShadow_border" result="effect4_dropShadow_border" />
+
+                                <feBlend mode="normal" in="SourceGraphic" in2="effect4_dropShadow_border" result="shape_border" />
+
+                                {/* Inset 1: inset 1px 1px 2px rgba(255, 255, 255, 0.3) */}
+                                <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
+                                <feOffset dx="1" dy="1" />
+                                <feGaussianBlur stdDeviation="1" />
+                                <feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1" />
+                                <feColorMatrix type="matrix" values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.3 0" />
+                                <feBlend mode="normal" in2="shape_border" result="effect5_innerShadow_border" />
+
+                                {/* Inset 2: inset -1px -1px 2px rgba(194, 193, 191, 0.5) */}
+                                <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
+                                <feOffset dx="-1" dy="-1" />
+                                <feGaussianBlur stdDeviation="1" />
+                                <feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1" />
+                                <feColorMatrix type="matrix" values="0 0 0 0 0.76078 0 0 0 0 0.75686 0 0 0 0 0.74902 0 0 0 0.5 0" />
+                                <feBlend mode="normal" in2="effect5_innerShadow_border" result="effect6_innerShadow_border" />
+                            </filter>
+
+                            {/* Exact Figma CSS for Vector 2 (Inner Blue): box-shadow with 2 drop shadows + 4 inner shadows */}
                             <filter id="figmaCurveFilter" x="-5%" y="-15%" width="110%" height="140%" filterUnits="objectBoundingBox" colorInterpolationFilters="sRGB">
                                 <feFlood floodOpacity="0" result="BackgroundImageFix" />
 
@@ -83,17 +134,19 @@ export default function StudioPage() {
                             </filter>
                         </defs>
 
-                        {/* Group both the thick background border and the inner blue path under the Figma shadow filter */}
-                        <g filter="url(#figmaCurveFilter)">
-                            {/* Thick outer border (#F2F1EF) */}
+                        {/* Thick outer border (Vector 1) with its own specific Figma filters */}
+                        <g filter="url(#figmaCurveBorderFilter)">
                             <path
                                 d="M10.502 301.037C10.502 301.037 278.19 379.737 387.502 346.037C465.301 322.052 519.222 255.036 594.502 224.037C717.17 173.524 741.006 227.347 853.502 157.037C933.502 107.037 953.502 83.0367 953.502 83.0367C953.502 83.0367 999.582 34.0816 1081.5 16.9464C1123.96 8.06441 1155.5 10.9464 1155.5 10.9464"
                                 stroke="#F2F1EF"
-                                strokeWidth="36"
+                                strokeWidth="30"
                                 strokeLinecap="round"
                                 fill="none"
                             />
-                            {/* Inner blue path (#B2CEFE) */}
+                        </g>
+
+                        {/* Inner blue path (Vector 2) with exact Figma neomorphic shadows */}
+                        <g filter="url(#figmaCurveFilter)">
                             <path
                                 d="M10.502 301.037C10.502 301.037 278.19 379.737 387.502 346.037C465.301 322.052 519.222 255.036 594.502 224.037C717.17 173.524 741.006 227.347 853.502 157.037C933.502 107.037 953.502 83.0367 953.502 83.0367C953.502 83.0367 999.582 34.0816 1081.5 16.9464C1123.96 8.06441 1155.5 10.9464 1155.5 10.9464"
                                 stroke="#B2CEFE"
