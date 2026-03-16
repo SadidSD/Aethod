@@ -124,7 +124,7 @@ export default function StudioPage() {
                     {/* Node 2: AI-Driven Automation — middle of curve */}
                     <div
                         className="absolute z-30"
-                        style={{ left: '40%', top: '64%', transform: 'translate(-50%, -50%)' }}
+                        style={{ left: '45%', top: '64%', transform: 'translate(-50%, -50%)' }}
                     >
                         <StudioNode />
                         <div className="absolute top-full left-0 mt-6 min-w-[260px] text-left">
@@ -142,7 +142,7 @@ export default function StudioPage() {
                     {/* Node 3: Applied Research — top-right of curve */}
                     <div
                         className="absolute z-30"
-                        style={{ left: '70%', top: '38%', transform: 'translate(-50%, -50%)' }}
+                        style={{ left: '73%', top: '39%', transform: 'translate(-50%, -50%)' }}
                     >
                         <StudioNode />
                         <div className="absolute top-full left-0 mt-6 min-w-[280px] text-left">
