@@ -1,0 +1,1424 @@
+/* ========================================
+   AETHOD Landing Page — Neumorphic Luxury
+   ======================================== */
+
+/* ---------- Page Wrapper ---------- */
+.pageWrapper {
+  min-height: 100vh;
+  background: var(--bg-primary);
+  position: relative;
+}
+
+/* Subtle noise overlay for surface texture */
+.pageWrapper::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.025'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Subtle ambient purple gradient in top-right for depth */
+.pageWrapper::after {
+  content: '';
+  position: fixed;
+  top: -100px;
+  right: -100px;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(
+    circle,
+    rgba(167, 139, 250, 0.06) 0%,
+    rgba(139, 92, 246, 0.03) 40%,
+    transparent 70%
+  );
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ---------- Navigation — Floating Neumorphic Pill ---------- */
+.navOuter {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  padding: 16px 24px 0;
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+  height: 62px;
+  padding: 0 10px 0 12px;
+  border-radius: 60px;
+  background: #DFDFDF;
+  box-shadow:
+    /* Downward shadow — depth underneath */
+    4px 4px 10px rgba(190, 190, 190, 0.9),
+    /* Upward glow — light from above */
+    -4px -4px 8px rgba(255, 255, 255, 0.9),
+    /* Subtle diagonal shadows for realism */
+    4px -4px 8px rgba(190, 190, 190, 0.2),
+    -4px 4px 8px rgba(190, 190, 190, 0.2),
+    /* Inner shadow highlights */
+    inset -1px -1px 2px rgba(190, 190, 190, 0.5),
+    inset 1px 1px 2px rgba(255, 255, 255, 0.3);
+  max-width: 1280px;
+  margin: 0 auto;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Subtle top edge highlight on the pill */
+.navbar::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 20px;
+  right: 20px;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.6) 30%,
+    rgba(255, 255, 255, 0.6) 70%,
+    transparent
+  );
+  pointer-events: none;
+}
+
+.navLeft {
+  display: flex;
+  align-items: center;
+  gap: 36px;
+  flex-shrink: 0;
+}
+
+/* --- Circular Logo --- */
+.logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+  flex-shrink: 0;
+}
+
+.logo:hover {
+  transform: scale(1.06);
+}
+
+.logoImg {
+  width: 44px;
+  height: 44px;
+  display: block;
+}
+
+/* --- Nav Links (Sora 300, 20px — matching design spec) --- */
+.navLinks {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.navLink {
+  font-family: var(--font-sora), sans-serif;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 20px;
+  line-height: 25px;
+  color: #404040;
+  padding: 10px;
+  position: relative;
+  transition:
+    color 0.3s cubic-bezier(0.34, 1.56, 0.64, 1),
+    transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  cursor: pointer;
+  text-decoration: none;
+}
+
+/* Magnetic underline dot on hover */
+.navLink::after {
+  content: '';
+  position: absolute;
+  bottom: 0px;
+  left: 50%;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--accent-purple);
+  transform: translateX(-50%) scale(0);
+  opacity: 0;
+  transition:
+    transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1),
+    opacity 0.25s ease;
+}
+
+.navLink:hover {
+  color: #1a1a2e;
+  transform: translateY(-1px);
+}
+
+.navLink:hover::after {
+  transform: translateX(-50%) scale(1);
+  opacity: 1;
+}
+
+/* --- Neumorphic Search Bar (matching reference) --- */
+.navCenter {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+  padding: 0 14px;
+}
+
+.searchBar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 20px;
+  background: #D7D7D5;
+  border-radius: 20px;
+  box-shadow:
+    inset 2px 2px 5px rgba(183, 183, 181, 0.9),
+    inset -2px -2px 4px rgba(247, 247, 245, 0.9),
+    inset 2px -2px 4px rgba(183, 183, 181, 0.2),
+    inset -2px 2px 4px rgba(183, 183, 181, 0.2),
+    -1px -1px 2px rgba(183, 183, 181, 0.5),
+    1px 1px 2px rgba(247, 247, 245, 0.3);
+  min-width: 300px;
+  max-width: 420px;
+  width: 100%;
+  transition: box-shadow 0.3s ease;
+  border: none;
+}
+
+.searchBar:focus-within {
+  box-shadow:
+    inset 2px 2px 6px rgba(183, 183, 181, 0.95),
+    inset -2px -2px 5px rgba(247, 247, 245, 0.95),
+    inset 2px -2px 5px rgba(183, 183, 181, 0.25),
+    inset -2px 2px 5px rgba(183, 183, 181, 0.25),
+    -1px -1px 2px rgba(183, 183, 181, 0.5),
+    1px 1px 2px rgba(247, 247, 245, 0.3);
+}
+
+.searchIcon {
+  flex-shrink: 0;
+  color: #3B719F;
+}
+
+.searchInput {
+  border: none;
+  background: transparent;
+  color: #5A69EA;
+  font-size: 13.5px;
+  font-family: inherit;
+  outline: none;
+  width: 100%;
+  letter-spacing: 0.02em;
+  font-weight: 400;
+}
+
+.searchInput::placeholder {
+  background: linear-gradient(180deg, #5A69EA 0%, #BF8BCA 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-weight: 400;
+  opacity: 0.85;
+}
+
+/* --- Contact Button (uses contract.svg with built-in neumorphic filters) --- */
+.navRight {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.contactBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+  flex-shrink: 0;
+}
+
+.contactBtn:hover {
+  transform: scale(1.06);
+}
+
+.contactBtnImg {
+  width: 44px;
+  height: 44px;
+  display: block;
+}
+
+/* ---------- Hero Section ---------- */
+.heroSection {
+  padding: 60px 48px 40px;
+  position: relative;
+  z-index: 1;
+}
+
+.heroContent {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: 0 auto;
+  gap: 40px;
+}
+
+.heroText {
+  max-width: 529px;
+  padding-top: 30px;
+}
+
+.heroHeading {
+  font-family: var(--font-sora), 'Sora', sans-serif;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 48px;
+  line-height: 60px;
+  color: #404040;
+  margin-bottom: 20px;
+}
+
+.heroHighlight {
+  background: linear-gradient(180deg, #5A69EA 0%, #BF8BCA 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-style: italic;
+}
+
+.heroSubtext {
+  font-family: var(--font-sora), 'Sora', sans-serif;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 20px;
+  line-height: 25px;
+  color: #404040;
+  max-width: 517px;
+  margin-bottom: 32px;
+}
+
+.heroButtons {
+  display: flex;
+  gap: 30px;
+}
+
+/* === Two-layer Neumorphic Press Buttons === */
+
+/* Single-layer Neumorphic Buttons */
+.btnExplore,
+.btnThinking {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  padding: 11px 21px;
+  border: none;
+  border-radius: 14px;
+  background: linear-gradient(145deg, #e6e6e4, #d4d4d2);
+  cursor: pointer;
+  box-shadow:
+    3px 3px 6px rgba(145, 145, 143, 0.4),
+    -3px -3px 6px rgba(255, 255, 255, 0.7),
+    inset 0 1px 0 rgba(255, 255, 255, 0.6);
+  transition: transform 0.1s ease, box-shadow 0.1s ease;
+  outline: none;
+  overflow: hidden; /* clip the absolute pseudo element */
+}
+
+/* Smooth fading Inset Shadow Overlay for pressed down state */
+.btnExplore::after,
+.btnThinking::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 9px;
+  background: linear-gradient(145deg, #d2d2d0, #dbdbda);
+  box-shadow:
+    inset 3px 3px 6px rgba(130, 130, 128, 0.7),
+    inset -3px -3px 6px rgba(255, 255, 255, 0.8);
+  opacity: 0;
+  transition: opacity 0.1s ease;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Inner face — transparent layout wrapper */
+.btnFace {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background: transparent !important;
+  box-shadow: none !important;
+  border-radius: 0 !important;
+  padding: 0 !important;
+  transform: none !important;
+  transition: none !important;
+  position: relative;
+  z-index: 2; /* display text/icons above the inset shadow */
+}
+
+/* Label text — Sora 300, 20px */
+.btnLabel {
+  font-family: var(--font-sora), sans-serif;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 20px;
+  line-height: 25px;
+  color: #404040;
+}
+
+/* Arrow wrapper — 24×24, flex layout */
+.btnArrowWrap {
+  width: 24px;
+  height: 24px;
+  flex: none;
+  order: 1;
+  flex-grow: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Arrow icon */
+.btnArrow {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* Explore button — purple border, blue cursor on hover */
+.btnExplore {
+  border: 5px solid #B8A0E8;
+  cursor: url('/cursor-blue.svg') 5 2, pointer;
+}
+
+/* Thinking button — soft blue border, purple cursor on hover */
+.btnThinking {
+  border: 5px solid #B2CEFE;
+  cursor: url('/cursor-purple.svg') 5 2, pointer;
+}
+
+/* ---- Hover state: float up slightly ---- */
+.btnExplore:hover,
+.btnThinking:hover {
+  transform: translateY(-2px);
+  box-shadow:
+    4px 4px 8px rgba(145, 145, 143, 0.5),
+    -4px -4px 8px rgba(255, 255, 255, 0.8),
+    inset 0 1px 0 rgba(255, 255, 255, 0.6);
+}
+
+.btnExplore:hover .btnArrow,
+.btnThinking:hover .btnArrow {
+  transform: translate(2px, -2px);
+}
+
+/* ---- Active/Press state: pressed down physically ---- */
+.btnExplore:active,
+.btnThinking:active {
+  transform: translateY(1.5px);
+  box-shadow:
+    1px 1px 3px rgba(145, 145, 143, 0.2),
+    -1px -1px 3px rgba(255, 255, 255, 0.5);
+}
+
+.btnExplore:active::after,
+.btnThinking:active::after {
+  opacity: 1;
+}
+
+.btnExplore:active .btnArrow,
+.btnThinking:active .btnArrow {
+  transform: translate(1px, -1px);
+}
+
+/* ---------- Orb Area ---------- */
+.heroVisual {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 340px;
+  height: 340px;
+  flex-shrink: 0;
+}
+
+.orbContainer {
+  position: relative;
+  width: 240px;
+  height: 240px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  left: -90px;
+}
+
+/* Orb Glow Behind */
+.orbGlow {
+  position: absolute;
+  width: 240px;
+  height: 240px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(167, 139, 250, 0.2) 0%,
+    rgba(139, 92, 246, 0.06) 50%,
+    transparent 75%
+  );
+  filter: blur(24px);
+  animation: orbPulse 5s ease-in-out infinite;
+  z-index: 1;
+  pointer-events: none;
+}
+
+@keyframes orbPulse {
+  0%, 100% { transform: scale(1); opacity: 0.5; }
+  50% { transform: scale(1.05); opacity: 0.7; }
+}
+
+/* Premium floating animation */
+@keyframes orbFloat {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+/* Viewport to crop outer curves in video */
+.orbVideoMask {
+  width: 230px;
+  height: 230px;
+  border-radius: 50%;
+  overflow: hidden;
+  position: relative;
+  z-index: 2;
+  animation: orbFloat 6s ease-in-out infinite;
+  /* Outer soft rim glow to seamlessly blend sphere */
+  box-shadow: 
+    0 0 24px rgba(255, 255, 255, 0.15),
+    inset 0 0 12px rgba(255, 255, 255, 0.25);
+}
+
+.orbVideo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: relative;
+  transform: scale(2.2); /* Zooms in perfectly to show only the central orb */
+  filter: saturate(1.08) contrast(1.02);
+}
+
+/* Subtle, soft, horizontal shadow underneath the orb */
+.orbShadow {
+  position: absolute;
+  bottom: -60px; 
+  width: 150px; 
+  height: 12px;
+  border-radius: 50%;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(0, 0, 0, 0.75) 0%,
+    rgba(0, 0, 0, 0.4) 30%,
+    rgba(0, 0, 0, 0.1) 60%,
+    transparent 80%
+  );
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  filter: blur(5px);
+  z-index: 1;
+  animation: shadowPulse 6s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes shadowPulse {
+  0%, 100% { 
+    transform: scale(1); 
+    opacity: 0.9; 
+    filter: blur(6px); 
+  }
+  50% { 
+    transform: scale(0.8); 
+    opacity: 0.4; 
+    filter: blur(10px); 
+  }
+}
+
+/* ===== Slide Toggle Button (Neumorphic 3D) ===== */
+.slideButton {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 66.29px;
+  height: 30px;
+  z-index: 10;
+}
+
+/* Track — recessed well (Rectangle 23) */
+.slideTrack {
+  position: absolute;
+  left: 0%;
+  right: 0.44%;
+  top: 13.33%;
+  bottom: 6.67%;
+  background: #DFDFDF;
+  box-shadow:
+    1px 1px 2px rgba(255, 255, 255, 0.3),
+    -1px -1px 2px rgba(156, 156, 156, 0.5),
+    inset -1px 1px 2px rgba(156, 156, 156, 0.2),
+    inset 1px -1px 2px rgba(156, 156, 156, 0.2),
+    inset -1px -1px 2px rgba(255, 255, 255, 0.9),
+    inset 1px 1px 3px rgba(156, 156, 156, 0.9);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+/* Blue inner track (Rectangle 24) */
+.slideTrackInner {
+  position: absolute;
+  left: 6.92%;
+  right: 10.58%;
+  top: 26.42%;
+  bottom: 20.73%;
+  background: #B2CEFE;
+  box-shadow:
+    1px 1px 2px rgba(219, 253, 255, 0.3),
+    -1px -1px 2px rgba(137, 159, 196, 0.5),
+    inset -3px 3px 6px rgba(137, 159, 196, 0.2),
+    inset 3px -3px 6px rgba(137, 159, 196, 0.2),
+    inset -3px -3px 6px rgba(219, 253, 255, 0.9),
+    inset 3px 3px 8px rgba(137, 159, 196, 0.9);
+  border-radius: 8px;
+  pointer-events: none;
+}
+
+/* Knob — raised 3D slider (Rectangle 25) */
+.slideKnob {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 45.25%;
+  height: 100%;
+  background: linear-gradient(135deg, #EAEAEA 0%, #D4D4D4 100%);
+  box-shadow:
+    -1px 1px 2px rgba(134, 134, 134, 0.2),
+    1px -1px 2px rgba(134, 134, 134, 0.2),
+    -1px -1px 2px rgba(255, 255, 255, 0.9),
+    1px 1px 3px rgba(134, 134, 134, 0.9),
+    inset 1px 1px 2px rgba(255, 255, 255, 0.3),
+    inset -1px -1px 2px rgba(134, 134, 134, 0.5);
+  border-radius: 20px;
+  cursor: grab;
+  z-index: 2;
+  touch-action: none;
+  user-select: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.slideKnob:active {
+  cursor: grabbing;
+}
+
+/* Knob inner recessed circle (Rectangle 26) */
+.slideKnobInner {
+  width: 75%;
+  height: 75%;
+  background: #DFDFDF;
+  box-shadow:
+    1px 1px 2px rgba(255, 255, 255, 0.3),
+    -1px -1px 2px rgba(167, 167, 167, 0.5),
+    inset -1px 1px 2px rgba(167, 167, 167, 0.2),
+    inset 1px -1px 2px rgba(167, 167, 167, 0.2),
+    inset -1px -1px 2px rgba(255, 255, 255, 0.9),
+    inset 1px 1px 3px rgba(167, 167, 167, 0.9);
+  border-radius: 20px;
+  pointer-events: none;
+}
+
+/* ---------- Decorative Path (below hero) ---------- */
+.heroPathSection {
+  display: none; /* Cleanly hidden to remove clutter and emphasize the luxury hero orb */
+  position: relative;
+  padding: 0 48px 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.heroPathWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 20px;
+  padding-right: 20px;
+}
+
+.heroPathSvg {
+  width: 320px;
+  height: 24px;
+  flex-shrink: 0;
+}
+
+.settingsOrb {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--bg-primary);
+  box-shadow: var(--shadow-raised);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  transition: all var(--transition-fast);
+}
+
+.settingsOrb::after {
+  content: '';
+  position: absolute;
+  inset: 1px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  pointer-events: none;
+}
+
+.settingsOrb:hover {
+  transform: scale(1.1);
+  box-shadow: var(--shadow-raised-lg);
+}
+
+.settingsOrbInner {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--accent-purple-light), var(--accent-lavender));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  box-shadow: 0 2px 8px rgba(124, 92, 252, 0.3);
+}
+
+/* ---------- Divider ---------- */
+.sectionDivider {
+  width: 100%;
+  max-width: 1200px;
+  margin: 40px auto 0;
+  padding: 0 48px;
+}
+
+.dividerLine {
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(0, 0, 0, 0.06) 20%,
+    rgba(0, 0, 0, 0.06) 80%,
+    transparent
+  );
+}
+
+/* ---------- What We Actually Do ---------- */
+.servicesSection {
+  padding: 60px 48px 80px;
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+.servicesHeader {
+  margin-bottom: 10px;
+}
+
+.servicesHeading {
+  font-size: 34px;
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: -0.03em;
+  line-height: 1.2;
+  font-family: var(--font-dm-sans), 'DM Sans', sans-serif;
+}
+
+.servicesHighlight {
+  color: var(--accent-purple);
+  font-weight: 400;
+}
+
+.servicesSubtext {
+  font-size: 14px;
+  color: var(--text-muted);
+  line-height: 1.8;
+  max-width: 320px;
+  margin-top: 14px;
+}
+
+.servicesSubtext .aethodLink {
+  color: var(--accent-purple);
+  text-decoration: underline;
+  text-decoration-color: rgba(124, 92, 252, 0.3);
+  text-underline-offset: 3px;
+  transition: text-decoration-color var(--transition-fast);
+}
+
+.servicesSubtext .aethodLink:hover {
+  text-decoration-color: var(--accent-purple);
+}
+
+/* ---------- Services Journey Path ---------- */
+.servicesJourney {
+  position: relative;
+  margin-top: 50px;
+  min-height: 360px;
+}
+
+.journeyPathSvg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* Service Cards */
+.serviceCard {
+  position: absolute;
+  z-index: 2;
+}
+
+/* Card 1: Systems Architecture — bottom left */
+.serviceCard1 {
+  bottom: 0;
+  left: 0;
+}
+
+/* Card 2: AI-Driven Automation — center */
+.serviceCard2 {
+  bottom: 80px;
+  left: 32%;
+}
+
+/* Card 3: Applied Research — top right */
+.serviceCard3 {
+  top: 10px;
+  right: 15%;
+}
+
+.serviceIcon {
+  width: 48px;
+  height: 48px;
+  border-radius: 14px;
+  background: var(--bg-primary);
+  box-shadow: var(--shadow-raised);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 14px;
+  position: relative;
+  overflow: hidden;
+  transition: transform var(--transition-fast);
+}
+
+.serviceIcon::after {
+  content: '';
+  position: absolute;
+  inset: 1px;
+  border-radius: 13px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  pointer-events: none;
+}
+
+.serviceCard:hover .serviceIcon {
+  transform: scale(1.08);
+}
+
+.serviceTitle {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 6px;
+  letter-spacing: -0.02em;
+}
+
+.serviceTitleAccent {
+  color: var(--accent-purple);
+  font-weight: 500;
+}
+
+.serviceDesc {
+  font-size: 12.5px;
+  color: var(--text-muted);
+  line-height: 1.65;
+  max-width: 220px;
+}
+
+
+
+/* ---------- Journey Node Dots ---------- */
+.journeyNode {
+  position: absolute;
+  z-index: 3;
+}
+
+.nodeDot {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--bg-primary);
+  box-shadow: var(--shadow-raised);
+  position: relative;
+}
+
+.nodeDot::after {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent-lavender);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 0 6px rgba(196, 181, 253, 0.5);
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 900px) {
+  .navOuter {
+    padding: 10px 16px 0;
+  }
+  .navbar {
+    padding: 0 6px;
+    height: 50px;
+  }
+  .navLinks {
+    display: none;
+  }
+  .searchBar {
+    min-width: 160px;
+  }
+  .heroSection {
+    padding: 40px 24px;
+  }
+  .heroContent {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  .heroText {
+    max-width: 100%;
+    padding-top: 0;
+  }
+  .heroSubtext {
+    margin-left: auto;
+    margin-right: auto;
+    border-left: none;
+    padding-left: 0;
+  }
+  .heroButtons {
+    justify-content: center;
+  }
+  .heroVisual {
+    width: 300px;
+    height: 260px;
+  }
+  .orbVideo {
+    width: 180px;
+    height: 180px;
+  }
+  .servicesSection {
+    padding: 40px 24px 60px;
+  }
+  .servicesJourney {
+    min-height: auto;
+  }
+  .serviceCard {
+    position: relative !important;
+    top: auto !important;
+    left: auto !important;
+    right: auto !important;
+    bottom: auto !important;
+    margin-bottom: 40px;
+  }
+  .journeyPathSvg {
+    display: none;
+  }
+}
+
+@media (max-width: 600px) {
+  .heroHeading {
+    font-size: 28px;
+  }
+  .servicesHeading {
+    font-size: 26px;
+  }
+}
+
+/* ==========================================================
+   DARK MODE — Component Overrides
+   ========================================================== */
+
+/* Page wrapper background */
+:global([data-theme="dark"]) .pageWrapper {
+  background: #1a1a2e;
+}
+
+/* Noise overlay — dimmer in dark mode */
+:global([data-theme="dark"]) .pageWrapper::before {
+  opacity: 0.015;
+}
+
+/* Ambient gradient — purple glow more visible */
+:global([data-theme="dark"]) .pageWrapper::after {
+  background: radial-gradient(
+    circle,
+    rgba(155, 125, 255, 0.08) 0%,
+    rgba(139, 92, 246, 0.04) 40%,
+    transparent 70%
+  );
+}
+
+/* ----- Navbar ----- */
+:global([data-theme="dark"]) .navbar {
+  background: #22223a;
+  box-shadow:
+    4px 4px 10px rgba(0, 0, 0, 0.5),
+    -4px -4px 8px rgba(50, 50, 80, 0.2),
+    4px -4px 8px rgba(0, 0, 0, 0.15),
+    -4px 4px 8px rgba(0, 0, 0, 0.15),
+    inset -1px -1px 2px rgba(0, 0, 0, 0.3),
+    inset 1px 1px 2px rgba(80, 80, 120, 0.15);
+}
+
+:global([data-theme="dark"]) .navbar::before {
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(100, 100, 160, 0.2) 30%,
+    rgba(100, 100, 160, 0.2) 70%,
+    transparent
+  );
+}
+
+:global([data-theme="dark"]) .navLink {
+  color: #b0b0c8;
+}
+
+:global([data-theme="dark"]) .navLink:hover {
+  color: #e8e8f0;
+}
+
+/* ----- Search Bar ----- */
+:global([data-theme="dark"]) .searchBar {
+  background: #1e1e34;
+  box-shadow:
+    inset 2px 2px 5px rgba(0, 0, 0, 0.5),
+    inset -2px -2px 4px rgba(50, 50, 80, 0.15),
+    inset 2px -2px 4px rgba(0, 0, 0, 0.15),
+    inset -2px 2px 4px rgba(0, 0, 0, 0.15),
+    -1px -1px 2px rgba(0, 0, 0, 0.3),
+    1px 1px 2px rgba(50, 50, 80, 0.1);
+}
+
+:global([data-theme="dark"]) .searchBar:focus-within {
+  box-shadow:
+    inset 2px 2px 6px rgba(0, 0, 0, 0.55),
+    inset -2px -2px 5px rgba(50, 50, 80, 0.18),
+    inset 2px -2px 5px rgba(0, 0, 0, 0.18),
+    inset -2px 2px 5px rgba(0, 0, 0, 0.18),
+    -1px -1px 2px rgba(0, 0, 0, 0.3),
+    1px 1px 2px rgba(50, 50, 80, 0.1);
+}
+
+:global([data-theme="dark"]) .searchInput {
+  color: #B2CEFE;
+}
+
+:global([data-theme="dark"]) .searchInput::placeholder {
+  background: linear-gradient(180deg, #7b8dff 0%, #c49dd4 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+/* ----- Hero ----- */
+:global([data-theme="dark"]) .heroHeading {
+  color: #d0d0e0;
+}
+
+:global([data-theme="dark"]) .heroSubtext {
+  color: #8888a8;
+}
+
+/* ----- Buttons ----- */
+:global([data-theme="dark"]) .btnExplore,
+:global([data-theme="dark"]) .btnThinking {
+  background: linear-gradient(145deg, #2a2a44, #22223a);
+  box-shadow:
+    3px 3px 6px rgba(0, 0, 0, 0.4),
+    -3px -3px 6px rgba(50, 50, 80, 0.15),
+    inset 0 1px 0 rgba(80, 80, 120, 0.15);
+}
+
+:global([data-theme="dark"]) .btnExplore::after,
+:global([data-theme="dark"]) .btnThinking::after {
+  background: linear-gradient(145deg, #1b1b2d, #24243e);
+  box-shadow:
+    inset 3px 3px 6px rgba(0, 0, 0, 0.6),
+    inset -3px -3px 6px rgba(50, 50, 80, 0.25);
+}
+
+:global([data-theme="dark"]) .btnExplore {
+  border-color: #8a6ff0;
+}
+
+:global([data-theme="dark"]) .btnThinking {
+  border-color: #7aabf0;
+}
+
+:global([data-theme="dark"]) .btnFace {
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+:global([data-theme="dark"]) .btnLabel {
+  color: #c0c0d8;
+}
+
+:global([data-theme="dark"]) .btnExplore:hover,
+:global([data-theme="dark"]) .btnThinking:hover {
+  box-shadow:
+    4px 4px 10px rgba(0, 0, 0, 0.5),
+    -4px -4px 10px rgba(50, 50, 80, 0.2),
+    inset 0 1px 0 rgba(80, 80, 120, 0.2);
+}
+
+:global([data-theme="dark"]) .btnExplore:active,
+:global([data-theme="dark"]) .btnThinking:active {
+  box-shadow:
+    1px 1px 3px rgba(0, 0, 0, 0.2),
+    -1px -1px 3px rgba(50, 50, 80, 0.08);
+}
+
+/* ----- Slide Toggle — Dark Mode ----- */
+:global([data-theme="dark"]) .slideTrack {
+  background: #22223a;
+  box-shadow:
+    1px 1px 2px rgba(50, 50, 80, 0.15),
+    -1px -1px 2px rgba(0, 0, 0, 0.4),
+    inset -1px 1px 2px rgba(0, 0, 0, 0.2),
+    inset 1px -1px 2px rgba(0, 0, 0, 0.2),
+    inset -1px -1px 2px rgba(50, 50, 80, 0.15),
+    inset 1px 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+:global([data-theme="dark"]) .slideTrackInner {
+  background: #4a5a8a;
+  box-shadow:
+    1px 1px 2px rgba(80, 100, 160, 0.15),
+    -1px -1px 2px rgba(0, 0, 0, 0.3),
+    inset -3px 3px 6px rgba(30, 40, 70, 0.3),
+    inset 3px -3px 6px rgba(30, 40, 70, 0.3),
+    inset -3px -3px 6px rgba(80, 100, 160, 0.2),
+    inset 3px 3px 8px rgba(30, 40, 70, 0.4);
+}
+
+:global([data-theme="dark"]) .slideKnob {
+  background: linear-gradient(135deg, #2e2e4a 0%, #222240 100%);
+  box-shadow:
+    -1px 1px 2px rgba(0, 0, 0, 0.3),
+    1px -1px 2px rgba(0, 0, 0, 0.3),
+    -1px -1px 2px rgba(60, 60, 100, 0.2),
+    1px 1px 3px rgba(0, 0, 0, 0.5),
+    inset 1px 1px 2px rgba(60, 60, 100, 0.12),
+    inset -1px -1px 2px rgba(0, 0, 0, 0.35);
+}
+
+:global([data-theme="dark"]) .slideKnobInner {
+  background: #22223a;
+  box-shadow:
+    1px 1px 2px rgba(50, 50, 80, 0.15),
+    -1px -1px 2px rgba(0, 0, 0, 0.3),
+    inset -1px 1px 2px rgba(0, 0, 0, 0.2),
+    inset 1px -1px 2px rgba(0, 0, 0, 0.2),
+    inset -1px -1px 2px rgba(50, 50, 80, 0.15),
+    inset 1px 1px 3px rgba(0, 0, 0, 0.4);
+}
+
+/* ----- Orb — Dark Mode ----- */
+:global([data-theme="dark"]) .orbContainer::before {
+  background: #1a1a2e;
+  box-shadow:
+    inset 8px 8px 20px rgba(0, 0, 0, 0.35),
+    inset -8px -8px 20px rgba(50, 50, 80, 0.12),
+    12px 12px 30px rgba(0, 0, 0, 0.3),
+    -12px -12px 30px rgba(50, 50, 80, 0.08);
+}
+
+:global([data-theme="dark"]) .orbContainer::after {
+  border-color: rgba(80, 80, 120, 0.15);
+}
+
+:global([data-theme="dark"]) .orbGlow {
+  background: radial-gradient(
+    circle,
+    rgba(155, 125, 255, 0.25) 0%,
+    rgba(139, 92, 246, 0.12) 50%,
+    transparent 75%
+  );
+}
+
+:global([data-theme="dark"]) .orbVideo {
+  box-shadow:
+    0 0 40px rgba(155, 125, 255, 0.18),
+    0 0 80px rgba(139, 92, 246, 0.1),
+    4px 4px 12px rgba(0, 0, 0, 0.3),
+    -3px -3px 8px rgba(50, 50, 80, 0.1);
+}
+
+/* ----- Decorative Path / Settings Orb ----- */
+:global([data-theme="dark"]) .settingsOrb {
+  background: #1a1a2e;
+}
+
+:global([data-theme="dark"]) .settingsOrb::after {
+  border-color: rgba(80, 80, 120, 0.15);
+}
+
+:global([data-theme="dark"]) .settingsOrbInner {
+  box-shadow: 0 2px 8px rgba(124, 92, 252, 0.4);
+}
+
+/* ----- Divider ----- */
+:global([data-theme="dark"]) .dividerLine {
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.04) 20%,
+    rgba(255, 255, 255, 0.04) 80%,
+    transparent
+  );
+}
+
+/* ----- Service Cards ----- */
+:global([data-theme="dark"]) .serviceIcon {
+  background: #1a1a2e;
+}
+
+:global([data-theme="dark"]) .serviceIcon::after {
+  border-color: rgba(80, 80, 120, 0.15);
+}
+
+:global([data-theme="dark"]) .serviceDesc {
+  color: var(--text-muted);
+}
+
+
+
+/* ----- Smooth transitions for all themed elements ----- */
+.pageWrapper,
+.navbar,
+.searchBar,
+.btnExplore,
+.btnThinking,
+.btnFace,
+.btnLabel,
+.heroHeading,
+.heroSubtext,
+.orbContainer::before,
+.settingsOrb,
+.settingsOrbInner,
+.serviceIcon,
+.serviceTitle,
+.serviceDesc,
+
+.dividerLine {
+  transition:
+    background 0.5s ease,
+    background-color 0.5s ease,
+    box-shadow 0.5s ease,
+    color 0.5s ease,
+    border-color 0.5s ease;
+}
+
+/* ----- Fast transitions for theme toggle elements (so shadow/bg changes first) ----- */
+.slideTrack,
+.slideTrackInner,
+.slideKnob,
+.slideKnobInner {
+  transition:
+    background 0.15s ease-out,
+    background-color 0.15s ease-out,
+    box-shadow 0.15s ease-out,
+    border-color 0.15s ease-out;
+}
+
+/* ===== Floating Neumorphic Side Elements ===== */
+.floatingSettingBtn {
+  position: fixed;
+  right: 48px;
+  bottom: 80px;
+  width: 75px;
+  height: 75px;
+  border-radius: 50%;
+  border: none;
+  background: #DFDFDF;
+  /* Exact Figma white up shadows */
+  box-shadow:
+    -4px 4px 8px rgba(190, 190, 190, 0.2),
+    4px -4px 8px rgba(190, 190, 190, 0.2),
+    -4px -4px 8px rgba(255, 255, 255, 0.9),
+    4px 4px 10px rgba(190, 190, 190, 0.9),
+    inset 1px 1px 2px rgba(255, 255, 255, 0.3),
+    inset -1px -1px 2px rgba(190, 190, 190, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 9999;
+  pointer-events: auto;
+  padding: 0;
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.3s ease;
+}
+
+.floatingSettingBtn:hover {
+  transform: scale(1.05);
+}
+
+.floatingSettingBtn:active {
+  transform: scale(0.97);
+}
+
+.settingBtnBlueCircle {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: #B2CEFE;
+  /* Exact Figma blu down shadows */
+  box-shadow:
+    1px 1px 2px rgba(189, 218, 255, 0.3),
+    -1px -1px 2px rgba(167, 194, 239, 0.5),
+    inset -2px 2px 4px rgba(167, 194, 239, 0.2),
+    inset 2px -2px 4px rgba(167, 194, 239, 0.2),
+    inset -2px -2px 4px rgba(189, 218, 255, 0.9),
+    inset 2px 2px 5px rgba(167, 194, 239, 0.9);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s ease;
+}
+
+.settingBtnMiddleCircle {
+  position: relative;
+  width: 44.47px;
+  height: 44.72px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.settingBtnMiddleImg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.settingBtnImg {
+  position: absolute;
+  width: 32.25px;
+  height: 32.25px;
+  z-index: 2;
+  pointer-events: none;
+  filter: drop-shadow(0px 1px 1.5px rgba(0, 0, 0, 0.12));
+  transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.floatingSettingBtn:hover .settingBtnImg {
+  transform: rotate(45deg);
+}
+
+.floatingScrollBtn {
+  position: fixed;
+  right: 48px;
+  top: 24px;
+  width: 24px;
+  height: 70px;
+  background: transparent;
+  border: none;
+  cursor: grab;
+  z-index: 9999;
+  pointer-events: auto;
+  padding: 0;
+  outline: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  touch-action: none;
+}
+
+.floatingScrollBtn.isDragging {
+  cursor: grabbing;
+}
+
+.scrollKnob {
+  width: 8px;
+  height: 50px;
+  border-radius: 4px;
+  background: linear-gradient(135deg, #EAEAEA 0%, #D4D4D4 100%);
+  box-shadow:
+    2px 2px 4px rgba(190, 190, 190, 0.8),
+    -2px -2px 4px rgba(255, 255, 255, 0.9),
+    inset 1px 1px 2px rgba(255, 255, 255, 0.5),
+    inset -1px -1px 2px rgba(190, 190, 190, 0.5);
+  transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), background 0.3s ease, box-shadow 0.3s ease;
+}
+
+.floatingScrollBtn:hover .scrollKnob {
+  transform: scale(1.15);
+}
+
+.floatingScrollBtn:active .scrollKnob {
+  transform: scale(0.95);
+}
+
+/* Dark mode overrides for side elements */
+:global([data-theme="dark"]) .floatingSettingBtn {
+  background: #1E1E34;
+  box-shadow:
+    -4px 4px 8px rgba(0, 0, 0, 0.3),
+    4px -4px 8px rgba(0, 0, 0, 0.3),
+    -4px -4px 8px rgba(50, 50, 80, 0.15),
+    4px 4px 10px rgba(0, 0, 0, 0.5),
+    inset 1px 1px 2px rgba(80, 80, 120, 0.15),
+    inset -1px -1px 2px rgba(0, 0, 0, 0.4);
+}
+
+:global([data-theme="dark"]) .settingBtnBlueCircle {
+  box-shadow:
+    1px 1px 2px rgba(189, 218, 255, 0.2),
+    -1px -1px 2px rgba(0, 0, 0, 0.3),
+    inset -2px 2px 4px rgba(0, 0, 0, 0.2),
+    inset 2px -2px 4px rgba(0, 0, 0, 0.2),
+    inset -2px -2px 4px rgba(189, 218, 255, 0.8),
+    inset 2px 2px 5px rgba(167, 194, 239, 0.8);
+}
+
+:global([data-theme="dark"]) .scrollKnob {
+  background: linear-gradient(135deg, #2e2e4a 0%, #222240 100%);
+  box-shadow:
+    2px 2px 4px rgba(0, 0, 0, 0.5),
+    -2px -2px 4px rgba(50, 50, 80, 0.15),
+    inset 1px 1px 2px rgba(80, 80, 120, 0.15),
+    inset -1px -1px 2px rgba(0, 0, 0, 0.4);
+}
+
+
