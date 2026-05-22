@@ -1,33 +1,26 @@
 const fs = require('fs');
-const PNG = require('pngjs').PNG;
+const path = require('path');
 
-const svg = fs.readFileSync('./public/ai icon 2.svg', 'utf8');
-const match = svg.match(/xlink:href="data:image\/png;base64,([^"]+)"/);
-if (match) {
-  const base64Data = match[1];
-  const buffer = Buffer.from(base64Data, 'base64');
-  const png = PNG.sync.read(buffer);
-  
-  // Scale down to 40x40 to print as ASCII map
-  const scale = png.width / 40;
-  let output = '';
-  for (let y = 0; y < 40; y++) {
-    for (let x = 0; x < 40; x++) {
-      const px = Math.floor(x * scale);
-      const py = Math.floor(y * scale);
-      const idx = (png.width * py + px) * 4;
-      const alpha = png.data[idx + 3];
-      if (alpha > 200) {
-        output += '█';
-      } else if (alpha > 50) {
-        output += '░';
-      } else {
-        output += ' ';
-      }
-    }
-    output += '\n';
+const publicDir = 'c:/Users/user/Desktop/aeethod_frontend/public';
+
+function decodeSvg(filename, outputPngName) {
+  const filePath = path.join(publicDir, filename);
+  if (!fs.existsSync(filePath)) {
+    console.error(`File not found: ${filePath}`);
+    return;
   }
-  console.log(output);
-} else {
-  console.log('No base64 match found');
+  const content = fs.readFileSync(filePath, 'utf8');
+  const imgHrefMatch = content.match(/xlink:href="data:image\/png;base64,([^"]+)"/);
+  if (!imgHrefMatch) {
+    console.error(`Base64 image not found in ${filename}`);
+    return;
+  }
+  const base64Data = imgHrefMatch[1];
+  const buffer = Buffer.from(base64Data, 'base64');
+  fs.writeFileSync(path.join(publicDir, outputPngName), buffer);
+  console.log(`Saved decoded PNG to ${outputPngName}`);
 }
+
+decodeSvg('curve icon1.svg', 'temp_icon1.png');
+decodeSvg('curve icon2.svg', 'temp_icon2.png');
+decodeSvg('curve icon3.svg', 'temp_icon3.png');

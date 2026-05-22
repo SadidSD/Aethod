@@ -410,121 +410,123 @@ export default function Home() {
 
       {/* ===== HERO SECTION ===== */}
       <section className={styles.heroSection} id="hero">
-        <div className={styles.heroContent}>
-          {/* Left — Copy */}
-          <div className={styles.heroText}>
-            <h1 className={styles.heroHeading}>
-              We design{" "}
-              <span className={styles.heroHighlight}>intelligent{"\n"}systems</span>{" "}
-              for complex environments.
-            </h1>
-            <p className={styles.heroSubtext}>
-              AI-first architectures, automation, and decision
-              systems for businesses operating in uncertainty.
-            </p>
-            <div className={styles.heroButtons}>
-              <button
-                className={styles.btnExplore}
-                id="btn-explore"
-                onClick={playClickSound}
-              >
-                <span className={styles.btnFace}>
-                  <span className={styles.btnLabel}>Explore</span>
-                  <span className={styles.btnArrowWrap}>
-                    <svg className={styles.btnArrow} width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path d="M7 17L17 7M17 17V7H7" stroke="url(#arrowGrad)" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
-                      <defs>
-                        <radialGradient id="arrowGrad" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(12 12) rotate(90) scale(5)">
-                          <stop stopColor="#5A69EA"/>
-                          <stop offset="1" stopColor="#BF8BCA"/>
-                        </radialGradient>
-                      </defs>
-                    </svg>
-                  </span>
-                </span>
-              </button>
-              <button
-                className={styles.btnThinking}
-                id="btn-thinking"
-                onClick={playClickSound}
-              >
-                <span className={styles.btnFace}>
-                  <span className={styles.btnLabel}>Thinking</span>
-                  <span className={styles.btnArrowWrap}>
-                    <svg className={styles.btnArrow} width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path d="M7 17L17 7M17 17V7H7" stroke="url(#arrowGradThinking)" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
-                      <defs>
-                        <linearGradient id="arrowGradThinking" x1="7" y1="7" x2="17" y2="17" gradientUnits="userSpaceOnUse">
-                          <stop offset="0%" stopColor="#5A69EA" />
-                          <stop offset="100%" stopColor="#BF8BCA" />
-                        </linearGradient>
-                      </defs>
-                    </svg>
-                  </span>
-                </span>
-              </button>
-            </div>
-          </div>
-
-          {/* Right — Orb */}
-          <div className={styles.heroVisual}>
-            {/* Slide Toggle — Dark/Light Mode */}
-            <div className={styles.slideButton} id="theme-toggle">
-              {/* Down area / track */}
-              <div className={styles.slideTrack} ref={trackRef}>
-                {/* Blue inner track */}
-                <div className={styles.slideTrackInner} />
-
-                {/* Draggable knob */}
-                <div
-                  className={styles.slideKnob}
-                  ref={knobRef}
-                  style={knobStyle}
-                  onPointerDown={handlePointerDown}
-                  onPointerMove={handlePointerMove}
-                  onPointerUp={handlePointerUp}
-                  onPointerCancel={handlePointerUp}
-                  role="switch"
-                  aria-checked={isDark}
-                  aria-label="Toggle dark mode"
-                  tabIndex={0}
+        <div className={styles.alignContainer}>
+          <div className={styles.heroContent}>
+            {/* Left — Copy */}
+            <div className={styles.heroText}>
+              <h1 className={styles.heroHeading}>
+                We design{" "}
+                <span className={styles.heroHighlight}>intelligent{"\n"}systems</span>{" "}
+                for complex environments.
+              </h1>
+              <p className={styles.heroSubtext}>
+                AI-first architectures, automation, and decision
+                systems for businesses operating in uncertainty.
+              </p>
+              <div className={styles.heroButtons}>
+                <button
+                  className={styles.btnExplore}
+                  id="btn-explore"
+                  onClick={playClickSound}
                 >
-                  {/* Inner recessed circle */}
-                  <div className={styles.slideKnobInner} />
+                  <span className={styles.btnFace}>
+                    <span className={styles.btnLabel}>Explore</span>
+                    <span className={styles.btnArrowWrap}>
+                      <svg className={styles.btnArrow} width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M7 17L17 7M17 17V7H7" stroke="url(#arrowGrad)" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
+                        <defs>
+                          <radialGradient id="arrowGrad" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(12 12) rotate(90) scale(5)">
+                            <stop stopColor="#5A69EA"/>
+                            <stop offset="1" stopColor="#BF8BCA"/>
+                          </radialGradient>
+                        </defs>
+                      </svg>
+                    </span>
+                  </span>
+                </button>
+                <button
+                  className={styles.btnThinking}
+                  id="btn-thinking"
+                  onClick={playClickSound}
+                >
+                  <span className={styles.btnFace}>
+                    <span className={styles.btnLabel}>Thinking</span>
+                    <span className={styles.btnArrowWrap}>
+                      <svg className={styles.btnArrow} width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M7 17L17 7M17 17V7H7" stroke="url(#arrowGradThinking)" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
+                        <defs>
+                          <linearGradient id="arrowGradThinking" x1="7" y1="7" x2="17" y2="17" gradientUnits="userSpaceOnUse">
+                            <stop offset="0%" stopColor="#5A69EA" />
+                            <stop offset="100%" stopColor="#BF8BCA" />
+                          </linearGradient>
+                        </defs>
+                      </svg>
+                    </span>
+                  </span>
+                </button>
+              </div>
+            </div>
+
+            {/* Right — Orb */}
+            <div className={styles.heroVisual}>
+              {/* Slide Toggle — Dark/Light Mode */}
+              <div className={styles.slideButton} id="theme-toggle">
+                {/* Down area / track */}
+                <div className={styles.slideTrack} ref={trackRef}>
+                  {/* Blue inner track */}
+                  <div className={styles.slideTrackInner} />
+
+                  {/* Draggable knob */}
+                  <div
+                    className={styles.slideKnob}
+                    ref={knobRef}
+                    style={knobStyle}
+                    onPointerDown={handlePointerDown}
+                    onPointerMove={handlePointerMove}
+                    onPointerUp={handlePointerUp}
+                    onPointerCancel={handlePointerUp}
+                    role="switch"
+                    aria-checked={isDark}
+                    aria-label="Toggle dark mode"
+                    tabIndex={0}
+                  >
+                    {/* Inner recessed circle */}
+                    <div className={styles.slideKnobInner} />
+                  </div>
                 </div>
               </div>
-            </div>
 
-            {/* Orb */}
-            <div className={styles.orbContainer}>
-              <div className={styles.orbGlow} />
-              <div className={styles.orbVideoMask}>
-                <video
-                  className={styles.orbVideo}
-                  src="/orb1.mp4"
-                  autoPlay
-                  loop
-                  muted
-                  playsInline
-                />
-              </div>
-              {/* Shadow underneath */}
-              <div className={styles.orbShadow} />
-            </div>
-
-            {/* AI Assist Button (ChatGPT icon) */}
-            <button className={styles.heroAiBtn} id="settings-btn" aria-label="AI Assist">
-              <div className={styles.settingBtnBlueCircle}>
-                <div className={styles.settingBtnMiddleCircle}>
-                  <img
-                    src="/ai%20icon%202.svg"
-                    alt="AI Assist"
-                    className={styles.settingBtnImg}
+              {/* Orb */}
+              <div className={styles.orbContainer}>
+                <div className={styles.orbGlow} />
+                <div className={styles.orbVideoMask}>
+                  <video
+                    className={styles.orbVideo}
+                    src="/orb1.mp4"
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
                   />
                 </div>
+                {/* Shadow underneath */}
+                <div className={styles.orbShadow} />
               </div>
-            </button>
+            </div>
           </div>
+
+          {/* AI Assist Button (ChatGPT icon) */}
+          <button className={styles.heroAiBtn} id="settings-btn" aria-label="AI Assist">
+            <div className={styles.settingBtnBlueCircle}>
+              <div className={styles.settingBtnMiddleCircle}>
+                <img
+                  src="/ai%20icon%202.svg"
+                  alt="AI Assist"
+                  className={styles.settingBtnImg}
+                />
+              </div>
+            </div>
+          </button>
         </div>
       </section>
 
@@ -589,145 +591,94 @@ export default function Home() {
 
       {/* ===== WHAT WE ACTUALLY DO ===== */}
       <section className={styles.servicesSection} id="services">
-        <div className={styles.servicesContent}>
-          <div className={styles.servicesHeader}>
-          <h2 className={styles.servicesHeading}>
-            What We <span className={styles.servicesHighlight}>Actually Do</span>
-          </h2>
-          <p className={styles.servicesSubtext}>
-            Operations are overloaded with platforms.{"\n"}
-            Signals are buried under systems.{" "}
-            <a href="#" className={styles.aeethodLink}>Aeethod</a>{"\n"}
-            converts complexity into coordinated action.
-          </p>
-        </div>
+        <div className={styles.alignContainer}>
+          <div className={styles.servicesContent}>
+            <div className={styles.servicesHeader}>
+              <h2 className={styles.servicesHeading}>
+                What We <span className={styles.servicesHighlight}>Actually Do</span>
+              </h2>
+              <p className={styles.servicesSubtext}>
+                Operations are overloaded with platforms.{"\n"}
+                Signals are buried under systems.{" "}
+                <a href="#" className={styles.aeethodLink}>Aeethod</a>{"\n"}
+                converts complexity into coordinated action.
+              </p>
+            </div>
 
-        {/* Journey Path with Services */}
-        <div className={styles.servicesJourney}>
-          {/* SVG Journey Path */}
-          <svg
-            className={styles.journeyPathSvg}
-            viewBox="0 0 900 340"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-            preserveAspectRatio="none"
+            {/* Journey Path with Services */}
+            <div className={styles.servicesJourney}>
+              {/* SVG Journey Path */}
+              <img
+                src="/curve.svg"
+                className={styles.journeyPathSvg}
+                alt="Services Journey Path"
+              />
+
+              {/* Service Card 1: Systems Architecture */}
+              <div className={`${styles.serviceCard} ${styles.serviceCard1}`}>
+                <div className={styles.serviceIcon}>
+                  <div className={styles.serviceIconImg} role="img" aria-label="Systems Architecture Icon" style={{ WebkitMaskImage: "url('/temp_icon1.png')", maskImage: "url('/temp_icon1.png')" }} />
+                </div>
+                <h3 className={styles.serviceTitle}>
+                  Systems <span className={styles.serviceTitleAccent}>Architecture</span>
+                </h3>
+                <p className={styles.serviceDesc}>
+                  We design intelligent digital systems.<br />
+                  Not apps, not websites — systems
+                </p>
+              </div>
+
+              {/* Service Card 2: AI-Driven Automation */}
+              <div className={`${styles.serviceCard} ${styles.serviceCard2}`}>
+                <div className={styles.serviceIcon}>
+                  <div className={styles.serviceIconImg} role="img" aria-label="AI-Driven Automation Icon" style={{ WebkitMaskImage: "url('/temp_icon2.png')", maskImage: "url('/temp_icon2.png')" }} />
+                </div>
+                <h3 className={styles.serviceTitle}>
+                  AI-Driven <span className={styles.serviceTitleAccent}>Automation</span>
+                </h3>
+                <p className={styles.serviceDesc}>
+                  Operational intelligence<br />
+                  Decision support<br />
+                  Process orchestration
+                </p>
+              </div>
+
+              {/* Service Card 3: Applied Research */}
+              <div className={`${styles.serviceCard} ${styles.serviceCard3}`}>
+                <div className={styles.serviceIcon}>
+                  <div className={styles.serviceIconImg} role="img" aria-label="Applied Research Icon" style={{ WebkitMaskImage: "url('/temp_icon3.png')", maskImage: "url('/temp_icon3.png')" }} />
+                </div>
+                <h3 className={styles.serviceTitle}>
+                  Applied <span className={styles.serviceTitleAccent}>Research</span>
+                </h3>
+                <p className={styles.serviceDesc}>
+                  We study emerging systems<br />
+                  Then we turn insights into tools<br />
+                  Each with short, thoughtful descriptions.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* ===== Floating Scroll to Top Button ===== */}
+          <button 
+            className={styles.floatingScrollTopBtn} 
+            onClick={handleScrollToTop} 
+            aria-label="Scroll to Top"
           >
-            <defs>
-              <linearGradient id="journeyGrad" x1="0" y1="170" x2="900" y2="170" gradientUnits="userSpaceOnUse">
-                <stop offset="0%" stopColor="rgba(196,181,253,0.15)" />
-                <stop offset="20%" stopColor="rgba(196,181,253,0.35)" />
-                <stop offset="50%" stopColor="rgba(196,181,253,0.45)" />
-                <stop offset="80%" stopColor="rgba(196,181,253,0.35)" />
-                <stop offset="100%" stopColor="rgba(196,181,253,0.15)" />
-              </linearGradient>
-              <filter id="journeyGlow">
-                <feGaussianBlur stdDeviation="3" result="blur" />
-                <feMerge>
-                  <feMergeNode in="blur" />
-                  <feMergeNode in="SourceGraphic" />
-                </feMerge>
-              </filter>
-            </defs>
-
-            {/* Main curved path */}
-            <path
-              d="M20 280 C120 280, 180 200, 300 180 S480 130, 560 100 S700 50, 850 60"
-              stroke="url(#journeyGrad)"
-              strokeWidth="4.5"
-              strokeLinecap="round"
-              fill="none"
-              filter="url(#journeyGlow)"
-            />
-
-            {/* Subtle shadow path underneath */}
-            <path
-              d="M20 282 C120 282, 180 202, 300 182 S480 132, 560 102 S700 52, 850 62"
-              stroke="rgba(0,0,0,0.04)"
-              strokeWidth="8"
-              strokeLinecap="round"
-              fill="none"
-              filter="url(#journeyGlow)"
-            />
-
-          </svg>
-
-          {/* Service Card 1: Systems Architecture */}
-          <div className={`${styles.serviceCard} ${styles.serviceCard1}`}>
-            <div className={styles.serviceIcon}>
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#ffffff" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-                <rect x="2" y="3" width="20" height="14" rx="2" ry="2" />
-                <path d="M8 21h8M12 17v4" />
-                <path d="M7 8h2M7 11h4" />
-                <circle cx="16" cy="10" r="2" />
+            <div className={styles.scrollTopBtnInner}>
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className={styles.scrollTopBtnArrow}>
+                <path d="M12 19V5M12 5L5 12M12 5L19 12" stroke="url(#scrollTopArrowGrad)" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
+                <defs>
+                  <linearGradient id="scrollTopArrowGrad" x1="12" y1="19" x2="12" y2="5" gradientUnits="userSpaceOnUse">
+                    <stop offset="0%" stopColor="#5A69EA"/>
+                    <stop offset="100%" stopColor="#BF8BCA"/>
+                  </linearGradient>
+                </defs>
               </svg>
             </div>
-            <h3 className={styles.serviceTitle}>
-              Systems <span className={styles.serviceTitleAccent}>Architecture</span>
-            </h3>
-            <p className={styles.serviceDesc}>
-              We design intelligent digital systems.<br />
-              Not apps, not websites — systems
-            </p>
-          </div>
-
-          {/* Service Card 2: AI-Driven Automation */}
-          <div className={`${styles.serviceCard} ${styles.serviceCard2}`}>
-            <div className={styles.serviceIcon}>
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#ffffff" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83" />
-                <circle cx="12" cy="12" r="4" />
-                <circle cx="12" cy="12" r="1.5" fill="#ffffff" />
-              </svg>
-            </div>
-            <h3 className={styles.serviceTitle}>
-              AI-Driven <span className={styles.serviceTitleAccent}>Automation</span>
-            </h3>
-            <p className={styles.serviceDesc}>
-              Operational intelligence<br />
-              Decision support<br />
-              Process orchestration
-            </p>
-          </div>
-
-          {/* Service Card 3: Applied Research */}
-          <div className={`${styles.serviceCard} ${styles.serviceCard3}`}>
-            <div className={styles.serviceIcon}>
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#ffffff" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z" />
-                <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z" />
-                <path d="M6 8h2M6 12h2M16 8h2M16 12h2" />
-              </svg>
-            </div>
-            <h3 className={styles.serviceTitle}>
-              Applied <span className={styles.serviceTitleAccent}>Research</span>
-            </h3>
-            <p className={styles.serviceDesc}>
-              We study emerging systems<br />
-              Then we turn insights into tools<br />
-              Each with short, thoughtful descriptions.
-            </p>
-          </div>
+          </button>
         </div>
-
-        {/* ===== Floating Scroll to Top Button (anchored inside servicesContent) ===== */}
-        <button 
-          className={styles.floatingScrollTopBtn} 
-          onClick={handleScrollToTop} 
-          aria-label="Scroll to Top"
-        >
-          <div className={styles.scrollTopBtnInner}>
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className={styles.scrollTopBtnArrow}>
-              <path d="M12 19V5M12 5L5 12M12 5L19 12" stroke="url(#scrollTopArrowGrad)" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
-              <defs>
-                <linearGradient id="scrollTopArrowGrad" x1="12" y1="19" x2="12" y2="5" gradientUnits="userSpaceOnUse">
-                  <stop offset="0%" stopColor="#5A69EA"/>
-                  <stop offset="100%" stopColor="#BF8BCA"/>
-                </linearGradient>
-              </defs>
-            </svg>
-          </div>
-        </button>
-      </div>
       </section>
 
       {/* ===== Floating Scroll Button ===== */}

@@ -706,10 +706,14 @@
 
 /* ---------- What We Actually Do ---------- */
 .servicesSection {
-  padding: 180px 48px 80px; /* Increased top padding for a premium, spacious gap */
+  padding: 180px 48px 0; /* Increased top padding for a premium, spacious gap */
   position: relative;
   z-index: 1;
   width: 100%;
+}
+
+.servicesSection .alignContainer {
+  padding-bottom: 450px; /* Generous empty spacer under the curve */
 }
 
 .servicesContent {
@@ -776,8 +780,10 @@
   position: relative;
   margin-top: 50px;
   width: 100%;
-  max-width: 900px;
-  aspect-ratio: 900 / 340;
+  max-width: 1166px;
+  aspect-ratio: 1166 / 365;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .journeyPathSvg {
@@ -798,49 +804,53 @@
   flex-direction: column;
   align-items: flex-start;
   text-align: left;
-  transform: translate(-24px, -24px);
+  transform: translate(-40px, -40px);
 }
 
 /* Card 1: Systems Architecture — bottom left */
 .serviceCard1 {
-  left: 11.11%;
-  top: 79.41%;
+  left: 15.4%;
+  top: 94.5%;
 }
 
 /* Card 2: AI-Driven Automation — center */
 .serviceCard2 {
-  left: 37.78%;
-  top: 48.53%;
+  left: 51.0%;
+  top: 61.4%;
 }
 
 /* Card 3: Applied Research — top right */
 .serviceCard3 {
-  left: 66.67%;
-  top: 23.53%;
+  left: 81.8%;
+  top: 22.8%;
 }
 
 .serviceIcon {
-  width: 48px;
-  height: 48px;
-  border-radius: 50%;
-  background: var(--bg-primary);
+  width: 80px;
+  height: 80px;
+  border-radius: 20px;
+  background: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.5);
   box-shadow: var(--shadow-raised);
   display: flex;
   align-items: center;
   justify-content: center;
   margin-bottom: 14px;
   position: relative;
-  overflow: hidden;
   transition: transform var(--transition-fast);
 }
 
-.serviceIcon::after {
-  content: '';
-  position: absolute;
-  inset: 1px;
-  border-radius: 50%;
-  border: 1px solid rgba(255, 255, 255, 0.3);
+.serviceIconImg {
+  width: 44px;
+  height: 44px;
   pointer-events: none;
+  background: radial-gradient(circle at center, #5A69EA, #BF8BCA);
+  -webkit-mask-size: contain;
+  mask-size: contain;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  mask-position: center;
 }
 
 .serviceCard:hover .serviceIcon {
@@ -942,7 +952,10 @@
     height: 180px;
   }
   .servicesSection {
-    padding: 40px 24px 60px;
+    padding: 40px 24px 0;
+  }
+  .servicesSection .alignContainer {
+    padding-bottom: 250px; /* Generous empty spacer under the curve on mobile */
   }
   .servicesJourney {
     min-height: auto;
@@ -1241,12 +1254,11 @@
 
 
 /* ----- Service Cards ----- */
-:global([data-theme="dark"]) .serviceIcon {
-  background: #1a1a2e;
-}
 
-:global([data-theme="dark"]) .serviceIcon::after {
-  border-color: rgba(80, 80, 120, 0.15);
+:global([data-theme="dark"]) .serviceIcon {
+  background: var(--bg-surface);
+  border-color: rgba(255, 255, 255, 0.05);
+  box-shadow: var(--shadow-raised);
 }
 
 :global([data-theme="dark"]) .serviceDesc {
@@ -1294,13 +1306,21 @@
     border-color 0.15s ease-out;
 }
 
+/* ===== Center Aligned Container matching Navbar layout bounds ===== */
+.alignContainer {
+  width: calc(100% - 48px);
+  max-width: 1280px;
+  margin: 0 auto;
+  position: relative;
+}
+
 /* ===== Floating Neumorphic Side Elements ===== */
 .heroAiBtn {
   position: absolute;
-  right: 0;
-  top: 180px;
-  width: 75px;
-  height: 75px;
+  right: -2px;
+  top: 280px;
+  width: 60px;
+  height: 60px;
   border-radius: 50%;
   border: none;
   background: #DFDFDF;
@@ -1324,10 +1344,10 @@
 
 .floatingScrollTopBtn {
   position: absolute;
-  right: 0;
+  right: -2px;
   bottom: 40px;
-  width: 75px;
-  height: 75px;
+  width: 60px;
+  height: 60px;
   border-radius: 50%;
   border: none;
   background: #DFDFDF;
@@ -1358,8 +1378,8 @@
 }
 
 .scrollTopBtnInner {
-  width: 60px;
-  height: 60px;
+  width: 48px;
+  height: 48px;
   border-radius: 50%;
   background: #DFDFDF;
   box-shadow:
@@ -1390,8 +1410,8 @@
 }
 
 .settingBtnBlueCircle {
-  width: 60px;
-  height: 60px;
+  width: 48px;
+  height: 48px;
   border-radius: 50%;
   background: #B2CEFE;
   /* Exact Figma blu down shadows */
@@ -1410,8 +1430,8 @@
 
 .settingBtnMiddleCircle {
   position: relative;
-  width: 44.47px;
-  height: 44.72px;
+  width: 35px;
+  height: 35px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1428,8 +1448,8 @@
 
 .settingBtnImg {
   position: absolute;
-  width: 32.25px;
-  height: 32.25px;
+  width: 26px;
+  height: 26px;
   z-index: 2;
   pointer-events: none;
   filter: drop-shadow(0px 1px 1.5px rgba(0, 0, 0, 0.12));
