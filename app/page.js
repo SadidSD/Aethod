@@ -58,6 +58,11 @@ export default function Home() {
     }
   }, []);
 
+  // Scroll to the top of the page smoothly
+  const handleScrollToTop = useCallback(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, []);
+
   // Slide sound - plays original slide audio assets with zero latency
   const playSlideSound = useCallback(() => {
     try {
@@ -233,11 +238,13 @@ export default function Home() {
   
   const isDraggingScrollRef = useRef(false);
   const startScrollButtonYRef = useRef(0);
-  const startScrollTopRef = useRef(0);
+  const startScrollTranslateYRef = useRef(0);
   const scrollButtonRef = useRef(null);
 
   useEffect(() => {
     const handleScroll = () => {
+      if (isDraggingScrollRef.current) return;
+
       const docHeight = document.documentElement.scrollHeight - window.innerHeight;
       if (docHeight > 0) {
         setScrollTopProgress(window.scrollY / docHeight);
@@ -261,31 +268,73 @@ export default function Home() {
 
   const handleScrollPointerDown = useCallback((e) => {
     e.preventDefault();
+    
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const buttonHeight = 70;
+    const padding = 24;
+    const maxTravel = window.innerHeight - buttonHeight - padding * 2;
+    
+    if (docHeight <= 0 || maxTravel <= 0) return;
+
+    // Temporarily set scroll-behavior to auto so dragging is instant
+    document.documentElement.style.scrollBehavior = 'auto';
     isDraggingScrollRef.current = true;
     setIsDraggingScroll(true);
+    
     startScrollButtonYRef.current = e.clientY;
-    startScrollTopRef.current = window.scrollY;
+    
+    const currentProgress = window.scrollY / docHeight;
+    startScrollTranslateYRef.current = currentProgress * maxTravel;
+    
     scrollButtonRef.current?.setPointerCapture(e.pointerId);
   }, []);
 
   const handleScrollPointerMove = useCallback((e) => {
     if (!isDraggingScrollRef.current) return;
-    const deltaY = e.clientY - startScrollButtonYRef.current;
+    
     const docHeight = document.documentElement.scrollHeight - window.innerHeight;
     const buttonHeight = 70;
     const padding = 24;
     const maxTravel = window.innerHeight - buttonHeight - padding * 2;
-    if (docHeight > 0 && maxTravel > 0) {
-      const scrollDelta = (deltaY / maxTravel) * docHeight;
-      const newScrollTop = Math.max(0, Math.min(docHeight, startScrollTopRef.current + scrollDelta));
-      window.scrollTo(0, newScrollTop);
+    
+    if (docHeight <= 0 || maxTravel <= 0) return;
+
+    const deltaY = e.clientY - startScrollButtonYRef.current;
+    const newTranslateY = Math.max(0, Math.min(maxTravel, startScrollTranslateYRef.current + deltaY));
+    
+    // Direct DOM manipulation for buttery smooth transform updates
+    if (scrollButtonRef.current) {
+      scrollButtonRef.current.style.transform = `translateY(${newTranslateY}px)`;
     }
+    
+    // Scroll the page synchronously
+    const scrollPercent = newTranslateY / maxTravel;
+    const newScrollTop = scrollPercent * docHeight;
+    window.scrollTo({ top: newScrollTop, behavior: 'auto' });
   }, []);
 
   const handleScrollPointerUp = useCallback((e) => {
     if (!isDraggingScrollRef.current) return;
+    
+    try {
+      scrollButtonRef.current?.releasePointerCapture(e.pointerId);
+    } catch (err) {}
+    
     isDraggingScrollRef.current = false;
     setIsDraggingScroll(false);
+    
+    // Restore default CSS smooth scroll behavior
+    document.documentElement.style.scrollBehavior = '';
+    
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const buttonHeight = 70;
+    const padding = 24;
+    const maxTravel = window.innerHeight - buttonHeight - padding * 2;
+    
+    if (docHeight > 0 && maxTravel > 0) {
+      const currentProgress = window.scrollY / docHeight;
+      setScrollTopProgress(currentProgress);
+    }
     
     // Smooth scroll to services if it was a quick click rather than a dragging gesture
     const deltaY = Math.abs(e.clientY - startScrollButtonYRef.current);
@@ -301,11 +350,11 @@ export default function Home() {
         <nav className={styles.navbar} id="navbar">
           <div className={styles.navLeft}>
             {/* Circular Logo */}
-            <a href="/" className={styles.logo} aria-label="Aethod Home">
+            <a href="/" className={styles.logo} aria-label="Aeethod Home">
               <img
                 className={styles.logoImg}
                 src="/logo.svg"
-                alt="Aethod"
+                alt="Aeethod"
                 width={44}
                 height={44}
               />
@@ -525,21 +574,17 @@ export default function Home() {
         </div>
       </div>
 
-      {/* ===== Section Divider ===== */}
-      <div className={styles.sectionDivider}>
-        <div className={styles.dividerLine} />
-      </div>
-
       {/* ===== WHAT WE ACTUALLY DO ===== */}
       <section className={styles.servicesSection} id="services">
-        <div className={styles.servicesHeader}>
+        <div className={styles.servicesContent}>
+          <div className={styles.servicesHeader}>
           <h2 className={styles.servicesHeading}>
             What We <span className={styles.servicesHighlight}>Actually Do</span>
           </h2>
           <p className={styles.servicesSubtext}>
             Operations are overloaded with platforms.{"\n"}
             Signals are buried under systems.{" "}
-            <a href="#" className={styles.aethodLink}>Aethod</a>{"\n"}
+            <a href="#" className={styles.aeethodLink}>Aeethod</a>{"\n"}
             converts complexity into coordinated action.
           </p>
         </div>
@@ -591,15 +636,6 @@ export default function Home() {
               filter="url(#journeyGlow)"
             />
 
-            {/* Node circles along path */}
-            <circle cx="100" cy="270" r="6" fill="#DFDFDF" stroke="rgba(196,181,253,0.5)" strokeWidth="2" />
-            <circle cx="100" cy="270" r="2.5" fill="rgba(196,181,253,0.7)" />
-
-            <circle cx="340" cy="165" r="6" fill="#DFDFDF" stroke="rgba(196,181,253,0.5)" strokeWidth="2" />
-            <circle cx="340" cy="165" r="2.5" fill="rgba(196,181,253,0.7)" />
-
-            <circle cx="600" cy="80" r="6" fill="#DFDFDF" stroke="rgba(196,181,253,0.5)" strokeWidth="2" />
-            <circle cx="600" cy="80" r="2.5" fill="rgba(196,181,253,0.7)" />
           </svg>
 
           {/* Service Card 1: Systems Architecture */}
@@ -659,6 +695,7 @@ export default function Home() {
             </p>
           </div>
         </div>
+      </div>
       </section>
 
 
@@ -677,6 +714,25 @@ export default function Home() {
         </div>
       </button>
 
+      {/* ===== Floating Scroll to Top Button ===== */}
+      <button 
+        className={styles.floatingScrollTopBtn} 
+        onClick={handleScrollToTop} 
+        aria-label="Scroll to Top"
+      >
+        <div className={styles.scrollTopBtnInner}>
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className={styles.scrollTopBtnArrow}>
+            <path d="M12 19V5M12 5L5 12M12 5L19 12" stroke="url(#scrollTopArrowGrad)" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
+            <defs>
+              <linearGradient id="scrollTopArrowGrad" x1="12" y1="19" x2="12" y2="5" gradientUnits="userSpaceOnUse">
+                <stop offset="0%" stopColor="#5A69EA"/>
+                <stop offset="100%" stopColor="#BF8BCA"/>
+              </linearGradient>
+            </defs>
+          </svg>
+        </div>
+      </button>
+
       {/* ===== Floating Scroll Button ===== */}
       <button 
         className={`${styles.floatingScrollBtn} ${isDraggingScroll ? styles.isDragging : ""}`}
@@ -687,6 +743,7 @@ export default function Home() {
         onPointerMove={handleScrollPointerMove}
         onPointerUp={handleScrollPointerUp}
         onPointerCancel={handleScrollPointerUp}
+        onLostPointerCapture={handleScrollPointerUp}
         style={{
           transform: `translateY(${scrollTopProgress * maxScrollTravel}px)`,
           transition: isDraggingScroll ? "none" : "transform 0.22s cubic-bezier(0.25, 1, 0.5, 1)"

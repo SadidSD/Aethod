@@ -1,5 +1,5 @@
 /* ========================================
-   AETHOD Landing Page — Neumorphic Luxury
+   AEETHOD Landing Page — Neumorphic Luxury
    ======================================== */
 
 /* ---------- Page Wrapper ---------- */
@@ -704,61 +704,61 @@
   box-shadow: 0 2px 8px rgba(124, 92, 252, 0.3);
 }
 
-/* ---------- Divider ---------- */
-.sectionDivider {
-  width: 100%;
-  max-width: 1200px;
-  margin: 40px auto 0;
-  padding: 0 48px;
-}
-
-.dividerLine {
-  height: 1px;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    rgba(0, 0, 0, 0.06) 20%,
-    rgba(0, 0, 0, 0.06) 80%,
-    transparent
-  );
-}
-
 /* ---------- What We Actually Do ---------- */
 .servicesSection {
-  padding: 60px 48px 80px;
-  max-width: 1200px;
-  margin: 0 auto;
+  padding: 180px 48px 80px; /* Increased top padding for a premium, spacious gap */
   position: relative;
   z-index: 1;
+  width: 100%;
+}
+
+.servicesContent {
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .servicesHeader {
-  margin-bottom: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+  margin-bottom: 40px;
+  width: 100%;
+  max-width: 504px;
 }
 
 .servicesHeading {
-  font-size: 34px;
-  font-weight: 700;
-  color: var(--text-primary);
-  letter-spacing: -0.03em;
-  line-height: 1.2;
-  font-family: var(--font-dm-sans), 'DM Sans', sans-serif;
+  font-family: var(--font-sora), 'Sora', sans-serif;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 48px;
+  line-height: 60px;
+  color: #0D0D0D;
+  margin-bottom: 8px;
+  text-align: left;
 }
 
 .servicesHighlight {
-  color: var(--accent-purple);
-  font-weight: 400;
+  background: linear-gradient(180deg, #5A69EA 0%, #BF8BCA 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-weight: 300;
 }
 
 .servicesSubtext {
-  font-size: 14px;
-  color: var(--text-muted);
-  line-height: 1.8;
-  max-width: 320px;
-  margin-top: 14px;
+  font-family: var(--font-sora), 'Sora', sans-serif;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 20px;
+  line-height: 25px;
+  color: #404040;
+  max-width: 455px;
+  margin-top: 0;
+  text-align: left;
 }
 
-.servicesSubtext .aethodLink {
+.servicesSubtext .aeethodLink {
   color: var(--accent-purple);
   text-decoration: underline;
   text-decoration-color: rgba(124, 92, 252, 0.3);
@@ -766,7 +766,7 @@
   transition: text-decoration-color var(--transition-fast);
 }
 
-.servicesSubtext .aethodLink:hover {
+.servicesSubtext .aeethodLink:hover {
   text-decoration-color: var(--accent-purple);
 }
 
@@ -774,7 +774,9 @@
 .servicesJourney {
   position: relative;
   margin-top: 50px;
-  min-height: 360px;
+  width: 100%;
+  max-width: 900px;
+  aspect-ratio: 900 / 340;
 }
 
 .journeyPathSvg {
@@ -791,30 +793,35 @@
 .serviceCard {
   position: absolute;
   z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+  transform: translate(-24px, -24px);
 }
 
 /* Card 1: Systems Architecture — bottom left */
 .serviceCard1 {
-  bottom: 0;
-  left: 0;
+  left: 11.11%;
+  top: 79.41%;
 }
 
 /* Card 2: AI-Driven Automation — center */
 .serviceCard2 {
-  bottom: 80px;
-  left: 32%;
+  left: 37.78%;
+  top: 48.53%;
 }
 
 /* Card 3: Applied Research — top right */
 .serviceCard3 {
-  top: 10px;
-  right: 15%;
+  left: 66.67%;
+  top: 23.53%;
 }
 
 .serviceIcon {
   width: 48px;
   height: 48px;
-  border-radius: 14px;
+  border-radius: 50%;
   background: var(--bg-primary);
   box-shadow: var(--shadow-raised);
   display: flex;
@@ -830,7 +837,7 @@
   content: '';
   position: absolute;
   inset: 1px;
-  border-radius: 13px;
+  border-radius: 50%;
   border: 1px solid rgba(255, 255, 255, 0.3);
   pointer-events: none;
 }
@@ -938,6 +945,7 @@
   }
   .servicesJourney {
     min-height: auto;
+    aspect-ratio: auto;
   }
   .serviceCard {
     position: relative !important;
@@ -945,6 +953,7 @@
     left: auto !important;
     right: auto !important;
     bottom: auto !important;
+    transform: none !important;
     margin-bottom: 40px;
   }
   .journeyPathSvg {
@@ -1053,6 +1062,15 @@
 }
 
 :global([data-theme="dark"]) .heroSubtext {
+  color: #8888a8;
+}
+
+/* ----- Services Header ----- */
+:global([data-theme="dark"]) .servicesHeading {
+  color: #e8e8f0;
+}
+
+:global([data-theme="dark"]) .servicesSubtext {
   color: #8888a8;
 }
 
@@ -1195,16 +1213,6 @@
   box-shadow: 0 2px 8px rgba(124, 92, 252, 0.4);
 }
 
-/* ----- Divider ----- */
-:global([data-theme="dark"]) .dividerLine {
-  background: linear-gradient(
-    90deg,
-    transparent,
-    rgba(255, 255, 255, 0.04) 20%,
-    rgba(255, 255, 255, 0.04) 80%,
-    transparent
-  );
-}
 
 /* ----- Service Cards ----- */
 :global([data-theme="dark"]) .serviceIcon {
@@ -1237,8 +1245,8 @@
 .serviceIcon,
 .serviceTitle,
 .serviceDesc,
-
-.dividerLine {
+.floatingScrollTopBtn,
+.scrollTopBtnInner {
   transition:
     background 0.5s ease,
     background-color 0.5s ease,
@@ -1263,6 +1271,33 @@
 .floatingSettingBtn {
   position: fixed;
   right: 48px;
+  bottom: 175px;
+  width: 75px;
+  height: 75px;
+  border-radius: 50%;
+  border: none;
+  background: #DFDFDF;
+  /* Exact Figma white up shadows */
+  box-shadow:
+    -4px 4px 8px rgba(190, 190, 190, 0.2),
+    4px -4px 8px rgba(190, 190, 190, 0.2),
+    -4px -4px 8px rgba(255, 255, 255, 0.9),
+    4px 4px 10px rgba(190, 190, 190, 0.9),
+    inset 1px 1px 2px rgba(255, 255, 255, 0.3),
+    inset -1px -1px 2px rgba(190, 190, 190, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 9999;
+  pointer-events: auto;
+  padding: 0;
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.3s ease;
+}
+
+.floatingScrollTopBtn {
+  position: fixed;
+  right: 48px;
   bottom: 80px;
   width: 75px;
   height: 75px;
@@ -1285,6 +1320,38 @@
   pointer-events: auto;
   padding: 0;
   transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.3s ease;
+}
+
+.floatingScrollTopBtn:hover {
+  transform: scale(1.05);
+}
+
+.floatingScrollTopBtn:active {
+  transform: scale(0.97);
+}
+
+.scrollTopBtnInner {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: #DFDFDF;
+  box-shadow:
+    inset 2px 2px 5px rgba(190, 190, 190, 0.8),
+    inset -2px -2px 4px rgba(255, 255, 255, 0.9),
+    inset 2px -2px 4px rgba(190, 190, 190, 0.2),
+    inset -2px 2px 4px rgba(190, 190, 190, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.scrollTopBtnArrow {
+  filter: drop-shadow(0px 1px 1.5px rgba(0, 0, 0, 0.12));
+  transition: transform 0.3s ease;
+}
+
+.floatingScrollTopBtn:hover .scrollTopBtnArrow {
+  transform: translateY(-2px);
 }
 
 .floatingSettingBtn:hover {
@@ -1400,6 +1467,26 @@
     4px 4px 10px rgba(0, 0, 0, 0.5),
     inset 1px 1px 2px rgba(80, 80, 120, 0.15),
     inset -1px -1px 2px rgba(0, 0, 0, 0.4);
+}
+
+:global([data-theme="dark"]) .floatingScrollTopBtn {
+  background: #1E1E34;
+  box-shadow:
+    -4px 4px 8px rgba(0, 0, 0, 0.3),
+    4px -4px 8px rgba(0, 0, 0, 0.3),
+    -4px -4px 8px rgba(50, 50, 80, 0.15),
+    4px 4px 10px rgba(0, 0, 0, 0.5),
+    inset 1px 1px 2px rgba(80, 80, 120, 0.15),
+    inset -1px -1px 2px rgba(0, 0, 0, 0.4);
+}
+
+:global([data-theme="dark"]) .scrollTopBtnInner {
+  background: #1E1E34;
+  box-shadow:
+    inset 2px 2px 5px rgba(0, 0, 0, 0.5),
+    inset -2px -2px 4px rgba(50, 50, 80, 0.15),
+    inset 2px -2px 4px rgba(0, 0, 0, 0.15),
+    inset -2px 2px 4px rgba(0, 0, 0, 0.15);
 }
 
 :global([data-theme="dark"]) .settingBtnBlueCircle {

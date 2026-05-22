@@ -20,7 +20,7 @@ const sora = Sora({
 });
 
 export const metadata = {
-  title: "Aethod — Intelligent Systems for Complex Environments",
+  title: "Aeethod — Intelligent Systems for Complex Environments",
   description:
     "AI-first architectures, automation, and decision systems for businesses operating in uncertainty. We design intelligent digital systems — not apps, not websites — systems.",
   keywords: [
@@ -31,7 +31,7 @@ export const metadata = {
     "applied research",
   ],
   openGraph: {
-    title: "Aethod — Intelligent Systems for Complex Environments",
+    title: "Aeethod — Intelligent Systems for Complex Environments",
     description:
       "AI-first architectures, automation, and decision systems for businesses operating in uncertainty.",
     type: "website",
