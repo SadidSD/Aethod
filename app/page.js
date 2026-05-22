@@ -511,6 +511,19 @@ export default function Home() {
               {/* Shadow underneath */}
               <div className={styles.orbShadow} />
             </div>
+
+            {/* AI Assist Button (ChatGPT icon) */}
+            <button className={styles.heroAiBtn} id="settings-btn" aria-label="AI Assist">
+              <div className={styles.settingBtnBlueCircle}>
+                <div className={styles.settingBtnMiddleCircle}>
+                  <img
+                    src="/ai%20icon%202.svg"
+                    alt="AI Assist"
+                    className={styles.settingBtnImg}
+                  />
+                </div>
+              </div>
+            </button>
           </div>
         </div>
       </section>
@@ -695,43 +708,27 @@ export default function Home() {
             </p>
           </div>
         </div>
+
+        {/* ===== Floating Scroll to Top Button (anchored inside servicesContent) ===== */}
+        <button 
+          className={styles.floatingScrollTopBtn} 
+          onClick={handleScrollToTop} 
+          aria-label="Scroll to Top"
+        >
+          <div className={styles.scrollTopBtnInner}>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className={styles.scrollTopBtnArrow}>
+              <path d="M12 19V5M12 5L5 12M12 5L19 12" stroke="url(#scrollTopArrowGrad)" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
+              <defs>
+                <linearGradient id="scrollTopArrowGrad" x1="12" y1="19" x2="12" y2="5" gradientUnits="userSpaceOnUse">
+                  <stop offset="0%" stopColor="#5A69EA"/>
+                  <stop offset="100%" stopColor="#BF8BCA"/>
+                </linearGradient>
+              </defs>
+            </svg>
+          </div>
+        </button>
       </div>
       </section>
-
-
-
-      {/* ===== Floating Settings Button ===== */}
-      <button className={styles.floatingSettingBtn} id="settings-btn" aria-label="AI Assist">
-        <div className={styles.settingBtnBlueCircle}>
-          <div className={styles.settingBtnMiddleCircle}>
-            {/* Center icon (ai icon 2.svg) */}
-            <img
-              src="/ai%20icon%202.svg"
-              alt="AI Assist"
-              className={styles.settingBtnImg}
-            />
-          </div>
-        </div>
-      </button>
-
-      {/* ===== Floating Scroll to Top Button ===== */}
-      <button 
-        className={styles.floatingScrollTopBtn} 
-        onClick={handleScrollToTop} 
-        aria-label="Scroll to Top"
-      >
-        <div className={styles.scrollTopBtnInner}>
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className={styles.scrollTopBtnArrow}>
-            <path d="M12 19V5M12 5L5 12M12 5L19 12" stroke="url(#scrollTopArrowGrad)" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
-            <defs>
-              <linearGradient id="scrollTopArrowGrad" x1="12" y1="19" x2="12" y2="5" gradientUnits="userSpaceOnUse">
-                <stop offset="0%" stopColor="#5A69EA"/>
-                <stop offset="100%" stopColor="#BF8BCA"/>
-              </linearGradient>
-            </defs>
-          </svg>
-        </div>
-      </button>
 
       {/* ===== Floating Scroll Button ===== */}
       <button 

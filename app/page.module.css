@@ -715,6 +715,7 @@
 .servicesContent {
   max-width: 1200px;
   margin: 0 auto;
+  position: relative;
 }
 
 .servicesHeader {
@@ -958,6 +959,31 @@
   }
   .journeyPathSvg {
     display: none;
+  }
+  .heroAiBtn {
+    width: 60px;
+    height: 60px;
+    top: auto;
+    bottom: -20px;
+    right: 20px;
+  }
+  .settingBtnBlueCircle {
+    width: 48px;
+    height: 48px;
+  }
+  .settingBtnImg {
+    width: 24px;
+    height: 24px;
+  }
+  .floatingScrollTopBtn {
+    width: 60px;
+    height: 60px;
+    bottom: -10px;
+    right: 20px;
+  }
+  .scrollTopBtnInner {
+    width: 48px;
+    height: 48px;
   }
 }
 
@@ -1245,6 +1271,7 @@
 .serviceIcon,
 .serviceTitle,
 .serviceDesc,
+.heroAiBtn,
 .floatingScrollTopBtn,
 .scrollTopBtnInner {
   transition:
@@ -1268,10 +1295,10 @@
 }
 
 /* ===== Floating Neumorphic Side Elements ===== */
-.floatingSettingBtn {
-  position: fixed;
-  right: 48px;
-  bottom: 175px;
+.heroAiBtn {
+  position: absolute;
+  right: 0;
+  top: 180px;
   width: 75px;
   height: 75px;
   border-radius: 50%;
@@ -1289,16 +1316,16 @@
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  z-index: 9999;
+  z-index: 10;
   pointer-events: auto;
   padding: 0;
   transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.3s ease;
 }
 
 .floatingScrollTopBtn {
-  position: fixed;
-  right: 48px;
-  bottom: 80px;
+  position: absolute;
+  right: 0;
+  bottom: 40px;
   width: 75px;
   height: 75px;
   border-radius: 50%;
@@ -1316,7 +1343,7 @@
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  z-index: 9999;
+  z-index: 10;
   pointer-events: auto;
   padding: 0;
   transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.3s ease;
@@ -1354,11 +1381,11 @@
   transform: translateY(-2px);
 }
 
-.floatingSettingBtn:hover {
+.heroAiBtn:hover {
   transform: scale(1.05);
 }
 
-.floatingSettingBtn:active {
+.heroAiBtn:active {
   transform: scale(0.97);
 }
 
@@ -1409,7 +1436,7 @@
   transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
-.floatingSettingBtn:hover .settingBtnImg {
+.heroAiBtn:hover .settingBtnImg {
   transform: rotate(45deg);
 }
 
@@ -1458,7 +1485,7 @@
 }
 
 /* Dark mode overrides for side elements */
-:global([data-theme="dark"]) .floatingSettingBtn {
+:global([data-theme="dark"]) .heroAiBtn {
   background: #1E1E34;
   box-shadow:
     -4px 4px 8px rgba(0, 0, 0, 0.3),
