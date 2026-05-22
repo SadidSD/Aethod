@@ -592,13 +592,13 @@ export default function Home() {
             />
 
             {/* Node circles along path */}
-            <circle cx="100" cy="270" r="6" fill="#d8d8de" stroke="rgba(196,181,253,0.5)" strokeWidth="2" />
+            <circle cx="100" cy="270" r="6" fill="#DFDFDF" stroke="rgba(196,181,253,0.5)" strokeWidth="2" />
             <circle cx="100" cy="270" r="2.5" fill="rgba(196,181,253,0.7)" />
 
-            <circle cx="340" cy="165" r="6" fill="#d8d8de" stroke="rgba(196,181,253,0.5)" strokeWidth="2" />
+            <circle cx="340" cy="165" r="6" fill="#DFDFDF" stroke="rgba(196,181,253,0.5)" strokeWidth="2" />
             <circle cx="340" cy="165" r="2.5" fill="rgba(196,181,253,0.7)" />
 
-            <circle cx="600" cy="80" r="6" fill="#d8d8de" stroke="rgba(196,181,253,0.5)" strokeWidth="2" />
+            <circle cx="600" cy="80" r="6" fill="#DFDFDF" stroke="rgba(196,181,253,0.5)" strokeWidth="2" />
             <circle cx="600" cy="80" r="2.5" fill="rgba(196,181,253,0.7)" />
           </svg>
 
