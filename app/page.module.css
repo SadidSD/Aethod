@@ -1438,12 +1438,11 @@
 }
 
 .scrollTopBtnArrow svg path {
-  stroke: #B2CEFE !important;
   stroke-width: 4px !important;
 }
 
 .floatingScrollTopBtn:hover .scrollTopBtnArrow {
-  transform: translate(2px, -2px);
+  transform: translateY(-3px);
 }
 
 .heroAiBtn:hover {

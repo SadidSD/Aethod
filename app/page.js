@@ -676,7 +676,7 @@ export default function Home() {
             aria-label="Scroll to Top"
           >
             <InlineSVG
-              src="/arrow.svg"
+              src="/arrow_up.svg"
               className={styles.scrollTopBtnArrow}
             />
           </button>
