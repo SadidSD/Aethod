@@ -113,6 +113,16 @@
   display: block;
 }
 
+.logoImg svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.logoImg svg rect {
+  filter: invert(1);
+}
+
 /* --- Nav Links (Sora 300, 20px — matching design spec) --- */
 .navLinks {
   display: flex;
@@ -804,7 +814,7 @@
   flex-direction: column;
   align-items: flex-start;
   text-align: left;
-  transform: translate(-40px, -40px);
+  transform: translate(-37.5px, -37.5px);
 }
 
 /* Card 1: Systems Architecture — bottom left */
@@ -825,13 +835,24 @@
   top: 22.8%;
 }
 
+.serviceCardSvg {
+  margin-top: 12px;
+}
+
+.serviceCardSvg svg {
+  display: block;
+}
+
+.serviceCardSvg svg path[fill="#404040"] {
+  fill: var(--text-primary);
+  transition: fill var(--transition-med);
+}
+
 .serviceIcon {
-  width: 80px;
-  height: 80px;
-  border-radius: 20px;
-  background: #ffffff;
-  border: 1px solid rgba(255, 255, 255, 0.5);
-  box-shadow: var(--shadow-raised);
+  width: 75px;
+  height: 75px;
+  border-radius: 30px;
+  background: transparent;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -840,9 +861,22 @@
   transition: transform var(--transition-fast);
 }
 
+.serviceIcon::before {
+  content: '';
+  position: absolute;
+  top: -18px;
+  left: -18px;
+  width: 114px;
+  height: 114px;
+  background: url('/rectangular2.svg') no-repeat center;
+  background-size: contain;
+  pointer-events: none;
+  z-index: -1;
+}
+
 .serviceIconImg {
-  width: 44px;
-  height: 44px;
+  width: 43px;
+  height: 43px;
   pointer-events: none;
   background: radial-gradient(circle at center, #5A69EA, #BF8BCA);
   -webkit-mask-size: contain;
@@ -851,12 +885,13 @@
   mask-repeat: no-repeat;
   -webkit-mask-position: center;
   mask-position: center;
+  position: relative;
+  z-index: 1;
 }
 
 .serviceCard:hover .serviceIcon {
   transform: scale(1.08);
 }
-
 .serviceTitle {
   font-size: 16px;
   font-weight: 600;
@@ -1257,8 +1292,13 @@
 
 :global([data-theme="dark"]) .serviceIcon {
   background: var(--bg-surface);
-  border-color: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.05);
   box-shadow: var(--shadow-raised);
+  border-radius: 30px;
+}
+
+:global([data-theme="dark"]) .serviceIcon::before {
+  display: none;
 }
 
 :global([data-theme="dark"]) .serviceDesc {

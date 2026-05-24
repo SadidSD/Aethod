@@ -3,6 +3,30 @@
 import { useState, useRef, useCallback, useEffect } from "react";
 import styles from "./page.module.css";
 
+function InlineSVG({ src, className }) {
+  const [svgContent, setSvgContent] = useState("");
+
+  useEffect(() => {
+    fetch(src)
+      .then((res) => {
+        if (!res.ok) throw new Error(`Failed to load SVG: ${src}`);
+        return res.text();
+      })
+      .then((text) => {
+        const cleanText = text.replace(/<\?xml[^>]*\?>/i, "");
+        setSvgContent(cleanText);
+      })
+      .catch((err) => console.error(err));
+  }, [src]);
+
+  return (
+    <div
+      className={className}
+      dangerouslySetInnerHTML={{ __html: svgContent }}
+    />
+  );
+}
+
 export default function Home() {
   const [isDark, setIsDark] = useState(false);
   const [isDragging, setIsDragging] = useState(false);
@@ -351,12 +375,9 @@ export default function Home() {
           <div className={styles.navLeft}>
             {/* Circular Logo */}
             <a href="/" className={styles.logo} aria-label="Aeethod Home">
-              <img
-                className={styles.logoImg}
+              <InlineSVG
                 src="/logo.svg"
-                alt="Aeethod"
-                width={44}
-                height={44}
+                className={styles.logoImg}
               />
             </a>
 
@@ -615,47 +636,36 @@ export default function Home() {
               />
 
               {/* Service Card 1: Systems Architecture */}
-              <div className={`${styles.serviceCard} ${styles.serviceCard1}`}>
+              <div className={`${styles.serviceCard} ${styles.serviceCard1}`} role="region" aria-label="Systems Architecture">
                 <div className={styles.serviceIcon}>
                   <div className={styles.serviceIconImg} role="img" aria-label="Systems Architecture Icon" style={{ WebkitMaskImage: "url('/temp_icon1.png')", maskImage: "url('/temp_icon1.png')" }} />
                 </div>
-                <h3 className={styles.serviceTitle}>
-                  Systems <span className={styles.serviceTitleAccent}>Architecture</span>
-                </h3>
-                <p className={styles.serviceDesc}>
-                  We design intelligent digital systems.<br />
-                  Not apps, not websites — systems
-                </p>
+                <span style={{ position: 'absolute', width: '1px', height: '1px', padding: '0', margin: '-1px', overflow: 'hidden', clip: 'rect(0, 0, 0, 0)', whiteSpace: 'nowrap', border: '0' }}>
+                  Systems Architecture: We design intelligent digital systems. Not apps, not websites — systems
+                </span>
+                <InlineSVG src="/system archi.svg" className={styles.serviceCardSvg} />
               </div>
 
               {/* Service Card 2: AI-Driven Automation */}
-              <div className={`${styles.serviceCard} ${styles.serviceCard2}`}>
+              <div className={`${styles.serviceCard} ${styles.serviceCard2}`} role="region" aria-label="AI-Driven Automation">
                 <div className={styles.serviceIcon}>
                   <div className={styles.serviceIconImg} role="img" aria-label="AI-Driven Automation Icon" style={{ WebkitMaskImage: "url('/temp_icon2.png')", maskImage: "url('/temp_icon2.png')" }} />
                 </div>
-                <h3 className={styles.serviceTitle}>
-                  AI-Driven <span className={styles.serviceTitleAccent}>Automation</span>
-                </h3>
-                <p className={styles.serviceDesc}>
-                  Operational intelligence<br />
-                  Decision support<br />
-                  Process orchestration
-                </p>
+                <span style={{ position: 'absolute', width: '1px', height: '1px', padding: '0', margin: '-1px', overflow: 'hidden', clip: 'rect(0, 0, 0, 0)', whiteSpace: 'nowrap', border: '0' }}>
+                  AI-Driven Automation: Operational intelligence. Decision support. Process orchestration.
+                </span>
+                <InlineSVG src="/ai driven.svg" className={styles.serviceCardSvg} />
               </div>
 
               {/* Service Card 3: Applied Research */}
-              <div className={`${styles.serviceCard} ${styles.serviceCard3}`}>
+              <div className={`${styles.serviceCard} ${styles.serviceCard3}`} role="region" aria-label="Applied Research">
                 <div className={styles.serviceIcon}>
                   <div className={styles.serviceIconImg} role="img" aria-label="Applied Research Icon" style={{ WebkitMaskImage: "url('/temp_icon3.png')", maskImage: "url('/temp_icon3.png')" }} />
                 </div>
-                <h3 className={styles.serviceTitle}>
-                  Applied <span className={styles.serviceTitleAccent}>Research</span>
-                </h3>
-                <p className={styles.serviceDesc}>
-                  We study emerging systems<br />
-                  Then we turn insights into tools<br />
-                  Each with short, thoughtful descriptions.
-                </p>
+                <span style={{ position: 'absolute', width: '1px', height: '1px', padding: '0', margin: '-1px', overflow: 'hidden', clip: 'rect(0, 0, 0, 0)', whiteSpace: 'nowrap', border: '0' }}>
+                  Applied Research: We study emerging systems. Then we turn insights into tools. Each with short, thoughtful descriptions.
+                </span>
+                <InlineSVG src="/applied reserch.svg" className={styles.serviceCardSvg} />
               </div>
             </div>
           </div>
