@@ -790,8 +790,8 @@
   position: relative;
   margin-top: 50px;
   width: 100%;
-  max-width: 879px;
-  aspect-ratio: 879 / 332;
+  max-width: 1166px;
+  aspect-ratio: 1166 / 365;
   margin-left: auto;
   margin-right: auto;
 }
@@ -825,20 +825,20 @@
 
 /* Card 1: Systems Architecture — bottom left */
 .serviceCard1 {
-  left: 0%;
-  top: 77.4%;
+  left: 15.4%;
+  top: 94.5%;
 }
 
 /* Card 2: AI-Driven Automation — center */
 .serviceCard2 {
-  left: 51.3%;
-  top: 42.2%;
+  left: 51.0%;
+  top: 61.4%;
 }
 
 /* Card 3: Applied Research — top right */
 .serviceCard3 {
-  left: 91.5%;
-  top: 0%;
+  left: 81.8%;
+  top: 22.8%;
 }
 
 .serviceCardSvg {
