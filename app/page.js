@@ -629,10 +629,9 @@ export default function Home() {
             {/* Journey Path with Services */}
             <div className={styles.servicesJourney}>
               {/* SVG Journey Path */}
-              <img
+              <InlineSVG
                 src="/curve.svg"
                 className={styles.journeyPathSvg}
-                alt="Services Journey Path"
               />
 
               {/* Service Card 1: Systems Architecture */}
