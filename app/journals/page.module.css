@@ -757,7 +757,7 @@
 }
 
 :global([data-theme="dark"]) .journalsSvg :global(svg path[fill="#717171" i]) {
-  fill: #8888a8 !important;
+  fill: #505070 !important;
 }
 
 :global([data-theme="dark"]) .journalsSvg :global(svg path[fill="#34C759" i]) {
