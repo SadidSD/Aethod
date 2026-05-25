@@ -695,48 +695,48 @@
 }
 
 /* SVG Vector color inversion for Neumorphic Dark mode */
-.journalsSvg :global(svg rect[fill="#DFDFDF" i]) {
+:global([data-theme="dark"]) .journalsSvg :global(svg rect[fill="#DFDFDF" i]) {
   fill: #1a1a2e !important;
 }
 
-.journalsSvg :global(svg rect[fill="#B2CEFE" i]) {
+:global([data-theme="dark"]) .journalsSvg :global(svg rect[fill="#B2CEFE" i]) {
   fill: #4a5a8a !important;
 }
 
-.journalsSvg :global(svg rect[stroke="#717171" i]),
-.journalsSvg :global(svg border[stroke="#717171" i]),
-.journalsSvg :global(svg path[stroke="#717171" i]) {
+:global([data-theme="dark"]) .journalsSvg :global(svg rect[stroke="#717171" i]),
+:global([data-theme="dark"]) .journalsSvg :global(svg border[stroke="#717171" i]),
+:global([data-theme="dark"]) .journalsSvg :global(svg path[stroke="#717171" i]) {
   stroke: #505070 !important;
 }
 
-.journalsSvg :global(svg rect[fill="white" i]),
-.journalsSvg :global(svg rect[fill="#FFFFFF" i]),
-.journalsSvg :global(svg path[fill="white" i]),
-.journalsSvg :global(svg path[fill="#FFFFFF" i]) {
+:global([data-theme="dark"]) .journalsSvg :global(svg rect[fill="white" i]),
+:global([data-theme="dark"]) .journalsSvg :global(svg rect[fill="#FFFFFF" i]),
+:global([data-theme="dark"]) .journalsSvg :global(svg path[fill="white" i]),
+:global([data-theme="dark"]) .journalsSvg :global(svg path[fill="#FFFFFF" i]) {
   fill: #22223a !important;
 }
 
-.journalsSvg :global(svg path[fill="#0D0D0D" i]),
-.journalsSvg :global(svg path[fill="#000000" i]) {
+:global([data-theme="dark"]) .journalsSvg :global(svg path[fill="#0D0D0D" i]),
+:global([data-theme="dark"]) .journalsSvg :global(svg path[fill="#000000" i]) {
   fill: #e8e8f0 !important;
 }
 
-.journalsSvg :global(svg path[fill="#404040" i]) {
+:global([data-theme="dark"]) .journalsSvg :global(svg path[fill="#404040" i]) {
   fill: #b0b0c8 !important;
 }
 
-.journalsSvg :global(svg path[fill="#717171" i]) {
+:global([data-theme="dark"]) .journalsSvg :global(svg path[fill="#717171" i]) {
   fill: #8888a8 !important;
 }
 
-.journalsSvg :global(svg path[fill="#34C759" i]) {
+:global([data-theme="dark"]) .journalsSvg :global(svg path[fill="#34C759" i]) {
   fill: #30d158 !important;
 }
 
-.journalsSvg :global(svg path[fill="#6155F5" i]) {
+:global([data-theme="dark"]) .journalsSvg :global(svg path[fill="#6155F5" i]) {
   fill: #5e5ce6 !important;
 }
 
-.journalsSvg :global(svg path[fill="#AC7F5E" i]) {
+:global([data-theme="dark"]) .journalsSvg :global(svg path[fill="#AC7F5E" i]) {
   fill: #bf5af2 !important;
 }
