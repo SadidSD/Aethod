@@ -1,0 +1,426 @@
+/* ========================================
+   AEETHOD Research Page — Neumorphic Style
+   ======================================== */
+
+.pageWrapper {
+  min-height: 100vh;
+  background: var(--bg-primary);
+  position: relative;
+  transition: background 0.5s ease;
+}
+
+/* Subtle noise overlay for surface texture */
+.pageWrapper::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.025'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ---------- Navigation — Floating Neumorphic Pill ---------- */
+.navOuter {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  padding: 16px 24px 0;
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+  height: 62px;
+  padding: 0 10px 0 12px;
+  border-radius: 60px;
+  background: #DFDFDF;
+  box-shadow:
+    4px 4px 10px rgba(190, 190, 190, 0.9),
+    -4px -4px 8px rgba(255, 255, 255, 0.9),
+    4px -4px 8px rgba(190, 190, 190, 0.2),
+    -4px 4px 8px rgba(190, 190, 190, 0.2),
+    inset -1px -1px 2px rgba(190, 190, 190, 0.5),
+    inset 1px 1px 2px rgba(255, 255, 255, 0.3);
+  max-width: 1280px;
+  margin: 0 auto;
+  position: relative;
+  overflow: hidden;
+  transition: background 0.5s ease, box-shadow 0.5s ease;
+}
+
+.navLeft {
+  display: flex;
+  align-items: center;
+  gap: 36px;
+  flex-shrink: 0;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+  flex-shrink: 0;
+}
+
+.logo:hover {
+  transform: scale(1.06);
+}
+
+.logoImg {
+  width: 44px;
+  height: 44px;
+  display: block;
+}
+
+.logoImg svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.navLinks {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.navLink {
+  font-family: var(--font-sora), sans-serif;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 20px;
+  line-height: 25px;
+  color: #404040;
+  padding: 10px;
+  position: relative;
+  transition: color 0.3s ease, transform 0.3s ease;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.navLink::after {
+  content: '';
+  position: absolute;
+  bottom: 0px;
+  left: 50%;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--accent-purple);
+  transform: translateX(-50%) scale(0);
+  opacity: 0;
+  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.25s ease;
+}
+
+.navLink:hover {
+  color: #1a1a2e;
+  transform: translateY(-1px);
+}
+
+.navLink:hover::after {
+  transform: translateX(-50%) scale(1);
+  opacity: 1;
+}
+
+.activeNavLink {
+  color: #5A69EA !important;
+  font-weight: 400 !important;
+}
+
+.activeNavLink::after {
+  transform: translateX(-50%) scale(1) !important;
+  opacity: 1 !important;
+}
+
+.navCenter {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+  padding: 0 14px;
+}
+
+.searchBar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 20px;
+  background: #D7D7D5;
+  border-radius: 20px;
+  box-shadow:
+    inset 2px 2px 5px rgba(183, 183, 181, 0.9),
+    inset -2px -2px 4px rgba(247, 247, 245, 0.9),
+    inset 2px -2px 4px rgba(183, 183, 181, 0.2),
+    inset -2px 2px 4px rgba(183, 183, 181, 0.2),
+    -1px -1px 2px rgba(183, 183, 181, 0.5),
+    1px 1px 2px rgba(247, 247, 245, 0.3);
+  min-width: 300px;
+  max-width: 420px;
+  width: 100%;
+  transition: box-shadow 0.3s ease;
+  border: none;
+}
+
+.searchIcon {
+  flex-shrink: 0;
+  color: #3B719F;
+}
+
+.searchInput {
+  border: none;
+  background: transparent;
+  color: #5A69EA;
+  font-size: 13.5px;
+  font-family: inherit;
+  outline: none;
+  width: 100%;
+  letter-spacing: 0.02em;
+  font-weight: 400;
+}
+
+.searchInput::placeholder {
+  background: linear-gradient(180deg, #5A69EA 0%, #BF8BCA 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-weight: 400;
+  opacity: 0.85;
+}
+
+.navRight {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.contactBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+  flex-shrink: 0;
+}
+
+.contactBtn:hover {
+  transform: scale(1.06);
+}
+
+.contactBtnImg {
+  width: 44px;
+  height: 44px;
+  display: block;
+}
+
+/* ---------- Main Layout Containers ---------- */
+.mainContainer {
+  padding: 40px 0 80px;
+  position: relative;
+  z-index: 1;
+  width: 100%;
+}
+
+.contentAlignContainer {
+  position: relative;
+  width: 100%;
+  max-width: 1440px;
+  height: 1917px;
+  margin: 0 auto;
+}
+
+/* ---------- SVG Positions ---------- */
+.researchHeader {
+  position: absolute;
+  width: 1440px;
+  height: 248px;
+  left: 0px;
+  top: 0px;
+  z-index: 1;
+}
+
+.researchSidebar {
+  position: absolute;
+  width: 392px;
+  height: 1045px;
+  left: 32px;
+  top: 112px;
+  z-index: 2;
+}
+
+.researchContent {
+  position: absolute;
+  width: 920px;
+  height: 1290px;
+  left: 447px;
+  top: 269px;
+  z-index: 2;
+}
+
+.researchFooter {
+  position: absolute;
+  width: 1346px;
+  height: 282px;
+  left: calc(50% - 1346px / 2);
+  top: 1600px;
+  z-index: 2;
+}
+
+/* ---------- Toggle Overlay ---------- */
+.themeToggleOverlay {
+  position: absolute;
+  width: 66.29px;
+  height: 30px;
+  left: 1271px;
+  top: 165px;
+  z-index: 10;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  outline: none;
+  border-radius: 15px;
+}
+
+/* ==========================================================
+   ANIMATING SVG TOGGLE SWITCH
+   ========================================================== */
+
+/* Animate knob container background */
+.researchHeader svg rect[x="1307.29" i],
+.researchHeader svg rect[x="1311.04" i] {
+  transition: transform 0.4s cubic-bezier(0.85, 0.05, 0.18, 1.35);
+}
+
+/* Left position in light mode */
+:global([data-theme="light"]) .researchHeader svg rect[x="1307.29" i] {
+  transform: translateX(-32px);
+}
+
+:global([data-theme="light"]) .researchHeader svg rect[x="1311.04" i] {
+  transform: translateX(-32px);
+}
+
+/* Right position (default) in dark mode */
+:global([data-theme="dark"]) .researchHeader svg rect[x="1307.29" i] {
+  transform: translateX(0);
+}
+
+:global([data-theme="dark"]) .researchHeader svg rect[x="1311.04" i] {
+  transform: translateX(0);
+}
+
+/* Animate inner track fill in dark mode */
+.researchHeader svg rect[fill="#B2CEFE" i] {
+  transition: fill 0.4s ease;
+}
+
+:global([data-theme="dark"]) .researchHeader svg rect[fill="#B2CEFE" i] {
+  fill: #4a5a8a !important;
+}
+
+/* ==========================================================
+   DARK MODE — Component & SVG Overrides
+   ========================================================== */
+
+:global([data-theme="dark"]) .pageWrapper {
+  background: #1a1a2e;
+}
+
+:global([data-theme="dark"]) .navbar {
+  background: #22223a;
+  box-shadow:
+    4px 4px 10px rgba(0, 0, 0, 0.5),
+    -4px -4px 8px rgba(50, 50, 80, 0.2),
+    4px -4px 8px rgba(0, 0, 0, 0.15),
+    -4px 4px 8px rgba(0, 0, 0, 0.15),
+    inset -1px -1px 2px rgba(0, 0, 0, 0.3),
+    inset 1px 1px 2px rgba(80, 80, 120, 0.15);
+}
+
+:global([data-theme="dark"]) .navLink {
+  color: #b0b0c8;
+}
+
+:global([data-theme="dark"]) .navLink:hover {
+  color: #e8e8f0;
+}
+
+:global([data-theme="dark"]) .activeNavLink {
+  color: #8a6ff0 !important;
+}
+
+:global([data-theme="dark"]) .searchBar {
+  background: #1e1e34;
+  box-shadow:
+    inset 2px 2px 5px rgba(0, 0, 0, 0.5),
+    inset -2px -2px 4px rgba(50, 50, 80, 0.15),
+    inset 2px -2px 4px rgba(0, 0, 0, 0.15),
+    inset -2px 2px 4px rgba(0, 0, 0, 0.15),
+    -1px -1px 2px rgba(0, 0, 0, 0.3),
+    1px 1px 2px rgba(50, 50, 80, 0.1);
+}
+
+:global([data-theme="dark"]) .searchInput {
+  color: #B2CEFE;
+}
+
+:global([data-theme="dark"]) .searchInput::placeholder {
+  background: linear-gradient(180deg, #7b8dff 0%, #c49dd4 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+/* Neumorphic Dark mode overrides for SVGs */
+
+:global([data-theme="dark"]) .researchHeader svg rect[fill="#DFDFDF" i],
+:global([data-theme="dark"]) .researchSidebar svg rect[fill="#DFDFDF" i],
+:global([data-theme="dark"]) .researchContent svg rect[fill="#DFDFDF" i],
+:global([data-theme="dark"]) .researchFooter svg rect[fill="#DFDFDF" i] {
+  fill: #22223a !important;
+}
+
+:global([data-theme="dark"]) .researchHeader svg rect[stroke="#404040" i],
+:global([data-theme="dark"]) .researchSidebar svg rect[stroke="#404040" i],
+:global([data-theme="dark"]) .researchContent svg rect[stroke="#404040" i],
+:global([data-theme="dark"]) .researchFooter svg rect[stroke="#404040" i] {
+  stroke: #8888a8 !important;
+}
+
+:global([data-theme="dark"]) .researchHeader svg path[fill="#404040" i],
+:global([data-theme="dark"]) .researchSidebar svg path[fill="#404040" i],
+:global([data-theme="dark"]) .researchContent svg path[fill="#404040" i],
+:global([data-theme="dark"]) .researchFooter svg path[fill="#404040" i] {
+  fill: #b0b0c8 !important;
+}
+
+:global([data-theme="dark"]) .researchHeader svg path[fill="black" i],
+:global([data-theme="dark"]) .researchHeader svg path[fill="#000000" i],
+:global([data-theme="dark"]) .researchSidebar svg path[fill="black" i],
+:global([data-theme="dark"]) .researchSidebar svg path[fill="#000000" i],
+:global([data-theme="dark"]) .researchContent svg path[fill="black" i],
+:global([data-theme="dark"]) .researchContent svg path[fill="#000000" i],
+:global([data-theme="dark"]) .researchFooter svg path[fill="black" i],
+:global([data-theme="dark"]) .researchFooter svg path[fill="#000000" i] {
+  fill: #e8e8f0 !important;
+}
+
+:global([data-theme="dark"]) .researchHeader svg path[fill="#0D0D0D" i],
+:global([data-theme="dark"]) .researchSidebar svg path[fill="#0D0D0D" i],
+:global([data-theme="dark"]) .researchContent svg path[fill="#0D0D0D" i],
+:global([data-theme="dark"]) .researchFooter svg path[fill="#0D0D0D" i] {
+  fill: #e8e8f0 !important;
+}
+
+:global([data-theme="dark"]) .researchHeader svg path[stroke="#717171" i],
+:global([data-theme="dark"]) .researchSidebar svg path[stroke="#717171" i],
+:global([data-theme="dark"]) .researchContent svg path[stroke="#717171" i],
+:global([data-theme="dark"]) .researchFooter svg path[stroke="#717171" i],
+:global([data-theme="dark"]) .researchContent svg rect[stroke="#717171" i],
+:global([data-theme="dark"]) .researchContent svg polygon[stroke="#717171" i] {
+  stroke: #8888a8 !important;
+}
+
+:global([data-theme="dark"]) .researchHeader svg path[fill="#717171" i],
+:global([data-theme="dark"]) .researchSidebar svg path[fill="#717171" i],
+:global([data-theme="dark"]) .researchContent svg path[fill="#717171" i],
+:global([data-theme="dark"]) .researchFooter svg path[fill="#717171" i] {
+  fill: #b0b0c8 !important;
+}

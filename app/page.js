@@ -385,7 +385,7 @@ export default function Home() {
             <div className={styles.navLinks}>
               <a href="#studio" className={styles.navLink}>Studio</a>
               <a href="#system" className={styles.navLink}>System</a>
-              <a href="#research" className={styles.navLink}>Research</a>
+              <a href="/research" className={styles.navLink}>Research</a>
               <a href="#products" className={styles.navLink}>Products</a>
               <a href="#journals" className={styles.navLink}>Journals</a>
             </div>
