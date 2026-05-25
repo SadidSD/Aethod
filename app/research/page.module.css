@@ -6,7 +6,6 @@
   min-height: 100vh;
   background: var(--bg-primary);
   position: relative;
-  transition: background 0.5s ease;
 }
 
 /* Subtle noise overlay for surface texture */
@@ -45,7 +44,7 @@
   margin: 0 auto;
   position: relative;
   overflow: hidden;
-  transition: background 0.5s ease, box-shadow 0.5s ease;
+  transition: box-shadow 0.5s ease;
 }
 
 .navLeft {
@@ -529,24 +528,4 @@
 :global([data-theme="dark"]) .researchContent svg path[fill="#717171" i],
 :global([data-theme="dark"]) .researchFooter svg path[fill="#717171" i] {
   fill: #b0b0c8 !important;
-}
-
-/* Transition for SVG elements to match pageWrapper transition and prevent lag/flash */
-.researchHeader svg rect,
-.researchHeader svg path,
-.researchHeader svg polygon,
-.researchHeader svg circle,
-.researchSidebar svg rect,
-.researchSidebar svg path,
-.researchSidebar svg polygon,
-.researchSidebar svg circle,
-.researchContent svg rect,
-.researchContent svg path,
-.researchContent svg polygon,
-.researchContent svg circle,
-.researchFooter svg rect,
-.researchFooter svg path,
-.researchFooter svg polygon,
-.researchFooter svg circle {
-  transition: fill 0.5s ease, stroke 0.5s ease;
 }
