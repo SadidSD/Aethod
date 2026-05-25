@@ -265,56 +265,161 @@
   z-index: 2;
 }
 
-/* ---------- Toggle Overlay ---------- */
-.themeToggleOverlay {
+/* ===== Slide Toggle Button (Neumorphic 3D) ===== */
+.slideButton {
   position: absolute;
-  width: 66.29px;
-  height: 30px;
   left: 1271px;
   top: 165px;
+  width: 66.29px;
+  height: 30px;
   z-index: 10;
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  outline: none;
-  border-radius: 15px;
 }
 
-/* ==========================================================
-   ANIMATING SVG TOGGLE SWITCH
-   ========================================================== */
+/* Track — recessed well (Rectangle 23) */
+.slideTrack {
+  position: absolute;
+  left: 0%;
+  right: 0.44%;
+  top: 13.33%;
+  bottom: 6.67%;
+  background: #DFDFDF;
+  box-shadow:
+    1px 1px 2px rgba(255, 255, 255, 0.3),
+    -1px -1px 2px rgba(156, 156, 156, 0.5),
+    inset -1px 1px 2px rgba(156, 156, 156, 0.2),
+    inset 1px -1px 2px rgba(156, 156, 156, 0.2),
+    inset -1px -1px 2px rgba(255, 255, 255, 0.9),
+    inset 1px 1px 3px rgba(156, 156, 156, 0.9);
+  border-radius: 10px;
+  overflow: hidden;
+}
 
-/* Animate knob container background */
+/* Blue inner track (Rectangle 24) */
+.slideTrackInner {
+  position: absolute;
+  left: 6.92%;
+  right: 10.58%;
+  top: 26.42%;
+  bottom: 20.73%;
+  background: #B2CEFE;
+  box-shadow:
+    1px 1px 2px rgba(219, 253, 255, 0.3),
+    -1px -1px 2px rgba(137, 159, 196, 0.5),
+    inset -3px 3px 6px rgba(137, 159, 196, 0.2),
+    inset 3px -3px 6px rgba(137, 159, 196, 0.2),
+    inset -3px -3px 6px rgba(219, 253, 255, 0.9),
+    inset 3px 3px 8px rgba(137, 159, 196, 0.9);
+  border-radius: 8px;
+  pointer-events: none;
+}
+
+/* Knob — raised 3D slider (Rectangle 25) */
+.slideKnob {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 45.25%;
+  height: 100%;
+  background: linear-gradient(135deg, #EAEAEA 0%, #D4D4D4 100%);
+  box-shadow:
+    -1px 1px 2px rgba(134, 134, 134, 0.2),
+    1px -1px 2px rgba(134, 134, 134, 0.2),
+    -1px -1px 2px rgba(255, 255, 255, 0.9),
+    1px 1px 3px rgba(134, 134, 134, 0.9),
+    inset 1px 1px 2px rgba(255, 255, 255, 0.3),
+    inset -1px -1px 2px rgba(134, 134, 134, 0.5);
+  border-radius: 20px;
+  cursor: grab;
+  z-index: 2;
+  touch-action: none;
+  user-select: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.slideKnob:active {
+  cursor: grabbing;
+}
+
+/* Knob inner recessed circle (Rectangle 26) */
+.slideKnobInner {
+  width: 75%;
+  height: 75%;
+  background: #DFDFDF;
+  box-shadow:
+    1px 1px 2px rgba(255, 255, 255, 0.3),
+    -1px -1px 2px rgba(167, 167, 167, 0.5),
+    inset -1px 1px 2px rgba(167, 167, 167, 0.2),
+    inset 1px -1px 2px rgba(167, 167, 167, 0.2),
+    inset -1px -1px 2px rgba(255, 255, 255, 0.9),
+    inset 1px 1px 3px rgba(167, 167, 167, 0.9);
+  border-radius: 20px;
+  pointer-events: none;
+}
+
+/* Hide static toggle button parts in Frame 111 SVG */
+.researchHeader svg rect[x="1271" i],
+.researchHeader svg rect[x="1275.59" i],
 .researchHeader svg rect[x="1307.29" i],
 .researchHeader svg rect[x="1311.04" i] {
-  transition: transform 0.4s cubic-bezier(0.85, 0.05, 0.18, 1.35);
+  display: none !important;
 }
 
-/* Left position in light mode */
-:global([data-theme="light"]) .researchHeader svg rect[x="1307.29" i] {
-  transform: translateX(-32px);
+/* Transition for sliding knob */
+.slideTrack,
+.slideTrackInner,
+.slideKnob,
+.slideKnobInner {
+  transition:
+    background 0.15s ease-out,
+    background-color 0.15s ease-out,
+    box-shadow 0.15s ease-out,
+    border-color 0.15s ease-out;
 }
 
-:global([data-theme="light"]) .researchHeader svg rect[x="1311.04" i] {
-  transform: translateX(-32px);
+/* ----- Slide Toggle — Dark Mode ----- */
+:global([data-theme="dark"]) .slideTrack {
+  background: #22223a;
+  box-shadow:
+    1px 1px 2px rgba(50, 50, 80, 0.15),
+    -1px -1px 2px rgba(0, 0, 0, 0.4),
+    inset -1px 1px 2px rgba(0, 0, 0, 0.2),
+    inset 1px -1px 2px rgba(0, 0, 0, 0.2),
+    inset -1px -1px 2px rgba(50, 50, 80, 0.15),
+    inset 1px 1px 3px rgba(0, 0, 0, 0.5);
 }
 
-/* Right position (default) in dark mode */
-:global([data-theme="dark"]) .researchHeader svg rect[x="1307.29" i] {
-  transform: translateX(0);
+:global([data-theme="dark"]) .slideTrackInner {
+  background: #4a5a8a;
+  box-shadow:
+    1px 1px 2px rgba(80, 100, 160, 0.15),
+    -1px -1px 2px rgba(0, 0, 0, 0.3),
+    inset -3px 3px 6px rgba(30, 40, 70, 0.3),
+    inset 3px -3px 6px rgba(30, 40, 70, 0.3),
+    inset -3px -3px 6px rgba(80, 100, 160, 0.2),
+    inset 3px 3px 8px rgba(30, 40, 70, 0.4);
 }
 
-:global([data-theme="dark"]) .researchHeader svg rect[x="1311.04" i] {
-  transform: translateX(0);
+:global([data-theme="dark"]) .slideKnob {
+  background: linear-gradient(135deg, #2e2e4a 0%, #222240 100%);
+  box-shadow:
+    -1px 1px 2px rgba(0, 0, 0, 0.3),
+    1px -1px 2px rgba(0, 0, 0, 0.3),
+    -1px -1px 2px rgba(60, 60, 100, 0.2),
+    1px 1px 3px rgba(0, 0, 0, 0.5),
+    inset 1px 1px 2px rgba(60, 60, 100, 0.12),
+    inset -1px -1px 2px rgba(0, 0, 0, 0.35);
 }
 
-/* Animate inner track fill in dark mode */
-.researchHeader svg rect[fill="#B2CEFE" i] {
-  transition: fill 0.4s ease;
-}
-
-:global([data-theme="dark"]) .researchHeader svg rect[fill="#B2CEFE" i] {
-  fill: #4a5a8a !important;
+:global([data-theme="dark"]) .slideKnobInner {
+  background: #22223a;
+  box-shadow:
+    1px 1px 2px rgba(50, 50, 80, 0.15),
+    -1px -1px 2px rgba(0, 0, 0, 0.3),
+    inset -1px 1px 2px rgba(0, 0, 0, 0.2),
+    inset 1px -1px 2px rgba(0, 0, 0, 0.2),
+    inset -1px -1px 2px rgba(50, 50, 80, 0.15),
+    inset 1px 1px 3px rgba(0, 0, 0, 0.4);
 }
 
 /* ==========================================================
