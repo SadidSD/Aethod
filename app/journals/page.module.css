@@ -249,6 +249,24 @@
   display: none !important;
 }
 
+/* Hide static navigation bar elements inside the SVG */
+.journalsSvg :global(svg rect[x="44" i][y="36" i]),
+.journalsSvg :global(svg circle[cx="106.5" i][cy="76.5" i]),
+.journalsSvg :global(svg rect[x="78.2188" i][y="49.2391" i]),
+.journalsSvg :global(svg path[d^="M184.96" i]),
+.journalsSvg :global(svg path[d^="M280.96" i]),
+.journalsSvg :global(svg path[d^="M379.28" i]),
+.journalsSvg :global(svg path[d^="M501.4" i]),
+.journalsSvg :global(svg path[d^="M623.76" i]),
+.journalsSvg :global(svg circle[cx="1333.5" i][cy="76.5" i]),
+.journalsSvg :global(svg path[d^="M1335.54" i]),
+.journalsSvg :global(svg rect[x="790" i][y="50" i]),
+.journalsSvg :global(svg path[d^="M837.5" i]),
+.journalsSvg :global(svg path[d^="M851.528" i]),
+.journalsSvg :global(svg rect[transform="translate(1323 67)" i]) {
+  display: none !important;
+}
+
 /* ===== Slide Toggle Button (Neumorphic 3D) ===== */
 .slideButton {
   position: absolute;
@@ -695,8 +713,21 @@
 }
 
 /* SVG Vector color inversion for Neumorphic Dark mode */
-:global([data-theme="dark"]) .journalsSvg :global(svg rect[fill="#DFDFDF" i]) {
+:global([data-theme="dark"]) .journalsSvg :global(svg *) {
+  filter: none !important;
+}
+
+:global([data-theme="dark"]) .journalsSvg :global(svg rect[width="1440" i][height="4442" i]) {
   fill: #1a1a2e !important;
+}
+
+:global([data-theme="dark"]) .journalsSvg :global(svg circle[fill="#D7D7D5" i]),
+:global([data-theme="dark"]) .journalsSvg :global(svg rect[fill="#D7D7D5" i]) {
+  fill: #1e1e34 !important;
+}
+
+:global([data-theme="dark"]) .journalsSvg :global(svg rect[fill="#DFDFDF" i]) {
+  fill: #22223a !important;
 }
 
 :global([data-theme="dark"]) .journalsSvg :global(svg rect[fill="#B2CEFE" i]) {
@@ -709,10 +740,10 @@
   stroke: #505070 !important;
 }
 
-:global([data-theme="dark"]) .journalsSvg :global(svg rect[fill="white" i]),
-:global([data-theme="dark"]) .journalsSvg :global(svg rect[fill="#FFFFFF" i]),
-:global([data-theme="dark"]) .journalsSvg :global(svg path[fill="white" i]),
-:global([data-theme="dark"]) .journalsSvg :global(svg path[fill="#FFFFFF" i]) {
+:global([data-theme="dark"]) .journalsSvg :global(svg rect[fill="white" i]:not(mask rect)),
+:global([data-theme="dark"]) .journalsSvg :global(svg rect[fill="#FFFFFF" i]:not(mask rect)),
+:global([data-theme="dark"]) .journalsSvg :global(svg path[fill="white" i]:not(mask path)),
+:global([data-theme="dark"]) .journalsSvg :global(svg path[fill="#FFFFFF" i]:not(mask path)) {
   fill: #22223a !important;
 }
 
@@ -739,4 +770,20 @@
 
 :global([data-theme="dark"]) .journalsSvg :global(svg path[fill="#AC7F5E" i]) {
   fill: #bf5af2 !important;
+}
+
+:global([data-theme="dark"]) .journalsSvg :global(svg stop[stop-color="#FEFDFB" i]) {
+  stop-color: #22223a !important;
+}
+
+:global([data-theme="dark"]) .journalsSvg :global(svg stop[stop-color="#E6E5E3" i]) {
+  stop-color: #1e1e34 !important;
+}
+
+:global([data-theme="dark"]) .journalsSvg :global(svg stop[stop-color="#EAEAEA" i]) {
+  stop-color: #1e1e34 !important;
+}
+
+:global([data-theme="dark"]) .journalsSvg :global(svg stop[stop-color="#D4D4D4" i]) {
+  stop-color: #1a1a2e !important;
 }
