@@ -27,7 +27,7 @@ function InlineSVG({ src, className }) {
   );
 }
 
-export default function ResearchPage() {
+export default function JournalsPage() {
   const [isDark, setIsDark] = useState(false);
   const [isDragging, setIsDragging] = useState(false);
   const [dragX, setDragX] = useState(0);
@@ -42,6 +42,10 @@ export default function ResearchPage() {
   const slideFoleyBufferRef = useRef(null);
   const audioContextRef = useRef(null);
 
+  // Email state for newsletter subscription
+  const [newsletterEmail, setNewsletterEmail] = useState("");
+  const [footerEmail, setFooterEmail] = useState("");
+  
   // Pre-load and decode audio files for zero-latency, high-quality audio processing
   useEffect(() => {
     const AudioContext = window.AudioContext || window.webkitAudioContext;
@@ -132,6 +136,39 @@ export default function ResearchPage() {
     }
   }, []);
 
+  const playClickSound = useCallback(() => {
+    try {
+      const ctx = audioContextRef.current;
+      const buffer = clickBufferRef.current;
+
+      if (ctx) {
+        if (ctx.state === "suspended") {
+          ctx.resume();
+        }
+
+        if (buffer) {
+          const source = ctx.createBufferSource();
+          source.buffer = buffer;
+          const gainNode = ctx.createGain();
+          gainNode.gain.value = 0.85;
+          source.connect(gainNode);
+          gainNode.connect(ctx.destination);
+          source.start(0);
+        } else {
+          const audio = new Audio("/touchpad sd.mp3");
+          audio.volume = 0.85;
+          audio.play().catch(() => {});
+        }
+      } else {
+        const audio = new Audio("/touchpad sd.mp3");
+        audio.volume = 0.85;
+        audio.play().catch(() => {});
+      }
+    } catch (e) {
+      /* ignore fallback errors */
+    }
+  }, []);
+
   // Apply theme to <html>
   useEffect(() => {
     document.documentElement.setAttribute("data-theme", isDark ? "dark" : "light");
@@ -177,7 +214,6 @@ export default function ResearchPage() {
     const threshold = maxTravel / 2;
 
     if (hasDraggedRef.current) {
-      // Dragged — toggle based on position
       const shouldBeDark = dragX > threshold;
       if (shouldBeDark !== isDark) {
         playSlideSound();
@@ -185,7 +221,6 @@ export default function ResearchPage() {
       }
       setDragX(shouldBeDark ? maxTravel : 0);
     } else {
-      // Tapped — toggle
       playSlideSound();
       const next = !isDark;
       setIsDark(next);
@@ -216,6 +251,34 @@ export default function ResearchPage() {
         transition: "transform 0.4s cubic-bezier(0.85, 0.05, 0.18, 1.35)",
       };
 
+  const handleSubscribe = (e, emailType) => {
+    e.preventDefault();
+    playClickSound();
+    const email = emailType === "newsletter" ? newsletterEmail : footerEmail;
+    if (email) {
+      alert(`Thank you for subscribing with: ${email}`);
+      if (emailType === "newsletter") setNewsletterEmail("");
+      else setFooterEmail("");
+    } else {
+      alert("Please enter a valid email address.");
+    }
+  };
+
+  const handleEssayClick = (essayTitle) => {
+    playClickSound();
+    alert(`Opening essay: "${essayTitle}"`);
+  };
+
+  const handleFilterClick = (filterName) => {
+    playClickSound();
+    console.log(`Active filter selected: ${filterName}`);
+  };
+
+  const handleSidebarClick = (categoryName) => {
+    playClickSound();
+    console.log(`Sidebar category selected: ${categoryName}`);
+  };
+
   return (
     <div className={styles.pageWrapper} data-theme={isDark ? "dark" : "light"}>
       {/* ===== NAVIGATION ===== */}
@@ -233,13 +296,13 @@ export default function ResearchPage() {
               <a href="/#system" className={styles.navLink}>
                 System
               </a>
-              <a href="/research" className={`${styles.navLink} ${styles.activeNavLink}`}>
+              <a href="/research" className={styles.navLink}>
                 Research
               </a>
               <a href="/#products" className={styles.navLink}>
                 Products
               </a>
-              <a href="/journals" className={styles.navLink}>
+              <a href="/journals" className={`${styles.navLink} ${styles.activeNavLink}`}>
                 Journals
               </a>
             </div>
@@ -290,19 +353,10 @@ export default function ResearchPage() {
       {/* ===== MAIN CONTENT ===== */}
       <main className={styles.mainContainer}>
         <div className={styles.contentAlignContainer}>
-          {/* Header (Frame 111) */}
-          <InlineSVG src="/research/Frame 111.svg" className={styles.researchHeader} />
+          {/* Main Journals Mockup SVG */}
+          <InlineSVG src="/journals.svg" className={styles.journalsSvg} />
 
-          {/* Sidebar (Frame 110) */}
-          <InlineSVG src="/research/Frame 110.svg" className={styles.researchSidebar} />
-
-          {/* Content (Frame 109) */}
-          <InlineSVG src="/research/Frame 109.svg" className={styles.researchContent} />
-
-          {/* Footer */}
-          <InlineSVG src="/research/Footer.svg" className={styles.researchFooter} />
-
-          {/* Draggable Slide Toggle — Dark/Light Mode (Exactly like the Hero page) */}
+          {/* ===== 3D DRAGGABLE THEME SWITCH OVERLAY ===== */}
           <div className={styles.slideButton} id="theme-toggle">
             <div className={styles.slideTrack} ref={trackRef}>
               <div className={styles.slideTrackInner} />
@@ -323,6 +377,177 @@ export default function ResearchPage() {
               </div>
             </div>
           </div>
+
+          {/* ===== INTERACTIVE SIDEBAR CATEGORY LIST OVERLAYS ===== */}
+          <div className={styles.sidebarTriggers}>
+            <div
+              className={styles.sidebarTrigger}
+              onClick={() => handleSidebarClick("System Breakdowns")}
+              title="System Breakdowns"
+            />
+            <div
+              className={styles.sidebarTrigger}
+              onClick={() => handleSidebarClick("AI + Business Thinking")}
+              title="AI + Business Thinking"
+            />
+            <div
+              className={styles.sidebarTrigger}
+              onClick={() => handleSidebarClick("Case Studies")}
+              title="Case Studies"
+            />
+            <div
+              className={styles.sidebarTrigger}
+              onClick={() => handleSidebarClick("Thought Essays")}
+              title="Thought Essays"
+            />
+          </div>
+
+          {/* ===== INTERACTIVE FILTER PILLS FLEX OVERLAY ===== */}
+          <div className={styles.filterBarOverlay}>
+            <div className={styles.filterLabelPlaceholder} />
+            <div className={styles.filterButtonsContainer}>
+              <button
+                className={styles.filterButton}
+                onClick={() => handleFilterClick("All")}
+                aria-label="Filter All"
+              />
+              <button
+                className={styles.filterButton}
+                onClick={() => handleFilterClick("System")}
+                aria-label="Filter System"
+              />
+              <button
+                className={styles.filterButton}
+                onClick={() => handleFilterClick("AI + Business")}
+                aria-label="Filter AI + Business"
+              />
+              <button
+                className={styles.filterButton}
+                onClick={() => handleFilterClick("Research")}
+                aria-label="Filter Research"
+              />
+              <button
+                className={styles.filterButton}
+                onClick={() => handleFilterClick("Case Studies")}
+                aria-label="Filter Case Studies"
+              />
+              <button
+                className={styles.filterButton}
+                onClick={() => handleFilterClick("Framework")}
+                aria-label="Filter Framework"
+              />
+              <button
+                className={styles.filterButton}
+                onClick={() => handleFilterClick("Thought Essays")}
+                aria-label="Filter Thought Essays"
+              />
+            </div>
+            <div className={styles.filterSearchBox}>
+              <input
+                className={styles.filterSearchInput}
+                type="text"
+                placeholder="Search filters..."
+                onChange={(e) => console.log("Searching filters:", e.target.value)}
+              />
+            </div>
+          </div>
+
+          {/* ===== INTERACTIVE READ ESSAY BUTTON OVERLAYS ===== */}
+          {/* Card 1: The Clarity Gap */}
+          <button
+            className={`${styles.readEssayBtn} ${styles.btnEssay1}`}
+            onClick={() => handleEssayClick("The Clarity Gap")}
+            aria-label="Read The Clarity Gap"
+          >
+            <span className={styles.readEssayText}>Read essay</span>
+          </button>
+
+          {/* Card 2: Designing for Uncertainty */}
+          <button
+            className={`${styles.readEssayBtn} ${styles.btnEssay2}`}
+            onClick={() => handleEssayClick("Designing for Uncertainty")}
+            aria-label="Read Designing for Uncertainty"
+          >
+            <span className={styles.readEssayText}>Read essay</span>
+          </button>
+
+          {/* Card 3: Inside TCG pricing */}
+          <button
+            className={`${styles.readEssayBtn} ${styles.btnEssay3}`}
+            onClick={() => handleEssayClick("Inside TCG pricing")}
+            aria-label="Read Inside TCG pricing"
+          >
+            <span className={styles.readEssayText}>Read essay</span>
+          </button>
+
+          {/* Card 4: What AI cannot do */}
+          <button
+            className={`${styles.readEssayBtn} ${styles.btnEssay4}`}
+            onClick={() => handleEssayClick("What AI cannot do")}
+            aria-label="Read What AI cannot do"
+          >
+            <span className={styles.readEssayText}>Read essay</span>
+          </button>
+
+          {/* Card 5: Process orchestration vs. automation */}
+          <button
+            className={`${styles.readEssayBtn} ${styles.btnEssay5}`}
+            onClick={() => handleEssayClick("Process orchestration vs. automation")}
+            aria-label="Read Process orchestration vs. automation"
+          >
+            <span className={styles.readEssayText}>Read essay</span>
+          </button>
+
+          {/* Card 6: Decision support that actually works */}
+          <button
+            className={`${styles.readEssayBtn} ${styles.btnEssay6}`}
+            onClick={() => handleEssayClick("Decision support that actually works")}
+            aria-label="Read Decision support that actually works"
+          >
+            <span className={styles.readEssayText}>Read essay</span>
+          </button>
+
+          {/* ===== INTERACTIVE NEWSLETTER FORM OVERLAYS ===== */}
+          <form
+            onSubmit={(e) => handleSubscribe(e, "newsletter")}
+            className={styles.newsletterForm}
+          >
+            <input
+              className={styles.newsletterInput}
+              type="email"
+              placeholder="you@gmail.com"
+              value={newsletterEmail}
+              onChange={(e) => setNewsletterEmail(e.target.value)}
+              required
+              aria-label="Email address for newsletter"
+            />
+            <button
+              className={styles.newsletterSubmit}
+              type="submit"
+              aria-label="Subscribe to newsletter"
+            />
+          </form>
+
+          {/* ===== INTERACTIVE FOOTER SEARCH FORM OVERLAY ===== */}
+          <form
+            onSubmit={(e) => handleSubscribe(e, "footer")}
+            className={styles.footerSearchForm}
+          >
+            <input
+              className={styles.footerSearchInput}
+              type="email"
+              placeholder="you@gmail.com"
+              value={footerEmail}
+              onChange={(e) => setFooterEmail(e.target.value)}
+              required
+              aria-label="Email address in footer"
+            />
+            <button
+              className={styles.footerSearchSubmit}
+              type="submit"
+              aria-label="Submit email in footer"
+            />
+          </form>
         </div>
       </main>
     </div>

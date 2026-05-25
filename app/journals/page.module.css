@@ -1,0 +1,742 @@
+/* ========================================
+   AEETHOD Journals Page — Neumorphic Style
+   ======================================== */
+
+.pageWrapper {
+  min-height: 100vh;
+  background: var(--bg-primary);
+  position: relative;
+}
+
+/* Subtle noise overlay for surface texture */
+.pageWrapper::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.025'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.8;
+}
+
+/* ---------- Navigation — Floating Neumorphic Pill ---------- */
+.navOuter {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  padding: 16px 24px 0;
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+  height: 62px;
+  padding: 0 10px 0 12px;
+  border-radius: 60px;
+  background: #DFDFDF;
+  box-shadow:
+    4px 4px 10px rgba(190, 190, 190, 0.9),
+    -4px -4px 8px rgba(255, 255, 255, 0.9),
+    4px -4px 8px rgba(190, 190, 190, 0.2),
+    -4px 4px 8px rgba(190, 190, 190, 0.2),
+    inset -1px -1px 2px rgba(190, 190, 190, 0.5),
+    inset 1px 1px 2px rgba(255, 255, 255, 0.3);
+  max-width: 1280px;
+  margin: 0 auto;
+  position: relative;
+  overflow: hidden;
+}
+
+.navLeft {
+  display: flex;
+  align-items: center;
+  gap: 36px;
+  flex-shrink: 0;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+  flex-shrink: 0;
+}
+
+.logo:hover {
+  transform: scale(1.06);
+}
+
+.logoImg {
+  width: 44px;
+  height: 44px;
+  display: block;
+}
+
+.logoImg :global(svg) {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.navLinks {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.navLink {
+  font-family: var(--font-sora), sans-serif;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 20px;
+  line-height: 25px;
+  color: #404040;
+  padding: 10px;
+  position: relative;
+  transition: color 0.3s ease, transform 0.3s ease;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.navLink::after {
+  content: '';
+  position: absolute;
+  bottom: 0px;
+  left: 50%;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--accent-purple);
+  transform: translateX(-50%) scale(0);
+  opacity: 0;
+  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.25s ease;
+}
+
+.navLink:hover {
+  color: #1a1a2e;
+  transform: translateY(-1px);
+}
+
+.navLink:hover::after {
+  transform: translateX(-50%) scale(1);
+  opacity: 1;
+}
+
+.activeNavLink {
+  color: #5A69EA !important;
+  font-weight: 400 !important;
+}
+
+.activeNavLink::after {
+  transform: translateX(-50%) scale(1) !important;
+  opacity: 1 !important;
+}
+
+.navCenter {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+  padding: 0 14px;
+}
+
+.searchBar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 20px;
+  background: #D7D7D5;
+  border-radius: 20px;
+  box-shadow:
+    inset 2px 2px 5px rgba(183, 183, 181, 0.9),
+    inset -2px -2px 4px rgba(247, 247, 245, 0.9),
+    inset 2px -2px 4px rgba(183, 183, 181, 0.2),
+    inset -2px 2px 4px rgba(183, 183, 181, 0.2),
+    -1px -1px 2px rgba(183, 183, 181, 0.5),
+    1px 1px 2px rgba(247, 247, 245, 0.3);
+  min-width: 300px;
+  max-width: 420px;
+  width: 100%;
+  border: none;
+}
+
+.searchIcon {
+  flex-shrink: 0;
+  color: #3B719F;
+}
+
+.searchInput {
+  border: none;
+  background: transparent;
+  color: #5A69EA;
+  font-size: 13.5px;
+  font-family: inherit;
+  outline: none;
+  width: 100%;
+  letter-spacing: 0.02em;
+  font-weight: 400;
+}
+
+.searchInput::placeholder {
+  background: linear-gradient(180deg, #5A69EA 0%, #BF8BCA 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-weight: 400;
+  opacity: 0.85;
+}
+
+.navRight {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.contactBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+  flex-shrink: 0;
+}
+
+.contactBtn:hover {
+  transform: scale(1.06);
+}
+
+.contactBtnImg {
+  width: 44px;
+  height: 44px;
+  display: block;
+}
+
+/* ---------- Main Layout Containers ---------- */
+.mainContainer {
+  margin-top: -78px;
+  padding: 0 0 40px;
+  position: relative;
+  z-index: 1;
+  width: 100%;
+}
+
+.contentAlignContainer {
+  position: relative;
+  width: 1440px;
+  height: 4442px;
+  margin: 0 auto;
+}
+
+.journalsSvg {
+  position: absolute;
+  width: 1440px;
+  height: 4442px;
+  left: 0;
+  top: 0;
+  z-index: 1;
+}
+
+.journalsSvg :global(svg) {
+  width: 100%;
+  height: 100%;
+  display: block;
+  border-radius: 50px;
+}
+
+/* Hide static toggle button parts in journals SVG */
+.journalsSvg :global(svg rect[x="1271" i]),
+.journalsSvg :global(svg rect[x="1275.59" i]),
+.journalsSvg :global(svg rect[x="1307.29" i]),
+.journalsSvg :global(svg rect[x="1311.04" i]) {
+  display: none !important;
+}
+
+/* ===== Slide Toggle Button (Neumorphic 3D) ===== */
+.slideButton {
+  position: absolute;
+  left: 1271px;
+  top: 165px;
+  width: 66.29px;
+  height: 30px;
+  z-index: 10;
+}
+
+.slideTrack {
+  position: absolute;
+  left: 0%;
+  right: 0.44%;
+  top: 13.33%;
+  bottom: 6.67%;
+  background: #DFDFDF;
+  box-shadow:
+    1px 1px 2px rgba(255, 255, 255, 0.3),
+    -1px -1px 2px rgba(156, 156, 156, 0.5),
+    inset -1px 1px 2px rgba(156, 156, 156, 0.2),
+    inset 1px -1px 2px rgba(156, 156, 156, 0.2),
+    inset -1px -1px 2px rgba(255, 255, 255, 0.9),
+    inset 1px 1px 3px rgba(156, 156, 156, 0.9);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.slideTrackInner {
+  position: absolute;
+  left: 6.92%;
+  right: 10.58%;
+  top: 26.42%;
+  bottom: 20.73%;
+  background: #B2CEFE;
+  box-shadow:
+    1px 1px 2px rgba(219, 253, 255, 0.3),
+    -1px -1px 2px rgba(137, 159, 196, 0.5),
+    inset -3px 3px 6px rgba(137, 159, 196, 0.2),
+    inset 3px -3px 6px rgba(137, 159, 196, 0.2),
+    inset -3px -3px 6px rgba(219, 253, 255, 0.9),
+    inset 3px 3px 8px rgba(137, 159, 196, 0.9);
+  border-radius: 8px;
+  pointer-events: none;
+}
+
+.slideKnob {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 45.25%;
+  height: 100%;
+  background: linear-gradient(135deg, #EAEAEA 0%, #D4D4D4 100%);
+  box-shadow:
+    -1px 1px 2px rgba(134, 134, 134, 0.2),
+    1px -1px 2px rgba(134, 134, 134, 0.2),
+    -1px -1px 2px rgba(255, 255, 255, 0.9),
+    1px 1px 3px rgba(134, 134, 134, 0.9),
+    inset 1px 1px 2px rgba(255, 255, 255, 0.3),
+    inset -1px -1px 2px rgba(134, 134, 134, 0.5);
+  border-radius: 20px;
+  cursor: grab;
+  z-index: 2;
+  touch-action: none;
+  user-select: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.slideKnob:active {
+  cursor: grabbing;
+}
+
+.slideKnobInner {
+  width: 75%;
+  height: 75%;
+  background: #DFDFDF;
+  box-shadow:
+    1px 1px 2px rgba(255, 255, 255, 0.3),
+    -1px -1px 2px rgba(167, 167, 167, 0.5),
+    inset -1px 1px 2px rgba(167, 167, 167, 0.2),
+    inset 1px -1px 2px rgba(167, 167, 167, 0.2),
+    inset -1px -1px 2px rgba(255, 255, 255, 0.9),
+    inset 1px 1px 3px rgba(167, 167, 167, 0.9);
+  border-radius: 20px;
+  pointer-events: none;
+}
+
+.slideTrack,
+.slideTrackInner,
+.slideKnob,
+.slideKnobInner {
+  transition:
+    background 0.15s ease-out,
+    background-color 0.15s ease-out,
+    box-shadow 0.15s ease-out,
+    border-color 0.15s ease-out;
+}
+
+/* ---------- Category Sidebar Hover Trigger Overlays ---------- */
+.sidebarTriggers {
+  position: absolute;
+  left: 824px;
+  top: 451px;
+  width: 487px;
+  height: 220px;
+  z-index: 5;
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebarTrigger {
+  width: 487px;
+  height: 55px;
+  cursor: pointer;
+  transition: background-color 0.15s ease, border-radius 0.15s ease;
+  border-radius: 0;
+  box-sizing: border-box;
+}
+
+.sidebarTrigger:first-child {
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+}
+
+.sidebarTrigger:last-child {
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+  border-bottom: none;
+}
+
+.sidebarTrigger:hover {
+  background-color: rgba(90, 105, 234, 0.06);
+}
+
+/* ---------- Filter Bar Flex Overlays ---------- */
+.filterBarOverlay {
+  position: absolute;
+  left: 0px;
+  top: 873px;
+  width: 1440px;
+  height: 85px;
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  padding: 10px 50px;
+  gap: 15px;
+  pointer-events: none; /* Let clicks pass through default spaces */
+}
+
+.filterLabelPlaceholder {
+  width: 99px;
+  height: 70px;
+}
+
+.filterButtonsContainer {
+  display: flex;
+  align-items: center;
+  gap: 17px;
+  width: 803px;
+  height: 60px;
+  pointer-events: auto; /* Re-enable clicks for buttons */
+}
+
+.filterButton {
+  height: 38px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.15s ease, border-radius 0.15s ease;
+  border-radius: 15px;
+}
+
+.filterButton:hover {
+  background-color: rgba(90, 105, 234, 0.08);
+}
+
+/* Specific widths matching user request */
+.filterButtonsContainer button:nth-child(1) { width: 49px; }   /* All */
+.filterButtonsContainer button:nth-child(2) { width: 90px; }   /* System */
+.filterButtonsContainer button:nth-child(3) { width: 144px; }  /* AI + Business */
+.filterButtonsContainer button:nth-child(4) { width: 95px; }   /* Research */
+.filterButtonsContainer button:nth-child(5) { width: 123px; }  /* Case Studies */
+.filterButtonsContainer button:nth-child(6) { width: 114px; }  /* Framework */
+.filterButtonsContainer button:nth-child(7) { width: 139px; }  /* Thought Essays */
+
+.filterSearchBox {
+  width: 371px;
+  height: 55px;
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 0 70px 0 35px; /* Offset to align with SVG text area */
+  pointer-events: auto;
+}
+
+.filterSearchInput {
+  background: transparent;
+  border: none;
+  outline: none;
+  width: 100%;
+  height: 30px;
+  font-family: 'Sora', sans-serif;
+  font-size: 13px;
+  font-weight: 300;
+  color: #5A69EA;
+}
+
+/* ---------- Read Essay Button Overlays ---------- */
+.readEssayBtn {
+  position: absolute;
+  width: 129.25px;
+  height: 39px;
+  z-index: 5;
+  background: transparent;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), background-color 0.2s ease;
+  overflow: hidden;
+}
+
+.readEssayBtn:hover {
+  transform: scale(1.04);
+  background-color: rgba(90, 105, 234, 0.08);
+}
+
+.readEssayBtn:active {
+  transform: scale(0.97);
+}
+
+.readEssayText {
+  display: none; /* Kept invisible as SVG text already displays it, just serving as interactive clickable trigger */
+}
+
+/* Absolute offsets for CTAs matching Figma export coordinates */
+.btnEssay1 { left: 375px; top: 1502px; }
+.btnEssay2 { left: 375px; top: 2129px; }
+.btnEssay3 { left: 1059px; top: 2069px; }
+.btnEssay4 { left: 395px; top: 2667px; }
+.btnEssay5 { left: 1068px; top: 2688px; }
+.btnEssay6 { left: 395px; top: 3360px; }
+
+/* ---------- Interactive Newsletter Overlays ---------- */
+.newsletterForm {
+  position: absolute;
+  left: 729px;
+  top: 3804px;
+  width: 537.5px; /* Combined width of input (332) + gap + submit (192) */
+  height: 62px;
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  gap: 13.5px;
+}
+
+.newsletterInput {
+  width: 332px;
+  height: 62px;
+  background: transparent;
+  border: none;
+  outline: none;
+  border-radius: 20px;
+  padding: 0 24px;
+  font-family: 'Sora', sans-serif;
+  font-size: 16px;
+  font-weight: 300;
+  color: #404040;
+}
+
+.newsletterInput::placeholder {
+  color: #a0a0a0;
+  opacity: 0; /* SVG already has placeholder drawn, so we hide it and show it on focus if empty */
+}
+
+.newsletterSubmit {
+  width: 192px;
+  height: 60px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  border-radius: 20px;
+  transition: background-color 0.2s ease;
+}
+
+.newsletterSubmit:hover {
+  background-color: rgba(90, 105, 234, 0.08);
+}
+
+/* ---------- Interactive Footer Search Overlays ---------- */
+.footerSearchForm {
+  position: absolute;
+  left: 1029px;
+  top: 4317px;
+  width: 333px;
+  height: 40px;
+  z-index: 5;
+  display: flex;
+  align-items: center;
+}
+
+.footerSearchInput {
+  width: 100%;
+  height: 40px;
+  background: transparent;
+  border: none;
+  outline: none;
+  border-radius: 20px;
+  padding: 0 16px;
+  font-family: 'Sora', sans-serif;
+  font-size: 13px;
+  font-weight: 300;
+  color: #404040;
+}
+
+.footerSearchSubmit {
+  display: none; /* Handled via Enter key submit trigger */
+}
+
+
+/* ==========================================================
+   DARK MODE — Theme Switching overrides (instant swaps)
+   ========================================================== */
+
+:global([data-theme="dark"]) .pageWrapper {
+  background: #1a1a2e;
+}
+
+:global([data-theme="dark"]) .navbar {
+  background: #22223a;
+  box-shadow:
+    4px 4px 10px rgba(0, 0, 0, 0.5),
+    -4px -4px 8px rgba(50, 50, 80, 0.2),
+    4px -4px 8px rgba(0, 0, 0, 0.15),
+    -4px 4px 8px rgba(0, 0, 0, 0.15),
+    inset -1px -1px 2px rgba(0, 0, 0, 0.3),
+    inset 1px 1px 2px rgba(80, 80, 120, 0.15);
+}
+
+:global([data-theme="dark"]) .navLink {
+  color: #b0b0c8;
+}
+
+:global([data-theme="dark"]) .navLink:hover {
+  color: #e8e8f0;
+}
+
+:global([data-theme="dark"]) .activeNavLink {
+  color: #8a6ff0 !important;
+}
+
+:global([data-theme="dark"]) .searchBar {
+  background: #1e1e34;
+  box-shadow:
+    inset 2px 2px 5px rgba(0, 0, 0, 0.5),
+    inset -2px -2px 4px rgba(50, 50, 80, 0.15),
+    inset 2px -2px 4px rgba(0, 0, 0, 0.15),
+    inset -2px 2px 4px rgba(0, 0, 0, 0.15),
+    -1px -1px 2px rgba(0, 0, 0, 0.3),
+    1px 1px 2px rgba(50, 50, 80, 0.1);
+}
+
+:global([data-theme="dark"]) .searchInput {
+  color: #B2CEFE;
+}
+
+:global([data-theme="dark"]) .searchInput::placeholder {
+  background: linear-gradient(180deg, #7b8dff 0%, #c49dd4 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+/* Draggable Theme Toggle — Dark Mode Swaps */
+:global([data-theme="dark"]) .slideTrack {
+  background: #22223a;
+  box-shadow:
+    1px 1px 2px rgba(50, 50, 80, 0.15),
+    -1px -1px 2px rgba(0, 0, 0, 0.4),
+    inset -1px 1px 2px rgba(0, 0, 0, 0.2),
+    inset 1px -1px 2px rgba(0, 0, 0, 0.2),
+    inset -1px -1px 2px rgba(50, 50, 80, 0.15),
+    inset 1px 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+:global([data-theme="dark"]) .slideTrackInner {
+  background: #4a5a8a;
+  box-shadow:
+    1px 1px 2px rgba(80, 100, 160, 0.15),
+    -1px -1px 2px rgba(0, 0, 0, 0.3),
+    inset -3px 3px 6px rgba(30, 40, 70, 0.3),
+    inset 3px -3px 6px rgba(30, 40, 70, 0.3),
+    inset -3px -3px 6px rgba(80, 100, 160, 0.2),
+    inset 3px 3px 8px rgba(30, 40, 70, 0.4);
+}
+
+:global([data-theme="dark"]) .slideKnob {
+  background: linear-gradient(135deg, #2e2e4a 0%, #222240 100%);
+  box-shadow:
+    -1px 1px 2px rgba(0, 0, 0, 0.3),
+    1px -1px 2px rgba(0, 0, 0, 0.3),
+    -1px -1px 2px rgba(60, 60, 100, 0.2),
+    1px 1px 3px rgba(0, 0, 0, 0.5),
+    inset 1px 1px 2px rgba(60, 60, 100, 0.12),
+    inset -1px -1px 2px rgba(0, 0, 0, 0.35);
+}
+
+:global([data-theme="dark"]) .slideKnobInner {
+  background: #22223a;
+  box-shadow:
+    1px 1px 2px rgba(50, 50, 80, 0.15),
+    -1px -1px 2px rgba(0, 0, 0, 0.3),
+    inset -1px 1px 2px rgba(0, 0, 0, 0.2),
+    inset 1px -1px 2px rgba(0, 0, 0, 0.2),
+    inset -1px -1px 2px rgba(50, 50, 80, 0.15),
+    inset 1px 1px 3px rgba(0, 0, 0, 0.4);
+}
+
+/* Hover overlays under Dark Mode */
+.sidebarTrigger:hover {
+  background-color: rgba(138, 111, 240, 0.08);
+}
+.filterButton:hover {
+  background-color: rgba(138, 111, 240, 0.1);
+}
+.readEssayBtn:hover {
+  background-color: rgba(138, 111, 240, 0.12);
+}
+.newsletterSubmit:hover {
+  background-color: rgba(138, 111, 240, 0.12);
+}
+
+.newsletterInput, .footerSearchInput {
+  transition: color 0.15s ease;
+}
+
+:global([data-theme="dark"]) .newsletterInput,
+:global([data-theme="dark"]) .footerSearchInput {
+  color: #e8e8f0;
+}
+
+/* SVG Vector color inversion for Neumorphic Dark mode */
+.journalsSvg :global(svg rect[fill="#DFDFDF" i]) {
+  fill: #1a1a2e !important;
+}
+
+.journalsSvg :global(svg rect[fill="#B2CEFE" i]) {
+  fill: #4a5a8a !important;
+}
+
+.journalsSvg :global(svg rect[stroke="#717171" i]),
+.journalsSvg :global(svg border[stroke="#717171" i]),
+.journalsSvg :global(svg path[stroke="#717171" i]) {
+  stroke: #505070 !important;
+}
+
+.journalsSvg :global(svg rect[fill="white" i]),
+.journalsSvg :global(svg rect[fill="#FFFFFF" i]),
+.journalsSvg :global(svg path[fill="white" i]),
+.journalsSvg :global(svg path[fill="#FFFFFF" i]) {
+  fill: #22223a !important;
+}
+
+.journalsSvg :global(svg path[fill="#0D0D0D" i]),
+.journalsSvg :global(svg path[fill="#000000" i]) {
+  fill: #e8e8f0 !important;
+}
+
+.journalsSvg :global(svg path[fill="#404040" i]) {
+  fill: #b0b0c8 !important;
+}
+
+.journalsSvg :global(svg path[fill="#717171" i]) {
+  fill: #8888a8 !important;
+}
+
+.journalsSvg :global(svg path[fill="#34C759" i]) {
+  fill: #30d158 !important;
+}
+
+.journalsSvg :global(svg path[fill="#6155F5" i]) {
+  fill: #5e5ce6 !important;
+}
+
+.journalsSvg :global(svg path[fill="#AC7F5E" i]) {
+  fill: #bf5af2 !important;
+}
