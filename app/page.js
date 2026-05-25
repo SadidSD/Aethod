@@ -705,7 +705,7 @@ export default function Home() {
           <InlineSVG src="/dice_mini_3.svg" className={`${styles.diceShape} ${styles.diceMini3}`} />
 
           {/* Trading Cards */}
-          <InlineSVG src="/cards_hero_tcg.svg" className={styles.tcgCards} />
+          <InlineSVG src="/aeethod4.svg" className={styles.tcgCards} />
 
           {/* Glassmorphic Pill: We Understand What Matters */}
           <div className={styles.tcgGlassPill}>
