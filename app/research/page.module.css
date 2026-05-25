@@ -213,7 +213,8 @@
 
 /* ---------- Main Layout Containers ---------- */
 .mainContainer {
-  padding: 40px 0 80px;
+  margin-top: -78px;
+  padding: 0 0 80px;
   position: relative;
   z-index: 1;
   width: 100%;
