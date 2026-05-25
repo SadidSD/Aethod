@@ -683,6 +683,79 @@ export default function Home() {
         </div>
       </section>
 
+      {/* ===== TCG & TRADING CARD ECOSYSTEMS SECTION ===== */}
+      <section className={styles.tcgSection} id="tcg-section">
+        <div className={styles.tcgAlignContainer}>
+          {/* Label: Current Focus */}
+          <InlineSVG src="/label_current_focus.svg" className={styles.tcgCurrentFocus} />
+
+          {/* Heading: TCG & Trading Card Ecosystems */}
+          <InlineSVG src="/title_tcg_ecosystems.svg" className={styles.tcgTitle} />
+
+          {/* Subtitle Description */}
+          <InlineSVG src="/subtitle_tcg.svg" className={styles.tcgSubtitle} />
+
+          {/* Background Dice 2 */}
+          <InlineSVG src="/dice_mini_2.svg" className={`${styles.diceShape} ${styles.diceMini2}`} />
+
+          {/* Background Dice 6 */}
+          <InlineSVG src="/dice_mini_6.svg" className={`${styles.diceShape} ${styles.diceMini6}`} />
+
+          {/* Background Dice 3 */}
+          <InlineSVG src="/dice_mini_3.svg" className={`${styles.diceShape} ${styles.diceMini3}`} />
+
+          {/* Trading Cards */}
+          <InlineSVG src="/cards_hero_tcg.svg" className={styles.tcgCards} />
+
+          {/* Glassmorphic Pill: We Understand What Matters */}
+          <div className={styles.tcgGlassPill}>
+            <span className={styles.tcgGlassPillText}>We Understand What Matters</span>
+          </div>
+
+          {/* Scroll Down Button */}
+          <InlineSVG src="/btn_scroll_details.svg" className={styles.tcgScrollBtn} />
+
+          {/* Bottom text block: Stop doing manual tasks... */}
+          <InlineSVG src="/text_manual_tasks.svg" className={styles.tcgBottomText} />
+        </div>
+      </section>
+
+      {/* ===== HOW OUR AI WILL HELP YOU & DEMO SECTION ===== */}
+      <section className={styles.helpSection} id="help-section">
+        <div className={styles.helpAlignContainer}>
+          {/* Background Dice 1 */}
+          <InlineSVG src="/dice_mini_1.svg" className={`${styles.diceShape} ${styles.diceMini1}`} />
+
+          {/* Group 21: How our AI will help you list */}
+          <InlineSVG src="/group_21.svg" className={styles.helpGroup21} />
+
+          {/* Background Dice 12 */}
+          <InlineSVG src="/dice_mini_12.svg" className={`${styles.diceShape} ${styles.diceMini12}`} />
+
+          {/* Background Dice 7 */}
+          <InlineSVG src="/dice_mini_7.svg" className={`${styles.diceShape} ${styles.diceMini7}`} />
+
+          {/* Demo Title */}
+          <InlineSVG src="/demo_title.svg" className={styles.helpDemoTitle} />
+
+          {/* Demo Content (Mockup screenshot) */}
+          <InlineSVG src="/demo_content.svg" className={styles.helpDemoContent} />
+
+          {/* Background Dice 9 */}
+          <InlineSVG src="/dice_mini_9.svg" className={`${styles.diceShape} ${styles.diceMini9}`} />
+
+          {/* Background Dice 13 */}
+          <InlineSVG src="/dice_mini_13.svg" className={`${styles.diceShape} ${styles.diceMini13}`} />
+        </div>
+      </section>
+
+      {/* ===== FOOTER SECTION ===== */}
+      <footer className={styles.footerSection} id="footer-section">
+        <div className={styles.footerAlignContainer}>
+          <InlineSVG src="/footer_custom.svg" className={styles.footerSvg} />
+        </div>
+      </footer>
+
       {/* ===== Floating Scroll Button ===== */}
       <button 
         className={`${styles.floatingScrollBtn} ${isDraggingScroll ? styles.isDragging : ""}`}

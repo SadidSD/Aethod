@@ -737,7 +737,7 @@
   flex-direction: column;
   align-items: flex-start;
   text-align: left;
-  margin-bottom: 40px;
+  margin-bottom: 12px;
   width: 100%;
   max-width: 504px;
 }
@@ -788,7 +788,7 @@
 /* ---------- Services Journey Path ---------- */
 .servicesJourney {
   position: relative;
-  margin-top: 50px;
+  margin-top: -95px;
   width: 100%;
   max-width: 1166px;
   aspect-ratio: 1166 / 365;
@@ -1587,6 +1587,477 @@
     -2px -2px 4px rgba(50, 50, 80, 0.15),
     inset 1px 1px 2px rgba(80, 80, 120, 0.15),
     inset -1px -1px 2px rgba(0, 0, 0, 0.4);
+}
+
+/* ---------- TCG & Trading Card Ecosystems Section ---------- */
+.tcgSection {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  padding: 80px 0 120px;
+  overflow: hidden;
+  background: var(--bg-primary);
+}
+
+.tcgAlignContainer {
+  position: relative;
+  width: 100%;
+  max-width: 1440px;
+  height: 1420px;
+  margin: 0 auto;
+}
+
+/* Common style for absolute positioned items in TCG section */
+.tcgCurrentFocus {
+  position: absolute;
+  width: 281px;
+  height: 60px;
+  left: 126px;
+  top: 64px;
+  z-index: 3;
+}
+
+.tcgTitle {
+  position: absolute;
+  width: 412px;
+  height: 106px;
+  left: 133px;
+  top: 124px;
+  z-index: 3;
+}
+
+.tcgSubtitle {
+  position: absolute;
+  width: 597px;
+  height: 75px;
+  left: 132px;
+  top: 267px;
+  z-index: 3;
+}
+
+.tcgCards {
+  position: absolute;
+  width: 1288.75px;
+  height: 731.89px;
+  left: 509.01px;
+  top: 8.58px;
+  transform: rotate(3.95deg);
+  z-index: 2;
+  pointer-events: none;
+}
+
+.diceShape {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0.85;
+  transition: opacity 0.5s ease;
+}
+
+:global([data-theme="dark"]) .diceShape {
+  opacity: 0.6;
+}
+
+.diceMini2 {
+  width: 173px;
+  height: 258px;
+  left: 44px;
+  top: 390px;
+}
+
+.diceMini6 {
+  width: 436px;
+  height: 348px;
+  left: 318px;
+  top: 593px;
+}
+
+.diceMini3 {
+  width: 239px;
+  height: 156px;
+  left: 1114px;
+  top: 899px;
+}
+
+/* Glassmorphic Pill: We Understand What Matters */
+.tcgGlassPill {
+  position: absolute;
+  width: 783px;
+  height: 96px;
+  left: 328px;
+  top: 350px;
+  z-index: 4;
+  background: rgba(242, 241, 239, 0.2);
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  box-shadow: 
+    0 8px 32px 0 rgba(31, 38, 135, 0.04),
+    inset 1px 1px 2px rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition-med);
+}
+
+:global([data-theme="dark"]) .tcgGlassPill {
+  background: rgba(30, 30, 52, 0.25);
+  border-color: rgba(255, 255, 255, 0.08);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+}
+
+.tcgGlassPillText {
+  font-family: var(--font-sora), 'Sora', sans-serif;
+  font-weight: 300;
+  font-size: 32px;
+  line-height: 40px;
+  color: #0D0D0D;
+  letter-spacing: -0.01em;
+  transition: color 0.5s ease;
+}
+
+:global([data-theme="dark"]) .tcgGlassPillText {
+  color: #e8e8f0;
+}
+
+.tcgScrollBtn {
+  position: absolute;
+  width: 299px;
+  height: 65px;
+  left: 565px;
+  top: 450px;
+  z-index: 5;
+  cursor: pointer;
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.tcgScrollBtn:hover {
+  transform: translateY(2px) scale(1.02);
+}
+
+.tcgBottomText {
+  position: absolute;
+  width: 1111px;
+  height: 430px;
+  left: 149px;
+  top: 977px;
+  z-index: 3;
+}
+
+/* Theme overrides for TCG inline SVGs */
+:global([data-theme="dark"]) .tcgCurrentFocus svg path[fill="#404040" i] {
+  fill: #b0b0c8;
+}
+
+:global([data-theme="dark"]) .tcgTitle svg path[fill="#0D0D0D" i],
+:global([data-theme="dark"]) .tcgTitle svg path[fill="#404040" i] {
+  fill: #e8e8f0;
+}
+
+:global([data-theme="dark"]) .tcgSubtitle svg path[fill="#404040" i] {
+  fill: #8888a8;
+}
+
+:global([data-theme="dark"]) .tcgScrollBtn svg rect {
+  stroke: #8888a8;
+}
+:global([data-theme="dark"]) .tcgScrollBtn svg path[fill="#404040" i] {
+  fill: #b0b0c8;
+}
+
+:global([data-theme="dark"]) .tcgBottomText svg path[fill="#0D0D0D" i],
+:global([data-theme="dark"]) .tcgBottomText svg path[fill="#404040" i] {
+  fill: #e8e8f0;
+}
+
+@media (max-width: 900px) {
+  .tcgSection {
+    padding: 60px 24px;
+  }
+  
+  .tcgAlignContainer {
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 32px;
+  }
+  
+  .tcgCurrentFocus,
+  .tcgTitle,
+  .tcgSubtitle,
+  .tcgCards,
+  .tcgGlassPill,
+  .tcgScrollBtn,
+  .tcgBottomText {
+    position: relative !important;
+    left: auto !important;
+    top: auto !important;
+    transform: none !important;
+    margin: 0 auto;
+    max-width: 100%;
+  }
+
+  .tcgCurrentFocus {
+    width: 200px;
+    height: auto;
+  }
+
+  .tcgTitle {
+    width: 100%;
+    height: auto;
+  }
+
+  .tcgSubtitle {
+    width: 100%;
+    height: auto;
+  }
+
+  .tcgCards {
+    width: 100%;
+    height: auto;
+    max-width: 500px;
+  }
+
+  .tcgGlassPill {
+    width: 100%;
+    max-width: 480px;
+    height: 70px;
+    padding: 0 16px;
+  }
+
+  .tcgGlassPillText {
+    font-size: 20px;
+    line-height: 28px;
+  }
+
+  .tcgScrollBtn {
+    width: 240px;
+    height: 50px;
+  }
+
+  .tcgBottomText {
+    width: 100%;
+    height: auto;
+  }
+
+  .diceMini2,
+  .diceMini6,
+  .diceMini3 {
+    display: none;
+  }
+}
+
+/* ---------- Help & Demo Section ---------- */
+.helpSection {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  padding: 80px 0 100px;
+  overflow: hidden;
+  background: var(--bg-primary);
+}
+
+.helpAlignContainer {
+  position: relative;
+  width: 100%;
+  max-width: 1440px;
+  height: 2050px;
+  margin: 0 auto;
+}
+
+.helpGroup21 {
+  position: absolute;
+  width: 1278px;
+  height: 731px;
+  left: 80.5px;
+  top: 164px;
+  z-index: 3;
+}
+
+.helpDemoTitle {
+  position: absolute;
+  width: 146px;
+  height: 60px;
+  left: 149px;
+  top: 1172px;
+  z-index: 3;
+}
+
+.helpDemoContent {
+  position: absolute;
+  width: 1207px;
+  height: 750px;
+  left: 116.5px;
+  top: 1255px;
+  z-index: 2;
+}
+
+.diceMini1 {
+  width: 251px;
+  height: 222px;
+  left: 849px;
+  top: 2px;
+}
+
+.diceMini12 {
+  width: 251px;
+  height: 189px;
+  left: 800px;
+  top: 817px;
+  transform: rotate(10.59deg);
+}
+
+.diceMini7 {
+  width: 239px;
+  height: 156px;
+  left: 445px;
+  top: 1049px;
+}
+
+.diceMini9 {
+  width: 239px;
+  height: 175px;
+  left: -73px;
+  top: 1455px;
+}
+
+.diceMini13 {
+  width: 251px;
+  height: 222px;
+  left: 1220px;
+  top: 1630px;
+}
+
+/* ---------- Custom Footer Section ---------- */
+.footerSection {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  padding: 40px 0 80px;
+  background: var(--bg-primary);
+  overflow: hidden;
+}
+
+.footerAlignContainer {
+  position: relative;
+  width: 100%;
+  max-width: 1440px;
+  height: 282px;
+  margin: 0 auto;
+}
+
+.footerSvg {
+  position: absolute;
+  width: 1346px;
+  height: 282px;
+  left: 47px;
+  top: 0;
+  z-index: 2;
+}
+
+/* Dark Mode Overrides for Help and Footer SVGs */
+:global([data-theme="dark"]) .helpGroup21 svg path[fill="#0D0D0D" i],
+:global([data-theme="dark"]) .helpGroup21 svg path[fill="#404040" i] {
+  fill: #e8e8f0;
+}
+
+:global([data-theme="dark"]) .helpGroup21 svg path[stroke="#404040" i] {
+  stroke: #8888a8;
+}
+
+:global([data-theme="dark"]) .helpDemoTitle svg path[fill="#0D0D0D" i] {
+  fill: #e8e8f0;
+}
+
+:global([data-theme="dark"]) .helpDemoContent svg rect[fill="#DFDFDF" i] {
+  fill: #22223a;
+}
+
+:global([data-theme="dark"]) .helpDemoContent svg rect[stroke="#404040" i] {
+  stroke: #8888a8;
+}
+
+:global([data-theme="dark"]) .footerSvg svg rect[fill="#DFDFDF" i] {
+  fill: #22223a;
+}
+
+:global([data-theme="dark"]) .footerSvg svg path[fill="#404040" i] {
+  fill: #b0b0c8;
+}
+
+:global([data-theme="dark"]) .footerSvg svg path[fill="black" i],
+:global([data-theme="dark"]) .footerSvg svg path[fill="#000000" i] {
+  fill: #e8e8f0;
+}
+
+@media (max-width: 900px) {
+  .helpSection {
+    padding: 60px 24px;
+  }
+  
+  .helpAlignContainer {
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 40px;
+  }
+  
+  .helpGroup21,
+  .helpDemoTitle,
+  .helpDemoContent {
+    position: relative !important;
+    left: auto !important;
+    top: auto !important;
+    transform: none !important;
+    margin: 0 auto;
+    max-width: 100%;
+    height: auto !important;
+  }
+
+  .helpGroup21 {
+    width: 100%;
+  }
+
+  .helpDemoTitle {
+    width: 150px;
+  }
+
+  .helpDemoContent {
+    width: 100%;
+    max-width: 600px;
+  }
+
+  .footerSection {
+    padding: 20px 24px;
+    height: auto;
+  }
+
+  .footerAlignContainer {
+    height: auto;
+  }
+
+  .footerSvg {
+    position: relative !important;
+    left: auto !important;
+    top: auto !important;
+    margin: 0 auto;
+    width: 100%;
+    height: auto !important;
+    max-width: 600px;
+  }
+
+  .diceMini1,
+  .diceMini7,
+  .diceMini9,
+  .diceMini12,
+  .diceMini13 {
+    display: none;
+  }
 }
 
 
