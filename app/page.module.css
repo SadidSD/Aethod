@@ -914,6 +914,37 @@
   transform: scale(1.08);
 }
 
+/* ===== Service Card Flow Animation ===== */
+.serviceCardHidden {
+  opacity: 0;
+  transform: translate(-37.5px, -37.5px) scale(0.5) translateY(25px);
+  filter: blur(8px);
+  pointer-events: none;
+}
+
+.serviceCardVisible {
+  opacity: 1;
+  transform: translate(-37.5px, -37.5px) scale(1) translateY(0);
+  filter: blur(0px);
+  pointer-events: auto;
+  transition: 
+    opacity 0.8s cubic-bezier(0.34, 1.56, 0.64, 1),
+    transform 0.8s cubic-bezier(0.34, 1.56, 0.64, 1),
+    filter 0.5s ease-out;
+}
+
+/* On mobile, disable flow animation — show cards immediately */
+@media (max-width: 900px) {
+  .serviceCardHidden,
+  .serviceCardVisible {
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
+    pointer-events: auto !important;
+    transition: none !important;
+  }
+}
+
 .serviceTitle {
   font-size: 16px;
   font-weight: 600;
@@ -1721,9 +1752,10 @@
   left: 328px;
   top: 446px;
   z-index: 4;
-  background: #F2F1EF33;
+  background: url('/Rectangle%2047.svg') no-repeat;
+  background-size: cover;
   border-radius: 20px;
-  border: 1px solid rgba(255, 255, 255, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.6);
   box-shadow: 
     0 8px 32px 0 rgba(31, 38, 135, 0.04),
     inset 1px 1px 2px rgba(255, 255, 255, 0.2);
@@ -1740,8 +1772,8 @@
 }
 
 :global([data-theme="dark"]) .tcgGlassPill {
-  background: rgba(30, 30, 52, 0.12);
-  border-color: rgba(255, 255, 255, 0.08);
+  background: rgba(30, 30, 52, 0.45);
+  border-color: rgba(255, 255, 255, 0.15);
   box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
 }
 

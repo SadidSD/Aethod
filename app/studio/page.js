@@ -27,7 +27,7 @@ function InlineSVG({ src, className }) {
   );
 }
 
-export default function ResearchPage() {
+export default function StudioPage() {
   const [isDark, setIsDark] = useState(false);
   const [isDragging, setIsDragging] = useState(false);
   const [dragX, setDragX] = useState(0);
@@ -41,6 +41,9 @@ export default function ResearchPage() {
   const slideClickBufferRef = useRef(null);
   const slideFoleyBufferRef = useRef(null);
   const audioContextRef = useRef(null);
+
+  // Email state for footer subscription
+  const [footerEmail, setFooterEmail] = useState("");
 
   // Pre-load and decode audio files for zero-latency, high-quality audio processing
   useEffect(() => {
@@ -132,6 +135,39 @@ export default function ResearchPage() {
     }
   }, []);
 
+  const playClickSound = useCallback(() => {
+    try {
+      const ctx = audioContextRef.current;
+      const buffer = clickBufferRef.current;
+
+      if (ctx) {
+        if (ctx.state === "suspended") {
+          ctx.resume();
+        }
+
+        if (buffer) {
+          const source = ctx.createBufferSource();
+          source.buffer = buffer;
+          const gainNode = ctx.createGain();
+          gainNode.gain.value = 0.85;
+          source.connect(gainNode);
+          gainNode.connect(ctx.destination);
+          source.start(0);
+        } else {
+          const audio = new Audio("/touchpad sd.mp3");
+          audio.volume = 0.85;
+          audio.play().catch(() => {});
+        }
+      } else {
+        const audio = new Audio("/touchpad sd.mp3");
+        audio.volume = 0.85;
+        audio.play().catch(() => {});
+      }
+    } catch (e) {
+      /* ignore fallback errors */
+    }
+  }, []);
+
   // Apply theme to <html>
   useEffect(() => {
     document.documentElement.setAttribute("data-theme", isDark ? "dark" : "light");
@@ -177,7 +213,6 @@ export default function ResearchPage() {
     const threshold = maxTravel / 2;
 
     if (hasDraggedRef.current) {
-      // Dragged — toggle based on position
       const shouldBeDark = dragX > threshold;
       if (shouldBeDark !== isDark) {
         playSlideSound();
@@ -185,7 +220,6 @@ export default function ResearchPage() {
       }
       setDragX(shouldBeDark ? maxTravel : 0);
     } else {
-      // Tapped — toggle
       playSlideSound();
       const next = !isDark;
       setIsDark(next);
@@ -216,6 +250,17 @@ export default function ResearchPage() {
         transition: "transform 0.4s cubic-bezier(0.85, 0.05, 0.18, 1.35)",
       };
 
+  const handleSubscribe = (e) => {
+    e.preventDefault();
+    playClickSound();
+    if (footerEmail) {
+      alert(`Thank you for subscribing with: ${footerEmail}`);
+      setFooterEmail("");
+    } else {
+      alert("Please enter a valid email address.");
+    }
+  };
+
   return (
     <div className={styles.pageWrapper} data-theme={isDark ? "dark" : "light"}>
       {/* ===== NAVIGATION ===== */}
@@ -227,13 +272,13 @@ export default function ResearchPage() {
             </a>
 
             <div className={styles.navLinks}>
-              <a href="/studio" className={styles.navLink}>
+              <a href="/studio" className={`${styles.navLink} ${styles.activeNavLink}`}>
                 Studio
               </a>
               <a href="/#system" className={styles.navLink}>
                 System
               </a>
-              <a href="/research" className={`${styles.navLink} ${styles.activeNavLink}`}>
+              <a href="/research" className={styles.navLink}>
                 Research
               </a>
               <a href="/#products" className={styles.navLink}>
@@ -290,19 +335,63 @@ export default function ResearchPage() {
       {/* ===== MAIN CONTENT ===== */}
       <main className={styles.mainContainer}>
         <div className={styles.contentAlignContainer}>
-          {/* Header (Frame 111) */}
-          <InlineSVG src="/research/Frame 111.svg" className={styles.researchHeader} />
+          {/* ----- SECTION 1: HERO ----- */}
+          <InlineSVG src="/studio/Studio.svg" className={styles.studioTitle} />
+          <InlineSVG src="/studio/What sets us apart.svg" className={styles.studioSubtitle} />
+          <InlineSVG src="/studio/studio_group.svg" className={styles.group43} />
 
-          {/* Sidebar (Frame 110) */}
-          <InlineSVG src="/research/Frame 110.svg" className={styles.researchSidebar} />
+          {/* ----- SECTION 2: WHAT IS SYSTEM STUDIO & HOW WE DIFFER ----- */}
+          <InlineSVG src="/studio/What is System Studio.svg" className={styles.whatIsTitle} />
+          <InlineSVG src="/studio/Where agencies end, we begin..svg" className={styles.whatIsSubtitle} />
+          <InlineSVG src="/studio/Frame 143.svg" className={styles.howWeDifferCard} />
 
-          {/* Content (Frame 109) */}
-          <InlineSVG src="/research/Frame 109.svg" className={styles.researchContent} />
+          {/* ----- SECTION 3: THE MANIFESTO ----- */}
+          <InlineSVG src="/studio/Rectangle 88.svg" className={styles.manifestoBg} />
+          <InlineSVG src="/studio/The Manifesto.svg" className={styles.manifestoTitle} />
+          <InlineSVG src="/studio/Four things we believe.svg" className={styles.manifestoSubtitle} />
+          
+          <InlineSVG src="/studio/Group 50.svg" className={styles.manifestoCard1} />
+          <InlineSVG src="/studio/Group 51.svg" className={styles.manifestoCard2} />
+          <InlineSVG src="/studio/Group 52.svg" className={styles.manifestoCard3} />
+          <InlineSVG src="/studio/Group 53.svg" className={styles.manifestoCard4} />
+          
+          <InlineSVG src="/studio/Humans architect. AI executes. Data makes it true. That is what we build..svg" className={styles.manifestoQuote} />
 
-          {/* Footer */}
-          <InlineSVG src="/research/Footer.svg" className={styles.researchFooter} />
+          {/* ----- SECTION 4: HOW WE WORK ----- */}
+          <InlineSVG src="/studio/How we Work.svg" className={styles.howWeWorkSection} />
 
-          {/* Draggable Slide Toggle — Dark/Light Mode (Exactly like the Hero page) */}
+          {/* ----- SECTION 5: CALL TO ACTION BANNER ----- */}
+          <InlineSVG src="/studio/Rectangle 92.svg" className={styles.ctaBg} />
+          <InlineSVG src="/studio/_The first conversation costs nothing. The systems brief tells us both whether this is the right fit._.svg" className={styles.ctaText} />
+
+          {/* ----- SECTION 6: AI CAPABILITY AREAS ----- */}
+          <InlineSVG src="/studio/Frame 78.svg" className={styles.capabilityHeader} />
+          <InlineSVG src="/studio/Frame 90.svg" className={styles.capabilityGrid} />
+
+          {/* ----- SECTION 7: FOOTER ----- */}
+          <div className={styles.footerWrapper}>
+            <InlineSVG src="/studio/Footer.svg" className={styles.footerSvg} />
+            
+            {/* Interactive Email Subscription Overlay on the Footer's email box */}
+            <form onSubmit={handleSubscribe} className={styles.footerSearchForm}>
+              <input
+                className={styles.footerSearchInput}
+                type="email"
+                placeholder="you@gmail.com"
+                value={footerEmail}
+                onChange={(e) => setFooterEmail(e.target.value)}
+                required
+                aria-label="Email address in footer"
+              />
+              <button
+                className={styles.footerSearchSubmit}
+                type="submit"
+                aria-label="Submit email in footer"
+              />
+            </form>
+          </div>
+
+          {/* ===== 3D DRAGGABLE THEME SWITCH OVERLAY ===== */}
           <div className={styles.slideButton} id="theme-toggle">
             <div className={styles.slideTrack} ref={trackRef}>
               <div className={styles.slideTrackInner} />

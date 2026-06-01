@@ -290,7 +290,10 @@ export default function JournalsPage() {
             </a>
 
             <div className={styles.navLinks}>
-              <a href="/#studio" className={styles.navLink}>
+              <a href="/" className={styles.navLink}>
+                Home
+              </a>
+              <a href="/studio" className={styles.navLink}>
                 Studio
               </a>
               <a href="/#system" className={styles.navLink}>

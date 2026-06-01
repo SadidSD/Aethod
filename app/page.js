@@ -3,6 +3,8 @@
 import { useState, useRef, useCallback, useEffect } from "react";
 import styles from "./page.module.css";
 
+const CURVE_PATH = "M10.502 301.037C10.502 301.037 278.19 379.737 387.502 346.037C465.301 322.052 519.222 255.036 594.502 224.037C717.17 173.524 741.006 227.347 853.502 157.037C933.502 107.037 953.502 83.0367 953.502 83.0367C953.502 83.0367 999.582 34.0816 1081.5 16.9464C1123.96 8.06441 1155.5 10.9464 1155.5 10.9464";
+
 function InlineSVG({ src, className }) {
   const [svgContent, setSvgContent] = useState("");
 
@@ -36,6 +38,15 @@ export default function Home() {
   const startXRef = useRef(0);
   const startDragXRef = useRef(0);
   const hasDraggedRef = useRef(false);
+
+  // Journey flow animation refs and state
+  const journeyRef = useRef(null);
+  const bluePathRef = useRef(null);
+  const glowPathRef = useRef(null);
+  const journeyStartedRef = useRef(false);
+  const [card1Visible, setCard1Visible] = useState(false);
+  const [card2Visible, setCard2Visible] = useState(false);
+  const [card3Visible, setCard3Visible] = useState(false);
 
   const clickBufferRef = useRef(null);
   const slideClickBufferRef = useRef(null);
@@ -251,6 +262,65 @@ export default function Home() {
     return () => window.removeEventListener('resize', handleResize);
   }, [isDark, isDragging, getMaxTravel]);
 
+  // Journey path flow animation — triggered when section enters viewport
+  useEffect(() => {
+    const el = journeyRef.current;
+    const bluePath = bluePathRef.current;
+    if (!el || !bluePath) return;
+
+    const totalLength = bluePath.getTotalLength();
+    const glow = glowPathRef.current;
+    let animId;
+
+    // Initialize: fully hidden
+    bluePath.style.strokeDasharray = totalLength;
+    bluePath.style.strokeDashoffset = totalLength;
+    if (glow) {
+      glow.style.strokeDasharray = totalLength;
+      glow.style.strokeDashoffset = totalLength;
+    }
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting && !journeyStartedRef.current) {
+          journeyStartedRef.current = true;
+          observer.disconnect();
+
+          const duration = 6000;
+          const startTime = performance.now();
+          let c1 = false, c2 = false, c3 = false;
+
+          const tick = (now) => {
+            const elapsed = now - startTime;
+            const t = Math.min(elapsed / duration, 1);
+            // Ease-out cubic for smooth deceleration
+            const eased = 1 - Math.pow(1 - t, 3);
+
+            const offset = totalLength * (1 - eased);
+            bluePath.style.strokeDashoffset = offset;
+            if (glow) glow.style.strokeDashoffset = offset;
+
+            // Reveal cards as the flow reaches their position on the curve
+            if (eased >= 0.13 && !c1) { c1 = true; setCard1Visible(true); }
+            if (eased >= 0.48 && !c2) { c2 = true; setCard2Visible(true); }
+            if (eased >= 0.80 && !c3) { c3 = true; setCard3Visible(true); }
+
+            if (t < 1) animId = requestAnimationFrame(tick);
+          };
+
+          animId = requestAnimationFrame(tick);
+        }
+      },
+      { threshold: 0.15 }
+    );
+
+    observer.observe(el);
+    return () => {
+      observer.disconnect();
+      if (animId) cancelAnimationFrame(animId);
+    };
+  }, []);
+
   const knobStyle = isDragging
     ? { transform: `translateX(${dragX}px)`, transition: 'none' }
     : { transform: `translateX(${isDark ? getMaxTravel() : 0}px)`, transition: 'transform 0.4s cubic-bezier(0.85, 0.05, 0.18, 1.35)' };
@@ -383,7 +453,7 @@ export default function Home() {
 
             {/* Thin Elegant Nav Links */}
             <div className={styles.navLinks}>
-              <a href="#studio" className={styles.navLink}>Studio</a>
+              <a href="/studio" className={styles.navLink}>Studio</a>
               <a href="#system" className={styles.navLink}>System</a>
               <a href="/research" className={styles.navLink}>Research</a>
               <a href="#products" className={styles.navLink}>Products</a>
@@ -627,15 +697,87 @@ export default function Home() {
             </div>
 
             {/* Journey Path with Services */}
-            <div className={styles.servicesJourney}>
-              {/* SVG Journey Path */}
-              <InlineSVG
-                src="/curve.svg"
-                className={styles.journeyPathSvg}
-              />
+            <div className={styles.servicesJourney} ref={journeyRef}>
+              {/* Animated SVG Journey Path */}
+              <div className={styles.journeyPathSvg}>
+                <svg width="1166" height="365" viewBox="0 0 1166 365" fill="none" overflow="visible" xmlns="http://www.w3.org/2000/svg">
+                  <defs>
+                    <filter id="jBorderF" x="-5%" y="-15%" width="110%" height="140%" filterUnits="objectBoundingBox" colorInterpolationFilters="sRGB">
+                      <feFlood floodOpacity="0" result="BackgroundImageFix"/>
+                      <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+                      <feOffset dx="-3" dy="3"/>
+                      <feGaussianBlur stdDeviation="3"/>
+                      <feColorMatrix type="matrix" values="0 0 0 0 0.76078 0 0 0 0 0.75686 0 0 0 0 0.74902 0 0 0 0.2 0"/>
+                      <feBlend mode="normal" in2="BackgroundImageFix" result="e1"/>
+                      <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+                      <feOffset dx="3" dy="-3"/>
+                      <feGaussianBlur stdDeviation="3"/>
+                      <feColorMatrix type="matrix" values="0 0 0 0 0.76078 0 0 0 0 0.75686 0 0 0 0 0.74902 0 0 0 0.2 0"/>
+                      <feBlend mode="normal" in2="e1" result="e2"/>
+                      <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+                      <feOffset dx="-3" dy="-3"/>
+                      <feGaussianBlur stdDeviation="3"/>
+                      <feColorMatrix type="matrix" values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.9 0"/>
+                      <feBlend mode="normal" in2="e2" result="e3"/>
+                      <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+                      <feOffset dx="3" dy="3"/>
+                      <feGaussianBlur stdDeviation="4"/>
+                      <feColorMatrix type="matrix" values="0 0 0 0 0.76078 0 0 0 0 0.75686 0 0 0 0 0.74902 0 0 0 0.9 0"/>
+                      <feBlend mode="normal" in2="e3" result="e4"/>
+                      <feBlend mode="normal" in="SourceGraphic" in2="e4" result="shape"/>
+                      <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+                      <feOffset dx="1" dy="1"/>
+                      <feGaussianBlur stdDeviation="1"/>
+                      <feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1"/>
+                      <feColorMatrix type="matrix" values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.3 0"/>
+                      <feBlend mode="normal" in2="shape" result="e5"/>
+                      <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+                      <feOffset dx="-1" dy="-1"/>
+                      <feGaussianBlur stdDeviation="1"/>
+                      <feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1"/>
+                      <feColorMatrix type="matrix" values="0 0 0 0 0.76078 0 0 0 0 0.75686 0 0 0 0 0.74902 0 0 0 0.5 0"/>
+                      <feBlend mode="normal" in2="e5" result="e6"/>
+                    </filter>
+                    <filter id="jInnerF" x="-5%" y="-15%" width="110%" height="140%" filterUnits="objectBoundingBox" colorInterpolationFilters="sRGB">
+                      <feFlood floodOpacity="0" result="BackgroundImageFix"/>
+                      <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+                      <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+                      <feOffset dx="3" dy="3"/>
+                      <feGaussianBlur stdDeviation="4"/>
+                      <feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1"/>
+                      <feColorMatrix type="matrix" values="0 0 0 0 0.713726 0 0 0 0 0.709804 0 0 0 0 0.701961 0 0 0 0.9 0"/>
+                      <feBlend mode="normal" in2="shape" result="e1"/>
+                      <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+                      <feOffset dx="-3" dy="-3"/>
+                      <feGaussianBlur stdDeviation="3"/>
+                      <feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1"/>
+                      <feColorMatrix type="matrix" values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.9 0"/>
+                      <feBlend mode="normal" in2="e1" result="e2"/>
+                    </filter>
+                    <filter id="jGlowF" x="-10%" y="-50%" width="120%" height="200%">
+                      <feGaussianBlur stdDeviation="8" result="blur"/>
+                      <feMerge>
+                        <feMergeNode in="blur"/>
+                        <feMergeNode in="blur"/>
+                        <feMergeNode in="SourceGraphic"/>
+                      </feMerge>
+                    </filter>
+                  </defs>
+                  {/* Outer border — static neumorphic track */}
+                  <g filter="url(#jBorderF)">
+                    <path d={CURVE_PATH} stroke="#E5E5E3" strokeWidth="30" strokeLinecap="round" fill="none"/>
+                  </g>
+                  {/* Inner blue path — animated flow fill */}
+                  <g filter="url(#jInnerF)">
+                    <path ref={bluePathRef} d={CURVE_PATH} stroke="#B2CEFE" strokeWidth="15" strokeLinecap="round" fill="none"/>
+                  </g>
+                  {/* Ambient glow — follows the flow for 3D depth */}
+                  <path ref={glowPathRef} d={CURVE_PATH} stroke="#B2CEFE" strokeWidth="24" strokeLinecap="round" fill="none" opacity="0.3" filter="url(#jGlowF)"/>
+                </svg>
+              </div>
 
               {/* Service Card 1: Systems Architecture */}
-              <div className={`${styles.serviceCard} ${styles.serviceCard1}`} role="region" aria-label="Systems Architecture">
+              <div className={`${styles.serviceCard} ${styles.serviceCard1} ${card1Visible ? styles.serviceCardVisible : styles.serviceCardHidden}`} role="region" aria-label="Systems Architecture">
                 <div className={styles.serviceIcon}>
                   <div className={styles.serviceIconImg} role="img" aria-label="Systems Architecture Icon" style={{ WebkitMaskImage: "url('/temp_icon1.png')", maskImage: "url('/temp_icon1.png')" }} />
                 </div>
@@ -646,7 +788,7 @@ export default function Home() {
               </div>
 
               {/* Service Card 2: AI-Driven Automation */}
-              <div className={`${styles.serviceCard} ${styles.serviceCard2}`} role="region" aria-label="AI-Driven Automation">
+              <div className={`${styles.serviceCard} ${styles.serviceCard2} ${card2Visible ? styles.serviceCardVisible : styles.serviceCardHidden}`} role="region" aria-label="AI-Driven Automation">
                 <div className={styles.serviceIcon}>
                   <div className={styles.serviceIconImg} role="img" aria-label="AI-Driven Automation Icon" style={{ WebkitMaskImage: "url('/temp_icon2.png')", maskImage: "url('/temp_icon2.png')" }} />
                 </div>
@@ -657,7 +799,7 @@ export default function Home() {
               </div>
 
               {/* Service Card 3: Applied Research */}
-              <div className={`${styles.serviceCard} ${styles.serviceCard3}`} role="region" aria-label="Applied Research">
+              <div className={`${styles.serviceCard} ${styles.serviceCard3} ${card3Visible ? styles.serviceCardVisible : styles.serviceCardHidden}`} role="region" aria-label="Applied Research">
                 <div className={styles.serviceIcon}>
                   <div className={styles.serviceIconImg} role="img" aria-label="Applied Research Icon" style={{ WebkitMaskImage: "url('/temp_icon3.png')", maskImage: "url('/temp_icon3.png')" }} />
                 </div>
