@@ -302,7 +302,7 @@ export default function JournalsPage() {
               <a href="/research" className={styles.navLink}>
                 Research
               </a>
-              <a href="/#products" className={styles.navLink}>
+              <a href="/products" className={styles.navLink}>
                 Products
               </a>
               <a href="/journals" className={`${styles.navLink} ${styles.activeNavLink}`}>

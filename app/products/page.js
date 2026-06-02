@@ -27,7 +27,7 @@ function InlineSVG({ src, className }) {
   );
 }
 
-export default function StudioPage() {
+export default function ProductsPage() {
   const [isDark, setIsDark] = useState(false);
   const [isDragging, setIsDragging] = useState(false);
   const [dragX, setDragX] = useState(0);
@@ -42,7 +42,7 @@ export default function StudioPage() {
   const slideFoleyBufferRef = useRef(null);
   const audioContextRef = useRef(null);
 
-  // Email state for footer subscription
+  // Email state for footer newsletter subscription
   const [footerEmail, setFooterEmail] = useState("");
 
   // Pre-load and decode audio files for zero-latency, high-quality audio processing
@@ -261,18 +261,35 @@ export default function StudioPage() {
     }
   };
 
+  const handleSocialClick = (socialName) => {
+    playClickSound();
+    alert(`Navigating to Aeethod ${socialName}...`);
+  };
+
   return (
     <div className={styles.pageWrapper} data-theme={isDark ? "dark" : "light"}>
-      {/* ===== NAVIGATION ===== */}
+      {/* Hidden global definitions for SVG gradients */}
+      <svg style={{ position: "absolute", width: 0, height: 0, overflow: "hidden" }} aria-hidden="true">
+        <defs>
+          <linearGradient id="paint0_linear_dark_890_256" x1="3.62305" y1="-12" x2="46.0064" y2="222.334" gradientUnits="userSpaceOnUse">
+            <stop offset="1" stopColor="#30304a" />
+            <stop stopColor="#1a1a2e" />
+          </linearGradient>
+        </defs>
+      </svg>
+
+      {/* ===== FLOATING STICKY NAVIGATION ===== */}
       <div className={styles.navOuter}>
         <nav className={styles.navbar} id="navbar">
           <div className={styles.navLeft}>
-            <a href="/" className={styles.logo} aria-label="Aeethod Home">
+            {/* Logo */}
+            <a href="/" className={styles.logoCircle} aria-label="Aeethod Home">
               <InlineSVG src="/logo.svg" className={styles.logoImg} />
             </a>
 
+            {/* Navigation Links */}
             <div className={styles.navLinks}>
-              <a href="/studio" className={`${styles.navLink} ${styles.activeNavLink}`}>
+              <a href="/studio" className={styles.navLink}>
                 Studio
               </a>
               <a href="/#system" className={styles.navLink}>
@@ -281,7 +298,7 @@ export default function StudioPage() {
               <a href="/research" className={styles.navLink}>
                 Research
               </a>
-              <a href="/products" className={styles.navLink}>
+              <a href="/products" className={`${styles.navLink} ${styles.activeNavLink}`}>
                 Products
               </a>
               <a href="/journals" className={styles.navLink}>
@@ -290,6 +307,7 @@ export default function StudioPage() {
             </div>
           </div>
 
+          {/* Ask Smith Neumorphic Search Bar */}
           <div className={styles.navCenter}>
             <div className={styles.searchBar}>
               <svg
@@ -318,6 +336,7 @@ export default function StudioPage() {
             </div>
           </div>
 
+          {/* Phone/Contact Button */}
           <div className={styles.navRight}>
             <a href="/#contact" className={styles.contactBtn} aria-label="Contact" id="contact-btn">
               <img
@@ -332,69 +351,18 @@ export default function StudioPage() {
         </nav>
       </div>
 
-      {/* ===== MAIN CONTENT ===== */}
+      {/* ===== MAIN CONTAINER FLOW ===== */}
       <main className={styles.mainContainer}>
         <div className={styles.contentAlignContainer}>
-          {/* ----- SECTION 1: HERO ----- */}
-          <InlineSVG src="/studio/Studio.svg" className={styles.studioTitle} />
-          <InlineSVG src="/studio/What sets us apart.svg" className={styles.studioSubtitle} />
-          <InlineSVG src="/studio/studio_group.svg" className={styles.group43} />
 
-          {/* ----- SECTION 2: WHAT IS SYSTEM STUDIO & HOW WE DIFFER ----- */}
-          <InlineSVG src="/studio/What is System Studio.svg" className={styles.whatIsTitle} />
-          <InlineSVG src="/studio/Where agencies end, we begin..svg" className={styles.whatIsSubtitle} />
-          <InlineSVG src="/studio/Frame 143.svg" className={styles.howWeDifferCard} />
-
-          {/* ----- SECTION 3: THE MANIFESTO ----- */}
-          <InlineSVG src="/studio/Rectangle 88.svg" className={styles.manifestoBg} />
-          <InlineSVG src="/studio/The Manifesto.svg" className={styles.manifestoTitle} />
-          <InlineSVG src="/studio/Four things we believe.svg" className={styles.manifestoSubtitle} />
-          
-          <InlineSVG src="/studio/Group 50.svg" className={styles.manifestoCard1} />
-          <InlineSVG src="/studio/Group 51.svg" className={styles.manifestoCard2} />
-          <InlineSVG src="/studio/Group 52.svg" className={styles.manifestoCard3} />
-          <InlineSVG src="/studio/Group 53.svg" className={styles.manifestoCard4} />
-          
-          <InlineSVG src="/studio/Humans architect. AI executes. Data makes it true. That is what we build..svg" className={styles.manifestoQuote} />
-
-          {/* ----- SECTION 4: HOW WE WORK ----- */}
-          <InlineSVG src="/studio/How we Work.svg" className={styles.howWeWorkSection} />
-
-          {/* ----- SECTION 5: CALL TO ACTION BANNER ----- */}
-          <InlineSVG src="/studio/Rectangle 92.svg" className={styles.ctaBg} />
-          <InlineSVG src="/studio/_The first conversation costs nothing. The systems brief tells us both whether this is the right fit._.svg" className={styles.ctaText} />
-
-          {/* ----- SECTION 6: AI CAPABILITY AREAS ----- */}
-          <InlineSVG src="/studio/Frame 78.svg" className={styles.capabilityHeader} />
-          <InlineSVG src="/studio/Frame 90.svg" className={styles.capabilityGrid} />
-
-          {/* ----- SECTION 7: FOOTER ----- */}
-          <div className={styles.footerWrapper}>
-            <InlineSVG src="/studio/Footer.svg" className={styles.footerSvg} />
-            
-            {/* Interactive Email Subscription Overlay on the Footer's email box */}
-            <form onSubmit={handleSubscribe} className={styles.footerSearchForm}>
-              <input
-                className={styles.footerSearchInput}
-                type="email"
-                placeholder="you@gmail.com"
-                value={footerEmail}
-                onChange={(e) => setFooterEmail(e.target.value)}
-                required
-                aria-label="Email address in footer"
-              />
-              <button
-                className={styles.footerSearchSubmit}
-                type="submit"
-                aria-label="Submit email in footer"
-              />
-            </form>
-          </div>
-
-          {/* ===== 3D DRAGGABLE THEME SWITCH OVERLAY ===== */}
+          {/* ===== THEME SWITCH (Slide Button Overlay) ===== */}
           <div className={styles.slideButton} id="theme-toggle">
+            {/* Track Background */}
             <div className={styles.slideTrack} ref={trackRef}>
+              {/* Blue fill */}
               <div className={styles.slideTrackInner} />
+
+              {/* Slider Knob */}
               <div
                 className={styles.slideKnob}
                 ref={knobRef}
@@ -408,10 +376,121 @@ export default function StudioPage() {
                 aria-label="Toggle dark mode"
                 tabIndex={0}
               >
+                {/* Recessed center circle */}
                 <div className={styles.slideKnobInner} />
               </div>
             </div>
           </div>
+
+          {/* ===== COMING SOON SECTION (aethod7.svg / Figma Vector match) ===== */}
+          <div className={styles.comingSoonContainer}>
+            <InlineSVG src="/aethod7.svg" className={styles.comingSoonSvg} />
+          </div>
+
+          {/* ===== RECTANGLE 27 (Right Vertical Marker) ===== */}
+          <div className={styles.rightMarker} />
+
+          {/* ===== FOOTER SECTION ===== */}
+          <footer className={styles.footer}>
+            {/* Rectangle 48 background card */}
+            <div className={styles.footerBg} />
+            
+            <div className={styles.footerInner}>
+              {/* Footer Left Area (Frame 64) */}
+              <div className={styles.footerLeft}>
+                {/* Brand Header (Frame 63) */}
+                <div className={styles.footerBrand}>
+                  <div className={styles.footerBrandLogo} />
+                  <div className={styles.footerBrandName}>Aeethod</div>
+                </div>
+                <p className={styles.footerDescription}>
+                  We build the intelligence layer that makes human decisions matter more, not less.
+                </p>
+              </div>
+
+              {/* Footer Right Area */}
+              <div className={styles.footerRight}>
+                {/* Navigation Links Row */}
+                <div className={styles.footerNav}>
+                  <a href="/studio" className={styles.footerNavLink}>Studio</a>
+                  <a href="/#system" className={styles.footerNavLink}>System</a>
+                  <a href="/research" className={styles.footerNavLink}>Research</a>
+                  <a href="/products" className={styles.footerNavLink}>Products</a>
+                  <a href="/journals" className={styles.footerNavLink}>Journals</a>
+                  <a href="/#contact" className={styles.footerNavLink}>Contract</a>
+                </div>
+
+                {/* Social and Email Subscription Row */}
+                <div className={styles.footerBottomRow}>
+                  {/* Social media tiles (Frame 67) */}
+                  <div className={styles.socialsGroup}>
+                    <button 
+                      className={styles.socialTile} 
+                      onClick={() => handleSocialClick("LinkedIn")}
+                      aria-label="LinkedIn"
+                    >
+                      <svg className={styles.socialIcon} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                        <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+                        <rect x="2" y="9" width="4" height="12" />
+                        <circle cx="4" cy="4" r="2" />
+                      </svg>
+                    </button>
+
+                    <button 
+                      className={styles.socialTile} 
+                      onClick={() => handleSocialClick("Instagram")}
+                      aria-label="Instagram"
+                    >
+                      <svg className={styles.socialIcon} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                        <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+                        <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+                        <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+                      </svg>
+                    </button>
+
+                    <button 
+                      className={styles.socialTile} 
+                      onClick={() => handleSocialClick("YouTube")}
+                      aria-label="YouTube"
+                    >
+                      <svg className={styles.socialIcon} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                        <path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z" />
+                        <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02" fill="currentColor" />
+                      </svg>
+                    </button>
+                  </div>
+
+                  {/* Email subscription box (Rectangle 53) */}
+                  <form onSubmit={handleSubscribe} className={styles.footerForm}>
+                    <input
+                      className={styles.footerInput}
+                      type="email"
+                      placeholder="you@gmail.com"
+                      value={footerEmail}
+                      onChange={(e) => setFooterEmail(e.target.value)}
+                      required
+                      aria-label="Email address in footer"
+                    />
+                    <button
+                      className={styles.footerSubmit}
+                      type="submit"
+                      aria-label="Submit email in footer"
+                    >
+                      <svg className={styles.submitIcon} fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                      </svg>
+                    </button>
+                  </form>
+
+                  {/* Copyright Text */}
+                  <div className={styles.copyrightBanner}>
+                    @2026 Aeethod. All rights reserved.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </footer>
+
         </div>
       </main>
     </div>

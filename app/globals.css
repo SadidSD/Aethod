@@ -152,9 +152,12 @@ img, video {
 }
 
 /* ---------- Custom Cursor Colors ---------- */
-/* Default: black cursor */
+/* Default: gradient cursor */
+html, body {
+  cursor: url('/cursor-gradient.svg') 5 2, default;
+}
+
 body {
-  cursor: default;
   transition:
     background-color 0.5s ease,
     color 0.5s ease;

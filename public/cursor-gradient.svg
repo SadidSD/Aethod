@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+  <defs>
+    <!-- Linear Gradient for inner fill -->
+    <linearGradient id="cursorGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#A5C7FE"/>
+      <stop offset="100%" stop-color="#D1BFFE"/>
+    </linearGradient>
+
+    <!-- Linear Gradient for stroke/inner border -->
+    <linearGradient id="strokeGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#B2CEFE"/>
+      <stop offset="100%" stop-color="#B8A0E8"/>
+    </linearGradient>
+  </defs>
+
+  <path d="M5.65 2.09L19.24 12.77L12.56 13.38L16.63 21.48L14.35 22.5L10.27 14.4L5.65 18.76Z" 
+        fill="url(#cursorGrad)" 
+        stroke="url(#strokeGrad)" stroke-width="0.8" stroke-linecap="round" stroke-linejoin="round" />
+</svg>
