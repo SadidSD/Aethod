@@ -44,9 +44,6 @@ export default function Home() {
   const bluePathRef = useRef(null);
   const glowPathRef = useRef(null);
   const journeyStartedRef = useRef(false);
-  const [card1Visible, setCard1Visible] = useState(false);
-  const [card2Visible, setCard2Visible] = useState(false);
-  const [card3Visible, setCard3Visible] = useState(false);
 
   const clickBufferRef = useRef(null);
   const slideClickBufferRef = useRef(null);
@@ -301,9 +298,30 @@ export default function Home() {
             if (glow) glow.style.strokeDashoffset = offset;
 
             // Reveal cards as the flow reaches their position on the curve
-            if (eased >= 0.13 && !c1) { c1 = true; setCard1Visible(true); }
-            if (eased >= 0.48 && !c2) { c2 = true; setCard2Visible(true); }
-            if (eased >= 0.80 && !c3) { c3 = true; setCard3Visible(true); }
+            if (eased >= 0.13 && !c1) {
+              c1 = true;
+              const card = document.getElementById("service-card-1");
+              if (card) {
+                card.classList.remove(styles.serviceCardHidden);
+                card.classList.add(styles.serviceCardVisible);
+              }
+            }
+            if (eased >= 0.48 && !c2) {
+              c2 = true;
+              const card = document.getElementById("service-card-2");
+              if (card) {
+                card.classList.remove(styles.serviceCardHidden);
+                card.classList.add(styles.serviceCardVisible);
+              }
+            }
+            if (eased >= 0.80 && !c3) {
+              c3 = true;
+              const card = document.getElementById("service-card-3");
+              if (card) {
+                card.classList.remove(styles.serviceCardHidden);
+                card.classList.add(styles.serviceCardVisible);
+              }
+            }
 
             if (t < 1) animId = requestAnimationFrame(tick);
           };
@@ -743,7 +761,7 @@ export default function Home() {
               </div>
 
               {/* Service Card 1: Systems Architecture */}
-              <div className={`${styles.serviceCard} ${styles.serviceCard1} ${card1Visible ? styles.serviceCardVisible : styles.serviceCardHidden}`} role="region" aria-label="Systems Architecture">
+              <div id="service-card-1" className={`${styles.serviceCard} ${styles.serviceCard1} ${styles.serviceCardHidden}`} role="region" aria-label="Systems Architecture">
                 <div className={styles.serviceIcon}>
                   <div className={styles.serviceIconImg} role="img" aria-label="Systems Architecture Icon" style={{ WebkitMaskImage: "url('/temp_icon1.png')", maskImage: "url('/temp_icon1.png')" }} />
                 </div>
@@ -754,7 +772,7 @@ export default function Home() {
               </div>
 
               {/* Service Card 2: AI-Driven Automation */}
-              <div className={`${styles.serviceCard} ${styles.serviceCard2} ${card2Visible ? styles.serviceCardVisible : styles.serviceCardHidden}`} role="region" aria-label="AI-Driven Automation">
+              <div id="service-card-2" className={`${styles.serviceCard} ${styles.serviceCard2} ${styles.serviceCardHidden}`} role="region" aria-label="AI-Driven Automation">
                 <div className={styles.serviceIcon}>
                   <div className={styles.serviceIconImg} role="img" aria-label="AI-Driven Automation Icon" style={{ WebkitMaskImage: "url('/temp_icon2.png')", maskImage: "url('/temp_icon2.png')" }} />
                 </div>
@@ -765,7 +783,7 @@ export default function Home() {
               </div>
 
               {/* Service Card 3: Applied Research */}
-              <div className={`${styles.serviceCard} ${styles.serviceCard3} ${card3Visible ? styles.serviceCardVisible : styles.serviceCardHidden}`} role="region" aria-label="Applied Research">
+              <div id="service-card-3" className={`${styles.serviceCard} ${styles.serviceCard3} ${styles.serviceCardHidden}`} role="region" aria-label="Applied Research">
                 <div className={styles.serviceIcon}>
                   <div className={styles.serviceIconImg} role="img" aria-label="Applied Research Icon" style={{ WebkitMaskImage: "url('/temp_icon3.png')", maskImage: "url('/temp_icon3.png')" }} />
                 </div>
