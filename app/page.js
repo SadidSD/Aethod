@@ -286,7 +286,7 @@ export default function Home() {
           journeyStartedRef.current = true;
           observer.disconnect();
 
-          const duration = 6000;
+          const duration = 2500;
           const startTime = performance.now();
           let c1 = false, c2 = false, c3 = false;
 
