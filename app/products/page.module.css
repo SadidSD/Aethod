@@ -49,15 +49,15 @@
   transition: background 0.5s ease, box-shadow 0.5s ease;
 }
 
-.navLeft {
+.navContent {
   display: flex;
   align-items: center;
   gap: 36px;
-  flex-shrink: 0;
+  margin: 0 auto;
 }
 
-/* Neumorphic Circular Logo Container */
-.logoCircle {
+/* --- Circular Logo --- */
+.logo {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -65,7 +65,7 @@
   flex-shrink: 0;
 }
 
-.logoCircle:hover {
+.logo:hover {
   transform: scale(1.06);
 }
 
@@ -79,6 +79,10 @@
   width: 100%;
   height: 100%;
   display: block;
+}
+
+.logoImg svg rect {
+  filter: invert(1);
 }
 
 /* Nav Links Menu */

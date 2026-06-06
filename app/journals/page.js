@@ -284,15 +284,12 @@ export default function JournalsPage() {
       {/* ===== NAVIGATION ===== */}
       <div className={styles.navOuter}>
         <nav className={styles.navbar} id="navbar">
-          <div className={styles.navLeft}>
+          <div className={styles.navContent}>
             <a href="/" className={styles.logo} aria-label="Aeethod Home">
               <InlineSVG src="/logo.svg" className={styles.logoImg} />
             </a>
 
             <div className={styles.navLinks}>
-              <a href="/" className={styles.navLink}>
-                Home
-              </a>
               <a href="/studio" className={styles.navLink}>
                 Studio
               </a>
@@ -309,46 +306,6 @@ export default function JournalsPage() {
                 Journals
               </a>
             </div>
-          </div>
-
-          <div className={styles.navCenter}>
-            <div className={styles.searchBar}>
-              <svg
-                className={styles.searchIcon}
-                width="16"
-                height="16"
-                viewBox="0 0 24 24"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <circle cx="11" cy="11" r="7" stroke="#3B719F" strokeWidth="2" />
-                <path
-                  d="M16.5 16.5L21 21"
-                  stroke="#3B719F"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
-              <input
-                className={styles.searchInput}
-                type="text"
-                placeholder="Ask Smith about your query"
-                id="search-input"
-              />
-            </div>
-          </div>
-
-          <div className={styles.navRight}>
-            <a href="/#contact" className={styles.contactBtn} aria-label="Contact" id="contact-btn">
-              <img
-                className={styles.contactBtnImg}
-                src="/contract.svg"
-                alt="Contact"
-                width={44}
-                height={44}
-              />
-            </a>
           </div>
         </nav>
       </div>
