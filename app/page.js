@@ -340,15 +340,17 @@ export default function Home() {
       if (isDraggingScrollRef.current) return;
 
       const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-      if (docHeight > 0) {
-        setScrollTopProgress(window.scrollY / docHeight);
-      } else {
-        setScrollTopProgress(0);
-      }
+      const progress = docHeight > 0 ? window.scrollY / docHeight : 0;
+      setScrollTopProgress(progress);
       
       const buttonHeight = 70;
       const padding = 24;
-      setMaxScrollTravel(window.innerHeight - buttonHeight - padding * 2);
+      const maxTravel = window.innerHeight - buttonHeight - padding * 2;
+      setMaxScrollTravel(maxTravel);
+
+      if (scrollButtonRef.current) {
+        scrollButtonRef.current.style.transform = `translateY(${progress * maxTravel}px)`;
+      }
     };
     
     window.addEventListener("scroll", handleScroll, { passive: true });
@@ -775,17 +777,7 @@ export default function Home() {
             </div>
           </div>
 
-          {/* ===== Floating Scroll to Top Button ===== */}
-          <button 
-            className={styles.floatingScrollTopBtn} 
-            onClick={handleScrollToTop} 
-            aria-label="Scroll to Top"
-          >
-            <InlineSVG
-              src="/arrow_up.svg"
-              className={styles.scrollTopBtnArrow}
-            />
-          </button>
+
         </div>
       </section>
 
@@ -875,7 +867,7 @@ export default function Home() {
         onLostPointerCapture={handleScrollPointerUp}
         style={{
           transform: `translateY(${scrollTopProgress * maxScrollTravel}px)`,
-          transition: isDraggingScroll ? "none" : "transform 0.22s cubic-bezier(0.25, 1, 0.5, 1)"
+          transition: "none"
         }}
       >
         <div className={styles.scrollKnob} />
