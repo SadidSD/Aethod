@@ -228,7 +228,7 @@
   position: relative;
   width: 100%;
   max-width: 1440px;
-  height: 8960px;
+  height: 9300px;
   margin: 0 auto;
 }
 
@@ -237,51 +237,103 @@
 /* SECTION 1: HERO */
 .studioTitle {
   position: absolute;
-  width: 157px;
-  height: 37px;
+  width: 163px;
+  height: 60px;
   left: 119px;
-  top: 190px;
+  top: 251px;
 }
 
 .studioSubtitle {
   position: absolute;
-  width: 220px;
-  height: 23px;
+  width: 355px;
+  height: 30px;
+  left: 134px;
+  top: 314px;
+}
+
+.rectangle158 {
+  position: absolute;
+  width: 500px;
+  height: 366px;
   left: 119px;
-  top: 238px;
+  top: 418px;
+  background: #ECECEC;
+  border: 2px solid rgba(113, 113, 113, 0.5);
+  border-radius: 10px;
+  box-sizing: border-box;
+}
+
+.whoWeAre {
+  position: absolute;
+  width: 229px;
+  height: 45px;
+  left: 213px;
+  top: 479px;
+}
+
+.weAreNotAnAgency {
+  position: absolute;
+  width: 338px;
+  height: 144px;
+  left: 213px;
+  top: 576px;
+}
+
+.heroImageRight {
+  position: absolute;
+  width: 550px;
+  height: 366px;
+  left: 680px;
+  top: 418px;
+}
+
+.heroImageLowerLeft {
+  position: absolute;
+  width: 500px;
+  height: 366px;
+  left: 119px;
+  top: 972px;
+}
+
+.frame142 {
+  position: absolute;
+  width: 490px;
+  height: 245px;
+  left: 720px;
+  top: 972px;
 }
 
 /* SECTION 2: WHAT IS SYSTEM STUDIO */
-.group43 {
-  position: absolute;
-  width: 1092px;
-  height: 320px;
-  left: calc(50% - 1092px / 2);
-  top: 427px;
-}
-
 .whatIsTitle {
   position: absolute;
-  width: 540px;
-  height: 46px;
-  left: 119px;
-  top: 1000px;
+  width: 739px;
+  height: 60px;
+  left: 123px;
+  top: 1446px;
 }
 
 .whatIsSubtitle {
   position: absolute;
-  width: 370px;
-  height: 23px;
-  left: 119px;
-  top: 1060px;
+  width: 373px;
+  height: 30px;
+  left: 126px;
+  top: 1514px;
+}
+
+.manifestoColumnsCard {
+  position: absolute;
+  width: 447px;
+  height: 640px;
+  left: 255px;
+  top: 1671px;
 }
 
 .howWeDifferCard {
   position: absolute;
   width: 558px;
   height: 734px;
-  left: 768px;
-  top: 1195px;
+  left: 760px;
+  top: 1604px;
 }
 
 /* SECTION 3: THE MANIFESTO */
@@ -290,7 +342,7 @@
   width: 1442px;
   height: 1746px;
   left: -1px;
-  top: 2087px;
+  top: 2400px;
 }
 
 .manifestoTitle {
@@ -298,7 +350,7 @@
   width: 321px;
   height: 38px;
   left: 119px;
-  top: 2220px;
+  top: 2520px;
 }
 
 .manifestoSubtitle {
@@ -306,39 +358,151 @@
   width: 480px;
   height: 60px;
   left: 119px;
-  top: 2280px;
+  top: 2580px;
 }
 
-.manifestoCard1 {
+.manifestoGridBox {
   position: absolute;
-  width: 490px;
-  height: 238px;
-  left: 172px;
-  top: 2500px;
+  left: 119.79px;
+  top: 2656.77px;
+  width: 1231.44px;
+  height: 882.48px;
+  background: transparent;
+  border: 2px solid rgba(113, 113, 113, 0.5);
+  border-radius: 20px;
+  transition: border-color 0.5s ease;
+  overflow: hidden;
 }
 
-.manifestoCard2 {
+.manifestoGridLineVert {
   position: absolute;
-  width: 490px;
-  height: 308px;
-  left: 802px;
-  top: 2470px;
+  width: 2px;
+  height: 882.48px;
+  left: 620.71px;
+  top: 0px;
 }
 
-.manifestoCard3 {
+.manifestoGridLineHoriz {
   position: absolute;
-  width: 490px;
-  height: 378px;
-  left: 172px;
-  top: 2903px;
+  width: 1231.44px;
+  height: 2px;
+  left: 0px;
+  top: 445.04px;
 }
 
-.manifestoCard4 {
+.manifestoGroup01 {
   position: absolute;
-  width: 490px;
-  height: 308px;
-  left: 802px;
-  top: 2921px;
+  width: 541.92px;
+  height: 254.5px;
+  left: 32.21px;
+  top: 68.23px;
+}
+
+.manifestoGroup02 {
+  position: absolute;
+  width: 488.98px;
+  height: 292.26px;
+  left: 701.54px;
+  top: 66.43px;
+}
+
+.manifestoGroup03 {
+  position: absolute;
+  width: 488.98px;
+  height: 358.68px;
+  left: 29.21px;
+  top: 467.23px;
+}
+
+.manifestoGroup04 {
+  position: absolute;
+  width: 488.98px;
+  height: 292.26px;
+  left: 701.54px;
+  top: 494.38px;
+}
+
+.manifestoNumber {
+  position: absolute;
+  width: auto;
+  height: 37.43px;
+  left: 0px;
+  top: 0px;
+  font-family: var(--font-sora), sans-serif;
+  font-style: normal;
+  font-weight: 200;
+  font-size: 20px;
+  line-height: 35px;
+  display: flex;
+  align-items: flex-end;
+  color: #404040;
+  transition: color 0.5s ease;
+}
+
+.manifestoGroup03 .manifestoNumber,
+.manifestoGroup04 .manifestoNumber {
+  height: 33.21px;
+}
+
+.manifestoHeader {
+  position: absolute;
+  width: 444.08px;
+  height: auto;
+  left: 0px;
+  top: 40.8px;
+  font-family: var(--font-sora), sans-serif;
+  font-style: normal;
+  font-weight: 200;
+  font-size: 32px;
+  line-height: 35px;
+  color: #0D0D0D;
+  margin: 0;
+  transition: color 0.5s ease;
+}
+
+.manifestoGroup01 .manifestoHeader {
+  width: 457.87px;
+  top: 45.98px;
+}
+
+.manifestoGroup03 .manifestoHeader,
+.manifestoGroup04 .manifestoHeader {
+  width: 429.11px;
+}
+
+.purpleHighlight {
+  color: #5A69EA;
+  transition: color 0.5s ease;
+}
+
+.manifestoText {
+  position: absolute;
+  width: 485.99px;
+  height: auto;
+  left: 3px;
+  top: 126.2px;
+  font-family: var(--font-sora), sans-serif;
+  font-style: normal;
+  font-weight: 200;
+  font-size: 24px;
+  line-height: 35px;
+  color: #717171;
+  margin: 0;
+  transition: color 0.5s ease;
+}
+
+.manifestoGroup01 .manifestoText {
+  width: 538.6px;
+  left: 3.32px;
+  top: 104.79px;
+}
+
+.manifestoUnderline {
+  position: absolute;
+  width: 730px;
+  height: 2px;
+  left: calc(50% - 730px / 2);
+  top: 3600px;
 }
 
 .manifestoQuote {
@@ -346,7 +510,7 @@
   width: 1000px;
   height: 120px;
   left: calc(50% - 1000px / 2);
-  top: 3450px;
+  top: 3670px;
 }
 
 /* SECTION 4: HOW WE WORK */
@@ -354,25 +518,46 @@
   position: absolute;
   width: 1455px;
   height: 2541px;
-  left: -7.5px;
-  top: 4007px;
+  left: calc(50% - 1455px / 2 + 4.5px);
+  top: 4266px;
 }
 
 /* SECTION 5: CALL TO ACTION */
-.ctaBg {
+.ctaContainer {
+  box-sizing: border-box;
   position: absolute;
-  width: 1448px;
-  height: 364px;
-  left: -7px;
-  top: 6651px;
+  width: 1230px;
+  height: 240px;
+  left: calc(50% - 1230px / 2);
+  top: 6980px;
+  background: #FFFFFF;
+  border-radius: 24px;
+  border: 1px solid rgba(90, 105, 234, 0.12);
+  box-shadow:
+    0 20px 40px rgba(0, 0, 0, 0.04),
+    0 5px 15px rgba(0, 0, 0, 0.02),
+    inset 0 0 20px rgba(90, 105, 234, 0.08),
+    inset 0 0 40px rgba(191, 139, 202, 0.04);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.5s ease, border-color 0.5s ease, box-shadow 0.5s ease;
+  z-index: 2;
+}
+
+:global([data-theme="dark"]) .ctaContainer {
+  background: #22223a;
+  border-color: rgba(138, 111, 240, 0.25);
+  box-shadow:
+    0 20px 45px rgba(0, 0, 0, 0.45),
+    inset 0 0 25px rgba(138, 111, 240, 0.25),
+    inset 0 0 50px rgba(191, 139, 202, 0.08);
 }
 
 .ctaText {
-  position: absolute;
   width: 1040px;
   height: 90px;
-  left: calc(50% - 1040px / 2 - 7px);
-  top: 6788px;
+  display: block;
 }
 
 /* SECTION 6: CAPABILITIES */
@@ -381,15 +566,15 @@
   width: 612px;
   height: 218px;
   left: 131px;
-  top: 7178px;
+  top: 7437px;
 }
 
 .capabilityGrid {
   position: absolute;
   width: 1308px;
   height: 1069px;
-  left: calc(50% - 1308px / 2);
-  top: 7476px;
+  left: 63px;
+  top: 7735px;
 }
 
 /* SECTION 7: FOOTER & FORM OVERLAYS */
@@ -398,7 +583,7 @@
   width: 1346px;
   height: 282px;
   left: calc(50% - 1346px / 2 - 10px);
-  top: 8600px;
+  top: 8900px;
 }
 
 .footerSvg {
@@ -418,7 +603,7 @@
 }
 
 .footerSearchInput {
-  background: transparent;
+  background: #ECECEC;
   border: none;
   outline: none;
   width: 100%;
@@ -428,11 +613,36 @@
   font-size: 14px;
   color: #404040;
   border-radius: 20px;
+  box-shadow:
+    1px 1px 2px rgba(255, 255, 255, 0.3),
+    -1px -1px 2px rgba(208, 208, 208, 0.5),
+    inset -1px 1px 2px rgba(208, 208, 208, 0.2),
+    inset 1px -1px 2px rgba(208, 208, 208, 0.2),
+    inset -1px -1px 2px rgba(255, 255, 255, 0.9),
+    inset 1px 1px 3px rgba(208, 208, 208, 0.9);
+  transition: background 0.5s ease, box-shadow 0.5s ease, color 0.5s ease;
 }
 
 .footerSearchInput::placeholder {
   color: #717171;
   opacity: 0.7;
+}
+
+.copyrightBanner {
+  position: absolute;
+  left: 993px;
+  top: 242px;
+  width: 315px;
+  height: 20px;
+  font-family: var(--font-sora), sans-serif;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 20px;
+  color: #404040;
+  text-align: center;
+  transition: color 0.5s ease;
+  pointer-events: none;
 }
 
 .footerSearchSubmit {
@@ -645,11 +855,32 @@
 }
 
 :global([data-theme="dark"]) .footerSearchInput {
+  background: #1e1e34;
   color: #e8e8f0;
+  box-shadow:
+    inset 2px 2px 5px rgba(0, 0, 0, 0.5),
+    inset -2px -2px 4px rgba(50, 50, 80, 0.15),
+    inset 2px -2px 4px rgba(0, 0, 0, 0.15),
+    inset -2px 2px 4px rgba(0, 0, 0, 0.15),
+    -1px -1px 2px rgba(0, 0, 0, 0.3),
+    1px 1px 2px rgba(50, 50, 80, 0.1);
 }
 
 :global([data-theme="dark"]) .footerSearchInput::placeholder {
   color: #8080a0;
+}
+
+:global([data-theme="dark"]) .copyrightBanner {
+  color: #b0b0c8;
+}
+
+:global([data-theme="dark"]) .manifestoGridBox {
+  background: transparent;
+  border-color: rgba(136, 136, 168, 0.4);
+}
+
+:global([data-theme="dark"]) .manifestoGridCell {
+  border-color: rgba(136, 136, 168, 0.4) !important;
 }
 
 /* ==========================================================
@@ -717,4 +948,10 @@
 .contentAlignContainer svg rect,
 .contentAlignContainer svg line {
   transition: fill 0.5s ease, stroke 0.5s ease;
+}
+
+.contentAlignContainer svg {
+  width: 100%;
+  height: 100%;
+  display: block;
 }

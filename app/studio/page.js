@@ -297,12 +297,20 @@ export default function StudioPage() {
         <div className={styles.contentAlignContainer}>
           {/* ----- SECTION 1: HERO ----- */}
           <InlineSVG src="/studio/Studio.svg" className={styles.studioTitle} />
-          <InlineSVG src="/studio/What sets us apart.svg" className={styles.studioSubtitle} />
-          <InlineSVG src="/studio/studio_group.svg" className={styles.group43} />
+          <InlineSVG src="/studio/intelligence_before_interface.svg" className={styles.studioSubtitle} />
+          
+          <div className={styles.rectangle158} />
+          <InlineSVG src="/studio/who_we_are.svg" className={styles.whoWeAre} />
+          <InlineSVG src="/studio/we_are_not_an_agency.svg" className={styles.weAreNotAnAgency} />
+          
+          <InlineSVG src="/studio/image 78.svg" className={styles.heroImageRight} />
+          <InlineSVG src="/studio/image 77.svg" className={styles.heroImageLowerLeft} />
+          <InlineSVG src="/studio/Frame 142.svg" className={styles.frame142} />
 
           {/* ----- SECTION 2: WHAT IS SYSTEM STUDIO & HOW WE DIFFER ----- */}
-          <InlineSVG src="/studio/What is System Studio.svg" className={styles.whatIsTitle} />
-          <InlineSVG src="/studio/Where agencies end, we begin..svg" className={styles.whatIsSubtitle} />
+          <InlineSVG src="/studio/what_is_system_studio.svg" className={styles.whatIsTitle} />
+          <InlineSVG src="/studio/where_agencies_end.svg" className={styles.whatIsSubtitle} />
+          <InlineSVG src="/studio/Frame 144.svg" className={styles.manifestoColumnsCard} />
           <InlineSVG src="/studio/Frame 143.svg" className={styles.howWeDifferCard} />
 
           {/* ----- SECTION 3: THE MANIFESTO ----- */}
@@ -310,23 +318,30 @@ export default function StudioPage() {
           <InlineSVG src="/studio/The Manifesto.svg" className={styles.manifestoTitle} />
           <InlineSVG src="/studio/Four things we believe.svg" className={styles.manifestoSubtitle} />
           
-          <InlineSVG src="/studio/Group 50.svg" className={styles.manifestoCard1} />
-          <InlineSVG src="/studio/Group 51.svg" className={styles.manifestoCard2} />
-          <InlineSVG src="/studio/Group 52.svg" className={styles.manifestoCard3} />
-          <InlineSVG src="/studio/Group 53.svg" className={styles.manifestoCard4} />
+          <div className={styles.manifestoGridBox}>
+            <InlineSVG src="/studio/Rectangle 90.svg" className={styles.manifestoGridLineVert} />
+            <InlineSVG src="/studio/Rectangle 91.svg" className={styles.manifestoGridLineHoriz} />
+            
+            <InlineSVG src="/studio/Group 50.svg" className={styles.manifestoGroup01} />
+            <InlineSVG src="/studio/Group 51.svg" className={styles.manifestoGroup02} />
+            <InlineSVG src="/studio/Group 52.svg" className={styles.manifestoGroup03} />
+            <InlineSVG src="/studio/Group 53.svg" className={styles.manifestoGroup04} />
+          </div>
           
+          <InlineSVG src="/studio/Line 25.svg" className={styles.manifestoUnderline} />
           <InlineSVG src="/studio/Humans architect. AI executes. Data makes it true. That is what we build..svg" className={styles.manifestoQuote} />
 
           {/* ----- SECTION 4: HOW WE WORK ----- */}
-          <InlineSVG src="/studio/How we Work.svg" className={styles.howWeWorkSection} />
+          <InlineSVG src="/studio/how_we_work.svg" className={styles.howWeWorkSection} />
 
           {/* ----- SECTION 5: CALL TO ACTION BANNER ----- */}
-          <InlineSVG src="/studio/Rectangle 92.svg" className={styles.ctaBg} />
-          <InlineSVG src="/studio/_The first conversation costs nothing. The systems brief tells us both whether this is the right fit._.svg" className={styles.ctaText} />
+          <div className={styles.ctaContainer}>
+            <InlineSVG src={`/studio/_The first conversation costs nothing. The systems brief tells us both whether this is the right fit._.svg`} className={styles.ctaText} />
+          </div>
 
           {/* ----- SECTION 6: AI CAPABILITY AREAS ----- */}
           <InlineSVG src="/studio/Frame 78.svg" className={styles.capabilityHeader} />
-          <InlineSVG src="/studio/Frame 90.svg" className={styles.capabilityGrid} />
+          <InlineSVG src="/studio/Group 75.svg" className={styles.capabilityGrid} />
 
           {/* ----- SECTION 7: FOOTER ----- */}
           <div className={styles.footerWrapper}>
@@ -349,6 +364,11 @@ export default function StudioPage() {
                 aria-label="Submit email in footer"
               />
             </form>
+
+            {/* Copyright Banner rendered outside the input to avoid overlapping text */}
+            <div className={styles.copyrightBanner}>
+              @2026 Aeethod. All rights reserved.
+            </div>
           </div>
 
           {/* ===== 3D DRAGGABLE THEME SWITCH OVERLAY ===== */}
