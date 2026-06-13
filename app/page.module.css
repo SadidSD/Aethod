@@ -1345,6 +1345,38 @@
     -3px -3px 8px rgba(50, 50, 80, 0.1);
 }
 
+.crystalOrb {
+  width: 100%;
+  height: 100%;
+  display: block;
+  transform-origin: center;
+  animation: crystalRotate 15s linear infinite;
+}
+
+.crystalOrb :global(svg) {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+:global([data-theme="dark"]) .crystalOrb {
+  box-shadow:
+    0 0 40px rgba(155, 125, 255, 0.18),
+    0 0 80px rgba(139, 92, 246, 0.1),
+    4px 4px 12px rgba(0, 0, 0, 0.3),
+    -3px -3px 8px rgba(50, 50, 80, 0.1);
+}
+
+@keyframes crystalRotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+
 /* ----- Decorative Path / Settings Orb ----- */
 :global([data-theme="dark"]) .settingsOrb {
   background: #1a1a2e;

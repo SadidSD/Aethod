@@ -610,14 +610,18 @@ export default function Home() {
               <div className={styles.orbContainer}>
                 <div className={styles.orbGlow} />
                 <div className={styles.orbVideoMask}>
-                  <video
-                    className={styles.orbVideo}
-                    src="/orb1.mp4"
-                    autoPlay
-                    loop
-                    muted
-                    playsInline
-                  />
+                  {isDark ? (
+                    <InlineSVG src="/crystsl1.svg" className={styles.crystalOrb} />
+                  ) : (
+                    <video
+                      className={styles.orbVideo}
+                      src="/orb1.mp4"
+                      autoPlay
+                      loop
+                      muted
+                      playsInline
+                    />
+                  )}
                 </div>
                 {/* Shadow underneath */}
                 <div className={styles.orbShadow} />
