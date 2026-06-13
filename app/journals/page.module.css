@@ -24,40 +24,52 @@
   position: sticky;
   top: 0;
   z-index: 100;
-  padding: 16px 24px 0;
+  padding: 36px 24px 0;
 }
-
 .navbar {
   display: flex;
   align-items: center;
-  height: 62px;
-  padding: 0 10px 0 12px;
-  border-radius: 60px;
-  background: #DFDFDF;
+  justify-content: space-between;
+  height: 80px;
+  padding: 0 24px;
+  border-radius: 64px;
+  background: #ECECEC;
   box-shadow:
-    4px 4px 10px rgba(190, 190, 190, 0.9),
+    -4px 4px 8px rgba(201, 201, 201, 0.2),
+    4px -4px 8px rgba(201, 201, 201, 0.2),
     -4px -4px 8px rgba(255, 255, 255, 0.9),
-    4px -4px 8px rgba(190, 190, 190, 0.2),
-    -4px 4px 8px rgba(190, 190, 190, 0.2),
-    inset -1px -1px 2px rgba(190, 190, 190, 0.5),
-    inset 1px 1px 2px rgba(255, 255, 255, 0.3);
-  max-width: 1280px;
+    4px 4px 10px rgba(201, 201, 201, 0.9),
+    inset 1px 1px 2px rgba(255, 255, 255, 0.3),
+    inset -1px -1px 2px rgba(201, 201, 201, 0.5);
+  max-width: 1352px;
   margin: 0 auto;
   position: relative;
   overflow: hidden;
+  transition: all 0.5s ease;
 }
 
 .navContent {
   display: flex;
   align-items: center;
-  gap: 36px;
-  margin: 0 auto;
+  justify-content: space-between;
+  width: 100%;
 }
 
 .logo {
   display: flex;
   align-items: center;
   justify-content: center;
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  background: #ECECEC;
+  box-shadow:
+    -5px 5px 10px rgba(201, 201, 201, 0.2),
+    5px -5px 10px rgba(201, 201, 201, 0.2),
+    -5px -5px 10px rgba(255, 255, 255, 0.9),
+    5px 5px 13px rgba(201, 201, 201, 0.9),
+    inset 1px 1px 2px rgba(255, 255, 255, 0.3),
+    inset -1px -1px 2px rgba(201, 201, 201, 0.5);
   transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
   flex-shrink: 0;
 }
@@ -72,14 +84,14 @@
   display: block;
 }
 
-.logoImg :global(svg) {
+.logoImg svg {
   width: 100%;
   height: 100%;
   display: block;
 }
 
-.logoImg :global(svg) rect {
-  filter: invert(1);
+.logoImg svg rect {
+  filter: none;
 }
 
 .navLinks {
@@ -127,7 +139,11 @@
 }
 
 .activeNavLink {
-  color: #5A69EA !important;
+  background: radial-gradient(50% 50% at 50% 50%, #5A69EA 0%, #BF8BCA 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent !important;
   font-weight: 400 !important;
 }
 
@@ -136,30 +152,24 @@
   opacity: 1 !important;
 }
 
-.navCenter {
-  flex: 1;
-  display: flex;
-  justify-content: flex-end;
-  padding: 0 14px;
-}
-
 .searchBar {
   display: flex;
   align-items: center;
   gap: 12px;
   padding: 12px 20px;
-  background: #D7D7D5;
+  background: #ECECEC;
   border-radius: 20px;
   box-shadow:
-    inset 2px 2px 5px rgba(183, 183, 181, 0.9),
-    inset -2px -2px 4px rgba(247, 247, 245, 0.9),
-    inset 2px -2px 4px rgba(183, 183, 181, 0.2),
-    inset -2px 2px 4px rgba(183, 183, 181, 0.2),
+    1px 1px 2px rgba(247, 247, 245, 0.3),
     -1px -1px 2px rgba(183, 183, 181, 0.5),
-    1px 1px 2px rgba(247, 247, 245, 0.3);
-  min-width: 300px;
-  max-width: 420px;
+    inset -2px 2px 4px rgba(183, 183, 181, 0.2),
+    inset 2px -2px 4px rgba(183, 183, 181, 0.2),
+    inset -2px -2px 4px rgba(247, 247, 245, 0.9),
+    inset 2px 2px 5px rgba(183, 183, 181, 0.9);
+  min-width: 250px;
+  max-width: 320px;
   width: 100%;
+  transition: all 0.5s ease;
   border: none;
 }
 
@@ -177,15 +187,15 @@
   outline: none;
   width: 100%;
   letter-spacing: 0.02em;
-  font-weight: 400;
+  font-weight: 300;
 }
 
 .searchInput::placeholder {
-  background: linear-gradient(180deg, #5A69EA 0%, #BF8BCA 100%);
+  background: radial-gradient(50% 50% at 50% 50%, #5A69EA 0%, #BF8BCA 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  font-weight: 400;
+  font-weight: 300;
   opacity: 0.85;
 }
 
@@ -196,6 +206,17 @@
 }
 
 .contactBtn {
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  background: #ECECEC;
+  box-shadow:
+    -5px 5px 10px rgba(201, 201, 201, 0.2),
+    5px -5px 10px rgba(201, 201, 201, 0.2),
+    -5px -5px 10px rgba(255, 255, 255, 0.9),
+    5px 5px 13px rgba(201, 201, 201, 0.9),
+    inset 1px 1px 2px rgba(255, 255, 255, 0.3),
+    inset -1px -1px 2px rgba(201, 201, 201, 0.5);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -208,14 +229,24 @@
 }
 
 .contactBtnImg {
-  width: 44px;
-  height: 44px;
+  width: 20px;
+  height: 20px;
   display: block;
+}
+
+.contactBtnImg svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.contactBtnImg svg path {
+  stroke: #404040;
 }
 
 /* ---------- Main Layout Containers ---------- */
 .mainContainer {
-  margin-top: -78px;
+  margin-top: -80px;
   padding: 0 0 40px;
   position: relative;
   z-index: 1;
@@ -225,50 +256,122 @@
 .contentAlignContainer {
   position: relative;
   width: 1440px;
-  height: 4442px;
+  height: 1400px;
   margin: 0 auto;
 }
 
-.journalsSvg {
+.headerTitle {
   position: absolute;
-  width: 1440px;
-  height: 4442px;
-  left: 0;
-  top: 0;
-  z-index: 1;
+  width: 237px;
+  height: 90px;
+  left: 133px;
+  top: 157px;
 }
-
-.journalsSvg :global(svg) {
+.headerTitle :global(svg) {
   width: 100%;
   height: 100%;
   display: block;
-  border-radius: 50px;
 }
 
-/* Hide static toggle button parts in journals SVG */
-.journalsSvg :global(svg rect[x="1271" i]),
-.journalsSvg :global(svg rect[x="1275.59" i]),
-.journalsSvg :global(svg rect[x="1307.29" i]),
-.journalsSvg :global(svg rect[x="1311.04" i]) {
-  display: none !important;
+.filterSubNav {
+  position: absolute;
+  width: 1442px;
+  height: 85px;
+  left: 0px;
+  top: 281px;
+}
+.filterSubNav :global(svg) {
+  width: 100%;
+  height: 100%;
+  display: block;
 }
 
-/* Hide static navigation bar elements inside the SVG */
-.journalsSvg :global(svg rect[x="44" i][y="36" i]),
-.journalsSvg :global(svg circle[cx="106.5" i][cy="76.5" i]),
-.journalsSvg :global(svg rect[x="78.2188" i][y="49.2391" i]),
-.journalsSvg :global(svg path[d^="M184.96" i]),
-.journalsSvg :global(svg path[d^="M280.96" i]),
-.journalsSvg :global(svg path[d^="M379.28" i]),
-.journalsSvg :global(svg path[d^="M501.4" i]),
-.journalsSvg :global(svg path[d^="M623.76" i]),
-.journalsSvg :global(svg circle[cx="1333.5" i][cy="76.5" i]),
-.journalsSvg :global(svg path[d^="M1335.54" i]),
-.journalsSvg :global(svg rect[x="790" i][y="50" i]),
-.journalsSvg :global(svg path[d^="M837.5" i]),
-.journalsSvg :global(svg path[d^="M851.528" i]),
-.journalsSvg :global(svg rect[transform="translate(1323 67)" i]) {
-  display: none !important;
+.line39 {
+  position: absolute;
+  left: 181px;
+  top: 281px;
+  width: 1px;
+  height: 85px;
+  z-index: 2;
+}
+.line41 {
+  position: absolute;
+  left: 536px;
+  top: 281px;
+  width: 1px;
+  height: 85px;
+  z-index: 2;
+}
+.line40 {
+  position: absolute;
+  left: 662px;
+  top: 281px;
+  width: 1px;
+  height: 85px;
+  z-index: 2;
+}
+.line39 :global(svg),
+.line40 :global(svg),
+.line41 :global(svg) {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.rowCards1 {
+  position: absolute;
+  width: 1300px;
+  height: 300px;
+  left: 69px;
+  top: 406px;
+}
+.rowCards1 :global(svg) {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.rowCards2 {
+  position: absolute;
+  width: 1300px;
+  height: 300px;
+  left: 73px;
+  top: 720px;
+}
+.rowCards2 :global(svg) {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.sideIndicator {
+  position: absolute;
+  width: 10px;
+  height: 50px;
+  left: 1412px;
+  top: 475px;
+}
+.sideIndicator :global(svg) {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.footerWrapper {
+  position: absolute;
+  width: 1346px;
+  height: 282px;
+  left: calc(50% - 1346px / 2);
+  top: 1095px;
+}
+.footerSvg {
+  width: 100%;
+  height: 100%;
+}
+.footerSvg :global(svg) {
+  width: 100%;
+  height: 100%;
+  display: block;
 }
 
 /* ===== Slide Toggle Button (Neumorphic 3D) ===== */
@@ -371,47 +474,13 @@
     border-color 0.15s ease-out;
 }
 
-/* ---------- Category Sidebar Hover Trigger Overlays ---------- */
-.sidebarTriggers {
-  position: absolute;
-  left: 824px;
-  top: 451px;
-  width: 487px;
-  height: 220px;
-  z-index: 5;
-  display: flex;
-  flex-direction: column;
-}
 
-.sidebarTrigger {
-  width: 487px;
-  height: 55px;
-  cursor: pointer;
-  transition: background-color 0.15s ease, border-radius 0.15s ease;
-  border-radius: 0;
-  box-sizing: border-box;
-}
-
-.sidebarTrigger:first-child {
-  border-top-left-radius: 8px;
-  border-top-right-radius: 8px;
-}
-
-.sidebarTrigger:last-child {
-  border-bottom-left-radius: 8px;
-  border-bottom-right-radius: 8px;
-  border-bottom: none;
-}
-
-.sidebarTrigger:hover {
-  background-color: rgba(90, 105, 234, 0.06);
-}
 
 /* ---------- Filter Bar Flex Overlays ---------- */
 .filterBarOverlay {
   position: absolute;
   left: 0px;
-  top: 873px;
+  top: 281px;
   width: 1440px;
   height: 85px;
   z-index: 5;
@@ -419,7 +488,7 @@
   align-items: center;
   padding: 10px 50px;
   gap: 15px;
-  pointer-events: none; /* Let clicks pass through default spaces */
+  pointer-events: none;
 }
 
 .filterLabelPlaceholder {
@@ -427,45 +496,47 @@
   height: 70px;
 }
 
-.filterButtonsContainer {
+.filterButtonsOverlay {
+  position: absolute;
+  left: 631px;
+  top: 0;
+  height: 85px;
   display: flex;
   align-items: center;
-  gap: 17px;
-  width: 803px;
-  height: 60px;
-  pointer-events: auto; /* Re-enable clicks for buttons */
+  gap: 30px;
+  z-index: 5;
+  pointer-events: auto;
 }
 
 .filterButton {
-  height: 38px;
   background: transparent;
   border: none;
+  height: 40px;
   cursor: pointer;
-  transition: background-color 0.15s ease, border-radius 0.15s ease;
-  border-radius: 15px;
+  border-radius: 10px;
+  transition: background-color 0.2s ease;
 }
 
 .filterButton:hover {
   background-color: rgba(90, 105, 234, 0.08);
 }
 
-/* Specific widths matching user request */
-.filterButtonsContainer button:nth-child(1) { width: 49px; }   /* All */
-.filterButtonsContainer button:nth-child(2) { width: 90px; }   /* System */
-.filterButtonsContainer button:nth-child(3) { width: 144px; }  /* AI + Business */
-.filterButtonsContainer button:nth-child(4) { width: 95px; }   /* Research */
-.filterButtonsContainer button:nth-child(5) { width: 123px; }  /* Case Studies */
-.filterButtonsContainer button:nth-child(6) { width: 114px; }  /* Framework */
-.filterButtonsContainer button:nth-child(7) { width: 139px; }  /* Thought Essays */
+.filterButton:nth-child(1) { width: 111px; } /* Websites */
+.filterButton:nth-child(2) { width: 111px; } /* Ui & Ux */
+.filterButton:nth-child(3) { width: 165px; } /* Case Studies */
+.filterButton:nth-child(4) { width: 49px; }  /* Ai */
+.filterButton:nth-child(5) { width: 93px; }  /* Others */
 
 .filterSearchBox {
-  width: 371px;
+  position: absolute;
+  left: 152px;
+  top: 15px;
+  width: 321px;
   height: 55px;
-  margin-left: auto;
+  z-index: 5;
   display: flex;
   align-items: center;
-  justify-content: flex-start;
-  padding: 0 70px 0 35px; /* Offset to align with SVG text area */
+  padding: 0 45px 0 20px;
   pointer-events: auto;
 }
 
@@ -474,9 +545,9 @@
   border: none;
   outline: none;
   width: 100%;
-  height: 30px;
-  font-family: 'Sora', sans-serif;
-  font-size: 13px;
+  height: 100%;
+  font-family: var(--font-sora), sans-serif;
+  font-size: 13.5px;
   font-weight: 300;
   color: #5A69EA;
 }
@@ -484,8 +555,8 @@
 /* ---------- Read Essay Button Overlays ---------- */
 .readEssayBtn {
   position: absolute;
-  width: 129.25px;
-  height: 39px;
+  width: 99px;
+  height: 44px;
   z-index: 5;
   background: transparent;
   border: none;
@@ -508,68 +579,24 @@
 }
 
 .readEssayText {
-  display: none; /* Kept invisible as SVG text already displays it, just serving as interactive clickable trigger */
+  display: none;
 }
 
-/* Absolute offsets for CTAs matching Figma export coordinates */
-.btnEssay1 { left: 375px; top: 1502px; }
-.btnEssay2 { left: 375px; top: 2129px; }
-.btnEssay3 { left: 1059px; top: 2069px; }
-.btnEssay4 { left: 395px; top: 2667px; }
-.btnEssay5 { left: 1068px; top: 2688px; }
-.btnEssay6 { left: 395px; top: 3360px; }
-
-/* ---------- Interactive Newsletter Overlays ---------- */
-.newsletterForm {
-  position: absolute;
-  left: 729px;
-  top: 3804px;
-  width: 537.5px; /* Combined width of input (332) + gap + submit (192) */
-  height: 62px;
-  z-index: 5;
-  display: flex;
-  align-items: center;
-  gap: 13.5px;
-}
-
-.newsletterInput {
-  width: 332px;
-  height: 62px;
-  background: transparent;
-  border: none;
-  outline: none;
-  border-radius: 20px;
-  padding: 0 24px;
-  font-family: 'Sora', sans-serif;
-  font-size: 16px;
-  font-weight: 300;
-  color: #404040;
-}
-
-.newsletterInput::placeholder {
-  color: #a0a0a0;
-  opacity: 0; /* SVG already has placeholder drawn, so we hide it and show it on focus if empty */
-}
-
-.newsletterSubmit {
-  width: 192px;
-  height: 60px;
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  border-radius: 20px;
-  transition: background-color 0.2s ease;
-}
-
-.newsletterSubmit:hover {
-  background-color: rgba(90, 105, 234, 0.08);
-}
+/* Absolute offsets for Check buttons matching Figma export coordinates */
+.btnEssay1 { left: 276px; top: 655px; }
+.btnEssay2 { left: 606px; top: 655px; }
+.btnEssay3 { left: 936px; top: 655px; }
+.btnEssay4 { left: 1266px; top: 655px; }
+.btnEssay5 { left: 280px; top: 969px; }
+.btnEssay6 { left: 610px; top: 969px; }
+.btnEssay7 { left: 940px; top: 969px; }
+.btnEssay8 { left: 1270px; top: 969px; }
 
 /* ---------- Interactive Footer Search Overlays ---------- */
 .footerSearchForm {
   position: absolute;
-  left: 1029px;
-  top: 4317px;
+  left: 982px;
+  top: 192px;
   width: 333px;
   height: 40px;
   z-index: 5;
@@ -578,17 +605,41 @@
 }
 
 .footerSearchInput {
-  width: 100%;
-  height: 40px;
-  background: transparent;
+  background: #ECECEC;
   border: none;
   outline: none;
-  border-radius: 20px;
-  padding: 0 16px;
-  font-family: 'Sora', sans-serif;
-  font-size: 13px;
-  font-weight: 300;
+  width: 100%;
+  height: 100%;
+  padding: 0 50px 0 20px;
+  font-family: var(--font-sora), sans-serif;
+  font-size: 14px;
   color: #404040;
+  border-radius: 20px;
+  box-shadow:
+    1px 1px 2px rgba(255, 255, 255, 0.3),
+    -1px -1px 2px rgba(208, 208, 208, 0.5),
+    inset -1px 1px 2px rgba(208, 208, 208, 0.2),
+    inset 1px -1px 2px rgba(208, 208, 208, 0.2),
+    inset -1px -1px 2px rgba(255, 255, 255, 0.9),
+    inset 1px 1px 3px rgba(208, 208, 208, 0.9);
+  transition: background 0.5s ease, box-shadow 0.5s ease, color 0.5s ease;
+}
+
+.copyrightBanner {
+  position: absolute;
+  left: 993px;
+  top: 242px;
+  width: 315px;
+  height: 20px;
+  font-family: var(--font-sora), sans-serif;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 20px;
+  color: #404040;
+  text-align: center;
+  transition: color 0.5s ease;
+  pointer-events: none;
 }
 
 .footerSearchSubmit {
@@ -711,83 +762,41 @@
   transition: color 0.15s ease;
 }
 
-:global([data-theme="dark"]) .newsletterInput,
-:global([data-theme="dark"]) .footerSearchInput {
+:global([data-theme="dark"]) .newsletterInput {
   color: #e8e8f0;
 }
 
+:global([data-theme="dark"]) .footerSearchInput {
+  background: #22223a;
+  color: #e8e8f0;
+  box-shadow:
+    1px 1px 2px rgba(60, 60, 90, 0.12),
+    -1px -1px 2px rgba(0, 0, 0, 0.35),
+    inset -1px 1px 2px rgba(0, 0, 0, 0.2),
+    inset 1px -1px 2px rgba(0, 0, 0, 0.2),
+    inset -1px -1px 2px rgba(60, 60, 90, 0.15),
+    inset 1px 1px 3px rgba(0, 0, 0, 0.4);
+}
+
+:global([data-theme="dark"]) .copyrightBanner {
+  color: #b0b0c8;
+}
+
 /* SVG Vector color inversion for Neumorphic Dark mode */
-:global([data-theme="dark"]) .journalsSvg :global(svg *) {
-  filter: none !important;
+:global([data-theme="dark"]) .headerTitle :global(svg),
+:global([data-theme="dark"]) .filterSubNav :global(svg),
+:global([data-theme="dark"]) .rowCards1 :global(svg),
+:global([data-theme="dark"]) .rowCards2 :global(svg),
+:global([data-theme="dark"]) .line39 :global(svg),
+:global([data-theme="dark"]) .line40 :global(svg),
+:global([data-theme="dark"]) .line41 :global(svg),
+:global([data-theme="dark"]) .sideIndicator :global(svg),
+:global([data-theme="dark"]) .footerSvg :global(svg) {
+  filter: invert(0.85) hue-rotate(180deg);
 }
 
-:global([data-theme="dark"]) .journalsSvg :global(svg rect[width="1440" i][height="4442" i]) {
-  fill: #1a1a2e !important;
-}
-
-:global([data-theme="dark"]) .journalsSvg :global(svg circle[fill="#D7D7D5" i]),
-:global([data-theme="dark"]) .journalsSvg :global(svg rect[fill="#D7D7D5" i]) {
-  fill: #1e1e34 !important;
-}
-
-:global([data-theme="dark"]) .journalsSvg :global(svg rect[fill="#DFDFDF" i]) {
-  fill: #22223a !important;
-}
-
-:global([data-theme="dark"]) .journalsSvg :global(svg rect[fill="#B2CEFE" i]) {
-  fill: #4a5a8a !important;
-}
-
-:global([data-theme="dark"]) .journalsSvg :global(svg rect[stroke="#717171" i]),
-:global([data-theme="dark"]) .journalsSvg :global(svg border[stroke="#717171" i]),
-:global([data-theme="dark"]) .journalsSvg :global(svg path[stroke="#717171" i]) {
-  stroke: #505070 !important;
-}
-
-:global([data-theme="dark"]) .journalsSvg :global(svg rect[fill="white" i]:not(mask rect)),
-:global([data-theme="dark"]) .journalsSvg :global(svg rect[fill="#FFFFFF" i]:not(mask rect)),
-:global([data-theme="dark"]) .journalsSvg :global(svg path[fill="white" i]:not(mask path)),
-:global([data-theme="dark"]) .journalsSvg :global(svg path[fill="#FFFFFF" i]:not(mask path)) {
-  fill: #22223a !important;
-}
-
-:global([data-theme="dark"]) .journalsSvg :global(svg path[fill="#0D0D0D" i]),
-:global([data-theme="dark"]) .journalsSvg :global(svg path[fill="#000000" i]) {
-  fill: #e8e8f0 !important;
-}
-
-:global([data-theme="dark"]) .journalsSvg :global(svg path[fill="#404040" i]) {
-  fill: #b0b0c8 !important;
-}
-
-:global([data-theme="dark"]) .journalsSvg :global(svg path[fill="#717171" i]) {
-  fill: #505070 !important;
-}
-
-:global([data-theme="dark"]) .journalsSvg :global(svg path[fill="#34C759" i]) {
-  fill: #30d158 !important;
-}
-
-:global([data-theme="dark"]) .journalsSvg :global(svg path[fill="#6155F5" i]) {
-  fill: #5e5ce6 !important;
-}
-
-:global([data-theme="dark"]) .journalsSvg :global(svg path[fill="#AC7F5E" i]) {
-  fill: #bf5af2 !important;
-}
-
-:global([data-theme="dark"]) .journalsSvg :global(svg stop[stop-color="#FEFDFB" i]) {
-  stop-color: #22223a !important;
-}
-
-:global([data-theme="dark"]) .journalsSvg :global(svg stop[stop-color="#E6E5E3" i]) {
-  stop-color: #1e1e34 !important;
-}
-
-:global([data-theme="dark"]) .journalsSvg :global(svg stop[stop-color="#EAEAEA" i]) {
-  stop-color: #1e1e34 !important;
-}
-
-:global([data-theme="dark"]) .journalsSvg :global(svg stop[stop-color="#D4D4D4" i]) {
-  stop-color: #1a1a2e !important;
+/* Restore screenshot colors inside the inverted cards */
+:global([data-theme="dark"]) .rowCards1 :global(svg image),
+:global([data-theme="dark"]) .rowCards2 :global(svg image) {
+  filter: invert(1) hue-rotate(180deg) !important;
 }

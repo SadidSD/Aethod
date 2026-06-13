@@ -267,16 +267,18 @@ export default function StudioPage() {
       <div className={styles.navOuter}>
         <nav className={styles.navbar} id="navbar">
           <div className={styles.navContent}>
+            {/* Circular Logo */}
             <a href="/" className={styles.logo} aria-label="Aeethod Home">
               <InlineSVG src="/logo.svg" className={styles.logoImg} />
             </a>
 
+            {/* Navigation Links */}
             <div className={styles.navLinks}>
               <a href="/studio" className={`${styles.navLink} ${styles.activeNavLink}`}>
                 Studio
               </a>
-              <a href="/#system" className={styles.navLink}>
-                System
+              <a href="/services" className={styles.navLink}>
+                Services
               </a>
               <a href="/research" className={styles.navLink}>
                 Research
@@ -285,7 +287,31 @@ export default function StudioPage() {
                 Products
               </a>
               <a href="/journals" className={styles.navLink}>
-                Journals
+                Works
+              </a>
+              <a href="#" className={styles.navLink} onClick={() => alert("Vlog coming soon")}>
+                Vlog
+              </a>
+            </div>
+
+            {/* Ask Smith Search Input */}
+            <div className={styles.searchBar}>
+              <svg className={styles.searchIcon} width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <circle cx="11" cy="11" r="8" />
+                <line x1="21" y1="21" x2="16.65" y2="16.65" />
+              </svg>
+              <input
+                className={styles.searchInput}
+                type="text"
+                placeholder="Ask Smith about your query"
+                aria-label="Ask Smith search query"
+              />
+            </div>
+
+            {/* Contact Phone Call Circular Button */}
+            <div className={styles.navRight}>
+              <a href="/#contact" className={styles.contactBtn} aria-label="Contact Aeethod" onClick={playClickSound}>
+                <InlineSVG src="/contract.svg" className={styles.contactBtnImg} />
               </a>
             </div>
           </div>

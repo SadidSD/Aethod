@@ -42,8 +42,7 @@ export default function JournalsPage() {
   const slideFoleyBufferRef = useRef(null);
   const audioContextRef = useRef(null);
 
-  // Email state for newsletter subscription
-  const [newsletterEmail, setNewsletterEmail] = useState("");
+  // Email state for footer newsletter subscription
   const [footerEmail, setFooterEmail] = useState("");
   
   // Pre-load and decode audio files for zero-latency, high-quality audio processing
@@ -251,14 +250,12 @@ export default function JournalsPage() {
         transition: "transform 0.4s cubic-bezier(0.85, 0.05, 0.18, 1.35)",
       };
 
-  const handleSubscribe = (e, emailType) => {
+  const handleSubscribe = (e) => {
     e.preventDefault();
     playClickSound();
-    const email = emailType === "newsletter" ? newsletterEmail : footerEmail;
-    if (email) {
-      alert(`Thank you for subscribing with: ${email}`);
-      if (emailType === "newsletter") setNewsletterEmail("");
-      else setFooterEmail("");
+    if (footerEmail) {
+      alert(`Thank you for subscribing with: ${footerEmail}`);
+      setFooterEmail("");
     } else {
       alert("Please enter a valid email address.");
     }
@@ -274,9 +271,9 @@ export default function JournalsPage() {
     console.log(`Active filter selected: ${filterName}`);
   };
 
-  const handleSidebarClick = (categoryName) => {
+  const handleSocialClick = (socialName) => {
     playClickSound();
-    console.log(`Sidebar category selected: ${categoryName}`);
+    alert(`Navigating to Aeethod ${socialName}...`);
   };
 
   return (
@@ -285,16 +282,18 @@ export default function JournalsPage() {
       <div className={styles.navOuter}>
         <nav className={styles.navbar} id="navbar">
           <div className={styles.navContent}>
+            {/* Circular Logo */}
             <a href="/" className={styles.logo} aria-label="Aeethod Home">
               <InlineSVG src="/logo.svg" className={styles.logoImg} />
             </a>
 
+            {/* Navigation Links */}
             <div className={styles.navLinks}>
               <a href="/studio" className={styles.navLink}>
                 Studio
               </a>
-              <a href="/#system" className={styles.navLink}>
-                System
+              <a href="/services" className={styles.navLink}>
+                Services
               </a>
               <a href="/research" className={styles.navLink}>
                 Research
@@ -303,7 +302,31 @@ export default function JournalsPage() {
                 Products
               </a>
               <a href="/journals" className={`${styles.navLink} ${styles.activeNavLink}`}>
-                Journals
+                Works
+              </a>
+              <a href="#" className={styles.navLink} onClick={() => alert("Vlog coming soon")}>
+                Vlog
+              </a>
+            </div>
+
+            {/* Ask Smith Search Input */}
+            <div className={styles.searchBar}>
+              <svg className={styles.searchIcon} width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <circle cx="11" cy="11" r="8" />
+                <line x1="21" y1="21" x2="16.65" y2="16.65" />
+              </svg>
+              <input
+                className={styles.searchInput}
+                type="text"
+                placeholder="Ask Smith about your query"
+                aria-label="Ask Smith search query"
+              />
+            </div>
+
+            {/* Contact Phone Call Circular Button */}
+            <div className={styles.navRight}>
+              <a href="/#contact" className={styles.contactBtn} aria-label="Contact Aeethod" onClick={playClickSound}>
+                <InlineSVG src="/contract.svg" className={styles.contactBtnImg} />
               </a>
             </div>
           </div>
@@ -313,8 +336,25 @@ export default function JournalsPage() {
       {/* ===== MAIN CONTENT ===== */}
       <main className={styles.mainContainer}>
         <div className={styles.contentAlignContainer}>
-          {/* Main Journals Mockup SVG */}
-          <InlineSVG src="/journals.svg" className={styles.journalsSvg} />
+          {/* Header section (Works) */}
+          <InlineSVG src="/works/Frame 91.svg" className={styles.headerTitle} />
+
+          {/* Vertical line dividers */}
+          <InlineSVG src="/works/Line 39.svg" className={styles.line39} />
+          <InlineSVG src="/works/Line 41.svg" className={styles.line41} />
+          <InlineSVG src="/works/Line 40.svg" className={styles.line40} />
+
+          {/* Explore filter bar */}
+          <InlineSVG src="/works/Frame 135.svg" className={styles.filterSubNav} />
+
+          {/* Row 1 cards */}
+          <InlineSVG src="/works/Frame 193.svg" className={styles.rowCards1} />
+
+          {/* Row 2 cards */}
+          <InlineSVG src="/works/Frame 192.svg" className={styles.rowCards2} />
+
+          {/* Side Indicator */}
+          <InlineSVG src="/works/Side Indicator.svg" className={styles.sideIndicator} />
 
           {/* ===== 3D DRAGGABLE THEME SWITCH OVERLAY ===== */}
           <div className={styles.slideButton} id="theme-toggle">
@@ -338,53 +378,19 @@ export default function JournalsPage() {
             </div>
           </div>
 
-          {/* ===== INTERACTIVE SIDEBAR CATEGORY LIST OVERLAYS ===== */}
-          <div className={styles.sidebarTriggers}>
-            <div
-              className={styles.sidebarTrigger}
-              onClick={() => handleSidebarClick("System Breakdowns")}
-              title="System Breakdowns"
-            />
-            <div
-              className={styles.sidebarTrigger}
-              onClick={() => handleSidebarClick("AI + Business Thinking")}
-              title="AI + Business Thinking"
-            />
-            <div
-              className={styles.sidebarTrigger}
-              onClick={() => handleSidebarClick("Case Studies")}
-              title="Case Studies"
-            />
-            <div
-              className={styles.sidebarTrigger}
-              onClick={() => handleSidebarClick("Thought Essays")}
-              title="Thought Essays"
-            />
-          </div>
-
           {/* ===== INTERACTIVE FILTER PILLS FLEX OVERLAY ===== */}
           <div className={styles.filterBarOverlay}>
             <div className={styles.filterLabelPlaceholder} />
-            <div className={styles.filterButtonsContainer}>
+            <div className={styles.filterButtonsOverlay}>
               <button
                 className={styles.filterButton}
-                onClick={() => handleFilterClick("All")}
-                aria-label="Filter All"
+                onClick={() => handleFilterClick("Websites")}
+                aria-label="Filter Websites"
               />
               <button
                 className={styles.filterButton}
-                onClick={() => handleFilterClick("System")}
-                aria-label="Filter System"
-              />
-              <button
-                className={styles.filterButton}
-                onClick={() => handleFilterClick("AI + Business")}
-                aria-label="Filter AI + Business"
-              />
-              <button
-                className={styles.filterButton}
-                onClick={() => handleFilterClick("Research")}
-                aria-label="Filter Research"
+                onClick={() => handleFilterClick("Ui & Ux")}
+                aria-label="Filter Ui & Ux"
               />
               <button
                 className={styles.filterButton}
@@ -393,13 +399,13 @@ export default function JournalsPage() {
               />
               <button
                 className={styles.filterButton}
-                onClick={() => handleFilterClick("Framework")}
-                aria-label="Filter Framework"
+                onClick={() => handleFilterClick("Ai")}
+                aria-label="Filter Ai"
               />
               <button
                 className={styles.filterButton}
-                onClick={() => handleFilterClick("Thought Essays")}
-                aria-label="Filter Thought Essays"
+                onClick={() => handleFilterClick("Others")}
+                aria-label="Filter Others"
               />
             </div>
             <div className={styles.filterSearchBox}>
@@ -412,102 +418,116 @@ export default function JournalsPage() {
             </div>
           </div>
 
-          {/* ===== INTERACTIVE READ ESSAY BUTTON OVERLAYS ===== */}
-          {/* Card 1: The Clarity Gap */}
+          {/* ===== INTERACTIVE CHECK BUTTON OVERLAYS ===== */}
+          {/* Row 1 check buttons */}
           <button
             className={`${styles.readEssayBtn} ${styles.btnEssay1}`}
-            onClick={() => handleEssayClick("The Clarity Gap")}
-            aria-label="Read The Clarity Gap"
-          >
-            <span className={styles.readEssayText}>Read essay</span>
-          </button>
-
-          {/* Card 2: Designing for Uncertainty */}
+            onClick={() => handleEssayClick("Hasib (UI)")}
+            aria-label="Check Hasib UI"
+          />
           <button
             className={`${styles.readEssayBtn} ${styles.btnEssay2}`}
-            onClick={() => handleEssayClick("Designing for Uncertainty")}
-            aria-label="Read Designing for Uncertainty"
-          >
-            <span className={styles.readEssayText}>Read essay</span>
-          </button>
-
-          {/* Card 3: Inside TCG pricing */}
+            onClick={() => handleEssayClick("Sadid (AI)")}
+            aria-label="Check Sadid AI"
+          />
           <button
             className={`${styles.readEssayBtn} ${styles.btnEssay3}`}
-            onClick={() => handleEssayClick("Inside TCG pricing")}
-            aria-label="Read Inside TCG pricing"
-          >
-            <span className={styles.readEssayText}>Read essay</span>
-          </button>
-
-          {/* Card 4: What AI cannot do */}
+            onClick={() => handleEssayClick("Maruf (Website)")}
+            aria-label="Check Maruf Website"
+          />
           <button
             className={`${styles.readEssayBtn} ${styles.btnEssay4}`}
-            onClick={() => handleEssayClick("What AI cannot do")}
-            aria-label="Read What AI cannot do"
-          >
-            <span className={styles.readEssayText}>Read essay</span>
-          </button>
+            onClick={() => handleEssayClick("Modi (UX)")}
+            aria-label="Check Modi UX"
+          />
 
-          {/* Card 5: Process orchestration vs. automation */}
+          {/* Row 2 check buttons */}
           <button
             className={`${styles.readEssayBtn} ${styles.btnEssay5}`}
-            onClick={() => handleEssayClick("Process orchestration vs. automation")}
-            aria-label="Read Process orchestration vs. automation"
-          >
-            <span className={styles.readEssayText}>Read essay</span>
-          </button>
-
-          {/* Card 6: Decision support that actually works */}
+            onClick={() => handleEssayClick("Sadid (AI) Row 2")}
+            aria-label="Check Sadid AI Row 2"
+          />
           <button
             className={`${styles.readEssayBtn} ${styles.btnEssay6}`}
-            onClick={() => handleEssayClick("Decision support that actually works")}
-            aria-label="Read Decision support that actually works"
-          >
-            <span className={styles.readEssayText}>Read essay</span>
-          </button>
+            onClick={() => handleEssayClick("Modi (UX) Row 2")}
+            aria-label="Check Modi UX Row 2"
+          />
+          <button
+            className={`${styles.readEssayBtn} ${styles.btnEssay7}`}
+            onClick={() => handleEssayClick("Hasib (UI) Row 2")}
+            aria-label="Check Hasib UI Row 2"
+          />
+          <button
+            className={`${styles.readEssayBtn} ${styles.btnEssay8}`}
+            onClick={() => handleEssayClick("Maruf (Website) Row 2")}
+            aria-label="Check Maruf Website Row 2"
+          />
 
-          {/* ===== INTERACTIVE NEWSLETTER FORM OVERLAYS ===== */}
-          <form
-            onSubmit={(e) => handleSubscribe(e, "newsletter")}
-            className={styles.newsletterForm}
-          >
-            <input
-              className={styles.newsletterInput}
-              type="email"
-              placeholder="you@gmail.com"
-              value={newsletterEmail}
-              onChange={(e) => setNewsletterEmail(e.target.value)}
-              required
-              aria-label="Email address for newsletter"
-            />
-            <button
-              className={styles.newsletterSubmit}
-              type="submit"
-              aria-label="Subscribe to newsletter"
-            />
-          </form>
+          {/* ===== SECTION 4: FOOTER ===== */}
+          <div className={styles.footerWrapper}>
+            <InlineSVG src="/works/Footer.svg" className={styles.footerSvg} />
 
-          {/* ===== INTERACTIVE FOOTER SEARCH FORM OVERLAY ===== */}
-          <form
-            onSubmit={(e) => handleSubscribe(e, "footer")}
-            className={styles.footerSearchForm}
-          >
-            <input
-              className={styles.footerSearchInput}
-              type="email"
-              placeholder="you@gmail.com"
-              value={footerEmail}
-              onChange={(e) => setFooterEmail(e.target.value)}
-              required
-              aria-label="Email address in footer"
-            />
-            <button
-              className={styles.footerSearchSubmit}
-              type="submit"
-              aria-label="Submit email in footer"
-            />
-          </form>
+            {/* Social media tiles (Frame 67) */}
+            <div className={styles.socialsGroup}>
+              <button 
+                className={styles.socialTile} 
+                onClick={() => handleSocialClick("LinkedIn")}
+                aria-label="LinkedIn"
+              >
+                <svg className={styles.socialIcon} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+                  <rect x="2" y="9" width="4" height="12" />
+                  <circle cx="4" cy="4" r="2" />
+                </svg>
+              </button>
+
+              <button 
+                className={styles.socialTile} 
+                onClick={() => handleSocialClick("Instagram")}
+                aria-label="Instagram"
+              >
+                <svg className={styles.socialIcon} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+                  <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+                  <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+                </svg>
+              </button>
+
+              <button 
+                className={styles.socialTile} 
+                onClick={() => handleSocialClick("YouTube")}
+                aria-label="YouTube"
+              >
+                <svg className={styles.socialIcon} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z" />
+                  <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02" fill="currentColor" />
+                </svg>
+              </button>
+            </div>
+
+            {/* Interactive Email Subscription Overlay on the Footer's email box */}
+            <form onSubmit={handleSubscribe} className={styles.footerSearchForm}>
+              <input
+                className={styles.footerSearchInput}
+                type="email"
+                placeholder="you@gmail.com"
+                value={footerEmail}
+                onChange={(e) => setFooterEmail(e.target.value)}
+                required
+                aria-label="Email address in footer"
+              />
+              <button
+                className={styles.footerSearchSubmit}
+                type="submit"
+                aria-label="Submit email in footer"
+              />
+            </form>
+
+            {/* Copyright Banner rendered outside the input to avoid overlapping text */}
+            <div className={styles.copyrightBanner}>
+              @2026 Aeethod. All rights reserved.
+            </div>
+          </div>
         </div>
       </main>
     </div>

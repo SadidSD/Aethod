@@ -1,0 +1,210 @@
+<USER_REQUEST>
+replace the studio page with this file i exported from figma...in aeethod(10).zip and here is the full code /* Rectangle 158 */
+
+box-sizing: border-box;
+
+position: absolute;
+width: 500px;
+height: 366px;
+left: 119px;
+top: 418px;
+
+background: #ECECEC;
+border: 2px solid rgba(113, 113, 113, 0.5);
+border-radius: 10px;
+
+
+/* Footer */
+
+position: absolute;
+width: 1346px;
+height: 282px;
+left: calc(50% - 1346px/2 - 10px);
+bottom: 38px;
+
+
+
+/* Rectangle 48 */
+
+position: absolute;
+width: 1346px;
+height: 282px;
+left: 0px;
+top: 0px;
+
+background: #ECECEC;
+box-shadow: -5px 5px 10px rgba(189, 189, 189, 0.2), 5px -5px 10px rgba(189, 189, 189, 0.2), -5px -5px 10px rgba(255, 255, 255, 0.9), 5px 5px 13px rgba(189, 189, 189, 0.9), inset 1px 1px 2px rgba(255, 255, 255, 0.3), inset -1px -1px 2px rgba(189, 189, 189, 0.5);
+border-radius: 45px;
+
+
+/* Rectangle 53 */
+
+position: absolute;
+width: 333px;
+height: 40px;
+left: 982px;
+top: 192px;
+
+background: #ECECEC;
+box-shadow: 1px 1px 2px rgba(255, 255, 255, 0.3), -1px -1px 2px rgba(208, 208, 208, 0.5), inset -1px 1px 2px rgba(208, 208, 208, 0.2), inset 1px -1px 2px rgba(208, 208, 208, 0.2), inset -1px -1px 2px rgba(255, 255, 255, 0.9), inset 1px 1px 3px rgba(208, 208, 208, 0.9);
+border-radius: 20px;
+
+
+/* Rectangle 54 */
+
+position: absolute;
+width: 84px;
+height: 68px;
+left: 36px;
+top: 61px;
+
+background: #ECECEC;
+box-shadow: -1px 1px 2px rgba(218, 217, 215, 0.2), 1px -1px 2px rgba(218, 217, 215, 0.2), -1px -1px 2px rgba(255, 255, 255, 0.9), 1px 1px 3px rgba(218, 217, 215, 0.9), inset 1px 1px 2px rgba(255, 255, 255, 0.3), inset -1px -1px 2px rgba(218, 217, 215, 0.5);
+border-radius: 20px;
+
+
+/* Frame 64 */
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 0px;
+gap: 30px;
+
+position: absolute;
+width: 250px;
+height: 145px;
+left: 46px;
+top: 66px;
+
+
+
+/* Frame 63 */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+align-items: center;
+padding: 0px;
+gap: 30px;
+
+width: 230px;
+height: 55px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-gro
+<truncated 45215 bytes>
+mily: 'Sora';
+font-style: normal;
+font-weight: 300;
+font-size: 20px;
+line-height: 25px;
+
+color: #404040;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* End-to-end workflows that run with minimal human intervention. Data in, intelligence applied, actions taken. Robust, observable, and recoverable when they fail */
+
+width: 378px;
+height: 80px;
+
+font-family: 'Sora';
+font-style: normal;
+font-weight: 300;
+font-size: 16px;
+line-height: 20px;
+
+color: #717171;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Frame 147 */
+
+width: 378px;
+height: 111px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 2;
+flex-grow: 0;
+
+
+/* Frame 79 */
+
+box-sizing: border-box;
+
+position: absolute;
+width: 204px;
+height: 44px;
+left: 0px;
+top: 0px;
+
+background: #ECECEC;
+box-shadow: 1px 1px 2px rgba(255, 255, 255, 0.3), -1px -1px 2px rgba(212, 212, 212, 0.5), inset -1px 1px 2px rgba(212, 212, 212, 0.2), inset 1px -1px 2px rgba(212, 212, 212, 0.2), inset -1px -1px 2px rgba(255, 255, 255, 0.9), inset 1px 1px 3px rgba(212, 212, 212, 0.9);
+border-radius: 10px;
+
+
+/* Workflow automation */
+
+position: absolute;
+width: 174px;
+height: 20px;
+left: 15px;
+top: 12px;
+
+font-family: 'Sora';
+font-style: normal;
+font-weight: 300;
+font-size: 16px;
+line-height: 20px;
+text-align: center;
+
+color: #404040;
+
+
+
+/* Frame 81 */
+
+box-sizing: border-box;
+
+position: absolute;
+width: 134px;
+height: 44px;
+left: 130px;
+top: 54px;
+
+background: #ECECEC;
+box-shadow: 1px 1px 2px rgba(255, 255, 255, 0.3), -1px -1px 2px rgba(212, 212, 212, 0.5), inset -1px 1px 2px rgba(212, 212, 212, 0.2), inset 1px -1px 2px rgba(212, 212, 212, 0.2), inset -1px -1px 2px rgba(255, 255, 255, 0.9), inset 1px 1px 3px rgba(212, 212, 212, 0.9);
+border-radius: 10px;
+
+
+/* Event-driven */
+
+position: absolute;
+width: 104px;
+height: 20px;
+left: 15px;
+top: 12px;
+
+font-family: 'Sora';
+font-style: normal;
+font-weight: 30
+<truncated 37822 bytes>
+
+NOTE: The output was truncated because it was too long. Use a more targeted query or a smaller range to get the information you need.

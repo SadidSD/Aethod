@@ -40,61 +40,53 @@
   position: sticky;
   top: 0;
   z-index: 100;
-  padding: 16px 24px 0;
+  padding: 36px 24px 0;
 }
 
 .navbar {
   display: flex;
   align-items: center;
-  height: 62px;
-  padding: 0 10px 0 12px;
-  border-radius: 60px;
-  background: #DFDFDF;
+  justify-content: space-between;
+  height: 80px;
+  padding: 0 24px;
+  border-radius: 64px;
+  background: #ECECEC;
   box-shadow:
-    /* Downward shadow — depth underneath */
-    4px 4px 10px rgba(190, 190, 190, 0.9),
-    /* Upward glow — light from above */
+    -4px 4px 8px rgba(201, 201, 201, 0.2),
+    4px -4px 8px rgba(201, 201, 201, 0.2),
     -4px -4px 8px rgba(255, 255, 255, 0.9),
-    /* Subtle diagonal shadows for realism */
-    4px -4px 8px rgba(190, 190, 190, 0.2),
-    -4px 4px 8px rgba(190, 190, 190, 0.2),
-    /* Inner shadow highlights */
-    inset -1px -1px 2px rgba(190, 190, 190, 0.5),
-    inset 1px 1px 2px rgba(255, 255, 255, 0.3);
-  max-width: 1280px;
+    4px 4px 10px rgba(201, 201, 201, 0.9),
+    inset 1px 1px 2px rgba(255, 255, 255, 0.3),
+    inset -1px -1px 2px rgba(201, 201, 201, 0.5);
+  max-width: 1352px;
   margin: 0 auto;
   position: relative;
   overflow: hidden;
-}
-
-/* Subtle top edge highlight on the pill */
-.navbar::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 20px;
-  right: 20px;
-  height: 1px;
-  background: linear-gradient(90deg,
-      transparent,
-      rgba(255, 255, 255, 0.6) 30%,
-      rgba(255, 255, 255, 0.6) 70%,
-      transparent);
-  pointer-events: none;
+  transition: all 0.5s ease;
 }
 
 .navContent {
   display: flex;
   align-items: center;
-  gap: 36px;
-  margin: 0 auto;
+  justify-content: space-between;
+  width: 100%;
 }
 
-/* --- Circular Logo --- */
 .logo {
   display: flex;
   align-items: center;
   justify-content: center;
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  background: #ECECEC;
+  box-shadow:
+    -5px 5px 10px rgba(201, 201, 201, 0.2),
+    5px -5px 10px rgba(201, 201, 201, 0.2),
+    -5px -5px 10px rgba(255, 255, 255, 0.9),
+    5px 5px 13px rgba(201, 201, 201, 0.9),
+    inset 1px 1px 2px rgba(255, 255, 255, 0.3),
+    inset -1px -1px 2px rgba(201, 201, 201, 0.5);
   transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
   flex-shrink: 0;
 }
@@ -116,10 +108,9 @@
 }
 
 .logoImg svg rect {
-  filter: invert(1);
+  filter: none;
 }
 
-/* --- Nav Links (Sora 300, 20px — matching design spec) --- */
 .navLinks {
   display: flex;
   gap: 8px;
@@ -135,14 +126,11 @@
   color: #404040;
   padding: 10px;
   position: relative;
-  transition:
-    color 0.3s cubic-bezier(0.34, 1.56, 0.64, 1),
-    transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  transition: color 0.3s ease, transform 0.3s ease;
   cursor: pointer;
   text-decoration: none;
 }
 
-/* Magnetic underline dot on hover */
 .navLink::after {
   content: '';
   position: absolute;
@@ -154,9 +142,7 @@
   background: var(--accent-purple);
   transform: translateX(-50%) scale(0);
   opacity: 0;
-  transition:
-    transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1),
-    opacity 0.25s ease;
+  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.25s ease;
 }
 
 .navLink:hover {
@@ -169,12 +155,18 @@
   opacity: 1;
 }
 
-/* --- Neumorphic Search Bar (matching reference) --- */
-.navCenter {
-  flex: 1;
-  display: flex;
-  justify-content: flex-end;
-  padding: 0 14px;
+.activeNavLink {
+  background: radial-gradient(50% 50% at 50% 50%, #5A69EA 0%, #BF8BCA 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent !important;
+  font-weight: 400 !important;
+}
+
+.activeNavLink::after {
+  transform: translateX(-50%) scale(1) !important;
+  opacity: 1 !important;
 }
 
 .searchBar {
@@ -182,30 +174,20 @@
   align-items: center;
   gap: 12px;
   padding: 12px 20px;
-  background: #D7D7D5;
+  background: #ECECEC;
   border-radius: 20px;
   box-shadow:
-    inset 2px 2px 5px rgba(183, 183, 181, 0.9),
-    inset -2px -2px 4px rgba(247, 247, 245, 0.9),
-    inset 2px -2px 4px rgba(183, 183, 181, 0.2),
+    1px 1px 2px rgba(247, 247, 245, 0.3),
+    -1px -1px 2px rgba(183, 183, 181, 0.5),
     inset -2px 2px 4px rgba(183, 183, 181, 0.2),
-    -1px -1px 2px rgba(183, 183, 181, 0.5),
-    1px 1px 2px rgba(247, 247, 245, 0.3);
-  min-width: 300px;
-  max-width: 420px;
+    inset 2px -2px 4px rgba(183, 183, 181, 0.2),
+    inset -2px -2px 4px rgba(247, 247, 245, 0.9),
+    inset 2px 2px 5px rgba(183, 183, 181, 0.9);
+  min-width: 250px;
+  max-width: 320px;
   width: 100%;
-  transition: box-shadow 0.3s ease;
+  transition: all 0.5s ease;
   border: none;
-}
-
-.searchBar:focus-within {
-  box-shadow:
-    inset 2px 2px 6px rgba(183, 183, 181, 0.95),
-    inset -2px -2px 5px rgba(247, 247, 245, 0.95),
-    inset 2px -2px 5px rgba(183, 183, 181, 0.25),
-    inset -2px 2px 5px rgba(183, 183, 181, 0.25),
-    -1px -1px 2px rgba(183, 183, 181, 0.5),
-    1px 1px 2px rgba(247, 247, 245, 0.3);
 }
 
 .searchIcon {
@@ -222,19 +204,18 @@
   outline: none;
   width: 100%;
   letter-spacing: 0.02em;
-  font-weight: 400;
+  font-weight: 300;
 }
 
 .searchInput::placeholder {
-  background: linear-gradient(180deg, #5A69EA 0%, #BF8BCA 100%);
+  background: radial-gradient(50% 50% at 50% 50%, #5A69EA 0%, #BF8BCA 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  font-weight: 400;
+  font-weight: 300;
   opacity: 0.85;
 }
 
-/* --- Contact Button (uses contract.svg with built-in neumorphic filters) --- */
 .navRight {
   display: flex;
   align-items: center;
@@ -242,6 +223,17 @@
 }
 
 .contactBtn {
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  background: #ECECEC;
+  box-shadow:
+    -5px 5px 10px rgba(201, 201, 201, 0.2),
+    5px -5px 10px rgba(201, 201, 201, 0.2),
+    -5px -5px 10px rgba(255, 255, 255, 0.9),
+    5px 5px 13px rgba(201, 201, 201, 0.9),
+    inset 1px 1px 2px rgba(255, 255, 255, 0.3),
+    inset -1px -1px 2px rgba(201, 201, 201, 0.5);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -254,9 +246,19 @@
 }
 
 .contactBtnImg {
-  width: 44px;
-  height: 44px;
+  width: 20px;
+  height: 20px;
   display: block;
+}
+
+.contactBtnImg svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.contactBtnImg svg path {
+  stroke: #404040;
 }
 
 /* ---------- Hero Section ---------- */
@@ -2123,4 +2125,69 @@
   .diceMini13 {
     display: none;
   }
+}
+
+/* ===== Unified Navbar Dark Theme overrides ===== */
+:global([data-theme="dark"]) .navbar {
+  background: #22223a;
+  box-shadow:
+    -4px 4px 8px rgba(0, 0, 0, 0.35),
+    4px -4px 8px rgba(0, 0, 0, 0.35),
+    -4px -4px 8px rgba(60, 60, 90, 0.15),
+    4px 4px 10px rgba(0, 0, 0, 0.45),
+    inset 1px 1px 2px rgba(60, 60, 90, 0.12),
+    inset -1px -1px 2px rgba(0, 0, 0, 0.35);
+}
+
+:global([data-theme="dark"]) .logo {
+  background: #22223a;
+  box-shadow:
+    -5px 5px 10px rgba(0, 0, 0, 0.35),
+    5px -5px 10px rgba(0, 0, 0, 0.35),
+    -5px -5px 10px rgba(60, 60, 90, 0.15),
+    5px 5px 13px rgba(0, 0, 0, 0.45),
+    inset 1px 1px 2px rgba(60, 60, 90, 0.12),
+    inset -1px -1px 2px rgba(0, 0, 0, 0.35);
+}
+
+:global([data-theme="dark"]) .searchBar {
+  background: #22223a;
+  box-shadow:
+    1px 1px 2px rgba(60, 60, 90, 0.12),
+    -1px -1px 2px rgba(0, 0, 0, 0.35),
+    inset -2px 2px 4px rgba(0, 0, 0, 0.2),
+    inset 2px -2px 4px rgba(0, 0, 0, 0.2),
+    inset -2px -2px 4px rgba(60, 60, 90, 0.15),
+    inset 2px 2px 5px rgba(0, 0, 0, 0.4);
+}
+
+:global([data-theme="dark"]) .searchIcon {
+  color: #5A69EA;
+}
+
+:global([data-theme="dark"]) .searchInput {
+  color: #BF8BCA;
+}
+
+:global([data-theme="dark"]) .contactBtn {
+  background: #22223a;
+  box-shadow:
+    -5px 5px 10px rgba(0, 0, 0, 0.35),
+    5px -5px 10px rgba(0, 0, 0, 0.35),
+    -5px -5px 10px rgba(60, 60, 90, 0.15),
+    5px 5px 13px rgba(0, 0, 0, 0.45),
+    inset 1px 1px 2px rgba(60, 60, 90, 0.12),
+    inset -1px -1px 2px rgba(0, 0, 0, 0.35);
+}
+
+:global([data-theme="dark"]) .contactBtnImg :global(svg path) {
+  stroke: #e8e8f0;
+}
+
+:global([data-theme="dark"]) .navLink {
+  color: #b0b0c8;
+}
+
+:global([data-theme="dark"]) .navLink:hover {
+  color: #e8e8f0;
 }
