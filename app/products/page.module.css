@@ -265,7 +265,7 @@
 /* ---------- Theme Switch (Slide Button) ---------- */
 .slideButton {
   position: absolute;
-  width: 66.29px;
+  width: 66px;
   height: 30px;
   left: 1271px;
   top: 165px;
@@ -280,7 +280,7 @@
   right: 0.44%;
   top: 13.33%;
   bottom: 6.67%;
-  background: #DFDFDF;
+  background: #ECECEC;
   box-shadow:
     1px 1px 2px rgba(255, 255, 255, 0.3),
     -1px -1px 2px rgba(156, 156, 156, 0.5),
@@ -359,40 +359,72 @@
   transition: background 0.5s ease, box-shadow 0.5s ease;
 }
 
-/* ---------- Coming Soon Vector Title ---------- */
-.comingSoonContainer {
+/* ---------- Frame 91 ---------- */
+.frame91 {
   position: absolute;
-  width: 669px;
-  height: 121px;
-  left: calc(50% - 669px / 2 - 4px);
-  top: 280px; /* Moved up closer to the navbar */
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  width: 238px;
+  height: 90px;
+  left: 127px;
+  top: 251px;
 }
 
-.comingSoonSvg {
+.frame91 svg {
   width: 100%;
-  height: auto;
+  height: 100%;
+  display: block;
 }
 
-/* ---------- Rectangle 27 (Right Vertical Marker) ---------- */
+/* ---------- Group 64 Container ---------- */
+.group64Container {
+  position: absolute;
+  width: 678px;
+  height: 171px;
+  left: calc(50% - 678px / 2 + 2px);
+  top: 430px;
+}
+
+.group64Svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* Interactive overlays for buttons */
+.backButtonOverlay {
+  position: absolute;
+  left: 185px;
+  top: 107.5px;
+  width: 128px;
+  height: 55px;
+  cursor: pointer;
+  z-index: 10;
+  border-radius: 10px;
+}
+
+.homeButtonOverlay {
+  position: absolute;
+  left: 354px;
+  top: 107.5px;
+  width: 135px;
+  height: 55px;
+  cursor: pointer;
+  z-index: 10;
+  border-radius: 10px;
+}
+
+/* ---------- Side Indicator ---------- */
 .rightMarker {
   position: absolute;
   width: 10px;
   height: 50px;
-  left: 1427px;
+  left: 1412px;
   top: 538px;
-  background: linear-gradient(135deg, #E6E5E3 100%, #FEFDFB 0%);
-  box-shadow:
-    -2px 2px 4px rgba(165, 164, 163, 0.2),
-    2px -2px 4px rgba(165, 164, 163, 0.2),
-    -2px -2px 4px rgba(255, 255, 255, 0.9),
-    2px 2px 5px rgba(165, 164, 163, 0.9),
-    inset 1px 1px 2px rgba(255, 255, 255, 0.3),
-    inset -1px -1px 2px rgba(165, 164, 163, 0.5);
-  border-radius: 10px;
-  transition: background 0.5s ease, box-shadow 0.5s ease;
+}
+
+.rightMarker svg {
+  width: 100%;
+  height: 100%;
+  display: block;
 }
 
 /* ---------- Footer ---------- */
@@ -717,16 +749,10 @@
     inset 1px 1px 3px rgba(0, 0, 0, 0.4);
 }
 
-:global([data-theme="dark"]) .rightMarker {
-  background: linear-gradient(135deg, #22223a 100%, #2a2a44 0%);
-  box-shadow:
-    -2px 2px 4px rgba(0, 0, 0, 0.4),
-    2px -2px 4px rgba(0, 0, 0, 0.4),
-    -2px -2px 4px rgba(50, 50, 80, 0.15),
-    2px 2px 5px rgba(0, 0, 0, 0.5),
-    inset 1px 1px 2px rgba(50, 50, 80, 0.2),
-    inset -1px -1px 2px rgba(0, 0, 0, 0.4);
+:global([data-theme="dark"]) .rightMarker :global(svg) {
+  filter: invert(0.85) hue-rotate(180deg);
 }
+
 
 /* Footer dark overrides */
 :global([data-theme="dark"]) .footerBg {
@@ -803,12 +829,82 @@
   color: #b0b0c8;
 }
 
-/* Target background clip gradient on the Coming Soon logo path in dark mode */
-:global([data-theme="dark"]) .comingSoonContainer svg path {
-  fill: url(#paint0_linear_dark_890_256) !important;
+/* ===== Products Page SVG Dark Theme overrides ===== */
+:global([data-theme="dark"]) .frame91 :global(svg) {
+  filter: invert(0.85) hue-rotate(180deg);
+}
+
+:global([data-theme="dark"]) .group64Container :global(svg) {
+  filter: invert(0.85) hue-rotate(180deg);
 }
 
 /* Support transitions on theme switch */
 .navbar, .searchBar, .slideTrack, .slideTrackInner, .slideKnob, .slideKnobInner, .rightMarker, .footerBg, .socialTile, .footerForm {
   transition: all 0.5s ease;
 }
+
+/* ===== Unified Navbar Dark Theme overrides ===== */
+:global([data-theme="dark"]) .navbar {
+  background: #22223a;
+  box-shadow:
+    -4px 4px 8px rgba(0, 0, 0, 0.35),
+    4px -4px 8px rgba(0, 0, 0, 0.35),
+    -4px -4px 8px rgba(60, 60, 90, 0.15),
+    4px 4px 10px rgba(0, 0, 0, 0.45),
+    inset 1px 1px 2px rgba(60, 60, 90, 0.12),
+    inset -1px -1px 2px rgba(0, 0, 0, 0.35);
+}
+
+:global([data-theme="dark"]) .logo {
+  background: #22223a;
+  box-shadow:
+    -5px 5px 10px rgba(0, 0, 0, 0.35),
+    5px -5px 10px rgba(0, 0, 0, 0.35),
+    -5px -5px 10px rgba(60, 60, 90, 0.15),
+    5px 5px 13px rgba(0, 0, 0, 0.45),
+    inset 1px 1px 2px rgba(60, 60, 90, 0.12),
+    inset -1px -1px 2px rgba(0, 0, 0, 0.35);
+}
+
+:global([data-theme="dark"]) .searchBar {
+  background: #22223a;
+  box-shadow:
+    1px 1px 2px rgba(60, 60, 90, 0.12),
+    -1px -1px 2px rgba(0, 0, 0, 0.35),
+    inset -2px 2px 4px rgba(0, 0, 0, 0.2),
+    inset 2px -2px 4px rgba(0, 0, 0, 0.2),
+    inset -2px -2px 4px rgba(60, 60, 90, 0.15),
+    inset 2px 2px 5px rgba(0, 0, 0, 0.4);
+}
+
+:global([data-theme="dark"]) .searchIcon {
+  color: #5A69EA;
+}
+
+:global([data-theme="dark"]) .searchInput {
+  color: #BF8BCA;
+}
+
+:global([data-theme="dark"]) .contactBtn {
+  background: #22223a;
+  box-shadow:
+    -5px 5px 10px rgba(0, 0, 0, 0.35),
+    5px -5px 10px rgba(0, 0, 0, 0.35),
+    -5px -5px 10px rgba(60, 60, 90, 0.15),
+    5px 5px 13px rgba(0, 0, 0, 0.45),
+    inset 1px 1px 2px rgba(60, 60, 90, 0.12),
+    inset -1px -1px 2px rgba(0, 0, 0, 0.35);
+}
+
+:global([data-theme="dark"]) .contactBtnImg :global(svg path) {
+  stroke: #e8e8f0;
+}
+
+:global([data-theme="dark"]) .navLink {
+  color: #b0b0c8;
+}
+
+:global([data-theme="dark"]) .navLink:hover {
+  color: #e8e8f0;
+}
+

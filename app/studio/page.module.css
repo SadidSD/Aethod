@@ -843,12 +843,57 @@
 :global([data-theme="dark"]) .navbar {
   background: #22223a;
   box-shadow:
-    4px 4px 10px rgba(0, 0, 0, 0.5),
-    -4px -4px 8px rgba(50, 50, 80, 0.2),
-    4px -4px 8px rgba(0, 0, 0, 0.15),
-    -4px 4px 8px rgba(0, 0, 0, 0.15),
-    inset -1px -1px 2px rgba(0, 0, 0, 0.3),
-    inset 1px 1px 2px rgba(80, 80, 120, 0.15);
+    -4px 4px 8px rgba(0, 0, 0, 0.35),
+    4px -4px 8px rgba(0, 0, 0, 0.35),
+    -4px -4px 8px rgba(60, 60, 90, 0.15),
+    4px 4px 10px rgba(0, 0, 0, 0.45),
+    inset 1px 1px 2px rgba(60, 60, 90, 0.12),
+    inset -1px -1px 2px rgba(0, 0, 0, 0.35);
+}
+
+:global([data-theme="dark"]) .logo {
+  background: #22223a;
+  box-shadow:
+    -5px 5px 10px rgba(0, 0, 0, 0.35),
+    5px -5px 10px rgba(0, 0, 0, 0.35),
+    -5px -5px 10px rgba(60, 60, 90, 0.15),
+    5px 5px 13px rgba(0, 0, 0, 0.45),
+    inset 1px 1px 2px rgba(60, 60, 90, 0.12),
+    inset -1px -1px 2px rgba(0, 0, 0, 0.35);
+}
+
+:global([data-theme="dark"]) .searchBar {
+  background: #22223a;
+  box-shadow:
+    1px 1px 2px rgba(60, 60, 90, 0.12),
+    -1px -1px 2px rgba(0, 0, 0, 0.35),
+    inset -2px 2px 4px rgba(0, 0, 0, 0.2),
+    inset 2px -2px 4px rgba(0, 0, 0, 0.2),
+    inset -2px -2px 4px rgba(60, 60, 90, 0.15),
+    inset 2px 2px 5px rgba(0, 0, 0, 0.4);
+}
+
+:global([data-theme="dark"]) .searchIcon {
+  color: #5A69EA;
+}
+
+:global([data-theme="dark"]) .searchInput {
+  color: #BF8BCA;
+}
+
+:global([data-theme="dark"]) .contactBtn {
+  background: #22223a;
+  box-shadow:
+    -5px 5px 10px rgba(0, 0, 0, 0.35),
+    5px -5px 10px rgba(0, 0, 0, 0.35),
+    -5px -5px 10px rgba(60, 60, 90, 0.15),
+    5px 5px 13px rgba(0, 0, 0, 0.45),
+    inset 1px 1px 2px rgba(60, 60, 90, 0.12),
+    inset -1px -1px 2px rgba(0, 0, 0, 0.35);
+}
+
+:global([data-theme="dark"]) .contactBtnImg :global(svg path) {
+  stroke: #e8e8f0;
 }
 
 :global([data-theme="dark"]) .navLink {
@@ -863,26 +908,6 @@
   color: #8a6ff0 !important;
 }
 
-:global([data-theme="dark"]) .searchBar {
-  background: #1e1e34;
-  box-shadow:
-    inset 2px 2px 5px rgba(0, 0, 0, 0.5),
-    inset -2px -2px 4px rgba(50, 50, 80, 0.15),
-    inset 2px -2px 4px rgba(0, 0, 0, 0.15),
-    inset -2px 2px 4px rgba(0, 0, 0, 0.15),
-    -1px -1px 2px rgba(0, 0, 0, 0.3),
-    1px 1px 2px rgba(50, 50, 80, 0.1);
-}
-
-:global([data-theme="dark"]) .searchInput {
-  color: #B2CEFE;
-}
-
-:global([data-theme="dark"]) .searchInput::placeholder {
-  background: linear-gradient(180deg, #7b8dff 0%, #c49dd4 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-}
 
 :global([data-theme="dark"]) .footerSearchInput {
   background: #1e1e34;

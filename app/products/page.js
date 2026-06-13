@@ -363,13 +363,34 @@ export default function ProductsPage() {
             </div>
           </div>
 
-          {/* ===== COMING SOON SECTION (aethod7.svg / Figma Vector match) ===== */}
-          <div className={styles.comingSoonContainer}>
-            <InlineSVG src="/aethod7.svg" className={styles.comingSoonSvg} />
+          {/* ===== FRAME 91 (Header Title Group) ===== */}
+          <InlineSVG src="/products/Frame 91.svg" className={styles.frame91} />
+
+          {/* ===== GROUP 64 (Coming soon + Back and Home buttons) ===== */}
+          <div className={styles.group64Container}>
+            <InlineSVG src="/products/Group 64.svg" className={styles.group64Svg} />
+            
+            {/* Interactive button overlays */}
+            <a 
+              href="#" 
+              onClick={(e) => {
+                e.preventDefault();
+                playClickSound();
+                window.history.back();
+              }} 
+              className={styles.backButtonOverlay} 
+              aria-label="Go Back" 
+            />
+            <a 
+              href="/" 
+              onClick={() => playClickSound()}
+              className={styles.homeButtonOverlay} 
+              aria-label="Go Home" 
+            />
           </div>
 
-          {/* ===== RECTANGLE 27 (Right Vertical Marker) ===== */}
-          <div className={styles.rightMarker} />
+          {/* ===== SIDE INDICATOR (Right Vertical Marker) ===== */}
+          <InlineSVG src="/products/Side Indicator.svg" className={styles.rightMarker} />
 
           {/* ===== FOOTER SECTION ===== */}
           <footer className={styles.footer}>
