@@ -550,6 +550,20 @@
   font-size: 13.5px;
   font-weight: 300;
   color: #5A69EA;
+  border-radius: 20px;
+  transition: background-color 0.15s ease, padding 0.15s ease;
+}
+
+.filterSearchInput:focus,
+.filterSearchInput:not(:placeholder-shown) {
+  background: #ECECEC;
+  padding: 0 10px;
+}
+
+:global([data-theme="dark"]) .filterSearchInput:focus,
+:global([data-theme="dark"]) .filterSearchInput:not(:placeholder-shown) {
+  background: #1e1e34;
+  color: #B2CEFE;
 }
 
 /* ---------- Read Essay Button Overlays ---------- */
@@ -799,4 +813,35 @@
 :global([data-theme="dark"]) .rowCards1 :global(svg image),
 :global([data-theme="dark"]) .rowCards2 :global(svg image) {
   filter: invert(1) hue-rotate(180deg) !important;
+}
+
+/* ---------- Social Media Group Overlay (Figma Perfect Match) ---------- */
+.socialsGroup {
+  position: absolute;
+  left: 1157px;
+  top: 133.5px;
+  width: 116px;
+  height: 32px;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  z-index: 5;
+}
+
+.socialTile {
+  width: 32px;
+  height: 32px;
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s ease;
+  outline: none;
+}
+
+.socialTile:hover {
+  transform: scale(1.12);
 }
