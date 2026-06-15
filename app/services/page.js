@@ -298,27 +298,6 @@ export default function ServicesPage() {
                 Vlog
               </a>
             </div>
-
-            {/* Ask Smith Search Input */}
-            <div className={styles.searchBar}>
-              <svg className={styles.searchIcon} width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                <circle cx="11" cy="11" r="8" />
-                <line x1="21" y1="21" x2="16.65" y2="16.65" />
-              </svg>
-              <input
-                className={styles.searchInput}
-                type="text"
-                placeholder="Ask Smith about your query"
-                aria-label="Ask Smith search query"
-              />
-            </div>
-
-            {/* Contact Phone Call Circular Button */}
-            <div className={styles.navRight}>
-              <a href="/#contact" className={styles.contactBtn} aria-label="Contact Aeethod" onClick={playClickSound}>
-                <InlineSVG src="/contract.svg" className={styles.contactBtnImg} />
-              </a>
-            </div>
           </div>
         </nav>
       </div>
@@ -332,16 +311,22 @@ export default function ServicesPage() {
 
           {/* ----- SECTION 2: SERVICES CARDS GRID ----- */}
           {/* Card 1: TCG Website Ecosystem */}
-          <InlineSVG src="/services/TCG Web.svg" className={styles.card1} />
+          <a href="/services/tcg" className={styles.card1} onClick={playClickSound}>
+            <InlineSVG src="/services/TCG Web.svg" />
+          </a>
 
           {/* Card 2: E-commerce Website Development */}
-          <InlineSVG src="/services/Webs.svg" className={styles.card2} />
+          <a href="/services/ecommerce" className={styles.card2} onClick={playClickSound}>
+            <InlineSVG src="/services/Webs.svg" />
+          </a>
 
           {/* Card 3: Custom E-commerce Tools */}
-          <InlineSVG src="/services/Custom Tools.svg" className={styles.card3} />
+          <a href="/services/tools" className={styles.card3} onClick={playClickSound}>
+            <InlineSVG src="/services/Custom Tools.svg" />
+          </a>
 
           {/* Card 4: Automation (Built from layers) */}
-          <div className={styles.card4}>
+          <a href="/services/automation" className={styles.card4} onClick={playClickSound}>
             {/* Rectangle 128 Icon background */}
             <InlineSVG src="/services/Rectangle 128.svg" className={styles.iconBg} />
             {/* Gear Icon (Mask group.svg) */}
@@ -355,7 +340,7 @@ export default function ServicesPage() {
               src="/services/Your business functions and scales silently around the clock, even when you are offline. Our AI-first pipelines take over complex data processing and repetitive decision paths, wiping out human error and keeping your operations moving forward with.svg" 
               className={styles.card4Desc} 
             />
-          </div>
+          </a>
 
           {/* Side Indicator */}
           <InlineSVG src="/services/Side Indicator.svg" className={styles.sideIndicator} />

@@ -489,31 +489,6 @@ export default function Home() {
                 Vlog
               </a>
             </div>
-
-            {/* Ask Smith Search Input */}
-            <div className={styles.searchBar}>
-              <svg className={styles.searchIcon} width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                <circle cx="11" cy="11" r="8" />
-                <line x1="21" y1="21" x2="16.65" y2="16.65" />
-              </svg>
-              <input
-                className={styles.searchInput}
-                type="text"
-                placeholder="Ask Smith about your query"
-                aria-label="Ask Smith search query"
-              />
-            </div>
-
-            {/* Contact Phone Call Circular Button */}
-            <div className={styles.navRight}>
-              <a href="/#contact" className={styles.contactBtn} aria-label="Contact Aeethod" onClick={() => {
-                try {
-                  new Audio("/touchpad sd.mp3").play().catch(() => {});
-                } catch(e) {}
-              }}>
-                <InlineSVG src="/contract.svg" className={styles.contactBtnImg} />
-              </a>
-            </div>
           </div>
         </nav>
       </div>
@@ -611,7 +586,11 @@ export default function Home() {
                 <div className={styles.orbGlow} />
                 <div className={styles.orbVideoMask}>
                   {isDark ? (
-                    <InlineSVG src="/crystsl1.svg" className={styles.crystalOrb} />
+                    <>
+                      <div className={styles.crystalGlowBehind} />
+                      <div className={styles.crystalGlowBehind2} />
+                      <InlineSVG src="/crystsl1.svg" className={styles.crystalOrb} />
+                    </>
                   ) : (
                     <video
                       className={styles.orbVideo}
