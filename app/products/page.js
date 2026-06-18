@@ -306,9 +306,6 @@ export default function ProductsPage() {
               <a href="#" className={styles.navLink} onClick={() => alert("Vlog coming soon")}>
                 Vlog
               </a>
-              <a href="/contract" className={styles.navLink}>
-                Contract
-              </a>
             </div>
           </div>
         </nav>
@@ -401,7 +398,6 @@ export default function ProductsPage() {
                   <a href="/research" className={styles.footerNavLink}>Research</a>
                   <a href="/products" className={styles.footerNavLink}>Products</a>
                   <a href="/journals" className={styles.footerNavLink}>Journals</a>
-                  <a href="/#contact" className={styles.footerNavLink}>Contract</a>
                 </div>
 
                 {/* Social and Email Subscription Row */}

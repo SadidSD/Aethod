@@ -292,9 +292,6 @@ export default function StudioPage() {
               <a href="#" className={styles.navLink} onClick={() => alert("Vlog coming soon")}>
                 Vlog
               </a>
-              <a href="/contract" className={styles.navLink}>
-                Contract
-              </a>
             </div>
           </div>
         </nav>

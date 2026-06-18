@@ -1,123 +1,114 @@
-import styles from "./page.module.css";
+"use client";
 
-export default function LargeLogo() {
+import React from "react";
+
+export default function LargeLogo({ className }) {
   return (
-    <div style={{ position: "relative", width: "100%", height: "100%" }}>
-      {/* Layer 1: Background White Borders (Combined) */}
-      <div className={styles.whiteBorder} style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%" }}>
-        {/* Vector 11 White Border */}
-        <svg style={{ position: "absolute", right: 0, bottom: 0, width: "215px", height: "268px", overflow: "visible" }} viewBox="0 0 215 268" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path className={styles.v11WhitePath} d="M79.6073 3L15.678 132.197C15.678 132.197 -5.1784 170.088 6.61001 152.74C18.3984 135.392 44.0415 115.424 61.4713 119.871C69.3946 121.892 81.3439 130.586 85.5015 141.784C90.4889 144.523 120.609 212.419 133.109 233.545C133.109 233.545 156.585 269.196 212 264.589L79.6073 3Z" fill="#ECECEC" stroke="#ECECEC" strokeWidth="30" strokeLinejoin="round"/>
-        </svg>
-        {/* Vector 10 White Border */}
-        <svg style={{ position: "absolute", left: "5px", bottom: "35px", width: "175px", height: "103px", overflow: "visible" }} viewBox="0 0 166 98" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path className={styles.v10WhitePath} d="M39.4444 29.9034L3 95C3 95 44.1852 63.0364 52.7778 58.3588C61.3704 53.6812 68.4864 47.5195 80.3333 43.9362C94.8183 39.555 104.346 38.9197 119.444 41.2076C138.419 44.0828 152.926 55.1105 163 61.4772C163 59.5282 147 42.377 147 42.377C142.556 36.9198 117.667 11.9726 103.444 6.5154C89.2222 1.0582 78.1111 3.0072 67.8888 5.346C59.711 7.21704 45.5185 22.4972 39.4444 29.9034Z" fill="#ECECEC" stroke="#ECECEC" strokeWidth="30" strokeLinejoin="round"/>
-        </svg>
-      </div>
+    <div className={className} style={{ display: "flex", justifyContent: "center", alignItems: "center", position: "relative" }}>
+      <svg
+        width="100%"
+        height="100%"
+        viewBox="0 0 350 350"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        style={{ filter: "drop-shadow(0 20px 30px rgba(0, 0, 0, 0.08))" }}
+      >
+        <defs>
+          {/* Main glassmorphic background gradient */}
+          <linearGradient id="glassGrad" x1="50" y1="20" x2="300" y2="330" gradientUnits="userSpaceOnUse">
+            <stop offset="0%" stopColor="#C4B5FD" stopOpacity="0.4" />
+            <stop offset="30%" stopColor="#93C5FD" stopOpacity="0.65" />
+            <stop offset="70%" stopColor="#60A5FA" stopOpacity="0.8" />
+            <stop offset="100%" stopColor="#3B82F6" stopOpacity="0.4" />
+          </linearGradient>
 
-      {/* Layer 2: Foreground Blue Inners */}
-      {/* Vector 11 Blue Inner */}
-      <div style={{ position: "absolute", right: 0, bottom: 0, width: "215px", height: "268px" }}>
-        <div className={styles.blueInner}>
-          <svg style={{ position: "absolute", right: 0, bottom: 0, width: "100%", height: "100%", overflow: "visible" }} viewBox="0 0 215 268" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <g filter="url(#filter0_v11)">
-              <path d="M79.6073 3L15.678 132.197C15.678 132.197 -5.1784 170.088 6.61001 152.74C18.3984 135.392 44.0415 115.424 61.4713 119.871C69.3946 121.892 81.3439 130.586 85.5015 141.784C90.4889 144.523 120.609 212.419 133.109 233.545C133.109 233.545 156.585 269.196 212 264.589L79.6073 3Z" fill="#B2CEFE"/>
-            </g>
-            <defs>
-              <filter id="filter0_v11" x="-2" y="-2" width="219" height="272" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
-                <feFlood floodOpacity="0" result="BackgroundImageFix"/>
-                <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
-                <feOffset dx="-1" dy="-1"/>
-                <feGaussianBlur stdDeviation="1"/>
-                <feColorMatrix type="matrix" values="0 0 0 0 0.627451 0 0 0 0 0.72549 0 0 0 0 0.898039 0 0 0 0.5 0"/>
-                <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_1097_2912"/>
-                <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
-                <feOffset dx="1" dy="1"/>
-                <feGaussianBlur stdDeviation="1"/>
-                <feColorMatrix type="matrix" values="0 0 0 0 0.768627 0 0 0 0 0.890196 0 0 0 0 1 0 0 0 0.3 0"/>
-                <feBlend mode="normal" in2="effect1_dropShadow_1097_2912" result="effect2_dropShadow_1097_2912"/>
-                <feBlend mode="normal" in="SourceGraphic" in2="effect2_dropShadow_1097_2912" result="shape"/>
-                <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
-                <feOffset dx="5" dy="5"/>
-                <feGaussianBlur stdDeviation="6.5"/>
-                <feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1"/>
-                <feColorMatrix type="matrix" values="0 0 0 0 0.627451 0 0 0 0 0.72549 0 0 0 0 0.898039 0 0 0 0.9 0"/>
-                <feBlend mode="normal" in2="shape" result="effect3_innerShadow_1097_2912"/>
-                <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
-                <feOffset dx="-5" dy="-5"/>
-                <feGaussianBlur stdDeviation="5"/>
-                <feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1"/>
-                <feColorMatrix type="matrix" values="0 0 0 0 0.768627 0 0 0 0 0.890196 0 0 0 0 1 0 0 0 0.9 0"/>
-                <feBlend mode="normal" in2="effect3_innerShadow_1097_2912" result="effect4_innerShadow_1097_2912"/>
-                <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
-                <feOffset dx="5" dy="-5"/>
-                <feGaussianBlur stdDeviation="5"/>
-                <feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1"/>
-                <feColorMatrix type="matrix" values="0 0 0 0 0.627451 0 0 0 0 0.72549 0 0 0 0 0.898039 0 0 0 0.2 0"/>
-                <feBlend mode="normal" in2="effect4_innerShadow_1097_2912" result="effect5_innerShadow_1097_2912"/>
-                <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
-                <feOffset dx="-5" dy="5"/>
-                <feGaussianBlur stdDeviation="5"/>
-                <feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1"/>
-                <feColorMatrix type="matrix" values="0 0 0 0 0.627451 0 0 0 0 0.72549 0 0 0 0 0.898039 0 0 0 0.2 0"/>
-                <feBlend mode="normal" in2="effect5_innerShadow_1097_2912" result="effect6_innerShadow_1097_2912"/>
-              </filter>
-            </defs>
-          </svg>
-        </div>
-      </div>
+          {/* Border stroke gradient for highlight reflection */}
+          <linearGradient id="borderGrad" x1="175" y1="0" x2="175" y2="350" gradientUnits="userSpaceOnUse">
+            <stop offset="0%" stopColor="#FFFFFF" stopOpacity="0.9" />
+            <stop offset="40%" stopColor="#FFFFFF" stopOpacity="0.3" />
+            <stop offset="80%" stopColor="#93C5FD" stopOpacity="0.2" />
+            <stop offset="100%" stopColor="#3B82F6" stopOpacity="0.6" />
+          </linearGradient>
 
-      {/* Vector 10 Blue Inner */}
-      <div style={{ position: "absolute", left: "5px", bottom: "35px", width: "175px", height: "103px" }}>
-        <div className={styles.blueInner}>
-          <svg style={{ position: "absolute", left: 0, bottom: 0, width: "100%", height: "100%", overflow: "visible" }} viewBox="0 0 166 98" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <g filter="url(#filter0_v10)">
-              <path d="M39.4444 29.9034L3 95C3 95 44.1852 63.0364 52.7778 58.3588C61.3704 53.6812 68.4864 47.5195 80.3333 43.9362C94.8183 39.555 104.346 38.9197 119.444 41.2076C138.419 44.0828 152.926 55.1105 163 61.4772C163 59.5282 147 42.377 147 42.377C142.556 36.9198 117.667 11.9726 103.444 6.5154C89.2222 1.0582 78.1111 3.0072 67.8888 5.346C59.711 7.21704 45.5185 22.4972 39.4444 29.9034Z" fill="#B2CEFE"/>
-            </g>
-            <defs>
-              <filter id="filter0_v10" x="-2" y="-2" width="170" height="102" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
-                <feFlood floodOpacity="0" result="BackgroundImageFix"/>
-                <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
-                <feOffset dx="-1" dy="-1"/>
-                <feGaussianBlur stdDeviation="1"/>
-                <feColorMatrix type="matrix" values="0 0 0 0 0.627451 0 0 0 0 0.72549 0 0 0 0 0.898039 0 0 0 0.5 0"/>
-                <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_1097_2911"/>
-                <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
-                <feOffset dx="1" dy="1"/>
-                <feGaussianBlur stdDeviation="1"/>
-                <feColorMatrix type="matrix" values="0 0 0 0 0.768627 0 0 0 0 0.890196 0 0 0 0 1 0 0 0 0.3 0"/>
-                <feBlend mode="normal" in2="effect1_dropShadow_1097_2911" result="effect2_dropShadow_1097_2911"/>
-                <feBlend mode="normal" in="SourceGraphic" in2="effect2_dropShadow_1097_2911" result="shape"/>
-                <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
-                <feOffset dx="5" dy="5"/>
-                <feGaussianBlur stdDeviation="6.5"/>
-                <feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1"/>
-                <feColorMatrix type="matrix" values="0 0 0 0 0.627451 0 0 0 0 0.72549 0 0 0 0 0.898039 0 0 0 0.9 0"/>
-                <feBlend mode="normal" in2="shape" result="effect3_innerShadow_1097_2911"/>
-                <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
-                <feOffset dx="-5" dy="-5"/>
-                <feGaussianBlur stdDeviation="5"/>
-                <feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1"/>
-                <feColorMatrix type="matrix" values="0 0 0 0 0.768627 0 0 0 0 0.890196 0 0 0 0 1 0 0 0 0.9 0"/>
-                <feBlend mode="normal" in2="effect3_innerShadow_1097_2911" result="effect4_innerShadow_1097_2911"/>
-                <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
-                <feOffset dx="5" dy="-5"/>
-                <feGaussianBlur stdDeviation="5"/>
-                <feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1"/>
-                <feColorMatrix type="matrix" values="0 0 0 0 0.627451 0 0 0 0 0.72549 0 0 0 0 0.898039 0 0 0 0.2 0"/>
-                <feBlend mode="normal" in2="effect4_innerShadow_1097_2911" result="effect5_innerShadow_1097_2911"/>
-                <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
-                <feOffset dx="-5" dy="5"/>
-                <feGaussianBlur stdDeviation="5"/>
-                <feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1"/>
-                <feColorMatrix type="matrix" values="0 0 0 0 0.627451 0 0 0 0 0.72549 0 0 0 0 0.898039 0 0 0 0.2 0"/>
-                <feBlend mode="normal" in2="effect5_innerShadow_1097_2911" result="effect6_innerShadow_1097_2911"/>
-              </filter>
-            </defs>
-          </svg>
-        </div>
-      </div>
+          {/* Soft back glow */}
+          <radialGradient id="backGlow" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stopColor="#B2CEFE" stopOpacity="0.6" />
+            <stop offset="60%" stopColor="#93C5FD" stopOpacity="0.25" />
+            <stop offset="100%" stopColor="#ECECEC" stopOpacity="0" />
+          </radialGradient>
+
+          {/* Outer shadow filter for 3D depth */}
+          <filter id="shadowFilter" x="-20%" y="-20%" width="140%" height="140%">
+            <feDropShadow dx="-10" dy="10" stdDeviation="15" floodColor="#9CA3AF" floodOpacity="0.4" />
+            <feDropShadow dx="10" dy="-10" stdDeviation="15" floodColor="#FFFFFF" floodOpacity="0.9" />
+          </filter>
+
+          {/* Inner shadow filter for inset glass detail */}
+          <filter id="innerGlow">
+            <feGaussianBlur stdDeviation="6" result="blur" />
+            <feComposite in2="SourceAlpha" operator="arithmetic" k2="-1" k3="1" result="shadowDiff" />
+            <feFlood floodColor="#FFFFFF" floodOpacity="0.75" />
+            <feComposite in2="shadowDiff" operator="in" />
+            <feComposite in2="SourceGraphic" operator="over" />
+          </filter>
+        </defs>
+
+        {/* Ambient Back Glow */}
+        <circle cx="175" cy="175" r="140" fill="url(#backGlow)" />
+
+        {/* Stylized 'A' Logo Shape Group */}
+        <g filter="url(#shadowFilter)">
+          {/* Main filled body */}
+          <path
+            d="M 175,40 
+               C 160,110 110,180 60,260 
+               C 100,230 145,190 175,190 
+               C 205,190 250,230 290,260 
+               C 240,180 190,110 175,40 Z
+               M 175,100
+               C 165,135 145,165 125,180
+               C 145,175 160,172 175,172
+               C 190,172 205,175 225,180
+               C 205,165 185,135 175,100 Z"
+            fill="url(#glassGrad)"
+            filter="url(#innerGlow)"
+          />
+
+          {/* Highlight/Border Path */}
+          <path
+            d="M 175,40 
+               C 160,110 110,180 60,260 
+               C 100,230 145,190 175,190 
+               C 205,190 250,230 290,260 
+               C 240,180 190,110 175,40 Z
+               M 175,100
+               C 165,135 145,165 125,180
+               C 145,175 160,172 175,172
+               C 190,172 205,175 225,180
+               C 205,165 185,135 175,100 Z"
+            stroke="url(#borderGrad)"
+            strokeWidth="3.5"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+
+          {/* Overlay curve details for premium organic reflection */}
+          <path
+            d="M 175,42 C 167,112 135,175 80,240"
+            stroke="#FFFFFF"
+            strokeWidth="2.5"
+            strokeLinecap="round"
+            opacity="0.5"
+          />
+          <path
+            d="M 175,172 C 190,172 202,174 215,177"
+            stroke="#FFFFFF"
+            strokeWidth="1.5"
+            strokeLinecap="round"
+            opacity="0.4"
+          />
+        </g>
+      </svg>
     </div>
   );
 }
-
