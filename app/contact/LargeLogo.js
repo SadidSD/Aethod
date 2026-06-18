@@ -15,8 +15,8 @@ export default function LargeLogo({ className }) {
       >
         <defs>
           {/* Filter from Vector 10 */}
-          <filter id="filter0_ddiiii_1097_2911" x="-20" y="-20" width="250" height="200" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-            <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+          <filter id="filter0_ddiiii_1097_2911" x="-20" y="-20" width="250" height="200" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
+            <feFlood floodOpacity="0" result="BackgroundImageFix"/>
             <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
             <feOffset dx="-1" dy="-1"/>
             <feGaussianBlur stdDeviation="1"/>
@@ -55,8 +55,8 @@ export default function LargeLogo({ className }) {
           </filter>
 
           {/* Filter from Vector 11 */}
-          <filter id="filter0_ddiiii_1097_2912" x="-20" y="-20" width="300" height="350" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-            <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+          <filter id="filter0_ddiiii_1097_2912" x="-20" y="-20" width="300" height="350" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
+            <feFlood floodOpacity="0" result="BackgroundImageFix"/>
             <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
             <feOffset dx="-1" dy="-1"/>
             <feGaussianBlur stdDeviation="1"/>
