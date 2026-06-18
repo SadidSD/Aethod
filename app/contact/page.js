@@ -84,6 +84,7 @@ export default function ContactPage() {
   const [searchQuery, setSearchQuery] = useState("");
   const [mailEmail, setMailEmail] = useState("");
   const [mailMessage, setMailMessage] = useState("");
+  const [footerEmail, setFooterEmail] = useState("");
 
   // Pre-load and decode audio assets for low latency
   useEffect(() => {
@@ -422,83 +423,55 @@ export default function ContactPage() {
     setMailMessage("");
   };
 
+  // Footer Subscription Form Submit Handler
+  const handleSubscribe = (e) => {
+    e.preventDefault();
+    playClickSound();
+    if (footerEmail) {
+      alert(`Thank you for subscribing with: ${footerEmail}`);
+      setFooterEmail("");
+    } else {
+      alert("Please enter a valid email address.");
+    }
+  };
+
   return (
     <div className={styles.pageWrapper} data-theme={isDark ? "dark" : "light"}>
       <div className={styles.mainCard}>
         {/* ===== PILL NAVIGATION BAR ===== */}
         <div className={styles.navOuter}>
           <nav className={styles.navbar} id="navbar">
-            {/* Left Circular Logo */}
-            <div className={styles.logoCircle}>
-              <a href="/" aria-label="Aeethod Home">
+            <div className={styles.navContent}>
+              {/* Circular Logo */}
+              <a href="/" className={styles.logo} aria-label="Aeethod Home">
                 <InlineSVG src="/logo.svg" className={styles.logoImg} />
               </a>
+
+              {/* Navigation Links */}
+              <div className={styles.navLinks}>
+                <a href="/studio" className={styles.navLink}>
+                  Studio
+                </a>
+                <a href="/services" className={styles.navLink}>
+                  Services
+                </a>
+                <a href="/research" className={styles.navLink}>
+                  Research
+                </a>
+                <a href="/products" className={styles.navLink}>
+                  Products
+                </a>
+                <a href="/journals" className={styles.navLink}>
+                  Works
+                </a>
+                <a href="/contact" className={`${styles.navLink} ${styles.activeNavLink}`}>
+                  Contact
+                </a>
+                <a href="#" className={styles.navLink} onClick={() => alert("Vlog coming soon")}>
+                  Vlog
+                </a>
+              </div>
             </div>
-
-            {/* Navigation Links */}
-            <div className={styles.navLinks}>
-              <a href="/studio" className={styles.navLink}>
-                Studio
-              </a>
-              <a href="/services" className={styles.navLink}>
-                Services
-              </a>
-              <a href="/research" className={styles.navLink}>
-                Research
-              </a>
-              <a href="/products" className={styles.navLink}>
-                Products
-              </a>
-              <a href="/journals" className={styles.navLink}>
-                Works
-              </a>
-              <a href="/contact" className={`${styles.navLink} ${styles.activeNavLink}`}>
-                Contact
-              </a>
-              <a href="#" className={styles.navLink} onClick={() => alert("Vlog coming soon")}>
-                Vlog
-              </a>
-            </div>
-
-            {/* Middle-Right Inset Search Bar */}
-            <form onSubmit={handleSearchSubmit} className={styles.searchBar}>
-              <svg
-                className={styles.searchIcon}
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2.5"
-                viewBox="0 0 24 24"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-              </svg>
-              <input
-                type="text"
-                placeholder="Ask Smith about your query"
-                className={styles.searchInput}
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                aria-label="Search site query"
-              />
-            </form>
-
-            {/* Right Outset Call Button */}
-            <button className={styles.phoneButton} onClick={playClickSound} aria-label="Call Client Support">
-              <svg
-                className={styles.phoneIcon}
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2.5"
-                viewBox="0 0 24 24"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M3 5a2 2 0 012-2h3.28a1 1 0 01.94.725l.548 2.2a1 1 0 01-.321.988l-1.305.98a10.582 10.582 0 004.872 4.872l.98-1.305a1 1 0 01.988-.321l2.2.548a1 1 0 01.725.94V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
-                />
-              </svg>
-            </button>
           </nav>
         </div>
 
@@ -679,6 +652,11 @@ export default function ContactPage() {
 
         {/* ===== SIDE INDICATOR ===== */}
         <div className={styles.sideIndicator} />
+      </div>
+
+      {/* ===== FOOTER ===== */}
+      <div className={styles.footerWrapper}>
+        <InlineSVG src="/contact/Footer.svg" className={styles.footerSvg} />
       </div>
 
       {/* ===== FLOATING SCROLL DEPTH BAR INDICATOR ===== */}

@@ -217,7 +217,15 @@ body {
   cursor: url('/cursor-blue.svg') 5 2, pointer;
 }
 
-/* Invert logo coloring in dark mode dynamically */
-[data-theme="dark"] [class*="logoImg"] {
-  filter: invert(1) brightness(1.2);
+/* Sync logo background circle fill with light/dark theme */
+[class*="logoCircle"] svg circle {
+  fill: #ECECEC;
+  transition: fill 0.5s ease;
 }
+
+[data-theme="dark"] [class*="logoCircle"] svg circle {
+  fill: #22223a;
+}
+
+
+
