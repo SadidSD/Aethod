@@ -328,9 +328,9 @@
 .heroLogoWrapper {
   position: absolute;
   left: 100px;
-  top: 380px;
-  width: 280px;
-  height: 280px;
+  top: 420px;
+  width: 320px;
+  height: 320px;
   z-index: 10;
   display: flex;
   justify-content: center;
