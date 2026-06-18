@@ -562,7 +562,7 @@
   position: absolute;
   top: 0px;
   left: 144px; /* starts right after tab width of 146px */
-  right: 0px;
+  right: 10px;
   height: 2px;
   background-color: rgba(113, 113, 113, 0.5);
 }
