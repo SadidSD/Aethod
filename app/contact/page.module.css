@@ -14,6 +14,12 @@
   position: relative;
   overflow-x: hidden;
   transition: background-color 0.5s ease, color 0.5s ease;
+  font-family: var(--font-sora), sans-serif;
+}
+
+.pageWrapper,
+.pageWrapper * {
+  font-family: var(--font-sora), sans-serif !important;
 }
 
 /* ---------- Custom Pill Navigation Bar ---------- */
@@ -70,7 +76,7 @@
 }
 
 .navLink {
-  font-family: 'Inter', sans-serif;
+  font-family: var(--font-sora), sans-serif;
   font-size: 15px;
   font-weight: 500;
   color: var(--nav-link-color);
@@ -114,7 +120,7 @@
   border: none;
   background: transparent;
   outline: none;
-  font-family: 'Inter', sans-serif;
+  font-family: var(--font-sora), sans-serif;
   font-size: 14px;
   color: var(--text-primary);
   width: 100%;
@@ -251,6 +257,7 @@
   flex-direction: column;
   align-items: flex-start;
   position: relative;
+  gap: 40px;
 }
 
 .logoCard {
@@ -274,7 +281,7 @@
 }
 
 .heading {
-  font-family: 'DM Sans', sans-serif;
+  font-family: var(--font-sora), sans-serif;
   font-size: 56px;
   font-weight: 500;
   letter-spacing: -1.5px;
@@ -283,7 +290,7 @@
 }
 
 .subHeading {
-  font-family: 'Inter', sans-serif;
+  font-family: var(--font-sora), sans-serif;
   font-size: 20px;
   font-weight: 400;
   color: var(--text-secondary);
@@ -312,7 +319,7 @@
   border-top-left-radius: 12px;
   border-top-right-radius: 12px;
   padding: 10px 24px;
-  font-family: 'Inter', sans-serif;
+  font-family: var(--font-sora), sans-serif;
   font-size: 14px;
   font-weight: 600;
   color: var(--text-secondary);
@@ -354,7 +361,7 @@
   box-shadow: var(--shadow-inset);
   border: none;
   outline: none;
-  font-family: 'Inter', sans-serif;
+  font-family: var(--font-sora), sans-serif;
   font-size: 15px;
   color: var(--text-primary);
   border-radius: var(--radius-sm);
@@ -379,7 +386,7 @@
   border-radius: var(--radius-sm);
   background-color: var(--bg-surface);
   box-shadow: var(--shadow-btn);
-  font-family: 'Inter', sans-serif;
+  font-family: var(--font-sora), sans-serif;
   font-size: 15px;
   font-weight: 500;
   color: var(--text-secondary);
@@ -402,7 +409,7 @@
   box-shadow: var(--shadow-inset);
   border: none;
   outline: none;
-  font-family: 'Inter', sans-serif;
+  font-family: var(--font-sora), sans-serif;
   font-size: 15px;
   color: var(--text-primary);
   border-radius: var(--radius-sm);
@@ -499,7 +506,7 @@
 }
 
 .socialName {
-  font-family: 'Inter', sans-serif;
+  font-family: var(--font-sora), sans-serif;
   font-size: 17px;
   font-weight: 500;
   color: var(--text-secondary);

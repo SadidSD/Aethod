@@ -258,8 +258,8 @@ export default function TcgPage() {
               <a href="/journals" className={styles.navLink}>
                 Works
               </a>
-              <a href="/contract" className={styles.navLink}>
-                Contract
+              <a href="/contact" className={styles.navLink}>
+                Contact
               </a>
               <a href="#" className={styles.navLink} onClick={() => alert("Vlog coming soon")}>
                 Vlog
@@ -371,7 +371,7 @@ export default function TcgPage() {
             
             <div className={styles.faqBox2}>
               <InlineSVG src="/services/tcg/Rectangle 148.svg" className={styles.boxBorder} />
-              <div className={styles.faqBoxTitle}>Contract Us</div>
+              <div className={styles.faqBoxTitle}>Contact Us</div>
               <InlineSVG src="/services/tcg/Connect directly with a human strategist. If your operational friction requires deep technical evaluation or a bespoke blueprint that goes beyond automated responses, open a direct line to our studio here. No sales pitches, just engineering..svg" className={styles.faqBoxDesc} />
             </div>
           </div>

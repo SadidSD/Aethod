@@ -64,7 +64,7 @@ const MessengerIcon = () => (
   </svg>
 );
 
-export default function ContractPage() {
+export default function ContactPage() {
   const [isDark, setIsDark] = useState(false);
   const [isDragging, setIsDragging] = useState(false);
   const [dragX, setDragX] = useState(0);
@@ -451,8 +451,8 @@ export default function ContractPage() {
             <a href="/journals" className={styles.navLink}>
               Works
             </a>
-            <a href="/contract" className={`${styles.navLink} ${styles.activeNavLink}`}>
-              Contract
+            <a href="/contact" className={`${styles.navLink} ${styles.activeNavLink}`}>
+              Contact
             </a>
             <a href="#" className={styles.navLink} onClick={() => alert("Vlog coming soon")}>
               Vlog
@@ -528,20 +528,20 @@ export default function ContractPage() {
       {/* ===== MAIN CONTAINER LAYOUT ===== */}
       <main className={styles.mainContainer}>
         <div className={styles.contentAlignContainer}>
-          {/* ----- LEFT COLUMN: 3D Brand Logo ----- */}
+          {/* ----- LEFT COLUMN: Title, Subtitle, and 3D Brand Logo ----- */}
           <div className={styles.logoWrapper}>
-            <LargeLogo className={styles.logoCard} />
-          </div>
-
-          {/* ----- RIGHT COLUMN: Titles, Form and Links ----- */}
-          <div className={styles.infoColumn}>
             {/* Header Copy Text */}
             <div className={styles.textGroup}>
-              <h1 className={styles.heading}>Contract</h1>
+              <h1 className={styles.heading}>Contact</h1>
               <p className={styles.subHeading}>
                 Use a <span className={styles.highlightText}>platform that feels safe</span>
               </p>
             </div>
+            <LargeLogo className={styles.logoCard} />
+          </div>
+
+          {/* ----- RIGHT COLUMN: Form and Links ----- */}
+          <div className={styles.infoColumn}>
 
             {/* Quick Mail Card Panel */}
             <div className={styles.quickMailContainer}>

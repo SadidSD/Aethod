@@ -77,7 +77,7 @@ export default function Home() {
 
     return () => {
       if (ctx && ctx.state !== 'closed') {
-        ctx.close().catch(() => {});
+        ctx.close().catch(() => { });
       }
     };
   }, []);
@@ -119,7 +119,7 @@ export default function Home() {
         } else {
           const clickAudio = new Audio('/immersive-click.mp3');
           clickAudio.volume = 0.45;
-          clickAudio.play().catch(() => {});
+          clickAudio.play().catch(() => { });
         }
 
         // Play the slide portion
@@ -136,17 +136,17 @@ export default function Home() {
         } else {
           const slideAudio = new Audio('/finger-slide.mp3');
           slideAudio.volume = 0.6;
-          slideAudio.play().catch(() => {});
+          slideAudio.play().catch(() => { });
         }
       } else {
         // Fallback
         const clickAudio = new Audio('/immersive-click.mp3');
         clickAudio.volume = 0.45;
-        clickAudio.play().catch(() => {});
+        clickAudio.play().catch(() => { });
 
         const slideAudio = new Audio('/finger-slide.mp3');
         slideAudio.volume = 0.6;
-        slideAudio.play().catch(() => {});
+        slideAudio.play().catch(() => { });
       }
     } catch (e) { /* ignore fallback errors */ }
   }, []);
@@ -177,14 +177,14 @@ export default function Home() {
         // Fallback if not loaded
         const audio = new Audio('/touchpad sd.mp3');
         audio.volume = 1.0;
-        audio.play().catch(() => {});
+        audio.play().catch(() => { });
       }
     } catch (e) {
       try {
         const audio = new Audio('/touchpad sd.mp3');
         audio.volume = 1.0;
-        audio.play().catch(() => {});
-      } catch (err) {}
+        audio.play().catch(() => { });
+      } catch (err) { }
     }
   }, []);
 
@@ -347,7 +347,7 @@ export default function Home() {
   const [scrollTopProgress, setScrollTopProgress] = useState(0);
   const [isDraggingScroll, setIsDraggingScroll] = useState(false);
   const [maxScrollTravel, setMaxScrollTravel] = useState(0);
-  
+
   const isDraggingScrollRef = useRef(false);
   const startScrollButtonYRef = useRef(0);
   const startScrollTranslateYRef = useRef(0);
@@ -360,7 +360,7 @@ export default function Home() {
       const docHeight = document.documentElement.scrollHeight - window.innerHeight;
       const progress = docHeight > 0 ? window.scrollY / docHeight : 0;
       setScrollTopProgress(progress);
-      
+
       const buttonHeight = 70;
       const padding = 24;
       const maxTravel = window.innerHeight - buttonHeight - padding * 2;
@@ -370,7 +370,7 @@ export default function Home() {
         scrollButtonRef.current.style.transform = `translateY(${progress * maxTravel}px)`;
       }
     };
-    
+
     window.addEventListener("scroll", handleScroll, { passive: true });
     window.addEventListener("resize", handleScroll);
     handleScroll();
@@ -382,45 +382,45 @@ export default function Home() {
 
   const handleScrollPointerDown = useCallback((e) => {
     e.preventDefault();
-    
+
     const docHeight = document.documentElement.scrollHeight - window.innerHeight;
     const buttonHeight = 70;
     const padding = 24;
     const maxTravel = window.innerHeight - buttonHeight - padding * 2;
-    
+
     if (docHeight <= 0 || maxTravel <= 0) return;
 
     // Temporarily set scroll-behavior to auto so dragging is instant
     document.documentElement.style.scrollBehavior = 'auto';
     isDraggingScrollRef.current = true;
     setIsDraggingScroll(true);
-    
+
     startScrollButtonYRef.current = e.clientY;
-    
+
     const currentProgress = window.scrollY / docHeight;
     startScrollTranslateYRef.current = currentProgress * maxTravel;
-    
+
     scrollButtonRef.current?.setPointerCapture(e.pointerId);
   }, []);
 
   const handleScrollPointerMove = useCallback((e) => {
     if (!isDraggingScrollRef.current) return;
-    
+
     const docHeight = document.documentElement.scrollHeight - window.innerHeight;
     const buttonHeight = 70;
     const padding = 24;
     const maxTravel = window.innerHeight - buttonHeight - padding * 2;
-    
+
     if (docHeight <= 0 || maxTravel <= 0) return;
 
     const deltaY = e.clientY - startScrollButtonYRef.current;
     const newTranslateY = Math.max(0, Math.min(maxTravel, startScrollTranslateYRef.current + deltaY));
-    
+
     // Direct DOM manipulation for buttery smooth transform updates
     if (scrollButtonRef.current) {
       scrollButtonRef.current.style.transform = `translateY(${newTranslateY}px)`;
     }
-    
+
     // Scroll the page synchronously
     const scrollPercent = newTranslateY / maxTravel;
     const newScrollTop = scrollPercent * docHeight;
@@ -429,27 +429,27 @@ export default function Home() {
 
   const handleScrollPointerUp = useCallback((e) => {
     if (!isDraggingScrollRef.current) return;
-    
+
     try {
       scrollButtonRef.current?.releasePointerCapture(e.pointerId);
-    } catch (err) {}
-    
+    } catch (err) { }
+
     isDraggingScrollRef.current = false;
     setIsDraggingScroll(false);
-    
+
     // Restore default CSS smooth scroll behavior
     document.documentElement.style.scrollBehavior = '';
-    
+
     const docHeight = document.documentElement.scrollHeight - window.innerHeight;
     const buttonHeight = 70;
     const padding = 24;
     const maxTravel = window.innerHeight - buttonHeight - padding * 2;
-    
+
     if (docHeight > 0 && maxTravel > 0) {
       const currentProgress = window.scrollY / docHeight;
       setScrollTopProgress(currentProgress);
     }
-    
+
     // Smooth scroll to services if it was a quick click rather than a dragging gesture
     const deltaY = Math.abs(e.clientY - startScrollButtonYRef.current);
     if (deltaY < 5) {
@@ -485,8 +485,8 @@ export default function Home() {
               <a href="/journals" className={styles.navLink}>
                 Works
               </a>
-              <a href="/contract" className={styles.navLink}>
-                Contract
+              <a href="/contact" className={styles.navLink}>
+                Contact
               </a>
               <a href="#" className={styles.navLink} onClick={() => alert("Vlog coming soon")}>
                 Vlog
@@ -521,11 +521,11 @@ export default function Home() {
                     <span className={styles.btnLabel}>Explore</span>
                     <span className={styles.btnArrowWrap}>
                       <svg className={styles.btnArrow} width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M7 17L17 7M17 17V7H7" stroke="url(#arrowGrad)" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
+                        <path d="M7 17L17 7M17 17V7H7" stroke="url(#arrowGrad)" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
                         <defs>
                           <radialGradient id="arrowGrad" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(12 12) rotate(90) scale(5)">
-                            <stop stopColor="#5A69EA"/>
-                            <stop offset="1" stopColor="#BF8BCA"/>
+                            <stop stopColor="#5A69EA" />
+                            <stop offset="1" stopColor="#BF8BCA" />
                           </radialGradient>
                         </defs>
                       </svg>
@@ -541,7 +541,7 @@ export default function Home() {
                     <span className={styles.btnLabel}>Thinking</span>
                     <span className={styles.btnArrowWrap}>
                       <svg className={styles.btnArrow} width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M7 17L17 7M17 17V7H7" stroke="url(#arrowGradThinking)" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
+                        <path d="M7 17L17 7M17 17V7H7" stroke="url(#arrowGradThinking)" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
                         <defs>
                           <linearGradient id="arrowGradThinking" x1="7" y1="7" x2="17" y2="17" gradientUnits="userSpaceOnUse">
                             <stop offset="0%" stopColor="#5A69EA" />
@@ -708,76 +708,76 @@ export default function Home() {
                 <svg width="1166" height="365" viewBox="0 0 1166 365" fill="none" overflow="visible" xmlns="http://www.w3.org/2000/svg">
                   <defs>
                     <filter id="jBorderF" x="-5%" y="-15%" width="110%" height="140%" filterUnits="objectBoundingBox" colorInterpolationFilters="sRGB">
-                      <feFlood floodOpacity="0" result="BackgroundImageFix"/>
-                      <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
-                      <feOffset dx="-3" dy="3"/>
-                      <feGaussianBlur stdDeviation="3"/>
-                      <feColorMatrix type="matrix" values="0 0 0 0 0.76078 0 0 0 0 0.75686 0 0 0 0 0.74902 0 0 0 0.2 0"/>
-                      <feBlend mode="normal" in2="BackgroundImageFix" result="e1"/>
-                      <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
-                      <feOffset dx="3" dy="-3"/>
-                      <feGaussianBlur stdDeviation="3"/>
-                      <feColorMatrix type="matrix" values="0 0 0 0 0.76078 0 0 0 0 0.75686 0 0 0 0 0.74902 0 0 0 0.2 0"/>
-                      <feBlend mode="normal" in2="e1" result="e2"/>
-                      <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
-                      <feOffset dx="-3" dy="-3"/>
-                      <feGaussianBlur stdDeviation="3"/>
-                      <feColorMatrix type="matrix" values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.9 0"/>
-                      <feBlend mode="normal" in2="e2" result="e3"/>
-                      <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
-                      <feOffset dx="3" dy="3"/>
-                      <feGaussianBlur stdDeviation="4"/>
-                      <feColorMatrix type="matrix" values="0 0 0 0 0.76078 0 0 0 0 0.75686 0 0 0 0 0.74902 0 0 0 0.9 0"/>
-                      <feBlend mode="normal" in2="e3" result="e4"/>
-                      <feBlend mode="normal" in="SourceGraphic" in2="e4" result="shape"/>
-                      <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
-                      <feOffset dx="1" dy="1"/>
-                      <feGaussianBlur stdDeviation="1"/>
-                      <feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1"/>
-                      <feColorMatrix type="matrix" values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.3 0"/>
-                      <feBlend mode="normal" in2="shape" result="e5"/>
-                      <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
-                      <feOffset dx="-1" dy="-1"/>
-                      <feGaussianBlur stdDeviation="1"/>
-                      <feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1"/>
-                      <feColorMatrix type="matrix" values="0 0 0 0 0.76078 0 0 0 0 0.75686 0 0 0 0 0.74902 0 0 0 0.5 0"/>
-                      <feBlend mode="normal" in2="e5" result="e6"/>
+                      <feFlood floodOpacity="0" result="BackgroundImageFix" />
+                      <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
+                      <feOffset dx="-3" dy="3" />
+                      <feGaussianBlur stdDeviation="3" />
+                      <feColorMatrix type="matrix" values="0 0 0 0 0.76078 0 0 0 0 0.75686 0 0 0 0 0.74902 0 0 0 0.2 0" />
+                      <feBlend mode="normal" in2="BackgroundImageFix" result="e1" />
+                      <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
+                      <feOffset dx="3" dy="-3" />
+                      <feGaussianBlur stdDeviation="3" />
+                      <feColorMatrix type="matrix" values="0 0 0 0 0.76078 0 0 0 0 0.75686 0 0 0 0 0.74902 0 0 0 0.2 0" />
+                      <feBlend mode="normal" in2="e1" result="e2" />
+                      <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
+                      <feOffset dx="-3" dy="-3" />
+                      <feGaussianBlur stdDeviation="3" />
+                      <feColorMatrix type="matrix" values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.9 0" />
+                      <feBlend mode="normal" in2="e2" result="e3" />
+                      <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
+                      <feOffset dx="3" dy="3" />
+                      <feGaussianBlur stdDeviation="4" />
+                      <feColorMatrix type="matrix" values="0 0 0 0 0.76078 0 0 0 0 0.75686 0 0 0 0 0.74902 0 0 0 0.9 0" />
+                      <feBlend mode="normal" in2="e3" result="e4" />
+                      <feBlend mode="normal" in="SourceGraphic" in2="e4" result="shape" />
+                      <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
+                      <feOffset dx="1" dy="1" />
+                      <feGaussianBlur stdDeviation="1" />
+                      <feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1" />
+                      <feColorMatrix type="matrix" values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.3 0" />
+                      <feBlend mode="normal" in2="shape" result="e5" />
+                      <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
+                      <feOffset dx="-1" dy="-1" />
+                      <feGaussianBlur stdDeviation="1" />
+                      <feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1" />
+                      <feColorMatrix type="matrix" values="0 0 0 0 0.76078 0 0 0 0 0.75686 0 0 0 0 0.74902 0 0 0 0.5 0" />
+                      <feBlend mode="normal" in2="e5" result="e6" />
                     </filter>
                     <filter id="jInnerF" x="-5%" y="-15%" width="110%" height="140%" filterUnits="objectBoundingBox" colorInterpolationFilters="sRGB">
-                      <feFlood floodOpacity="0" result="BackgroundImageFix"/>
-                      <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
-                      <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
-                      <feOffset dx="3" dy="3"/>
-                      <feGaussianBlur stdDeviation="4"/>
-                      <feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1"/>
-                      <feColorMatrix type="matrix" values="0 0 0 0 0.713726 0 0 0 0 0.709804 0 0 0 0 0.701961 0 0 0 0.9 0"/>
-                      <feBlend mode="normal" in2="shape" result="e1"/>
-                      <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
-                      <feOffset dx="-3" dy="-3"/>
-                      <feGaussianBlur stdDeviation="3"/>
-                      <feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1"/>
-                      <feColorMatrix type="matrix" values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.9 0"/>
-                      <feBlend mode="normal" in2="e1" result="e2"/>
+                      <feFlood floodOpacity="0" result="BackgroundImageFix" />
+                      <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape" />
+                      <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
+                      <feOffset dx="3" dy="3" />
+                      <feGaussianBlur stdDeviation="4" />
+                      <feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1" />
+                      <feColorMatrix type="matrix" values="0 0 0 0 0.713726 0 0 0 0 0.709804 0 0 0 0 0.701961 0 0 0 0.9 0" />
+                      <feBlend mode="normal" in2="shape" result="e1" />
+                      <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
+                      <feOffset dx="-3" dy="-3" />
+                      <feGaussianBlur stdDeviation="3" />
+                      <feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1" />
+                      <feColorMatrix type="matrix" values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.9 0" />
+                      <feBlend mode="normal" in2="e1" result="e2" />
                     </filter>
                     <filter id="jGlowF" x="-10%" y="-50%" width="120%" height="200%">
-                      <feGaussianBlur stdDeviation="8" result="blur"/>
+                      <feGaussianBlur stdDeviation="8" result="blur" />
                       <feMerge>
-                        <feMergeNode in="blur"/>
-                        <feMergeNode in="blur"/>
-                        <feMergeNode in="SourceGraphic"/>
+                        <feMergeNode in="blur" />
+                        <feMergeNode in="blur" />
+                        <feMergeNode in="SourceGraphic" />
                       </feMerge>
                     </filter>
                   </defs>
                   {/* Outer border — static neumorphic track */}
                   <g filter="url(#jBorderF)">
-                    <path d={CURVE_PATH} stroke="#E5E5E3" strokeWidth="30" strokeLinecap="round" fill="none"/>
+                    <path d={CURVE_PATH} stroke="#E5E5E3" strokeWidth="30" strokeLinecap="round" fill="none" />
                   </g>
                   {/* Inner blue path — animated flow fill */}
                   <g filter="url(#jInnerF)">
-                    <path ref={bluePathRef} d={CURVE_PATH} stroke="#B2CEFE" strokeWidth="15" strokeLinecap="round" fill="none" strokeDasharray="2000" strokeDashoffset="2000"/>
+                    <path ref={bluePathRef} d={CURVE_PATH} stroke="#B2CEFE" strokeWidth="15" strokeLinecap="round" fill="none" strokeDasharray="2000" strokeDashoffset="2000" />
                   </g>
                   {/* Ambient glow — follows the flow for 3D depth */}
-                  <path ref={glowPathRef} d={CURVE_PATH} stroke="#B2CEFE" strokeWidth="24" strokeLinecap="round" fill="none" opacity="0.3" filter="url(#jGlowF)" strokeDasharray="2000" strokeDashoffset="2000"/>
+                  <path ref={glowPathRef} d={CURVE_PATH} stroke="#B2CEFE" strokeWidth="24" strokeLinecap="round" fill="none" opacity="0.3" filter="url(#jGlowF)" strokeDasharray="2000" strokeDashoffset="2000" />
                 </svg>
               </div>
 
@@ -894,9 +894,9 @@ export default function Home() {
       </footer>
 
       {/* ===== Floating Scroll Button ===== */}
-      <button 
+      <button
         className={`${styles.floatingScrollBtn} ${isDraggingScroll ? styles.isDragging : ""}`}
-        id="scroll-indicator" 
+        id="scroll-indicator"
         aria-label="Scroll Down"
         ref={scrollButtonRef}
         onPointerDown={handleScrollPointerDown}
