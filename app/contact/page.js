@@ -2,7 +2,6 @@
 
 import { useState, useRef, useCallback, useEffect } from "react";
 import styles from "./page.module.css";
-import LargeLogo from "./LargeLogo";
 
 // Helper component to load SVGs inline
 function InlineSVG({ src, className }) {
@@ -507,10 +506,7 @@ export default function ContactPage() {
           </p>
         </div>
 
-        {/* ===== LEFT COLUMN: Brand Logo Card ===== */}
-        <div className={styles.logoWrapper}>
-          <LargeLogo className={styles.logoCard} />
-        </div>
+
 
         {/* ===== RIGHT COLUMN: Quick Mail Container ===== */}
         <div className={styles.quickMailContainer}>
