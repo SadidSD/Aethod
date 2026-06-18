@@ -249,14 +249,6 @@ export default function ContractPage() {
       {/* ===== MAIN CONTENT ===== */}
       <main className={styles.mainContainer}>
         <div className={styles.contentAlignContainer}>
-          {/* Header: "Contract" title + subtitle */}
-          <div className={styles.headerFrame}>
-            <h1 className={styles.headerTitle}>Contract</h1>
-            <p className={styles.headerSubtitle}>
-              Start fresh.
-            </p>
-          </div>
-
           {/* ===== 3D DRAGGABLE THEME SWITCH ===== */}
           <div className={styles.slideButton} id="theme-toggle">
             <div className={styles.slideTrack} ref={trackRef}>
