@@ -289,6 +289,9 @@ export default function StudioPage() {
               <a href="/journals" className={styles.navLink}>
                 Works
               </a>
+              <a href="/contract" className={styles.navLink}>
+                Contract
+              </a>
               <a href="#" className={styles.navLink} onClick={() => alert("Vlog coming soon")}>
                 Vlog
               </a>

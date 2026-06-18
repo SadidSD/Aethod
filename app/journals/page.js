@@ -304,6 +304,9 @@ export default function JournalsPage() {
               <a href="/journals" className={`${styles.navLink} ${styles.activeNavLink}`}>
                 Works
               </a>
+              <a href="/contract" className={styles.navLink}>
+                Contract
+              </a>
               <a href="#" className={styles.navLink} onClick={() => alert("Vlog coming soon")}>
                 Vlog
               </a>
