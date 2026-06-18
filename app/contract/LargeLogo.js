@@ -3,15 +3,21 @@ import styles from "./page.module.css";
 export default function LargeLogo() {
   return (
     <div style={{ position: "relative", width: "100%", height: "100%" }}>
-      {/* Vector 11 (Right Leg) - Bottom Layer */}
-      <div style={{ position: "absolute", right: 0, bottom: 0, width: "215px", height: "268px" }}>
+      {/* Layer 1: Background White Borders (Combined) */}
+      <div className={styles.whiteBorder} style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%" }}>
         {/* Vector 11 White Border */}
-        <div className={styles.whiteBorder}>
-          <svg style={{ position: "absolute", right: 0, bottom: 0, width: "100%", height: "100%", overflow: "visible" }} viewBox="0 0 215 268" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path className={styles.v11WhitePath} d="M79.6073 3L15.678 132.197C15.678 132.197 -5.1784 170.088 6.61001 152.74C18.3984 135.392 44.0415 115.424 61.4713 119.871C69.3946 121.892 81.3439 130.586 85.5015 141.784C90.4889 144.523 120.609 212.419 133.109 233.545C133.109 233.545 156.585 269.196 212 264.589L79.6073 3Z" fill="#ECECEC" stroke="#ECECEC" strokeWidth="30" strokeLinejoin="round"/>
-          </svg>
-        </div>
-        {/* Vector 11 Blue Inner */}
+        <svg style={{ position: "absolute", right: 0, bottom: 0, width: "215px", height: "268px", overflow: "visible" }} viewBox="0 0 215 268" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path className={styles.v11WhitePath} d="M79.6073 3L15.678 132.197C15.678 132.197 -5.1784 170.088 6.61001 152.74C18.3984 135.392 44.0415 115.424 61.4713 119.871C69.3946 121.892 81.3439 130.586 85.5015 141.784C90.4889 144.523 120.609 212.419 133.109 233.545C133.109 233.545 156.585 269.196 212 264.589L79.6073 3Z" fill="#ECECEC" stroke="#ECECEC" strokeWidth="30" strokeLinejoin="round"/>
+        </svg>
+        {/* Vector 10 White Border */}
+        <svg style={{ position: "absolute", left: "5px", bottom: "35px", width: "175px", height: "103px", overflow: "visible" }} viewBox="0 0 166 98" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path className={styles.v10WhitePath} d="M39.4444 29.9034L3 95C3 95 44.1852 63.0364 52.7778 58.3588C61.3704 53.6812 68.4864 47.5195 80.3333 43.9362C94.8183 39.555 104.346 38.9197 119.444 41.2076C138.419 44.0828 152.926 55.1105 163 61.4772C163 59.5282 147 42.377 147 42.377C142.556 36.9198 117.667 11.9726 103.444 6.5154C89.2222 1.0582 78.1111 3.0072 67.8888 5.346C59.711 7.21704 45.5185 22.4972 39.4444 29.9034Z" fill="#ECECEC" stroke="#ECECEC" strokeWidth="30" strokeLinejoin="round"/>
+        </svg>
+      </div>
+
+      {/* Layer 2: Foreground Blue Inners */}
+      {/* Vector 11 Blue Inner */}
+      <div style={{ position: "absolute", right: 0, bottom: 0, width: "215px", height: "268px" }}>
         <div className={styles.blueInner}>
           <svg style={{ position: "absolute", right: 0, bottom: 0, width: "100%", height: "100%", overflow: "visible" }} viewBox="0 0 215 268" fill="none" xmlns="http://www.w3.org/2000/svg">
             <g filter="url(#filter0_v11)">
@@ -61,15 +67,8 @@ export default function LargeLogo() {
         </div>
       </div>
 
-      {/* Vector 10 (Left Swoosh) - Top Layer */}
+      {/* Vector 10 Blue Inner */}
       <div style={{ position: "absolute", left: "5px", bottom: "35px", width: "175px", height: "103px" }}>
-        {/* Vector 10 White Border */}
-        <div className={styles.whiteBorder}>
-          <svg style={{ position: "absolute", left: 0, bottom: 0, width: "100%", height: "100%", overflow: "visible" }} viewBox="0 0 166 98" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path className={styles.v10WhitePath} d="M39.4444 29.9034L3 95C3 95 44.1852 63.0364 52.7778 58.3588C61.3704 53.6812 68.4864 47.5195 80.3333 43.9362C94.8183 39.555 104.346 38.9197 119.444 41.2076C138.419 44.0828 152.926 55.1105 163 61.4772C163 59.5282 147 42.377 147 42.377C142.556 36.9198 117.667 11.9726 103.444 6.5154C89.2222 1.0582 78.1111 3.0072 67.8888 5.346C59.711 7.21704 45.5185 22.4972 39.4444 29.9034Z" fill="#ECECEC" stroke="#ECECEC" strokeWidth="30" strokeLinejoin="round"/>
-          </svg>
-        </div>
-        {/* Vector 10 Blue Inner */}
         <div className={styles.blueInner}>
           <svg style={{ position: "absolute", left: 0, bottom: 0, width: "100%", height: "100%", overflow: "visible" }} viewBox="0 0 166 98" fill="none" xmlns="http://www.w3.org/2000/svg">
             <g filter="url(#filter0_v10)">
