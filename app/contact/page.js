@@ -506,6 +506,11 @@ export default function ContactPage() {
           </p>
         </div>
 
+        {/* ===== LEFT COLUMN: Large Brand Logo ===== */}
+        <div className={styles.heroLogoWrapper}>
+          <img src="/logo.svg" alt="Aeethod Logo" className={styles.heroLogo} />
+        </div>
+
 
 
         {/* ===== RIGHT COLUMN: Quick Mail Container ===== */}
