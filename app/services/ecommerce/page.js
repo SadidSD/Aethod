@@ -281,20 +281,30 @@ export default function EcommercePage() {
 
           {/* Action Button Bar */}
           <div className={styles.btnBar}>
-            <button className={styles.btnExplore} onClick={playClickSound}>
-              <span className={styles.btnText}>Explore</span>
-              <InlineSVG src="/services/ecommerce/Frame 209.svg" className={styles.btnArrow} />
-            </button>
-            <button className={styles.btnThinking} onClick={playClickSound}>
-              <span className={styles.btnText}>Thinking</span>
-            </button>
+            <button
+              className={styles.invisibleBtnScroll}
+              onClick={() => {
+                playClickSound();
+                document.getElementById("quick-list")?.scrollIntoView({ behavior: "smooth" });
+              }}
+              aria-label="Scroll Down"
+            />
+            <button
+              className={styles.invisibleBtnWorks}
+              onClick={() => {
+                playClickSound();
+                window.location.href = "/journals";
+              }}
+              aria-label="Visit Our Works"
+            />
+            <InlineSVG src="/services/ecommerce/Frame 209.svg" className={styles.buttonsSvg} />
           </div>
 
           {/* Main Hero Image */}
           <InlineSVG src="/services/ecommerce/Image.svg" className={styles.heroImage} />
 
           {/* SECTION: Quick List */}
-          <InlineSVG src="/services/ecommerce/Frame 200.svg" className={styles.quickListHeader} />
+          <InlineSVG src="/services/ecommerce/Frame 200.svg" className={styles.quickListHeader} id="quick-list" />
           <InlineSVG src="/services/ecommerce/Quick List.svg" className={styles.quickListGrid} />
 
           {/* SECTION: Project Financing */}

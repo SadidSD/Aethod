@@ -43,9 +43,7 @@ export default function TcgPage() {
   const slideFoleyBufferRef = useRef(null);
   const audioContextRef = useRef(null);
 
-  // Interactive Financing Slider State
-  const [minPrice, setMinPrice] = useState(3000);
-  const [maxPrice, setMaxPrice] = useState(12000);
+  // Interactive Financing Slider State removed as price bar is now static
 
   // Form State
   const [email, setEmail] = useState("");
@@ -281,13 +279,23 @@ export default function TcgPage() {
 
           {/* Action Button Bar */}
           <div className={styles.btnBar}>
-            <button className={styles.btnExplore} onClick={playClickSound}>
-              <span className={styles.btnText}>Explore</span>
-              <InlineSVG src="/services/tcg/Frame 209.svg" className={styles.btnArrow} />
-            </button>
-            <button className={styles.btnThinking} onClick={playClickSound}>
-              <span className={styles.btnText}>Thinking</span>
-            </button>
+            <button
+              className={styles.invisibleBtnScroll}
+              onClick={() => {
+                playClickSound();
+                document.getElementById("quick-list")?.scrollIntoView({ behavior: "smooth" });
+              }}
+              aria-label="Scroll Down"
+            />
+            <button
+              className={styles.invisibleBtnWorks}
+              onClick={() => {
+                playClickSound();
+                window.location.href = "/journals";
+              }}
+              aria-label="Visit Our Works"
+            />
+            <InlineSVG src="/services/tcg/Frame 209.svg" className={styles.buttonsSvg} />
           </div>
 
           {/* Main Hero Card Image */}
@@ -303,59 +311,76 @@ export default function TcgPage() {
           <InlineSVG src="/services/tcg/mini 3.svg" className={styles.mini3} />
 
           {/* SECTION: Quick List */}
-          <InlineSVG src="/services/tcg/Frame 200.svg" className={styles.quickListHeader} />
-          <InlineSVG src="/services/tcg/Quick List.svg" className={styles.quickListGrid} />
+          <div className={styles.quickListHeader} id="quick-list">
+            <h2 className={styles.quickListTitle}>
+              Quick <span className={styles.quickListTitleHighlight}>List</span>
+            </h2>
+            <p className={styles.quickListSubtitle}>
+              Problems that you won't <span className={styles.quickListSubtitleHighlight}>face again</span>
+            </p>
+          </div>
+
+          <div className={styles.quickListGrid}>
+            <div className={`${styles.quickCard} ${styles.quickCard1}`}>
+              <h3 className={styles.cardTitle}>Dynamic Inventory Syncing</h3>
+              <p className={styles.cardDesc}>
+                Automated backend infrastructure that syncs marketplace stock, grading variations, and precise card conditions with zero operational delay
+              </p>
+            </div>
+            <div className={`${styles.quickCard} ${styles.quickCard2}`}>
+              <h3 className={styles.cardTitle}>Unified Marketplace Logic</h3>
+              <p className={styles.cardDesc}>
+                Centralized platform architecture that connects fragmented storefronts into a single, cohesive business environment.
+              </p>
+            </div>
+            <div className={`${styles.quickCard} ${styles.quickCard3}`}>
+              <h3 className={styles.cardTitle}>Algorithmic Pricing Engines</h3>
+              <p className={styles.cardDesc}>
+                Real-time data pipelines built to absorb market volatility and automatically adjust card values based on live ecosystem trends.
+              </p>
+            </div>
+            <div className={`${styles.quickCard} ${styles.quickCard4}`}>
+              <h3 className={styles.cardTitle}>High-Volume Data Processing</h3>
+              <p className={styles.cardDesc}>
+                Bespoke framework engineered to handle deep card catalogs and intensive transaction loads without system friction or lag.
+              </p>
+            </div>
+          </div>
 
           {/* SECTION: Project Financing */}
-          <InlineSVG src="/services/tcg/Frame 201.svg" className={styles.financingHeader} />
-
-          <InlineSVG src="/services/tcg/Precision engineering cannot be packaged. Every system we build is scoped individually based on operational complexity and data volume..svg" className={styles.financingLeftText} />
-          
-          <InlineSVG src="/services/tcg/Our structural engagements for custom TCG ecosystems typically begin between $3,000 and $12,000, scaling upward depending entirely on the architectural depth your organization demands. The final financial investment is directly defined by the compl.svg" className={styles.financingRightText} />
-
-          <div className={styles.rangeBoxBg} />
-          <div className={styles.sliderLabel}>Average Range</div>
-
-          {/* Interactive Custom Neumorphic Range Slider */}
-          <div className={styles.sliderWrapper}>
-            <div className={styles.sliderMinLabel}>$3,000</div>
-            <div className={styles.sliderTrackContainer}>
-              <input
-                type="range"
-                min="3000"
-                max="12000"
-                value={minPrice}
-                onChange={(e) => setMinPrice(Math.min(Number(e.target.value), maxPrice - 500))}
-                className={`${styles.rangeInput} ${styles.minRange}`}
-              />
-              <input
-                type="range"
-                min="3000"
-                max="12000"
-                value={maxPrice}
-                onChange={(e) => setMaxPrice(Math.max(Number(e.target.value), minPrice + 500))}
-                className={`${styles.rangeInput} ${styles.maxRange}`}
-              />
-              <div className={styles.sliderTrack} />
-              <div
-                className={styles.sliderProgress}
-                style={{
-                  left: `${((minPrice - 3000) / 9000) * 100}%`,
-                  right: `${100 - ((maxPrice - 3000) / 9000) * 100}%`,
-                }}
-              />
-              <div
-                className={`${styles.sliderThumb} ${styles.leftThumb}`}
-                style={{ left: `${((minPrice - 3000) / 9000) * 100}%` }}
-              />
-              <div
-                className={`${styles.sliderThumb} ${styles.rightThumb}`}
-                style={{ left: `${((maxPrice - 3000) / 9000) * 100}%` }}
-              />
+          <div className={styles.projectFinancingSection}>
+            <div className={styles.pfTitleContainer}>
+              <h2 className={styles.pfTitle}>Project <span className={styles.pfTitleHighlight}>Financing</span></h2>
+              <p className={styles.pfSubtitle}>Investment ranges for <span className={styles.pfSubtitleHighlight}>bespoke ecosystem engineering</span></p>
             </div>
-            <div className={styles.sliderMaxLabel}>$12,000</div>
-            <div className={styles.dynamicPrice}>
-              Selected Budget: <span>${minPrice.toLocaleString()} - ${maxPrice.toLocaleString()}</span>
+            
+            <div className={styles.pfGrid}>
+              <div className={styles.pfLeftCol}>
+                <div className={styles.pfCard}>
+                  <p className={styles.pfPrecisionText}>
+                    Precision engineering cannot be packaged. Every system we build is scoped individually based on <span className={styles.pfHighlightText}>operational complexity and data volume</span>.
+                  </p>
+                </div>
+                <div className={styles.pfCard}>
+                  <h3 className={styles.pfAverageTitle}>Average <span className={styles.pfTitleHighlight}>Range</span></h3>
+                  <div className={styles.pfPriceBarContainer}>
+                    <img src="/services/tcg/pricebar/Praicing.svg" alt="Price bar" className={styles.praicingSvg} />
+                    <div className={styles.pfPriceLabels}>
+                      <span className={styles.pfLabelMin}>3000$</span>
+                      <span className={styles.pfLabelMid}>?</span>
+                      <span className={styles.pfLabelMax}>12000$</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              <div className={styles.pfRightCol}>
+                <div className={`${styles.pfCard} ${styles.pfTallCard}`}>
+                  <p className={styles.pfStructuralText}>
+                    Our structural engagements for custom TCG ecosystems <span className={styles.pfHighlightText}>typically begin between $3,000 and $12,000</span>, scaling upward depending entirely on the architectural depth your organization demands. The final financial investment is directly defined by the complexity of your asset infrastructure, the volume of your data processing pipelines, and the level of custom automation required. <span className={styles.pfHighlightText}>We do not build generic templates. Instead,</span> we map your exact ecosystem requirements during our initial blueprinting <span className={styles.pfHighlightText}>phase to deliver a highly optimized system engineered specifically to your operational ceiling</span>—no matter how complex.
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
 

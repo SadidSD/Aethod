@@ -23,6 +23,17 @@
   font-family: var(--font-sora), sans-serif !important;
 }
 
+/* ---------- Page Content Wrapper ---------- */
+.pageContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  position: relative;
+  gap: 40px;
+  transition: transform 0.5s ease;
+}
+
 /* ---------- The Main Figma absolute Rounded Card ---------- */
 .mainCard {
   position: relative;
@@ -45,14 +56,13 @@
     0 5px 15px rgba(0, 0, 0, 0.2);
 }
 
-/* ---------- Custom absolute Navigation Bar ---------- */
+/* ---------- Custom sticky Navigation Bar ---------- */
 .navOuter {
-  position: absolute;
-  width: 1352px;
-  height: 80px;
-  left: 44px;
-  top: 36px;
+  position: sticky;
+  top: 0;
   z-index: 100;
+  padding: 36px 24px 0;
+  width: 100%;
 }
 
 .navbar {
@@ -69,8 +79,11 @@
     inset -1px -1px 2px rgba(201, 201, 201, 0.5);
   border-radius: 64px;
   padding: 12px 24px;
-  height: 100%;
-  width: 100%;
+  height: 80px;
+  max-width: 1352px;
+  margin: 0 auto;
+  position: relative;
+  overflow: hidden;
   transition: background-color 0.5s ease, box-shadow 0.5s ease;
 }
 
@@ -784,44 +797,50 @@
 
 /* ---------- MEDIA SCALING FOR RESPONSIVENESS ---------- */
 @media (max-width: 1480px) {
-  .mainCard {
+  .pageContent {
     transform: scale(0.9);
-    transform-origin: center center;
+    transform-origin: top center;
+    margin-bottom: -134.3px;
   }
 }
 
 @media (max-width: 1300px) {
-  .mainCard {
+  .pageContent {
     transform: scale(0.8);
-    transform-origin: center center;
+    transform-origin: top center;
+    margin-bottom: -268.6px;
   }
 }
 
 @media (max-width: 1150px) {
-  .mainCard {
+  .pageContent {
     transform: scale(0.7);
-    transform-origin: center center;
+    transform-origin: top center;
+    margin-bottom: -402.9px;
   }
 }
 
 @media (max-width: 1000px) {
-  .mainCard {
+  .pageContent {
     transform: scale(0.6);
-    transform-origin: center center;
+    transform-origin: top center;
+    margin-bottom: -537.2px;
   }
 }
 
 @media (max-width: 800px) {
-  .mainCard {
+  .pageContent {
     transform: scale(0.5);
-    transform-origin: center center;
+    transform-origin: top center;
+    margin-bottom: -671.5px;
   }
 }
 
 @media (max-width: 650px) {
-  .mainCard {
+  .pageContent {
     transform: scale(0.4);
-    transform-origin: center center;
+    transform-origin: top center;
+    margin-bottom: -805.8px;
   }
 }
 

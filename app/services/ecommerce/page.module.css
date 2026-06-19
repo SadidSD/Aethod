@@ -162,62 +162,66 @@
 
 .btnBar {
   position: absolute;
-  width: 436px;
-  height: 55px;
-  left: 131px;
+  width: 452px;
+  height: 71px;
+  left: 131px; /* Aligned with left-aligned context text column in Ecommerce */
   top: 832px;
-  display: flex;
-  gap: 25px;
-  align-items: center;
 }
 
-.btnExplore {
+.buttonsSvg {
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.buttonsSvg g {
+  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.invisibleBtnScroll {
+  position: absolute;
+  left: 8px;
+  top: 8px;
   width: 206px;
   height: 55px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  border-radius: 10px;
-  background: #ECECEC;
-  box-shadow: 1px 1px 2px rgba(255, 255, 255, 0.3), -1px -1px 2px rgba(145, 145, 143, 0.5), inset -2px 2px 4px rgba(145, 145, 143, 0.2), inset 2px -2px 4px rgba(145, 145, 143, 0.2), inset -2px -2px 4px rgba(255, 255, 255, 0.9), inset 2px 2px 5px rgba(145, 145, 143, 0.9);
+  background: transparent;
   border: none;
+  opacity: 0;
   cursor: pointer;
-  transition: transform 0.2s ease;
+  z-index: 2;
 }
 
-.btnExplore:hover {
-  transform: scale(1.03);
-}
-
-.btnText {
-  font-family: var(--font-sora), sans-serif;
-  font-weight: 300;
-  font-size: 20px;
-  color: #404040;
-}
-
-.btnArrow {
-  width: 24px;
-  height: 24px;
-}
-
-.btnThinking {
+.invisibleBtnWorks {
+  position: absolute;
+  left: 239px;
+  top: 8px;
   width: 205px;
   height: 55px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 10px;
-  background: #ECECEC;
-  border: 5px solid #B2CEFE;
-  box-shadow: 1px 1px 2px rgba(255, 255, 255, 0.3), -1px -1px 2px rgba(145, 145, 143, 0.5), inset -2px 2px 4px rgba(145, 145, 143, 0.2), inset 2px -2px 4px rgba(145, 145, 143, 0.2), inset -2px -2px 4px rgba(255, 255, 255, 0.9), inset 2px 2px 5px rgba(145, 145, 143, 0.9);
+  background: transparent;
+  border: none;
+  opacity: 0;
   cursor: pointer;
-  transition: transform 0.2s ease;
+  z-index: 2;
 }
 
-.btnThinking:hover {
-  transform: scale(1.03);
+.invisibleBtnScroll:hover ~ .buttonsSvg g:first-of-type {
+  transform: scale(1.02);
+  transform-origin: 111px 35.5px;
+}
+
+.invisibleBtnWorks:hover ~ .buttonsSvg g:last-of-type {
+  transform: scale(1.02);
+  transform-origin: 341.5px 35.5px;
+}
+
+.invisibleBtnScroll:active ~ .buttonsSvg g:first-of-type {
+  transform: scale(0.98);
+  transform-origin: 111px 35.5px;
+}
+
+.invisibleBtnWorks:active ~ .buttonsSvg g:last-of-type {
+  transform: scale(0.98);
+  transform-origin: 341.5px 35.5px;
 }
 
 .heroImage {

@@ -162,62 +162,66 @@
 
 .btnBar {
   position: absolute;
-  width: 436px;
-  height: 55px;
-  left: 860px;
+  width: 452px;
+  height: 71px;
+  left: 835px; /* Center-aligned under context text container: (772 + 579/2) - 452/2 = 835.5 */
   top: 832px;
-  display: flex;
-  gap: 25px;
-  align-items: center;
 }
 
-.btnExplore {
+.buttonsSvg {
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.buttonsSvg g {
+  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.invisibleBtnScroll {
+  position: absolute;
+  left: 8px;
+  top: 8px;
   width: 206px;
   height: 55px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  border-radius: 10px;
-  background: #ECECEC;
-  box-shadow: 1px 1px 2px rgba(255, 255, 255, 0.3), -1px -1px 2px rgba(145, 145, 143, 0.5), inset -2px 2px 4px rgba(145, 145, 143, 0.2), inset 2px -2px 4px rgba(145, 145, 143, 0.2), inset -2px -2px 4px rgba(255, 255, 255, 0.9), inset 2px 2px 5px rgba(145, 145, 143, 0.9);
+  background: transparent;
   border: none;
+  opacity: 0;
   cursor: pointer;
-  transition: transform 0.2s ease;
+  z-index: 2;
 }
 
-.btnExplore:hover {
-  transform: scale(1.03);
-}
-
-.btnText {
-  font-family: var(--font-sora), sans-serif;
-  font-weight: 300;
-  font-size: 20px;
-  color: #404040;
-}
-
-.btnArrow {
-  width: 24px;
-  height: 24px;
-}
-
-.btnThinking {
+.invisibleBtnWorks {
+  position: absolute;
+  left: 239px;
+  top: 8px;
   width: 205px;
   height: 55px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 10px;
-  background: #ECECEC;
-  border: 5px solid #B2CEFE;
-  box-shadow: 1px 1px 2px rgba(255, 255, 255, 0.3), -1px -1px 2px rgba(145, 145, 143, 0.5), inset -2px 2px 4px rgba(145, 145, 143, 0.2), inset 2px -2px 4px rgba(145, 145, 143, 0.2), inset -2px -2px 4px rgba(255, 255, 255, 0.9), inset 2px 2px 5px rgba(145, 145, 143, 0.9);
+  background: transparent;
+  border: none;
+  opacity: 0;
   cursor: pointer;
-  transition: transform 0.2s ease;
+  z-index: 2;
 }
 
-.btnThinking:hover {
-  transform: scale(1.03);
+.invisibleBtnScroll:hover ~ .buttonsSvg g:first-of-type {
+  transform: scale(1.02);
+  transform-origin: 111px 35.5px;
+}
+
+.invisibleBtnWorks:hover ~ .buttonsSvg g:last-of-type {
+  transform: scale(1.02);
+  transform-origin: 341.5px 35.5px;
+}
+
+.invisibleBtnScroll:active ~ .buttonsSvg g:first-of-type {
+  transform: scale(0.98);
+  transform-origin: 111px 35.5px;
+}
+
+.invisibleBtnWorks:active ~ .buttonsSvg g:last-of-type {
+  transform: scale(0.98);
+  transform-origin: 341.5px 35.5px;
 }
 
 .heroImage {
@@ -246,10 +250,43 @@
 /* SECTION 2: QUICK LIST */
 .quickListHeader {
   position: absolute;
-  width: 536px;
+  width: 600px;
   height: 95px;
   left: 134px;
-  top: 1125px;
+  top: 1075px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.quickListTitle {
+  font-family: var(--font-sora), sans-serif;
+  font-weight: 300;
+  font-size: 48px;
+  color: #404040;
+  margin: 0;
+  line-height: 1.1;
+}
+
+.quickListTitleHighlight {
+  background: linear-gradient(135deg, #5A69EA 0%, #BF8BCA 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-weight: 400;
+}
+
+.quickListSubtitle {
+  font-family: var(--font-sora), sans-serif;
+  font-weight: 300;
+  font-size: 24px;
+  color: #717171;
+  margin: 8px 0 0 0;
+  line-height: 1.2;
+}
+
+.quickListSubtitleHighlight {
+  color: #BF8BCA;
 }
 
 .quickListGrid {
@@ -260,173 +297,201 @@
   top: 1202px;
 }
 
-.quickCardBg1, .quickCardBg2, .quickCardBg3, .quickCardBg4 {
+.quickCard {
   position: absolute;
   width: 675px;
   height: 225px;
   background: #ECECEC;
   border: 2px solid rgba(113, 113, 113, 0.5);
   border-radius: 10px;
-}
-
-.quickCardBg1 { left: 0px; top: 0px; }
-.quickCardBg2 { left: 2px; top: 251px; }
-.quickCardBg3 { left: 695px; top: 0px; }
-.quickCardBg4 { left: 697px; top: 251px; }
-
-.quickCardContent1 { position: absolute; width: 595px; height: 165px; left: 40px; top: 30px; }
-.quickCardContent2 { position: absolute; width: 595px; height: 165px; left: 42px; top: 281px; }
-.quickCardContent3 { position: absolute; width: 595px; height: 165px; left: 735px; top: 30px; }
-.quickCardContent4 { position: absolute; width: 595px; height: 165px; left: 737px; top: 281px; }
-
-/* SECTION 3: PROJECT FINANCING */
-.financingHeader {
-  position: absolute;
-  width: 536px;
-  height: 125px;
-  left: 134px;
-  top: 1896px;
-}
-
-.financingLeftText {
-  position: absolute;
-  width: 448px;
-  height: 300px;
-  left: 160px;
-  top: 2143px;
-}
-
-.financingRightText {
-  position: absolute;
-  width: 495px;
-  height: 560px;
-  left: 776px;
-  top: 2165px;
-}
-
-.rangeBoxBg {
+  padding: 30px 40px;
   box-sizing: border-box;
-  position: absolute;
-  width: 651px;
-  height: 272px;
-  left: 52px;
-  top: 2517px;
-  background: #ECECEC;
-  border: 2px solid rgba(113, 113, 113, 0.5);
-  border-radius: 10px;
-}
-
-.sliderLabel {
-  position: absolute;
-  left: 156px;
-  top: 2557px;
-  font-family: var(--font-sora), sans-serif;
-  font-weight: 300;
-  font-size: 32px;
-  color: #404040;
-}
-
-.sliderWrapper {
-  position: absolute;
-  width: 500px;
-  height: 120px;
-  left: 130px;
-  top: 2640px;
   display: flex;
   flex-direction: column;
+  justify-content: flex-start;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.sliderMinLabel {
-  position: absolute;
-  left: 0px;
-  top: 37px;
+.quickCard:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+}
+
+.quickCard1 { left: 0px; top: 0px; }
+.quickCard2 { left: 2px; top: 251px; }
+.quickCard3 { left: 695px; top: 0px; }
+.quickCard4 { left: 697px; top: 251px; }
+
+.cardTitle {
   font-family: var(--font-sora), sans-serif;
-  font-size: 14px;
-  color: #717171;
+  font-weight: 400;
+  font-size: 24px;
+  color: #404040;
+  margin: 0 0 12px 0;
+  line-height: 1.2;
 }
 
-.sliderMaxLabel {
-  position: absolute;
-  left: 360px;
-  top: 37px;
+.cardDesc {
   font-family: var(--font-sora), sans-serif;
-  font-size: 14px;
+  font-weight: 300;
+  font-size: 16px;
   color: #717171;
-}
-
-.sliderTrackContainer {
-  position: absolute;
-  left: 60px;
-  top: 25px;
-  width: 288px;
-  height: 25px;
-}
-
-.sliderTrack {
-  position: absolute;
-  width: 100%;
-  height: 9px;
-  top: 8px;
-  background: #ECECEC;
-  box-shadow: 1px 1px 2px rgba(255, 255, 255, 0.3), -1px -1px 2px rgba(212, 212, 212, 0.5), inset -3px 3px 6px rgba(212, 212, 212, 0.2), inset 3px -3px 6px rgba(212, 212, 212, 0.2), inset -3px -3px 6px rgba(255, 255, 255, 0.9), inset 3px 3px 8px rgba(212, 212, 212, 0.9);
-  border-radius: 10px;
-}
-
-.sliderProgress {
-  position: absolute;
-  height: 5px;
-  top: 10px;
-  background: #B2CEFE;
-  box-shadow: 1px 1px 2px rgba(196, 227, 255, 0.3), -1px -1px 2px rgba(160, 185, 229, 0.5), inset -1px 1px 2px rgba(160, 185, 229, 0.2), inset 1px -1px 2px rgba(160, 185, 229, 0.2), inset -1px -1px 2px rgba(196, 227, 255, 0.9), inset 1px 1px 3px rgba(160, 185, 229, 0.9);
-}
-
-.sliderThumb {
-  position: absolute;
-  width: 25px;
-  height: 25px;
-  top: 0px;
-  background: linear-gradient(135deg, #F8F8F8 100%, #E0E0E0 0%);
-  box-shadow: -2px 2px 4px rgba(212, 212, 212, 0.2), 2px -2px 4px rgba(212, 212, 212, 0.2), -2px -2px 4px rgba(255, 255, 255, 0.9), 2px 2px 5px rgba(212, 212, 212, 0.9), inset 1px 1px 2px rgba(255, 255, 255, 0.3), inset -1px -1px 2px rgba(212, 212, 212, 0.5);
-  border-radius: 50%;
-  pointer-events: none;
-  transform: translateX(-50%);
-}
-
-.rangeInput {
-  position: absolute;
-  width: 100%;
-  height: 25px;
-  top: 0px;
-  background: none;
-  pointer-events: none;
-  -webkit-appearance: none;
-  appearance: none;
   margin: 0;
+  line-height: 1.5;
+}
+
+/* SECTION 3: PROJECT FINANCING */
+.projectFinancingSection {
+  position: absolute;
+  top: 1896px;
+  left: 123px;
+  width: 1165px;
   z-index: 5;
 }
 
-.rangeInput::-webkit-slider-thumb {
-  height: 25px;
-  width: 25px;
-  border-radius: 50%;
-  background: transparent;
-  cursor: pointer;
-  pointer-events: auto;
-  -webkit-appearance: none;
+.pfTitleContainer {
+  margin-bottom: 50px;
+  margin-left: 20px;
 }
 
-.dynamicPrice {
-  position: absolute;
-  left: 60px;
-  top: 65px;
+.pfTitle {
+  font-family: var(--font-sora), sans-serif;
+  font-size: 48px;
+  font-weight: 300;
+  color: #404040;
+  margin: 0;
+  line-height: 1.1;
+}
+
+.pfTitleHighlight {
+  background: linear-gradient(135deg, #5A69EA 0%, #BF8BCA 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-weight: 400;
+}
+
+.pfSubtitle {
+  font-family: var(--font-sora), sans-serif;
+  font-size: 24px;
+  font-weight: 300;
+  color: #717171;
+  margin: 8px 0 0 0;
+}
+
+.pfSubtitleHighlight {
+  color: #BF8BCA;
+}
+
+.pfGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+}
+
+.pfLeftCol {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.pfCard {
+  background: #ECECEC;
+  border: 2px solid rgba(113, 113, 113, 0.5);
+  border-radius: 10px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.pfLeftCol .pfCard:first-child {
+  height: 300px;
+  padding: 40px 60px;
+  align-items: center;
+  text-align: center;
+}
+
+.pfLeftCol .pfCard:last-child {
+  height: 272px;
+  padding: 40px 0;
+  align-items: center;
+}
+
+.pfTallCard {
+  height: 100%;
+  padding: 60px 40px;
+  align-items: flex-start;
+  text-align: justify;
+}
+
+.pfPrecisionText {
+  font-family: var(--font-sora), sans-serif;
+  font-size: 24px;
+  line-height: 1.6;
+  color: #404040;
+  margin: 0;
+}
+
+.pfHighlightText {
+  color: #BF8BCA;
+}
+
+.pfAverageTitle {
+  font-family: var(--font-sora), sans-serif;
+  font-size: 32px;
+  font-weight: 300;
+  color: #404040;
+  margin: 0 0 40px 0;
+}
+
+.pfStructuralText {
   font-family: var(--font-sora), sans-serif;
   font-size: 16px;
+  line-height: 2;
+  color: #717171;
+  margin: 0;
+  text-align: left;
+}
+
+.pfPriceBarContainer {
+  position: relative;
+  width: 100%;
+  max-width: 329px;
+  margin: 0 auto;
+}
+
+.praicingSvg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.pfLabelMin {
+  position: absolute;
+  left: 1%;
+  bottom: 8%;
+  font-family: var(--font-sora), sans-serif;
+  font-size: 11px;
   color: #717171;
 }
 
-.dynamicPrice span {
-  font-weight: bold;
-  color: #5A69EA;
+.pfLabelMid {
+  position: absolute;
+  left: 44.5%;
+  top: 61%;
+  font-family: var(--font-sora), sans-serif;
+  font-size: 13px;
+  color: #717171;
+}
+
+.pfLabelMax {
+  position: absolute;
+  left: 59%;
+  bottom: 8%;
+  font-family: var(--font-sora), sans-serif;
+  font-size: 11px;
+  color: #717171;
 }
 
 /* SECTION 4: FAQ */

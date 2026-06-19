@@ -436,228 +436,231 @@ export default function ContactPage() {
 
   return (
     <div className={styles.pageWrapper} data-theme={isDark ? "dark" : "light"}>
-      <div className={styles.mainCard}>
-        {/* ===== PILL NAVIGATION BAR ===== */}
-        <div className={styles.navOuter}>
-          <nav className={styles.navbar} id="navbar">
-            <div className={styles.navContent}>
-              {/* Circular Logo */}
-              <a href="/" className={styles.logo} aria-label="Aeethod Home">
-                <InlineSVG src="/logo.svg" className={styles.logoImg} />
+      {/* ===== PILL NAVIGATION BAR ===== */}
+      <div className={styles.navOuter}>
+        <nav className={styles.navbar} id="navbar">
+          <div className={styles.navContent}>
+            {/* Circular Logo */}
+            <a href="/" className={styles.logo} aria-label="Aeethod Home">
+              <InlineSVG src="/logo.svg" className={styles.logoImg} />
+            </a>
+
+            {/* Navigation Links */}
+            <div className={styles.navLinks}>
+              <a href="/studio" className={styles.navLink}>
+                Studio
               </a>
-
-              {/* Navigation Links */}
-              <div className={styles.navLinks}>
-                <a href="/studio" className={styles.navLink}>
-                  Studio
-                </a>
-                <a href="/services" className={styles.navLink}>
-                  Services
-                </a>
-                <a href="/research" className={styles.navLink}>
-                  Research
-                </a>
-                <a href="/products" className={styles.navLink}>
-                  Products
-                </a>
-                <a href="/journals" className={styles.navLink}>
-                  Works
-                </a>
-                <a href="/contact" className={`${styles.navLink} ${styles.activeNavLink}`}>
-                  Contact
-                </a>
-                <a href="#" className={styles.navLink} onClick={() => alert("Vlog coming soon")}>
-                  Vlog
-                </a>
-              </div>
-            </div>
-          </nav>
-        </div>
-
-        {/* ===== THEME SLIDE SWITCH ROW ===== */}
-        <div className={styles.toggleRow}>
-          <div className={styles.slideButton} id="theme-toggle">
-            <div className={styles.slideTrack} ref={trackRef}>
-              <div className={styles.slideTrackInner} />
-              <div
-                className={styles.slideKnob}
-                ref={knobRef}
-                style={knobStyle}
-                onPointerDown={handlePointerDown}
-                onPointerMove={handlePointerMove}
-                onPointerUp={handlePointerUp}
-                onPointerCancel={handlePointerUp}
-                role="switch"
-                aria-checked={isDark}
-                aria-label="Toggle dark mode"
-                tabIndex={0}
-              >
-                <div className={styles.slideKnobInner} />
-              </div>
+              <a href="/services" className={styles.navLink}>
+                Services
+              </a>
+              <a href="/research" className={styles.navLink}>
+                Research
+              </a>
+              <a href="/products" className={styles.navLink}>
+                Products
+              </a>
+              <a href="/journals" className={styles.navLink}>
+                Works
+              </a>
+              <a href="/contact" className={`${styles.navLink} ${styles.activeNavLink}`}>
+                Contact
+              </a>
+              <a href="#" className={styles.navLink} onClick={() => alert("Vlog coming soon")}>
+                Vlog
+              </a>
             </div>
           </div>
-        </div>
-
-        {/* ===== LEFT COLUMN: Title, Subtitle ===== */}
-        <div className={styles.textGroup}>
-          <h1 className={styles.heading}>Contact</h1>
-          <p className={styles.subHeading}>
-            Use a <span className={styles.highlightText}>platform that feels safe</span>
-          </p>
-        </div>
-
-        {/* ===== LEFT COLUMN: Large Brand Logo ===== */}
-        <div className={styles.heroLogoWrapper}>
-          <img src="/logo.svg" alt="Aeethod Logo" className={styles.heroLogo} />
-        </div>
-
-
-
-        {/* ===== RIGHT COLUMN: Quick Mail Container ===== */}
-        <div className={styles.quickMailContainer}>
-          <div className={styles.tabHeader}>Quick Mail</div>
-          <form onSubmit={handleMailSubmit} className={styles.formCard}>
-            <input
-              type="email"
-              placeholder="yourmail@gmail.com"
-              className={styles.inputField}
-              value={mailEmail}
-              onChange={(e) => setMailEmail(e.target.value)}
-              required
-              aria-label="Contact Email Address"
-            />
-            <button type="submit" className={styles.sendButton}>
-              Send
-            </button>
-            <textarea
-              placeholder="Hey.."
-              className={styles.textareaField}
-              value={mailMessage}
-              onChange={(e) => setMailMessage(e.target.value)}
-              required
-              aria-label="Message Body"
-            />
-          </form>
-        </div>
-
-        {/* ===== RIGHT COLUMN: Neumorphic 2x2 Social Grid ===== */}
-        <div className={styles.socialGridCard}>
-          <div className={styles.socialGrid}>
-            {/* Divider Lines */}
-            <div className={styles.vLine} />
-            <div className={styles.hLine} />
-
-            {/* Whatsapp */}
-            <a
-              href="https://wa.me/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className={`${styles.socialGridCell} ${styles.whatsappCell}`}
-              onClick={playClickSound}
-            >
-              <div className={styles.socialLeft}>
-                <div className={styles.socialIcon}>
-                  <WhatsappIcon />
-                </div>
-                <span className={styles.socialName}>Whatsapp</span>
-              </div>
-              <svg
-                className={styles.socialArrow}
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2.5"
-                viewBox="0 0 24 24"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25" />
-              </svg>
-            </a>
-
-            {/* Discord */}
-            <a
-              href="https://discord.gg/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className={`${styles.socialGridCell} ${styles.discordCell}`}
-              onClick={playClickSound}
-            >
-              <div className={styles.socialLeft}>
-                <div className={styles.socialIcon}>
-                  <DiscordIcon />
-                </div>
-                <span className={styles.socialName}>Discord</span>
-              </div>
-              <svg
-                className={styles.socialArrow}
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2.5"
-                viewBox="0 0 24 24"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25" />
-              </svg>
-            </a>
-
-            {/* Email */}
-            <a
-              href="mailto:hello@aeethod.com"
-              className={`${styles.socialGridCell} ${styles.emailCell}`}
-              onClick={playClickSound}
-            >
-              <div className={styles.socialLeft}>
-                <div className={styles.socialIcon}>
-                  <EmailIcon />
-                </div>
-                <span className={styles.socialName}>Email</span>
-              </div>
-              <svg
-                className={styles.socialArrow}
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2.5"
-                viewBox="0 0 24 24"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25" />
-              </svg>
-            </a>
-
-            {/* Messenger */}
-            <a
-              href="https://m.me/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className={`${styles.socialGridCell} ${styles.messengerCell}`}
-              onClick={playClickSound}
-            >
-              <div className={styles.socialLeft}>
-                <div className={styles.socialIcon}>
-                  <MessengerIcon />
-                </div>
-                <span className={styles.socialName}>Messenger</span>
-              </div>
-              <svg
-                className={styles.socialArrow}
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2.5"
-                viewBox="0 0 24 24"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25" />
-              </svg>
-            </a>
-          </div>
-        </div>
-
-        {/* ===== SIDE INDICATOR ===== */}
-        <div className={styles.sideIndicator} />
+        </nav>
       </div>
 
-      {/* ===== FOOTER ===== */}
-      <div className={styles.footerWrapper}>
-        <InlineSVG src="/contact/Footer.svg" className={styles.footerSvg} />
+      {/* ===== PAGE CONTENT WRAPPER (SCALED FOR RESPONSIVENESS) ===== */}
+      <div className={styles.pageContent}>
+        <div className={styles.mainCard}>
+          {/* ===== THEME SLIDE SWITCH ROW ===== */}
+          <div className={styles.toggleRow}>
+            <div className={styles.slideButton} id="theme-toggle">
+              <div className={styles.slideTrack} ref={trackRef}>
+                <div className={styles.slideTrackInner} />
+                <div
+                  className={styles.slideKnob}
+                  ref={knobRef}
+                  style={knobStyle}
+                  onPointerDown={handlePointerDown}
+                  onPointerMove={handlePointerMove}
+                  onPointerUp={handlePointerUp}
+                  onPointerCancel={handlePointerUp}
+                  role="switch"
+                  aria-checked={isDark}
+                  aria-label="Toggle dark mode"
+                  tabIndex={0}
+                >
+                  <div className={styles.slideKnobInner} />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* ===== LEFT COLUMN: Title, Subtitle ===== */}
+          <div className={styles.textGroup}>
+            <h1 className={styles.heading}>Contact</h1>
+            <p className={styles.subHeading}>
+              Use a <span className={styles.highlightText}>platform that feels safe</span>
+            </p>
+          </div>
+
+          {/* ===== LEFT COLUMN: Large Brand Logo ===== */}
+          <div className={styles.heroLogoWrapper}>
+            <div className={styles.heroLogoShadow}>
+              <InlineSVG src="/hero-logo-contract.svg" className={styles.heroLogo} />
+            </div>
+          </div>
+
+          {/* ===== RIGHT COLUMN: Quick Mail Container ===== */}
+          <div className={styles.quickMailContainer}>
+            <div className={styles.tabHeader}>Quick Mail</div>
+            <form onSubmit={handleMailSubmit} className={styles.formCard}>
+              <input
+                type="email"
+                placeholder="yourmail@gmail.com"
+                className={styles.inputField}
+                value={mailEmail}
+                onChange={(e) => setMailEmail(e.target.value)}
+                required
+                aria-label="Contact Email Address"
+              />
+              <button type="submit" className={styles.sendButton}>
+                Send
+              </button>
+              <textarea
+                placeholder="Hey.."
+                className={styles.textareaField}
+                value={mailMessage}
+                onChange={(e) => setMailMessage(e.target.value)}
+                required
+                aria-label="Message Body"
+              />
+            </form>
+          </div>
+
+          {/* ===== RIGHT COLUMN: Neumorphic 2x2 Social Grid ===== */}
+          <div className={styles.socialGridCard}>
+            <div className={styles.socialGrid}>
+              {/* Divider Lines */}
+              <div className={styles.vLine} />
+              <div className={styles.hLine} />
+
+              {/* Whatsapp */}
+              <a
+                href="https://wa.me/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`${styles.socialGridCell} ${styles.whatsappCell}`}
+                onClick={playClickSound}
+              >
+                <div className={styles.socialLeft}>
+                  <div className={styles.socialIcon}>
+                    <WhatsappIcon />
+                  </div>
+                  <span className={styles.socialName}>Whatsapp</span>
+                </div>
+                <svg
+                  className={styles.socialArrow}
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2.5"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25" />
+                </svg>
+              </a>
+
+              {/* Discord */}
+              <a
+                href="https://discord.gg/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`${styles.socialGridCell} ${styles.discordCell}`}
+                onClick={playClickSound}
+              >
+                <div className={styles.socialLeft}>
+                  <div className={styles.socialIcon}>
+                    <DiscordIcon />
+                  </div>
+                  <span className={styles.socialName}>Discord</span>
+                </div>
+                <svg
+                  className={styles.socialArrow}
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2.5"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25" />
+                </svg>
+              </a>
+
+              {/* Email */}
+              <a
+                href="mailto:hello@aeethod.com"
+                className={`${styles.socialGridCell} ${styles.emailCell}`}
+                onClick={playClickSound}
+              >
+                <div className={styles.socialLeft}>
+                  <div className={styles.socialIcon}>
+                    <EmailIcon />
+                  </div>
+                  <span className={styles.socialName}>Email</span>
+                </div>
+                <svg
+                  className={styles.socialArrow}
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2.5"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25" />
+                </svg>
+              </a>
+
+              {/* Messenger */}
+              <a
+                href="https://m.me/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`${styles.socialGridCell} ${styles.messengerCell}`}
+                onClick={playClickSound}
+              >
+                <div className={styles.socialLeft}>
+                  <div className={styles.socialIcon}>
+                    <MessengerIcon />
+                  </div>
+                  <span className={styles.socialName}>Messenger</span>
+                </div>
+                <svg
+                  className={styles.socialArrow}
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2.5"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25" />
+                </svg>
+              </a>
+            </div>
+          </div>
+
+          {/* ===== SIDE INDICATOR ===== */}
+          <div className={styles.sideIndicator} />
+        </div>
+
+        {/* ===== FOOTER ===== */}
+        <div className={styles.footerWrapper}>
+          <InlineSVG src="/contact/Footer.svg" className={styles.footerSvg} />
+        </div>
       </div>
 
       {/* ===== FLOATING SCROLL DEPTH BAR INDICATOR ===== */}
