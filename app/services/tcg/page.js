@@ -421,9 +421,16 @@ export default function TcgPage() {
                          className={styles.faqInput}
                          required
                       />
-                      <button type="submit" className={styles.faqSendBtn} onClick={playClickSound}>
-                         Send ↗
-                      </button>
+                      <div className={styles.faqSendBtnWrapper}>
+                         <button type="submit" className={styles.faqSendBtn} onClick={playClickSound} aria-label="Send"></button>
+                         <img src="/services/tcg/send_frame.svg" className={styles.faqSendBtnFrame} alt="button background" />
+                         <span className={styles.faqSendBtnText}>
+                           Send
+                           <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className={styles.sendArrowSvg}>
+                             <path d="M7 17L17 7M17 17V7H7" stroke="#717171" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
+                           </svg>
+                         </span>
+                      </div>
                    </div>
                    <textarea
                       placeholder="Your query"
