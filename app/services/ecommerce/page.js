@@ -43,9 +43,7 @@ export default function EcommercePage() {
   const slideFoleyBufferRef = useRef(null);
   const audioContextRef = useRef(null);
 
-  // Interactive Financing Slider State
-  const [minPrice, setMinPrice] = useState(3000);
-  const [maxPrice, setMaxPrice] = useState(12000);
+
 
   // Form State
   const [email, setEmail] = useState("");
@@ -304,120 +302,145 @@ export default function EcommercePage() {
           <InlineSVG src="/services/ecommerce/Image.svg" className={styles.heroImage} />
 
           {/* SECTION: Quick List */}
-          <InlineSVG src="/services/ecommerce/Frame 200.svg" className={styles.quickListHeader} id="quick-list" />
-          <InlineSVG src="/services/ecommerce/Quick List.svg" className={styles.quickListGrid} />
+          <div className={styles.quickListHeader} id="quick-list">
+            <h2 className={styles.quickListTitle}>
+              Quick <span className={styles.quickListTitleHighlight}>List</span>
+            </h2>
+            <p className={styles.quickListSubtitle}>
+              Problems that you won't <span className={styles.quickListSubtitleHighlight}>face again</span>
+            </p>
+          </div>
+
+          <div className={styles.quickListGrid}>
+            <div className={styles.quickCard}>
+              <img src="/services/tcg/frame_new.svg" className={styles.cardFrame} alt="frame" />
+              <h3 className={styles.cardTitle}>Unified Data Architecture</h3>
+              <p className={styles.cardDesc}>
+                Centralized platform design that connects disconnected frontends and siloed software into a single, cohesive corporate environment.
+              </p>
+            </div>
+            <div className={styles.quickCard}>
+              <img src="/services/tcg/frame_new.svg" className={styles.cardFrame} alt="frame" />
+              <h3 className={styles.cardTitle}>High-Performance Engineering</h3>
+              <p className={styles.cardDesc}>
+                Bespoke framework engineered to handle heavy operational loads, thousands of database queries, and intensive user traffic without lag.
+              </p>
+            </div>
+            <div className={styles.quickCard}>
+              <img src="/services/tcg/frame_new.svg" className={styles.cardFrame} alt="frame" />
+              <h3 className={styles.cardTitle}>Automated Workflow Engines</h3>
+              <p className={styles.cardDesc}>
+                Silent background infrastructure that handles routine data tracking, reporting, and team handoffs with zero operational delay.
+              </p>
+            </div>
+            <div className={styles.quickCard}>
+              <img src="/services/tcg/frame_new.svg" className={styles.cardFrame} alt="frame" />
+              <h3 className={styles.cardTitle}>Custom Decision Dashboards</h3>
+              <p className={styles.cardDesc}>
+                Clean, low-noise analytical interfaces that compress messy operational data into clear, actionable revenue and management insights.
+              </p>
+            </div>
+          </div>
 
           {/* SECTION: Project Financing */}
-          <InlineSVG src="/services/ecommerce/Frame 201.svg" className={styles.financingHeader} />
-
-          <InlineSVG src="/services/ecommerce/Precision engineering cannot be packaged. Every system we build is scoped individually based on operational complexity and data volume..svg" className={styles.financingLeftText} />
-          
-          <InlineSVG src="/services/ecommerce/Group 89.svg" className={styles.financingRightText} />
-
-          <div className={styles.rangeBoxBg} />
-          <div className={styles.sliderLabel}>Average Range</div>
-
-          {/* Interactive Custom Neumorphic Range Slider */}
-          <div className={styles.sliderWrapper}>
-            <div className={styles.sliderMinLabel}>$3,000</div>
-            <div className={styles.sliderTrackContainer}>
-              <input
-                type="range"
-                min="3000"
-                max="12000"
-                value={minPrice}
-                onChange={(e) => setMinPrice(Math.min(Number(e.target.value), maxPrice - 500))}
-                className={`${styles.rangeInput} ${styles.minRange}`}
-              />
-              <input
-                type="range"
-                min="3000"
-                max="12000"
-                value={maxPrice}
-                onChange={(e) => setMaxPrice(Math.max(Number(e.target.value), minPrice + 500))}
-                className={`${styles.rangeInput} ${styles.maxRange}`}
-              />
-              <div className={styles.sliderTrack} />
-              <div
-                className={styles.sliderProgress}
-                style={{
-                  left: `${((minPrice - 3000) / 9000) * 100}%`,
-                  right: `${100 - ((maxPrice - 3000) / 9000) * 100}%`,
-                }}
-              />
-              <div
-                className={`${styles.sliderThumb} ${styles.leftThumb}`}
-                style={{ left: `${((minPrice - 3000) / 9000) * 100}%` }}
-              />
-              <div
-                className={`${styles.sliderThumb} ${styles.rightThumb}`}
-                style={{ left: `${((maxPrice - 3000) / 9000) * 100}%` }}
-              />
+          <div className={styles.projectFinancingSection}>
+            <div className={styles.pfTitleContainer}>
+              <h2 className={styles.pfTitle}>
+                Project <span className={styles.pfTitleHighlight}>Financing</span>
+              </h2>
+              <p className={styles.pfSubtitle}>
+                Investment ranges for <span className={styles.pfSubtitleHighlight}>bespoke ecosystem engineering</span>
+              </p>
             </div>
-            <div className={styles.sliderMaxLabel}>$12,000</div>
-            <div className={styles.dynamicPrice}>
-              Selected Budget: <span>${minPrice.toLocaleString()} - ${maxPrice.toLocaleString()}</span>
+
+            <div className={styles.pfGrid}>
+              <div className={styles.pfCard}>
+                <img src="/services/tcg/frame_new.svg" className={styles.cardFrame} alt="frame" />
+                <h3 className={styles.pfCardTitle}>Shopify <span className={styles.pfCardTitleHighlight}>Website</span></h3>
+                <p className={styles.pfCardSubtitle}>Estimated Costing:</p>
+                <p className={styles.pfCardPrice}>
+                  <span className={styles.pfCardPriceHighlight}>3000$</span> to <span className={styles.pfCardPriceHighlight}>5000$</span>
+                </p>
+              </div>
+
+              <div className={styles.pfCard}>
+                <img src="/services/tcg/frame_new.svg" className={styles.cardFrame} alt="frame" />
+                <h3 className={styles.pfCardTitle}>Custom E-commerce <br/> <span className={styles.pfCardTitleHighlight}>Website</span></h3>
+                <p className={styles.pfCardSubtitle}>Estimated Costing:</p>
+                <p className={styles.pfCardPrice}>
+                  <span className={styles.pfCardPriceHighlight}>6000$</span> to <span className={styles.pfCardPriceHighlight}>12000$</span>
+                </p>
+              </div>
+            </div>
+
+            <div className={styles.pfBottomText}>
+              Precision engineering cannot be packaged. Every system we build is scoped<br />
+              individually based on <span className={styles.pfBottomTextHighlight}>operational complexity and data volume</span>.
             </div>
           </div>
 
           {/* SECTION: FAQ */}
-          <InlineSVG src="/services/tcg/Frame 208.svg" className={styles.faqHeader} />
-          
-          <div className={styles.faqContainer}>
-            <div className={styles.faqBox1}>
-              <InlineSVG src="/services/tcg/Rectangle 147.svg" className={styles.boxBorder} />
-              <div className={styles.faqBoxTitle}>Ask Smith</div>
-              <InlineSVG src="/services/tcg/Our core intelligence engine is ready to analyze your queries in real time. Ask Smith anything regarding our architectural logic, system frameworks, or engineering capabilities. No forms, no onboarding friction—just immediate structural insights..svg" className={styles.faqBoxDesc} />
-            </div>
-            
-            <div className={styles.faqBox2}>
-              <InlineSVG src="/services/tcg/Rectangle 148.svg" className={styles.boxBorder} />
-              <div className={styles.faqBoxTitle}>Contact Us</div>
-              <InlineSVG src="/services/tcg/Connect directly with a human strategist. If your operational friction requires deep technical evaluation or a bespoke blueprint that goes beyond automated responses, open a direct line to our studio here. No sales pitches, just engineering..svg" className={styles.faqBoxDesc} />
-            </div>
-          </div>
-
-          {/* Form: Ask Question Directly */}
-          <div className={styles.formContainer}>
-            <InlineSVG src="/services/tcg/ask ques.svg" className={styles.formBorder} />
-            <div className={styles.formHeader}>Ask Question Directly</div>
-            
-            <form onSubmit={handleFormSubmit} className={styles.interactiveForm}>
-              <div className={styles.inputWrapper}>
-                <input
-                  type="email"
-                  placeholder="Your email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  className={styles.formInput}
-                  required
-                />
-              </div>
-
-              <div className={styles.textareaWrapper}>
-                <textarea
-                  placeholder="Your query"
-                  value={query}
-                  onChange={(e) => setQuery(e.target.value)}
-                  className={styles.formTextarea}
-                  required
-                />
-              </div>
-
-              <button type="submit" className={styles.btnSubmit} onClick={playClickSound}>
-                <span>Explore</span>
-                <InlineSVG src="/services/tcg/Frame 209.svg" className={styles.btnSubmitArrow} />
-              </button>
-            </form>
+          <div className={styles.faqSection}>
+             <div className={styles.faqHeaderContainer}>
+                <h2 className={styles.faqTitle}>FAQ</h2>
+                <p className={styles.faqSubtitle}>Feel free to <span className={styles.faqSubtitleHighlight}>ask questions.</span></p>
+             </div>
+             
+             <div className={styles.faqGrid}>
+                <div className={styles.faqCard}>
+                   <img src="/services/tcg/frame_new.svg" className={styles.faqCardFrame} alt="frame" />
+                   <h3 className={styles.faqCardTitle}>Ask <span className={styles.faqCardTitleHighlight}>Smith</span></h3>
+                   <p className={styles.faqCardText}>
+                      Our core intelligence engine is ready to <span className={styles.faqHighlightText}>analyze your queries in real time.</span> Ask Smith anything regarding our architectural logic, system frameworks, or engineering capabilities. No forms, no onboarding friction—just immediate structural insights.
+                   </p>
+                </div>
+                <div className={styles.faqCard}>
+                   <img src="/services/tcg/frame_new.svg" className={styles.faqCardFrame} alt="frame" />
+                   <h3 className={styles.faqCardTitle}>Contract <span className={styles.faqCardTitleHighlight}>Us</span></h3>
+                   <p className={styles.faqCardText}>
+                      Connect directly with a human strategist. If your operational friction requires deep technical evaluation or a bespoke blueprint that goes beyond automated responses, open a direct line to our studio here. <span className={styles.faqHighlightText}>No sales pitches, just engineering.</span>
+                   </p>
+                </div>
+             </div>
+             
+             <div className={styles.faqFormContainer}>
+                <img src="/services/tcg/frame_new.svg" className={styles.faqFormFrame} alt="frame" />
+                <h3 className={styles.faqFormTitle}>Ask Question <span className={styles.faqFormTitleHighlight}>Directly</span></h3>
+                <form onSubmit={handleFormSubmit} className={styles.faqForm}>
+                   <div className={styles.faqFormRow}>
+                      <input 
+                         type="email" 
+                         placeholder="Your email" 
+                         value={email}
+                         onChange={(e) => setEmail(e.target.value)}
+                         className={styles.faqInput}
+                         required
+                      />
+                      <div className={styles.faqSendBtnWrapper}>
+                         <button type="submit" className={styles.faqSendBtn} onClick={playClickSound} aria-label="Send"></button>
+                         <img src="/services/tcg/send_frame.svg" className={styles.faqSendBtnFrame} alt="button background" />
+                         <span className={styles.faqSendBtnText}>
+                           Send
+                           <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className={styles.sendArrowSvg}>
+                             <path d="M7 17L17 7M17 17V7H7" stroke="#717171" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
+                           </svg>
+                         </span>
+                      </div>
+                   </div>
+                   <textarea
+                      placeholder="Your query"
+                      value={query}
+                      onChange={(e) => setQuery(e.target.value)}
+                      className={styles.faqTextarea}
+                      required
+                   />
+                </form>
+             </div>
           </div>
 
           {/* Neumorphic Footer */}
           <div className={styles.footerWrapper}>
             <InlineSVG src="/services/Footer.svg" className={styles.footerSvg} />
-            
-            <div className={styles.copyrightBanner}>
-              @2026 Aeethod. All rights reserved.
-            </div>
           </div>
 
           {/* Theme Switcher slider */}
