@@ -511,47 +511,25 @@ export default function Home() {
                 AI-first architectures, automation, and decision
                 systems for businesses operating in uncertainty.
               </p>
-              <div className={styles.heroButtons}>
+              {/* Action Button Bar */}
+              <div className={styles.btnBar}>
                 <button
-                  className={styles.btnExplore}
-                  id="btn-explore"
-                  onClick={playClickSound}
-                >
-                  <span className={styles.btnFace}>
-                    <span className={styles.btnLabel}>Explore</span>
-                    <span className={styles.btnArrowWrap}>
-                      <svg className={styles.btnArrow} width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M7 17L17 7M17 17V7H7" stroke="url(#arrowGrad)" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
-                        <defs>
-                          <radialGradient id="arrowGrad" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(12 12) rotate(90) scale(5)">
-                            <stop stopColor="#5A69EA" />
-                            <stop offset="1" stopColor="#BF8BCA" />
-                          </radialGradient>
-                        </defs>
-                      </svg>
-                    </span>
-                  </span>
-                </button>
+                  className={styles.invisibleBtnScroll}
+                  onClick={() => {
+                    playClickSound();
+                    handleScrollToServices();
+                  }}
+                  aria-label="Explore Services"
+                />
                 <button
-                  className={styles.btnThinking}
-                  id="btn-thinking"
-                  onClick={playClickSound}
-                >
-                  <span className={styles.btnFace}>
-                    <span className={styles.btnLabel}>Thinking</span>
-                    <span className={styles.btnArrowWrap}>
-                      <svg className={styles.btnArrow} width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M7 17L17 7M17 17V7H7" stroke="url(#arrowGradThinking)" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
-                        <defs>
-                          <linearGradient id="arrowGradThinking" x1="7" y1="7" x2="17" y2="17" gradientUnits="userSpaceOnUse">
-                            <stop offset="0%" stopColor="#5A69EA" />
-                            <stop offset="100%" stopColor="#BF8BCA" />
-                          </linearGradient>
-                        </defs>
-                      </svg>
-                    </span>
-                  </span>
-                </button>
+                  className={styles.invisibleBtnWorks}
+                  onClick={() => {
+                    playClickSound();
+                    window.location.href = "/journals";
+                  }}
+                  aria-label="Visit Our Works"
+                />
+                <InlineSVG src="/home buttons.svg" className={styles.buttonsSvg} />
               </div>
             </div>
 
