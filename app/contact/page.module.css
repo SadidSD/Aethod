@@ -327,10 +327,10 @@
 
 .heroLogoWrapper {
   position: absolute;
-  left: 100px;
-  top: 460px;
-  width: 320px;
-  height: 320px;
+  left: 70px;
+  top: 510px;
+  width: 400px;
+  height: 400px;
   z-index: 10;
   display: flex;
   justify-content: center;
