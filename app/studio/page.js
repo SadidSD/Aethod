@@ -309,7 +309,20 @@ export default function StudioPage() {
           
           <div className={styles.rectangle158} />
           <InlineSVG src="/studio/who_we_are.svg" className={styles.whoWeAre} />
-          <InlineSVG src="/studio/we_are_not_an_agency.svg" className={styles.weAreNotAnAgency} />
+          <div className={styles.weAreNotAnAgencyContainer}>
+            <div className={styles.agencyTextLine}>
+              <div className={styles.arrowBox}>
+                <InlineSVG src="/studio/Arrow down-right.svg" className={styles.arrowIcon} />
+              </div>
+              We are not an agency.
+            </div>
+            <div className={styles.agencyTextLine}>
+              We are not a SaaS company.
+            </div>
+            <div className={`${styles.agencyTextLine} ${styles.systemsStudioGradientText}`}>
+              We are a systems studio.
+            </div>
+          </div>
           
           <InlineSVG src="/studio/image 78.svg" className={styles.heroImageRight} />
           <InlineSVG src="/studio/image 77.svg" className={styles.heroImageLowerLeft} />
@@ -318,8 +331,32 @@ export default function StudioPage() {
           {/* ----- SECTION 2: WHAT IS SYSTEM STUDIO & HOW WE DIFFER ----- */}
           <InlineSVG src="/studio/what_is_system_studio.svg" className={styles.whatIsTitle} />
           <InlineSVG src="/studio/where_agencies_end.svg" className={styles.whatIsSubtitle} />
-          <InlineSVG src="/studio/Frame 144.svg" className={styles.manifestoColumnsCard} />
-          <InlineSVG src="/studio/Frame 143.svg" className={styles.howWeDifferCard} />
+          <div className={styles.whatIsSystemStudioContainer}>
+            <div className={styles.whatIsParagraphRow}>
+              <InlineSVG src="/studio/round_arrow_card.svg" className={styles.roundArrowCard} />
+              <div className={styles.whatIsParagraphText}>
+                An agency executes. A SaaS company scales. A systems studio thinks.{" "}
+                <span className={styles.whatIsParagraphHighlight}>
+                  We spend time inside a problem before touching it — understanding the data, the decisions, the friction. Then we design the system that makes all three cleaner.
+                </span>{" "}
+                That is the difference.
+              </div>
+            </div>
+            <div className={styles.whatIsParagraphRow}>
+              <InlineSVG src="/studio/round_arrow_card.svg" className={styles.roundArrowCard} />
+              <div className={styles.whatIsParagraphText}>
+                The architect still matters. The machine is a tool.{" "}
+                <span className={styles.whatIsParagraphHighlight}>
+                  The person who designs the system, knows what the machine intelligence must do — and keeps both working in their correct order —
+                </span>{" "}
+                that is someone is a thinker. That is who we are.
+              </div>
+            </div>
+          </div>
+          <div className={styles.howWeDifferCardWrapper}>
+            <InlineSVG src="/studio/how_we_differ.svg" className={styles.howWeDifferTitle} />
+            <InlineSVG src="/studio/Frame 143.svg" className={styles.howWeDifferCard} />
+          </div>
 
           {/* ----- SECTION 3: THE MANIFESTO ----- */}
           <InlineSVG src="/studio/Rectangle 88.svg" className={styles.manifestoBg} />

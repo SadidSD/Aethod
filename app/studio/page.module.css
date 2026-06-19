@@ -288,12 +288,89 @@
   top: 479px;
 }
 
-.weAreNotAnAgency {
+.weAreNotAnAgencyContainer {
   position: absolute;
-  width: 338px;
-  height: 144px;
-  left: 213px;
+  left: 281px;
   top: 576px;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.agencyTextLine {
+  font-family: var(--font-sora), sans-serif;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 20px;
+  line-height: 26px;
+  color: #404040;
+  white-space: nowrap;
+  transition: color 0.5s ease;
+  position: relative;
+}
+
+.arrowBox {
+  position: absolute;
+  left: -68px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  background: #ECECEC;
+  box-shadow:
+    -3px -3px 8px rgba(255, 255, 255, 0.9),
+    3px 3px 8px rgba(134, 134, 134, 0.15),
+    inset 1px 1px 2px rgba(255, 255, 255, 0.5),
+    inset -1px -1px 2px rgba(134, 134, 134, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.5s ease;
+}
+
+.arrowIcon {
+  width: 24px;
+  height: 24px;
+  display: block;
+}
+
+.arrowIcon svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.arrowIcon svg path {
+  stroke: #404040;
+  transition: stroke 0.5s ease;
+}
+
+.systemsStudioGradientText {
+  background: linear-gradient(135deg, #5A69EA 0%, #BF8BCA 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent !important;
+  font-weight: 400;
+}
+
+/* Dark Mode Overrides */
+:global([data-theme="dark"]) .arrowBox {
+  background: #22223a;
+  box-shadow:
+    -3px -3px 8px rgba(60, 60, 90, 0.1),
+    3px 3px 8px rgba(0, 0, 0, 0.4),
+    inset 1px 1px 2px rgba(255, 255, 255, 0.05),
+    inset -1px -1px 2px rgba(0, 0, 0, 0.35);
+}
+
+:global([data-theme="dark"]) .arrowIcon svg path {
+  stroke: #b0b0c8;
+}
+
+:global([data-theme="dark"]) .agencyTextLine {
+  color: #b0b0c8;
 }
 
 .heroImageRight {
@@ -337,20 +414,100 @@
   top: 1514px;
 }
 
-.manifestoColumnsCard {
+.whatIsSystemStudioContainer {
   position: absolute;
-  width: 447px;
-  height: 640px;
-  left: 255px;
+  left: 123px;
   top: 1671px;
+  width: 535px;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
 }
 
-.howWeDifferCard {
+.whatIsParagraphRow {
+  display: flex;
+  align-items: flex-start;
+  gap: 32px;
+}
+
+.roundArrowCard {
+  width: 56px;
+  height: 56px;
+  flex-shrink: 0;
+  margin-top: -2px;
+}
+
+.roundArrowCard :global(circle) {
+  fill: #ECECEC;
+  transition: fill 0.5s ease;
+}
+
+.roundArrowCard :global(path) {
+  stroke: #404040;
+  transition: stroke 0.5s ease;
+}
+
+:global([data-theme="dark"]) .roundArrowCard :global(circle) {
+  fill: #22223a !important;
+}
+
+:global([data-theme="dark"]) .roundArrowCard :global(path) {
+  stroke: #b0b0c8 !important;
+}
+
+.whatIsParagraphText {
+  font-family: var(--font-sora), sans-serif;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 20px;
+  line-height: 35px;
+  color: #404040;
+  transition: color 0.5s ease;
+}
+
+:global([data-theme="dark"]) .whatIsParagraphText {
+  color: #b0b0c8;
+}
+
+.whatIsParagraphHighlight {
+  background: linear-gradient(135deg, #5A69EA 0%, #BF8BCA 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent !important;
+  font-weight: 400;
+  display: inline;
+}
+
+.howWeDifferCardWrapper {
   position: absolute;
   width: 558px;
   height: 734px;
   left: 760px;
   top: 1604px;
+}
+
+.howWeDifferCard {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.howWeDifferTitle {
+  position: absolute;
+  width: 163px;
+  height: 19px;
+  left: 60px;
+  top: 56px;
+  z-index: 2;
+}
+
+.howWeDifferTitle :global(path[fill="#404040"]) {
+  transition: fill 0.5s ease;
+}
+
+:global([data-theme="dark"]) .howWeDifferTitle :global(path[fill="#404040"]) {
+  fill: #b0b0c8 !important;
 }
 
 /* SECTION 3: THE MANIFESTO */
