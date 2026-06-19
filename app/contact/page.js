@@ -508,7 +508,9 @@ export default function ContactPage() {
 
         {/* ===== LEFT COLUMN: Large Brand Logo ===== */}
         <div className={styles.heroLogoWrapper}>
-          <img src="/logo.svg" alt="Aeethod Logo" className={styles.heroLogo} />
+          <div className={styles.heroLogoShadow}>
+            <InlineSVG src="/hero-logo-contract.svg" className={styles.heroLogo} />
+          </div>
         </div>
 
 
