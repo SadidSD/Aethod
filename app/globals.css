@@ -218,12 +218,12 @@ body {
 }
 
 /* Sync logo background circle fill with light/dark theme */
-[class*="logoCircle"] svg circle {
+[class*="logoImg"] svg circle {
   fill: #ECECEC;
   transition: fill 0.5s ease;
 }
 
-[data-theme="dark"] [class*="logoCircle"] svg circle {
+[data-theme="dark"] [class*="logoImg"] svg circle {
   fill: #22223a;
 }
 

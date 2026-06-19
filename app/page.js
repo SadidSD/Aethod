@@ -465,7 +465,7 @@ export default function Home() {
           <div className={styles.navContent}>
             {/* Circular Logo */}
             <a href="/" className={styles.logo} aria-label="Aeethod Home">
-              <InlineSVG src="/logo.svg" className={styles.logoImg} />
+              <InlineSVG src="/navbar logo.svg" className={styles.logoImg} />
             </a>
 
             {/* Navigation Links */}
