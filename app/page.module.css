@@ -310,7 +310,7 @@
   pointer-events: none;
 }
 
-.buttonsSvg g {
+.buttonsSvg > g {
   transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
@@ -340,22 +340,22 @@
   z-index: 2;
 }
 
-.invisibleBtnScroll:hover ~ .buttonsSvg g:first-of-type {
+.invisibleBtnScroll:hover ~ .buttonsSvg > g:first-of-type {
   transform: scale(1.02);
   transform-origin: 111px 35.5px;
 }
 
-.invisibleBtnWorks:hover ~ .buttonsSvg g:last-of-type {
+.invisibleBtnWorks:hover ~ .buttonsSvg > g:last-of-type {
   transform: scale(1.02);
   transform-origin: 341.5px 35.5px;
 }
 
-.invisibleBtnScroll:active ~ .buttonsSvg g:first-of-type {
+.invisibleBtnScroll:active ~ .buttonsSvg > g:first-of-type {
   transform: scale(0.98);
   transform-origin: 111px 35.5px;
 }
 
-.invisibleBtnWorks:active ~ .buttonsSvg g:last-of-type {
+.invisibleBtnWorks:active ~ .buttonsSvg > g:last-of-type {
   transform: scale(0.98);
   transform-origin: 341.5px 35.5px;
 }

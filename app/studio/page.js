@@ -310,11 +310,11 @@ export default function StudioPage() {
           <div className={styles.rectangle158} />
           <InlineSVG src="/studio/who_we_are.svg" className={styles.whoWeAre} />
           <div className={styles.weAreNotAnAgencyContainer}>
-            <div className={styles.agencyTextLine}>
+            <div className={styles.agencyFirstLine}>
               <div className={styles.arrowBox}>
                 <InlineSVG src="/studio/Arrow down-right.svg" className={styles.arrowIcon} />
               </div>
-              We are not an agency.
+              <span>We are not an agency.</span>
             </div>
             <div className={styles.agencyTextLine}>
               We are not a SaaS company.

@@ -264,7 +264,7 @@
   position: absolute;
   width: 355px;
   height: 30px;
-  left: 134px;
+  left: 119px;
   top: 314px;
 }
 
@@ -290,11 +290,25 @@
 
 .weAreNotAnAgencyContainer {
   position: absolute;
-  left: 281px;
-  top: 576px;
+  left: 213px;
+  top: 567px;
   display: flex;
   flex-direction: column;
   gap: 22px;
+}
+
+.agencyFirstLine {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  font-family: var(--font-sora), sans-serif;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 20px;
+  line-height: 26px;
+  color: #404040;
+  white-space: nowrap;
+  transition: color 0.5s ease;
 }
 
 .agencyTextLine {
@@ -310,10 +324,6 @@
 }
 
 .arrowBox {
-  position: absolute;
-  left: -68px;
-  top: 50%;
-  transform: translateY(-50%);
   width: 44px;
   height: 44px;
   border-radius: 10px;
@@ -327,6 +337,7 @@
   align-items: center;
   justify-content: center;
   transition: all 0.5s ease;
+  flex-shrink: 0;
 }
 
 .arrowIcon {
@@ -369,7 +380,8 @@
   stroke: #b0b0c8;
 }
 
-:global([data-theme="dark"]) .agencyTextLine {
+:global([data-theme="dark"]) .agencyTextLine,
+:global([data-theme="dark"]) .agencyFirstLine {
   color: #b0b0c8;
 }
 

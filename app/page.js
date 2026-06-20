@@ -540,8 +540,11 @@ export default function Home() {
                   </g>
                   <g filter="url(#filter1_ddiiii_1097_2805)">
                     <rect x="239" y="8" width="205" height="55" rx="10" fill="#ECECEC"/>
-                    <rect x="236.5" y="5.5" width="210" height="60" rx="12.5" stroke="#B2CEFE" strokeWidth="5"/>
-                    <text x="298" y="42" fontFamily="'Sora', sans-serif" fontWeight="300" fontSize="20" fill="#404040">Thinking</text>
+                    <rect x="236.5" y="5.5" width="210" height="60" rx="12.5" stroke="url(#paint1_radial_thinking_arrow)" strokeWidth="5"/>
+                    <text x="291" y="42" fontFamily="'Sora', sans-serif" fontWeight="300" fontSize="20" fill="#404040">Thinking</text>
+                    <g transform="translate(381, 23)">
+                      <path d="M7 17L17 7M17 17V7H7" stroke="url(#paint1_radial_thinking_arrow)" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
+                    </g>
                   </g>
                   <defs>
                     <filter id="filter0_ddiiii_1097_2805" x="0" y="0" width="222" height="71" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
@@ -623,6 +626,10 @@ export default function Home() {
                     <radialGradient id="paint0_radial_1097_2805" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(111 35.5) rotate(90) scale(27.5 103)">
                       <stop stopColor="#5A69EA"/>
                       <stop offset="1" stopColor="#BF8BCA"/>
+                    </radialGradient>
+                    <radialGradient id="paint1_radial_thinking_arrow" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(341.5 35.5) rotate(90) scale(27.5 102.5)">
+                      <stop stopColor="#5A69EA"/>
+                      <stop offset="1" stopColor="#B2CEFE"/>
                     </radialGradient>
                   </defs>
                 </svg>
