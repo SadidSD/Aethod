@@ -2,6 +2,7 @@
 
 import { useState, useRef, useCallback, useEffect } from "react";
 import styles from "./page.module.css";
+import HowWeDifferTable from "./HowWeDifferTable";
 
 function InlineSVG({ src, className }) {
   const [svgContent, setSvgContent] = useState("");
@@ -355,7 +356,7 @@ export default function StudioPage() {
           </div>
           <div className={styles.howWeDifferCardWrapper}>
             <InlineSVG src="/studio/how_we_differ.svg" className={styles.howWeDifferTitle} />
-            <InlineSVG src="/studio/Frame 143.svg" className={styles.howWeDifferCard} />
+            <HowWeDifferTable />
           </div>
 
           {/* ----- SECTION 3: THE MANIFESTO ----- */}

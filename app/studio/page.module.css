@@ -499,10 +499,152 @@
   top: 1604px;
 }
 
-.howWeDifferCard {
+.differCard {
   width: 100%;
   height: 100%;
-  display: block;
+  background: var(--nav-bg);
+  border-radius: 40px;
+  border: 1px solid rgba(113, 113, 113, 0.5);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+  font-family: var(--font-sora), sans-serif;
+  transition: background 0.5s ease, border-color 0.5s ease;
+}
+
+.headerArea {
+  height: 105.5px;
+  width: 100%;
+  flex-shrink: 0;
+  border-bottom: 1px solid rgba(113, 113, 113, 0.5);
+}
+
+.titleRow {
+  display: flex;
+  width: 100%;
+  height: 64px;
+  flex-shrink: 0;
+  border-bottom: 1px solid rgba(113, 113, 113, 0.5);
+}
+
+.row {
+  display: flex;
+  width: 100%;
+  transition: background 0.3s ease;
+  flex-shrink: 0;
+  border-bottom: 1px solid rgba(113, 113, 113, 0.5);
+}
+
+.row:last-child {
+  border-bottom: none;
+}
+
+.row:hover {
+  background: rgba(90, 105, 234, 0.04);
+}
+
+:global([data-theme="dark"]) .row:hover {
+  background: rgba(155, 125, 255, 0.04);
+}
+
+.colLeft {
+  width: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  border-right: 1px solid rgba(113, 113, 113, 0.5);
+}
+
+.colRight {
+  width: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.headerText {
+  font-family: var(--font-sora), sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+  color: var(--text-secondary);
+}
+
+.textLeft {
+  position: relative;
+  display: inline-block;
+  font-family: var(--font-sora), sans-serif;
+  font-size: 20px;
+  font-weight: 300;
+  color: var(--text-muted);
+  line-height: 1.4;
+  padding: 4px 8px;
+}
+
+.textRight {
+  display: inline-grid;
+  grid-template-areas: "stack";
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.textRightNormal {
+  grid-area: stack;
+  font-family: var(--font-sora), sans-serif;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 1.4;
+  padding: 4px 8px;
+  color: var(--text-primary);
+  transition: color 0.3s ease;
+  white-space: nowrap;
+}
+
+.row:hover .textRightNormal {
+  color: var(--accent-purple);
+}
+
+.textRightGradient {
+  grid-area: stack;
+  font-family: var(--font-sora), sans-serif;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 1.4;
+  padding: 4px 8px;
+  background: linear-gradient(135deg, #5A69EA 0%, #BF8BCA 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+.strikethroughGradient {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 52%;
+  height: 1.5px;
+  background: linear-gradient(90deg, #5A69EA 0%, #BF8BCA 100%);
+  pointer-events: none;
+}
+
+.strikethroughSolid {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 52%;
+  height: 1.5px;
+  background: #717171;
+  pointer-events: none;
+}
+
+:global([data-theme="dark"]) .strikethroughSolid {
+  background: #8080a0;
 }
 
 .howWeDifferTitle {
