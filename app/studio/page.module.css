@@ -603,9 +603,7 @@
   white-space: nowrap;
 }
 
-.row:hover .textRightNormal {
-  color: var(--accent-purple);
-}
+
 
 .textRightGradient {
   grid-area: stack;
