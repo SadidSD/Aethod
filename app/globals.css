@@ -240,43 +240,55 @@ body {
 #theme-toggle [class*="slideTrack"] {
   position: absolute !important;
   left: 4px !important;
-  top: 6.5px !important;
+  top: 7px !important;
   width: 66px !important;
   height: 24px !important;
-  border-radius: 12px !important;
-  background: rgba(223, 223, 223, 0.25) !important; /* Semi-transparent to blend with background grid */
+  border-radius: 10px !important;
+  background: rgba(236, 236, 236, 0.45) !important; /* Semi-transparent to blend with background grid */
   box-shadow:
-    inset 1px 1px 2px rgba(156, 156, 156, 0.8),
-    inset -1px -1px 2px rgba(255, 255, 255, 0.8) !important;
+    -1px -1px 2px rgba(156, 156, 156, 0.5),
+    1px 1px 2px rgba(255, 255, 255, 0.3),
+    inset 1px 1px 3px rgba(156, 156, 156, 0.9),
+    inset -1px -1px 2px rgba(255, 255, 255, 0.9),
+    inset 1px -1px 2px rgba(156, 156, 156, 0.2),
+    inset -1px 1px 2px rgba(156, 156, 156, 0.2) !important;
   overflow: hidden !important;
   border: none !important;
 }
 
 #theme-toggle [class*="slideTrackInner"] {
   position: absolute !important;
-  left: 4.5px !important;
-  top: 4px !important;
-  width: 57px !important;
-  height: 16px !important;
-  border-radius: 8px !important;
-  background: linear-gradient(90deg, rgba(90, 105, 234, 0.6) 0%, rgba(178, 206, 254, 0.6) 100%) !important;
+  left: 4.58px !important;
+  top: 3.93px !important;
+  width: 54.7px !important;
+  height: 15.85px !important;
+  border-radius: 7.93px !important;
+  background: rgba(178, 206, 254, 0.6) !important; /* Semi-transparent blue fill to blend with background grid */
   box-shadow:
-    inset 2px 2px 4px rgba(137, 159, 196, 0.3),
-    inset -2px -2px 4px rgba(255, 255, 255, 0.5) !important;
+    -1px -1px 2px rgba(137, 159, 196, 0.5),
+    1px 1px 2px rgba(219, 253, 255, 0.3),
+    inset 3px 3px 8px rgba(137, 159, 196, 0.9),
+    inset -3px -3px 6px rgba(219, 253, 255, 0.9),
+    inset 3px -3px 6px rgba(137, 159, 196, 0.2),
+    inset -3px 3px 6px rgba(137, 159, 196, 0.2) !important;
   pointer-events: none !important;
   opacity: 0 !important; /* Hidden in light mode (OFF state) */
 }
 
 #theme-toggle [class*="slideKnob"] {
   position: absolute !important;
-  top: 3.5px !important;
-  left: 4px !important;
+  top: -3px !important;
+  left: 0px !important;
   width: 30px !important;
   height: 30px !important;
   background: #ECECEC !important;
   box-shadow:
-    1px 1px 3px rgba(134, 134, 134, 0.6),
-    -1px -1px 2px rgba(255, 255, 255, 0.9) !important;
+    1px 1px 3px rgba(142, 142, 142, 0.9),
+    -1px -1px 2px rgba(255, 255, 255, 0.9),
+    1px -1px 2px rgba(142, 142, 142, 0.2),
+    -1px 1px 2px rgba(142, 142, 142, 0.2),
+    inset -1px -1px 2px rgba(142, 142, 142, 0.5),
+    inset 1px 1px 2px rgba(255, 255, 255, 0.3) !important;
   border-radius: 50% !important;
   cursor: grab !important;
   z-index: 2 !important;
@@ -287,17 +299,17 @@ body {
   justify-content: center !important;
 }
 
-#theme-toggle [class*="slideKnob"]:active {
-  cursor: grabbing !important;
-}
-
 #theme-toggle [class*="slideKnobInner"] {
-  width: 22px !important;
-  height: 22px !important;
-  background: #ECECEC !important;
+  width: 22.5px !important;
+  height: 22.5px !important;
+  background: rgba(236, 236, 236, 0.4) !important; /* Semi-transparent inner knob to let grid pattern show through */
   box-shadow:
-    inset 1px 1px 2px rgba(167, 167, 167, 0.8),
-    inset -1px -1px 2px rgba(255, 255, 255, 0.8) !important;
+    -1px -1px 2px rgba(167, 167, 167, 0.5),
+    1px 1px 2px rgba(255, 255, 255, 0.3),
+    inset 1px 1px 3px rgba(167, 167, 167, 0.9),
+    inset -1px -1px 2px rgba(255, 255, 255, 0.9),
+    inset 1px -1px 2px rgba(167, 167, 167, 0.2),
+    inset -1px 1px 2px rgba(167, 167, 167, 0.2) !important;
   border-radius: 50% !important;
   pointer-events: none !important;
 }
@@ -320,15 +332,19 @@ body {
    ========================================================== */
 
 [data-theme="dark"] #theme-toggle [class*="slideTrack"] {
-  background: rgba(34, 34, 58, 0.25) !important;
+  background: rgba(24, 24, 42, 0.45) !important; /* Semi-transparent to blend with background grid in dark mode */
   box-shadow:
-    inset 1px 1px 2px rgba(0, 0, 0, 0.6),
-    inset -1px -1px 2px rgba(50, 50, 80, 0.2) !important;
+    -1px -1px 2px rgba(0, 0, 0, 0.5),
+    1px 1px 2px rgba(255, 255, 255, 0.05),
+    inset 1px 1px 3px rgba(0, 0, 0, 0.8),
+    inset -1px -1px 2px rgba(60, 60, 90, 0.2),
+    inset 1px -1px 2px rgba(0, 0, 0, 0.2),
+    inset -1px 1px 2px rgba(0, 0, 0, 0.2) !important;
 }
 
 [data-theme="dark"] #theme-toggle [class*="slideTrackInner"] {
   opacity: 1 !important;
-  background: linear-gradient(90deg, rgba(74, 90, 138, 0.6) 0%, rgba(137, 159, 196, 0.6) 100%) !important;
+  background: rgba(137, 159, 196, 0.6) !important; /* Semi-transparent blue/grey active track fill */
   box-shadow:
     inset 2px 2px 4px rgba(30, 40, 70, 0.4),
     inset -2px -2px 4px rgba(80, 100, 160, 0.2) !important;
@@ -338,16 +354,16 @@ body {
   background: linear-gradient(135deg, #2e2e4a 0%, #222240 100%) !important;
   box-shadow:
     1px 1px 3px rgba(0, 0, 0, 0.6),
-    -1px -1px 2px rgba(60, 60, 100, 0.2) !important;
+    -1px -1px 2px rgba(60, 60, 100, 0.2),
+    inset -1px -1px 2px rgba(0, 0, 0, 0.5),
+    inset 1px 1px 2px rgba(255, 255, 255, 0.05) !important;
 }
 
 [data-theme="dark"] #theme-toggle [class*="slideKnobInner"] {
-  background: #22223a !important;
+  background: rgba(34, 34, 58, 0.4) !important; /* Semi-transparent inner knob to let grid pattern show through in dark mode */
   box-shadow:
-    inset 1px 1px 2px rgba(0, 0, 0, 0.6),
+    -1px -1px 2px rgba(0, 0, 0, 0.5),
+    1px 1px 2px rgba(255, 255, 255, 0.05),
+    inset 1px 1px 3px rgba(0, 0, 0, 0.8),
     inset -1px -1px 2px rgba(60, 60, 100, 0.2) !important;
 }
-
-
-
-
