@@ -1,8 +1,8 @@
 <svg width="91" height="91" viewBox="0 0 91 91" fill="none" xmlns="http://www.w3.org/2000/svg">
 <g filter="url(#filter0_ddddii_1011_1342)">
 <circle cx="44.5" cy="44.5" r="35.5" fill="#ECECEC"/>
-<g transform="translate(44.5, 44.5) scale(2) translate(-12, -12)">
-<path d="M7 7L17 17M7 17H17V7" stroke="#404040" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
+<g transform="translate(32.5, 32.5)">
+<path d="M7 7L17 17M7 17H17V7" stroke="#404040" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
 </g>
 </g>
 <defs>
