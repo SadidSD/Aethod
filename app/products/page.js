@@ -320,12 +320,8 @@ export default function ProductsPage() {
 
           {/* ===== THEME SWITCH (Slide Button Overlay) ===== */}
           <div className={styles.slideButton} id="theme-toggle">
-            {/* Track Background */}
             <div className={styles.slideTrack} ref={trackRef}>
-              {/* Blue fill */}
-              <div className={styles.slideTrackInner} />
-
-              {/* Slider Knob */}
+              <InlineSVG src="/down_area.svg" className={styles.slideTrackSvg} />
               <div
                 className={styles.slideKnob}
                 ref={knobRef}
@@ -339,8 +335,7 @@ export default function ProductsPage() {
                 aria-label="Toggle dark mode"
                 tabIndex={0}
               >
-                {/* Recessed center circle */}
-                <div className={styles.slideKnobInner} />
+                <InlineSVG src="/button_up.svg" className={styles.slideKnobSvg} />
               </div>
             </div>
           </div>

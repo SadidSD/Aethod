@@ -640,13 +640,9 @@ export default function Home() {
             <div className={styles.heroVisual}>
               {/* Slide Toggle — Dark/Light Mode */}
               <div className={styles.slideButton} id="theme-toggle">
-                {/* Down area / track */}
-                <div className={styles.slideTrack} ref={trackRef}>
-                  {/* Blue inner track */}
-                  <div className={styles.slideTrackInner} />
-
-                  {/* Draggable knob */}
-                  <div
+            <div className={styles.slideTrack} ref={trackRef}>
+              <InlineSVG src="/down_area.svg" className={styles.slideTrackSvg} />
+              <div
                     className={styles.slideKnob}
                     ref={knobRef}
                     style={knobStyle}
@@ -659,11 +655,10 @@ export default function Home() {
                     aria-label="Toggle dark mode"
                     tabIndex={0}
                   >
-                    {/* Inner recessed circle */}
-                    <div className={styles.slideKnobInner} />
-                  </div>
-                </div>
+                <InlineSVG src="/button_up.svg" className={styles.slideKnobSvg} />
               </div>
+            </div>
+          </div>
 
               {/* Orb */}
               <div className={styles.orbContainer}>

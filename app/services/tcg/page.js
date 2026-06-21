@@ -451,7 +451,7 @@ export default function TcgPage() {
           {/* Theme Switcher slider */}
           <div className={styles.slideButton} id="theme-toggle">
             <div className={styles.slideTrack} ref={trackRef}>
-              <div className={styles.slideTrackInner} />
+              <InlineSVG src="/down_area.svg" className={styles.slideTrackSvg} />
               <div
                 className={styles.slideKnob}
                 ref={knobRef}
@@ -465,7 +465,7 @@ export default function TcgPage() {
                 aria-label="Toggle dark mode"
                 tabIndex={0}
               >
-                <div className={styles.slideKnobInner} />
+                <InlineSVG src="/button_up.svg" className={styles.slideKnobSvg} />
               </div>
             </div>
           </div>

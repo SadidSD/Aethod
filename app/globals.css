@@ -228,68 +228,40 @@ body {
 }
 
 /* ==========================================================
-   Custom 3D Theme Switch Toggle (Neumorphic Ring)
+   Custom 3D Theme Switch Toggle (Neumorphic SVGs)
    ========================================================== */
 
 #theme-toggle {
-  width: 74px !important;
+  width: 72px !important;
   height: 37px !important;
   display: block !important;
 }
 
 #theme-toggle [class*="slideTrack"] {
   position: absolute !important;
-  left: 4px !important;
-  top: 7px !important;
-  width: 66px !important;
-  height: 24px !important;
-  border-radius: 10px !important;
-  background: rgba(236, 236, 236, 0.45) !important; /* Semi-transparent to blend with background grid */
-  box-shadow:
-    -1px -1px 2px rgba(156, 156, 156, 0.5),
-    1px 1px 2px rgba(255, 255, 255, 0.3),
-    inset 1px 1px 3px rgba(156, 156, 156, 0.9),
-    inset -1px -1px 2px rgba(255, 255, 255, 0.9),
-    inset 1px -1px 2px rgba(156, 156, 156, 0.2),
-    inset -1px 1px 2px rgba(156, 156, 156, 0.2) !important;
-  overflow: hidden !important;
-  border: none !important;
+  left: 0 !important;
+  top: 3.5px !important;
+  width: 72px !important;
+  height: 30px !important;
+  background: none !important;
+  box-shadow: none !important;
+  border-radius: 0 !important;
+  overflow: visible !important;
 }
 
 #theme-toggle [class*="slideTrackInner"] {
-  position: absolute !important;
-  left: 4.58px !important;
-  top: 3.93px !important;
-  width: 54.7px !important;
-  height: 15.85px !important;
-  border-radius: 7.93px !important;
-  background: rgba(178, 206, 254, 0.6) !important; /* Semi-transparent blue fill to blend with background grid */
-  box-shadow:
-    -1px -1px 2px rgba(137, 159, 196, 0.5),
-    1px 1px 2px rgba(219, 253, 255, 0.3),
-    inset 3px 3px 8px rgba(137, 159, 196, 0.9),
-    inset -3px -3px 6px rgba(219, 253, 255, 0.9),
-    inset 3px -3px 6px rgba(137, 159, 196, 0.2),
-    inset -3px 3px 6px rgba(137, 159, 196, 0.2) !important;
-  pointer-events: none !important;
-  opacity: 0 !important; /* Hidden in light mode (OFF state) */
+  display: none !important;
 }
 
 #theme-toggle [class*="slideKnob"] {
   position: absolute !important;
-  top: -3px !important;
-  left: 0px !important;
-  width: 30px !important;
-  height: 30px !important;
-  background: #ECECEC !important;
-  box-shadow:
-    1px 1px 3px rgba(142, 142, 142, 0.9),
-    -1px -1px 2px rgba(255, 255, 255, 0.9),
-    1px -1px 2px rgba(142, 142, 142, 0.2),
-    -1px 1px 2px rgba(142, 142, 142, 0.2),
-    inset -1px -1px 2px rgba(142, 142, 142, 0.5),
-    inset 1px 1px 2px rgba(255, 255, 255, 0.3) !important;
-  border-radius: 50% !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 37px !important;
+  height: 37px !important;
+  background: none !important;
+  box-shadow: none !important;
+  border-radius: 0 !important;
   cursor: grab !important;
   z-index: 2 !important;
   touch-action: none !important;
@@ -299,71 +271,36 @@ body {
   justify-content: center !important;
 }
 
+#theme-toggle [class*="slideKnob"]:active {
+  cursor: grabbing !important;
+}
+
 #theme-toggle [class*="slideKnobInner"] {
-  width: 22.5px !important;
-  height: 22.5px !important;
-  background: rgba(236, 236, 236, 0.4) !important; /* Semi-transparent inner knob to let grid pattern show through */
-  box-shadow:
-    -1px -1px 2px rgba(167, 167, 167, 0.5),
-    1px 1px 2px rgba(255, 255, 255, 0.3),
-    inset 1px 1px 3px rgba(167, 167, 167, 0.9),
-    inset -1px -1px 2px rgba(255, 255, 255, 0.9),
-    inset 1px -1px 2px rgba(167, 167, 167, 0.2),
-    inset -1px 1px 2px rgba(167, 167, 167, 0.2) !important;
-  border-radius: 50% !important;
-  pointer-events: none !important;
+  display: none !important;
 }
 
-/* Transitions */
-#theme-toggle [class*="slideTrack"],
-#theme-toggle [class*="slideTrackInner"],
-#theme-toggle [class*="slideKnob"],
-#theme-toggle [class*="slideKnobInner"] {
-  transition:
-    background 0.3s ease,
-    background-color 0.3s ease,
-    box-shadow 0.3s ease,
-    border-color 0.3s ease,
-    opacity 0.3s ease !important;
+.slideTrackSvg {
+  width: 72px;
+  height: 30px;
+  display: block;
 }
 
-/* ==========================================================
-   DARK MODE — Global Theme Switch Overrides
-   ========================================================== */
-
-[data-theme="dark"] #theme-toggle [class*="slideTrack"] {
-  background: rgba(24, 24, 42, 0.45) !important; /* Semi-transparent to blend with background grid in dark mode */
-  box-shadow:
-    -1px -1px 2px rgba(0, 0, 0, 0.5),
-    1px 1px 2px rgba(255, 255, 255, 0.05),
-    inset 1px 1px 3px rgba(0, 0, 0, 0.8),
-    inset -1px -1px 2px rgba(60, 60, 90, 0.2),
-    inset 1px -1px 2px rgba(0, 0, 0, 0.2),
-    inset -1px 1px 2px rgba(0, 0, 0, 0.2) !important;
+.slideKnobSvg {
+  width: 37px;
+  height: 37px;
+  display: block;
 }
 
-[data-theme="dark"] #theme-toggle [class*="slideTrackInner"] {
-  opacity: 1 !important;
-  background: rgba(137, 159, 196, 0.6) !important; /* Semi-transparent blue/grey active track fill */
-  box-shadow:
-    inset 2px 2px 4px rgba(30, 40, 70, 0.4),
-    inset -2px -2px 4px rgba(80, 100, 160, 0.2) !important;
+/* Dark Mode Adjustments for custom SVGs */
+[data-theme="dark"] #theme-toggle [class*="slideTrack"] svg rect[fill="#ECECEC"] {
+  fill: #22223a !important;
 }
-
-[data-theme="dark"] #theme-toggle [class*="slideKnob"] {
-  background: linear-gradient(135deg, #2e2e4a 0%, #222240 100%) !important;
-  box-shadow:
-    1px 1px 3px rgba(0, 0, 0, 0.6),
-    -1px -1px 2px rgba(60, 60, 100, 0.2),
-    inset -1px -1px 2px rgba(0, 0, 0, 0.5),
-    inset 1px 1px 2px rgba(255, 255, 255, 0.05) !important;
+[data-theme="dark"] #theme-toggle [class*="slideTrack"] svg rect[fill="#B2CEFE"] {
+  fill: #34487a !important;
 }
-
-[data-theme="dark"] #theme-toggle [class*="slideKnobInner"] {
-  background: rgba(34, 34, 58, 0.4) !important; /* Semi-transparent inner knob to let grid pattern show through in dark mode */
-  box-shadow:
-    -1px -1px 2px rgba(0, 0, 0, 0.5),
-    1px 1px 2px rgba(255, 255, 255, 0.05),
-    inset 1px 1px 3px rgba(0, 0, 0, 0.8),
-    inset -1px -1px 2px rgba(60, 60, 100, 0.2) !important;
+[data-theme="dark"] #theme-toggle [class*="slideKnob"] svg rect[width="30"] {
+  fill: #2d2d44 !important;
+}
+[data-theme="dark"] #theme-toggle [class*="slideKnob"] svg rect[width="22.5"] {
+  fill: #22223a !important;
 }

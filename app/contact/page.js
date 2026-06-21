@@ -461,9 +461,9 @@ export default function ContactPage() {
           {/* ===== THEME SLIDE SWITCH ROW ===== */}
           <div className={styles.toggleRow}>
             <div className={styles.slideButton} id="theme-toggle">
-              <div className={styles.slideTrack} ref={trackRef}>
-                <div className={styles.slideTrackInner} />
-                <div
+            <div className={styles.slideTrack} ref={trackRef}>
+              <InlineSVG src="/down_area.svg" className={styles.slideTrackSvg} />
+              <div
                   className={styles.slideKnob}
                   ref={knobRef}
                   style={knobStyle}
@@ -476,10 +476,10 @@ export default function ContactPage() {
                   aria-label="Toggle dark mode"
                   tabIndex={0}
                 >
-                  <div className={styles.slideKnobInner} />
-                </div>
+                <InlineSVG src="/button_up.svg" className={styles.slideKnobSvg} />
               </div>
             </div>
+          </div>
           </div>
 
           {/* ===== LEFT COLUMN: Title, Subtitle ===== */}
