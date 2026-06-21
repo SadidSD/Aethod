@@ -272,8 +272,8 @@ export default function ProductsPage() {
       <svg style={{ position: "absolute", width: 0, height: 0, overflow: "hidden" }} aria-hidden="true">
         <defs>
           <linearGradient id="paint0_linear_dark_890_256" x1="3.62305" y1="-12" x2="46.0064" y2="222.334" gradientUnits="userSpaceOnUse">
-            <stop offset="1" stopColor="#181822" />
-            <stop stopColor="#0A0A0F" />
+            <stop offset="1" stopColor="#30304a" />
+            <stop stopColor="#1a1a2e" />
           </linearGradient>
         </defs>
       </svg>
