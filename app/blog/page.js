@@ -2,8 +2,8 @@
 
 import { useState, useRef, useCallback, useEffect } from "react";
 import styles from "./page.module.css";
-import { useTheme } from "../../context/ThemeContext";
-import ThemeToggle from "../../components/ThemeToggle";
+import { useTheme } from "../context/ThemeContext";
+import ThemeToggle from "../components/ThemeToggle";
 
 
 function InlineSVG({ src, className }) {
@@ -30,54 +30,12 @@ function InlineSVG({ src, className }) {
   );
 }
 
-export default function ToolsPage() {
+export default function BlogPage() {
   const { isDark } = useTheme();
               
-  // Audio Buffers
         
-  // Pre-load audio files
-  useEffect(() => {
-    const AudioContext = window.AudioContext || window.webkitAudioContext;
-    if (!AudioContext) return;
-
-    const ctx = new AudioContext();
-    audioContextRef.current = ctx;
-
-    const loadSound = (url, bufferRef) => {
-      fetch(url)
-        .then((res) => {
-          if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
-          return res.arrayBuffer();
-        })
-        .then((arrayBuffer) => ctx.decodeAudioData(arrayBuffer))
-        .then((buffer) => {
-          bufferRef.current = buffer;
-        })
-        .catch((err) => console.warn(`Error preloading sound ${url}:`, err));
-    };
-
-    loadSound("/touchpad sd.mp3", clickBufferRef);
-    loadSound("/immersive-click.mp3", slideClickBufferRef);
-    loadSound("/finger-slide.mp3", slideFoleyBufferRef);
-
-    return () => {
-      if (ctx && ctx.state !== "closed") {
-        ctx.close().catch(() => {});
-      }
-    };
-  }, []);
-
   
-    const playClickSound = useCallback(() => {
-    try {
-      const audio = new Audio("/touchpad sd.mp3");
-      audio.volume = 0.85;
-      audio.play().catch(() => {});
-    } catch (e) {
-      /* ignore */
-    }
-  }, []);
-
+  
   
   
   
@@ -86,7 +44,7 @@ export default function ToolsPage() {
   
   return (
     <div className={styles.pageWrapper} data-theme={isDark ? "dark" : "light"}>
-      {/* ===== FLOATING STICKY NAVIGATION ===== */}
+      {/* ===== NAVIGATION ===== */}
       <div className={styles.navOuter}>
         <nav className={styles.navbar} id="navbar">
           <div className={styles.navContent}>
@@ -100,10 +58,10 @@ export default function ToolsPage() {
               <a href="/studio" className={styles.navLink}>
                 Studio
               </a>
-              <a href="/services" className={`${styles.navLink} ${styles.activeNavLink}`}>
+              <a href="/services" className={styles.navLink}>
                 Services
               </a>
-              <a href="/blog" className={styles.navLink}>
+              <a href="/blog" className={`${styles.navLink} ${styles.activeNavLink}`}>
                 Blog
               </a>
               <a href="/products" className={styles.navLink}>
@@ -122,18 +80,21 @@ export default function ToolsPage() {
           </div>
         </nav>
       </div>
-
-      {/* ===== MAIN CONTAINER FLOW ===== */}
       <main className={styles.mainContainer}>
         <div className={styles.contentAlignContainer}>
-          {/* Coming Soon SVG Title */}
-          <InlineSVG src="/services/tools/Coming Soon.svg" className={styles.comingSoonHeader} />
-          
-          <div className={styles.subtext}>
-            We are designing a new custom tool workflow. Check back soon for launch details.
-          </div>
+          {/* Header (Frame 111) */}
+          <InlineSVG src="/research/Frame 111.svg" className={styles.researchHeader} />
 
-          {/* Theme Switcher slider */}
+          {/* Sidebar (Frame 110) */}
+          <InlineSVG src="/research/Frame 110.svg" className={styles.researchSidebar} />
+
+          {/* Content (Frame 109) */}
+          <InlineSVG src="/research/Frame 109.svg" className={styles.researchContent} />
+
+          {/* Footer */}
+          <InlineSVG src="/research/Footer.svg" className={styles.researchFooter} />
+
+          {/* Draggable Slide Toggle — Dark/Light Mode (Exactly like the Hero page) */}
           <ThemeToggle className={styles.slideButton} />
         </div>
       </main>

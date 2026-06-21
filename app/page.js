@@ -2,6 +2,9 @@
 
 import { useState, useRef, useCallback, useEffect } from "react";
 import styles from "./page.module.css";
+import { useTheme } from "./context/ThemeContext";
+import ThemeToggle from "./components/ThemeToggle";
+
 
 const CURVE_PATH = "M10.502 301.037C10.502 301.037 278.19 379.737 387.502 346.037C465.301 322.052 519.222 255.036 594.502 224.037C717.17 173.524 741.006 227.347 853.502 157.037C933.502 107.037 953.502 83.0367 953.502 83.0367C953.502 83.0367 999.582 34.0816 1081.5 16.9464C1123.96 8.06441 1155.5 10.9464 1155.5 10.9464";
 
@@ -30,58 +33,16 @@ function InlineSVG({ src, className }) {
 }
 
 export default function Home() {
-  const [isDark, setIsDark] = useState(false);
-  const [isDragging, setIsDragging] = useState(false);
-  const [dragX, setDragX] = useState(0);
-  const trackRef = useRef(null);
-  const knobRef = useRef(null);
-  const startXRef = useRef(0);
-  const startDragXRef = useRef(0);
-  const hasDraggedRef = useRef(false);
-
+  const { isDark } = useTheme();
+              
   // Journey flow animation refs and state
   const journeyRef = useRef(null);
   const bluePathRef = useRef(null);
   const glowPathRef = useRef(null);
   const journeyStartedRef = useRef(false);
 
-  const clickBufferRef = useRef(null);
-  const slideClickBufferRef = useRef(null);
-  const slideFoleyBufferRef = useRef(null);
-  const audioContextRef = useRef(null);
-
-  // Pre-load and decode audio files for zero-latency, high-quality audio processing
-  useEffect(() => {
-    const AudioContext = window.AudioContext || window.webkitAudioContext;
-    if (!AudioContext) return;
-
-    const ctx = new AudioContext();
-    audioContextRef.current = ctx;
-
-    const loadSound = (url, bufferRef) => {
-      fetch(url)
-        .then(res => {
-          if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
-          return res.arrayBuffer();
-        })
-        .then(arrayBuffer => ctx.decodeAudioData(arrayBuffer))
-        .then(buffer => {
-          bufferRef.current = buffer;
-        })
-        .catch(err => console.warn(`Error preloading sound ${url}:`, err));
-    };
-
-    loadSound('/touchpad sd.mp3', clickBufferRef);
-    loadSound('/immersive-click.mp3', slideClickBufferRef);
-    loadSound('/finger-slide.mp3', slideFoleyBufferRef);
-
-    return () => {
-      if (ctx && ctx.state !== 'closed') {
-        ctx.close().catch(() => { });
-      }
-    };
-  }, []);
-
+        
+  
   // Scroll to the end of the hero page (services section)
   const handleScrollToServices = useCallback(() => {
     const servicesSection = document.getElementById("services");
@@ -95,170 +56,24 @@ export default function Home() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }, []);
 
-  // Slide sound - plays original slide audio assets with zero latency
-  const playSlideSound = useCallback(() => {
+  
+    const playClickSound = useCallback(() => {
     try {
-      const ctx = audioContextRef.current;
-      const clickBuffer = slideClickBufferRef.current;
-      const foleyBuffer = slideFoleyBufferRef.current;
-
-      if (ctx) {
-        if (ctx.state === 'suspended') {
-          ctx.resume();
-        }
-
-        // Play the click portion
-        if (clickBuffer) {
-          const clickSource = ctx.createBufferSource();
-          clickSource.buffer = clickBuffer;
-          const clickGain = ctx.createGain();
-          clickGain.gain.value = 0.45;
-          clickSource.connect(clickGain);
-          clickGain.connect(ctx.destination);
-          clickSource.start(0);
-        } else {
-          const clickAudio = new Audio('/immersive-click.mp3');
-          clickAudio.volume = 0.45;
-          clickAudio.play().catch(() => { });
-        }
-
-        // Play the slide portion
-        if (foleyBuffer) {
-          const foleySource = ctx.createBufferSource();
-          foleySource.buffer = foleyBuffer;
-
-          const foleyGain = ctx.createGain();
-          foleyGain.gain.value = 0.6;
-
-          foleySource.connect(foleyGain);
-          foleyGain.connect(ctx.destination);
-          foleySource.start(0);
-        } else {
-          const slideAudio = new Audio('/finger-slide.mp3');
-          slideAudio.volume = 0.6;
-          slideAudio.play().catch(() => { });
-        }
-      } else {
-        // Fallback
-        const clickAudio = new Audio('/immersive-click.mp3');
-        clickAudio.volume = 0.45;
-        clickAudio.play().catch(() => { });
-
-        const slideAudio = new Audio('/finger-slide.mp3');
-        slideAudio.volume = 0.6;
-        slideAudio.play().catch(() => { });
-      }
-    } catch (e) { /* ignore fallback errors */ }
-  }, []);
-
-  // Button click sound - plays original touchpad sd.mp3 with zero latency and louder volume
-  const playClickSound = useCallback(() => {
-    try {
-      const ctx = audioContextRef.current;
-      const buffer = clickBufferRef.current;
-
-      if (ctx && buffer) {
-        if (ctx.state === 'suspended') {
-          ctx.resume();
-        }
-
-        const source = ctx.createBufferSource();
-        source.buffer = buffer;
-
-        // Gain node to control volume (louder but exact original sound)
-        const gainNode = ctx.createGain();
-        gainNode.gain.value = 1.8;
-
-        source.connect(gainNode);
-        gainNode.connect(ctx.destination);
-
-        source.start(0);
-      } else {
-        // Fallback if not loaded
-        const audio = new Audio('/touchpad sd.mp3');
-        audio.volume = 1.0;
-        audio.play().catch(() => { });
-      }
+      const audio = new Audio("/touchpad sd.mp3");
+      audio.volume = 0.85;
+      audio.play().catch(() => {});
     } catch (e) {
-      try {
-        const audio = new Audio('/touchpad sd.mp3');
-        audio.volume = 1.0;
-        audio.play().catch(() => { });
-      } catch (err) { }
+      /* ignore */
     }
   }, []);
 
-  // Apply theme to <html>
-  useEffect(() => {
-    document.documentElement.setAttribute('data-theme', isDark ? 'dark' : 'light');
-  }, [isDark]);
-
-  // Calculate knob travel distance
-  const getMaxTravel = useCallback(() => {
-    if (!trackRef.current || !knobRef.current) return 30;
-    return trackRef.current.offsetWidth - knobRef.current.offsetWidth + 1;
-  }, []);
-
-  // Pointer down — start drag
-  const handlePointerDown = useCallback((e) => {
-    e.preventDefault();
-    setIsDragging(true);
-    hasDraggedRef.current = false;
-    startXRef.current = e.clientX;
-    startDragXRef.current = isDark ? getMaxTravel() : 0;
-    knobRef.current?.setPointerCapture(e.pointerId);
-  }, [isDark, getMaxTravel]);
-
-  // Pointer move — drag the knob
-  const handlePointerMove = useCallback((e) => {
-    if (!isDragging) return;
-    const delta = e.clientX - startXRef.current;
-    if (Math.abs(delta) > 3) hasDraggedRef.current = true;
-    const maxTravel = getMaxTravel();
-    const newX = Math.max(0, Math.min(maxTravel, startDragXRef.current + delta));
-    setDragX(newX);
-  }, [isDragging, getMaxTravel]);
-
-  // Pointer up — finish drag, determine toggle
-  const handlePointerUp = useCallback(() => {
-    if (!isDragging) return;
-    setIsDragging(false);
-    const maxTravel = getMaxTravel();
-    const threshold = maxTravel / 2;
-
-    if (hasDraggedRef.current) {
-      // Dragged — toggle based on position
-      const shouldBeDark = dragX > threshold;
-      if (shouldBeDark !== isDark) {
-        playSlideSound();
-        setIsDark(shouldBeDark);
-      }
-      setDragX(shouldBeDark ? maxTravel : 0);
-    } else {
-      // Tapped — toggle
-      playSlideSound();
-      const next = !isDark;
-      setIsDark(next);
-      setDragX(next ? maxTravel : 0);
-    }
-  }, [isDragging, dragX, isDark, getMaxTravel, playSlideSound]);
-
-  // Keep dragX in sync when isDark changes externally
-  useEffect(() => {
-    if (!isDragging) {
-      setDragX(isDark ? getMaxTravel() : 0);
-    }
-  }, [isDark, isDragging, getMaxTravel]);
-
-  // Recalculate on resize
-  useEffect(() => {
-    const handleResize = () => {
-      if (!isDragging) setDragX(isDark ? getMaxTravel() : 0);
-    };
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }, [isDark, isDragging, getMaxTravel]);
-
+  
+  
+  
+  
+  
+  
+  
   // Journey path flow animation — triggered when section enters viewport
   useEffect(() => {
     const el = journeyRef.current;
@@ -339,10 +154,7 @@ export default function Home() {
     };
   }, []);
 
-  const knobStyle = isDragging
-    ? { transform: `translateX(${dragX}px)`, transition: 'none' }
-    : { transform: `translateX(${isDark ? getMaxTravel() : 0}px)`, transition: 'transform 0.4s cubic-bezier(0.85, 0.05, 0.18, 1.35)' };
-
+  
   // Scroll Indicator Drag & Tracking
   const [scrollTopProgress, setScrollTopProgress] = useState(0);
   const [isDraggingScroll, setIsDraggingScroll] = useState(false);
@@ -476,8 +288,8 @@ export default function Home() {
               <a href="/services" className={styles.navLink}>
                 Services
               </a>
-              <a href="/research" className={styles.navLink}>
-                Research
+              <a href="/blog" className={styles.navLink}>
+                Blog
               </a>
               <a href="/products" className={styles.navLink}>
                 Products
@@ -639,26 +451,7 @@ export default function Home() {
             {/* Right — Orb */}
             <div className={styles.heroVisual}>
               {/* Slide Toggle — Dark/Light Mode */}
-              <div className={styles.slideButton} id="theme-toggle">
-            <div className={styles.slideTrack} ref={trackRef}>
-              <InlineSVG src={isDark ? "/down_area_dark.svg" : "/down_area.svg"} className={styles.slideTrackSvg} />
-              <div
-                    className={styles.slideKnob}
-                    ref={knobRef}
-                    style={knobStyle}
-                    onPointerDown={handlePointerDown}
-                    onPointerMove={handlePointerMove}
-                    onPointerUp={handlePointerUp}
-                    onPointerCancel={handlePointerUp}
-                    role="switch"
-                    aria-checked={isDark}
-                    aria-label="Toggle dark mode"
-                    tabIndex={0}
-                  >
-                <InlineSVG src={isDark ? "/button_up_dark.svg" : "/button_up.svg"} className={styles.slideKnobSvg} />
-              </div>
-            </div>
-          </div>
+              <ThemeToggle className={styles.slideButton} />
 
               {/* Orb */}
               <div className={styles.orbContainer}>

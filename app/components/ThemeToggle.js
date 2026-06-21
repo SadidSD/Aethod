@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useRef, useCallback, useEffect } from "react";
-import styles from "./page.module.css";
+import { useTheme } from "../context/ThemeContext";
 
 function InlineSVG({ src, className }) {
   const [svgContent, setSvgContent] = useState("");
@@ -27,8 +27,8 @@ function InlineSVG({ src, className }) {
   );
 }
 
-export default function ResearchPage() {
-  const [isDark, setIsDark] = useState(false);
+export default function ThemeToggle({ className }) {
+  const { isDark, setTheme } = useTheme();
   const [isDragging, setIsDragging] = useState(false);
   const [dragX, setDragX] = useState(0);
   const trackRef = useRef(null);
@@ -37,12 +37,11 @@ export default function ResearchPage() {
   const startDragXRef = useRef(0);
   const hasDraggedRef = useRef(false);
 
-  const clickBufferRef = useRef(null);
   const slideClickBufferRef = useRef(null);
   const slideFoleyBufferRef = useRef(null);
   const audioContextRef = useRef(null);
 
-  // Pre-load and decode audio files for zero-latency, high-quality audio processing
+  // Pre-load and decode audio files for zero-latency
   useEffect(() => {
     const AudioContext = window.AudioContext || window.webkitAudioContext;
     if (!AudioContext) return;
@@ -63,7 +62,6 @@ export default function ResearchPage() {
         .catch((err) => console.warn(`Error preloading sound ${url}:`, err));
     };
 
-    loadSound("/touchpad sd.mp3", clickBufferRef);
     loadSound("/immersive-click.mp3", slideClickBufferRef);
     loadSound("/finger-slide.mp3", slideFoleyBufferRef);
 
@@ -74,7 +72,6 @@ export default function ResearchPage() {
     };
   }, []);
 
-  // Slide sound - plays original slide audio assets with zero latency
   const playSlideSound = useCallback(() => {
     try {
       const ctx = audioContextRef.current;
@@ -86,7 +83,6 @@ export default function ResearchPage() {
           ctx.resume();
         }
 
-        // Play the click portion
         if (clickBuffer) {
           const clickSource = ctx.createBufferSource();
           clickSource.buffer = clickBuffer;
@@ -101,14 +97,11 @@ export default function ResearchPage() {
           clickAudio.play().catch(() => {});
         }
 
-        // Play the slide portion
         if (foleyBuffer) {
           const foleySource = ctx.createBufferSource();
           foleySource.buffer = foleyBuffer;
-
           const foleyGain = ctx.createGain();
           foleyGain.gain.value = 0.6;
-
           foleySource.connect(foleyGain);
           foleyGain.connect(ctx.destination);
           foleySource.start(0);
@@ -118,7 +111,6 @@ export default function ResearchPage() {
           slideAudio.play().catch(() => {});
         }
       } else {
-        // Fallback
         const clickAudio = new Audio("/immersive-click.mp3");
         clickAudio.volume = 0.45;
         clickAudio.play().catch(() => {});
@@ -128,14 +120,9 @@ export default function ResearchPage() {
         slideAudio.play().catch(() => {});
       }
     } catch (e) {
-      /* ignore fallback errors */
+      // ignore errors
     }
   }, []);
-
-  // Apply theme to <html>
-  useEffect(() => {
-    document.documentElement.setAttribute("data-theme", isDark ? "dark" : "light");
-  }, [isDark]);
 
   // Calculate knob travel distance
   const getMaxTravel = useCallback(() => {
@@ -177,23 +164,21 @@ export default function ResearchPage() {
     const threshold = maxTravel / 2;
 
     if (hasDraggedRef.current) {
-      // Dragged — toggle based on position
       const shouldBeDark = dragX > threshold;
       if (shouldBeDark !== isDark) {
         playSlideSound();
-        setIsDark(shouldBeDark);
+        setTheme(shouldBeDark ? "dark" : "light");
       }
       setDragX(shouldBeDark ? maxTravel : 0);
     } else {
-      // Tapped — toggle
       playSlideSound();
       const next = !isDark;
-      setIsDark(next);
+      setTheme(next ? "dark" : "light");
       setDragX(next ? maxTravel : 0);
     }
-  }, [isDragging, dragX, isDark, getMaxTravel, playSlideSound]);
+  }, [isDragging, dragX, isDark, getMaxTravel, playSlideSound, setTheme]);
 
-  // Keep dragX in sync when isDark changes externally
+  // Keep dragX in sync when isDark changes
   useEffect(() => {
     if (!isDragging) {
       setDragX(isDark ? getMaxTravel() : 0);
@@ -217,80 +202,25 @@ export default function ResearchPage() {
       };
 
   return (
-    <div className={styles.pageWrapper} data-theme={isDark ? "dark" : "light"}>
-      {/* ===== NAVIGATION ===== */}
-      <div className={styles.navOuter}>
-        <nav className={styles.navbar} id="navbar">
-          <div className={styles.navContent}>
-            {/* Circular Logo */}
-            <a href="/" className={styles.logo} aria-label="Aeethod Home">
-              <InlineSVG src="/navbar logo.svg" className={styles.logoImg} />
-            </a>
-
-            {/* Navigation Links */}
-            <div className={styles.navLinks}>
-              <a href="/studio" className={styles.navLink}>
-                Studio
-              </a>
-              <a href="/services" className={styles.navLink}>
-                Services
-              </a>
-              <a href="/research" className={`${styles.navLink} ${styles.activeNavLink}`}>
-                Research
-              </a>
-              <a href="/products" className={styles.navLink}>
-                Products
-              </a>
-              <a href="/journals" className={styles.navLink}>
-                Works
-              </a>
-              <a href="/contact" className={styles.navLink}>
-                Contact
-              </a>
-              <a href="#" className={styles.navLink} onClick={() => alert("Vlog coming soon")}>
-                Vlog
-              </a>
-            </div>
-          </div>
-        </nav>
-      </div>
-      <main className={styles.mainContainer}>
-        <div className={styles.contentAlignContainer}>
-          {/* Header (Frame 111) */}
-          <InlineSVG src="/research/Frame 111.svg" className={styles.researchHeader} />
-
-          {/* Sidebar (Frame 110) */}
-          <InlineSVG src="/research/Frame 110.svg" className={styles.researchSidebar} />
-
-          {/* Content (Frame 109) */}
-          <InlineSVG src="/research/Frame 109.svg" className={styles.researchContent} />
-
-          {/* Footer */}
-          <InlineSVG src="/research/Footer.svg" className={styles.researchFooter} />
-
-          {/* Draggable Slide Toggle — Dark/Light Mode (Exactly like the Hero page) */}
-          <div className={styles.slideButton} id="theme-toggle">
-            <div className={styles.slideTrack} ref={trackRef}>
-              <InlineSVG src={isDark ? "/down_area_dark.svg" : "/down_area.svg"} className={styles.slideTrackSvg} />
-              <div
-                className={styles.slideKnob}
-                ref={knobRef}
-                style={knobStyle}
-                onPointerDown={handlePointerDown}
-                onPointerMove={handlePointerMove}
-                onPointerUp={handlePointerUp}
-                onPointerCancel={handlePointerUp}
-                role="switch"
-                aria-checked={isDark}
-                aria-label="Toggle dark mode"
-                tabIndex={0}
-              >
-                <InlineSVG src={isDark ? "/button_up_dark.svg" : "/button_up.svg"} className={styles.slideKnobSvg} />
-              </div>
-            </div>
-          </div>
+    <div className={`${className || ""} slideButton`} id="theme-toggle">
+      <div className="slideTrack" ref={trackRef}>
+        <InlineSVG src={isDark ? "/down_area_dark.svg" : "/down_area.svg"} className="slideTrackSvg" />
+        <div
+          className="slideKnob"
+          ref={knobRef}
+          style={knobStyle}
+          onPointerDown={handlePointerDown}
+          onPointerMove={handlePointerMove}
+          onPointerUp={handlePointerUp}
+          onPointerCancel={handlePointerUp}
+          role="switch"
+          aria-checked={isDark}
+          aria-label="Toggle dark mode"
+          tabIndex={0}
+        >
+          <InlineSVG src={isDark ? "/button_up_dark.svg" : "/button_up.svg"} className="slideKnobSvg" />
         </div>
-      </main>
+      </div>
     </div>
   );
 }
