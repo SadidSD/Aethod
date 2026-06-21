@@ -196,7 +196,7 @@ export default function Home() {
   // Calculate knob travel distance
   const getMaxTravel = useCallback(() => {
     if (!trackRef.current || !knobRef.current) return 30;
-    return trackRef.current.offsetWidth - knobRef.current.offsetWidth;
+    return trackRef.current.offsetWidth - knobRef.current.offsetWidth + 1;
   }, []);
 
   // Pointer down — start drag
@@ -641,7 +641,7 @@ export default function Home() {
               {/* Slide Toggle — Dark/Light Mode */}
               <div className={styles.slideButton} id="theme-toggle">
             <div className={styles.slideTrack} ref={trackRef}>
-              <InlineSVG src="/down_area.svg" className={styles.slideTrackSvg} />
+              <InlineSVG src={isDark ? "/down_area_dark.svg" : "/down_area.svg"} className={styles.slideTrackSvg} />
               <div
                     className={styles.slideKnob}
                     ref={knobRef}
@@ -655,7 +655,7 @@ export default function Home() {
                     aria-label="Toggle dark mode"
                     tabIndex={0}
                   >
-                <InlineSVG src="/button_up.svg" className={styles.slideKnobSvg} />
+                <InlineSVG src={isDark ? "/button_up_dark.svg" : "/button_up.svg"} className={styles.slideKnobSvg} />
               </div>
             </div>
           </div>

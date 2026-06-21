@@ -398,7 +398,7 @@
 
 /* ----- Slide Toggle — Dark Mode ----- */
 :global([data-theme="dark"]) .slideTrack {
-  background: #22223a;
+  background: var(--bg-surface);
   box-shadow:
     1px 1px 2px rgba(50, 50, 80, 0.15),
     -1px -1px 2px rgba(0, 0, 0, 0.4),
@@ -431,7 +431,7 @@
 }
 
 :global([data-theme="dark"]) .slideKnobInner {
-  background: #22223a;
+  background: var(--bg-surface);
   box-shadow:
     1px 1px 2px rgba(50, 50, 80, 0.15),
     -1px -1px 2px rgba(0, 0, 0, 0.3),
@@ -446,7 +446,7 @@
    ========================================================== */
 
 :global([data-theme="dark"]) .pageWrapper {
-  background: #1a1a2e;
+  background: var(--bg-primary);
 }
 
 /* Neumorphic Dark mode overrides for SVGs */
@@ -455,7 +455,7 @@
 :global([data-theme="dark"]) .researchSidebar svg rect[fill="#DFDFDF" i],
 :global([data-theme="dark"]) .researchContent svg rect[fill="#DFDFDF" i],
 :global([data-theme="dark"]) .researchFooter svg rect[fill="#DFDFDF" i] {
-  fill: #22223a !important;
+  fill: var(--bg-surface) !important;
 }
 
 :global([data-theme="dark"]) .researchHeader svg rect[stroke="#404040" i],

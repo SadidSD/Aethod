@@ -129,30 +129,30 @@ img, video {
 /* ========== DARK MODE ========== */
 [data-theme="dark"] {
   /* Neumorphic Dark Surfaces */
-  --bg-primary: #1a1a2e;
-  --bg-surface: #22223a;
-  --bg-elevated: #2a2a44;
+  --bg-primary: #0A0A0F;
+  --bg-surface: #12121A;
+  --bg-elevated: #181822;
 
   /* Shadows — Neumorphic for dark */
   --shadow-raised:
-    6px 6px 14px rgba(0, 0, 0, 0.45),
-    -6px -6px 14px rgba(60, 60, 90, 0.15);
+    6px 6px 14px rgba(0, 0, 0, 0.7),
+    -6px -6px 14px rgba(255, 255, 255, 0.04);
   --shadow-raised-lg:
-    10px 10px 24px rgba(0, 0, 0, 0.5),
-    -10px -10px 24px rgba(60, 60, 90, 0.18);
+    10px 10px 24px rgba(0, 0, 0, 0.75),
+    -10px -10px 24px rgba(255, 255, 255, 0.04);
   --shadow-inset:
-    inset 4px 4px 10px rgba(0, 0, 0, 0.35),
-    inset -4px -4px 10px rgba(60, 60, 90, 0.12);
+    inset 4px 4px 10px rgba(0, 0, 0, 0.55),
+    inset -4px -4px 10px rgba(255, 255, 255, 0.03);
   --shadow-inset-deep:
-    inset 6px 6px 16px rgba(0, 0, 0, 0.4),
-    inset -6px -6px 16px rgba(60, 60, 90, 0.15);
+    inset 6px 6px 16px rgba(0, 0, 0, 0.6),
+    inset -6px -6px 16px rgba(255, 255, 255, 0.03);
   --shadow-soft:
-    4px 4px 8px rgba(0, 0, 0, 0.35),
-    -4px -4px 8px rgba(60, 60, 90, 0.1);
+    4px 4px 8px rgba(0, 0, 0, 0.55),
+    -4px -4px 8px rgba(255, 255, 255, 0.02);
   --shadow-btn:
-    3px 3px 8px rgba(0, 0, 0, 0.4),
-    -3px -3px 8px rgba(60, 60, 90, 0.12),
-    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+    3px 3px 8px rgba(0, 0, 0, 0.6),
+    -3px -3px 8px rgba(255, 255, 255, 0.03),
+    inset 0 1px 0 rgba(255, 255, 255, 0.02);
 
   /* Accent — keep purple + add blue accent */
   --accent-purple: #9b7dff;
@@ -168,22 +168,22 @@ img, video {
   --text-faint: #606080;
 
   /* Navigation Bar Styles — Dark Theme */
-  --nav-bg: #22223a;
+  --nav-bg: #12121A;
   --nav-shadow: 
-    -4px 4px 8px rgba(0, 0, 0, 0.45), 
-    4px -4px 8px rgba(0, 0, 0, 0.45), 
-    -4px -4px 8px rgba(60, 60, 90, 0.15), 
-    4px 4px 10px rgba(0, 0, 0, 0.5), 
-    inset 1px 1px 2px rgba(255, 255, 255, 0.05), 
+    -4px 4px 8px rgba(0, 0, 0, 0.65), 
+    4px -4px 8px rgba(0, 0, 0, 0.65), 
+    -4px -4px 8px rgba(255, 255, 255, 0.03), 
+    4px 4px 10px rgba(0, 0, 0, 0.75), 
+    inset 1px 1px 2px rgba(255, 255, 255, 0.02), 
     inset -1px -1px 2px rgba(0, 0, 0, 0.3);
   
-  --nav-logo-bg: #22223a;
+  --nav-logo-bg: #12121A;
   --nav-logo-shadow: 
-    -5px 5px 10px rgba(0, 0, 0, 0.45), 
-    5px -5px 10px rgba(0, 0, 0, 0.45), 
-    -5px -5px 10px rgba(60, 60, 90, 0.15), 
-    5px 5px 13px rgba(0, 0, 0, 0.5), 
-    inset 1px 1px 2px rgba(255, 255, 255, 0.05), 
+    -5px 5px 10px rgba(0, 0, 0, 0.65), 
+    5px -5px 10px rgba(0, 0, 0, 0.65), 
+    -5px -5px 10px rgba(255, 255, 255, 0.03), 
+    5px 5px 13px rgba(0, 0, 0, 0.75), 
+    inset 1px 1px 2px rgba(255, 255, 255, 0.02), 
     inset -1px -1px 2px rgba(0, 0, 0, 0.3);
     
   --nav-link-color: #b0b0c8;
@@ -191,7 +191,7 @@ img, video {
 }
 
 [data-theme="dark"] body {
-  background: #1a1a2e;
+  background: var(--bg-primary);
   color: #e8e8f0;
 }
 
@@ -255,7 +255,7 @@ body {
 
 #theme-toggle [class*="slideKnob"] {
   position: absolute !important;
-  top: 0 !important;
+  top: -3px !important;
   left: 0 !important;
   width: 37px !important;
   height: 37px !important;
@@ -289,18 +289,4 @@ body {
   width: 37px;
   height: 37px;
   display: block;
-}
-
-/* Dark Mode Adjustments for custom SVGs */
-[data-theme="dark"] #theme-toggle [class*="slideTrack"] svg rect[fill="#ECECEC"] {
-  fill: #22223a !important;
-}
-[data-theme="dark"] #theme-toggle [class*="slideTrack"] svg rect[fill="#B2CEFE"] {
-  fill: #34487a !important;
-}
-[data-theme="dark"] #theme-toggle [class*="slideKnob"] svg rect[width="30"] {
-  fill: #2d2d44 !important;
-}
-[data-theme="dark"] #theme-toggle [class*="slideKnob"] svg rect[width="22.5"] {
-  fill: #22223a !important;
 }

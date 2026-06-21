@@ -19,7 +19,7 @@
 }
 
 [data-theme="dark"] .pageWrapper {
-  background-color: #1a1a2e;
+  background-color: var(--bg-primary);
 }
 
 .pageWrapper,
@@ -88,7 +88,7 @@
 }
 
 [data-theme="dark"] .navbar {
-  background-color: #1a1a2e;
+  background-color: var(--bg-primary);
   box-shadow: 
     -4px 4px 8px rgba(0, 0, 0, 0.45), 
     4px -4px 8px rgba(0, 0, 0, 0.45), 
@@ -234,7 +234,7 @@
 }
 
 [data-theme="dark"] .slideTrack {
-  background-color: #22223a;
+  background-color: var(--bg-surface);
   box-shadow: 
     1px 1px 2px rgba(255, 255, 255, 0.05), 
     -1px -1px 2px rgba(0, 0, 0, 0.3), 
@@ -290,7 +290,7 @@
 }
 
 [data-theme="dark"] .slideKnob {
-  background-color: #22223a;
+  background-color: var(--bg-surface);
   box-shadow: 
     -1px 1px 2px rgba(0, 0, 0, 0.2), 
     1px -1px 2px rgba(0, 0, 0, 0.2), 
@@ -315,7 +315,7 @@
 }
 
 [data-theme="dark"] .slideKnobInner {
-  background-color: #22223a;
+  background-color: var(--bg-surface);
   box-shadow: 
     1px 1px 2px rgba(255, 255, 255, 0.05), 
     -1px -1px 2px rgba(0, 0, 0, 0.2), 
@@ -457,7 +457,7 @@
 }
 
 [data-theme="dark"] .quickMailFrame svg path[fill="#ECECEC"] {
-  fill: #22223a;
+  fill: var(--bg-surface);
 }
 
 .quickMailFrame svg g[filter] {
@@ -529,7 +529,7 @@
 }
 
 [data-theme="dark"] .inputField {
-  background-color: #22223a;
+  background-color: var(--bg-surface);
   color: #e8e8f0;
 }
 
@@ -554,7 +554,7 @@
 }
 
 [data-theme="dark"] .sendButton {
-  background-color: #22223a;
+  background-color: var(--bg-surface);
   color: #b0b0c8;
 }
 
@@ -592,7 +592,7 @@
 }
 
 [data-theme="dark"] .textareaField {
-  background-color: #22223a;
+  background-color: var(--bg-surface);
   color: #e8e8f0;
 }
 
@@ -619,7 +619,7 @@
 }
 
 [data-theme="dark"] .socialGridCard {
-  background-color: #22223a;
+  background-color: var(--bg-surface);
   box-shadow: 
     -3px 3px 6px rgba(0, 0, 0, 0.45), 
     3px -3px 6px rgba(0, 0, 0, 0.45), 
@@ -935,7 +935,7 @@
 }
 
 :global([data-theme="dark"]) .footerSearchInput {
-  background: #1e1e34;
+  background: var(--bg-surface);
   color: #e8e8f0;
   box-shadow:
     inset 2px 2px 5px rgba(0, 0, 0, 0.5),
@@ -957,7 +957,7 @@
 /* ===== DARK MODE — Targeted SVG Vector Color Inversion for Footer ===== */
 :global([data-theme="dark"]) .footerWrapper svg rect[fill="#DFDFDF" i],
 :global([data-theme="dark"]) .footerWrapper svg path[fill="#DFDFDF" i] {
-  fill: #22223a !important;
+  fill: var(--bg-surface) !important;
 }
 
 :global([data-theme="dark"]) .footerWrapper svg rect[stroke="#404040" i],

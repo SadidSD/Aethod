@@ -176,7 +176,7 @@ export default function ProductsPage() {
   // Calculate knob travel distance
   const getMaxTravel = useCallback(() => {
     if (!trackRef.current || !knobRef.current) return 30;
-    return trackRef.current.offsetWidth - knobRef.current.offsetWidth;
+    return trackRef.current.offsetWidth - knobRef.current.offsetWidth + 1;
   }, []);
 
   // Pointer down — start drag
@@ -272,8 +272,8 @@ export default function ProductsPage() {
       <svg style={{ position: "absolute", width: 0, height: 0, overflow: "hidden" }} aria-hidden="true">
         <defs>
           <linearGradient id="paint0_linear_dark_890_256" x1="3.62305" y1="-12" x2="46.0064" y2="222.334" gradientUnits="userSpaceOnUse">
-            <stop offset="1" stopColor="#30304a" />
-            <stop stopColor="#1a1a2e" />
+            <stop offset="1" stopColor="#181822" />
+            <stop stopColor="#0A0A0F" />
           </linearGradient>
         </defs>
       </svg>
@@ -321,7 +321,7 @@ export default function ProductsPage() {
           {/* ===== THEME SWITCH (Slide Button Overlay) ===== */}
           <div className={styles.slideButton} id="theme-toggle">
             <div className={styles.slideTrack} ref={trackRef}>
-              <InlineSVG src="/down_area.svg" className={styles.slideTrackSvg} />
+              <InlineSVG src={isDark ? "/down_area_dark.svg" : "/down_area.svg"} className={styles.slideTrackSvg} />
               <div
                 className={styles.slideKnob}
                 ref={knobRef}
@@ -335,7 +335,7 @@ export default function ProductsPage() {
                 aria-label="Toggle dark mode"
                 tabIndex={0}
               >
-                <InlineSVG src="/button_up.svg" className={styles.slideKnobSvg} />
+                <InlineSVG src={isDark ? "/button_up_dark.svg" : "/button_up.svg"} className={styles.slideKnobSvg} />
               </div>
             </div>
           </div>
