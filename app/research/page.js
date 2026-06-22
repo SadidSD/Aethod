@@ -270,28 +270,28 @@ export default function ResearchPage() {
                     return (
                       <button
                         key={f}
-                        onClick={() => setActiveFilter(f)}
-                        className={`${styles.filterChipAll} ${
-                          isSelected ? styles.filterChipAllActive : ""
-                        }`}
+                        onClick={() => {
+                          playClickSound();
+                          setActiveFilter(f);
+                        }}
+                        className={isSelected ? styles.filterChipAll : styles.filterChipOther}
                       >
-                        <span className={isSelected ? styles.filterTextActive : styles.filterText}>
-                          {f}
-                        </span>
+                        <span>{f}</span>
                       </button>
                     );
                   } else {
                     return (
                       <button
                         key={f}
-                        onClick={() => setActiveFilter(f)}
+                        onClick={() => {
+                          playClickSound();
+                          setActiveFilter(f);
+                        }}
                         className={`${styles.filterChipOther} ${
                           isSelected ? styles.filterChipOtherActive : ""
                         }`}
                       >
-                        <span className={isSelected ? styles.filterTextActive : styles.filterText}>
-                          {f}
-                        </span>
+                        <span>{f}</span>
                       </button>
                     );
                   }
