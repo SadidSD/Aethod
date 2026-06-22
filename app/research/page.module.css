@@ -32,7 +32,7 @@
   position: sticky;
   top: 0;
   z-index: 100;
-  padding: 36px 24px 0;
+  padding: 20px 24px 0;
 }
 
 .navbar {
@@ -131,7 +131,7 @@
 /* Main content wrapper */
 .mainContainer {
   max-width: 1440px;
-  margin: 40px auto 0;
+  margin: 20px auto 0;
   padding: 0;
   position: relative;
   z-index: 1;
@@ -1024,7 +1024,7 @@
 .figmaHeaderAndFiltersContainer {
   position: relative;
   width: 1440px;
-  height: 372px;
+  height: 262px;
   margin: 0 auto;
 }
 
@@ -1038,7 +1038,7 @@
   width: max-content;
   height: 90px;
   left: 80px;
-  top: 157px;
+  top: 47px;
 }
 
 .researchTitle {
@@ -1087,7 +1087,7 @@
   width: 66.29px;
   height: 30px;
   left: 1271px;
-  top: 165px;
+  top: 55px;
   z-index: 10;
 }
 
@@ -1098,7 +1098,7 @@
   height: 85px;
   left: 50%;
   transform: translateX(-50%);
-  top: 287px;
+  top: 177px;
   border-width: 0.5px 0px;
   border-style: solid;
   border-color: #717171;
@@ -1164,34 +1164,41 @@
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  padding: 10px 15px;
+  padding: 10px 18px;
   gap: 10px;
   width: auto;
   height: 38px;
-  background: #ECECEC;
-  box-shadow: 1px 1px 2px rgba(255, 255, 255, 0.3), -1px -1px 2px rgba(190, 190, 190, 0.5), inset -3px 3px 6px rgba(190, 190, 190, 0.2), inset 3px -3px 6px rgba(190, 190, 190, 0.2), inset -3px -3px 6px rgba(255, 255, 255, 0.9), inset 3px 3px 8px rgba(190, 190, 190, 0.9);
-  border-radius: 10px;
+  background: #E6E5E3;
+  box-shadow: inset 3px 3px 6px rgba(0, 0, 0, 0.1), inset -3px -3px 6px rgba(255, 255, 255, 0.8);
+  border-radius: 20px;
   font-family: 'Sora', sans-serif;
   font-style: normal;
-  font-weight: 300;
-  font-size: 14px;
-  line-height: 18px;
-  background: radial-gradient(50% 50% at 50% 50%, #5A69EA 0%, #BF8BCA 100%);
+  cursor: pointer;
+  white-space: nowrap;
+  border: none;
+}
+
+.filterChipAll span {
+  background: linear-gradient(135deg, #5A69EA 0%, #BF8BCA 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
   color: transparent;
-  cursor: pointer;
-  white-space: nowrap;
+  font-weight: 500;
 }
 
 :global([data-theme="dark"]) .filterChipAll {
-  background: radial-gradient(50% 50% at 50% 50%, #5A69EA 0%, #BF8BCA 100%);
+  background: var(--bg-surface);
+  box-shadow: var(--shadow-inset);
+}
+
+:global([data-theme="dark"]) .filterChipAll span {
+  background: linear-gradient(135deg, #5A69EA 0%, #BF8BCA 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
   color: transparent;
-  box-shadow: var(--shadow-inset);
+  font-weight: 500;
 }
 
 .filterChipOther {
@@ -1199,13 +1206,13 @@
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  padding: 10px 15px;
+  padding: 10px 18px;
   gap: 10px;
   width: auto;
   height: 38px;
-  background: #DFDFDF;
-  box-shadow: 1px 1px 2px rgba(245, 245, 245, 0.3), -1px -1px 2px rgba(201, 201, 201, 0.5), inset -1px 1px 2px rgba(201, 201, 201, 0.2), inset 1px -1px 2px rgba(201, 201, 201, 0.2), inset -1px -1px 2px rgba(245, 245, 245, 0.9), inset 1px 1px 3px rgba(201, 201, 201, 0.9);
-  border-radius: 10px;
+  background: #ECECEC;
+  box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.08), -3px -3px 6px rgba(255, 255, 255, 0.9);
+  border-radius: 20px;
   font-family: 'Sora', sans-serif;
   font-style: normal;
   font-weight: 300;
@@ -1214,12 +1221,29 @@
   color: #717171;
   cursor: pointer;
   white-space: nowrap;
+  border: none;
+  transition: all 0.25s ease;
+}
+
+.filterChipOther:hover {
+  transform: translateY(-1px);
+  color: var(--text-primary);
+  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.1), -4px -4px 8px rgba(255, 255, 255, 1);
 }
 
 .filterChipOtherActive {
-  box-shadow: var(--shadow-inset);
-  color: var(--text-primary);
-  font-weight: 400;
+  background: #E6E5E3 !important;
+  box-shadow: inset 3px 3px 6px rgba(0, 0, 0, 0.1), inset -3px -3px 6px rgba(255, 255, 255, 0.8) !important;
+  border-radius: 20px;
+}
+
+.filterChipOtherActive span {
+  background: linear-gradient(135deg, #5A69EA 0%, #BF8BCA 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+  font-weight: 500;
 }
 
 :global([data-theme="dark"]) .filterChipOther {
@@ -1229,8 +1253,17 @@
 }
 
 :global([data-theme="dark"]) .filterChipOtherActive {
-  box-shadow: var(--shadow-inset);
-  color: var(--text-primary);
+  background: var(--bg-surface) !important;
+  box-shadow: var(--shadow-inset) !important;
+}
+
+:global([data-theme="dark"]) .filterChipOtherActive span {
+  background: linear-gradient(135deg, #5A69EA 0%, #BF8BCA 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+  font-weight: 500;
 }
 
 .ellipse30 {
@@ -1240,13 +1273,20 @@
   left: auto;
   top: auto;
   background: #ECECEC;
-  box-shadow: -4px 4px 8px rgba(190, 190, 190, 0.2), 4px -4px 8px rgba(190, 190, 190, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.9), 4px 4px 10px rgba(190, 190, 190, 0.9), inset 1px 1px 2px rgba(255, 255, 255, 0.3), inset -1px -1px 2px rgba(190, 190, 190, 0.5);
+  box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.08), -3px -3px 6px rgba(255, 255, 255, 0.9);
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
   flex-shrink: 0;
+  border: none;
+  transition: all 0.25s ease;
+}
+
+.ellipse30:hover {
+  transform: translateY(-1px);
+  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.1), -4px -4px 8px rgba(255, 255, 255, 1);
 }
 
 :global([data-theme="dark"]) .ellipse30 {
@@ -1258,6 +1298,10 @@
   width: 16px;
   height: 16px;
   transform: rotate(-90deg);
+}
+
+:global([data-theme="dark"]) .arrowIconDown path {
+  stroke: var(--text-secondary) !important;
 }
 
 .searchMini {
@@ -1274,8 +1318,8 @@
   right: 0;
   top: 7.27%;
   bottom: 5.45%;
-  background: #ECECEC;
-  box-shadow: 1px 1px 2px rgba(255, 255, 255, 0.3), -1px -1px 2px rgba(190, 190, 190, 0.5), inset -3px 3px 6px rgba(190, 190, 190, 0.2), inset 3px -3px 6px rgba(190, 190, 190, 0.2), inset -3px -3px 6px rgba(255, 255, 255, 0.9), inset 3px 3px 8px rgba(190, 190, 190, 0.9);
+  background: #E6E5E3;
+  box-shadow: inset 3px 3px 6px rgba(0, 0, 0, 0.08), inset -3px -3px 6px rgba(255, 255, 255, 0.8);
   border-radius: 55px;
   display: flex;
   align-items: center;
@@ -1296,20 +1340,13 @@
   font-family: 'Sora', sans-serif;
   font-weight: 300;
   font-size: 13px;
-  background: radial-gradient(50% 50% at 50% 50%, #5A69EA 0%, #BF8BCA 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  color: transparent;
+  color: var(--accent-purple);
 }
 
 .searchFiltersInput::placeholder {
-  background: radial-gradient(50% 50% at 50% 50%, #5A69EA 0%, #BF8BCA 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  color: transparent;
-  opacity: 0.8;
+  color: var(--accent-purple);
+  opacity: 0.6;
+  font-weight: 300;
 }
 
 .searchUp {
@@ -1319,12 +1356,18 @@
   height: 35px;
   top: 10px;
   background: #ECECEC;
-  box-shadow: -4px 4px 8px rgba(190, 190, 190, 0.2), 4px -4px 8px rgba(190, 190, 190, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.9), 4px 4px 10px rgba(190, 190, 190, 0.9), inset 1px 1px 2px rgba(255, 255, 255, 0.3), inset -1px -1px 2px rgba(190, 190, 190, 0.5);
+  box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.08), -3px -3px 6px rgba(255, 255, 255, 0.9);
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.searchUp:hover {
+  transform: translateY(-1px);
+  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.1), -4px -4px 8px rgba(255, 255, 255, 1);
 }
 
 :global([data-theme="dark"]) .searchUp {
@@ -1335,6 +1378,11 @@
 .searchIconSvg {
   width: 16px;
   height: 16px;
+}
+
+:global([data-theme="dark"]) .searchIconSvg circle,
+:global([data-theme="dark"]) .searchIconSvg line {
+  stroke: var(--text-secondary) !important;
 }
 
 /* Clarity Gap section card */
