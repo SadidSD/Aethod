@@ -107,6 +107,24 @@ export default function ResearchPage() {
           filters: ["Research"]
         }
       ]
+    },
+    {
+      id: "side-by-side-row-3",
+      type: "side-by-side",
+      cards: [
+        {
+          id: "predictive-latency",
+          tag: "Research",
+          tagType: "green",
+          readTime: "18 min read",
+          date: "April 2026",
+          title: "Predictive Latency",
+          subtitle: "Predictive Latency in Scalable Systems",
+          description: "This study develops a decentralized system where specialized AI agents autonomously manage inventory, front-end adjustments, and TCG price volatility.",
+          essayLink: "#",
+          filters: ["Research"]
+        }
+      ]
     }
   ];
 
@@ -154,6 +172,7 @@ export default function ResearchPage() {
   const card1 = cardsData.find((c) => c.id === "side-by-side-row")?.cards.find((c) => c.id === "designing-uncertainty");
   const card2 = cardsData.find((c) => c.id === "side-by-side-row")?.cards.find((c) => c.id === "inside-tcg-pricing");
   const card3 = cardsData.find((c) => c.id === "side-by-side-row-2")?.cards.find((c) => c.id === "multi-agent-ecosystem");
+  const card4 = cardsData.find((c) => c.id === "side-by-side-row-3")?.cards.find((c) => c.id === "predictive-latency");
 
   const isCard1Visible = card1 &&
     (activeFilter === "All" || card1.filters.includes(activeFilter)) &&
@@ -166,6 +185,10 @@ export default function ResearchPage() {
   const isCard3Visible = card3 &&
     (activeFilter === "All" || card3.filters.includes(activeFilter)) &&
     matchesSearch(card3, searchQuery);
+
+  const isCard4Visible = card4 &&
+    (activeFilter === "All" || card4.filters.includes(activeFilter)) &&
+    matchesSearch(card4, searchQuery);
 
 
 
@@ -421,9 +444,6 @@ export default function ResearchPage() {
         {/* ----- FIGMA ABSOLUTE CARDS SECTION 2 ----- */}
         {isCard3Visible && (
           <div className={styles.row2Container}>
-            {/* Vertical Divider Vector 34 */}
-            <div className={styles.vector34} />
-
             {/* Card 3: Multi-Agent */}
             <>
               {/* Frame 141 (Tags) */}
@@ -465,6 +485,53 @@ export default function ResearchPage() {
 
             {/* Bottom border Vector 36 */}
             <div className={styles.vector36} />
+          </div>
+        )}
+
+        {/* ----- FIGMA ABSOLUTE CARDS SECTION 3 ----- */}
+        {isCard4Visible && (
+          <div className={styles.row3Container}>
+            {/* Card 4: Predictive Latency */}
+            <>
+              {/* Frame 142 (Tags) */}
+              <div className={`${styles.tagsFrame} ${styles.card4Tags}`}>
+                <div className={`${styles.tagMiniButton} ${styles.tagResearch}`}>Research</div>
+                <div className={styles.tagMiniDate}>April 2026</div>
+              </div>
+
+              {/* Title */}
+              <h2 className={`${styles.cardTitleAbsolute} ${styles.card4Title}`}>
+                Predictive Latency
+              </h2>
+
+              {/* Subtitle */}
+              <h3 className={`${styles.cardSubtitleAbsolute} ${styles.card4Subtitle}`}>
+                Predictive Latency in <span className={styles.lessUnderstandingText}>Scalable Systems</span>
+              </h3>
+
+              {/* Description */}
+              <p className={`${styles.cardDescAbsolute} ${styles.card4Desc}`}>
+                This study develops a decentralized system where specialized AI agents autonomously manage inventory, front-end adjustments, and TCG price volatility.
+              </p>
+
+              {/* Buttons */}
+              <InlineSVG src="/research/Button mini-1.svg" className={styles.card4ReadTime} />
+              <a href="#" className={styles.card4ReadEssay}>
+                <InlineSVG src="/research/Button mini.svg" />
+              </a>
+            </>
+
+            {/* Right side: Triangle diagram */}
+            <div className={styles.recContainer}>
+              <InlineSVG src="/research/rec.svg" />
+              <div className={styles.triContainer}>
+                <InlineSVG src="/research/tri.svg" />
+              </div>
+              <div className={styles.triLabel}>Predictive Latency</div>
+            </div>
+
+            {/* Bottom border Vector 37 */}
+            <div className={styles.vector37} />
           </div>
         )}
       </main>

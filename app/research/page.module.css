@@ -599,7 +599,7 @@
 }
 
 /* Line dividers */
-.vector33, .vector35, .vector36 {
+.vector33, .vector35, .vector36, .vector37 {
   position: absolute;
   width: 100vw;
   height: 0px;
@@ -610,13 +610,15 @@
 
 :global([data-theme="dark"]) .vector33,
 :global([data-theme="dark"]) .vector35,
-:global([data-theme="dark"]) .vector36 {
+:global([data-theme="dark"]) .vector36,
+:global([data-theme="dark"]) .vector37 {
   border-color: rgba(255, 255, 255, 0.15);
 }
 
 .vector33 { top: 0px; }
 .vector35 { top: 621px; }
 .vector36 { top: 609px; }
+.vector37 { top: 609px; }
 
 .vector34 {
   position: absolute;
@@ -747,9 +749,9 @@
 
 .agents1 {
   position: absolute;
-  width: 68px;
+  width: 80px;
   height: 25px;
-  left: -80px;
+  left: -96px;
   top: 139px;
   font-family: 'Sora', sans-serif;
   font-style: normal;
@@ -766,7 +768,7 @@
   width: 71px;
   height: 25px;
   left: 117px;
-  top: -32px;
+  top: -40px;
   font-family: 'Sora', sans-serif;
   font-style: normal;
   font-weight: 200;
@@ -781,7 +783,7 @@
   position: absolute;
   width: 71px;
   height: 25px;
-  left: 327px;
+  left: 321px;
   top: 139px;
   font-family: 'Sora', sans-serif;
   font-style: normal;
@@ -798,7 +800,7 @@
   width: 72px;
   height: 25px;
   left: 119px;
-  top: 313px;
+  top: 320px;
   font-family: 'Sora', sans-serif;
   font-style: normal;
   font-weight: 200;
@@ -813,6 +815,83 @@
 :global([data-theme="dark"]) .agents2,
 :global([data-theme="dark"]) .agents3,
 :global([data-theme="dark"]) .agents4 {
+  color: var(--text-secondary);
+}
+
+/* Figma Absolute Cards Layout 3 */
+.row3Container {
+  position: relative;
+  width: 100%;
+  max-width: 1440px;
+  height: 609px;
+  margin: 0 auto;
+}
+
+/* Card 4 Position Styles (Predictive Latency) */
+.card4Tags {
+  left: 80px;
+  top: 102px;
+}
+.card4Title {
+  left: 80px;
+  top: 153px;
+  width: 533px;
+  height: 60px;
+}
+.card4Subtitle {
+  left: 80px;
+  top: 221px;
+  width: 423px;
+  height: 60px;
+}
+.card4Desc {
+  left: 80px;
+  top: 312px;
+  width: 374px;
+  height: 80px;
+}
+.card4ReadTime {
+  position: absolute;
+  left: 80px;
+  top: 423px;
+}
+.card4ReadEssay {
+  position: absolute;
+  left: 328px;
+  top: 422px;
+}
+
+/* Triangle Diagram styles */
+.recContainer {
+  position: absolute;
+  width: 708px;
+  height: 535px;
+  left: 631px; /* 634px - 3px because of SVG shadow offset */
+  top: 57px;  /* 60px - 3px because of SVG shadow offset */
+}
+
+.triContainer {
+  position: absolute;
+  width: 387px;
+  height: 240px;
+  left: 158px;
+  top: 110px;
+}
+
+.triLabel {
+  position: absolute;
+  width: 100%;
+  text-align: center;
+  top: 380px;
+  font-family: 'Sora', sans-serif;
+  font-style: normal;
+  font-weight: 200;
+  font-size: 16px;
+  line-height: 25px;
+  color: #717171;
+}
+
+:global([data-theme="dark"]) .triLabel {
   color: var(--text-secondary);
 }
 
