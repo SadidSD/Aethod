@@ -219,59 +219,67 @@ export default function ResearchPage() {
 
           {/* Filter and Search Bar (Frame 135) */}
           <div className={styles.frame135}>
-            <span className={styles.filterLabel}>Filter</span>
-            <div className={styles.filterBarButtons}>
-              {filters.map((f, idx) => {
-                const isSelected = activeFilter === f;
-                if (idx === 0) {
-                  return (
-                    <button
-                      key={f}
-                      onClick={() => setActiveFilter(f)}
-                      className={styles.filterChipAll}
-                    >
-                      {f}
-                    </button>
-                  );
-                } else {
-                  return (
-                    <button
-                      key={f}
-                      onClick={() => setActiveFilter(f)}
-                      className={`${styles.filterChipOther} ${
-                        isSelected ? styles.filterChipOtherActive : ""
-                      }`}
-                    >
-                      {f}
-                    </button>
-                  );
-                }
-              })}
-            </div>
-
-            {/* Round Slide Arrow */}
-            <div className={styles.ellipse30}>
-              <svg className={styles.arrowIconDown} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M12 5V19M12 19L19 12M12 19L5 12" stroke="#404040" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-              </svg>
-            </div>
-
-            {/* Search Mini Container */}
-            <div className={styles.searchMini}>
-              <div className={styles.rectangle73}>
-                <input
-                  type="text"
-                  placeholder="Search Filters"
-                  value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
-                  className={styles.searchFiltersInput}
-                />
+            <div className={styles.frame135Inner}>
+              <span className={styles.filterLabel}>Filter</span>
+              <div className={styles.filterBarButtons}>
+                {filters.map((f, idx) => {
+                  const isSelected = activeFilter === f;
+                  if (idx === 0) {
+                    return (
+                      <button
+                        key={f}
+                        onClick={() => setActiveFilter(f)}
+                        className={`${styles.filterChipAll} ${
+                          isSelected ? styles.filterChipAllActive : ""
+                        }`}
+                      >
+                        <span className={isSelected ? styles.filterTextActive : styles.filterText}>
+                          {f}
+                        </span>
+                      </button>
+                    );
+                  } else {
+                    return (
+                      <button
+                        key={f}
+                        onClick={() => setActiveFilter(f)}
+                        className={`${styles.filterChipOther} ${
+                          isSelected ? styles.filterChipOtherActive : ""
+                        }`}
+                      >
+                        <span className={isSelected ? styles.filterTextActive : styles.filterText}>
+                          {f}
+                        </span>
+                      </button>
+                    );
+                  }
+                })}
               </div>
-              <div className={styles.searchUp}>
-                <svg className={styles.searchIconSvg} viewBox="0 0 24 24" fill="none" stroke="#717171" strokeWidth="2" strokeLinecap="round">
-                  <circle cx="11" cy="11" r="8" />
-                  <line x1="21" y1="21" x2="16.65" y2="16.65" />
+
+              {/* Round Slide Arrow */}
+              <div className={styles.ellipse30}>
+                <svg className={styles.arrowIconDown} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M12 5V19M12 19L19 12M12 19L5 12" stroke="#404040" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
                 </svg>
+              </div>
+
+              {/* Search Mini Container */}
+              <div className={styles.searchMini}>
+                <div className={styles.rectangle73}>
+                  <input
+                    type="text"
+                    placeholder="Search Filters"
+                    value={searchQuery}
+                    onChange={(e) => setSearchQuery(e.target.value)}
+                    className={styles.searchFiltersInput}
+                  />
+                </div>
+                <div className={styles.searchUp}>
+                  <svg className={styles.searchIconSvg} viewBox="0 0 24 24" fill="none" stroke="#717171" strokeWidth="2" strokeLinecap="round">
+                    <circle cx="11" cy="11" r="8" />
+                    <line x1="21" y1="21" x2="16.65" y2="16.65" />
+                  </svg>
+                </div>
               </div>
             </div>
           </div>
@@ -318,10 +326,10 @@ export default function ResearchPage() {
               <InlineSVG src="/research/Ellipse 32.svg" className={styles.ellipse32} />
               <InlineSVG src="/research/Vector 32.svg" className={styles.vector32} />
               
-              {/* Graph Labels (SVGs) */}
-              <InlineSVG src="/research/Peak Clarity.svg" className={styles.peakClarityLabel} />
-              <InlineSVG src="/research/Noise Floor.svg" className={styles.noiseFloorLabel} />
-              <InlineSVG src="/research/Data Volume.svg" className={styles.dataVolumeLabel} />
+              {/* Graph Labels (HTML text styled in Sora font) */}
+              <div className={styles.peakClarityLabelText}>Peak Clarity</div>
+              <div className={styles.noiseFloorLabelText}>Noise Floor</div>
+              <div className={styles.dataVolumeLabelText}>Data Volume</div>
             </div>
           </div>
         )}
