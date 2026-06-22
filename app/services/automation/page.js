@@ -115,8 +115,8 @@ export default function AutomationPage() {
               <a href="/contact" className={styles.navLink}>
                 Contact
               </a>
-              <a href="#" className={styles.navLink} onClick={() => alert("Vlog coming soon")}>
-                Vlog
+              <a href="/research" className={styles.navLink}>
+                Research
               </a>
             </div>
           </div>

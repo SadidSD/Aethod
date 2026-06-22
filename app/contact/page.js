@@ -264,8 +264,8 @@ export default function ContactPage() {
               <a href="/contact" className={`${styles.navLink} ${styles.activeNavLink}`}>
                 Contact
               </a>
-              <a href="#" className={styles.navLink} onClick={() => alert("Vlog coming soon")}>
-                Vlog
+              <a href="/research" className={styles.navLink}>
+                Research
               </a>
             </div>
           </div>
