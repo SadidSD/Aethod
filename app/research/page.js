@@ -163,6 +163,22 @@ export default function ResearchPage() {
 
   const otherFilteredCards = filteredCards.filter((c) => c.id !== "clarity-gap");
 
+  const card1 = cardsData.find((c) => c.id === "side-by-side-row")?.cards.find((c) => c.id === "designing-uncertainty");
+  const card2 = cardsData.find((c) => c.id === "side-by-side-row")?.cards.find((c) => c.id === "inside-tcg-pricing");
+  const card3 = cardsData.find((c) => c.id === "multi-agent");
+
+  const isCard1Visible = card1 &&
+    (activeFilter === "All" || card1.filters.includes(activeFilter)) &&
+    matchesSearch(card1, searchQuery);
+
+  const isCard2Visible = card2 &&
+    (activeFilter === "All" || card2.filters.includes(activeFilter)) &&
+    matchesSearch(card2, searchQuery);
+
+  const isCard3Visible = card3 &&
+    (activeFilter === "All" || card3.filters.includes(activeFilter)) &&
+    matchesSearch(card3, searchQuery);
+
   return (
     <div className={styles.pageWrapper} data-theme={isDark ? "dark" : "light"}>
       {/* ===== FLOATING NAVIGATION PILL ===== */}
@@ -334,120 +350,151 @@ export default function ResearchPage() {
           </div>
         )}
 
-        {/* ----- OTHER CARDS LIST ----- */}
-        <div className={styles.cardsList} style={{ marginTop: isClarityGapVisible ? "0px" : "40px" }}>
-          {otherFilteredCards.map((row, idx) => {
-            if (row.type === "full-width") {
-              return (
-                <div key={row.id}>
-                  {(!isClarityGapVisible || idx > 0) && <div className={styles.divider} />}
-                  <div className={styles.cardRow}>
-                    <div className={styles.cardLeft}>
-                      <div className={styles.tagRow}>
-                        <span
-                          className={`${styles.tag} ${
-                            row.tagType === "green" ? styles.tagGreen : styles.tagBlue
-                          }`}
-                        >
-                          {row.tag}
-                        </span>
-                        <span className={`${styles.tag} ${styles.tagGray}`}>
-                          {row.readTime}
-                        </span>
-                      </div>
-                      <h2 className={styles.cardTitle}>{row.title}</h2>
-                      <div className={styles.cardSubtitle}>{row.subtitle}</div>
-                      <p className={styles.cardDesc}>{row.description}</p>
-                      <div className={styles.btnRow}>
-                        <button className={styles.btnPill}>{row.readTime}</button>
-                        <a href={row.essayLink} className={styles.btnLink}>
-                          Read essay &gt;
-                        </a>
-                      </div>
-                    </div>
-                    <div className={styles.illustrationContainer}>
-                      {row.illustrationType === "circle" && (
-                        <div
-                          className={styles.illustrationWrapper}
-                          style={{ width: "305px", height: "304px" }}
-                        >
-                          <InlineSVG src="/research/Circle.svg" className={styles.illustrationSvg} />
-                          <div className={`${styles.agentLabel} ${styles.agentCenter}`}>
-                            Mass
-                          </div>
-                          <div className={`${styles.agentLabel} ${styles.agentTop}`}>
-                            Agent 2
-                          </div>
-                          <div className={`${styles.agentLabel} ${styles.agentBottom}`}>
-                            Agent 4
-                          </div>
-                          <div className={`${styles.agentLabel} ${styles.agentLeft}`}>
-                            Agent 1
-                          </div>
-                          <div className={`${styles.agentLabel} ${styles.agentRight}`}>
-                            Agent 3
-                          </div>
-                        </div>
-                      )}
+        {/* ----- FIGMA ABSOLUTE CARDS SECTION ----- */}
+        {(isCard1Visible || isCard2Visible) && (
+          <div className={styles.row1Container}>
+            {/* Top border Vector 33 */}
+            <div className={styles.vector33} />
 
-                      {row.illustrationType === "triangle" && (
-                        <div
-                          className={styles.illustrationWrapper}
-                          style={{ width: "387px", height: "240px" }}
-                        >
-                          <InlineSVG src="/research/Group 39.svg" className={styles.illustrationSvg} />
-                          <div className={styles.triangleLabel}>Predictive Latency</div>
-                        </div>
-                      )}
-                    </div>
-                  </div>
+            {/* Vertical Divider Vector 34 */}
+            {isCard1Visible && isCard2Visible && <div className={styles.vector34} />}
+
+            {/* Card 1: Designing for Uncertainty */}
+            {isCard1Visible && (
+              <>
+                {/* Frame 139 (Tags) */}
+                <div className={`${styles.tagsFrame} ${styles.card1Tags}`}>
+                  <div className={`${styles.tagMiniButton} ${styles.tagSystem}`}>System</div>
+                  <div className={styles.tagMiniDate}>December 2025</div>
                 </div>
-              );
-            } else if (row.type === "side-by-side") {
-              return (
-                <div key={row.id}>
-                  <div className={styles.divider} />
-                  <div className={styles.sideBySideRow}>
-                    {row.cards.map((card) => (
-                      <div key={card.id} className={styles.sideCard}>
-                        <div className={styles.tagRow}>
-                          <span
-                            className={`${styles.tag} ${
-                              card.tagType === "blue"
-                                ? styles.tagBlue
-                                : card.tagType === "green"
-                                ? styles.tagGreen
-                                : styles.tagGray
-                            }`}
-                          >
-                            {card.tag}
-                          </span>
-                          <span className={`${styles.tag} ${styles.tagGray}`}>
-                            {card.readTime}
-                          </span>
-                        </div>
-                        <h2 className={styles.cardTitle}>{card.title}</h2>
-                        <div className={styles.cardSubtitle}>{card.subtitle}</div>
-                        <p className={styles.cardDesc}>{card.description}</p>
-                        <div className={styles.btnRow}>
-                          <button className={styles.btnPill}>{card.readTime}</button>
-                          <a href={card.essayLink} className={styles.btnLink}>
-                            Read essay &gt;
-                          </a>
-                        </div>
-                      </div>
-                    ))}
-                    {row.cards.length === 2 && <div className={styles.verticalDivider} />}
-                  </div>
+
+                {/* Title */}
+                <h2 className={`${styles.cardTitleAbsolute} ${styles.cardTitleUncertainty} ${styles.card1Title}`}>
+                  Designing for Uncertainty:
+                </h2>
+
+                {/* Subtitle */}
+                <h3 className={`${styles.cardSubtitleAbsolute} ${styles.card1Subtitle}`}>
+                  A framework for <span className={styles.lessUnderstandingText}>adaptive business systems</span>
+                </h3>
+
+                {/* Description */}
+                <p className={`${styles.cardDescAbsolute} ${styles.card1Desc}`}>
+                  Stable systems are not systems that do not change. They are systems that know how to change — a breakdown of how to architect for environments where the rules keep shifting.
+                </p>
+
+                {/* Buttons */}
+                <div className={`${styles.btnPill} ${styles.card1ReadTime}`}>10 min read</div>
+                <a href="#" className={`${styles.btnReadEssay} ${styles.card1ReadEssay}`}>
+                  <span>Read essay</span>
+                  <svg className={styles.arrowIconRight} viewBox="0 0 11 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M1 1L5.5 5L10 1" stroke="#717171" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                  </svg>
+                </a>
+              </>
+            )}
+
+            {/* Card 2: Inside TCG pricing */}
+            {isCard2Visible && (
+              <>
+                {/* Frame 138 (Tags) */}
+                <div className={`${styles.tagsFrame} ${styles.card2Tags}`}>
+                  <div className={`${styles.tagMiniButton} ${styles.tagCaseStudy}`}>Case Study</div>
+                  <div className={styles.tagMiniDate}>February 2026</div>
                 </div>
-              );
-            }
-            return null;
-          })}
-        </div>
+
+                {/* Title */}
+                <h2 className={`${styles.cardTitleAbsolute} ${styles.card2Title}`}>
+                  Inside TCG pricing:
+                </h2>
+
+                {/* Subtitle */}
+                <h3 className={`${styles.cardSubtitleAbsolute} ${styles.card2Subtitle}`}>
+                  How market <span className={styles.lessUnderstandingText}>fragmentation creates</span> operational chaos
+                </h3>
+
+                {/* Description */}
+                <p className={`${styles.cardDescAbsolute} ${styles.card2Desc}`}>
+                  Stable systems are not systems that do not change. They are systems that know how to change — a breakdown of how to architect for environments where the rules keep shifting.
+                </p>
+
+                {/* Buttons */}
+                <div className={`${styles.btnPill} ${styles.card2ReadTime}`}>7 min read</div>
+                <a href="#" className={`${styles.btnReadEssay} ${styles.card2ReadEssay}`}>
+                  <span>Read essay</span>
+                  <svg className={styles.arrowIconRight} viewBox="0 0 11 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M1 1L5.5 5L10 1" stroke="#717171" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                  </svg>
+                </a>
+              </>
+            )}
+
+            {/* Bottom border Vector 35 */}
+            <div className={styles.vector35} />
+          </div>
+        )}
+
+        {isCard3Visible && (
+          <div className={styles.row2Container}>
+            {/* If Row 1 was not visible, render the Vector 35 border at the top of Row 2 */}
+            {!(isCard1Visible || isCard2Visible) && <div className={styles.vector35} style={{ top: 0 }} />}
+
+            {/* Card 3: Multi-Agent */}
+            <>
+              {/* Frame 141 (Tags) */}
+              <div className={`${styles.tagsFrame} ${styles.card3Tags}`}>
+                <div className={`${styles.tagMiniButton} ${styles.tagResearch}`}>Research</div>
+                <div className={styles.tagMiniDate}>April 2026</div>
+              </div>
+
+              {/* Title */}
+              <h2 className={`${styles.cardTitleAbsolute} ${styles.card3Title}`}>
+                Multi-Agent
+              </h2>
+
+              {/* Subtitle */}
+              <h3 className={`${styles.cardSubtitleAbsolute} ${styles.card3Subtitle}`}>
+                Multi-Agent <span className={styles.lessUnderstandingText}>E-Commerce Ecosystem Architectures</span>
+              </h3>
+
+              {/* Description */}
+              <p className={`${styles.cardDescAbsolute} ${styles.card3Desc}`}>
+                This study develops a decentralized system where specialized AI agents autonomously manage inventory, front-end adjustments, and TCG price volatility.
+              </p>
+
+              {/* Buttons */}
+              <div className={`${styles.btnPill} ${styles.card3ReadTime}`}>18 min read</div>
+              <a href="#" className={`${styles.btnReadEssay} ${styles.card3ReadEssay}`}>
+                <span>Read essay</span>
+                <svg className={styles.arrowIconRight} viewBox="0 0 11 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M1 1L5.5 5L10 1" stroke="#717171" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+              </a>
+            </>
+
+            {/* CSS Circle Diagram */}
+            <div className={styles.circleDiagramContainer}>
+              <div className={styles.ellipse33} />
+              <div className={styles.ellipse34} />
+              <div className={styles.ellipse35} />
+              <div className={styles.line6} />
+              <div className={styles.line7} />
+              <div className={styles.line8} />
+              <div className={styles.line9} />
+              <div className={styles.massText}>Mass</div>
+              <div className={styles.agents1}>Agents 1</div>
+              <div className={styles.agents2}>Agents 2</div>
+              <div className={styles.agents3}>Agents 3</div>
+              <div className={styles.agents4}>Agents 4</div>
+            </div>
+
+            {/* Bottom border Vector 36 */}
+            <div className={styles.vector36} />
+          </div>
+        )}
 
         {/* ----- NEUMORPHIC FOOTER ----- */}
-        <div className={styles.divider} />
+        {!(isCard1Visible || isCard2Visible || isCard3Visible) && <div className={styles.divider} />}
         <footer className={styles.footerContainer}>
           <div className={styles.footerTop}>
             <div className={styles.footerLeft}>
