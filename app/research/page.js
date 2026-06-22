@@ -34,6 +34,18 @@ export default function ResearchPage() {
   const { isDark } = useTheme();
   const [activeFilter, setActiveFilter] = useState("All");
   const [searchQuery, setSearchQuery] = useState("");
+  
+
+  const playClickSound = useCallback(() => {
+    try {
+      const audio = new Audio("/touchpad sd.mp3");
+      audio.volume = 0.85;
+      audio.play().catch(() => {});
+    } catch (e) {
+      /* ignore */
+    }
+  }, []);
+
 
   const filters = [
     "All",
@@ -534,6 +546,17 @@ export default function ResearchPage() {
             <div className={styles.vector37} />
           </div>
         )}
+
+        {/* ----- FIGMA FOOTER SECTION ----- */}
+        <div className={styles.footerWrapper}>
+          <InlineSVG src="/research/Footer.svg" className={styles.footerSvg} />
+          
+          {/* Copyright Banner rendered inside the neomorphic pill */}
+          <div className={styles.copyrightBanner}>
+            @2026 Aeethod. All rights reserved.
+          </div>
+        </div>
+
       </main>
     </div>
   );

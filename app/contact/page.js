@@ -441,6 +441,9 @@ export default function ContactPage() {
         {/* ===== FOOTER ===== */}
         <div className={styles.footerWrapper}>
           <InlineSVG src="/contact/Footer.svg" className={styles.footerSvg} />
+          <div className={styles.copyrightBanner}>
+            @2026 Aeethod. All rights reserved.
+          </div>
         </div>
       </div>
 

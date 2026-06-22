@@ -34,12 +34,7 @@ export default function ProductsPage() {
   const { isDark } = useTheme();
               
         
-  // Email state for footer newsletter subscription
-  const [footerEmail, setFooterEmail] = useState("");
-
-  
-  
-    const playClickSound = useCallback(() => {
+  const playClickSound = useCallback(() => {
     try {
       const audio = new Audio("/touchpad sd.mp3");
       audio.volume = 0.85;
@@ -49,27 +44,6 @@ export default function ProductsPage() {
     }
   }, []);
 
-  
-  
-  
-  
-  
-  
-  const handleSubscribe = (e) => {
-    e.preventDefault();
-    playClickSound();
-    if (footerEmail) {
-      alert(`Thank you for subscribing with: ${footerEmail}`);
-      setFooterEmail("");
-    } else {
-      alert("Please enter a valid email address.");
-    }
-  };
-
-  const handleSocialClick = (socialName) => {
-    playClickSound();
-    alert(`Navigating to Aeethod ${socialName}...`);
-  };
 
   return (
     <div className={styles.pageWrapper} data-theme={isDark ? "dark" : "light"}>
@@ -156,104 +130,14 @@ export default function ProductsPage() {
           <InlineSVG src="/products/Side Indicator.svg" className={styles.rightMarker} />
 
           {/* ===== FOOTER SECTION ===== */}
-          <footer className={styles.footer}>
-            {/* Rectangle 48 background card */}
-            <div className={styles.footerBg} />
+          <div className={styles.footerWrapper}>
+            <InlineSVG src="/products/Footer.svg" className={styles.footerSvg} />
             
-            <div className={styles.footerInner}>
-              {/* Footer Left Area (Frame 64) */}
-              <div className={styles.footerLeft}>
-                {/* Brand Header (Frame 63) */}
-                <div className={styles.footerBrand}>
-                  <div className={styles.footerBrandLogo} />
-                  <div className={styles.footerBrandName}>Aeethod</div>
-                </div>
-                <p className={styles.footerDescription}>
-                  We build the intelligence layer that makes human decisions matter more, not less.
-                </p>
-              </div>
-
-              {/* Footer Right Area */}
-              <div className={styles.footerRight}>
-                {/* Navigation Links Row */}
-                <div className={styles.footerNav}>
-                  <a href="/studio" className={styles.footerNavLink}>Studio</a>
-                  <a href="/#system" className={styles.footerNavLink}>System</a>
-                  <a href="/blog" className={styles.footerNavLink}>Blog</a>
-                  <a href="/products" className={styles.footerNavLink}>Products</a>
-                  <a href="/journals" className={styles.footerNavLink}>Journals</a>
-                </div>
-
-                {/* Social and Email Subscription Row */}
-                <div className={styles.footerBottomRow}>
-                  {/* Social media tiles (Frame 67) */}
-                  <div className={styles.socialsGroup}>
-                    <button 
-                      className={styles.socialTile} 
-                      onClick={() => handleSocialClick("LinkedIn")}
-                      aria-label="LinkedIn"
-                    >
-                      <svg className={styles.socialIcon} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                        <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
-                        <rect x="2" y="9" width="4" height="12" />
-                        <circle cx="4" cy="4" r="2" />
-                      </svg>
-                    </button>
-
-                    <button 
-                      className={styles.socialTile} 
-                      onClick={() => handleSocialClick("Instagram")}
-                      aria-label="Instagram"
-                    >
-                      <svg className={styles.socialIcon} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                        <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
-                        <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
-                        <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
-                      </svg>
-                    </button>
-
-                    <button 
-                      className={styles.socialTile} 
-                      onClick={() => handleSocialClick("YouTube")}
-                      aria-label="YouTube"
-                    >
-                      <svg className={styles.socialIcon} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                        <path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z" />
-                        <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02" fill="currentColor" />
-                      </svg>
-                    </button>
-                  </div>
-
-                  {/* Email subscription box (Rectangle 53) */}
-                  <form onSubmit={handleSubscribe} className={styles.footerForm}>
-                    <input
-                      className={styles.footerInput}
-                      type="email"
-                      placeholder="you@gmail.com"
-                      value={footerEmail}
-                      onChange={(e) => setFooterEmail(e.target.value)}
-                      required
-                      aria-label="Email address in footer"
-                    />
-                    <button
-                      className={styles.footerSubmit}
-                      type="submit"
-                      aria-label="Submit email in footer"
-                    >
-                      <svg className={styles.submitIcon} fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
-                      </svg>
-                    </button>
-                  </form>
-
-                  {/* Copyright Text */}
-                  <div className={styles.copyrightBanner}>
-                    @2026 Aeethod. All rights reserved.
-                  </div>
-                </div>
-              </div>
+            {/* Copyright Banner rendered inside the neomorphic pill */}
+            <div className={styles.copyrightBanner}>
+              @2026 Aeethod. All rights reserved.
             </div>
-          </footer>
+          </div>
 
         </div>
       </main>

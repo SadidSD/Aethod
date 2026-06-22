@@ -34,12 +34,7 @@ export default function ServicesPage() {
   const { isDark } = useTheme();
               
         
-  // Email state for footer newsletter subscription
-  const [footerEmail, setFooterEmail] = useState("");
-
-  
-  
-    const playClickSound = useCallback(() => {
+  const playClickSound = useCallback(() => {
     try {
       const audio = new Audio("/touchpad sd.mp3");
       audio.volume = 0.85;
@@ -48,28 +43,6 @@ export default function ServicesPage() {
       /* ignore */
     }
   }, []);
-
-  
-  
-  
-  
-  
-  
-  const handleSubscribe = (e) => {
-    e.preventDefault();
-    playClickSound();
-    if (footerEmail) {
-      alert(`Thank you for subscribing with: ${footerEmail}`);
-      setFooterEmail("");
-    } else {
-      alert("Please enter a valid email address.");
-    }
-  };
-
-  const handleSocialClick = (socialName) => {
-    playClickSound();
-    alert(`Navigating to Aeethod ${socialName}...`);
-  };
 
   return (
     <div className={styles.pageWrapper} data-theme={isDark ? "dark" : "light"}>
@@ -177,64 +150,8 @@ export default function ServicesPage() {
           {/* ----- SECTION 4: FOOTER ----- */}
           <div className={styles.footerWrapper}>
             <InlineSVG src="/services/Footer.svg" className={styles.footerSvg} />
-
-            {/* Social media tiles (Frame 67) */}
-            <div className={styles.socialsGroup}>
-              <button 
-                className={styles.socialTile} 
-                onClick={() => handleSocialClick("LinkedIn")}
-                aria-label="LinkedIn"
-              >
-                <svg className={styles.socialIcon} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                  <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
-                  <rect x="2" y="9" width="4" height="12" />
-                  <circle cx="4" cy="4" r="2" />
-                </svg>
-              </button>
-
-              <button 
-                className={styles.socialTile} 
-                onClick={() => handleSocialClick("Instagram")}
-                aria-label="Instagram"
-              >
-                <svg className={styles.socialIcon} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                  <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
-                  <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
-                  <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
-                </svg>
-              </button>
-
-              <button 
-                className={styles.socialTile} 
-                onClick={() => handleSocialClick("YouTube")}
-                aria-label="YouTube"
-              >
-                <svg className={styles.socialIcon} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                  <path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z" />
-                  <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02" fill="currentColor" />
-                </svg>
-              </button>
-            </div>
-
-            {/* Interactive Email Subscription Overlay on the Footer's email box */}
-            <form onSubmit={handleSubscribe} className={styles.footerSearchForm}>
-              <input
-                className={styles.footerSearchInput}
-                type="email"
-                placeholder="you@gmail.com"
-                value={footerEmail}
-                onChange={(e) => setFooterEmail(e.target.value)}
-                required
-                aria-label="Email address in footer"
-              />
-              <button
-                className={styles.footerSearchSubmit}
-                type="submit"
-                aria-label="Submit email in footer"
-              />
-            </form>
-
-            {/* Copyright Banner rendered outside the input to avoid overlapping text */}
+            
+            {/* Copyright Banner rendered inside the neomorphic pill */}
             <div className={styles.copyrightBanner}>
               @2026 Aeethod. All rights reserved.
             </div>

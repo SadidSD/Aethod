@@ -414,222 +414,38 @@
 }
 
 /* ---------- Footer ---------- */
-.footer {
+.footerWrapper {
   position: absolute;
   width: 1346px;
   height: 282px;
   left: calc(50% - 1346px / 2);
   top: 900px;
-  opacity: 0.9;
   z-index: 10;
 }
 
-/* Rectangle 48 — Footer Background Card */
-.footerBg {
+.footerSvg {
+  width: 100%;
+  height: 100%;
+}
+
+.copyrightBanner {
   position: absolute;
-  width: 1346px;
-  height: 282px;
-  left: 0px;
-  top: 0px;
-  background: #DFDFDF;
-  box-shadow:
-    -5px 5px 10px rgba(178, 178, 178, 0.2),
-    5px -5px 10px rgba(178, 178, 178, 0.2),
-    -5px -5px 10px rgba(255, 255, 255, 0.9),
-    5px 5px 13px rgba(178, 178, 178, 0.9),
-    inset 1px 1px 2px rgba(255, 255, 255, 0.3),
-    inset -1px -1px 2px rgba(178, 178, 178, 0.5);
-  border-radius: 45px;
-  transition: background 0.5s ease, box-shadow 0.5s ease;
-}
-
-/* Footer layout contents */
-.footerInner {
-  position: absolute;
-  inset: 0;
-  padding: 40px 46px;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-}
-
-/* Footer Left Description (Frame 64) */
-.footerLeft {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 30px;
-  width: 250px;
-}
-
-/* Footer Logo/Brand area (Frame 63) */
-.footerBrand {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  gap: 16px;
-}
-
-.footerBrandLogo {
-  width: 44px;
-  height: 44px;
-  background: url('/logo.svg') no-repeat center/contain;
-}
-
-.footerBrandName {
-  font-family: 'Sora', sans-serif;
-  font-weight: 300;
-  font-size: 32px;
-  color: #000000;
-}
-
-/* Footer subtext statement */
-.footerDescription {
-  font-family: 'Sora', sans-serif;
-  font-weight: 300;
-  font-size: 16px;
-  line-height: 20px;
-  color: #404040;
-}
-
-/* Footer Right Content Area */
-.footerRight {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  justify-content: space-between;
-}
-
-/* Footer Navigation Links Row */
-.footerNav {
-  display: flex;
-  flex-direction: row;
-  gap: 20px;
-}
-
-.footerNavLink {
-  font-family: 'Sora', sans-serif;
-  font-weight: 300;
-  font-size: 20px;
-  color: #404040;
-  transition: color 0.3s ease;
-}
-
-.footerNavLink:hover {
-  color: #000000;
-}
-
-/* Footer Social & Copyright Group Container */
-.footerBottomRow {
-  display: flex;
-  align-items: center;
-  gap: 30px;
-}
-
-/* Social media round tiles (Frame 67) */
-.socialsGroup {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.socialTile {
-  width: 32px;
-  height: 32px;
-  background: #DFDFDF;
-  box-shadow:
-    -1px 1px 2px rgba(194, 193, 191, 0.2),
-    1px -1px 2px rgba(194, 193, 191, 0.2),
-    -1px -1px 2px rgba(255, 255, 255, 0.9),
-    1px 1px 3px rgba(194, 193, 191, 0.9),
-    inset 1px 1px 2px rgba(255, 255, 255, 0.3),
-    inset -1px -1px 2px rgba(194, 193, 191, 0.5);
-  border-radius: 7px;
+  left: 982px;
+  top: 192px;
+  width: 333px;
+  height: 40px;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #404040;
-  transition: transform 0.2s ease, background 0.5s ease, box-shadow 0.5s ease;
-}
-
-.socialTile:hover {
-  transform: scale(1.1);
-  color: #000000;
-}
-
-.socialIcon {
-  width: 18px;
-  height: 18px;
-}
-
-/* Footer Email Subscription Form (Rectangle 53 overlay) */
-.footerForm {
-  position: relative;
-  width: 333px;
-  height: 40px;
-  background: #DFDFDF;
-  box-shadow:
-    1px 1px 2px rgba(255, 255, 255, 0.3),
-    -1px -1px 2px rgba(213, 212, 210, 0.5),
-    inset -1px 1px 2px rgba(213, 212, 210, 0.2),
-    inset 1px -1px 2px rgba(213, 212, 210, 0.2),
-    inset -1px -1px 2px rgba(255, 255, 255, 0.9),
-    inset 1px 1px 3px rgba(213, 212, 210, 0.9);
-  border-radius: 20px;
-  overflow: hidden;
-  display: flex;
-  align-items: center;
-  transition: background 0.5s ease, box-shadow 0.5s ease;
-}
-
-.footerInput {
-  background: transparent;
-  border: none;
-  width: 100%;
-  height: 100%;
-  outline: none;
-  padding: 0 45px 0 15px;
   font-family: 'Sora', sans-serif;
+  font-style: normal;
   font-weight: 300;
   font-size: 14px;
   color: #404040;
-}
-
-.footerInput::placeholder {
-  color: #717171;
-  opacity: 0.6;
-}
-
-.footerSubmit {
-  position: absolute;
-  right: 12px;
-  width: 16px;
-  height: 16px;
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #404040;
-}
-
-.footerSubmit:hover {
-  color: #000000;
-}
-
-.submitIcon {
-  width: 14px;
-  height: 14px;
-}
-
-/* Copyright banner (Frame 66) */
-.copyrightBanner {
-  font-family: 'Sora', sans-serif;
-  font-weight: 300;
-  font-size: 16px;
-  line-height: 20px;
-  color: #404040;
+  text-align: center;
+  transition: color 0.5s ease;
+  pointer-events: none;
+  z-index: 5;
 }
 
 /* ==========================================================
@@ -693,78 +509,13 @@
 
 
 /* Footer dark overrides */
-:global([data-theme="dark"]) .footerBg {
-  background: var(--bg-surface);
-  box-shadow:
-    -5px 5px 10px rgba(0, 0, 0, 0.4),
-    5px -5px 10px rgba(0, 0, 0, 0.4),
-    -5px -5px 10px rgba(50, 50, 80, 0.15),
-    5px 5px 13px rgba(0, 0, 0, 0.5),
-    inset 1px 1px 2px rgba(80, 80, 120, 0.15),
-    inset -1px -1px 2px rgba(0, 0, 0, 0.4);
-}
-
-:global([data-theme="dark"]) .footerBrandName {
-  color: #e8e8f0;
-}
-
-:global([data-theme="dark"]) .footerDescription {
-  color: #b0b0c8;
-}
-
-:global([data-theme="dark"]) .footerNavLink {
-  color: #b0b0c8;
-}
-
-:global([data-theme="dark"]) .footerNavLink:hover {
-  color: #e8e8f0;
-}
-
-:global([data-theme="dark"]) .socialTile {
-  background: var(--bg-surface);
-  box-shadow:
-    -1px 1px 2px rgba(0, 0, 0, 0.4),
-    1px -1px 2px rgba(0, 0, 0, 0.4),
-    -1px -1px 2px rgba(50, 50, 80, 0.15),
-    1px 1px 3px rgba(0, 0, 0, 0.4),
-    inset 1px 1px 2px rgba(80, 80, 120, 0.1),
-    inset -1px -1px 2px rgba(0, 0, 0, 0.4);
-  color: #b0b0c8;
-}
-
-:global([data-theme="dark"]) .socialTile:hover {
-  color: #e8e8f0;
-}
-
-:global([data-theme="dark"]) .footerForm {
-  background: var(--bg-surface);
-  box-shadow:
-    inset 2px 2px 5px rgba(0, 0, 0, 0.5),
-    inset -2px -2px 4px rgba(50, 50, 80, 0.15),
-    inset 2px -2px 4px rgba(0, 0, 0, 0.15),
-    inset -2px 2px 4px rgba(0, 0, 0, 0.15),
-    -1px -1px 2px rgba(0, 0, 0, 0.3),
-    1px 1px 2px rgba(50, 50, 80, 0.1);
-}
-
-:global([data-theme="dark"]) .footerInput {
-  color: #e8e8f0;
-}
-
-:global([data-theme="dark"]) .footerInput::placeholder {
-  color: #8080a0;
-}
-
-:global([data-theme="dark"]) .footerSubmit {
-  color: #b0b0c8;
-}
-
-:global([data-theme="dark"]) .footerSubmit:hover {
-  color: #e8e8f0;
-}
-
 :global([data-theme="dark"]) .copyrightBanner {
   color: #b0b0c8;
+}
+
+/* Support transitions on theme switch */
+.navbar, .searchBar, .slideTrack, .slideTrackInner, .slideKnob, .slideKnobInner, .rightMarker, .footerSearchInput {
+  transition: all 0.5s ease;
 }
 
 /* ===== Products Page SVG Dark Theme overrides ===== */

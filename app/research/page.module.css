@@ -1717,3 +1717,80 @@
   }
 }
 
+/* Neumorphic Footer SVG Container (Figma footer.svg overlay) */
+.footerWrapper {
+  position: relative;
+  width: 1346px;
+  height: 282px;
+  margin: 80px auto 40px; /* add spacing top/bottom and center */
+}
+
+.footerSvg {
+  width: 100%;
+  height: 100%;
+}
+
+.copyrightBanner {
+  position: absolute;
+  left: 982px;
+  top: 192px;
+  width: 333px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-sora), sans-serif;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 14px;
+  color: #404040;
+  text-align: center;
+  transition: color 0.5s ease;
+  pointer-events: none;
+  z-index: 5;
+}
+
+:global([data-theme="dark"]) .copyrightBanner {
+  color: #b0b0c8;
+}
+
+/* Footer SVG internal overrides for dark mode */
+:global([data-theme="dark"]) .footerSvg :global(svg) :global(rect[fill="#DFDFDF" i]),
+:global([data-theme="dark"]) .footerSvg :global(svg) :global(path[fill="#DFDFDF" i]) {
+  fill: var(--bg-surface) !important;
+}
+
+:global([data-theme="dark"]) .footerSvg :global(svg) :global(rect[stroke="#404040" i]),
+:global([data-theme="dark"]) .footerSvg :global(svg) :global(path[stroke="#404040" i]) {
+  stroke: #8888a8 !important;
+}
+
+:global([data-theme="dark"]) .footerSvg :global(svg) :global(path[fill="#404040" i]) {
+  fill: #b0b0c8 !important;
+}
+
+:global([data-theme="dark"]) .footerSvg :global(svg) :global(path[fill="black" i]),
+:global([data-theme="dark"]) .footerSvg :global(svg) :global(path[fill="#000000" i]) {
+  fill: #e8e8f0 !important;
+}
+
+:global([data-theme="dark"]) .footerSvg :global(svg) :global(path[fill="#0D0D0D" i]) {
+  fill: #e8e8f0 !important;
+}
+
+:global([data-theme="dark"]) .footerSvg :global(svg) :global(path[stroke="#717171" i]),
+:global([data-theme="dark"]) .footerSvg :global(svg) :global(rect[stroke="#717171" i]),
+:global([data-theme="dark"]) .footerSvg :global(svg) :global(line[stroke="#717171" i]) {
+  stroke: #8888a8 !important;
+}
+
+:global([data-theme="dark"]) .footerSvg :global(svg) :global(path[fill="#717171" i]) {
+  fill: #b0b0c8 !important;
+}
+
+.footerSvg :global(svg) :global(path),
+.footerSvg :global(svg) :global(rect),
+.footerSvg :global(svg) :global(line) {
+  transition: fill 0.5s ease, stroke 0.5s ease;
+}
+

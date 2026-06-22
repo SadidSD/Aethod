@@ -35,37 +35,6 @@ export default function StudioPage() {
   const { isDark } = useTheme();
               
         
-  // Email state for footer subscription
-  const [footerEmail, setFooterEmail] = useState("");
-
-  
-  
-    const playClickSound = useCallback(() => {
-    try {
-      const audio = new Audio("/touchpad sd.mp3");
-      audio.volume = 0.85;
-      audio.play().catch(() => {});
-    } catch (e) {
-      /* ignore */
-    }
-  }, []);
-
-  
-  
-  
-  
-  
-  
-  const handleSubscribe = (e) => {
-    e.preventDefault();
-    playClickSound();
-    if (footerEmail) {
-      alert(`Thank you for subscribing with: ${footerEmail}`);
-      setFooterEmail("");
-    } else {
-      alert("Please enter a valid email address.");
-    }
-  };
 
   return (
     <div className={styles.pageWrapper} data-theme={isDark ? "dark" : "light"}>
@@ -198,25 +167,7 @@ export default function StudioPage() {
           <div className={styles.footerWrapper}>
             <InlineSVG src="/studio/Footer.svg" className={styles.footerSvg} />
             
-            {/* Interactive Email Subscription Overlay on the Footer's email box */}
-            <form onSubmit={handleSubscribe} className={styles.footerSearchForm}>
-              <input
-                className={styles.footerSearchInput}
-                type="email"
-                placeholder="you@gmail.com"
-                value={footerEmail}
-                onChange={(e) => setFooterEmail(e.target.value)}
-                required
-                aria-label="Email address in footer"
-              />
-              <button
-                className={styles.footerSearchSubmit}
-                type="submit"
-                aria-label="Submit email in footer"
-              />
-            </form>
-
-            {/* Copyright Banner rendered outside the input to avoid overlapping text */}
+            {/* Copyright Banner rendered inside the neomorphic pill */}
             <div className={styles.copyrightBanner}>
               @2026 Aeethod. All rights reserved.
             </div>

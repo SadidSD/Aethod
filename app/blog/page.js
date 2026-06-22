@@ -92,7 +92,12 @@ export default function BlogPage() {
           <InlineSVG src="/research/Frame 109.svg" className={styles.researchContent} />
 
           {/* Footer */}
-          <InlineSVG src="/research/Footer.svg" className={styles.researchFooter} />
+          <div className={styles.footerWrapper}>
+            <InlineSVG src="/research/Footer.svg" className={styles.footerSvg} />
+            <div className={styles.copyrightBanner}>
+              @2026 Aeethod. All rights reserved.
+            </div>
+          </div>
 
           {/* Draggable Slide Toggle — Dark/Light Mode (Exactly like the Hero page) */}
           <ThemeToggle className={styles.slideButton} />

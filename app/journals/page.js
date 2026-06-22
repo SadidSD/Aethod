@@ -34,12 +34,7 @@ export default function JournalsPage() {
   const { isDark } = useTheme();
               
         
-  // Email state for footer newsletter subscription
-  const [footerEmail, setFooterEmail] = useState("");
-  
-  
-  
-    const playClickSound = useCallback(() => {
+  const playClickSound = useCallback(() => {
     try {
       const audio = new Audio("/touchpad sd.mp3");
       audio.volume = 0.85;
@@ -48,23 +43,6 @@ export default function JournalsPage() {
       /* ignore */
     }
   }, []);
-
-  
-  
-  
-  
-  
-  
-  const handleSubscribe = (e) => {
-    e.preventDefault();
-    playClickSound();
-    if (footerEmail) {
-      alert(`Thank you for subscribing with: ${footerEmail}`);
-      setFooterEmail("");
-    } else {
-      alert("Please enter a valid email address.");
-    }
-  };
 
   const handleEssayClick = (essayTitle) => {
     playClickSound();
@@ -76,10 +54,6 @@ export default function JournalsPage() {
     console.log(`Active filter selected: ${filterName}`);
   };
 
-  const handleSocialClick = (socialName) => {
-    playClickSound();
-    alert(`Navigating to Aeethod ${socialName}...`);
-  };
 
   return (
     <div className={styles.pageWrapper} data-theme={isDark ? "dark" : "light"}>
@@ -234,26 +208,10 @@ export default function JournalsPage() {
           {/* ===== SECTION 4: FOOTER ===== */}
           <div className={styles.footerWrapper}>
             <InlineSVG src="/works/Footer.svg" className={styles.footerSvg} />
-
-            {/* Social media tiles (Frame 67) */}
-            <div className={styles.socialsGroup}>
-              <button 
-                className={styles.socialTile} 
-                onClick={() => handleSocialClick("LinkedIn")}
-                aria-label="LinkedIn"
-              />
-
-              <button 
-                className={styles.socialTile} 
-                onClick={() => handleSocialClick("Instagram")}
-                aria-label="Instagram"
-              />
-
-              <button 
-                className={styles.socialTile} 
-                onClick={() => handleSocialClick("YouTube")}
-                aria-label="YouTube"
-              />
+            
+            {/* Copyright Banner rendered inside the neomorphic pill */}
+            <div className={styles.copyrightBanner}>
+              @2026 Aeethod. All rights reserved.
             </div>
           </div>
         </div>
