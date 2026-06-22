@@ -4,6 +4,7 @@ import { useState, useRef, useCallback, useEffect } from "react";
 import styles from "./page.module.css";
 import { useTheme } from "../context/ThemeContext";
 import ThemeToggle from "../components/ThemeToggle";
+import Footer from "../components/Footer";
 
 import HowWeDifferTable from "./HowWeDifferTable";
 
@@ -163,20 +164,13 @@ export default function StudioPage() {
           <InlineSVG src="/studio/Frame 78.svg" className={styles.capabilityHeader} />
           <InlineSVG src="/studio/Group 75.svg" className={styles.capabilityGrid} />
 
-          {/* ----- SECTION 7: FOOTER ----- */}
-          <div className={styles.footerWrapper}>
-            <InlineSVG src="/studio/Footer.svg" className={styles.footerSvg} />
-            
-            {/* Copyright Banner rendered inside the neomorphic pill */}
-            <div className={styles.copyrightBanner}>
-              @2026 Aeethod. All rights reserved.
-            </div>
-          </div>
-
           {/* ===== 3D DRAGGABLE THEME SWITCH OVERLAY ===== */}
           <ThemeToggle className={styles.slideButton} />
         </div>
       </main>
+
+      {/* ----- SECTION 7: FOOTER ----- */}
+      <Footer />
     </div>
   );
 }

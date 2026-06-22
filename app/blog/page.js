@@ -4,6 +4,7 @@ import { useState, useRef, useCallback, useEffect } from "react";
 import styles from "./page.module.css";
 import { useTheme } from "../context/ThemeContext";
 import ThemeToggle from "../components/ThemeToggle";
+import Footer from "../components/Footer";
 
 
 function InlineSVG({ src, className }) {
@@ -91,18 +92,13 @@ export default function BlogPage() {
           {/* Content (Frame 109) */}
           <InlineSVG src="/research/Frame 109.svg" className={styles.researchContent} />
 
-          {/* Footer */}
-          <div className={styles.footerWrapper}>
-            <InlineSVG src="/research/Footer.svg" className={styles.footerSvg} />
-            <div className={styles.copyrightBanner}>
-              @2026 Aeethod. All rights reserved.
-            </div>
-          </div>
-
           {/* Draggable Slide Toggle — Dark/Light Mode (Exactly like the Hero page) */}
           <ThemeToggle className={styles.slideButton} />
         </div>
       </main>
+
+      {/* Footer */}
+      <Footer />
     </div>
   );
 }

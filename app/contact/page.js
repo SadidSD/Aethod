@@ -4,6 +4,7 @@ import { useState, useRef, useCallback, useEffect } from "react";
 import styles from "./page.module.css";
 import { useTheme } from "../context/ThemeContext";
 import ThemeToggle from "../components/ThemeToggle";
+import Footer from "../components/Footer";
 
 
 // Helper component to load SVGs inline
@@ -438,14 +439,10 @@ export default function ContactPage() {
           <div className={styles.sideIndicator} />
         </div>
 
-        {/* ===== FOOTER ===== */}
-        <div className={styles.footerWrapper}>
-          <InlineSVG src="/contact/Footer.svg" className={styles.footerSvg} />
-          <div className={styles.copyrightBanner}>
-            @2026 Aeethod. All rights reserved.
-          </div>
-        </div>
       </div>
+
+      {/* ===== FOOTER ===== */}
+      <Footer />
 
       {/* ===== FLOATING SCROLL DEPTH BAR INDICATOR ===== */}
       <div

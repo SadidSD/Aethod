@@ -1,0 +1,58 @@
+.footerSection {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  padding: 40px 0 80px;
+  overflow: hidden;
+}
+
+.footerAlignContainer {
+  position: relative;
+  width: 100%;
+  max-width: 1440px;
+  height: 282px;
+  margin: 0 auto;
+}
+
+.footerSvg {
+  position: absolute;
+  width: 1346px;
+  height: 282px;
+  left: 47px;
+  top: 0;
+  z-index: 2;
+}
+
+:global([data-theme="dark"]) .footerSvg svg rect[fill="#DFDFDF" i] {
+  fill: var(--bg-primary);
+}
+
+:global([data-theme="dark"]) .footerSvg svg path[fill="#404040" i] {
+  fill: #b0b0c8;
+}
+
+:global([data-theme="dark"]) .footerSvg svg path[fill="black" i],
+:global([data-theme="dark"]) .footerSvg svg path[fill="#000000" i] {
+  fill: #e8e8f0;
+}
+
+@media (max-width: 900px) {
+  .footerSection {
+    padding: 20px 24px;
+    height: auto;
+  }
+
+  .footerAlignContainer {
+    height: auto;
+  }
+
+  .footerSvg {
+    position: relative !important;
+    left: auto !important;
+    top: auto !important;
+    margin: 0 auto;
+    width: 100%;
+    height: auto !important;
+    max-width: 600px;
+  }
+}

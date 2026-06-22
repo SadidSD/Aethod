@@ -1610,28 +1610,47 @@
   top: 130.02px;
 }
 
-.peakClarityLabel {
+.peakClarityLabelText {
   position: absolute;
-  width: 90px;
-  height: 16px;
-  left: 203px;
+  right: 392px;
   top: 151px;
+  font-family: 'Sora', sans-serif;
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 25px;
+  color: #717171;
+  text-align: right;
+  white-space: nowrap;
 }
 
-.noiseFloorLabel {
+.noiseFloorLabelText {
   position: absolute;
-  width: 92px;
-  height: 25px;
   left: 524px;
   top: 219px;
+  font-family: 'Sora', sans-serif;
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 25px;
+  color: #717171;
+  white-space: nowrap;
 }
 
-.dataVolumeLabel {
+.dataVolumeLabelText {
   position: absolute;
-  width: 106px;
-  height: 25px;
   left: 97px;
   top: 409px;
+  font-family: 'Sora', sans-serif;
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 25px;
+  color: #717171;
+  white-space: nowrap;
+}
+
+:global([data-theme="dark"]) .peakClarityLabelText,
+:global([data-theme="dark"]) .noiseFloorLabelText,
+:global([data-theme="dark"]) .dataVolumeLabelText {
+  color: var(--text-muted);
 }
 
 /* Responsiveness overrides */

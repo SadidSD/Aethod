@@ -4,6 +4,7 @@ import { useState, useCallback, useEffect } from "react";
 import styles from "./page.module.css";
 import { useTheme } from "../context/ThemeContext";
 import ThemeToggle from "../components/ThemeToggle";
+import Footer from "../components/Footer";
 
 function InlineSVG({ src, className, style }) {
   const [svgContent, setSvgContent] = useState("");
@@ -547,17 +548,10 @@ export default function ResearchPage() {
           </div>
         )}
 
-        {/* ----- FIGMA FOOTER SECTION ----- */}
-        <div className={styles.footerWrapper}>
-          <InlineSVG src="/research/Footer.svg" className={styles.footerSvg} />
-          
-          {/* Copyright Banner rendered inside the neomorphic pill */}
-          <div className={styles.copyrightBanner}>
-            @2026 Aeethod. All rights reserved.
-          </div>
-        </div>
-
       </main>
+
+      {/* ----- FIGMA FOOTER SECTION ----- */}
+      <Footer />
     </div>
   );
 }

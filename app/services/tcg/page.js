@@ -4,6 +4,7 @@ import { useState, useRef, useCallback, useEffect } from "react";
 import styles from "./page.module.css";
 import { useTheme } from "../../context/ThemeContext";
 import ThemeToggle from "../../components/ThemeToggle";
+import Footer from "../../components/Footer";
 
 
 function InlineSVG({ src, className }) {
@@ -286,16 +287,14 @@ export default function TcgPage() {
              </div>
           </div>
 
-          {/* Neumorphic Footer */}
-          <div className={styles.footerWrapper}>
-            <InlineSVG src="/services/Footer.svg" className={styles.footerSvg} />
-          </div>
-
           {/* Theme Switcher slider */}
           <ThemeToggle className={styles.slideButton} />
 
         </div>
       </main>
+
+      {/* Neumorphic Footer */}
+      <Footer />
     </div>
   );
 }

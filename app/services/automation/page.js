@@ -4,6 +4,7 @@ import { useState, useRef, useCallback, useEffect } from "react";
 import styles from "./page.module.css";
 import { useTheme } from "../../context/ThemeContext";
 import ThemeToggle from "../../components/ThemeToggle";
+import Footer from "../../components/Footer";
 
 
 function InlineSVG({ src, className }) {
@@ -33,40 +34,6 @@ function InlineSVG({ src, className }) {
 export default function AutomationPage() {
   const { isDark } = useTheme();
               
-  // Audio Buffers
-        
-  // Pre-load audio files
-  useEffect(() => {
-    const AudioContext = window.AudioContext || window.webkitAudioContext;
-    if (!AudioContext) return;
-
-    const ctx = new AudioContext();
-    audioContextRef.current = ctx;
-
-    const loadSound = (url, bufferRef) => {
-      fetch(url)
-        .then((res) => {
-          if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
-          return res.arrayBuffer();
-        })
-        .then((arrayBuffer) => ctx.decodeAudioData(arrayBuffer))
-        .then((buffer) => {
-          bufferRef.current = buffer;
-        })
-        .catch((err) => console.warn(`Error preloading sound ${url}:`, err));
-    };
-
-    loadSound("/touchpad sd.mp3", clickBufferRef);
-    loadSound("/immersive-click.mp3", slideClickBufferRef);
-    loadSound("/finger-slide.mp3", slideFoleyBufferRef);
-
-    return () => {
-      if (ctx && ctx.state !== "closed") {
-        ctx.close().catch(() => {});
-      }
-    };
-  }, []);
-
   
     const playClickSound = useCallback(() => {
     try {
@@ -137,6 +104,8 @@ export default function AutomationPage() {
           <ThemeToggle className={styles.slideButton} />
         </div>
       </main>
+
+      <Footer />
     </div>
   );
 }
