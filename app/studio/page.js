@@ -34,8 +34,29 @@ function InlineSVG({ src, className }) {
 
 export default function StudioPage() {
   const { isDark } = useTheme();
-              
-        
+  const [gridInView, setGridInView] = useState(false);
+  const gridRef = useRef(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting) {
+          setGridInView(true);
+        }
+      },
+      { threshold: 0.45 }
+    );
+
+    if (gridRef.current) {
+      observer.observe(gridRef.current);
+    }
+
+    return () => {
+      if (gridRef.current) {
+        observer.unobserve(gridRef.current);
+      }
+    };
+  }, []);
 
   return (
     <div className={styles.pageWrapper} data-theme={isDark ? "dark" : "light"}>
@@ -139,9 +160,9 @@ export default function StudioPage() {
           <InlineSVG src="/studio/The Manifesto.svg" className={styles.manifestoTitle} />
           <InlineSVG src="/studio/Four things we believe.svg" className={styles.manifestoSubtitle} />
           
-          <div className={styles.manifestoGridBox}>
-            <InlineSVG src="/studio/Rectangle 90.svg" className={styles.manifestoGridLineVert} />
-            <InlineSVG src="/studio/Rectangle 91.svg" className={styles.manifestoGridLineHoriz} />
+          <div className={styles.manifestoGridBox} ref={gridRef}>
+            <InlineSVG src="/studio/Rectangle 90.svg" className={`${styles.manifestoGridLineVert} ${gridInView ? styles.animateVert : styles.hiddenVert}`} />
+            <InlineSVG src="/studio/Rectangle 91.svg" className={`${styles.manifestoGridLineHoriz} ${gridInView ? styles.animateHoriz : styles.hiddenHoriz}`} />
             
             <InlineSVG src="/studio/Group 50.svg" className={styles.manifestoGroup01} />
             <InlineSVG src="/studio/Group 51.svg" className={styles.manifestoGroup02} />
@@ -149,7 +170,6 @@ export default function StudioPage() {
             <InlineSVG src="/studio/Group 53.svg" className={styles.manifestoGroup04} />
           </div>
           
-          <InlineSVG src="/studio/Line 25.svg" className={styles.manifestoUnderline} />
           <InlineSVG src="/studio/Humans architect. AI executes. Data makes it true. That is what we build..svg" className={styles.manifestoQuote} />
 
           {/* ----- SECTION 4: HOW WE WORK ----- */}

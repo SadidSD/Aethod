@@ -708,12 +708,80 @@
   top: 0px;
 }
 
+.hiddenVert {
+  -webkit-mask-image: linear-gradient(to bottom, black 100%, transparent 100%), linear-gradient(to top, black 100%, transparent 100%);
+  mask-image: linear-gradient(to bottom, black 100%, transparent 100%), linear-gradient(to top, black 100%, transparent 100%);
+  -webkit-mask-size: 100% 0%;
+  mask-size: 100% 0%;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: left 0 top 60px, left 0 bottom 60px;
+  mask-position: left 0 top 60px, left 0 bottom 60px;
+}
+
+.animateVert {
+  -webkit-mask-image: linear-gradient(to bottom, black 100%, transparent 100%), linear-gradient(to top, black 100%, transparent 100%);
+  mask-image: linear-gradient(to bottom, black 100%, transparent 100%), linear-gradient(to top, black 100%, transparent 100%);
+  -webkit-mask-size: 100% 0%;
+  mask-size: 100% 0%;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: left 0 top 60px, left 0 bottom 60px;
+  mask-position: left 0 top 60px, left 0 bottom 60px;
+  animation: drawToCenterVert 2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+@keyframes drawToCenterVert {
+  0% {
+    -webkit-mask-size: 100% 0%;
+    mask-size: 100% 0%;
+  }
+  100% {
+    -webkit-mask-size: 100% calc(50% - 60px);
+    mask-size: 100% calc(50% - 60px);
+  }
+}
+
 .manifestoGridLineHoriz {
   position: absolute;
   width: 1231.44px;
   height: 2px;
   left: 0px;
   top: 445.04px;
+}
+
+.hiddenHoriz {
+  -webkit-mask-image: linear-gradient(to right, black 100%, transparent 100%), linear-gradient(to left, black 100%, transparent 100%);
+  mask-image: linear-gradient(to right, black 100%, transparent 100%), linear-gradient(to left, black 100%, transparent 100%);
+  -webkit-mask-size: 0% 100%;
+  mask-size: 0% 100%;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: left 60px top 0, right 60px top 0;
+  mask-position: left 60px top 0, right 60px top 0;
+}
+
+.animateHoriz {
+  -webkit-mask-image: linear-gradient(to right, black 100%, transparent 100%), linear-gradient(to left, black 100%, transparent 100%);
+  mask-image: linear-gradient(to right, black 100%, transparent 100%), linear-gradient(to left, black 100%, transparent 100%);
+  -webkit-mask-size: 0% 100%;
+  mask-size: 0% 100%;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: left 60px top 0, right 60px top 0;
+  mask-position: left 60px top 0, right 60px top 0;
+  animation: drawToCenterHoriz 2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+@keyframes drawToCenterHoriz {
+  0% {
+    -webkit-mask-size: 0% 100%;
+    mask-size: 0% 100%;
+  }
+  100% {
+    -webkit-mask-size: calc(50% - 60px) 100%;
+    mask-size: calc(50% - 60px) 100%;
+  }
 }
 
 .manifestoGroup01 {
