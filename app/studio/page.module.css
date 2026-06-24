@@ -711,8 +711,8 @@
 .hiddenVert {
   -webkit-mask-image: linear-gradient(to bottom, black 100%, transparent 100%), linear-gradient(to top, black 100%, transparent 100%);
   mask-image: linear-gradient(to bottom, black 100%, transparent 100%), linear-gradient(to top, black 100%, transparent 100%);
-  -webkit-mask-size: 100% 0%;
-  mask-size: 100% 0%;
+  -webkit-mask-size: 100% 0px, 100% 0px;
+  mask-size: 100% 0px, 100% 0px;
   -webkit-mask-repeat: no-repeat;
   mask-repeat: no-repeat;
   -webkit-mask-position: left 0 top 60px, left 0 bottom 60px;
@@ -722,8 +722,8 @@
 .animateVert {
   -webkit-mask-image: linear-gradient(to bottom, black 100%, transparent 100%), linear-gradient(to top, black 100%, transparent 100%);
   mask-image: linear-gradient(to bottom, black 100%, transparent 100%), linear-gradient(to top, black 100%, transparent 100%);
-  -webkit-mask-size: 100% 0%;
-  mask-size: 100% 0%;
+  -webkit-mask-size: 100% 0px, 100% 0px;
+  mask-size: 100% 0px, 100% 0px;
   -webkit-mask-repeat: no-repeat;
   mask-repeat: no-repeat;
   -webkit-mask-position: left 0 top 60px, left 0 bottom 60px;
@@ -733,12 +733,12 @@
 
 @keyframes drawToCenterVert {
   0% {
-    -webkit-mask-size: 100% 0%;
-    mask-size: 100% 0%;
+    -webkit-mask-size: 100% 0px, 100% 0px;
+    mask-size: 100% 0px, 100% 0px;
   }
   100% {
-    -webkit-mask-size: 100% calc(50% - 60px);
-    mask-size: 100% calc(50% - 60px);
+    -webkit-mask-size: 100% 386.04px, 100% 376.44px;
+    mask-size: 100% 386.04px, 100% 376.44px;
   }
 }
 
@@ -753,8 +753,8 @@
 .hiddenHoriz {
   -webkit-mask-image: linear-gradient(to right, black 100%, transparent 100%), linear-gradient(to left, black 100%, transparent 100%);
   mask-image: linear-gradient(to right, black 100%, transparent 100%), linear-gradient(to left, black 100%, transparent 100%);
-  -webkit-mask-size: 0% 100%;
-  mask-size: 0% 100%;
+  -webkit-mask-size: 0px 100%, 0px 100%;
+  mask-size: 0px 100%, 0px 100%;
   -webkit-mask-repeat: no-repeat;
   mask-repeat: no-repeat;
   -webkit-mask-position: left 60px top 0, right 60px top 0;
@@ -764,8 +764,8 @@
 .animateHoriz {
   -webkit-mask-image: linear-gradient(to right, black 100%, transparent 100%), linear-gradient(to left, black 100%, transparent 100%);
   mask-image: linear-gradient(to right, black 100%, transparent 100%), linear-gradient(to left, black 100%, transparent 100%);
-  -webkit-mask-size: 0% 100%;
-  mask-size: 0% 100%;
+  -webkit-mask-size: 0px 100%, 0px 100%;
+  mask-size: 0px 100%, 0px 100%;
   -webkit-mask-repeat: no-repeat;
   mask-repeat: no-repeat;
   -webkit-mask-position: left 60px top 0, right 60px top 0;
@@ -775,12 +775,12 @@
 
 @keyframes drawToCenterHoriz {
   0% {
-    -webkit-mask-size: 0% 100%;
-    mask-size: 0% 100%;
+    -webkit-mask-size: 0px 100%, 0px 100%;
+    mask-size: 0px 100%, 0px 100%;
   }
   100% {
-    -webkit-mask-size: calc(50% - 60px) 100%;
-    mask-size: calc(50% - 60px) 100%;
+    -webkit-mask-size: 561.71px 100%, 549.73px 100%;
+    mask-size: 561.71px 100%, 549.73px 100%;
   }
 }
 
