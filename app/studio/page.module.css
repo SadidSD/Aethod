@@ -722,8 +722,8 @@
 .animateVert {
   -webkit-mask-image: linear-gradient(to bottom, black 100%, transparent 100%), linear-gradient(to top, black 100%, transparent 100%);
   mask-image: linear-gradient(to bottom, black 100%, transparent 100%), linear-gradient(to top, black 100%, transparent 100%);
-  -webkit-mask-size: 100% 0px, 100% 0px;
-  mask-size: 100% 0px, 100% 0px;
+  -webkit-mask-size: 100% 385.04px, 100% 377.44px;
+  mask-size: 100% 385.04px, 100% 377.44px;
   -webkit-mask-repeat: no-repeat;
   mask-repeat: no-repeat;
   -webkit-mask-position: left 0 top 60px, left 0 bottom 60px;
@@ -737,8 +737,8 @@
     mask-size: 100% 0px, 100% 0px;
   }
   100% {
-    -webkit-mask-size: 100% 386.04px, 100% 376.44px;
-    mask-size: 100% 386.04px, 100% 376.44px;
+    -webkit-mask-size: 100% 385.04px, 100% 377.44px;
+    mask-size: 100% 385.04px, 100% 377.44px;
   }
 }
 
@@ -764,8 +764,8 @@
 .animateHoriz {
   -webkit-mask-image: linear-gradient(to right, black 100%, transparent 100%), linear-gradient(to left, black 100%, transparent 100%);
   mask-image: linear-gradient(to right, black 100%, transparent 100%), linear-gradient(to left, black 100%, transparent 100%);
-  -webkit-mask-size: 0px 100%, 0px 100%;
-  mask-size: 0px 100%, 0px 100%;
+  -webkit-mask-size: 560.71px 100%, 550.73px 100%;
+  mask-size: 560.71px 100%, 550.73px 100%;
   -webkit-mask-repeat: no-repeat;
   mask-repeat: no-repeat;
   -webkit-mask-position: left 60px top 0, right 60px top 0;
@@ -779,8 +779,8 @@
     mask-size: 0px 100%, 0px 100%;
   }
   100% {
-    -webkit-mask-size: 561.71px 100%, 549.73px 100%;
-    mask-size: 561.71px 100%, 549.73px 100%;
+    -webkit-mask-size: 560.71px 100%, 550.73px 100%;
+    mask-size: 560.71px 100%, 550.73px 100%;
   }
 }
 
@@ -910,9 +910,9 @@
 /* SECTION 4: HOW WE WORK */
 .howWeWorkSection {
   position: absolute;
-  width: 1455px;
+  width: 100vw;
   height: 2541px;
-  left: calc(50% - 1455px / 2 + 4.5px);
+  left: calc(50% - 50vw);
   top: 4266px;
 }
 
