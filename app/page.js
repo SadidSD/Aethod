@@ -35,6 +35,7 @@ function InlineSVG({ src, className }) {
 
 export default function Home() {
   const { isDark } = useTheme();
+  const [selectedButton, setSelectedButton] = useState(null);
               
   // Journey flow animation refs and state
   const journeyRef = useRef(null);
@@ -330,6 +331,7 @@ export default function Home() {
                   className={styles.invisibleBtnScroll}
                   onClick={() => {
                     playClickSound();
+                    setSelectedButton("explore");
                     handleScrollToServices();
                   }}
                   aria-label="Explore Services"
@@ -338,25 +340,36 @@ export default function Home() {
                   className={styles.invisibleBtnWorks}
                   onClick={() => {
                     playClickSound();
+                    setSelectedButton("thinking");
                     window.location.href = "/journals";
                   }}
                   aria-label="Visit Our Works"
                 />
                 <svg width="452" height="71" viewBox="0 0 452 71" fill="none" xmlns="http://www.w3.org/2000/svg" className={styles.buttonsSvg}>
-                  <g filter="url(#filter0_ddiiii_1097_2805)">
-                    <rect x="8" y="8" width="206" height="55" rx="10" fill="#ECECEC"/>
+                  <g 
+                    filter={selectedButton === "explore" ? "url(#filter0_ddiiii_1097_2805_pressed)" : "url(#filter0_ddiiii_1097_2805)"}
+                    className={`${styles.buttonGroup} ${selectedButton === "explore" ? styles.selected : ""}`}
+                  >
                     <rect x="5.5" y="5.5" width="211" height="60" rx="12.5" stroke="url(#paint0_radial_1097_2805)" strokeWidth="5"/>
-                    <text x="60" y="42" fontFamily="'Sora', sans-serif" fontWeight="300" fontSize="20" fill="#404040">Explore</text>
-                    <g transform="translate(142, 23)">
-                      <path d="M7 17L17 7M17 17V7H7" stroke="url(#paint0_radial_1097_2805)" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
+                    <g className={styles.buttonInner}>
+                      <rect className={styles.buttonBg} x="8" y="8" width="206" height="55" rx="10" fill="#ECECEC"/>
+                      <text x="60" y="42" fontFamily="'Sora', sans-serif" fontWeight="300" fontSize="20" fill="#404040">Explore</text>
+                      <g transform="translate(142, 23)">
+                        <path d="M7 17L17 7M17 17V7H7" stroke="url(#paint0_radial_1097_2805)" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
+                      </g>
                     </g>
                   </g>
-                  <g filter="url(#filter1_ddiiii_1097_2805)">
-                    <rect x="239" y="8" width="205" height="55" rx="10" fill="#ECECEC"/>
+                  <g 
+                    filter={selectedButton === "thinking" ? "url(#filter1_ddiiii_1097_2805_pressed)" : "url(#filter1_ddiiii_1097_2805)"}
+                    className={`${styles.buttonGroup} ${selectedButton === "thinking" ? styles.selected : ""}`}
+                  >
                     <rect x="236.5" y="5.5" width="210" height="60" rx="12.5" stroke="url(#paint1_radial_thinking_arrow)" strokeWidth="5"/>
-                    <text x="291" y="42" fontFamily="'Sora', sans-serif" fontWeight="300" fontSize="20" fill="#404040">Thinking</text>
-                    <g transform="translate(381, 23)">
-                      <path d="M7 17L17 7M17 17V7H7" stroke="url(#paint1_radial_thinking_arrow)" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
+                    <g className={styles.buttonInner}>
+                      <rect className={styles.buttonBg} x="239" y="8" width="205" height="55" rx="10" fill="#ECECEC"/>
+                      <text x="291" y="42" fontFamily="'Sora', sans-serif" fontWeight="300" fontSize="20" fill="#404040">Thinking</text>
+                      <g transform="translate(381, 23)">
+                        <path d="M7 17L17 7M17 17V7H7" stroke="url(#paint1_radial_thinking_arrow)" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
+                      </g>
                     </g>
                   </g>
                   <defs>
@@ -434,6 +447,82 @@ export default function Home() {
                       <feGaussianBlur stdDeviation="2"/>
                       <feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1"/>
                       <feColorMatrix type="matrix" values="0 0 0 0 0.568627 0 0 0 0 0.568627 0 0 0 0 0.560784 0 0 0 0.2 0"/>
+                      <feBlend mode="normal" in2="effect5_innerShadow_1097_2805" result="effect6_innerShadow_1097_2805"/>
+                    </filter>
+                    <filter id="filter0_ddiiii_1097_2805_pressed" x="0" y="0" width="222" height="71" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
+                      <feFlood floodOpacity="0" result="BackgroundImageFix"/>
+                      <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+                      <feOffset dx="-1" dy="-1"/>
+                      <feGaussianBlur stdDeviation="1"/>
+                      <feColorMatrix type="matrix" values="0 0 0 0 0.568627 0 0 0 0 0.568627 0 0 0 0 0.560784 0 0 0 0.1 0"/>
+                      <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_1097_2805"/>
+                      <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+                      <feOffset dx="1" dy="1"/>
+                      <feGaussianBlur stdDeviation="1"/>
+                      <feColorMatrix type="matrix" values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.05 0"/>
+                      <feBlend mode="normal" in2="effect1_dropShadow_1097_2805" result="effect2_dropShadow_1097_2805"/>
+                      <feBlend mode="normal" in="SourceGraphic" in2="effect2_dropShadow_1097_2805" result="shape"/>
+                      <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+                      <feOffset dx="2.5" dy="2.5"/>
+                      <feGaussianBlur stdDeviation="3.5"/>
+                      <feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1"/>
+                      <feColorMatrix type="matrix" values="0 0 0 0 0.568627 0 0 0 0 0.568627 0 0 0 0 0.560784 0 0 0 0.95 0"/>
+                      <feBlend mode="normal" in2="shape" result="effect3_innerShadow_1097_2805"/>
+                      <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+                      <feOffset dx="-2.5" dy="-2.5"/>
+                      <feGaussianBlur stdDeviation="3"/>
+                      <feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1"/>
+                      <feColorMatrix type="matrix" values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.95 0"/>
+                      <feBlend mode="normal" in2="effect3_innerShadow_1097_2805" result="effect4_innerShadow_1097_2805"/>
+                      <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+                      <feOffset dx="2.5" dy="-2.5"/>
+                      <feGaussianBlur stdDeviation="3"/>
+                      <feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1"/>
+                      <feColorMatrix type="matrix" values="0 0 0 0 0.568627 0 0 0 0 0.568627 0 0 0 0 0.560784 0 0 0 0.4 0"/>
+                      <feBlend mode="normal" in2="effect4_innerShadow_1097_2805" result="effect5_innerShadow_1097_2805"/>
+                      <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+                      <feOffset dx="-2.5" dy="2.5"/>
+                      <feGaussianBlur stdDeviation="3"/>
+                      <feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1"/>
+                      <feColorMatrix type="matrix" values="0 0 0 0 0.568627 0 0 0 0 0.568627 0 0 0 0 0.560784 0 0 0 0.4 0"/>
+                      <feBlend mode="normal" in2="effect5_innerShadow_1097_2805" result="effect6_innerShadow_1097_2805"/>
+                    </filter>
+                    <filter id="filter1_ddiiii_1097_2805_pressed" x="231" y="0" width="221" height="71" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
+                      <feFlood floodOpacity="0" result="BackgroundImageFix"/>
+                      <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+                      <feOffset dx="-1" dy="-1"/>
+                      <feGaussianBlur stdDeviation="1"/>
+                      <feColorMatrix type="matrix" values="0 0 0 0 0.568627 0 0 0 0 0.568627 0 0 0 0 0.560784 0 0 0 0.1 0"/>
+                      <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_1097_2805"/>
+                      <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+                      <feOffset dx="1" dy="1"/>
+                      <feGaussianBlur stdDeviation="1"/>
+                      <feColorMatrix type="matrix" values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.05 0"/>
+                      <feBlend mode="normal" in2="effect1_dropShadow_1097_2805" result="effect2_dropShadow_1097_2805"/>
+                      <feBlend mode="normal" in="SourceGraphic" in2="effect2_dropShadow_1097_2805" result="shape"/>
+                      <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+                      <feOffset dx="2.5" dy="2.5"/>
+                      <feGaussianBlur stdDeviation="3.5"/>
+                      <feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1"/>
+                      <feColorMatrix type="matrix" values="0 0 0 0 0.568627 0 0 0 0 0.568627 0 0 0 0 0.560784 0 0 0 0.95 0"/>
+                      <feBlend mode="normal" in2="shape" result="effect3_innerShadow_1097_2805"/>
+                      <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+                      <feOffset dx="-2.5" dy="-2.5"/>
+                      <feGaussianBlur stdDeviation="3"/>
+                      <feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1"/>
+                      <feColorMatrix type="matrix" values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.95 0"/>
+                      <feBlend mode="normal" in2="effect3_innerShadow_1097_2805" result="effect4_innerShadow_1097_2805"/>
+                      <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+                      <feOffset dx="2.5" dy="-2.5"/>
+                      <feGaussianBlur stdDeviation="3"/>
+                      <feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1"/>
+                      <feColorMatrix type="matrix" values="0 0 0 0 0.568627 0 0 0 0 0.568627 0 0 0 0 0.560784 0 0 0 0.4 0"/>
+                      <feBlend mode="normal" in2="effect4_innerShadow_1097_2805" result="effect5_innerShadow_1097_2805"/>
+                      <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+                      <feOffset dx="-2.5" dy="2.5"/>
+                      <feGaussianBlur stdDeviation="3"/>
+                      <feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1"/>
+                      <feColorMatrix type="matrix" values="0 0 0 0 0.568627 0 0 0 0 0.568627 0 0 0 0 0.560784 0 0 0 0.4 0"/>
                       <feBlend mode="normal" in2="effect5_innerShadow_1097_2805" result="effect6_innerShadow_1097_2805"/>
                     </filter>
                     <radialGradient id="paint0_radial_1097_2805" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(111 35.5) rotate(90) scale(27.5 103)">
