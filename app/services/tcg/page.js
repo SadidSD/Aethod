@@ -202,7 +202,8 @@ export default function TcgPage() {
               <div className={styles.pfLeftCol}>
                 <div className={styles.pfCard}>
                   <p className={styles.pfPrecisionText}>
-                    Precision engineering cannot be packaged. Every system we build is scoped individually based on <span className={styles.pfHighlightText}>operational complexity and data volume</span>.
+                    <span className={styles.pfLine}>Precision engineering cannot be packaged. Every system we build is scoped</span>
+                    <span className={styles.pfLine}>individually based on <span className={styles.pfHighlightText}>operational complexity and data volume</span>.</span>
                   </p>
                 </div>
                 <div className={styles.pfCard}>
