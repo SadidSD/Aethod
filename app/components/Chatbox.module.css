@@ -2,7 +2,7 @@
 .floatingAssistantBtn {
   position: fixed;
   bottom: 96px;
-  right: 120px;
+  right: 160px;
   width: 60px;
   height: 60px;
   border-radius: 50%;
@@ -498,7 +498,7 @@
 .chatboxCloseBtn {
   position: absolute;
   bottom: 60px;
-  right: 84px;
+  right: 124px;
   background: transparent;
   border: none;
   cursor: pointer;
