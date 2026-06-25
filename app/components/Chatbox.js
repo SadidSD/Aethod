@@ -38,11 +38,15 @@ export default function Chatbox() {
         onClick={toggleChat}
         aria-label="Open AI Assistant"
       >
-        <img
-          src="/chatbox/Button.svg"
-          alt="Open AI Assistant"
-          className={styles.floatingBtnIcon}
-        />
+        <div className={styles.settingBtnBlueCircle}>
+          <div className={styles.settingBtnMiddleCircle}>
+            <img
+              src="/ai icon 2.svg"
+              alt="Open AI Assistant"
+              className={styles.settingBtnImg}
+            />
+          </div>
+        </div>
       </button>
     );
   }

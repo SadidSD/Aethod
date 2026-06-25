@@ -537,18 +537,7 @@ export default function Home() {
             </div>
           </div>
 
-          {/* AI Assist Button (ChatGPT icon) */}
-          <button className={styles.heroAiBtn} id="settings-btn" aria-label="AI Assist">
-            <div className={styles.settingBtnBlueCircle}>
-              <div className={styles.settingBtnMiddleCircle}>
-                <img
-                  src="/ai%20icon%202.svg"
-                  alt="AI Assist"
-                  className={styles.settingBtnImg}
-                />
-              </div>
-            </div>
-          </button>
+
         </div>
       </section>
 
