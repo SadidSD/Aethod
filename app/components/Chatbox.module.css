@@ -1,8 +1,8 @@
 /* Floating Assistant Button */
 .floatingAssistantBtn {
   position: fixed;
-  bottom: 60px;
-  right: 60px;
+  bottom: 96px;
+  right: 80px;
   width: 60px;
   height: 60px;
   border-radius: 50%;
@@ -457,7 +457,7 @@
   flex-direction: column;
   gap: 8px;
   margin-top: 16px;
-  margin-bottom: 74px; /* leave space for the toggle/close button */
+  margin-bottom: 110px; /* leave space for the toggle/close button */
 }
 
 .suggestionsRow1, .suggestionsRow2 {
@@ -497,8 +497,8 @@
 /* Inside Panel Close Button */
 .chatboxCloseBtn {
   position: absolute;
-  bottom: 24px;
-  right: 24px;
+  bottom: 60px;
+  right: 44px;
   background: transparent;
   border: none;
   cursor: pointer;
