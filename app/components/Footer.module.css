@@ -23,7 +23,8 @@
   z-index: 2;
 }
 
-:global([data-theme="dark"]) .footerSvg svg rect[fill="#DFDFDF" i] {
+:global([data-theme="dark"]) .footerSvg svg rect[fill="#DFDFDF" i],
+:global([data-theme="dark"]) .footerSvg svg rect[fill="#ECECEC" i] {
   fill: var(--bg-primary);
 }
 
