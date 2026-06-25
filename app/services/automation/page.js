@@ -111,50 +111,47 @@ export default function AutomationPage() {
               Operational <span className={styles.heroTitleHighlight}>Automation</span>
             </h1>
             <p className={styles.heroSubtitle}>
-              Autonomous infrastructure for <span className={styles.heroSubtitleHighlight}>modern enterprises</span>
+              Workforce & Billing Infrastructure
             </p>
+          </div>
+
+          {/* ===== HERO DESCRIPTION ===== */}
+          <div className={styles.heroDescriptionBlock}>
             <p className={styles.heroDescription}>
-              We design custom automation engines at an{"\n"}
-              enterprise scale — our focus is not on replacing{"\n"}
-              your team but amplifying their output. The systems{"\n"}
-              we build are not off-the-shelf; they are complete, build-from-scratch{"\n"}
-              operational architectures, customized to your data{"\n"}
-              pipeline and your business logic, so you stop losing{"\n"}
-              anything.
+              We design custom administrative engines that{"\n"}
+              <span className={styles.heroDescHighlight}>eliminate manual overhead</span> in workforce{"\n"}
+              coordination and financial measurement. We{"\n"}
+              act as <span className={styles.heroDescHighlight}>a translator</span> between complex business{"\n"}
+              operations and decisive, automated corporate{"\n"}
+              action
             </p>
 
             {/* Action Button Bar */}
             <div className={styles.btnBar}>
               <button
-                className={styles.btnLearnMore}
+                className={styles.invisibleBtnScroll}
                 onClick={() => {
                   playClickSound();
                   document.getElementById("quick-list")?.scrollIntoView({ behavior: "smooth" });
                 }}
-                aria-label="Learn More"
-              >
-                Learn More
-              </button>
+                aria-label="Scroll Down"
+              />
               <button
-                className={styles.btnCaseWorks}
+                className={styles.invisibleBtnWorks}
                 onClick={() => {
                   playClickSound();
                   window.location.href = "/journals";
                 }}
-                aria-label="Our Case Works"
-              >
-                Our Case Works
-              </button>
+                aria-label="Visit Our Works"
+              />
+              <InlineSVG src="/services/automation_buttons.svg" className={styles.buttonsSvg} />
             </div>
           </div>
 
           {/* ===== HERO IMAGE ===== */}
           <div className={styles.heroImageWrapper}>
-            <InlineSVG src="/services/Frame 197.svg" className={styles.heroImage} />
+            <InlineSVG src="/services/automation_hero.svg" className={styles.heroImage} />
           </div>
-
-          {/* Horizontal Line Separator */}
-          <div className={styles.sectionDivider}></div>
 
           {/* ===== QUICK LIST SECTION ===== */}
           <div className={styles.quickListHeader} id="quick-list">
@@ -204,7 +201,8 @@ export default function AutomationPage() {
                 Project <span className={styles.pfTitleHighlight}>Financing</span>
               </h2>
               <p className={styles.pfSubtitle}>
-                Typical cost structures for <span className={styles.pfSubtitleHighlight}>bespoke automation builds</span>
+                Financial parameters built around <br />
+                <span className={styles.pfSubtitleHighlight}>systemic complexity.</span>
               </p>
             </div>
 

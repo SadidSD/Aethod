@@ -139,7 +139,7 @@
   position: relative;
   width: 100%;
   max-width: 1440px;
-  height: 4650px;
+  height: 3300px;
   margin: 0 auto;
 }
 
@@ -165,7 +165,8 @@
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  font-weight: 400;
+  font-weight: 300;
+  font-style: italic;
 }
 
 .heroSubtitle {
@@ -177,90 +178,83 @@
   line-height: 1.4;
 }
 
-.heroSubtitleHighlight {
-  color: #BF8BCA;
+/* ===== HERO DESCRIPTION BLOCK ===== */
+.heroDescriptionBlock {
+  position: absolute;
+  left: 80px;
+  top: 480px;
+  width: 520px;
+  text-align: center;
 }
 
 .heroDescription {
   font-family: var(--font-sora), sans-serif;
   font-weight: 300;
-  font-size: 16px;
-  line-height: 1.8;
-  color: #717171;
-  margin: 40px 0 0 0;
-  max-width: 520px;
+  font-size: 18px;
+  line-height: 1.9;
+  color: #404040;
+  margin: 0;
   white-space: pre-line;
+  text-align: center;
+}
+
+.heroDescHighlight {
+  background: linear-gradient(135deg, #5A69EA 0%, #BF8BCA 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 .btnBar {
-  display: flex;
-  gap: 16px;
-  margin-top: 50px;
+  position: relative;
+  width: 452px;
+  height: 71px;
+  margin: 40px auto 0;
 }
 
-.btnLearnMore {
-  font-family: var(--font-sora), sans-serif;
-  font-weight: 300;
-  font-size: 18px;
-  color: #404040;
-  padding: 16px 40px;
-  border-radius: 10px;
+.buttonsSvg {
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.invisibleBtnScroll {
+  position: absolute;
+  left: 8px;
+  top: 8px;
+  width: 206px;
+  height: 55px;
+  background: transparent;
   border: none;
+  opacity: 0;
   cursor: pointer;
-  background: #ECECEC;
-  box-shadow:
-    -4px 4px 8px rgba(201, 201, 201, 0.2),
-    4px -4px 8px rgba(201, 201, 201, 0.2),
-    -4px -4px 8px rgba(255, 255, 255, 0.9),
-    4px 4px 10px rgba(201, 201, 201, 0.9),
-    inset 1px 1px 2px rgba(255, 255, 255, 0.3),
-    inset -1px -1px 2px rgba(201, 201, 201, 0.5);
-  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease;
+  z-index: 2;
 }
 
-.btnLearnMore:hover {
-  transform: scale(1.02);
-}
-
-.btnLearnMore:active {
-  transform: scale(0.98);
-}
-
-.btnCaseWorks {
-  font-family: var(--font-sora), sans-serif;
-  font-weight: 300;
-  font-size: 18px;
-  color: #404040;
-  padding: 16px 40px;
-  border-radius: 10px;
+.invisibleBtnWorks {
+  position: absolute;
+  left: 239px;
+  top: 8px;
+  width: 205px;
+  height: 55px;
+  background: transparent;
   border: none;
+  opacity: 0;
   cursor: pointer;
-  background: #ECECEC;
-  box-shadow:
-    -4px 4px 8px rgba(201, 201, 201, 0.2),
-    4px -4px 8px rgba(201, 201, 201, 0.2),
-    -4px -4px 8px rgba(255, 255, 255, 0.9),
-    4px 4px 10px rgba(201, 201, 201, 0.9),
-    inset 1px 1px 2px rgba(255, 255, 255, 0.3),
-    inset -1px -1px 2px rgba(201, 201, 201, 0.5);
-  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease;
-}
-
-.btnCaseWorks:hover {
-  transform: scale(1.02);
-}
-
-.btnCaseWorks:active {
-  transform: scale(0.98);
+  z-index: 2;
 }
 
 /* ===== HERO IMAGE ===== */
 .heroImageWrapper {
   position: absolute;
   right: 40px;
-  top: 340px;
-  width: 620px;
-  height: 450px;
+  top: 380px;
+  width: 540px;
+  height: 390px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .heroImage {
@@ -271,17 +265,9 @@
 .heroImage svg {
   width: 100%;
   height: 100%;
+  object-fit: contain;
 }
 
-/* ===== SECTION DIVIDER ===== */
-.sectionDivider {
-  position: absolute;
-  left: 131px;
-  top: 890px;
-  width: calc(100% - 262px);
-  height: 1px;
-  background: #C9C9C9;
-}
 
 /* ===== QUICK LIST SECTION ===== */
 .quickListHeader {
