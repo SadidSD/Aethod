@@ -159,37 +159,37 @@ export default function AutomationPage() {
               Quick <span className={styles.quickListTitleHighlight}>List</span>
             </h2>
             <p className={styles.quickListSubtitle}>
-              Systems that handle the decisions <span className={styles.quickListSubtitleHighlight}>you shouldn&apos;t have to.</span>
+              Operational friction that <span className={styles.quickListSubtitleHighlight}>you won&apos;t face again</span>
             </p>
           </div>
 
           <div className={styles.quickListGrid}>
             <div className={styles.quickCard}>
               <img src="/services/tcg/frame_new.svg" className={styles.cardFrame} alt="frame" />
-              <h3 className={styles.cardTitle}>Automated Infrastructure Management</h3>
+              <h3 className={styles.cardTitle}>Automated Work Measurement</h3>
               <p className={styles.cardDesc}>
-                Self-healing server architectures that auto-scale based on real-time demand signals, eliminating manual provisioning and reducing downtime to near-zero across all environments.
+                Precision tracking systems engineered to log project metrics, performance variables, and field execution data without manual oversight.
               </p>
             </div>
             <div className={styles.quickCard}>
               <img src="/services/tcg/frame_new.svg" className={styles.cardFrame} alt="frame" />
               <h3 className={styles.cardTitle}>Centralized Billing Infrastructure</h3>
               <p className={styles.cardDesc}>
-                Unified financial pipelines that consolidate invoicing, subscription tracking, and payment reconciliation into a single automated command center with full audit trails.
+                Unified financial logic that automates invoicing, account auditing, and operational ledger tracking in a single environment.
               </p>
             </div>
             <div className={styles.quickCard}>
               <img src="/services/tcg/frame_new.svg" className={styles.cardFrame} alt="frame" />
               <h3 className={styles.cardTitle}>Dynamic Resource Deployment</h3>
               <p className={styles.cardDesc}>
-                Intelligent allocation engines that distribute computing, storage, and workforce resources dynamically based on operational priority and real-time workload analysis.
+                Structural backend framework that coordinates staff scheduling, workforce metrics, and assignment updates with zero delay.
               </p>
             </div>
             <div className={styles.quickCard}>
               <img src="/services/tcg/frame_new.svg" className={styles.cardFrame} alt="frame" />
-              <h3 className={styles.cardTitle}>User Review Management Dashboards</h3>
+              <h3 className={styles.cardTitle}>Low-Noise Management Dashboards</h3>
               <p className={styles.cardDesc}>
-                Automated sentiment analysis and review aggregation systems that surface actionable feedback patterns and flag critical issues before they escalate.
+                Clean analytical interfaces that compress messy operational reports into clear, data-driven management insights.
               </p>
             </div>
           </div>

@@ -291,11 +291,11 @@
 }
 
 .quickListTitleHighlight {
-  background: linear-gradient(135deg, #5A69EA 0%, #BF8BCA 100%);
+  background: #7B74E0;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  font-weight: 400;
+  font-weight: 300;
 }
 
 .quickListSubtitle {
@@ -308,7 +308,7 @@
 }
 
 .quickListSubtitleHighlight {
-  color: #BF8BCA;
+  color: #7B74E0;
 }
 
 .quickListGrid {
