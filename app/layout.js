@@ -1,6 +1,8 @@
 import { Inter, DM_Sans, Sora } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "./context/ThemeContext";
+import { ChatProvider } from "./context/ChatContext";
+import Chatbox from "./components/Chatbox";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -63,10 +65,14 @@ export default function RootLayout({ children }) {
       </head>
       <body suppressHydrationWarning>
         <ThemeProvider>
-          {children}
+          <ChatProvider>
+            {children}
+            <Chatbox />
+          </ChatProvider>
         </ThemeProvider>
       </body>
     </html>
   );
 }
+
 

@@ -5,6 +5,7 @@ import styles from "./page.module.css";
 import { useTheme } from "../context/ThemeContext";
 import ThemeToggle from "../components/ThemeToggle";
 import Footer from "../components/Footer";
+import Navbar from "../components/Navbar";
 
 
 // Helper component to load SVGs inline
@@ -237,41 +238,7 @@ export default function ContactPage() {
   return (
     <div className={styles.pageWrapper} data-theme={isDark ? "dark" : "light"}>
       {/* ===== PILL NAVIGATION BAR ===== */}
-      <div className={styles.navOuter}>
-        <nav className={styles.navbar} id="navbar">
-          <div className={styles.navContent}>
-            {/* Circular Logo */}
-            <a href="/" className={styles.logo} aria-label="Aeethod Home">
-              <InlineSVG src="/navbar logo.svg" className={styles.logoImg} />
-            </a>
-
-            {/* Navigation Links */}
-            <div className={styles.navLinks}>
-              <a href="/studio" className={styles.navLink}>
-                Studio
-              </a>
-              <a href="/services" className={styles.navLink}>
-                Services
-              </a>
-              <a href="/blog" className={styles.navLink}>
-                Blog
-              </a>
-              <a href="/products" className={styles.navLink}>
-                Products
-              </a>
-              <a href="/journals" className={styles.navLink}>
-                Works
-              </a>
-              <a href="/contact" className={`${styles.navLink} ${styles.activeNavLink}`}>
-                Contact
-              </a>
-              <a href="/research" className={styles.navLink}>
-                Research
-              </a>
-            </div>
-          </div>
-        </nav>
-      </div>
+      <Navbar activePage="contact" />
 
       {/* ===== PAGE CONTENT WRAPPER (SCALED FOR RESPONSIVENESS) ===== */}
       <div className={styles.pageContent}>

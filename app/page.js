@@ -5,6 +5,7 @@ import styles from "./page.module.css";
 import { useTheme } from "./context/ThemeContext";
 import ThemeToggle from "./components/ThemeToggle";
 import Footer from "./components/Footer";
+import Navbar from "./components/Navbar";
 
 
 const CURVE_PATH = "M10.502 301.037C10.502 301.037 278.19 379.737 387.502 346.037C465.301 322.052 519.222 255.036 594.502 224.037C717.17 173.524 741.006 227.347 853.502 157.037C933.502 107.037 953.502 83.0367 953.502 83.0367C953.502 83.0367 999.582 34.0816 1081.5 16.9464C1123.96 8.06441 1155.5 10.9464 1155.5 10.9464";
@@ -274,41 +275,7 @@ export default function Home() {
   return (
     <div className={styles.pageWrapper} data-theme={isDark ? 'dark' : 'light'}>
       {/* ===== NAVIGATION ===== */}
-      <div className={styles.navOuter}>
-        <nav className={styles.navbar} id="navbar">
-          <div className={styles.navContent}>
-            {/* Circular Logo */}
-            <a href="/" className={styles.logo} aria-label="Aeethod Home">
-              <InlineSVG src="/navbar logo.svg" className={styles.logoImg} />
-            </a>
-
-            {/* Navigation Links */}
-            <div className={styles.navLinks}>
-              <a href="/studio" className={styles.navLink}>
-                Studio
-              </a>
-              <a href="/services" className={styles.navLink}>
-                Services
-              </a>
-              <a href="/blog" className={styles.navLink}>
-                Blog
-              </a>
-              <a href="/products" className={styles.navLink}>
-                Products
-              </a>
-              <a href="/journals" className={styles.navLink}>
-                Works
-              </a>
-              <a href="/contact" className={styles.navLink}>
-                Contact
-              </a>
-              <a href="/research" className={styles.navLink}>
-                Research
-              </a>
-            </div>
-          </div>
-        </nav>
-      </div>
+      <Navbar />
 
       {/* ===== HERO SECTION ===== */}
       <section className={styles.heroSection} id="hero">
