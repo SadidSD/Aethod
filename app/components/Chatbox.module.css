@@ -325,12 +325,13 @@
 .inputBarWrapper {
   border-radius: 20px;
   border: 2px solid #B2CEFE;
-  padding: 6px;
+  padding: 0;
   background: #ECECEC;
   box-shadow:
     4px 4px 10px rgba(134, 134, 134, 0.9),
     -4px 4px 8px rgba(134, 134, 134, 0.2),
     4px -4px 8px rgba(134, 134, 134, 0.2);
+  overflow: hidden;
 }
 
 [data-theme='dark'] .inputBarWrapper {
@@ -348,7 +349,7 @@
   justify-content: space-between;
   padding: 8px 10px;
   background: #ECECEC;
-  border-radius: 14px;
+  border-radius: 18px;
   border: none;
   box-shadow:
     inset -2px 2px 4px rgba(183, 183, 181, 0.2),
