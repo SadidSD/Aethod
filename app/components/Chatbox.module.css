@@ -508,8 +508,7 @@
 }
 
 .suggestionsRow2 .suggestionPill {
-  flex: 1 1 auto;
-  min-width: 0;
+  flex: 1 0 auto;
 }
 
 .suggestionPill {
@@ -517,16 +516,14 @@
   background: #ECECEC;
   border: 1px solid #A0A0A0;
   border-radius: 10px;
-  padding: 7px 11px;
+  padding: 6px 10px;
   font-family: var(--font-dm-sans), sans-serif;
-  font-size: 11px;
+  font-size: 10px;
   color: #4f4f4f;
   text-align: center;
   cursor: pointer;
   transition: all 0.25s ease;
   white-space: nowrap;
-  text-overflow: ellipsis;
-  overflow: hidden;
 }
 
 [data-theme='dark'] .suggestionPill {
