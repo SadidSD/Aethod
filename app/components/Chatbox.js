@@ -39,7 +39,7 @@ export default function Chatbox() {
         aria-label="Open AI Assistant"
       >
         <img
-          src="/chatbox/Button.svg"
+          src="/chatbox/unclicked.svg"
           alt="Open AI Assistant"
           className={styles.closeBtnIcon}
         />
