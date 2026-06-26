@@ -102,7 +102,7 @@ export default function Chatbox() {
                 >
                   {msg.sender === "smith" && (
                     <img
-                      src="/chatbox/Motion.svg"
+                      src="/chatbox/Logo.svg"
                       alt="Smith"
                       className={styles.smithAvatar}
                     />
@@ -116,21 +116,24 @@ export default function Chatbox() {
                   >
                     {msg.text}
                   </div>
+                  {msg.sender === "user" && (
+                    <img
+                      src="/chatbox/Logo-1.svg"
+                      alt="User"
+                      className={styles.userAvatar}
+                    />
+                  )}
                 </div>
               ))}
               {isTyping && (
                 <div className={styles.smithMsgRow}>
                   <img
-                    src="/chatbox/Motion.svg"
+                    src="/chatbox/Logo.svg"
                     alt="Smith"
                     className={styles.smithAvatar}
                   />
                   <div className={styles.smithBubble}>
-                    <span className={styles.typingIndicator}>
-                      <span></span>
-                      <span></span>
-                      <span></span>
-                    </span>
+                    <span className={styles.typingText}>...</span>
                   </div>
                 </div>
               )}
