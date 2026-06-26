@@ -1,8 +1,8 @@
 /* Floating Assistant Button */
 .floatingAssistantBtn {
   position: fixed;
-  bottom: 60px;
-  right: 104px;
+  bottom: 48px;
+  right: 48px;
   width: 72px;
   height: 72px;
   border-radius: 50%;
@@ -91,10 +91,10 @@
 /* Chatbox Panel Container */
 .chatboxPanel {
   position: fixed;
-  right: 80px;
-  bottom: 36px;
+  right: 24px;
+  bottom: 24px;
   width: 480px;
-  height: calc(100vh - 176px);
+  height: calc(100vh - 80px);
   max-height: 800px;
   z-index: 1000;
   background: #ECECEC;
