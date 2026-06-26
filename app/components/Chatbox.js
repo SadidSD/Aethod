@@ -160,7 +160,7 @@ export default function Chatbox() {
               <input
                 type="text"
                 className={`${styles.chatInput} ${inputVal ? styles.hasText : ""}`}
-                placeholder=""
+                placeholder="Ask Smith about your query"
                 value={inputVal}
                 onChange={(e) => setInputVal(e.target.value)}
                 onKeyDown={handleKeyDown}
