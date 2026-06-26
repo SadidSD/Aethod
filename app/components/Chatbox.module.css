@@ -327,10 +327,6 @@
   border: 2px solid #B2CEFE;
   padding: 0;
   background: #ECECEC;
-  box-shadow:
-    4px 4px 10px rgba(134, 134, 134, 0.9),
-    -4px 4px 8px rgba(134, 134, 134, 0.2),
-    4px -4px 8px rgba(134, 134, 134, 0.2);
   overflow: hidden;
 }
 
