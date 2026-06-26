@@ -92,7 +92,6 @@
 .chatboxPanel {
   position: fixed;
   right: 80px;
-  top: 140px;
   bottom: 36px;
   width: 480px;
   height: calc(100vh - 176px);
