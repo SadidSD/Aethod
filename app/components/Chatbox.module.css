@@ -350,14 +350,14 @@
   align-items: center;
   justify-content: space-between;
   padding: 8px 10px;
-  background: #ECECEC;
+  background: #F5F5F5;
   border-radius: 14px;
   border: none;
   box-shadow:
-    inset -2px 2px 4px rgba(183, 183, 181, 0.2),
-    inset 2px -2px 4px rgba(183, 183, 181, 0.2),
-    inset -2px -2px 4px rgba(247, 247, 245, 0.9),
-    inset 2px 2px 5px rgba(183, 183, 181, 0.8);
+    inset -1px 1px 3px rgba(200, 200, 200, 0.15),
+    inset 1px -1px 3px rgba(200, 200, 200, 0.15),
+    inset -2px -2px 4px rgba(255, 255, 255, 0.95),
+    inset 2px 2px 4px rgba(180, 180, 178, 0.5);
   min-height: 52px;
 }
 
