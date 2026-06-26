@@ -146,7 +146,7 @@ export default function Chatbox() {
         <div className={styles.inputBarWrapper}>
           <div className={styles.inputBarContainer}>
             <button className={styles.addBtn} aria-label="Add attachment">
-              <span className={styles.addBtnText}>+</span>
+              <img src="/chatbox/add-btn.svg" alt="Add" className={styles.addBtnImg} />
             </button>
 
             <div className={styles.chatInputWrapper}>
@@ -170,31 +170,11 @@ export default function Chatbox() {
 
             <div className={styles.inputRight}>
               <div className={styles.modeSelector}>
-                <span>Mode</span>
-                <svg
-                  width="9"
-                  height="6"
-                  viewBox="0 0 8 5"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                  className={styles.modeChevron}
-                >
-                  <path
-                    d="M1 1l3 3 3-3"
-                    stroke="#666"
-                    strokeWidth="1.5"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
+                <img src="/chatbox/mode-text.svg" alt="Mode" className={styles.modeImg} />
               </div>
 
               <button className={styles.micBtn} aria-label="Voice input">
-                <img
-                  src="/chatbox/Group 90.svg"
-                  alt="Mic"
-                  className={styles.micIcon}
-                />
+                <img src="/chatbox/voice-btn.svg" alt="Mic" className={styles.micBtnImg} />
               </button>
             </div>
           </div>
