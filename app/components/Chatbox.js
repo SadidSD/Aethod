@@ -143,48 +143,60 @@ export default function Chatbox() {
         </div>
 
         {/* Input Bar Section */}
-        <div className={styles.inputBarContainer}>
-          <button className={styles.addBtn} aria-label="Add attachment">
-            <img src="/chatbox/Add.svg" alt="Add" className={styles.addIcon} />
-          </button>
+        <div className={styles.inputBarWrapper}>
+          <div className={styles.inputBarContainer}>
+            <button className={styles.addBtn} aria-label="Add attachment">
+              <span className={styles.addBtnText}>+</span>
+            </button>
 
-          <input
-            type="text"
-            className={styles.chatInput}
-            placeholder="Ask Smith about your query"
-            value={inputVal}
-            onChange={(e) => setInputVal(e.target.value)}
-            onKeyDown={handleKeyDown}
-          />
-
-          <div className={styles.inputRight}>
-            <div className={styles.modeSelector}>
-              <span>Mode</span>
-              <svg
-                width="8"
-                height="5"
-                viewBox="0 0 8 5"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-                className={styles.modeChevron}
-              >
-                <path
-                  d="M1 1l3 3 3-3"
-                  stroke="#666"
-                  strokeWidth="1.5"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
+            <div className={styles.chatInputWrapper}>
+              {/* tEXT ASK SVG — provides neumorphic box + search icon + gradient placeholder visual */}
+              <img
+                src="/chatbox/tEXT-ASK.svg"
+                alt=""
+                className={styles.textAskBg}
+                aria-hidden="true"
+              />
+              {/* Actual input overlaid on top — transparent so SVG shows through */}
+              <input
+                type="text"
+                className={styles.chatInput}
+                placeholder="Ask Smith about your query"
+                value={inputVal}
+                onChange={(e) => setInputVal(e.target.value)}
+                onKeyDown={handleKeyDown}
+              />
             </div>
 
-            <button className={styles.micBtn} aria-label="Voice input">
-              <img
-                src="/chatbox/Group 90.svg"
-                alt="Mic"
-                className={styles.micIcon}
-              />
-            </button>
+            <div className={styles.inputRight}>
+              <div className={styles.modeSelector}>
+                <span>Mode</span>
+                <svg
+                  width="9"
+                  height="6"
+                  viewBox="0 0 8 5"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                  className={styles.modeChevron}
+                >
+                  <path
+                    d="M1 1l3 3 3-3"
+                    stroke="#666"
+                    strokeWidth="1.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+              </div>
+
+              <button className={styles.micBtn} aria-label="Voice input">
+                <img
+                  src="/chatbox/Group 90.svg"
+                  alt="Mic"
+                  className={styles.micIcon}
+                />
+              </button>
+            </div>
           </div>
         </div>
 

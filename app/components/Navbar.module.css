@@ -125,55 +125,212 @@
   flex-shrink: 0;
 }
 
-.searchBarContainer {
+/* === Ask Bar (Figma-matched) === */
+.askBarOuter {
   display: flex;
   align-items: center;
-  gap: 12px;
-  padding: 12px 20px;
+  gap: 10px;
+  padding: 8px 10px;
   background: #ECECEC;
-  border-radius: 20px;
+  border-radius: 32px;
+  /* Neumorphic outer shadow */
   box-shadow:
-    1px 1px 2px rgba(247, 247, 245, 0.3),
-    -1px -1px 2px rgba(183, 183, 181, 0.5),
-    inset -2px 2px 4px rgba(183, 183, 181, 0.2),
-    inset 2px -2px 4px rgba(183, 183, 181, 0.2),
-    inset -2px -2px 4px rgba(247, 247, 245, 0.9),
-    inset 2px 2px 5px rgba(183, 183, 181, 0.9);
-  min-width: 250px;
-  max-width: 320px;
-  width: 100%;
-  transition: all 0.5s ease;
-  border: none;
+    4px 4px 10px rgba(211, 211, 211, 0.9),
+    -4px -4px 8px rgba(255, 255, 255, 0.9),
+    inset -1px -1px 2px rgba(255, 255, 255, 0.3),
+    inset 1px 1px 2px rgba(211, 211, 211, 0.5);
+  /* Blue border matching Rectangle 165.svg */
+  border: 1.5px solid #B2CEFE;
+  width: 460px;
+  transition: all 0.4s ease;
 }
 
-[data-theme='dark'] .searchBarContainer {
+[data-theme='dark'] .askBarOuter {
   background: #1e1e1e;
+  border-color: rgba(178, 206, 254, 0.4);
   box-shadow:
-    inset 2px 2px 5px rgba(0, 0, 0, 0.5),
-    inset -2px -2px 5px rgba(255, 255, 255, 0.05);
+    4px 4px 10px rgba(0, 0, 0, 0.5),
+    -4px -4px 8px rgba(255, 255, 255, 0.03),
+    inset 1px 1px 2px rgba(0, 0, 0, 0.4),
+    inset -1px -1px 2px rgba(255, 255, 255, 0.03);
 }
 
-.searchIcon {
+/* + Add Button (neumorphic circle) */
+.askAddBtn {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: #ECECEC;
+  border: none;
+  cursor: pointer;
   flex-shrink: 0;
-  color: #3B719F;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* Neumorphic small button matching Add.svg */
+  box-shadow:
+    1px 1px 3px rgba(178, 178, 178, 0.9),
+    -1px -1px 2px rgba(255, 255, 255, 0.9),
+    inset -1px -1px 2px rgba(255, 255, 255, 0.3),
+    inset 1px 1px 2px rgba(178, 178, 178, 0.5);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  padding: 0;
 }
 
-.searchBarInput {
+[data-theme='dark'] .askAddBtn {
+  background: #2a2a2a;
+  box-shadow:
+    1px 1px 3px rgba(0, 0, 0, 0.6),
+    -1px -1px 2px rgba(255, 255, 255, 0.04);
+}
+
+.askAddBtn:hover {
+  transform: scale(1.08);
+}
+
+.askAddBtn:active {
+  box-shadow:
+    inset 1px 1px 3px rgba(178, 178, 178, 0.9),
+    inset -1px -1px 2px rgba(255, 255, 255, 0.5);
+  transform: scale(0.96);
+}
+
+/* Inner input pill (recessed neumorphic) matching tEXT ASK.svg */
+.askInputPill {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 12px;
+  background: #ECECEC;
+  border-radius: 10px;
+  box-shadow:
+    inset 1px 1px 2px rgba(211, 211, 211, 0.9),
+    inset -1px -1px 2px rgba(255, 255, 255, 0.9),
+    inset 1px -1px 2px rgba(211, 211, 211, 0.2),
+    inset -1px 1px 2px rgba(211, 211, 211, 0.2);
+}
+
+[data-theme='dark'] .askInputPill {
+  background: #181818;
+  box-shadow:
+    inset 2px 2px 4px rgba(0, 0, 0, 0.6),
+    inset -2px -2px 4px rgba(255, 255, 255, 0.03);
+}
+
+.askSearchIcon {
+  flex-shrink: 0;
+}
+
+.askInput {
+  flex: 1;
   border: none;
   background: transparent;
-  color: #5A69EA;
-  font-size: 13.5px;
-  font-family: inherit;
   outline: none;
-  width: 100%;
-  letter-spacing: 0.02em;
+  font-family: var(--font-inter), var(--font-sora), sans-serif;
+  font-size: 13px;
   font-weight: 300;
+  color: #333333;
+  letter-spacing: 0.01em;
 }
 
-.searchBarInput::placeholder {
-  color: #5A69EA;
-  opacity: 0.6;
+[data-theme='dark'] .askInput {
+  color: #ffffff;
 }
+
+.askInput::placeholder {
+  /* Radial gradient placeholder matching tEXT ASK.svg */
+  background: radial-gradient(50% 50% at 50% 50%, #5A69EA 0%, #BF8BCA 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-weight: 300;
+  opacity: 0.85;
+}
+
+/* Right controls area */
+.askRightControls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+/* Mode dropdown button */
+.askModeBtn {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 6px;
+}
+
+.askModeText {
+  font-family: var(--font-inter), sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  color: #404040;
+  letter-spacing: 0.01em;
+  white-space: nowrap;
+}
+
+[data-theme='dark'] .askModeText {
+  color: #aaaaaa;
+}
+
+.askModeBtn svg path {
+  transition: stroke 0.2s ease;
+}
+
+[data-theme='dark'] .askModeBtn svg path {
+  stroke: #aaaaaa;
+}
+
+/* Mic Button (neumorphic circle matching Group 90.svg) */
+.askMicBtn {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: #ECECEC;
+  border: none;
+  cursor: pointer;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow:
+    1px 1px 3px rgba(178, 178, 178, 0.9),
+    -1px -1px 2px rgba(255, 255, 255, 0.9),
+    inset -1px -1px 2px rgba(255, 255, 255, 0.3),
+    inset 1px 1px 2px rgba(178, 178, 178, 0.5);
+  transition: transform 0.2s ease;
+  padding: 0;
+}
+
+[data-theme='dark'] .askMicBtn {
+  background: #2a2a2a;
+  box-shadow:
+    1px 1px 3px rgba(0, 0, 0, 0.6),
+    -1px -1px 2px rgba(255, 255, 255, 0.04);
+}
+
+.askMicBtn:hover {
+  transform: scale(1.08);
+}
+
+.askMicBtn:active {
+  box-shadow:
+    inset 1px 1px 3px rgba(178, 178, 178, 0.9),
+    inset -1px -1px 2px rgba(255, 255, 255, 0.5);
+  transform: scale(0.96);
+}
+
+[data-theme='dark'] .askMicBtn svg path {
+  fill: #aaaaaa;
+}
+
 
 .callButton {
   width: 55px;

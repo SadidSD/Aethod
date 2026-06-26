@@ -82,48 +82,8 @@ export default function Navbar({ activePage }) {
             </a>
           </div>
 
-          {/* Right Area: Search input and Phone button */}
+          {/* Right Area: Phone button */}
           <div className={styles.navRight}>
-            {/* Search Pill Input */}
-            <div className={styles.searchBarContainer}>
-              <svg
-                width="16"
-                height="16"
-                viewBox="0 0 24 24"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-                className={styles.searchIcon}
-              >
-                <circle
-                  cx="11"
-                  cy="11"
-                  r="8"
-                  stroke="#3B719F"
-                  strokeWidth="2.5"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-                <line
-                  x1="16.5"
-                  y1="16.5"
-                  x2="22"
-                  y2="22"
-                  stroke="#3B719F"
-                  strokeWidth="2.5"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
-              <input
-                type="text"
-                className={styles.searchBarInput}
-                placeholder="Ask Smith about your query"
-                value={chatQuery}
-                onChange={(e) => setChatQuery(e.target.value)}
-                onFocus={handleFocus}
-                onKeyDown={handleKeyDown}
-              />
-            </div>
 
             {/* Telephone Call Circle Button */}
             <a
