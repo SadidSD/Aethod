@@ -2,7 +2,7 @@
 .floatingAssistantBtn {
   position: fixed;
   bottom: 48px;
-  right: 48px;
+  right: 156px;
   width: 72px;
   height: 72px;
   border-radius: 50%;
@@ -472,6 +472,7 @@
   align-items: center;
   gap: 12px;
   margin-top: 16px;
+  padding-right: 84px; /* Leave space for the absolute-positioned close button */
 }
 
 /* Suggestions Container */
@@ -519,9 +520,9 @@
 
 /* Inside Panel Close Button */
 .chatboxCloseBtn {
-  position: fixed;
-  right: 48px;
-  bottom: 48px;
+  position: absolute;
+  right: 24px;
+  bottom: 24px;
   width: 72px;
   height: 72px;
   background: transparent;
