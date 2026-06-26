@@ -347,19 +347,13 @@
   background: #ECECEC;
   border-radius: 18px;
   border: none;
-  box-shadow:
-    inset -2px 2px 4px rgba(183, 183, 181, 0.2),
-    inset 2px -2px 4px rgba(183, 183, 181, 0.2),
-    inset -2px -2px 4px rgba(247, 247, 245, 0.9),
-    inset 2px 2px 5px rgba(183, 183, 181, 0.8);
+  box-shadow: none;
   min-height: 52px;
 }
 
 [data-theme='dark'] .inputBarContainer {
   background: #1a1a1a;
-  box-shadow:
-    inset 2px 2px 5px rgba(0, 0, 0, 0.6),
-    inset -2px -2px 5px rgba(255, 255, 255, 0.02);
+  box-shadow: none;
 }
 
 .addBtn, .micBtn {
@@ -397,7 +391,7 @@
   display: none;
 }
 
-/* Input field wrapper — SVG background + real input overlaid */
+/* Input field wrapper — CSS neumorphic styling matching the SVG filter */
 .chatInputWrapper {
   flex-grow: 1;
   position: relative;
@@ -405,9 +399,12 @@
   align-items: center;
   min-width: 0;
   height: 41px;
+  background: transparent;
+  border-radius: 10px;
+  overflow: hidden;
 }
 
-/* The tEXT ASK SVG — fills the wrapper visually */
+/* Background SVG */
 .textAskBg {
   position: absolute;
   top: 0;
@@ -419,28 +416,34 @@
   user-select: none;
 }
 
+/* Functional input layered on top of textAskBg */
 .chatInput {
-  position: relative;
-  z-index: 1;
-  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 28px;
+  right: 0;
+  bottom: 0;
   background: transparent;
   border: none;
   outline: none;
   font-family: var(--font-inter), sans-serif;
   font-size: 13.5px;
-  /* Align cursor past the search icon (~26px) */
-  padding: 0 12px 0 34px;
+  padding: 0 10px 0 2px;
   color: #333333;
-  height: 100%;
+  z-index: 1;
 }
 
 [data-theme='dark'] .chatInput {
   color: #ffffff;
 }
 
-/* Hide placeholder — the SVG already renders the placeholder text visually */
-.chatInput::placeholder {
-  color: transparent;
+/* When typing, apply solid background color to mask the SVG's baked-in text */
+.chatInput.hasText {
+  background: #ECECEC;
+}
+
+[data-theme='dark'] .chatInput.hasText {
+  background: #1a1a1a;
 }
 
 .inputRight {
@@ -461,6 +464,10 @@
   width: 49px;
   height: 19px;
   display: block;
+}
+
+[data-theme='dark'] .modeImg {
+  filter: invert(0.8) brightness(1.5);
 }
 
 .modeChevron {
@@ -487,13 +494,22 @@
   display: none;
 }
 
+/* Bottom Row: suggestions + close button side by side */
+.bottomRow {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 12px;
+  margin-top: 16px;
+}
+
 /* Suggestions Container */
 .suggestionsContainer {
   display: flex;
   flex-direction: column;
   gap: 8px;
-  margin-top: 16px;
-  margin-bottom: 74px; /* leave space for the toggle/close button */
+  flex: 1;
+  min-width: 0;
 }
 
 .suggestionsRow1, .suggestionsRow2 {
@@ -532,9 +548,7 @@
 
 /* Inside Panel Close Button */
 .chatboxCloseBtn {
-  position: absolute;
-  bottom: 24px;
-  right: 24px;
+  flex-shrink: 0;
   background: transparent;
   border: none;
   cursor: pointer;

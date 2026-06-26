@@ -150,18 +150,18 @@ export default function Chatbox() {
             </button>
 
             <div className={styles.chatInputWrapper}>
-              {/* tEXT ASK SVG — provides neumorphic box + search icon + gradient placeholder visual */}
+              {/* SVG background — search icon + gradient placeholder text, pointer-events none so input works */}
               <img
                 src="/chatbox/tEXT-ASK.svg"
                 alt=""
                 className={styles.textAskBg}
                 aria-hidden="true"
               />
-              {/* Actual input overlaid on top — transparent so SVG shows through */}
+              {/* Actual functional input overlaid on top */}
               <input
                 type="text"
-                className={styles.chatInput}
-                placeholder="Ask Smith about your query"
+                className={`${styles.chatInput} ${inputVal ? styles.hasText : ""}`}
+                placeholder=""
                 value={inputVal}
                 onChange={(e) => setInputVal(e.target.value)}
                 onKeyDown={handleKeyDown}
@@ -180,52 +180,55 @@ export default function Chatbox() {
           </div>
         </div>
 
-        {/* Suggestions Bar */}
-        <div className={styles.suggestionsContainer}>
-          <div className={styles.suggestionsRow1}>
-            <button
-              className={styles.suggestionPill}
-              onClick={() =>
-                handleSuggestionClick(
-                  "What parameters determine the final cost of my custom system?"
-                )
-              }
-            >
-              What parameters determine the final cost of my custom system?
-            </button>
+        {/* Bottom Row: Suggestions + Close Button */}
+        <div className={styles.bottomRow}>
+          {/* Suggestions Bar */}
+          <div className={styles.suggestionsContainer}>
+            <div className={styles.suggestionsRow1}>
+              <button
+                className={styles.suggestionPill}
+                onClick={() =>
+                  handleSuggestionClick(
+                    "What parameters determine the final cost of my custom system?"
+                  )
+                }
+              >
+                What parameters determine the final cost of my custom system?
+              </button>
+            </div>
+            <div className={styles.suggestionsRow2}>
+              <button
+                className={styles.suggestionPill}
+                onClick={() => handleSuggestionClick("About Aeethod")}
+              >
+                About Aeethod
+              </button>
+              <button
+                className={styles.suggestionPill}
+                onClick={() =>
+                  handleSuggestionClick(
+                    "What happens if my project scope changes?"
+                  )
+                }
+              >
+                What happens if my project scope changes?
+              </button>
+            </div>
           </div>
-          <div className={styles.suggestionsRow2}>
-            <button
-              className={styles.suggestionPill}
-              onClick={() => handleSuggestionClick("About Aeethod")}
-            >
-              About Aeethod
-            </button>
-            <button
-              className={styles.suggestionPill}
-              onClick={() =>
-                handleSuggestionClick(
-                  "What happens if my project scope changes?"
-                )
-              }
-            >
-              What happens if my project scope changes?
-            </button>
-          </div>
-        </div>
 
-        {/* Inside Toggle / Close Button */}
-        <button
-          className={styles.chatboxCloseBtn}
-          onClick={toggleChat}
-          aria-label="Close Chat"
-        >
-          <img
-            src="/chatbox/Button.svg"
-            alt="Close"
-            className={styles.closeBtnIcon}
-          />
-        </button>
+          {/* Inside Toggle / Close Button */}
+          <button
+            className={styles.chatboxCloseBtn}
+            onClick={toggleChat}
+            aria-label="Close Chat"
+          >
+            <img
+              src="/chatbox/Button.svg"
+              alt="Close"
+              className={styles.closeBtnIcon}
+            />
+          </button>
+        </div>
       </div>
     </>
   );
