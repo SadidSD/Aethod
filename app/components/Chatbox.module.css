@@ -94,7 +94,7 @@
   right: 132px;
   bottom: 24px;
   width: 480px;
-  height: calc(100vh - 164px);
+  height: calc(100vh - 200px);
   max-height: 800px;
   z-index: 1000;
   background: #ECECEC;
