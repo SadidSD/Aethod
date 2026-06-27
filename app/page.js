@@ -805,7 +805,7 @@ export default function Home() {
       <Footer />
 
       {/* ===== Floating Scroll Button ===== */}
-      <button
+      {/* <button
         className={`${styles.floatingScrollBtn} ${isDraggingScroll ? styles.isDragging : ""}`}
         id="scroll-indicator"
         aria-label="Scroll Down"
@@ -821,7 +821,7 @@ export default function Home() {
         }}
       >
         <div className={styles.scrollKnob} />
-      </button>
+      </button> */}
     </div>
   );
 }
