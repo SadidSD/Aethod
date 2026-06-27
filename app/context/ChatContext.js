@@ -82,16 +82,10 @@ export function ChatProvider({ children }) {
   const sendMessage = useCallback((text) => {
     if (!text.trim()) return;
 
-    // Add user message. If it is the first message, prepend Smith's welcome greeting.
+    // Add user message.
     const userMsg = { id: Date.now(), sender: "user", text };
     
-    setChatMessages((prev) => {
-      if (prev.length === 0) {
-        const welcomeMsg = { id: Date.now() - 10, sender: "smith", text: "Hello sir, how are you?" };
-        return [welcomeMsg, userMsg];
-      }
-      return [...prev, userMsg];
-    });
+    setChatMessages((prev) => [...prev, userMsg]);
     setIsTyping(true);
 
     // Simulate reply delay
