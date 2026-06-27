@@ -144,7 +144,6 @@ export default function StudioPage() {
 
           {/* ----- SECTION 5: CALL TO ACTION BANNER ----- */}
           <div className={styles.ctaContainer}>
-            <InlineSVG src="/studio/curved_line.svg" className={styles.ctaLineTop} />
             <InlineSVG src={`/studio/_The first conversation costs nothing. The systems brief tells us both whether this is the right fit._.svg`} className={styles.ctaText} />
             <InlineSVG src="/studio/curved_line.svg" className={styles.ctaLineBottom} />
           </div>

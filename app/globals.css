@@ -196,9 +196,9 @@ img, video {
 }
 
 /* ---------- Custom Cursor Colors ---------- */
-/* Default: gradient cursor */
+/* Default: mouse logo cursor */
 html, body {
-  cursor: url('/cursor-gradient.svg') 5 2, default;
+  cursor: url('/mouse_logo.svg') 3 3, default;
 }
 
 body {
@@ -207,14 +207,19 @@ body {
     color 0.5s ease;
 }
 
+/* Ensure all buttons, links, inputs, and interactive components display the custom cursor */
+a, button, [role="button"], input[type="button"], input[type="submit"], input[type="reset"] {
+  cursor: url('/mouse_logo.svg') 3 3, pointer;
+}
+
 /* Purple cursor when hovering blue elements */
 .cursor-purple {
-  cursor: url('/cursor-purple.svg') 5 2, pointer;
+  cursor: url('/mouse_logo.svg') 3 3, pointer;
 }
 
 /* Blue cursor when hovering purple elements */
 .cursor-blue {
-  cursor: url('/cursor-blue.svg') 5 2, pointer;
+  cursor: url('/mouse_logo.svg') 3 3, pointer;
 }
 
 /* Sync logo background circle fill with light/dark theme */

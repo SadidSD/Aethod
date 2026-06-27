@@ -920,26 +920,21 @@
 .ctaContainer {
   box-sizing: border-box;
   position: absolute;
-  width: 1440px;
-  height: 240px;
-  left: calc(50% - 1440px / 2);
-  top: 6980px;
+  width: 100vw;
+  height: 160px;
+  left: calc(50% - 50vw);
+  top: 7020px;
   background: transparent;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  flex-direction: column;
+  justify-content: center;
   z-index: 2;
 }
 
-.ctaLineTop {
-  width: 1440px;
-  height: 10px;
-  display: block;
-}
-
 .ctaLineBottom {
-  width: 1440px;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
   height: 10px;
   display: block;
 }

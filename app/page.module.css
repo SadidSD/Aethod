@@ -327,7 +327,7 @@
   background: transparent;
   border: none;
   opacity: 0;
-  cursor: url('/cursor-blue.svg') 5 2, pointer;
+  cursor: url('/mouse_logo.svg') 3 3, pointer;
   z-index: 2;
 }
 
@@ -340,7 +340,7 @@
   background: transparent;
   border: none;
   opacity: 0;
-  cursor: url('/cursor-purple.svg') 5 2, pointer;
+  cursor: url('/mouse_logo.svg') 3 3, pointer;
   z-index: 2;
 }
 
@@ -461,13 +461,13 @@
 /* Explore button — purple border, blue cursor on hover */
 .btnExplore {
   border: 5px solid #B8A0E8;
-  cursor: url('/cursor-blue.svg') 5 2, pointer;
+  cursor: url('/mouse_logo.svg') 3 3, pointer;
 }
 
 /* Thinking button — soft blue border, purple cursor on hover */
 .btnThinking {
   border: 5px solid #B2CEFE;
-  cursor: url('/cursor-purple.svg') 5 2, pointer;
+  cursor: url('/mouse_logo.svg') 3 3, pointer;
 }
 
 /* ---- Hover state: float up slightly ---- */
