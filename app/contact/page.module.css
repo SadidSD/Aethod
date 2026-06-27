@@ -36,7 +36,7 @@
 .mainCard {
   position: relative;
   width: 1440px;
-  height: 1021px;
+  height: 941px;
   background: transparent;
   border-radius: 0;
   box-shadow: none;
@@ -323,7 +323,7 @@
 .textGroup {
   position: absolute;
   left: 131px;
-  top: 251px;
+  top: 170px;
   width: 291px;
   display: flex;
   flex-direction: column;
@@ -335,7 +335,7 @@
 .heroLogoWrapper {
   position: absolute;
   left: 70px;
-  top: 510px;
+  top: 430px;
   width: 400px;
   height: 400px;
   z-index: 10;
@@ -423,7 +423,7 @@
 .quickMailContainer {
   position: absolute;
   left: 538px;
-  top: 360px;
+  top: 280px;
   width: 823px;
   height: 248px;
   z-index: 20;
@@ -596,7 +596,7 @@
   width: 822px;
   height: 231px;
   left: 540px;
-  top: 672px;
+  top: 592px;
   background-color: #ECECEC;
   border: 2px solid rgba(113, 113, 113, 0.5);
   box-shadow: 
@@ -753,7 +753,7 @@
   width: 10px;
   height: 50px;
   left: 1412px;
-  top: 538px;
+  top: 458px;
   background: linear-gradient(135deg, #E6E5E3 100%, #FEFDFB 0%);
   box-shadow: 
     -2px 2px 4px rgba(165, 164, 163, 0.2), 
