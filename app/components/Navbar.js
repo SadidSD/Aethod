@@ -74,11 +74,11 @@ export default function Navbar({ activePage }) {
             <a href="/journals" className={getLinkClass("works")}>
               Works
             </a>
-            <a href="/contact" className={getLinkClass("contact")}>
-              Contact
-            </a>
             <a href="/blog" className={getLinkClass("blog")}>
               Blog
+            </a>
+            <a href="/contact" className={getLinkClass("contact")}>
+              Contact
             </a>
           </div>
 
