@@ -923,7 +923,7 @@
   width: 100vw;
   height: 190px;
   left: calc(50% - 50vw);
-  top: 6805px;
+  top: 6870px;
   background: transparent;
   display: flex;
   align-items: center;
@@ -956,7 +956,7 @@
   width: 612px;
   height: 218px;
   left: 131px;
-  top: 7210px;
+  top: 7275px;
 }
 
 .capabilityGrid {
@@ -964,7 +964,35 @@
   width: 1308px;
   height: 1069px;
   left: 63px;
-  top: 7510px;
+  top: 7575px;
+  overflow: visible;
+}
+
+.capabilityGrid svg {
+  overflow: visible;
+}
+
+.capabilityGrid g[filter^="url(#filter0_"],
+.capabilityGrid g[filter^="url(#filter6_"],
+.capabilityGrid g[filter^="url(#filter11_"],
+.capabilityGrid g[filter^="url(#filter16_"],
+.capabilityGrid g[filter^="url(#filter20_"],
+.capabilityGrid g[filter^="url(#filter24_"],
+.capabilityGrid g[filter^="url(#filter28_"] {
+  transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  transform-box: fill-box;
+  transform-origin: center;
+  cursor: pointer;
+}
+
+.capabilityGrid g[filter^="url(#filter0_"]:hover,
+.capabilityGrid g[filter^="url(#filter6_"]:hover,
+.capabilityGrid g[filter^="url(#filter11_"]:hover,
+.capabilityGrid g[filter^="url(#filter16_"]:hover,
+.capabilityGrid g[filter^="url(#filter20_"]:hover,
+.capabilityGrid g[filter^="url(#filter24_"]:hover,
+.capabilityGrid g[filter^="url(#filter28_"]:hover {
+  transform: scale(1.03) translateY(-10px);
 }
 
 /* SECTION 7: FOOTER & FORM OVERLAYS */
@@ -973,7 +1001,7 @@
   width: 1346px;
   height: 282px;
   left: calc(50% - 1346px / 2 - 10px);
-  top: 8670px;
+  top: 8735px;
 }
 
 .footerSvg {

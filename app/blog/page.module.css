@@ -534,3 +534,40 @@
 :global([data-theme="dark"]) .footerWrapper svg path[fill="#717171" i] {
   fill: #b0b0c8 !important;
 }
+
+/* ---------- Custom Blog Title Overrides ---------- */
+.researchSidebar svg > path:nth-of-type(1),
+.researchSidebar svg > path:nth-of-type(2),
+.researchSidebar svg > path:nth-of-type(3) {
+  display: none !important;
+}
+
+.blogTitleContainer {
+  position: absolute;
+  left: 146px;
+  top: 176px;
+  z-index: 10;
+}
+
+.blogTitle {
+  font-family: var(--font-outfit), sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 55px;
+  line-height: 100%;
+  letter-spacing: -0.05em;
+  color: #404040;
+  margin: 0;
+}
+
+:global([data-theme="dark"]) .blogTitle {
+  color: #DFDFDF;
+}
+
+.purpleText {
+  background: linear-gradient(135deg, #5A69EA 0%, #BF8BCA 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+}

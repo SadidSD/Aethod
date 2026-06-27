@@ -56,6 +56,13 @@ export default function BlogPage() {
           {/* Sidebar (Frame 110) */}
           <InlineSVG src="/research/Frame 110.svg" className={styles.researchSidebar} />
 
+          {/* Custom HTML Blog Title Overlaid on Sidebar */}
+          <div className={styles.blogTitleContainer}>
+            <h1 className={styles.blogTitle}>
+              Bl<span className={styles.purpleText}>og</span>
+            </h1>
+          </div>
+
           {/* Content (Frame 109) */}
           <InlineSVG src="/research/Frame 109.svg" className={styles.researchContent} />
 
