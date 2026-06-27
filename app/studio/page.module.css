@@ -923,17 +923,22 @@
   width: 100vw;
   height: 160px;
   left: calc(50% - 50vw);
-  top: 7020px;
+  top: 6805px;
   background: transparent;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
+  flex-direction: column;
   z-index: 2;
 }
 
+.ctaLineTop {
+  width: 100%;
+  height: 10px;
+  display: block;
+}
+
 .ctaLineBottom {
-  position: absolute;
-  bottom: 0;
   width: 100%;
   height: 10px;
   display: block;
@@ -951,7 +956,7 @@
   width: 612px;
   height: 218px;
   left: 131px;
-  top: 7437px;
+  top: 7180px;
 }
 
 .capabilityGrid {
@@ -959,7 +964,7 @@
   width: 1308px;
   height: 1069px;
   left: 63px;
-  top: 7735px;
+  top: 7480px;
 }
 
 /* SECTION 7: FOOTER & FORM OVERLAYS */
@@ -968,7 +973,7 @@
   width: 1346px;
   height: 282px;
   left: calc(50% - 1346px / 2 - 10px);
-  top: 8900px;
+  top: 8640px;
 }
 
 .footerSvg {
