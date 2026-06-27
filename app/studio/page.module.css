@@ -921,7 +921,7 @@
   box-sizing: border-box;
   position: absolute;
   width: 100vw;
-  height: 160px;
+  height: 190px;
   left: calc(50% - 50vw);
   top: 6805px;
   background: transparent;
@@ -956,7 +956,7 @@
   width: 612px;
   height: 218px;
   left: 131px;
-  top: 7180px;
+  top: 7210px;
 }
 
 .capabilityGrid {
@@ -964,7 +964,7 @@
   width: 1308px;
   height: 1069px;
   left: 63px;
-  top: 7480px;
+  top: 7510px;
 }
 
 /* SECTION 7: FOOTER & FORM OVERLAYS */
@@ -973,7 +973,7 @@
   width: 1346px;
   height: 282px;
   left: calc(50% - 1346px / 2 - 10px);
-  top: 8640px;
+  top: 8670px;
 }
 
 .footerSvg {
