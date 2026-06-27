@@ -544,7 +544,7 @@
 
 .blogTitleContainer {
   position: absolute;
-  left: 146px;
+  left: 70px;
   top: 176px;
   z-index: 10;
 }
@@ -570,4 +570,19 @@
   -webkit-text-fill-color: transparent;
   background-clip: text;
   color: transparent;
+}
+
+.blogSubtitle {
+  font-family: var(--font-outfit), sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 100%;
+  letter-spacing: -0.05em;
+  color: #717171;
+  margin-top: 13px;
+}
+
+:global([data-theme="dark"]) .blogSubtitle {
+  color: #8888a8;
 }

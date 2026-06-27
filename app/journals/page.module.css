@@ -267,6 +267,11 @@
   height: 85px;
   left: 0px;
   top: 281px;
+  border-top: 0.5px solid #717171;
+  border-bottom: 0.5px solid #717171;
+  box-sizing: border-box;
+  z-index: 15;
+  pointer-events: auto !important;
 }
 
 .filterSubNav :global(svg) {
@@ -871,4 +876,350 @@
 
 :global([data-theme="dark"]) .navLink:hover {
   color: #e8e8f0;
+}
+
+/* ==========================================================
+   INTERACTIVE NEUMORPHIC FILTER SUB-NAVBAR & FILTER CHIPS
+   ========================================================== */
+
+:global([data-theme="dark"]) .filterSubNav {
+  border-color: rgba(255, 255, 255, 0.15);
+}
+
+.filterSubNavInner {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.filterLabelSection {
+  position: absolute;
+  left: 0px;
+  width: 181px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.filterLabel {
+  width: auto;
+  height: 40px;
+  font-family: var(--font-sora), sans-serif;
+  font-style: normal;
+  font-weight: 200;
+  font-size: 20px;
+  line-height: 40px;
+  color: #404040;
+  display: flex;
+  align-items: center;
+  text-transform: none;
+  letter-spacing: normal;
+  flex-shrink: 0;
+}
+
+:global([data-theme="dark"]) .filterLabel {
+  color: var(--text-secondary);
+}
+
+.filterSearchSection {
+  position: absolute;
+  left: 181px;
+  width: 355px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.searchMini {
+  width: 321px;
+  height: 48px;
+  position: relative;
+}
+
+.rectangle73 {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background: #E6E5E3;
+  box-shadow: inset 3px 3px 6px rgba(0, 0, 0, 0.08), inset -3px -3px 6px rgba(255, 255, 255, 0.8);
+  border-radius: 24px;
+  display: flex;
+  align-items: center;
+  padding-left: 20px;
+  padding-right: 50px;
+}
+
+:global([data-theme="dark"]) .rectangle73 {
+  background: var(--bg-surface);
+  box-shadow: var(--shadow-inset);
+}
+
+.searchFiltersInput {
+  width: 100%;
+  border: none;
+  background: transparent;
+  outline: none;
+  font-family: var(--font-sora), sans-serif;
+  font-weight: 300;
+  font-size: 13.5px;
+  color: var(--accent-purple);
+}
+
+.searchFiltersInput::placeholder {
+  color: var(--accent-purple);
+  opacity: 0.6;
+  font-weight: 300;
+}
+
+.searchUp {
+  position: absolute;
+  right: 6px;
+  width: 36px;
+  height: 36px;
+  top: 6px;
+  background: #ECECEC;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.08), -2px -2px 4px rgba(255, 255, 255, 0.9);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.searchUp:hover {
+  transform: translateY(-1px);
+  box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.1), -3px -3px 6px rgba(255, 255, 255, 1);
+}
+
+:global([data-theme="dark"]) .searchUp {
+  background: var(--bg-surface);
+  box-shadow: var(--shadow-btn);
+}
+
+.searchIconSvg {
+  width: 16px;
+  height: 16px;
+}
+
+:global([data-theme="dark"]) .searchIconSvg circle,
+:global([data-theme="dark"]) .searchIconSvg line {
+  stroke: var(--text-secondary) !important;
+}
+
+.filterArrowSection {
+  position: absolute;
+  left: 536px;
+  width: 126px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ellipse30 {
+  width: 35px;
+  height: 35px;
+  background: #ECECEC;
+  box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.08), -3px -3px 6px rgba(255, 255, 255, 0.9);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border: none;
+  transition: all 0.25s ease;
+}
+
+.ellipse30:hover {
+  transform: translateY(-1px);
+  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.1), -4px -4px 8px rgba(255, 255, 255, 1);
+}
+
+:global([data-theme="dark"]) .ellipse30 {
+  background: var(--bg-surface);
+  box-shadow: var(--shadow-btn);
+}
+
+.arrowIconDown {
+  width: 16px;
+  height: 16px;
+  transform: rotate(-90deg);
+}
+
+:global([data-theme="dark"]) .arrowIconDown path {
+  stroke: var(--text-secondary) !important;
+}
+
+.filterBarButtons {
+  position: absolute;
+  left: 680px;
+  right: 0px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  overflow-x: auto;
+  scrollbar-width: none;
+  z-index: 16;
+  pointer-events: auto !important;
+}
+
+.filterBarButtons::-webkit-scrollbar {
+  display: none;
+}
+
+.filterChipAll {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 18px;
+  gap: 10px;
+  width: auto;
+  height: 38px;
+  background: #E6E5E3;
+  box-shadow: inset 3px 3px 6px rgba(0, 0, 0, 0.1), inset -3px -3px 6px rgba(255, 255, 255, 0.8);
+  border-radius: 20px;
+  font-family: var(--font-sora), sans-serif;
+  font-style: normal;
+  cursor: pointer;
+  white-space: nowrap;
+  border: none;
+  pointer-events: auto !important;
+}
+
+.filterChipAll span {
+  background: linear-gradient(135deg, #5A69EA 0%, #BF8BCA 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+  font-weight: 500;
+}
+
+:global([data-theme="dark"]) .filterChipAll {
+  background: var(--bg-surface);
+  box-shadow: var(--shadow-inset);
+}
+
+:global([data-theme="dark"]) .filterChipAll span {
+  background: linear-gradient(135deg, #5A69EA 0%, #BF8BCA 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+  font-weight: 500;
+}
+
+.filterChipOther {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 18px;
+  gap: 10px;
+  width: auto;
+  height: 38px;
+  background: #ECECEC;
+  box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.08), -3px -3px 6px rgba(255, 255, 255, 0.9);
+  border-radius: 20px;
+  font-family: var(--font-sora), sans-serif;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 14px;
+  line-height: 18px;
+  color: #717171;
+  cursor: pointer;
+  white-space: nowrap;
+  border: none;
+  transition: all 0.25s ease;
+  pointer-events: auto !important;
+}
+
+.filterChipOther:hover {
+  transform: translateY(-1px);
+  color: var(--text-primary);
+  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.1), -4px -4px 8px rgba(255, 255, 255, 1);
+}
+
+.filterChipOtherActive {
+  background: #E6E5E3 !important;
+  box-shadow: inset 3px 3px 6px rgba(0, 0, 0, 0.1), inset -3px -3px 6px rgba(255, 255, 255, 0.8) !important;
+  border-radius: 20px;
+}
+
+.filterChipOtherActive span {
+  background: linear-gradient(135deg, #5A69EA 0%, #BF8BCA 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+  font-weight: 500;
+}
+
+:global([data-theme="dark"]) .filterChipOther {
+  background: var(--bg-surface);
+  box-shadow: var(--shadow-btn);
+  color: var(--text-secondary);
+}
+
+:global([data-theme="dark"]) .filterChipOtherActive {
+  background: var(--bg-surface) !important;
+  box-shadow: var(--shadow-inset) !important;
+}
+
+:global([data-theme="dark"]) .filterChipOtherActive span {
+  background: linear-gradient(135deg, #5A69EA 0%, #BF8BCA 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+  font-weight: 500;
+}
+
+/* ==========================================================
+   CARD OVERLAYS & FILTERING DIMMING EFFECT
+   ========================================================== */
+
+.cardOverlay {
+  position: absolute;
+  border-radius: 32px;
+  background: transparent;
+  pointer-events: none;
+  transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+  z-index: 4;
+}
+
+.cardOverlayDimmed {
+  background: rgba(230, 229, 227, 0.65);
+  backdrop-filter: blur(1.5px) grayscale(0.8);
+  -webkit-backdrop-filter: blur(1.5px) grayscale(0.8);
+  pointer-events: auto;
+}
+
+:global([data-theme="dark"]) .cardOverlayDimmed {
+  background: rgba(13, 13, 13, 0.65);
+}
+
+.cardOverlay1 { left: 69px; top: 406px; width: 310px; height: 300px; }
+.cardOverlay2 { left: 399px; top: 406px; width: 310px; height: 300px; }
+.cardOverlay3 { left: 729px; top: 406px; width: 310px; height: 300px; }
+.cardOverlay4 { left: 1059px; top: 406px; width: 310px; height: 300px; }
+.cardOverlay5 { left: 73px; top: 720px; width: 310px; height: 300px; }
+.cardOverlay6 { left: 403px; top: 720px; width: 310px; height: 300px; }
+.cardOverlay7 { left: 733px; top: 720px; width: 310px; height: 300px; }
+.cardOverlay8 { left: 1063px; top: 720px; width: 310px; height: 300px; }
+
+/* Essay button disabled overrides */
+.readEssayBtn:disabled {
+  opacity: 0;
+  pointer-events: none;
+  cursor: default;
 }
