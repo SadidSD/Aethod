@@ -1,1 +1,16 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M5.65 2.09L19.24 12.77L12.56 13.38L16.63 21.48L14.35 22.5L10.27 14.4L5.65 18.76Z" fill="#9B6BF2" stroke="#6B3FC7" stroke-width="0.8"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
+  <defs>
+    <linearGradient id="purpleGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#7C5CFC"/>
+      <stop offset="100%" stop-color="#A78BFA"/>
+    </linearGradient>
+    <linearGradient id="purpleStroke" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#5B21B6"/>
+      <stop offset="100%" stop-color="#7C5CFC"/>
+    </linearGradient>
+  </defs>
+  <g transform="translate(5, 2) scale(0.09) rotate(-22) translate(-79.6, -3)">
+    <path d="M79.6073 3L15.678 132.197C15.678 132.197 -5.1784 170.088 6.61001 152.74C18.3984 135.392 44.0415 115.424 61.4713 119.871C69.3946 121.892 81.3439 130.586 85.5015 141.784C90.4889 144.523 120.609 212.419 133.109 233.545C133.109 233.545 156.585 269.196 212 264.589L79.6073 3Z" fill="url(#purpleGrad)" stroke="url(#purpleStroke)" stroke-width="2" stroke-linejoin="round"/>
+    <path d="M39.4444 29.9034L3 95C3 95 44.1852 63.0364 52.7778 58.3588C61.3704 53.6812 68.4864 47.5195 80.3333 43.9362C94.8183 39.555 104.346 38.9197 119.444 41.2076C138.419 44.0828 152.926 55.1105 163 61.4772C163 59.5282 147 42.377 147 42.377C142.556 36.9198 117.667 11.9726 103.444 6.5154C89.2222 1.0582 78.1111 3.0072 67.8888 5.346C59.711 7.21704 45.5185 22.4972 39.4444 29.9034Z" fill="url(#purpleGrad)" stroke="url(#purpleStroke)" stroke-width="2" stroke-linejoin="round"/>
+  </g>
+</svg>
