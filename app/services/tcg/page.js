@@ -256,7 +256,7 @@ export default function TcgPage() {
           </div>
 
           {/* Theme Switcher slider */}
-          <ThemeToggle className={styles.slideButton} />
+          {/* <ThemeToggle className={styles.slideButton} /> */}
 
         </div>
       </main>

@@ -240,7 +240,7 @@ export default function ToolsPage() {
           </div>
 
           {/* Theme Switcher slider */}
-          <ThemeToggle className={styles.slideButton} />
+          {/* <ThemeToggle className={styles.slideButton} /> */}
 
         </div>
       </main>

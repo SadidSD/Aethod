@@ -508,7 +508,7 @@ export default function Home() {
             {/* Right — Orb */}
             <div className={styles.heroVisual}>
               {/* Slide Toggle — Dark/Light Mode */}
-              <ThemeToggle className={styles.slideButton} />
+              {/* <ThemeToggle className={styles.slideButton} /> */}
 
               {/* Orb */}
               <div className={styles.orbContainer}>

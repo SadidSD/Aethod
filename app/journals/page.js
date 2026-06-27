@@ -199,7 +199,7 @@ export default function JournalsPage() {
           <InlineSVG src="/works/Side Indicator.svg" className={styles.sideIndicator} />
 
           {/* ===== 3D DRAGGABLE THEME SWITCH OVERLAY ===== */}
-          <ThemeToggle className={styles.slideButton} />
+          {/* <ThemeToggle className={styles.slideButton} /> */}
 
           {/* ===== INTERACTIVE CHECK BUTTON OVERLAYS ===== */}
           {/* Row 1 check buttons */}

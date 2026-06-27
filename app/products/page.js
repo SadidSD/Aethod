@@ -66,7 +66,7 @@ export default function ProductsPage() {
         <div className={styles.contentAlignContainer}>
 
           {/* ===== THEME SWITCH (Slide Button Overlay) ===== */}
-          <ThemeToggle className={styles.slideButton} />
+          {/* <ThemeToggle className={styles.slideButton} /> */}
 
           {/* ===== FRAME 91 (Header Title Group) ===== */}
           <InlineSVG src="/products/Frame 91.svg" className={styles.frame91} />

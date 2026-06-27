@@ -154,7 +154,7 @@ export default function StudioPage() {
           <InlineSVG src="/studio/Group 75.svg" className={styles.capabilityGrid} />
 
           {/* ===== 3D DRAGGABLE THEME SWITCH OVERLAY ===== */}
-          <ThemeToggle className={styles.slideButton} />
+          {/* <ThemeToggle className={styles.slideButton} /> */}
         </div>
       </main>
 

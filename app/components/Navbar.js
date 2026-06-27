@@ -54,7 +54,7 @@ export default function Navbar({ activePage }) {
         <div className={styles.navContent}>
           {/* Circular Logo */}
           <a href="/" className={styles.logo} aria-label="Aeethod Home">
-            <InlineSVG src="/navbar logo.svg" className={styles.logoImg} />
+            <InlineSVG src="/A.svg" className={styles.logoImg} />
           </a>
 
           {/* Navigation Links */}
@@ -86,7 +86,7 @@ export default function Navbar({ activePage }) {
           <div className={styles.navRight}>
 
             {/* Telephone Call Circle Button */}
-            <a
+            {/* <a
               href="/contact"
               className={styles.callButton}
               aria-label="Call Support"
@@ -107,7 +107,7 @@ export default function Navbar({ activePage }) {
                   strokeLinejoin="round"
                 />
               </svg>
-            </a>
+            </a> */}
           </div>
         </div>
       </nav>

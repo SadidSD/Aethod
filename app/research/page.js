@@ -224,7 +224,7 @@ export default function ResearchPage() {
           </div>
 
           {/* Theme Switch Toggle (Slide Button) */}
-          <ThemeToggle className={styles.slideButtonWrapper} />
+          {/* <ThemeToggle className={styles.slideButtonWrapper} /> */}
 
           {/* Filter and Search Bar (Frame 135) */}
           <div className={styles.frame135}>
