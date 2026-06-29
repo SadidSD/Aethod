@@ -329,19 +329,7 @@
   transform-origin: center;
 }
 
-/* Active pressed state: Scale down the inner content plate only */
-.buttonGroup:active .buttonInner {
-  transform: scale(0.95);
-}
 
-/* Active pressed state: Increase shadow on the outer colorful frame */
-.buttonGroup:first-of-type:active {
-  filter: url(#filter0_ddiiii_1097_2805) drop-shadow(2px 4px 6px rgba(0, 0, 0, 0.18));
-}
-
-.buttonGroup:last-of-type:active {
-  filter: url(#filter1_ddiiii_1097_2805) drop-shadow(2px 4px 6px rgba(0, 0, 0, 0.18));
-}
 
 
 
