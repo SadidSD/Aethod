@@ -359,8 +359,12 @@
 }
 .invisibleBtnScroll:active ~ .buttonsSvg > g:first-of-type,
 .buttonsSvg > g:first-of-type.selected {
-  transform: translateY(1.5px);
+  transform: translateY(1px);
   filter: url(#filter0_ddiiii_1097_2805_pressed);
+}
+.invisibleBtnScroll:active ~ .buttonsSvg > g:first-of-type .buttonInner {
+  transform: scale(0.94);
+  transform-origin: 111px 35.5px;
 }
 
 /* Thinking hover & active state styling */
@@ -369,8 +373,12 @@
 }
 .invisibleBtnWorks:active ~ .buttonsSvg > g:last-of-type,
 .buttonsSvg > g:last-of-type.selected {
-  transform: translateY(1.5px);
+  transform: translateY(1px);
   filter: url(#filter1_ddiiii_1097_2805_pressed);
+}
+.invisibleBtnWorks:active ~ .buttonsSvg > g:last-of-type .buttonInner {
+  transform: scale(0.94);
+  transform-origin: 341.5px 35.5px;
 }
 
 /* Slightly darker background for pressed/selected states */
