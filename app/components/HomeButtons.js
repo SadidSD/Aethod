@@ -15,13 +15,22 @@ export default function HomeButtons({ onExploreClick, onThinkingClick }) {
       >
         {/* Explore Button Group */}
         <g
-          filter="url(#filter0_ddiiii_1097_2805)"
           onClick={onExploreClick}
           className={styles.btnGroup}
           role="button"
           aria-label="Explore"
         >
-          <rect x="8" y="8" width="206" height="55" rx="10" fill="#ECECEC" />
+          {/* Inner Content Plate (with Filter) */}
+          <rect
+            filter="url(#filter0_ddiiii_1097_2805)"
+            x="8"
+            y="8"
+            width="106"
+            height="55"
+            rx="10"
+            fill="var(--bg-primary)"
+          />
+          {/* Outer Border Rect */}
           <rect
             x="5.5"
             y="5.5"
@@ -33,7 +42,7 @@ export default function HomeButtons({ onExploreClick, onThinkingClick }) {
             fill="none"
           />
           <text
-            x="60"
+            x="20"
             y="42"
             fontFamily="'Sora', sans-serif"
             fontWeight="300"
@@ -43,7 +52,7 @@ export default function HomeButtons({ onExploreClick, onThinkingClick }) {
           >
             Explore
           </text>
-          <g transform="translate(142, 23)">
+          <g transform="translate(84, 23)">
             <path
               d="M7 17L17 7M17 17V7H7"
               stroke="url(#paint0_radial_1097_2805)"
@@ -56,13 +65,22 @@ export default function HomeButtons({ onExploreClick, onThinkingClick }) {
 
         {/* Thinking Button Group */}
         <g
-          filter="url(#filter1_ddiiii_1097_2805)"
           onClick={onThinkingClick}
           className={styles.btnGroup}
           role="button"
           aria-label="Thinking"
         >
-          <rect x="239" y="8" width="205" height="55" rx="10" fill="#ECECEC" />
+          {/* Inner Content Plate (with Filter) */}
+          <rect
+            filter="url(#filter1_ddiiii_1097_2805)"
+            x="239"
+            y="8"
+            width="105"
+            height="55"
+            rx="10"
+            fill="var(--bg-primary)"
+          />
+          {/* Outer Border Rect */}
           <rect
             x="236.5"
             y="5.5"
@@ -74,7 +92,7 @@ export default function HomeButtons({ onExploreClick, onThinkingClick }) {
             fill="none"
           />
           <text
-            x="291"
+            x="245"
             y="42"
             fontFamily="'Sora', sans-serif"
             fontWeight="300"
@@ -84,7 +102,7 @@ export default function HomeButtons({ onExploreClick, onThinkingClick }) {
           >
             Thinking
           </text>
-          <g transform="translate(381, 23)">
+          <g transform="translate(324, 23)">
             <path
               d="M7 17L17 7M17 17V7H7"
               stroke="url(#paint1_radial_thinking_arrow)"
@@ -99,11 +117,10 @@ export default function HomeButtons({ onExploreClick, onThinkingClick }) {
           {/* Filter for Explore */}
           <filter
             id="filter0_ddiiii_1097_2805"
-            x="0"
-            y="0"
-            width="222"
-            height="71"
-            filterUnits="userSpaceOnUse"
+            x="-20%"
+            y="-20%"
+            width="140%"
+            height="140%"
             colorInterpolationFilters="sRGB"
           >
             <feFlood floodOpacity="0" result="BackgroundImageFix" />
@@ -224,11 +241,10 @@ export default function HomeButtons({ onExploreClick, onThinkingClick }) {
           {/* Filter for Thinking */}
           <filter
             id="filter1_ddiiii_1097_2805"
-            x="231"
-            y="0"
-            width="221"
-            height="71"
-            filterUnits="userSpaceOnUse"
+            x="-20%"
+            y="-20%"
+            width="140%"
+            height="140%"
             colorInterpolationFilters="sRGB"
           >
             <feFlood floodOpacity="0" result="BackgroundImageFix" />
