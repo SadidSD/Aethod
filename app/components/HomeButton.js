@@ -41,13 +41,13 @@ export default function HomeButton({ text, variant = "explore", onClick }) {
               className={styles.buttonBg}
               x="8"
               y="8"
-              width="206"
+              width="106"
               height="55"
               rx="10"
               fill="#ECECEC"
             />
             <text
-              x={isThinking ? "54" : "60"}
+              x={isThinking ? "15" : "20"}
               y="42"
               fontFamily="'Sora', sans-serif"
               fontWeight="300"
@@ -56,7 +56,7 @@ export default function HomeButton({ text, variant = "explore", onClick }) {
             >
               {text}
             </text>
-            <g transform={isThinking ? "translate(144, 23)" : "translate(142, 23)"}>
+            <g transform={isThinking ? "translate(94, 23)" : "translate(84, 23)"}>
               <path
                 d="M7 17L17 7M17 17V7H7"
                 stroke={`url(#${gradientId})`}
