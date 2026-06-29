@@ -2,11 +2,13 @@
   width: 222px;
   height: 71px;
   position: relative;
+  background: transparent !important;
 }
 
 .buttonsSvgSingle {
   width: 100%;
   height: 100%;
+  background: transparent !important;
 }
 
 .buttonGroup {

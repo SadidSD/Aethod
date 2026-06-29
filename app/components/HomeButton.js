@@ -46,7 +46,7 @@ export default function HomeButton({ text, variant = "explore", onClick }) {
               width="106"
               height="55"
               rx="10"
-              fill="#ECECEC"
+              fill="var(--bg-primary)"
             />
             <text
               x={isThinking ? "15" : "20"}
