@@ -1,19 +1,82 @@
-.btnBar {
+.container {
+  display: flex;
+  gap: 10px;
   position: relative;
   width: 452px;
   height: 71px;
   margin-top: 8px;
 }
 
-.buttonsSvg {
-  width: 100%;
-  height: 100%;
+.outerLayer {
+  height: 71px;
+  border-radius: 12.5px;
+  position: relative;
+  cursor: pointer;
+  box-shadow:
+    -1px -1px 2px rgba(145, 145, 143, 0.5),
+    1px 1px 2px rgba(255, 255, 255, 0.3);
+  box-sizing: border-box;
 }
 
-.btnGroup {
-  cursor: pointer;
+.exploreOuter {
+  width: 222px;
+}
+
+.thinkingOuter {
+  width: 220px;
+}
+
+.exploreBg {
+  background: radial-gradient(circle at center, #5A69EA 0%, #BF8BCA 100%);
+}
+
+.thinkingBg {
+  background: radial-gradient(circle at center, #5A69EA 0%, #B2CEFE 100%);
+}
+
+.innerLayer {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  height: 55px;
+  border-radius: 10px;
+  background: #FFFFFF; /* Pure white inner plate */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 0 12px;
+  
+  /* Neumorphic shadow - exact CSS translation of SVG filter */
+  box-shadow:
+    inset 2px 2px 5px rgba(145, 145, 143, 0.8),
+    inset -2px -2px 4px rgba(255, 255, 255, 0.8),
+    inset 2px -2px 4px rgba(145, 145, 143, 0.15),
+    inset -2px 2px 4px rgba(145, 145, 143, 0.15);
+  box-sizing: border-box;
+}
+
+.exploreInner {
+  width: 206px;
+}
+
+.thinkingInner {
+  width: 204px;
 }
 
 .btnText {
+  font-family: 'Sora', sans-serif;
+  font-weight: 300;
+  font-size: 20px;
+  color: #404040;
   user-select: none;
+  line-height: 1;
+}
+
+.arrowIcon {
+  width: 12px;
+  height: 12px;
+  display: inline-block;
+  flex-shrink: 0;
+  margin-top: 1px;
 }
