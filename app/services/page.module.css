@@ -755,28 +755,25 @@
 }
 
 /* Hover text highlight & translate animations */
+.card1:hover :global(svg:not([class*="iconBg"])) :global(path) {
+  transform: translateX(6px);
+}
 .card1:hover :global(svg:not([class*="iconBg"])) :global(path[fill="#404040"]) {
   fill: #BF8BCA;
-  transform: translateX(6px);
-}
-.card1:hover :global(svg:not([class*="iconBg"])) :global(path[fill="#717171"]) {
-  transform: translateX(6px);
 }
 
+.card2:hover :global(svg:not([class*="iconBg"])) :global(path) {
+  transform: translateX(6px);
+}
 .card2:hover :global(svg:not([class*="iconBg"])) :global(path[fill="#404040"]) {
   fill: #5A69EA;
-  transform: translateX(6px);
-}
-.card2:hover :global(svg:not([class*="iconBg"])) :global(path[fill="#717171"]) {
-  transform: translateX(6px);
 }
 
-.card3:hover :global(svg:not([class*="iconBg"])) :global(path[fill="#404040"]) {
-  fill: #BF8BCA;
+.card3:hover :global(svg:not([class*="iconBg"])) :global(path) {
   transform: translateX(6px);
 }
-.card3:hover :global(svg:not([class*="iconBg"])) :global(path[fill="#717171"]) {
-  transform: translateX(6px);
+.card3:hover :global(svg:not([class*="iconBg"])) :global(path[fill="#404040"]) {
+  fill: #BF8BCA;
 }
 
 /* Card 4 layered text animations */
