@@ -323,36 +323,24 @@
   transition: fill 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), filter 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
-.invisibleBtnScroll {
-  position: absolute;
-  left: 8px;
-  top: 8px;
-  width: 206px;
-  height: 55px;
-  background: transparent;
-  border: none;
-  opacity: 0;
-  cursor: url('/mouse_logo.svg') 3 3, pointer;
-  z-index: 2;
-}
-
-.invisibleBtnWorks {
-  position: absolute;
-  left: 239px;
-  top: 8px;
-  width: 205px;
-  height: 55px;
-  background: transparent;
-  border: none;
-  opacity: 0;
-  cursor: url('/mouse_logo.svg') 3 3, pointer;
-  z-index: 2;
-}
-
 .buttonInner {
   transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
   transform-box: fill-box;
   transform-origin: center;
+}
+
+/* Active pressed state: Scale down the inner content plate only */
+.buttonGroup:active .buttonInner {
+  transform: scale(0.95);
+}
+
+/* Active pressed state: Increase shadow on the outer colorful frame */
+.buttonGroup:first-of-type:active {
+  filter: url(#filter0_ddiiii_1097_2805) drop-shadow(2px 4px 6px rgba(0, 0, 0, 0.18));
+}
+
+.buttonGroup:last-of-type:active {
+  filter: url(#filter1_ddiiii_1097_2805) drop-shadow(2px 4px 6px rgba(0, 0, 0, 0.18));
 }
 
 
