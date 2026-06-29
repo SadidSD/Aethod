@@ -36,7 +36,6 @@ function InlineSVG({ src, className }) {
 
 export default function Home() {
   const { isDark } = useTheme();
-  const [selectedButton, setSelectedButton] = useState(null);
               
   // Journey flow animation refs and state
   const journeyRef = useRef(null);
@@ -298,7 +297,6 @@ export default function Home() {
                   className={styles.invisibleBtnScroll}
                   onClick={() => {
                     playClickSound();
-                    setSelectedButton("explore");
                     handleScrollToServices();
                   }}
                   aria-label="Explore Services"
@@ -307,15 +305,14 @@ export default function Home() {
                   className={styles.invisibleBtnWorks}
                   onClick={() => {
                     playClickSound();
-                    setSelectedButton("thinking");
                     window.location.href = "/journals";
                   }}
                   aria-label="Visit Our Works"
                 />
                 <svg width="452" height="71" viewBox="0 0 452 71" fill="none" xmlns="http://www.w3.org/2000/svg" className={styles.buttonsSvg}>
                   <g 
-                    filter={selectedButton === "explore" ? "url(#filter0_ddiiii_1097_2805_pressed)" : "url(#filter0_ddiiii_1097_2805)"}
-                    className={`${styles.buttonGroup} ${selectedButton === "explore" ? styles.selected : ""}`}
+                    filter="url(#filter0_ddiiii_1097_2805)"
+                    className={styles.buttonGroup}
                   >
                     <rect x="5.5" y="5.5" width="211" height="60" rx="12.5" stroke="url(#paint0_radial_1097_2805)" strokeWidth="5"/>
                     <g className={styles.buttonInner}>
@@ -327,8 +324,8 @@ export default function Home() {
                     </g>
                   </g>
                   <g 
-                    filter={selectedButton === "thinking" ? "url(#filter1_ddiiii_1097_2805_pressed)" : "url(#filter1_ddiiii_1097_2805)"}
-                    className={`${styles.buttonGroup} ${selectedButton === "thinking" ? styles.selected : ""}`}
+                    filter="url(#filter1_ddiiii_1097_2805)"
+                    className={styles.buttonGroup}
                   >
                     <rect x="236.5" y="5.5" width="210" height="60" rx="12.5" stroke="url(#paint1_radial_thinking_arrow)" strokeWidth="5"/>
                     <g className={styles.buttonInner}>
