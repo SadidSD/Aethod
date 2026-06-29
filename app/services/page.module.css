@@ -745,3 +745,59 @@
   }
 }
 
+/* ---------- SERVICES TEXT HOVER ANIMATIONS ---------- */
+
+/* Text path transition styles inside SVGs */
+.card1 :global(svg) :global(path),
+.card2 :global(svg) :global(path),
+.card3 :global(svg) :global(path) {
+  transition: fill 0.35s ease;
+}
+
+/* Hover text highlight animations */
+.card1:hover :global(path[fill="#404040"]) {
+  fill: #BF8BCA;
+}
+
+.card2:hover :global(path[fill="#404040"]) {
+  fill: #5A69EA;
+}
+
+.card3:hover :global(path[fill="#404040"]) {
+  fill: #BF8BCA;
+}
+
+/* Card 4 layered text animations */
+.card4Title,
+.card4Subtitle,
+.card4Desc {
+  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.card4Title :global(svg) :global(path),
+.card4Subtitle :global(svg) :global(path),
+.card4Desc :global(svg) :global(path) {
+  transition: fill 0.35s ease;
+}
+
+.card4:hover .card4Title {
+  transform: translateX(6px);
+}
+.card4:hover .card4Title :global(path[fill="#404040"]) {
+  fill: #5A69EA;
+}
+
+.card4:hover .card4Subtitle {
+  transform: translateX(6px);
+}
+.card4:hover .card4Subtitle :global(path[fill="#717171"]) {
+  fill: #BF8BCA;
+}
+
+.card4:hover .card4Desc {
+  transform: translateX(6px);
+}
+.card4:hover .card4Desc :global(path[fill="#717171"]) {
+  fill: #404040;
+}
+
