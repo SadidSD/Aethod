@@ -1,6 +1,6 @@
 "use client";
 
-import styles from "../page.module.css";
+import styles from "./HomeButton.module.css";
 
 export default function HomeButton({ text, variant = "explore", onClick }) {
   const isThinking = variant === "thinking";
