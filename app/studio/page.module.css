@@ -671,6 +671,14 @@
   top: 2400px;
 }
 
+.manifestoLineTop {
+  position: absolute;
+  width: 1442px;
+  height: 10px;
+  left: -1px;
+  top: 2430px;
+}
+
 .manifestoTitle {
   position: absolute;
   width: 321px;

@@ -123,6 +123,7 @@ export default function StudioPage() {
           </div>
 
           {/* ----- SECTION 3: THE MANIFESTO ----- */}
+          <InlineSVG src="/studio/curved_line.svg" className={styles.manifestoLineTop} />
           <InlineSVG src="/studio/The Manifesto.svg" className={styles.manifestoTitle} />
           <InlineSVG src="/studio/Four things we believe.svg" className={styles.manifestoSubtitle} />
           
