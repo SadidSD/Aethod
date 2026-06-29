@@ -353,6 +353,24 @@
   transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
+/* Explore active press (inner plate scale down, outer shadow increase) */
+.invisibleBtnScroll:active ~ .buttonsSvg > g:first-of-type {
+  filter: url(#filter0_ddiiii_1097_2805) drop-shadow(2px 4px 6px rgba(0, 0, 0, 0.18));
+}
+.invisibleBtnScroll:active ~ .buttonsSvg > g:first-of-type .buttonInner {
+  transform: scale(0.95);
+  transform-origin: 111px 35.5px;
+}
+
+/* Thinking active press (inner plate scale down, outer shadow increase) */
+.invisibleBtnWorks:active ~ .buttonsSvg > g:last-of-type {
+  filter: url(#filter1_ddiiii_1097_2805) drop-shadow(2px 4px 6px rgba(0, 0, 0, 0.18));
+}
+.invisibleBtnWorks:active ~ .buttonsSvg > g:last-of-type .buttonInner {
+  transform: scale(0.95);
+  transform-origin: 341.5px 35.5px;
+}
+
 
 
 
