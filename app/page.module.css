@@ -323,71 +323,7 @@
   transition: fill 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
-.invisibleBtnScroll {
-  position: absolute;
-  left: 8px;
-  top: 8px;
-  width: 206px;
-  height: 55px;
-  background: transparent;
-  border: none;
-  opacity: 0;
-  cursor: url('/mouse_logo.svg') 3 3, pointer;
-  z-index: 2;
-}
 
-.invisibleBtnWorks {
-  position: absolute;
-  left: 239px;
-  top: 8px;
-  width: 205px;
-  height: 55px;
-  background: transparent;
-  border: none;
-  opacity: 0;
-  cursor: url('/mouse_logo.svg') 3 3, pointer;
-  z-index: 2;
-}
-
-.buttonInner {
-  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
-}
-
-/* Explore hover & active state styling */
-.invisibleBtnScroll:hover ~ .buttonsSvg > g:first-of-type {
-  transform: translateY(-2px);
-}
-.invisibleBtnScroll:active ~ .buttonsSvg > g:first-of-type,
-.buttonsSvg > g:first-of-type.selected {
-  transform: translateY(1px);
-  filter: url(#filter0_ddiiii_1097_2805_pressed);
-}
-.invisibleBtnScroll:active ~ .buttonsSvg > g:first-of-type .buttonInner {
-  transform: scale(0.94);
-  transform-origin: 111px 35.5px;
-}
-
-/* Thinking hover & active state styling */
-.invisibleBtnWorks:hover ~ .buttonsSvg > g:last-of-type {
-  transform: translateY(-2px);
-}
-.invisibleBtnWorks:active ~ .buttonsSvg > g:last-of-type,
-.buttonsSvg > g:last-of-type.selected {
-  transform: translateY(1px);
-  filter: url(#filter1_ddiiii_1097_2805_pressed);
-}
-.invisibleBtnWorks:active ~ .buttonsSvg > g:last-of-type .buttonInner {
-  transform: scale(0.94);
-  transform-origin: 341.5px 35.5px;
-}
-
-/* Slightly darker background for pressed/selected states */
-.invisibleBtnScroll:active ~ .buttonsSvg > g:first-of-type .buttonBg,
-.buttonsSvg > g:first-of-type.selected .buttonBg,
-.invisibleBtnWorks:active ~ .buttonsSvg > g:last-of-type .buttonBg,
-.buttonsSvg > g:last-of-type.selected .buttonBg {
-  fill: #DCDCDC;
-}
 
 /* === Two-layer Neumorphic Press Buttons === */
 

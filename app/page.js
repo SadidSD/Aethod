@@ -293,22 +293,7 @@ export default function Home() {
               </p>
               {/* Action Button Bar */}
               <div className={styles.btnBar}>
-                <button
-                  className={styles.invisibleBtnScroll}
-                  onClick={() => {
-                    playClickSound();
-                    handleScrollToServices();
-                  }}
-                  aria-label="Explore Services"
-                />
-                <button
-                  className={styles.invisibleBtnWorks}
-                  onClick={() => {
-                    playClickSound();
-                    window.location.href = "/journals";
-                  }}
-                  aria-label="Visit Our Works"
-                />
+
                 <svg width="452" height="71" viewBox="0 0 452 71" fill="none" xmlns="http://www.w3.org/2000/svg" className={styles.buttonsSvg}>
                   <g 
                     filter="url(#filter0_ddiiii_1097_2805)"
