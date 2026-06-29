@@ -77,10 +77,11 @@ export default function Home() {
   
   
   
-  // Journey path flow animation — triggered immediately when viewer lands on page
+  // Journey path flow animation — triggered when section enters viewport
   useEffect(() => {
+    const el = journeyRef.current;
     const bluePath = bluePathRef.current;
-    if (!bluePath) return;
+    if (!el || !bluePath) return;
 
     const totalLength = bluePath.getTotalLength();
     const glow = glowPathRef.current;
@@ -94,52 +95,64 @@ export default function Home() {
       glow.style.strokeDashoffset = totalLength;
     }
 
-    const duration = 2500;
-    const startTime = performance.now();
-    let c1 = false, c2 = false, c3 = false;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting && !journeyStartedRef.current) {
+          journeyStartedRef.current = true;
+          observer.disconnect();
 
-    const tick = (now) => {
-      const elapsed = now - startTime;
-      const t = Math.min(elapsed / duration, 1);
-      // Ease-out cubic for smooth deceleration
-      const eased = 1 - Math.pow(1 - t, 3);
+          const duration = 2500;
+          const startTime = performance.now();
+          let c1 = false, c2 = false, c3 = false;
 
-      const offset = totalLength * (1 - eased);
-      bluePath.style.strokeDashoffset = offset;
-      if (glow) glow.style.strokeDashoffset = offset;
+          const tick = (now) => {
+            const elapsed = now - startTime;
+            const t = Math.min(elapsed / duration, 1);
+            // Ease-out cubic for smooth deceleration
+            const eased = 1 - Math.pow(1 - t, 3);
 
-      // Reveal cards as the flow reaches their position on the curve
-      if (eased >= 0.13 && !c1) {
-        c1 = true;
-        const card = document.getElementById("service-card-1");
-        if (card) {
-          card.classList.remove(styles.serviceCardHidden);
-          card.classList.add(styles.serviceCardVisible);
+            const offset = totalLength * (1 - eased);
+            bluePath.style.strokeDashoffset = offset;
+            if (glow) glow.style.strokeDashoffset = offset;
+
+            // Reveal cards as the flow reaches their position on the curve
+            if (eased >= 0.13 && !c1) {
+              c1 = true;
+              const card = document.getElementById("service-card-1");
+              if (card) {
+                card.classList.remove(styles.serviceCardHidden);
+                card.classList.add(styles.serviceCardVisible);
+              }
+            }
+            if (eased >= 0.48 && !c2) {
+              c2 = true;
+              const card = document.getElementById("service-card-2");
+              if (card) {
+                card.classList.remove(styles.serviceCardHidden);
+                card.classList.add(styles.serviceCardVisible);
+              }
+            }
+            if (eased >= 0.80 && !c3) {
+              c3 = true;
+              const card = document.getElementById("service-card-3");
+              if (card) {
+                card.classList.remove(styles.serviceCardHidden);
+                card.classList.add(styles.serviceCardVisible);
+              }
+            }
+
+            if (t < 1) animId = requestAnimationFrame(tick);
+          };
+
+          animId = requestAnimationFrame(tick);
         }
-      }
-      if (eased >= 0.48 && !c2) {
-        c2 = true;
-        const card = document.getElementById("service-card-2");
-        if (card) {
-          card.classList.remove(styles.serviceCardHidden);
-          card.classList.add(styles.serviceCardVisible);
-        }
-      }
-      if (eased >= 0.80 && !c3) {
-        c3 = true;
-        const card = document.getElementById("service-card-3");
-        if (card) {
-          card.classList.remove(styles.serviceCardHidden);
-          card.classList.add(styles.serviceCardVisible);
-        }
-      }
+      },
+      { threshold: 0.15 }
+    );
 
-      if (t < 1) animId = requestAnimationFrame(tick);
-    };
-
-    animId = requestAnimationFrame(tick);
-
+    observer.observe(el);
     return () => {
+      observer.disconnect();
       if (animId) cancelAnimationFrame(animId);
     };
   }, []);
