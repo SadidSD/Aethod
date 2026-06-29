@@ -21,7 +21,6 @@ export default function HomeButtons({ onExploreClick, onThinkingClick }) {
           role="button"
           aria-label="Explore"
         >
-          <rect x="8" y="8" width="206" height="55" rx="10" fill="#ECECEC" />
           <rect
             x="5.5"
             y="5.5"
@@ -32,6 +31,7 @@ export default function HomeButtons({ onExploreClick, onThinkingClick }) {
             strokeWidth="5"
             fill="url(#paint0_radial_1097_2805)"
           />
+          <rect x="8" y="8" width="206" height="55" rx="10" fill="#ECECEC" />
           <text
             x="60"
             y="42"
@@ -62,7 +62,6 @@ export default function HomeButtons({ onExploreClick, onThinkingClick }) {
           role="button"
           aria-label="Thinking"
         >
-          <rect x="239" y="8" width="205" height="55" rx="10" fill="#ECECEC" />
           <rect
             x="236.5"
             y="5.5"
@@ -73,6 +72,7 @@ export default function HomeButtons({ onExploreClick, onThinkingClick }) {
             strokeWidth="5"
             fill="url(#paint1_radial_thinking_arrow)"
           />
+          <rect x="239" y="8" width="205" height="55" rx="10" fill="#ECECEC" />
           <text
             x="291"
             y="42"
