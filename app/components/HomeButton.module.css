@@ -5,7 +5,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: transform 0.1s ease, all 0.3s ease;
+  transition: all 0.3s ease;
   outline: none;
   border: none;
   background: transparent;
@@ -43,7 +43,7 @@
   box-sizing: border-box;
 }
 
-.btnWrapper:active {
+.btnWrapper:active .innerLayer {
   transform: scale(0.95);
 }
 
