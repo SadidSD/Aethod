@@ -485,7 +485,7 @@
   align-items: center;
   padding: 10px 15px;
   gap: 10px;
-  background: #DFDFDF;
+  background: #ECECEC;
   box-shadow: 1px 1px 2px rgba(245, 245, 245, 0.3), -1px -1px 2px rgba(201, 201, 201, 0.5), inset -1px 1px 2px rgba(201, 201, 201, 0.2), inset 1px -1px 2px rgba(201, 201, 201, 0.2), inset -1px -1px 2px rgba(245, 245, 245, 0.9), inset 1px 1px 3px rgba(201, 201, 201, 0.9);
   border-radius: 10px;
   font-family: 'Sora', sans-serif;
@@ -509,7 +509,7 @@
   align-items: center;
   padding: 10px 15px;
   gap: 10px;
-  background: #DFDFDF;
+  background: #ECECEC;
   box-shadow: 1px 1px 2px rgba(245, 245, 245, 0.3), -1px -1px 2px rgba(201, 201, 201, 0.5), inset -1px 1px 2px rgba(201, 201, 201, 0.2), inset 1px -1px 2px rgba(201, 201, 201, 0.2), inset -1px -1px 2px rgba(245, 245, 245, 0.9), inset 1px 1px 3px rgba(201, 201, 201, 0.9);
   border-radius: 10px;
   font-family: 'Sora', sans-serif;
@@ -545,7 +545,7 @@
   padding: 10px 15px;
   gap: 10px;
   height: 38px;
-  background: #DFDFDF;
+  background: #ECECEC;
   box-shadow: 1px 1px 2px rgba(245, 245, 245, 0.3), -1px -1px 2px rgba(201, 201, 201, 0.5), inset -1px 1px 2px rgba(201, 201, 201, 0.2), inset 1px -1px 2px rgba(201, 201, 201, 0.2), inset -1px -1px 2px rgba(245, 245, 245, 0.9), inset 1px 1px 3px rgba(201, 201, 201, 0.9);
   border-radius: 10px;
   font-family: 'Sora', sans-serif;
@@ -567,7 +567,7 @@
   padding: 10px 15px;
   gap: 10px;
   height: 38px;
-  background: #DFDFDF;
+  background: #ECECEC;
   box-shadow: 1px 1px 2px rgba(245, 245, 245, 0.3), -1px -1px 2px rgba(201, 201, 201, 0.5), inset -1px 1px 2px rgba(201, 201, 201, 0.2), inset 1px -1px 2px rgba(201, 201, 201, 0.2), inset -1px -1px 2px rgba(245, 245, 245, 0.9), inset 1px 1px 3px rgba(201, 201, 201, 0.9);
   border-radius: 10px;
   font-family: 'Sora', sans-serif;
@@ -1424,7 +1424,7 @@
   gap: 10px;
   width: 95px;
   height: 38px;
-  background: #DFDFDF;
+  background: #ECECEC;
   box-shadow: 1px 1px 2px rgba(245, 245, 245, 0.3), -1px -1px 2px rgba(201, 201, 201, 0.5), inset -1px 1px 2px rgba(201, 201, 201, 0.2), inset 1px -1px 2px rgba(201, 201, 201, 0.2), inset -1px -1px 2px rgba(245, 245, 245, 0.9), inset 1px 1px 3px rgba(201, 201, 201, 0.9);
   border-radius: 10px;
   font-family: 'Sora', sans-serif;
@@ -1449,7 +1449,7 @@
   gap: 10px;
   width: 104px;
   height: 38px;
-  background: #DFDFDF;
+  background: #ECECEC;
   border-radius: 10px;
   font-family: 'Sora', sans-serif;
   font-style: normal;
@@ -1538,7 +1538,7 @@
   height: 38px;
   left: 80px;
   top: 512px;
-  background: #DFDFDF;
+  background: #ECECEC;
   border-radius: 10px;
   display: flex;
   justify-content: center;
@@ -1562,7 +1562,7 @@
   height: 39px;
   left: 330px;
   top: 511px;
-  background: #DFDFDF;
+  background: #ECECEC;
   border-radius: 10px;
   display: flex;
   justify-content: center;
@@ -1597,7 +1597,7 @@
   height: 529px;
   left: 634px;
   top: 60px;
-  background: #DFDFDF;
+  background: #ECECEC;
   border: 0.5px solid #717171;
   box-shadow: 1px 1px 2px rgba(234, 234, 234, 0.3), -1px -1px 2px rgba(212, 212, 212, 0.5), inset -1px 1px 2px rgba(212, 212, 212, 0.2), inset 1px -1px 2px rgba(212, 212, 212, 0.2), inset -1px -1px 2px rgba(234, 234, 234, 0.9), inset 1px 1px 3px rgba(212, 212, 212, 0.9);
   border-radius: 20px;
@@ -1822,8 +1822,8 @@
 }
 
 /* Footer SVG internal overrides for dark mode */
-:global([data-theme="dark"]) .footerSvg :global(svg) :global(rect[fill="#DFDFDF" i]),
-:global([data-theme="dark"]) .footerSvg :global(svg) :global(path[fill="#DFDFDF" i]) {
+:global([data-theme="dark"]) .footerSvg :global(svg) :global(rect[fill="#ECECEC" i]),
+:global([data-theme="dark"]) .footerSvg :global(svg) :global(path[fill="#ECECEC" i]) {
   fill: var(--bg-surface) !important;
 }
 

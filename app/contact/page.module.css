@@ -885,8 +885,8 @@
 }
 
 /* ===== DARK MODE — Targeted SVG Vector Color Inversion for Footer ===== */
-:global([data-theme="dark"]) .footerWrapper svg rect[fill="#DFDFDF" i],
-:global([data-theme="dark"]) .footerWrapper svg path[fill="#DFDFDF" i] {
+:global([data-theme="dark"]) .footerWrapper svg rect[fill="#ECECEC" i],
+:global([data-theme="dark"]) .footerWrapper svg path[fill="#ECECEC" i] {
   fill: var(--bg-surface) !important;
 }
 

@@ -1045,7 +1045,7 @@
   right: 0.44%;
   top: 13.33%;
   bottom: 6.67%;
-  background: #DFDFDF;
+  background: #ECECEC;
   box-shadow:
     1px 1px 2px rgba(255, 255, 255, 0.3),
     -1px -1px 2px rgba(156, 156, 156, 0.5),
@@ -1106,7 +1106,7 @@
 .slideKnobInner {
   width: 75%;
   height: 75%;
-  background: #DFDFDF;
+  background: #ECECEC;
   box-shadow:
     1px 1px 2px rgba(255, 255, 255, 0.3),
     -1px -1px 2px rgba(167, 167, 167, 0.5),
@@ -1198,8 +1198,8 @@
    ========================================================== */
 
 /* Target background cards/rectangles */
-:global([data-theme="dark"]) .contentAlignContainer svg rect[fill="#DFDFDF" i],
-:global([data-theme="dark"]) .contentAlignContainer svg path[fill="#DFDFDF" i] {
+:global([data-theme="dark"]) .contentAlignContainer svg rect[fill="#ECECEC" i],
+:global([data-theme="dark"]) .contentAlignContainer svg path[fill="#ECECEC" i] {
   fill: var(--bg-surface) !important;
 }
 
