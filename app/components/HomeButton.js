@@ -34,6 +34,7 @@ export default function HomeButton({ text, variant = "explore", onClick }) {
             rx="12.5"
             stroke={`url(#${gradientId})`}
             strokeWidth="5"
+            fill="none"
           />
           {/* Inner Content Plate */}
           <g className={styles.buttonInner}>
