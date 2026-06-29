@@ -6,7 +6,7 @@ import { useTheme } from "./context/ThemeContext";
 import ThemeToggle from "./components/ThemeToggle";
 import Footer from "./components/Footer";
 import Navbar from "./components/Navbar";
-import HomeButtons from "./components/HomeButtons";
+import HomeButton from "./components/HomeButton";
 
 
 const CURVE_PATH = "M10.502 301.037C10.502 301.037 278.19 379.737 387.502 346.037C465.301 322.052 519.222 255.036 594.502 224.037C717.17 173.524 741.006 227.347 853.502 157.037C933.502 107.037 953.502 83.0367 953.502 83.0367C953.502 83.0367 999.582 34.0816 1081.5 16.9464C1123.96 8.06441 1155.5 10.9464 1155.5 10.9464";
@@ -293,16 +293,24 @@ export default function Home() {
                 systems for businesses operating in uncertainty.
               </p>
               {/* Action Button Bar */}
-              <HomeButtons
-                onExploreClick={() => {
-                  playClickSound();
-                  handleScrollToServices();
-                }}
-                onThinkingClick={() => {
-                  playClickSound();
-                  window.location.href = "/journals";
-                }}
-              />
+              <div className={styles.btnBar}>
+                <HomeButton
+                  text="Explore"
+                  variant="explore"
+                  onClick={() => {
+                    playClickSound();
+                    handleScrollToServices();
+                  }}
+                />
+                <HomeButton
+                  text="Thinking"
+                  variant="thinking"
+                  onClick={() => {
+                    playClickSound();
+                    window.location.href = "/journals";
+                  }}
+                />
+              </div>
             </div>
 
             {/* Right — Orb */}

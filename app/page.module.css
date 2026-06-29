@@ -303,16 +303,30 @@
 }
 
 .btnBar {
+  display: flex;
+  gap: 14.5px;
   position: relative;
-  width: 452px;
+  width: auto;
+  max-width: 452px;
   height: 71px;
   margin-top: 8px;
+}
+
+.btnWrapper {
+  width: 222px;
+  height: 71px;
+  position: relative;
 }
 
 .buttonsSvg {
   width: 100%;
   height: 100%;
   pointer-events: none;
+}
+
+.buttonsSvgSingle {
+  width: 100%;
+  height: 100%;
 }
 
 .buttonsSvg > g {
