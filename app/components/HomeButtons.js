@@ -30,7 +30,7 @@ export default function HomeButtons({ onExploreClick, onThinkingClick }) {
             rx="12.5"
             stroke="url(#paint0_radial_1097_2805)"
             strokeWidth="5"
-            fill="none"
+            fill="url(#paint0_radial_1097_2805)"
           />
           <text
             x="60"
@@ -71,7 +71,7 @@ export default function HomeButtons({ onExploreClick, onThinkingClick }) {
             rx="12.5"
             stroke="url(#paint1_radial_thinking_arrow)"
             strokeWidth="5"
-            fill="none"
+            fill="url(#paint1_radial_thinking_arrow)"
           />
           <text
             x="291"
