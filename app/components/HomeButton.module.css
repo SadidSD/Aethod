@@ -3,24 +3,58 @@
   height: 71px;
   position: relative;
   background: transparent !important;
+  cursor: pointer;
 }
 
-.buttonsSvgSingle {
+.buttonsSvgOutline {
   width: 100%;
   height: 100%;
-  background: transparent !important;
+  position: absolute;
+  top: 0;
+  left: 0;
+  pointer-events: none;
 }
 
-.buttonGroup {
-  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), filter 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
-}
-
-.buttonBg {
-  transition: fill 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), filter 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
-}
-
-.buttonInner {
+.innerPlate {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  width: 106px;
+  height: 55px;
+  border-radius: 10px;
+  background: var(--bg-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 0 12px;
+  
+  /* Neumorphic shadow - exact CSS translation of SVG filter */
+  box-shadow:
+    /* Outset drop shadows */
+    -1px -1px 2px rgba(145, 145, 143, 0.3),
+    1px 1px 2px rgba(255, 255, 255, 0.5),
+    /* Inset shadows (sunken/recessed well look) */
+    inset 2px 2px 5px rgba(145, 145, 143, 0.8),
+    inset -2px -2px 4px rgba(255, 255, 255, 0.8),
+    inset 2px -2px 4px rgba(145, 145, 143, 0.15),
+    inset -2px 2px 4px rgba(145, 145, 143, 0.15);
+    
   transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
-  transform-box: fill-box;
-  transform-origin: center;
+}
+
+.innerText {
+  font-family: 'Sora', sans-serif;
+  font-weight: 300;
+  font-size: 20px;
+  color: #404040;
+  user-select: none;
+}
+
+.arrowIcon {
+  width: 12px;
+  height: 12px;
+  display: inline-block;
+  flex-shrink: 0;
+  margin-top: 1px;
 }
