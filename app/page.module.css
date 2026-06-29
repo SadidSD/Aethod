@@ -355,21 +355,7 @@
   transform-origin: center;
 }
 
-/* Explore active press (inner plate scale down, outer shadow increase) */
-.invisibleBtnScroll:active ~ .buttonsSvg > g:first-of-type {
-  filter: url(#filter0_ddiiii_1097_2805) drop-shadow(2px 4px 6px rgba(0, 0, 0, 0.18));
-}
-.invisibleBtnScroll:active ~ .buttonsSvg > g:first-of-type .buttonInner {
-  transform: scale(0.95);
-}
 
-/* Thinking active press (inner plate scale down, outer shadow increase) */
-.invisibleBtnWorks:active ~ .buttonsSvg > g:last-of-type {
-  filter: url(#filter1_ddiiii_1097_2805) drop-shadow(2px 4px 6px rgba(0, 0, 0, 0.18));
-}
-.invisibleBtnWorks:active ~ .buttonsSvg > g:last-of-type .buttonInner {
-  transform: scale(0.95);
-}
 
 
 
