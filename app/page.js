@@ -98,6 +98,10 @@ export default function Home() {
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting && !journeyStartedRef.current) {
+          // Safeguard: ignore false-positive initial intersections on page load if element is below fold
+          if (window.scrollY < 100 && el.getBoundingClientRect().top > window.innerHeight) {
+            return;
+          }
           journeyStartedRef.current = true;
           observer.disconnect();
 
