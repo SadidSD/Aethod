@@ -72,11 +72,10 @@ export default function HomeButton({ text, variant = "explore", onClick }) {
         <defs>
           <filter
             id={filterId}
-            x="0"
-            y="0"
-            width="222"
-            height="71"
-            filterUnits="userSpaceOnUse"
+            x="-20%"
+            y="-20%"
+            width="140%"
+            height="140%"
             colorInterpolationFilters="sRGB"
           >
             <feFlood floodOpacity="0" result="BackgroundImageFix" />
