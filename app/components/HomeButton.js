@@ -24,7 +24,7 @@ export default function HomeButton({ text, variant = "explore", onClick }) {
         role="button"
         aria-label={text}
       >
-        <g filter={`url(#${filterId})`} className={styles.buttonGroup}>
+        <g className={styles.buttonGroup}>
           {/* Outer Border Rect */}
           <rect
             x="5.5"
@@ -39,6 +39,7 @@ export default function HomeButton({ text, variant = "explore", onClick }) {
           <g className={styles.buttonInner}>
             <rect
               className={styles.buttonBg}
+              filter={`url(#${filterId})`}
               x="8"
               y="8"
               width="106"
