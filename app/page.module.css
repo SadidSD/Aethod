@@ -249,7 +249,12 @@
 
 /* ---------- Hero Section ---------- */
 .heroSection {
-  padding: 60px 48px 40px;
+  min-height: calc(100vh - 116px);
+  min-height: calc(100dvh - 116px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 40px 48px;
   position: relative;
   z-index: 1;
 }
@@ -1072,7 +1077,12 @@
   }
 
   .heroSection {
-    padding: 40px 24px;
+    min-height: calc(100vh - 60px);
+    min-height: calc(100dvh - 60px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 20px 24px;
   }
 
   .heroContent {
