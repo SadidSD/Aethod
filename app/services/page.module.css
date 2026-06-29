@@ -820,15 +820,75 @@
   filter: drop-shadow(0 4px 8px rgba(191, 139, 202, 0.45));
 }
 
+/* Card 1 Icon Hover Animation */
+.card1:hover .iconBg {
+  transform: scale(1.05);
+  filter: drop-shadow(0 4px 8px rgba(191, 139, 202, 0.45));
+}
+
 /* Card 2 Icon Hover Animation */
-.card2:hover :global(rect[fill^="url(#pattern0_"]) {
-  transform: rotate(-8deg) scale(1.12);
+.card2:hover .iconBg {
+  transform: scale(1.05);
   filter: drop-shadow(0 4px 8px rgba(90, 105, 234, 0.45));
 }
 
 /* Card 3 Icon Hover Animation */
-.card3:hover :global(rect[fill^="url(#pattern0_"]) {
-  transform: rotate(15deg) scale(1.15);
+.card3:hover .iconBg {
+  transform: scale(1.05);
   filter: drop-shadow(0 4px 8px rgba(191, 139, 202, 0.45));
+}
+
+/* ---------- CUSTOM ANIMATED ICONS HOVER DETAILS ---------- */
+
+.tcgCards {
+  transform-origin: 35.6px 35.6px;
+  transition: transform 0.5s ease;
+}
+
+.tcgCardBack, .tcgCardFront {
+  transform-origin: center;
+  transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.card1:hover .tcgCardBack {
+  transform: translate(-4px, 2px) rotate(-12deg);
+}
+
+.card1:hover .tcgCardFront {
+  transform: translate(4px, -2px) rotate(12deg);
+}
+
+.webCursor {
+  transform-origin: 42px 34px;
+  transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.card2:hover .webCursor {
+  transform: translate(-3px, -3px) scale(0.85);
+}
+
+.toolsWand {
+  transform-origin: 22px 48px;
+  transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.card3:hover .toolsWand {
+  transform: rotate(15deg) scale(1.05);
+}
+
+.sparkle1, .sparkle2 {
+  transform-origin: center;
+  transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.4s ease;
+  opacity: 0.5;
+}
+
+.card3:hover .sparkle1 {
+  transform: scale(1.6) translate(2px, -2px);
+  opacity: 1;
+}
+
+.card3:hover .sparkle2 {
+  transform: scale(1.4) translate(-2px, -2px);
+  opacity: 1;
 }
 
