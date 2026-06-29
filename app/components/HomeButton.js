@@ -6,16 +6,16 @@ export default function HomeButton({ text, variant = "explore", onClick }) {
   const isThinking = variant === "thinking";
   const filterId = isThinking ? "filter-thinking" : "filter-explore";
   const gradientId = isThinking ? "gradient-thinking" : "gradient-explore";
-
+  
   const startColor = "#5A69EA";
   const endColor = isThinking ? "#B2CEFE" : "#BF8BCA";
 
   return (
     <div className={styles.btnWrapper}>
       <svg
-        width="122"
+        width="222"
         height="71"
-        viewBox="0 0 122 71"
+        viewBox="0 0 222 71"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
         className={styles.buttonsSvgSingle}
@@ -29,7 +29,7 @@ export default function HomeButton({ text, variant = "explore", onClick }) {
           <rect
             x="5.5"
             y="5.5"
-            width="111"
+            width="211"
             height="60"
             rx="12.5"
             stroke={`url(#${gradientId})`}
@@ -41,13 +41,13 @@ export default function HomeButton({ text, variant = "explore", onClick }) {
               className={styles.buttonBg}
               x="8"
               y="8"
-              width="106"
+              width="206"
               height="55"
               rx="10"
               fill="#ECECEC"
             />
             <text
-              x={isThinking ? "15" : "20"}
+              x={isThinking ? "54" : "60"}
               y="42"
               fontFamily="'Sora', sans-serif"
               fontWeight="300"
@@ -56,7 +56,7 @@ export default function HomeButton({ text, variant = "explore", onClick }) {
             >
               {text}
             </text>
-            <g transform={isThinking ? "translate(94, 23)" : "translate(84, 23)"}>
+            <g transform={isThinking ? "translate(144, 23)" : "translate(142, 23)"}>
               <path
                 d="M7 17L17 7M17 17V7H7"
                 stroke={`url(#${gradientId})`}
@@ -72,7 +72,7 @@ export default function HomeButton({ text, variant = "explore", onClick }) {
             id={filterId}
             x="0"
             y="0"
-            width="122"
+            width="222"
             height="71"
             filterUnits="userSpaceOnUse"
             colorInterpolationFilters="sRGB"
@@ -203,7 +203,7 @@ export default function HomeButton({ text, variant = "explore", onClick }) {
             cy="0"
             r="1"
             gradientUnits="userSpaceOnUse"
-            gradientTransform="translate(61 35.5) rotate(90) scale(27.5 53)"
+            gradientTransform="translate(111 35.5) rotate(90) scale(27.5 103)"
           >
             <stop stopColor={startColor} />
             <stop offset="1" stopColor={endColor} />
