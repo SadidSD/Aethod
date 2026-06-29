@@ -294,6 +294,22 @@ export default function Home() {
               {/* Action Button Bar */}
               <div className={styles.btnBar}>
 
+                <button
+                  className={styles.invisibleBtnScroll}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    playClickSound();
+                  }}
+                  aria-label="Explore"
+                />
+                <button
+                  className={styles.invisibleBtnWorks}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    playClickSound();
+                  }}
+                  aria-label="Thinking"
+                />
                 <svg width="452" height="71" viewBox="0 0 452 71" fill="none" xmlns="http://www.w3.org/2000/svg" className={styles.buttonsSvg}>
                   <g 
                     filter="url(#filter0_ddiiii_1097_2805)"
