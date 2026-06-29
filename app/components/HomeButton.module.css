@@ -31,13 +31,13 @@
   position: absolute;
   top: 5px;
   left: 5px;
-  right: 5px;
-  bottom: 5px;
+  width: 106px; /* Reduced width to make the inner layer small */
+  height: 56px; /* 66px height - 10px padding (top/bottom) */
   background-color: #F2F1EF;
   border-radius: 15px;
   display: flex;
   align-items: center;
-  padding: 0 24px;
+  padding: 0 10px;
   border: 1px solid rgba(255, 255, 255, 0.4);
   transition: transform 0.15s ease;
   box-sizing: border-box;
@@ -50,14 +50,13 @@
 .contentRow {
   display: flex;
   align-items: center;
-  justify-content: space-between;
   width: 100%;
 }
 
 .btnText {
   font-family: 'Sora', sans-serif;
   font-weight: 500;
-  font-size: 20px;
+  font-size: 18px; /* Slightly adjusted to fit beautifully inside the 106px plate */
   color: #404040;
   user-select: none;
 }
