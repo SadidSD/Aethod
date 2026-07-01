@@ -256,12 +256,15 @@ export default function ContactPage() {
             </p>
           </div>
 
-          {/* ===== LEFT COLUMN: Neomorphic Background Logo ===== */}
+          {/* ===== LEFT COLUMN: Neomorphic + Blue Logo Stack ===== */}
           <div className={styles.heroLogoWrapper}>
-            <svg className={styles.heroLogo} width="268" height="268" viewBox="0 0 268 268" fill="none" xmlns="http://www.w3.org/2000/svg">
+            {/* Neomorphic base */}
+            <svg className={styles.heroLogoNeo} width="268" height="268" viewBox="0 0 268 268" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M39.4444 196.903L3 262C3 262 44.1852 230.036 52.7778 225.359C61.3704 220.681 68.4864 214.519 80.3333 210.936C94.8183 206.555 104.346 205.92 119.444 208.208C138.419 211.083 152.926 222.11 163 228.477C163 226.528 147 209.377 147 209.377C142.556 203.92 117.667 178.973 103.444 173.515C89.2222 168.058 78.1111 170.007 67.8888 172.346C59.711 174.217 45.5185 189.497 39.4444 196.903Z" fill="var(--bg-primary, #ECECEC)"/>
               <path d="M132.607 3L68.678 132.197C68.678 132.197 47.8216 170.088 59.61 152.74C71.3984 135.392 97.0415 115.424 114.471 119.871C122.395 121.892 134.344 130.586 138.501 141.784C143.489 144.523 173.609 212.419 186.109 233.545C186.109 233.545 209.585 269.196 265 264.589L132.607 3Z" fill="var(--bg-primary, #ECECEC)"/>
             </svg>
+            {/* Blue logo on top */}
+            <InlineSVG src="/logo.svg" className={styles.heroLogoBlue} />
           </div>
 
           {/* ===== RIGHT COLUMN: Quick Mail Container ===== */}
