@@ -1814,6 +1814,20 @@
   pointer-events: none;
   opacity: 0.85;
   transition: opacity 0.5s ease;
+  animation: diceFloat 6s ease-in-out infinite;
+  transform: rotate(var(--dice-rotation, 0deg));
+}
+
+@keyframes diceFloat {
+  0% {
+    transform: translate3d(0, 0, 0) rotate(var(--dice-rotation, 0deg));
+  }
+  50% {
+    transform: translate3d(0, -15px, 0) rotate(calc(var(--dice-rotation, 0deg) + 2deg));
+  }
+  100% {
+    transform: translate3d(0, 0, 0) rotate(var(--dice-rotation, 0deg));
+  }
 }
 
 :global([data-theme="dark"]) .diceShape {
@@ -1825,6 +1839,8 @@
   height: 258px;
   left: 44px;
   top: 390px;
+  animation-duration: 5s;
+  animation-delay: 0s;
 }
 
 .diceMini6 {
@@ -1832,6 +1848,8 @@
   height: 348px;
   left: 318px;
   top: 593px;
+  animation-duration: 7.5s;
+  animation-delay: 1.2s;
 }
 
 .diceMini3 {
@@ -1839,6 +1857,8 @@
   height: 156px;
   left: 1114px;
   top: 899px;
+  animation-duration: 6.2s;
+  animation-delay: 0.5s;
 }
 
 /* Glassmorphic Pill: We Understand What Matters */
@@ -2064,6 +2084,8 @@
   height: 222px;
   left: 849px;
   top: 2px;
+  animation-duration: 5.4s;
+  animation-delay: 0.2s;
 }
 
 .diceMini12 {
@@ -2071,7 +2093,9 @@
   height: 189px;
   left: 800px;
   top: 817px;
-  transform: rotate(10.59deg);
+  --dice-rotation: 10.59deg;
+  animation-duration: 6.8s;
+  animation-delay: 0.9s;
 }
 
 .diceMini7 {
@@ -2079,6 +2103,8 @@
   height: 156px;
   left: 445px;
   top: 1049px;
+  animation-duration: 7.2s;
+  animation-delay: 1.6s;
 }
 
 .diceMini9 {
@@ -2086,6 +2112,8 @@
   height: 175px;
   left: -73px;
   top: 1455px;
+  animation-duration: 5.8s;
+  animation-delay: 0.4s;
 }
 
 .diceMini13 {
@@ -2093,6 +2121,8 @@
   height: 222px;
   left: 1220px;
   top: 1630px;
+  animation-duration: 6.5s;
+  animation-delay: 1.1s;
 }
 
 /* ---------- Custom Footer Section ---------- */
