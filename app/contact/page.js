@@ -6,7 +6,6 @@ import { useTheme } from "../context/ThemeContext";
 import ThemeToggle from "../components/ThemeToggle";
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
-import LargeLogo from "./LargeLogo";
 
 
 // Helper component to load SVGs inline
@@ -256,10 +255,7 @@ export default function ContactPage() {
               Use a <span className={styles.highlightText}>platform that feels safe</span>
             </p>
           </div>
-          {/* ===== LEFT COLUMN: Large Brand Logo ===== */}
-          <div className={styles.heroLogoWrapper}>
-            <LargeLogo className={styles.heroLogo} />
-          </div>          {/* ===== RIGHT COLUMN: Quick Mail Container ===== */}
+          {/* ===== RIGHT COLUMN: Quick Mail Container ===== */}
           <div className={styles.quickMailContainer}>
             <InlineSVG src="/union.svg" className={styles.quickMailFrame} />
             <div className={styles.tabHeader}>Quick Mail</div>
