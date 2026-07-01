@@ -357,11 +357,11 @@
     drop-shadow(5px 5px 13px rgba(201, 201, 201, 0.9));
 }
 
-/* Blue logo — 88% of wrapper, centered on top */
+/* Blue logo — 94% of wrapper, centered on top */
 .heroLogoBlue {
   position: absolute;
-  width: 88%;
-  height: 88%;
+  width: 94%;
+  height: 94%;
   z-index: 1;
 }
 
