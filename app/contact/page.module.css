@@ -366,13 +366,13 @@
   width: 100%;
   height: 100%;
   z-index: 1;
-  margin-left: 0px;
-  margin-top: 0px;
+  margin-left: 22px;
+  margin-top: 18px;
 }
 
 .heroLogoBlue svg {
-  width: 95%;
-  height: 95%;
+  width: 90%;
+  height: 90%;
   display: block;
 }
 
