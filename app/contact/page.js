@@ -257,12 +257,7 @@ export default function ContactPage() {
             </p>
           </div>
 
-          {/* ===== LEFT COLUMN: Large Brand Logo ===== */}
-          <div className={styles.heroLogoWrapper}>
-            <div className={styles.heroLogoShadow}>
-              <LargeLogo className={styles.heroLogo} />
-            </div>
-          </div>
+
 
           {/* ===== RIGHT COLUMN: Quick Mail Container ===== */}
           <div className={styles.quickMailContainer}>
