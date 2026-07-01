@@ -335,20 +335,17 @@
 
 .heroLogoWrapper {
   position: absolute;
-  left: 20px;
-  top: 290px;
-  width: 600px;
-  height: 600px;
+  left: 70px;
+  top: 360px;
+  width: 450px;
+  height: 450px;
   z-index: 10;
   display: flex;
   justify-content: center;
   align-items: center;
-  overflow: visible;
 }
 
-/* Neomorphic base — 100% of wrapper, bottom layer behind blue logo */
-.heroLogoNeo {
-  position: absolute;
+.heroLogo {
   width: 100%;
   height: 100%;
   filter:
@@ -356,14 +353,6 @@
     drop-shadow(5px -5px 10px rgba(201, 201, 201, 0.2))
     drop-shadow(-5px -5px 10px rgba(255, 255, 255, 0.9))
     drop-shadow(5px 5px 13px rgba(201, 201, 201, 0.9));
-}
-
-/* Blue logo — 100% of wrapper, the main large logo on top */
-.heroLogoBlue {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  z-index: 1;
 }
 
 .heading {
