@@ -368,6 +368,12 @@
   z-index: 1;
 }
 
+.heroLogoBlue svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
 .heading {
   width: 237px;
   height: 60px;
