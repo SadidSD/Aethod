@@ -256,6 +256,44 @@ export default function ContactPage() {
             </p>
           </div>
 
+          {/* ===== LEFT COLUMN: Neomorphic Background Logo ===== */}
+          <div className={styles.heroLogoWrapper}>
+            <svg className={styles.heroLogo} width="268" height="268" viewBox="0 0 268 268" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <filter id="neo-logo" x="-25%" y="-25%" width="150%" height="150%" colorInterpolationFilters="sRGB">
+                  <feFlood floodOpacity="0" result="BackgroundImageFix"/>
+                  <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+                  <feOffset dx="-8" dy="-8"/>
+                  <feGaussianBlur stdDeviation="8"/>
+                  <feColorMatrix type="matrix" values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.95 0"/>
+                  <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_light"/>
+                  <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha2"/>
+                  <feOffset dx="8" dy="8"/>
+                  <feGaussianBlur stdDeviation="8"/>
+                  <feColorMatrix type="matrix" values="0 0 0 0 0.71 0 0 0 0 0.71 0 0 0 0 0.71 0 0 0 0.75 0"/>
+                  <feBlend mode="normal" in2="effect1_light" result="effect2_dark"/>
+                  <feBlend mode="normal" in="SourceGraphic" in2="effect2_dark" result="shape"/>
+                  <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha3"/>
+                  <feOffset dx="-4" dy="-4"/>
+                  <feGaussianBlur stdDeviation="4"/>
+                  <feComposite in2="hardAlpha3" operator="arithmetic" k2="-1" k3="1"/>
+                  <feColorMatrix type="matrix" values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.85 0"/>
+                  <feBlend mode="normal" in2="shape" result="effect3_innerLight"/>
+                  <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha4"/>
+                  <feOffset dx="4" dy="4"/>
+                  <feGaussianBlur stdDeviation="4"/>
+                  <feComposite in2="hardAlpha4" operator="arithmetic" k2="-1" k3="1"/>
+                  <feColorMatrix type="matrix" values="0 0 0 0 0.72 0 0 0 0 0.72 0 0 0 0 0.72 0 0 0 0.8 0"/>
+                  <feBlend mode="normal" in2="effect3_innerLight" result="effect4_innerDark"/>
+                </filter>
+              </defs>
+              <g filter="url(#neo-logo)">
+                <path d="M39.4444 196.903L3 262C3 262 44.1852 230.036 52.7778 225.359C61.3704 220.681 68.4864 214.519 80.3333 210.936C94.8183 206.555 104.346 205.92 119.444 208.208C138.419 211.083 152.926 222.11 163 228.477C163 226.528 147 209.377 147 209.377C142.556 203.92 117.667 178.973 103.444 173.515C89.2222 168.058 78.1111 170.007 67.8888 172.346C59.711 174.217 45.5185 189.497 39.4444 196.903Z" fill="var(--bg-primary, #ECECEC)"/>
+                <path d="M132.607 3L68.678 132.197C68.678 132.197 47.8216 170.088 59.61 152.74C71.3984 135.392 97.0415 115.424 114.471 119.871C122.395 121.892 134.344 130.586 138.501 141.784C143.489 144.523 173.609 212.419 186.109 233.545C186.109 233.545 209.585 269.196 265 264.589L132.607 3Z" fill="var(--bg-primary, #ECECEC)"/>
+              </g>
+            </svg>
+          </div>
+
           {/* ===== RIGHT COLUMN: Quick Mail Container ===== */}
           <div className={styles.quickMailContainer}>
             <InlineSVG src="/union.svg" className={styles.quickMailFrame} />
