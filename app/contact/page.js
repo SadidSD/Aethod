@@ -255,10 +255,7 @@ export default function ContactPage() {
               Use a <span className={styles.highlightText}>platform that feels safe</span>
             </p>
           </div>
-          {/* ===== LEFT COLUMN: Large Brand Logo ===== */}
-          <div className={styles.heroLogoWrapper}>
-            <InlineSVG src="/Logo.svg" className={styles.heroLogo} />
-          </div>
+
           {/* ===== RIGHT COLUMN: Quick Mail Container ===== */}
           <div className={styles.quickMailContainer}>
             <InlineSVG src="/union.svg" className={styles.quickMailFrame} />
