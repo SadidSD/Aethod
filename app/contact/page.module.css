@@ -343,31 +343,26 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
-.heroLogoWrapper:hover {
-  transform: scale(1.04);
-}
-
-.heroLogo {
+/* Neomorphic base — full size of wrapper, bottom layer */
+.heroLogoNeo {
+  position: absolute;
   width: 100%;
   height: 100%;
-  /* Exact outer shadow values from --nav-logo-shadow (inset not supported by drop-shadow) */
   filter:
     drop-shadow(-5px 5px 10px rgba(201, 201, 201, 0.2))
     drop-shadow(5px -5px 10px rgba(201, 201, 201, 0.2))
     drop-shadow(-5px -5px 10px rgba(255, 255, 255, 0.9))
     drop-shadow(5px 5px 13px rgba(201, 201, 201, 0.9));
-  transition: filter 0.35s ease;
 }
 
-.heroLogoWrapper:hover .heroLogo {
-  filter:
-    drop-shadow(-7px 7px 12px rgba(201, 201, 201, 0.25))
-    drop-shadow(7px -7px 12px rgba(201, 201, 201, 0.25))
-    drop-shadow(-7px -7px 12px rgba(255, 255, 255, 1))
-    drop-shadow(7px 7px 16px rgba(201, 201, 201, 1));
+/* Blue logo — 80% of wrapper, centered on top */
+.heroLogoBlue {
+  position: absolute;
+  width: 80%;
+  height: 80%;
+  z-index: 1;
 }
 
 .heading {
