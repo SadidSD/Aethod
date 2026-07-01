@@ -343,13 +343,14 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  overflow: visible;
 }
 
-/* Neomorphic base — full size of wrapper, bottom layer */
+/* Neomorphic base — 115% of wrapper, slightly bigger halo behind the blue logo */
 .heroLogoNeo {
   position: absolute;
-  width: 100%;
-  height: 100%;
+  width: 115%;
+  height: 115%;
   filter:
     drop-shadow(-5px 5px 10px rgba(201, 201, 201, 0.2))
     drop-shadow(5px -5px 10px rgba(201, 201, 201, 0.2))
@@ -357,11 +358,11 @@
     drop-shadow(5px 5px 13px rgba(201, 201, 201, 0.9));
 }
 
-/* Blue logo — 87% of wrapper so white neo peeks as a thin halo border */
+/* Blue logo — 100% of wrapper, the main large logo on top */
 .heroLogoBlue {
   position: absolute;
-  width: 87%;
-  height: 87%;
+  width: 100%;
+  height: 100%;
   z-index: 1;
 }
 
