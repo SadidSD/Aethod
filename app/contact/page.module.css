@@ -335,10 +335,10 @@
 
 .heroLogoWrapper {
   position: absolute;
-  left: 50px;
-  top: 340px;
-  width: 450px;
-  height: 450px;
+  left: 20px;
+  top: 290px;
+  width: 600px;
+  height: 600px;
   z-index: 10;
   display: flex;
   justify-content: center;
@@ -357,11 +357,11 @@
     drop-shadow(5px 5px 13px rgba(201, 201, 201, 0.9));
 }
 
-/* Blue logo — 80% of wrapper, centered on top */
+/* Blue logo — 87% of wrapper so white neo peeks as a thin halo border */
 .heroLogoBlue {
   position: absolute;
-  width: 80%;
-  height: 80%;
+  width: 87%;
+  height: 87%;
   z-index: 1;
 }
 
