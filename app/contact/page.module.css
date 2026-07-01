@@ -346,11 +346,11 @@
   overflow: visible;
 }
 
-/* Neomorphic base — 115% of wrapper, slightly bigger halo behind the blue logo */
+/* Neomorphic base — 108% of wrapper, slightly bigger halo behind the blue logo */
 .heroLogoNeo {
   position: absolute;
-  width: 115%;
-  height: 115%;
+  width: 108%;
+  height: 108%;
   filter:
     drop-shadow(-5px 5px 10px rgba(201, 201, 201, 0.2))
     drop-shadow(5px -5px 10px rgba(201, 201, 201, 0.2))
