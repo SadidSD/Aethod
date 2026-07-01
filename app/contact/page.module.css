@@ -353,6 +353,17 @@
 .heroLogo {
   width: 100%;
   height: 100%;
+  /* CSS drop-shadow is pixel-level — only shadows rendered paths, never the square canvas */
+  filter:
+    drop-shadow(-8px -8px 10px rgba(255, 255, 255, 0.95))
+    drop-shadow(8px 8px 10px rgba(174, 174, 192, 0.75));
+  transition: filter 0.35s ease;
+}
+
+.heroLogoWrapper:hover .heroLogo {
+  filter:
+    drop-shadow(-10px -10px 14px rgba(255, 255, 255, 1))
+    drop-shadow(10px 10px 14px rgba(174, 174, 192, 0.9));
 }
 
 .heading {
