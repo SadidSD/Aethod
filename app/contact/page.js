@@ -6,6 +6,7 @@ import { useTheme } from "../context/ThemeContext";
 import ThemeToggle from "../components/ThemeToggle";
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
+import LargeLogo from "./LargeLogo";
 
 
 // Helper component to load SVGs inline
@@ -259,7 +260,7 @@ export default function ContactPage() {
           {/* ===== LEFT COLUMN: Large Brand Logo ===== */}
           <div className={styles.heroLogoWrapper}>
             <div className={styles.heroLogoShadow}>
-              <InlineSVG src="/hero-logo-contract.svg" className={styles.heroLogo} />
+              <LargeLogo className={styles.heroLogo} />
             </div>
           </div>
 
