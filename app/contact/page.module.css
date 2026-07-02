@@ -1000,6 +1000,27 @@
     left: auto !important;
     top: auto !important;
     margin: 0 auto !important;
+    width: 280px !important;
+    height: 280px !important;
+  }
+  .heroLogoBlue {
+    margin-left: 15px !important;
+    margin-top: 12px !important;
+  }
+  .heading {
+    width: auto !important;
+    height: auto !important;
+    font-size: 32px !important;
+    line-height: 40px !important;
+  }
+  .subHeading {
+    width: auto !important;
+    height: auto !important;
+    font-size: 18px !important;
+    line-height: 24px !important;
+  }
+  .sideIndicator {
+    display: none !important;
   }
   .quickMailContainer {
     position: relative !important;
@@ -1107,5 +1128,27 @@
     width: 100% !important;
     max-width: 600px !important;
     height: auto !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .heroLogoWrapper {
+    width: 220px !important;
+    height: 220px !important;
+  }
+  .heroLogoBlue {
+    margin-left: 10px !important;
+    margin-top: 8px !important;
+  }
+  .heading {
+    font-size: 28px !important;
+    line-height: 36px !important;
+  }
+  .subHeading {
+    font-size: 16px !important;
+    line-height: 22px !important;
+  }
+  .quickMailContainer {
+    padding: 16px 12px !important;
   }
 }
