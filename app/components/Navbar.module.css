@@ -392,53 +392,123 @@
 
 @media (max-width: 950px) {
   .navbar {
-    height: auto !important;
-    min-height: 110px;
-    padding: 16px 24px !important;
+    height: 80px !important;
+    padding: 0 24px !important;
+    transition: height 0.4s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
   }
+
+  .navbarOpen {
+    height: 420px !important;
+  }
+
   .navContent {
-    flex-direction: column !important;
-    gap: 16px !important;
-    align-items: center !important;
-    position: relative !important;
-  }
-  .logo {
-    position: absolute !important;
-    left: 8px !important;
-    top: -12px !important;
-  }
-  .navLinks {
-    position: static !important;
-    transform: none !important;
-    display: flex !important;
     flex-direction: row !important;
-    overflow-x: auto !important;
-    white-space: nowrap !important;
-    width: 100% !important;
-    justify-content: flex-start !important;
-    gap: 16px !important;
-    padding: 8px 12px !important;
+    height: 80px !important;
+    padding-right: 76px !important;
+    position: relative !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+  }
+
+  .logo {
+    position: static !important;
+  }
+
+  .navLinks {
+    position: absolute !important;
+    top: 80px !important;
+    left: 24px !important;
+    right: 24px !important;
+    transform: translateY(-10px) !important;
+    display: flex !important;
+    flex-direction: column !important;
+    width: auto !important;
+    align-items: center !important;
+    gap: 8px !important;
+    padding: 16px 0 !important;
     box-sizing: border-box !important;
-    scrollbar-width: none !important;
-    margin-top: 48px !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+    transition: opacity 0.25s ease, transform 0.25s ease !important;
+    margin-top: 0 !important;
   }
-  .navLinks::-webkit-scrollbar {
-    display: none !important;
+
+  .navbarOpen .navLinks {
+    opacity: 1 !important;
+    pointer-events: auto !important;
+    transform: translateY(0) !important;
   }
+
   .navLink {
-    font-size: 15px !important;
-    line-height: 20px !important;
-    padding: 6px 8px !important;
-    display: inline-block !important;
-    flex-shrink: 0 !important;
+    font-size: 17px !important;
+    line-height: 22px !important;
+    padding: 8px 16px !important;
+    width: 100% !important;
+    text-align: center !important;
   }
+
   .navRight {
     display: none !important;
   }
+
   .themeToggleWrapper {
     position: absolute !important;
     top: 26px !important;
     right: 32px !important;
     z-index: 1001 !important;
+  }
+
+  .hamburgerBtn {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: var(--nav-bg);
+    border: none;
+    cursor: pointer;
+    box-shadow: var(--shadow-btn);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    flex-shrink: 0;
+  }
+
+  .hamburgerBtn:hover {
+    transform: scale(1.06);
+  }
+
+  .hamburgerBtn:active {
+    box-shadow: var(--shadow-inset);
+    transform: scale(0.95);
+  }
+
+  .hamburgerIcon {
+    width: 20px;
+    height: 14px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .hamburgerIcon span {
+    display: block;
+    width: 100%;
+    height: 2px;
+    background: var(--text-secondary);
+    border-radius: 2px;
+    transition: all 0.3s ease;
+  }
+
+  .hamburgerIconOpen span:nth-child(1) {
+    transform: translateY(6px) rotate(45deg);
+  }
+
+  .hamburgerIconOpen span:nth-child(2) {
+    opacity: 0;
+  }
+
+  .hamburgerIconOpen span:nth-child(3) {
+    transform: translateY(-6px) rotate(-45deg);
   }
 }

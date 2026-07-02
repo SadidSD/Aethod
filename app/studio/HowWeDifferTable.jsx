@@ -5,12 +5,12 @@ import { useRef } from "react";
 import styles from "./page.module.css";
 
 const rowsData = [
-  { others: "Deliver features", aeethod: "Design systems", height: 93 },
-  { others: "Chase trends", aeethod: "Study patterns", height: 85 },
-  { others: "Sell automation", aeethod: "Build intelligence", height: 87 },
-  { others: "Scale fast", aeethod: "Build to last", height: 62 },
-  { others: "Many clients, thin work", aeethod: "Few clients, deep work", height: 85 },
-  { others: "Start with solutions", aeethod: "Start with understanding", height: 152.5 }
+  { others: ["Deliver features"], aeethod: "Design systems", height: 93 },
+  { others: ["Chase trends"], aeethod: "Study patterns", height: 85 },
+  { others: ["Sell automation"], aeethod: "Build intelligence", height: 87 },
+  { others: ["Scale fast"], aeethod: "Build to last", height: 62 },
+  { others: ["Many clients,", "thin work"], aeethod: "Few clients, deep work", height: 85 },
+  { others: ["Start with", "solutions"], aeethod: "Start with understanding", height: 152.5 }
 ];
 
 export default function HowWeDifferTable() {
@@ -40,40 +40,44 @@ export default function HowWeDifferTable() {
           <div key={idx} className={styles.row} style={{ height: row.height }}>
             {/* Left Column */}
             <div className={styles.colLeft}>
-              <span className={styles.textLeft}>
-                {row.others}
-                {/* Strikethrough Solid Line (fades in to stay) */}
-                <motion.div
-                  className={styles.strikethroughSolid}
-                  initial={{ opacity: 0 }}
-                  animate={isInView ? { opacity: 0.5 } : {}}
-                  transition={{
-                    delay: rowDelay + 0.5, // Fades in as gradient line transitions out
-                    duration: 0.5,
-                    ease: "easeInOut"
-                  }}
-                />
-                {/* Strikethrough Gradient Line (draws first, then fades out) */}
-                <motion.div
-                  className={styles.strikethroughGradient}
-                  initial={{ scaleX: 0, opacity: 1 }}
-                  animate={
-                    isInView
-                      ? {
-                          scaleX: [0, 1, 1],
-                          opacity: [1, 1, 0]
-                        }
-                      : {}
-                  }
-                  transition={{
-                    delay: rowDelay,
-                    times: [0, 0.5, 1], // Draws in 0.5s, stays, fades out in next 0.5s
-                    duration: 1.0,
-                    ease: "easeInOut"
-                  }}
-                  style={{ originX: 0 }}
-                />
-              </span>
+              <div className={styles.textLeftContainer}>
+                {row.others.map((part, pIdx) => (
+                  <span key={pIdx} className={styles.textLeftPart}>
+                    {part}
+                    {/* Strikethrough Solid Line (fades in to stay) */}
+                    <motion.div
+                      className={styles.strikethroughSolid}
+                      initial={{ opacity: 0 }}
+                      animate={isInView ? { opacity: 0.5 } : {}}
+                      transition={{
+                        delay: rowDelay + 0.5, // Fades in as gradient line transitions out
+                        duration: 0.5,
+                        ease: "easeInOut"
+                      }}
+                    />
+                    {/* Strikethrough Gradient Line (draws first, then fades out) */}
+                    <motion.div
+                      className={styles.strikethroughGradient}
+                      initial={{ scaleX: 0, opacity: 1 }}
+                      animate={
+                        isInView
+                          ? {
+                              scaleX: [0, 1, 1],
+                              opacity: [1, 1, 0]
+                            }
+                          : {}
+                      }
+                      transition={{
+                        delay: rowDelay,
+                        times: [0, 0.5, 1], // Draws in 0.5s, stays, fades out in next 0.5s
+                        duration: 1.0,
+                        ease: "easeInOut"
+                      }}
+                      style={{ originX: 0 }}
+                    />
+                  </span>
+                ))}
+              </div>
             </div>
 
             {/* Right Column */}

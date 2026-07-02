@@ -9,7 +9,7 @@ import Navbar from "../components/Navbar";
 
 import HowWeDifferTable from "./HowWeDifferTable";
 
-function InlineSVG({ src, className }) {
+function InlineSVG({ src, className, isMobile }) {
   const [svgContent, setSvgContent] = useState("");
 
   useEffect(() => {
@@ -25,10 +25,22 @@ function InlineSVG({ src, className }) {
       .catch((err) => console.error(err));
   }, [src]);
 
+  let processedContent = svgContent;
+  if (isMobile && svgContent) {
+    if (src === "/studio/Group 75.svg") {
+      processedContent = svgContent
+        .replace(/viewBox="0 0 1339 1102"/, 'viewBox="0 0 452 2550"')
+        .replace(/width="1339" height="1102"/, 'width="452" height="2550"');
+    } else if (src === "/studio/how_we_work.svg") {
+      processedContent = svgContent
+        .replace(/preserveAspectRatio="none"/, 'preserveAspectRatio="xMidYMid meet"');
+    }
+  }
+
   return (
     <div
       className={className}
-      dangerouslySetInnerHTML={{ __html: svgContent }}
+      dangerouslySetInnerHTML={{ __html: processedContent }}
     />
   );
 }
@@ -37,6 +49,16 @@ export default function StudioPage() {
   const { isDark } = useTheme();
   const [gridInView, setGridInView] = useState(false);
   const gridRef = useRef(null);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 900);
+    };
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -140,7 +162,7 @@ export default function StudioPage() {
           <InlineSVG src="/studio/Humans architect. AI executes. Data makes it true. That is what we build..svg" className={styles.manifestoQuote} />
 
           {/* ----- SECTION 4: HOW WE WORK ----- */}
-          <InlineSVG src="/studio/how_we_work.svg" className={styles.howWeWorkSection} />
+          <InlineSVG src="/studio/how_we_work.svg" className={styles.howWeWorkSection} isMobile={isMobile} />
 
           {/* ----- SECTION 5: CALL TO ACTION BANNER ----- */}
           <div className={styles.ctaContainer}>
@@ -152,7 +174,7 @@ export default function StudioPage() {
           {/* ----- SECTION 6: AI CAPABILITY AREAS ----- */}
           <InlineSVG src="/studio/Frame 78.svg" className={styles.capabilityHeader} />
           <div className={styles.capabilityGridWrapper}>
-            <InlineSVG src="/studio/Group 75.svg" className={styles.capabilityGrid} />
+            <InlineSVG src="/studio/Group 75.svg" className={styles.capabilityGrid} isMobile={isMobile} />
           </div>
 
           {/* ===== 3D DRAGGABLE THEME SWITCH OVERLAY ===== */}

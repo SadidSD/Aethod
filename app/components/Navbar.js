@@ -31,6 +31,7 @@ function InlineSVG({ src, className }) {
 
 export default function Navbar({ activePage }) {
   const { chatQuery, setChatQuery, openChat, sendMessage } = useChat();
+  const [menuOpen, setMenuOpen] = useState(false);
 
   const handleFocus = () => {
     openChat();
@@ -51,7 +52,7 @@ export default function Navbar({ activePage }) {
 
   return (
     <div className={styles.navOuter}>
-      <nav className={styles.navbar} id="navbar">
+      <nav className={`${styles.navbar} ${menuOpen ? styles.navbarOpen : ""}`} id="navbar">
         <div className={styles.navContent}>
           {/* Circular Logo */}
           <a href="/" className={styles.logo} aria-label="Aeethod Home">
@@ -83,31 +84,22 @@ export default function Navbar({ activePage }) {
             </a>
           </div>
 
+          {/* Hamburger Menu Toggle (Mobile Only) */}
+          <button 
+            className={styles.hamburgerBtn} 
+            onClick={() => setMenuOpen(!menuOpen)}
+            aria-expanded={menuOpen}
+            aria-label="Toggle Navigation Menu"
+          >
+            <div className={`${styles.hamburgerIcon} ${menuOpen ? styles.hamburgerIconOpen : ""}`}>
+              <span />
+              <span />
+              <span />
+            </div>
+          </button>
+
           {/* Right Area: Phone button & Theme Toggle */}
           <div className={styles.navRight}>
-            {/* Telephone Call Circle Button */}
-            {/* <a
-              href="/contact"
-              className={styles.callButton}
-              aria-label="Call Support"
-            >
-              <svg
-                width="20"
-                height="20"
-                viewBox="0 0 24 24"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-                className={styles.callIcon}
-              >
-                <path
-                  d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"
-                  stroke="#404040"
-                  strokeWidth="2.5"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
-            </a> */}
           </div>
         </div>
       </nav>
