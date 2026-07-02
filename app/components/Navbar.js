@@ -85,7 +85,6 @@ export default function Navbar({ activePage }) {
 
           {/* Right Area: Phone button & Theme Toggle */}
           <div className={styles.navRight}>
-            <ThemeToggle />
             {/* Telephone Call Circle Button */}
             {/* <a
               href="/contact"
@@ -112,6 +111,9 @@ export default function Navbar({ activePage }) {
           </div>
         </div>
       </nav>
+      <div className={styles.themeToggleWrapper}>
+        <ThemeToggle />
+      </div>
     </div>
   );
 }

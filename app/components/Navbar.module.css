@@ -374,3 +374,16 @@
 [data-theme='dark'] .callIcon path {
   stroke: #ffffff;
 }
+
+.themeToggleWrapper {
+  position: absolute;
+  top: 120px;
+  right: calc((100% - 1352px) / 2 + 52px);
+  z-index: 101;
+}
+
+@media (max-width: 1352px) {
+  .themeToggleWrapper {
+    right: 52px;
+  }
+}
