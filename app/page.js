@@ -440,7 +440,8 @@ export default function Home() {
             </div>
 
             {/* Journey Path with Services */}
-            <div className={styles.servicesJourney} ref={journeyRef}>
+            <div className={styles.servicesJourneyWrapper}>
+              <div className={styles.servicesJourney} ref={journeyRef}>
               {/* Animated SVG Journey Path */}
               <div className={styles.journeyPathSvg}>
                 <svg width="1166" height="365" viewBox="0 0 1166 365" fill="none" overflow="visible" xmlns="http://www.w3.org/2000/svg">
@@ -553,10 +554,9 @@ export default function Home() {
               </div>
             </div>
           </div>
-
-
         </div>
-      </section>
+      </div>
+    </section>
 
       {/* ===== TCG & TRADING CARD ECOSYSTEMS SECTION ===== */}
       <section className={styles.tcgSection} id="tcg-section">
