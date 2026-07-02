@@ -343,43 +343,43 @@
 .line2 {
   position: absolute;
   left: 20px;
-  top: 15.65px;
+  top: 15px;
 }
 
 .line3 {
   position: absolute;
   left: 20px;
-  top: 301px;
+  top: 25px;
 }
 
 .line4 {
   position: absolute;
   left: 20px;
-  top: 301px;
+  top: 1px;
 }
 
 .line5 {
   position: absolute;
-  left: 22.84px;
-  top: 14.8px;
+  left: 185px;
+  top: 83px;
 }
 
 .ellipse32 {
   position: absolute;
-  left: 173.85px;
-  top: 120.37px;
+  left: 179px;
+  top: 75px;
 }
 
 .vector32 {
   position: absolute;
   left: 20px;
-  top: 125.7px;
+  top: 43px;
 }
 
 .peakClarityLabelText {
   position: absolute;
-  left: 144px;
-  top: 94px;
+  left: 120px;
+  top: 56px;
   font-family: var(--font-sora), sans-serif;
   font-size: 13px;
   font-weight: 300;
@@ -388,8 +388,8 @@
 
 .noiseFloorLabelText {
   position: absolute;
-  left: 201px;
-  top: 260px;
+  right: 40px;
+  top: 180px;
   font-family: var(--font-sora), sans-serif;
   font-size: 13px;
   font-weight: 300;
@@ -398,8 +398,8 @@
 
 .dataVolumeLabelText {
   position: absolute;
-  left: 363px;
-  top: 317px;
+  left: 40px;
+  top: 310px;
   font-family: var(--font-sora), sans-serif;
   font-size: 13px;
   font-weight: 300;
