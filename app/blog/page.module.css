@@ -293,12 +293,8 @@
   flex-shrink: 0;
   transition: all 0.25s;
   box-shadow:
-    3px 3px 8px rgba(201, 201, 201, 0.9),
-    -3px -3px 6px rgba(255, 255, 255, 0.9),
-    3px -3px 6px rgba(201, 201, 201, 0.2),
-    -3px 3px 6px rgba(201, 201, 201, 0.2),
-    inset -1px -1px 2px rgba(201, 201, 201, 0.5),
-    inset 1px 1px 2px rgba(255, 255, 255, 0.3);
+    3px 3px 8px rgba(163, 177, 198, 0.35),
+    -3px -3px 8px rgba(255, 255, 255, 0.85);
 }
 
 .filterBtn:hover {
@@ -702,12 +698,8 @@
   border: 1px solid rgba(255, 255, 255, 0.08);
   color: var(--text-secondary, #999);
   box-shadow:
-    3px 3px 8px rgba(0, 0, 0, 0.4),
-    -3px -3px 6px rgba(255, 255, 255, 0.03),
-    3px -3px 6px rgba(0, 0, 0, 0.15),
-    -3px 3px 6px rgba(0, 0, 0, 0.15),
-    inset -1px -1px 2px rgba(0, 0, 0, 0.3),
-    inset 1px 1px 2px rgba(255, 255, 255, 0.03);
+    3px 3px 8px rgba(0, 0, 0, 0.45),
+    -3px -3px 8px rgba(255, 255, 255, 0.03);
 }
 
 /* Active filter — dark inset shadow with transparent background.            */
