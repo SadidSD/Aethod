@@ -78,6 +78,27 @@ export default function ResearchPage() {
   const heroEssay = filteredEssays[0];
   const gridEssays = filteredEssays.slice(1);
 
+  // Helper to highlight specific phrases in subtitles
+  const renderSubtitle = (subtitle) => {
+    const highlights = [
+      "less understanding",
+      "adaptive business systems",
+      "fragmentation creates operational chaos"
+    ];
+    const matchedHighlight = highlights.find((h) => subtitle.includes(h));
+    if (matchedHighlight) {
+      const parts = subtitle.split(matchedHighlight);
+      return (
+        <>
+          {parts[0]}
+          <span className={styles.highlightText}>{matchedHighlight}</span>
+          {parts[1]}
+        </>
+      );
+    }
+    return subtitle;
+  };
+
   return (
     <div className={styles.pageWrapper} data-theme={isDark ? "dark" : "light"}>
       {/* ===== NAVIGATION ===== */}
@@ -133,26 +154,24 @@ export default function ResearchPage() {
         {/* ----- HERO ESSAY CARD (THE CLARITY GAP) ----- */}
         {heroEssay && (
           <div className={styles.heroEssayCard}>
-            <div className={styles.heroCardHeader}>
-              <span className={`${styles.tagPill} ${styles[`tagPill_${heroEssay.tagType || "green"}`]}`}>
-                {heroEssay.tag}
-              </span>
-              <span className={styles.dateText}>{heroEssay.date}</span>
-            </div>
-
             <div className={styles.heroCardBody}>
               <div className={styles.heroCardLeft}>
+                <div className={styles.heroCardHeader}>
+                  <span className={`${styles.tagPill} ${styles[`tagPill_${heroEssay.tagType || "green"}`]}`}>
+                    {heroEssay.tag}
+                  </span>
+                  <span className={styles.dateText}>{heroEssay.date}</span>
+                </div>
                 <h2 className={styles.essayTitle}>{heroEssay.title}</h2>
-                <h3 className={styles.essaySubtitle}>{heroEssay.subtitle}</h3>
+                <h3 className={styles.essaySubtitle}>{renderSubtitle(heroEssay.subtitle)}</h3>
                 <p className={styles.essayDesc}>{heroEssay.description}</p>
                 
                 <div className={styles.heroCardFooter}>
                   <span className={styles.readTime}>{heroEssay.readTime || "10 min read"}</span>
                   <a href="#" className={styles.readLink} onClick={playClickSound}>
-                    Read Essay
-                    <svg className={styles.arrowIcon} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                      <line x1="5" y1="12" x2="19" y2="12" />
-                      <polyline points="12 5 19 12 12 19" />
+                    Read essay
+                    <svg className={styles.chevronIcon} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                      <polyline points="9 18 15 12 9 6" />
                     </svg>
                   </a>
                 </div>
@@ -161,18 +180,7 @@ export default function ResearchPage() {
               {/* Illustration box on the right */}
               <div className={styles.heroCardRight}>
                 {heroEssay.illustrationType === "graph" ? (
-                  <div className={styles.graphContainer}>
-                    <InlineSVG src="/research/Line 2.svg" className={styles.line2} />
-                    <InlineSVG src="/research/Line 3.svg" className={styles.line3} />
-                    <InlineSVG src="/research/Line 4.svg" className={styles.line4} />
-                    <InlineSVG src="/research/Line 5.svg" className={styles.line5} />
-                    <InlineSVG src="/research/Ellipse 32.svg" className={styles.ellipse32} />
-                    <InlineSVG src="/research/Vector 32.svg" className={styles.vector32} />
-                    
-                    <div className={styles.peakClarityLabelText}>Peak Clarity</div>
-                    <div className={styles.noiseFloorLabelText}>Noise Floor</div>
-                    <div className={styles.dataVolumeLabelText}>Data Volume</div>
-                  </div>
+                  <InlineSVG src="/research/mini_graph.svg" className={styles.miniGraphSvg} />
                 ) : (
                   <div className={styles.placeholderVisual}>
                     <InlineSVG src="/works/Line 39.svg" className={styles.visualLines} />
@@ -188,26 +196,27 @@ export default function ResearchPage() {
           {gridEssays.length > 0 ? (
             gridEssays.map((essay) => (
               <article key={essay.id} className={styles.essayCard}>
-                <div className={styles.cardHeader}>
-                  <span className={`${styles.tagPill} ${styles[`tagPill_${essay.tagType || "green"}`]}`}>
-                    {essay.tag}
-                  </span>
-                  <span className={styles.dateText}>{essay.date}</span>
-                </div>
+                <div className={styles.essayCardInner}>
+                  <div className={styles.cardHeader}>
+                    <span className={`${styles.tagPill} ${styles[`tagPill_${essay.tagType || "green"}`]}`}>
+                      {essay.tag}
+                    </span>
+                    <span className={styles.dateText}>{essay.date}</span>
+                  </div>
 
-                <h2 className={styles.essayGridTitle}>{essay.title}</h2>
-                <h3 className={styles.essayGridSubtitle}>{essay.subtitle}</h3>
-                <p className={styles.essayGridDesc}>{essay.description}</p>
+                  <h2 className={styles.essayGridTitle}>{essay.title}</h2>
+                  <h3 className={styles.essayGridSubtitle}>{renderSubtitle(essay.subtitle)}</h3>
+                  <p className={styles.essayGridDesc}>{essay.description}</p>
 
-                <div className={styles.cardFooter}>
-                  <span className={styles.readTime}>{essay.readTime || "10 min read"}</span>
-                  <a href="#" className={styles.readLink} onClick={playClickSound}>
-                    Read Essay
-                    <svg className={styles.arrowIcon} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                      <line x1="5" y1="12" x2="19" y2="12" />
-                      <polyline points="12 5 19 12 12 19" />
-                    </svg>
-                  </a>
+                  <div className={styles.cardFooter}>
+                    <span className={styles.readTime}>{essay.readTime || "10 min read"}</span>
+                    <a href="#" className={styles.readLink} onClick={playClickSound}>
+                      Read essay
+                      <svg className={styles.chevronIcon} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                        <polyline points="9 18 15 12 9 6" />
+                      </svg>
+                    </a>
+                  </div>
                 </div>
               </article>
             ))

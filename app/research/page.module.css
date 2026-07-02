@@ -178,28 +178,25 @@
 
 /* Hero Essay Card (Neomorphic container) */
 .heroEssayCard {
-  background: var(--bg-primary, #ECECEC);
-  border-radius: 24px;
-  border: 1px solid rgba(163, 177, 198, 0.2);
-  box-shadow:
-    8px 8px 16px rgba(163, 177, 198, 0.4),
-    -8px -8px 16px rgba(255, 255, 255, 0.7);
-  padding: 40px;
+  background: transparent;
+  border-radius: 0;
+  border: none;
+  box-shadow: none;
+  padding: 40px 0;
   margin-bottom: 48px;
   display: flex;
   flex-direction: column;
 }
 
 [data-theme='dark'] .heroEssayCard {
-  box-shadow:
-    8px 8px 20px rgba(0, 0, 0, 0.5),
-    -8px -8px 20px rgba(255, 255, 255, 0.03);
-  border-color: rgba(255, 255, 255, 0.02);
+  box-shadow: none;
+  border-color: transparent;
+  background: transparent;
 }
 
 .heroCardHeader {
   display: flex;
-  justify-content: space-between;
+  gap: 8px;
   align-items: center;
   margin-bottom: 24px;
 }
@@ -221,32 +218,39 @@
 .heroCardLeft {
   display: flex;
   flex-direction: column;
+  max-width: 440px;
+  width: 100%;
 }
 
 .essayTitle {
-  font-family: var(--font-sora), sans-serif;
-  font-size: 36px;
+  font-family: 'Sora', var(--font-sora), sans-serif;
+  font-size: 48px;
   font-weight: 400;
   color: var(--text-primary, #0D0D0D);
-  margin: 0 0 8px 0;
+  margin: 0 0 12px 0;
+  line-height: 1.1;
 }
 
 .essaySubtitle {
-  font-family: var(--font-sora), sans-serif;
+  font-family: 'Sora', var(--font-sora), sans-serif;
   font-size: 22px;
   font-weight: 300;
   color: var(--text-secondary, #404040);
-  margin: 0 0 20px 0;
+  margin: 0 0 24px 0;
   line-height: 1.4;
 }
 
-.lessUnderstandingText {
-  color: var(--accent-purple, #7c5cfc);
+.highlightText {
+  color: #a78bfa;
+}
+
+[data-theme='dark'] .highlightText {
+  color: #c0a9ff;
 }
 
 .essayDesc {
-  font-family: var(--font-sora), sans-serif;
-  font-size: 16px;
+  font-family: 'Sora', var(--font-sora), sans-serif;
+  font-size: 15px;
   font-weight: 300;
   color: var(--text-muted, #717171);
   margin: 0 0 36px 0;
@@ -255,72 +259,106 @@
 
 .heroCardFooter {
   display: flex;
-  justify-content: space-between;
+  gap: 8px;
   align-items: center;
-  border-top: 1px solid rgba(163, 177, 198, 0.15);
-  padding-top: 24px;
+  margin-top: 24px;
 }
 
 /* Tag Pills */
 .tagPill {
-  font-family: var(--font-sora), sans-serif;
+  font-family: 'Sora', var(--font-sora), sans-serif;
   font-size: 12px;
   font-weight: 400;
   padding: 6px 12px;
   border-radius: 20px;
-  border: 1px solid transparent;
+  border: none;
 }
 
 .tagPill_green {
-  background: rgba(16, 185, 129, 0.08);
-  color: #10b981;
-  border-color: rgba(16, 185, 129, 0.2);
+  background: rgba(16, 185, 129, 0.12);
+  color: #059669;
 }
 
 .tagPill_blue {
-  background: rgba(59, 130, 246, 0.08);
-  color: #3b82f6;
-  border-color: rgba(59, 130, 246, 0.2);
+  background: rgba(99, 102, 241, 0.12);
+  color: #6366f1;
 }
 
 .tagPill_gray {
-  background: rgba(107, 114, 128, 0.08);
-  color: #6b7280;
-  border-color: rgba(107, 114, 128, 0.2);
+  background: rgba(245, 158, 11, 0.12);
+  color: #d97706;
 }
 
 .dateText {
-  font-family: var(--font-sora), sans-serif;
-  font-size: 13px;
-  color: var(--text-muted, #717171);
+  font-family: 'Sora', var(--font-sora), sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  padding: 6px 12px;
+  border-radius: 20px;
+  background: rgba(113, 113, 113, 0.08);
+  color: #717171;
+  display: inline-flex;
+  align-items: center;
+}
+
+[data-theme='dark'] .dateText {
+  background: rgba(255, 255, 255, 0.06);
+  color: #a0a0a0;
 }
 
 .readTime {
-  font-family: var(--font-sora), sans-serif;
-  font-size: 14px;
-  color: var(--text-muted, #717171);
+  font-family: 'Sora', var(--font-sora), sans-serif;
+  font-size: 13px;
+  font-weight: 400;
+  color: #717171;
+  background: rgba(113, 113, 113, 0.08);
+  padding: 8px 16px;
+  border-radius: 20px;
+  display: inline-flex;
+  align-items: center;
+}
+
+[data-theme='dark'] .readTime {
+  background: rgba(255, 255, 255, 0.06);
+  color: #a0a0a0;
 }
 
 .readLink {
-  font-family: var(--font-sora), sans-serif;
-  font-size: 15px;
+  font-family: 'Sora', var(--font-sora), sans-serif;
+  font-size: 13px;
   font-weight: 400;
-  color: var(--accent-purple, #7c5cfc);
-  display: flex;
-  align-items: center;
-  gap: 8px;
+  color: #404040;
+  background: rgba(113, 113, 113, 0.08);
+  padding: 8px 16px;
+  border-radius: 20px;
   text-decoration: none;
-  transition: gap 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: background 0.2s ease, color 0.2s ease;
 }
 
 .readLink:hover {
-  gap: 12px;
-  color: var(--accent-violet, #8b5cf6);
+  background: rgba(113, 113, 113, 0.14);
+  color: #111111;
 }
 
-.arrowIcon {
-  width: 16px;
-  height: 16px;
+[data-theme='dark'] .readLink {
+  background: rgba(255, 255, 255, 0.06);
+  color: #a0a0a0;
+}
+
+[data-theme='dark'] .readLink:hover {
+  background: rgba(255, 255, 255, 0.12);
+  color: #ffffff;
+}
+
+.chevronIcon {
+  width: 12px;
+  height: 12px;
+  stroke: currentColor;
+  stroke-width: 3px;
+  display: inline-block;
 }
 
 /* Hero Card Right: Graph details matching Figma */
@@ -330,137 +368,101 @@
   width: 100%;
 }
 
-.graphContainer {
-  position: relative;
-  width: 500px;
-  height: 366px;
-  background: var(--bg-primary, #ECECEC);
-  border: 2.2px solid rgba(113, 113, 113, 0.5);
-  border-radius: 10px;
-  box-sizing: border-box;
+.miniGraphSvg {
+  display: block;
+  width: 100%;
+  max-width: 535px;
+  height: auto;
+  border-radius: 20px;
 }
 
-.line2 {
-  position: absolute;
-  left: 20px;
-  top: 15px;
-}
-
-.line3 {
-  position: absolute;
-  left: 20px;
-  top: 25px;
-}
-
-.line4 {
-  position: absolute;
-  left: 20px;
-  top: 1px;
-}
-
-.line5 {
-  position: absolute;
-  left: 185px;
-  top: 83px;
-}
-
-.ellipse32 {
-  position: absolute;
-  left: 179px;
-  top: 75px;
-}
-
-.vector32 {
-  position: absolute;
-  left: 20px;
-  top: 43px;
-}
-
-.peakClarityLabelText {
-  position: absolute;
-  left: 120px;
-  top: 56px;
-  font-family: var(--font-sora), sans-serif;
-  font-size: 13px;
-  font-weight: 300;
-  color: #717171;
-}
-
-.noiseFloorLabelText {
-  position: absolute;
-  right: 40px;
-  top: 180px;
-  font-family: var(--font-sora), sans-serif;
-  font-size: 13px;
-  font-weight: 300;
-  color: #717171;
-}
-
-.dataVolumeLabelText {
-  position: absolute;
-  left: 40px;
-  top: 310px;
-  font-family: var(--font-sora), sans-serif;
-  font-size: 13px;
-  font-weight: 300;
-  color: #717171;
+.miniGraphSvg svg {
+  width: 100% !important;
+  height: auto !important;
+  max-width: 100% !important;
+  display: block;
 }
 
 /* Grid of regular essays */
 .researchGrid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 36px;
+  gap: 48px;
+  border-top: 1.5px solid rgba(113, 113, 113, 0.25);
+  padding-top: 48px;
+  margin-top: 24px;
 }
 
 @media (max-width: 800px) {
   .researchGrid {
     grid-template-columns: 1fr;
+    gap: 36px;
   }
 }
 
 .essayCard {
-  background: var(--bg-primary, #ECECEC);
-  border-radius: 24px;
-  border: 1px solid rgba(163, 177, 198, 0.2);
-  box-shadow:
-    8px 8px 16px rgba(163, 177, 198, 0.4),
-    -8px -8px 16px rgba(255, 255, 255, 0.7);
-  padding: 36px;
+  background: transparent;
+  border-radius: 0;
+  border: none;
+  box-shadow: none;
+  padding: 24px 0;
   display: flex;
   flex-direction: column;
-  transition: transform 0.3s ease;
 }
 
 [data-theme='dark'] .essayCard {
-  box-shadow:
-    8px 8px 20px rgba(0, 0, 0, 0.5),
-    -8px -8px 20px rgba(255, 255, 255, 0.03);
-  border-color: rgba(255, 255, 255, 0.02);
+  box-shadow: none;
+  border-color: transparent;
+  background: transparent;
 }
 
-.essayCard:hover {
-  transform: translateY(-4px);
+.essayCardInner {
+  display: flex;
+  flex-direction: column;
+  max-width: 440px;
+  width: 100%;
+  height: 100%;
+}
+
+@media (min-width: 801px) {
+  .essayCard:first-child {
+    border-right: 1.5px solid rgba(113, 113, 113, 0.25);
+    padding-right: 48px;
+  }
+  .essayCard:last-child {
+    padding-left: 48px;
+  }
+}
+
+@media (max-width: 800px) {
+  .essayCard:first-child {
+    border-bottom: 1.5px solid rgba(113, 113, 113, 0.25);
+    padding-bottom: 36px;
+  }
+  .essayCard:last-child {
+    padding-top: 36px;
+  }
 }
 
 .cardHeader {
   display: flex;
-  justify-content: space-between;
+  gap: 8px;
   align-items: center;
   margin-bottom: 20px;
 }
 
 .essayGridTitle {
-  font-family: var(--font-sora), sans-serif;
-  font-size: 24px;
+  font-family: 'Sora', var(--font-sora), sans-serif;
+  font-size: 36px;
   font-weight: 400;
   color: var(--text-primary, #0d0d0d);
-  margin: 0 0 6px 0;
+  margin: 0 0 12px 0;
+  line-height: 1.1;
 }
 
 .essayGridSubtitle {
-  font-family: var(--font-sora), sans-serif;
-  font-size: 16px;
+  font-family: 'Sora', var(--font-sora), sans-serif;
+  font-size: 20px;
   font-weight: 300;
   color: var(--text-secondary, #404040);
   margin: 0 0 16px 0;
@@ -468,8 +470,8 @@
 }
 
 .essayGridDesc {
-  font-family: var(--font-sora), sans-serif;
-  font-size: 14.5px;
+  font-family: 'Sora', var(--font-sora), sans-serif;
+  font-size: 15px;
   font-weight: 300;
   color: var(--text-muted, #717171);
   margin: 0 0 28px 0;
@@ -478,10 +480,8 @@
 
 .cardFooter {
   display: flex;
-  justify-content: space-between;
+  gap: 8px;
   align-items: center;
-  border-top: 1px solid rgba(163, 177, 198, 0.15);
-  padding-top: 20px;
   margin-top: auto;
 }
 
@@ -492,7 +492,7 @@
   padding: 48px;
   text-align: center;
   border: 1px dashed rgba(163, 177, 198, 0.4);
-  font-family: var(--font-sora), sans-serif;
+  font-family: 'Sora', var(--font-sora), sans-serif;
   color: var(--text-muted, #717171);
   font-size: 16px;
 }
