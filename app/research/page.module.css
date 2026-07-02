@@ -18,16 +18,15 @@
 
 .mainContainer {
   flex: 1;
-  max-width: 1352px;
-  margin: 0 auto;
   width: 100%;
-  padding: 40px 24px 80px;
+  padding: 40px 0 80px;
   box-sizing: border-box;
 }
 
 /* Header block style matching navigation */
 .headerBlock {
   margin-bottom: 48px;
+  width: 100%;
 }
 
 .headerBlockInner {
@@ -36,6 +35,12 @@
   align-items: flex-end;
   border-bottom: 1.5px solid rgba(113, 113, 113, 0.25);
   padding-bottom: 24px;
+  max-width: 1352px;
+  margin: 0 auto;
+  padding-left: 24px;
+  padding-right: 24px;
+  box-sizing: border-box;
+  width: 100%;
 }
 
 @media (max-width: 950px) {
@@ -206,12 +211,18 @@
   grid-template-columns: 1.2fr 1fr;
   gap: 48px;
   align-items: center;
+  max-width: 1352px;
+  margin: 0 auto;
+  padding: 0 24px;
+  box-sizing: border-box;
+  width: 100%;
 }
 
 @media (max-width: 950px) {
   .heroCardBody {
     grid-template-columns: 1fr;
     gap: 36px;
+    padding: 0 24px;
   }
 }
 
@@ -423,29 +434,33 @@
 
 @media (min-width: 801px) {
   .essayCard {
-    padding: 48px 0;
+    padding-top: 48px;
+    padding-bottom: 48px;
   }
   .essayCard:first-child {
     border-right: 1.5px solid rgba(113, 113, 113, 0.25);
     padding-right: 48px;
-    padding-left: 0;
+    padding-left: max(24px, calc((100% - 1352px) / 2 + 24px));
   }
   .essayCard:last-child {
     padding-left: 48px;
-    padding-right: 0;
+    padding-right: max(24px, calc((100% - 1352px) / 2 + 24px));
   }
 }
 
 @media (max-width: 800px) {
   .essayCard {
-    padding: 0;
+    padding-left: 24px;
+    padding-right: 24px;
   }
   .essayCard:first-child {
     border-bottom: 1.5px solid rgba(113, 113, 113, 0.25);
+    padding-top: 48px;
     padding-bottom: 48px;
   }
   .essayCard:last-child {
     padding-top: 48px;
+    padding-bottom: 48px;
   }
 }
 
@@ -526,12 +541,18 @@
   grid-template-columns: 1.2fr 1fr;
   gap: 48px;
   align-items: center;
+  max-width: 1352px;
+  margin: 0 auto;
+  padding: 0 24px;
+  box-sizing: border-box;
+  width: 100%;
 }
 
 @media (max-width: 950px) {
   .specialCardBody {
     grid-template-columns: 1fr;
     gap: 48px;
+    padding: 0 24px;
   }
 }
 
