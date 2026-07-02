@@ -114,8 +114,8 @@ export default function BlogPage() {
         <div className={styles.blogLayout}>
           {/* ===== LEFT SIDEBAR ===== */}
           <aside className={styles.sidebar}>
-            <h1 className={styles.pageTitle}>Vlogs</h1>
-            <p className={styles.pageSubtitle}>We think before we sell.</p>
+            <h1 className={styles.pageTitle}>Blog</h1>
+            <p className={styles.pageSubtitle}>we think, before we sell</p>
 
             {/* Search Bar */}
             <div className={styles.searchWrapper}>
@@ -127,7 +127,7 @@ export default function BlogPage() {
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
                 />
-                <div className={styles.searchIconCircle}>
+                <div className={styles.searchIconCircle} onClick={playClickSound}>
                   <svg
                     width="16"
                     height="16"
@@ -226,14 +226,6 @@ export default function BlogPage() {
                   <polyline points="3 1 7 5 3 9" />
                 </svg>
               </button>
-              <button
-                className={`${styles.themeToggle} ${isDark ? styles.themeToggleDark : ""}`}
-                onClick={() => {
-                  playClickSound();
-                  toggleTheme();
-                }}
-                aria-label="Toggle theme"
-              />
             </div>
 
             {/* Blog Cards */}
