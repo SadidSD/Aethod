@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useCallback, useEffect } from "react";
+import { useState, useCallback, useEffect, useRef } from "react";
 import styles from "./page.module.css";
 import { useTheme } from "../context/ThemeContext";
 import Footer from "../components/Footer";
@@ -30,12 +30,13 @@ function InlineSVG({ src, className, style }) {
 }
 
 export default function BlogPage() {
-  const { isDark } = useTheme();
+  const { isDark, toggleTheme } = useTheme();
   const [posts, setPosts] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
   const [activeFilter, setActiveFilter] = useState("All");
   const [activeTopic, setActiveTopic] = useState(null);
   const [expandedCards, setExpandedCards] = useState({});
+  const filterScrollRef = useRef(null);
 
   const playClickSound = useCallback(() => {
     try {
@@ -187,7 +188,7 @@ export default function BlogPage() {
           <section className={styles.contentArea}>
             {/* Filter Bar */}
             <div className={styles.filterBar}>
-              <div className={styles.filterScroll}>
+              <div className={styles.filterScroll} ref={filterScrollRef}>
                 {filters.map((f) => (
                   <button
                     key={f}
@@ -203,7 +204,15 @@ export default function BlogPage() {
                   </button>
                 ))}
               </div>
-              <button className={styles.scrollArrow} onClick={playClickSound}>
+              <button
+                className={styles.scrollArrow}
+                onClick={() => {
+                  playClickSound();
+                  if (filterScrollRef.current) {
+                    filterScrollRef.current.scrollBy({ left: 150, behavior: "smooth" });
+                  }
+                }}
+              >
                 <svg
                   width="10"
                   height="10"
@@ -217,6 +226,14 @@ export default function BlogPage() {
                   <polyline points="3 1 7 5 3 9" />
                 </svg>
               </button>
+              <button
+                className={`${styles.themeToggle} ${isDark ? styles.themeToggleDark : ""}`}
+                onClick={() => {
+                  playClickSound();
+                  toggleTheme();
+                }}
+                aria-label="Toggle theme"
+              />
             </div>
 
             {/* Blog Cards */}
