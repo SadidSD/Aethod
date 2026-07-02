@@ -969,6 +969,10 @@
   top: 7275px;
 }
 
+.capabilityGridWrapper {
+  display: contents;
+}
+
 .capabilityGrid {
   position: absolute;
   width: 1308px;
@@ -1407,10 +1411,31 @@
     display: block !important;
   }
 
-  .capabilityGrid {
+  .capabilityGridWrapper {
+    width: 100% !important;
     max-width: 100% !important;
+    overflow-x: auto !important;
+    display: flex !important;
+    justify-content: flex-start !important;
+    padding: 16px 24px !important;
+    box-sizing: border-box !important;
+    scrollbar-width: none !important;
+    position: relative !important;
+  }
+
+  .capabilityGridWrapper::-webkit-scrollbar {
+    display: none !important;
+  }
+
+  .capabilityGrid {
+    width: 1308px !important;
+    max-width: none !important;
     height: auto !important;
-    aspect-ratio: 1308 / 476 !important;
+    flex-shrink: 0 !important;
+    position: relative !important;
+    left: auto !important;
+    top: auto !important;
+    margin: 0 !important;
   }
   .rightMarker, .sideIndicator, .manifestoLineTop, .ctaLineTop, .ctaLineBottom {
     display: none !important;

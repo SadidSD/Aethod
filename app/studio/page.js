@@ -151,7 +151,9 @@ export default function StudioPage() {
 
           {/* ----- SECTION 6: AI CAPABILITY AREAS ----- */}
           <InlineSVG src="/studio/Frame 78.svg" className={styles.capabilityHeader} />
-          <InlineSVG src="/studio/Group 75.svg" className={styles.capabilityGrid} />
+          <div className={styles.capabilityGridWrapper}>
+            <InlineSVG src="/studio/Group 75.svg" className={styles.capabilityGrid} />
+          </div>
 
           {/* ===== 3D DRAGGABLE THEME SWITCH OVERLAY ===== */}
           {/* <ThemeToggle className={styles.slideButton} /> */}
