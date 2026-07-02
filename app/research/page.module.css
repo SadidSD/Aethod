@@ -496,3 +496,171 @@
   color: var(--text-muted, #717171);
   font-size: 16px;
 }
+
+/* Stacked Special Cards Layout */
+.specialCardsSection {
+  display: flex;
+  flex-direction: column;
+  margin-top: 24px;
+}
+
+.specialEssayCard {
+  background: transparent;
+  border-top: 1.5px solid rgba(113, 113, 113, 0.25);
+  padding: 64px 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.specialEssayCard:last-child {
+  border-bottom: 1.5px solid rgba(113, 113, 113, 0.25);
+}
+
+.specialCardBody {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 48px;
+  align-items: center;
+}
+
+@media (max-width: 950px) {
+  .specialCardBody {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+}
+
+.specialCardLeft {
+  display: flex;
+  flex-direction: column;
+  max-width: 440px;
+  width: 100%;
+}
+
+.specialCardRight {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+/* Multi-Agent Graphic (Mass Circle and Agents labels) */
+.massContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 32px 0;
+}
+
+.massGraphicWrapper {
+  position: relative;
+  width: 305px;
+  height: 304px;
+}
+
+.massSvg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.massSvg svg {
+  width: 100% !important;
+  height: 100% !important;
+  display: block;
+}
+
+.agentLabel {
+  position: absolute;
+  font-family: 'Sora', var(--font-sora), sans-serif;
+  font-size: 14px;
+  font-weight: 300;
+  color: var(--text-muted, #717171);
+  white-space: nowrap;
+}
+
+.agentLabelLeft {
+  left: -76px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.agentLabelTop {
+  top: -24px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.agentLabelRight {
+  right: -76px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.agentLabelBottom {
+  bottom: -24px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* Predictive Latency Graphic (Triangles on grey card) */
+.predictiveLatencyCardRight {
+  position: relative;
+  width: 100%;
+  max-width: 535px;
+  aspect-ratio: 708 / 535;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.recSvg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.recSvg svg {
+  width: 100% !important;
+  height: 100% !important;
+  display: block;
+}
+
+.predictiveLatencyContent {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 40px;
+  box-sizing: border-box;
+}
+
+.triSvg {
+  width: 55%;
+  max-width: 280px;
+  height: auto;
+}
+
+.triSvg svg {
+  width: 100% !important;
+  height: auto !important;
+  display: block;
+}
+
+.predictiveLatencyText {
+  font-family: 'Sora', var(--font-sora), sans-serif;
+  font-size: 14px;
+  font-weight: 300;
+  color: var(--text-muted, #717171);
+  margin-top: 16px;
+  text-align: center;
+}
+

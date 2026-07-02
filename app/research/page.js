@@ -74,16 +74,27 @@ export default function ResearchPage() {
     return matchesFilter && matchesSearch;
   });
 
-  // Split into Hero (first) and Grid (rest)
-  const heroEssay = filteredEssays[0];
-  const gridEssays = filteredEssays.slice(1);
+  // Separate special stacked essays (Multi-Agent and Predictive Latency)
+  const standardFilteredEssays = filteredEssays.filter(
+    (essay) => essay.id !== "multi-agent-ecosystem" && essay.id !== "predictive-latency"
+  );
+  
+  const specialEssays = filteredEssays.filter(
+    (essay) => essay.id === "multi-agent-ecosystem" || essay.id === "predictive-latency"
+  );
+
+  // Split standard essays into Hero (first) and Grid (rest)
+  const heroEssay = standardFilteredEssays[0];
+  const gridEssays = standardFilteredEssays.slice(1);
 
   // Helper to highlight specific phrases in subtitles
   const renderSubtitle = (subtitle) => {
     const highlights = [
       "less understanding",
       "adaptive business systems",
-      "fragmentation creates operational chaos"
+      "fragmentation creates operational chaos",
+      "E-Commerce Ecosystem Architectures",
+      "Scalable Systems"
     ];
     const matchedHighlight = highlights.find((h) => subtitle.includes(h));
     if (matchedHighlight) {
@@ -192,42 +203,101 @@ export default function ResearchPage() {
         )}
 
         {/* ----- RESEARCH GRID SECTION ----- */}
-        <section className={styles.researchGrid}>
-          {gridEssays.length > 0 ? (
-            gridEssays.map((essay) => (
-              <article key={essay.id} className={styles.essayCard}>
-                <div className={styles.essayCardInner}>
-                  <div className={styles.cardHeader}>
-                    <span className={`${styles.tagPill} ${styles[`tagPill_${essay.tagType || "green"}`]}`}>
-                      {essay.tag}
-                    </span>
-                    <span className={styles.dateText}>{essay.date}</span>
-                  </div>
+        {(gridEssays.length > 0 || (!heroEssay && specialEssays.length === 0)) && (
+          <section className={styles.researchGrid}>
+            {gridEssays.length > 0 ? (
+              gridEssays.map((essay) => (
+                <article key={essay.id} className={styles.essayCard}>
+                  <div className={styles.essayCardInner}>
+                    <div className={styles.cardHeader}>
+                      <span className={`${styles.tagPill} ${styles[`tagPill_${essay.tagType || "green"}`]}`}>
+                        {essay.tag}
+                      </span>
+                      <span className={styles.dateText}>{essay.date}</span>
+                    </div>
 
-                  <h2 className={styles.essayGridTitle}>{essay.title}</h2>
-                  <h3 className={styles.essayGridSubtitle}>{renderSubtitle(essay.subtitle)}</h3>
-                  <p className={styles.essayGridDesc}>{essay.description}</p>
+                    <h2 className={styles.essayGridTitle}>{essay.title}</h2>
+                    <h3 className={styles.essayGridSubtitle}>{renderSubtitle(essay.subtitle)}</h3>
+                    <p className={styles.essayGridDesc}>{essay.description}</p>
 
-                  <div className={styles.cardFooter}>
-                    <span className={styles.readTime}>{essay.readTime || "10 min read"}</span>
-                    <a href="#" className={styles.readLink} onClick={playClickSound}>
-                      Read essay
-                      <svg className={styles.chevronIcon} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                        <polyline points="9 18 15 12 9 6" />
-                      </svg>
-                    </a>
+                    <div className={styles.cardFooter}>
+                      <span className={styles.readTime}>{essay.readTime || "10 min read"}</span>
+                      <a href="#" className={styles.readLink} onClick={playClickSound}>
+                        Read essay
+                        <svg className={styles.chevronIcon} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                          <polyline points="9 18 15 12 9 6" />
+                        </svg>
+                      </a>
+                    </div>
                   </div>
-                </div>
-              </article>
-            ))
-          ) : (
-            !heroEssay && (
+                </article>
+              ))
+            ) : (
               <div className={styles.noEssaysCard}>
                 <p>No research blueprints found matching your search.</p>
               </div>
-            )
-          )}
-        </section>
+            )}
+          </section>
+        )}
+
+        {/* ----- SPECIAL STACKED ESSAYS (MULTI-AGENT & PREDICTIVE LATENCY) ----- */}
+        {specialEssays.length > 0 && (
+          <div className={styles.specialCardsSection}>
+            {specialEssays.map((essay) => {
+              const isMultiAgent = essay.id === "multi-agent-ecosystem";
+              
+              return (
+                <div key={essay.id} className={styles.specialEssayCard}>
+                  <div className={styles.specialCardBody}>
+                    <div className={styles.specialCardLeft}>
+                      <div className={styles.heroCardHeader}>
+                        <span className={`${styles.tagPill} ${styles[`tagPill_${essay.tagType || "green"}`]}`}>
+                          {essay.tag}
+                        </span>
+                        <span className={styles.dateText}>{essay.date}</span>
+                      </div>
+                      <h2 className={styles.essayTitle}>{essay.title}</h2>
+                      <h3 className={styles.essaySubtitle}>{renderSubtitle(essay.subtitle)}</h3>
+                      <p className={styles.essayDesc}>{essay.description}</p>
+                      
+                      <div className={styles.heroCardFooter}>
+                        <span className={styles.readTime}>{essay.readTime || "10 min read"}</span>
+                        <a href="#" className={styles.readLink} onClick={playClickSound}>
+                          Read essay
+                          <svg className={styles.chevronIcon} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                            <polyline points="9 18 15 12 9 6" />
+                          </svg>
+                        </a>
+                      </div>
+                    </div>
+
+                    <div className={styles.specialCardRight}>
+                      {isMultiAgent ? (
+                        <div className={styles.massContainer}>
+                          <div className={styles.massGraphicWrapper}>
+                            <InlineSVG src="/research/mass.svg" className={styles.massSvg} />
+                            <div className={`${styles.agentLabel} ${styles.agentLabelLeft}`}>Agents 1</div>
+                            <div className={`${styles.agentLabel} ${styles.agentLabelTop}`}>Agents 2</div>
+                            <div className={`${styles.agentLabel} ${styles.agentLabelRight}`}>Agents 3</div>
+                            <div className={`${styles.agentLabel} ${styles.agentLabelBottom}`}>Agents 4</div>
+                          </div>
+                        </div>
+                      ) : (
+                        <div className={styles.predictiveLatencyCardRight}>
+                          <InlineSVG src="/research/rec.svg" className={styles.recSvg} />
+                          <div className={styles.predictiveLatencyContent}>
+                            <InlineSVG src="/research/tri.svg" className={styles.triSvg} />
+                            <div className={styles.predictiveLatencyText}>Predictive Latency</div>
+                          </div>
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        )}
 
       </main>
 
