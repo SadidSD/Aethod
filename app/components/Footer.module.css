@@ -93,3 +93,11 @@
     text-align: center;
   }
 }
+
+@media (min-width: 901px) and (max-width: 1440px) {
+  .footerAlignContainer {
+    transform: scale(calc(100vw / 1440)) !important;
+    transform-origin: top center !important;
+    height: calc(282px * 100vw / 1440) !important;
+  }
+}

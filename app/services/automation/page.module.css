@@ -887,3 +887,11 @@
     display: none !important;
   }
 }
+
+@media (min-width: 1201px) and (max-width: 1440px) {
+  .contentAlignContainer {
+    transform: scale(calc(100vw / 1440)) !important;
+    transform-origin: top center !important;
+    height: calc(3120px * 100vw / 1440) !important;
+  }
+}

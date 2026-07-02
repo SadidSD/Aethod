@@ -970,3 +970,11 @@
   }
 }
 
+@media (min-width: 951px) and (max-width: 1440px) {
+  .contentAlignContainer {
+    transform: scale(calc(100vw / 1440)) !important;
+    transform-origin: top center !important;
+    height: calc(2200px * 100vw / 1440) !important;
+  }
+}
+
