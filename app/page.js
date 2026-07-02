@@ -38,6 +38,17 @@ function InlineSVG({ src, className }) {
 export default function Home() {
   const { isDark } = useTheme();
               
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 900);
+    };
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   // Journey flow animation refs and state
   const journeyRef = useRef(null);
   const bluePathRef = useRef(null);
@@ -431,81 +442,149 @@ export default function Home() {
             {/* Journey Path with Services */}
             <div className={styles.servicesJourney} ref={journeyRef}>
               {/* Animated SVG Journey Path */}
+              {/* Animated SVG Journey Path */}
               <div className={styles.journeyPathSvg}>
-                <svg width="1166" height="365" viewBox="0 0 1166 365" fill="none" overflow="visible" xmlns="http://www.w3.org/2000/svg">
-                  <defs>
-                    <filter id="jBorderF" x="-5%" y="-15%" width="110%" height="140%" filterUnits="objectBoundingBox" colorInterpolationFilters="sRGB">
-                      <feFlood floodOpacity="0" result="BackgroundImageFix" />
-                      <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
-                      <feOffset dx="-3" dy="3" />
-                      <feGaussianBlur stdDeviation="3" />
-                      <feColorMatrix type="matrix" values="0 0 0 0 0.76078 0 0 0 0 0.75686 0 0 0 0 0.74902 0 0 0 0.2 0" />
-                      <feBlend mode="normal" in2="BackgroundImageFix" result="e1" />
-                      <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
-                      <feOffset dx="3" dy="-3" />
-                      <feGaussianBlur stdDeviation="3" />
-                      <feColorMatrix type="matrix" values="0 0 0 0 0.76078 0 0 0 0 0.75686 0 0 0 0 0.74902 0 0 0 0.2 0" />
-                      <feBlend mode="normal" in2="e1" result="e2" />
-                      <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
-                      <feOffset dx="-3" dy="-3" />
-                      <feGaussianBlur stdDeviation="3" />
-                      <feColorMatrix type="matrix" values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.9 0" />
-                      <feBlend mode="normal" in2="e2" result="e3" />
-                      <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
-                      <feOffset dx="3" dy="3" />
-                      <feGaussianBlur stdDeviation="4" />
-                      <feColorMatrix type="matrix" values="0 0 0 0 0.76078 0 0 0 0 0.75686 0 0 0 0 0.74902 0 0 0 0.9 0" />
-                      <feBlend mode="normal" in2="e3" result="e4" />
-                      <feBlend mode="normal" in="SourceGraphic" in2="e4" result="shape" />
-                      <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
-                      <feOffset dx="1" dy="1" />
-                      <feGaussianBlur stdDeviation="1" />
-                      <feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1" />
-                      <feColorMatrix type="matrix" values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.3 0" />
-                      <feBlend mode="normal" in2="shape" result="e5" />
-                      <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
-                      <feOffset dx="-1" dy="-1" />
-                      <feGaussianBlur stdDeviation="1" />
-                      <feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1" />
-                      <feColorMatrix type="matrix" values="0 0 0 0 0.76078 0 0 0 0 0.75686 0 0 0 0 0.74902 0 0 0 0.5 0" />
-                      <feBlend mode="normal" in2="e5" result="e6" />
-                    </filter>
-                    <filter id="jInnerF" x="-5%" y="-15%" width="110%" height="140%" filterUnits="objectBoundingBox" colorInterpolationFilters="sRGB">
-                      <feFlood floodOpacity="0" result="BackgroundImageFix" />
-                      <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape" />
-                      <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
-                      <feOffset dx="3" dy="3" />
-                      <feGaussianBlur stdDeviation="4" />
-                      <feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1" />
-                      <feColorMatrix type="matrix" values="0 0 0 0 0.713726 0 0 0 0 0.709804 0 0 0 0 0.701961 0 0 0 0.9 0" />
-                      <feBlend mode="normal" in2="shape" result="e1" />
-                      <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
-                      <feOffset dx="-3" dy="-3" />
-                      <feGaussianBlur stdDeviation="3" />
-                      <feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1" />
-                      <feColorMatrix type="matrix" values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.9 0" />
-                      <feBlend mode="normal" in2="e1" result="e2" />
-                    </filter>
-                    <filter id="jGlowF" x="-10%" y="-50%" width="120%" height="200%">
-                      <feGaussianBlur stdDeviation="8" result="blur" />
-                      <feMerge>
-                        <feMergeNode in="blur" />
-                        <feMergeNode in="blur" />
-                        <feMergeNode in="SourceGraphic" />
-                      </feMerge>
-                    </filter>
-                  </defs>
-                  {/* Outer border — static neumorphic track */}
-                  <g filter="url(#jBorderF)">
-                    <path d={CURVE_PATH} stroke="#E5E5E3" strokeWidth="30" strokeLinecap="round" fill="none" />
-                  </g>
-                  {/* Inner blue path — animated flow fill */}
-                  <g filter="url(#jInnerF)">
-                    <path ref={bluePathRef} d={CURVE_PATH} stroke="#B2CEFE" strokeWidth="15" strokeLinecap="round" fill="none" strokeDasharray="2000" strokeDashoffset="2000" />
-                  </g>
-                  {/* Ambient glow — follows the flow for 3D depth */}
-                  <path ref={glowPathRef} d={CURVE_PATH} stroke="#B2CEFE" strokeWidth="24" strokeLinecap="round" fill="none" opacity="0.3" filter="url(#jGlowF)" strokeDasharray="2000" strokeDashoffset="2000" />
-                </svg>
+                {isMobile ? (
+                  <svg width="100" height="700" viewBox="0 0 100 700" fill="none" overflow="visible" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                      <filter id="jBorderF" x="-30%" y="-15%" width="160%" height="130%" filterUnits="objectBoundingBox" colorInterpolationFilters="sRGB">
+                        <feFlood floodOpacity="0" result="BackgroundImageFix" />
+                        <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
+                        <feOffset dx="-3" dy="3" />
+                        <feGaussianBlur stdDeviation="3" />
+                        <feColorMatrix type="matrix" values="0 0 0 0 0.76078 0 0 0 0 0.75686 0 0 0 0 0.74902 0 0 0 0.2 0" />
+                        <feBlend mode="normal" in2="BackgroundImageFix" result="e1" />
+                        <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
+                        <feOffset dx="3" dy="-3" />
+                        <feGaussianBlur stdDeviation="3" />
+                        <feColorMatrix type="matrix" values="0 0 0 0 0.76078 0 0 0 0 0.75686 0 0 0 0 0.74902 0 0 0 0.2 0" />
+                        <feBlend mode="normal" in2="e1" result="e2" />
+                        <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
+                        <feOffset dx="-3" dy="-3" />
+                        <feGaussianBlur stdDeviation="3" />
+                        <feColorMatrix type="matrix" values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.9 0" />
+                        <feBlend mode="normal" in2="e2" result="e3" />
+                        <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
+                        <feOffset dx="3" dy="3" />
+                        <feGaussianBlur stdDeviation="4" />
+                        <feColorMatrix type="matrix" values="0 0 0 0 0.76078 0 0 0 0 0.75686 0 0 0 0 0.74902 0 0 0 0.9 0" />
+                        <feBlend mode="normal" in2="e3" result="e4" />
+                        <feBlend mode="normal" in="SourceGraphic" in2="e4" result="shape" />
+                        <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
+                        <feOffset dx="1" dy="1" />
+                        <feGaussianBlur stdDeviation="1" />
+                        <feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1" />
+                        <feColorMatrix type="matrix" values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.3 0" />
+                        <feBlend mode="normal" in2="shape" result="e5" />
+                        <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
+                        <feOffset dx="-1" dy="-1" />
+                        <feGaussianBlur stdDeviation="1" />
+                        <feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1" />
+                        <feColorMatrix type="matrix" values="0 0 0 0 0.76078 0 0 0 0 0.75686 0 0 0 0 0.74902 0 0 0 0.5 0" />
+                        <feBlend mode="normal" in2="e5" result="e6" />
+                      </filter>
+                      <filter id="jInnerF" x="-30%" y="-15%" width="160%" height="130%" filterUnits="objectBoundingBox" colorInterpolationFilters="sRGB">
+                        <feFlood floodOpacity="0" result="BackgroundImageFix" />
+                        <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape" />
+                        <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
+                        <feOffset dx="3" dy="3" />
+                        <feGaussianBlur stdDeviation="4" />
+                        <feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1" />
+                        <feColorMatrix type="matrix" values="0 0 0 0 0.713726 0 0 0 0 0.709804 0 0 0 0 0.701961 0 0 0 0.9 0" />
+                        <feBlend mode="normal" in2="shape" result="e1" />
+                        <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
+                        <feOffset dx="-3" dy="-3" />
+                        <feGaussianBlur stdDeviation="3" />
+                        <feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1" />
+                        <feColorMatrix type="matrix" values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.9 0" />
+                        <feBlend mode="normal" in2="e1" result="e2" />
+                      </filter>
+                      <filter id="jGlowF" x="-30%" y="-30%" width="160%" height="160%">
+                        <feGaussianBlur stdDeviation="8" result="blur" />
+                        <feMerge>
+                          <feMergeNode in="blur" />
+                          <feMergeNode in="blur" />
+                          <feMergeNode in="SourceGraphic" />
+                        </feMerge>
+                      </filter>
+                    </defs>
+                    <g filter="url(#jBorderF)">
+                      <path d="M 50 0 C 0 175, 100 525, 50 700" stroke="#E5E5E3" strokeWidth="30" strokeLinecap="round" fill="none" />
+                    </g>
+                    <g filter="url(#jInnerF)">
+                      <path ref={bluePathRef} d="M 50 0 C 0 175, 100 525, 50 700" stroke="#B2CEFE" strokeWidth="15" strokeLinecap="round" fill="none" strokeDasharray="2000" strokeDashoffset="2000" />
+                    </g>
+                    <path ref={glowPathRef} d="M 50 0 C 0 175, 100 525, 50 700" stroke="#B2CEFE" strokeWidth="24" strokeLinecap="round" fill="none" opacity="0.3" filter="url(#jGlowF)" strokeDasharray="2000" strokeDashoffset="2000" />
+                  </svg>
+                ) : (
+                  <svg width="1166" height="365" viewBox="0 0 1166 365" fill="none" overflow="visible" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                      <filter id="jBorderF" x="-5%" y="-15%" width="110%" height="140%" filterUnits="objectBoundingBox" colorInterpolationFilters="sRGB">
+                        <feFlood floodOpacity="0" result="BackgroundImageFix" />
+                        <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
+                        <feOffset dx="-3" dy="3" />
+                        <feGaussianBlur stdDeviation="3" />
+                        <feColorMatrix type="matrix" values="0 0 0 0 0.76078 0 0 0 0 0.75686 0 0 0 0 0.74902 0 0 0 0.2 0" />
+                        <feBlend mode="normal" in2="BackgroundImageFix" result="e1" />
+                        <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
+                        <feOffset dx="3" dy="-3" />
+                        <feGaussianBlur stdDeviation="3" />
+                        <feColorMatrix type="matrix" values="0 0 0 0 0.76078 0 0 0 0 0.75686 0 0 0 0 0.74902 0 0 0 0.2 0" />
+                        <feBlend mode="normal" in2="e1" result="e2" />
+                        <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
+                        <feOffset dx="-3" dy="-3" />
+                        <feGaussianBlur stdDeviation="3" />
+                        <feColorMatrix type="matrix" values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.9 0" />
+                        <feBlend mode="normal" in2="e2" result="e3" />
+                        <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
+                        <feOffset dx="3" dy="3" />
+                        <feGaussianBlur stdDeviation="4" />
+                        <feColorMatrix type="matrix" values="0 0 0 0 0.76078 0 0 0 0 0.75686 0 0 0 0 0.74902 0 0 0 0.9 0" />
+                        <feBlend mode="normal" in2="e3" result="e4" />
+                        <feBlend mode="normal" in="SourceGraphic" in2="e4" result="shape" />
+                        <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
+                        <feOffset dx="1" dy="1" />
+                        <feGaussianBlur stdDeviation="1" />
+                        <feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1" />
+                        <feColorMatrix type="matrix" values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.3 0" />
+                        <feBlend mode="normal" in2="shape" result="e5" />
+                        <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
+                        <feOffset dx="-1" dy="-1" />
+                        <feGaussianBlur stdDeviation="1" />
+                        <feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1" />
+                        <feColorMatrix type="matrix" values="0 0 0 0 0.76078 0 0 0 0 0.75686 0 0 0 0 0.74902 0 0 0 0.5 0" />
+                        <feBlend mode="normal" in2="e5" result="e6" />
+                      </filter>
+                      <filter id="jInnerF" x="-5%" y="-15%" width="110%" height="140%" filterUnits="objectBoundingBox" colorInterpolationFilters="sRGB">
+                        <feFlood floodOpacity="0" result="BackgroundImageFix" />
+                        <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape" />
+                        <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
+                        <feOffset dx="3" dy="3" />
+                        <feGaussianBlur stdDeviation="4" />
+                        <feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1" />
+                        <feColorMatrix type="matrix" values="0 0 0 0 0.713726 0 0 0 0 0.709804 0 0 0 0 0.701961 0 0 0 0.9 0" />
+                        <feBlend mode="normal" in2="shape" result="e1" />
+                        <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
+                        <feOffset dx="-3" dy="-3" />
+                        <feGaussianBlur stdDeviation="3" />
+                        <feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1" />
+                        <feColorMatrix type="matrix" values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.9 0" />
+                        <feBlend mode="normal" in2="e1" result="e2" />
+                      </filter>
+                      <filter id="jGlowF" x="-10%" y="-50%" width="120%" height="200%">
+                        <feGaussianBlur stdDeviation="8" result="blur" />
+                        <feMerge>
+                          <feMergeNode in="blur" />
+                          <feMergeNode in="blur" />
+                          <feMergeNode in="SourceGraphic" />
+                        </feMerge>
+                      </filter>
+                    </defs>
+                    <path d={CURVE_PATH} stroke="#E5E5E3" strokeWidth="30" strokeLinecap="round" fill="none" filter="url(#jBorderF)" />
+                    <path ref={bluePathRef} d={CURVE_PATH} stroke="#B2CEFE" strokeWidth="15" strokeLinecap="round" fill="none" strokeDasharray="2000" strokeDashoffset="2000" filter="url(#jInnerF)" />
+                    <path ref={glowPathRef} d={CURVE_PATH} stroke="#B2CEFE" strokeWidth="24" strokeLinecap="round" fill="none" opacity="0.3" filter="url(#jGlowF)" strokeDasharray="2000" strokeDashoffset="2000" />
+                  </svg>
+                )}
               </div>
 
               {/* Service Card 1: Systems Architecture */}

@@ -1141,17 +1141,18 @@
   .journeyPathSvg {
     display: block !important;
     position: absolute !important;
-    width: 100% !important;
-    left: 0 !important;
+    width: 100px !important;
+    height: 700px !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
     top: 60px !important;
-    height: auto !important;
     z-index: 0 !important;
-    opacity: 0.15 !important;
+    opacity: 0.85 !important;
     pointer-events: none !important;
   }
   .journeyPathSvg svg {
     width: 100% !important;
-    height: auto !important;
+    height: 100% !important;
     display: block !important;
   }
 
