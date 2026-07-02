@@ -71,7 +71,7 @@ export default function Navbar({ activePage }) {
             <a href="/products" className={getLinkClass("products")}>
               Products
             </a>
-            <a href="/journals" className={getLinkClass("works")}>
+            <a href="/works" className={getLinkClass("works")}>
               Works
             </a>
             <a href="/blog" className={getLinkClass("blog")}>

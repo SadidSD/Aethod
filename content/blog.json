@@ -1,0 +1,32 @@
+[
+  {
+    "id": "intro-systems-thinking",
+    "tag": "Insight",
+    "tagType": "purple",
+    "readTime": "5 min read",
+    "date": "May 2026",
+    "title": "Systems Over Software",
+    "subtitle": "Why building code is secondary to mapping decisions",
+    "description": "Most engineering projects fail not due to bad code, but due to incorrect modeling of the business workflows. We explore how mapping decision parameters before writing a single line of React creates unbreakable products."
+  },
+  {
+    "id": "ai-autonomy-real-world",
+    "tag": "Engineering",
+    "tagType": "blue",
+    "readTime": "8 min read",
+    "date": "March 2026",
+    "title": "Making AI Work Silently",
+    "subtitle": "How to design autonomous agent systems without chat interfaces",
+    "description": "Chatbots are a temporary interface. The real future of AI in business is headless, background automation that acts quietly, checking database queues and executing API actions without requiring human prompts."
+  },
+  {
+    "id": "design-for-resilience",
+    "tag": "Design",
+    "tagType": "gray",
+    "readTime": "6 min read",
+    "date": "January 2026",
+    "title": "The Neomorphic Surface",
+    "subtitle": "Tactile digital systems for high-stress interfaces",
+    "description": "Flat interfaces abstract away interaction. Tactical, 3D-shaded neomorphic design systems provide natural spatial awareness, reducing cognitive load for operators managing complex database pipelines."
+  }
+]

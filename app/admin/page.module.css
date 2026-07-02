@@ -1,0 +1,186 @@
+.pageWrapper {
+  min-height: 100vh;
+  background: var(--bg-primary, #ECECEC);
+  display: flex;
+  flex-direction: column;
+}
+
+.mainContainer {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 80px 24px;
+}
+
+.contentAlignContainer {
+  width: 100%;
+  max-width: 600px;
+  display: flex;
+  justify-content: center;
+}
+
+/* Neomorphic Card base */
+.loginCard,
+.dashboardCard {
+  width: 100%;
+  background: var(--bg-primary, #ECECEC);
+  border-radius: 24px;
+  padding: 48px;
+  box-sizing: border-box;
+  box-shadow:
+    8px 8px 16px rgba(163, 177, 198, 0.6),
+    -8px -8px 16px rgba(255, 255, 255, 0.8),
+    inset -1px -1px 2px rgba(255, 255, 255, 0.2),
+    inset 1px 1px 2px rgba(163, 177, 198, 0.3);
+  border: 1px solid rgba(163, 177, 198, 0.2);
+  display: flex;
+  flex-direction: column;
+}
+
+[data-theme='dark'] .loginCard,
+[data-theme='dark'] .dashboardCard {
+  box-shadow:
+    8px 8px 20px rgba(0, 0, 0, 0.5),
+    -8px -8px 20px rgba(255, 255, 255, 0.03),
+    inset -1px -1px 2px rgba(255, 255, 255, 0.02),
+    inset 1px 1px 2px rgba(0, 0, 0, 0.4);
+  border-color: rgba(255, 255, 255, 0.02);
+}
+
+.cardHeading {
+  font-family: var(--font-sora), sans-serif;
+  font-size: 32px;
+  font-weight: 400;
+  color: var(--text-primary, #1a1a2e);
+  margin: 0 0 8px 0;
+  text-align: center;
+}
+
+.cardSubtext {
+  font-family: var(--font-sora), sans-serif;
+  font-size: 16px;
+  font-weight: 300;
+  color: var(--text-muted, #7a7a8e);
+  margin: 0 0 36px 0;
+  text-align: center;
+  line-height: 1.4;
+}
+
+.formContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.formGroupRow {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.fieldLabel {
+  font-family: var(--font-sora), sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--text-secondary, #4a4a5e);
+}
+
+/* Recessed Neomorphic Inputs */
+.inputField,
+.selectField,
+.textareaField {
+  width: 100%;
+  background: var(--bg-primary, #ECECEC);
+  border: 1px solid rgba(163, 177, 198, 0.2);
+  border-radius: 12px;
+  padding: 14px 18px;
+  box-sizing: border-box;
+  font-family: var(--font-sora), sans-serif;
+  font-size: 15px;
+  color: var(--text-primary, #1a1a2e);
+  outline: none;
+  box-shadow:
+    inset 3px 3px 6px rgba(163, 177, 198, 0.4),
+    inset -3px -3px 6px rgba(255, 255, 255, 0.8);
+  transition: all 0.3s ease;
+}
+
+[data-theme='dark'] .inputField,
+[data-theme='dark'] .selectField,
+[data-theme='dark'] .textareaField {
+  box-shadow:
+    inset 3px 3px 6px rgba(0, 0, 0, 0.4),
+    inset -3px -3px 6px rgba(255, 255, 255, 0.02);
+  border-color: rgba(255, 255, 255, 0.03);
+}
+
+.inputField:focus,
+.selectField:focus,
+.textareaField:focus {
+  border-color: var(--accent-purple, #7c5cfc);
+}
+
+/* Raised Neomorphic Button */
+.submitBtn {
+  margin-top: 12px;
+  padding: 16px;
+  background: var(--bg-primary, #ECECEC);
+  border: 1px solid rgba(163, 177, 198, 0.1);
+  border-radius: 12px;
+  font-family: var(--font-sora), sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  color: var(--accent-purple, #7c5cfc);
+  cursor: pointer;
+  box-shadow:
+    4px 4px 10px rgba(163, 177, 198, 0.5),
+    -4px -4px 10px rgba(255, 255, 255, 0.9);
+  transition: all 0.2s ease;
+}
+
+[data-theme='dark'] .submitBtn {
+  box-shadow:
+    4px 4px 10px rgba(0, 0, 0, 0.5),
+    -4px -4px 10px rgba(255, 255, 255, 0.03);
+}
+
+.submitBtn:hover {
+  transform: scale(1.02);
+  color: var(--accent-violet, #8b5cf6);
+}
+
+.submitBtn:active {
+  transform: scale(0.98);
+  box-shadow:
+    inset 3px 3px 6px rgba(163, 177, 198, 0.4),
+    inset -3px -3px 6px rgba(255, 255, 255, 0.8);
+}
+
+[data-theme='dark'] .submitBtn:active {
+  box-shadow:
+    inset 3px 3px 6px rgba(0, 0, 0, 0.5),
+    inset -3px -3px 6px rgba(255, 255, 255, 0.02);
+}
+
+.errorText {
+  font-family: var(--font-sora), sans-serif;
+  font-size: 14px;
+  color: #ea580c;
+  text-align: center;
+  margin-top: 16px;
+}
+
+.successText {
+  font-family: var(--font-sora), sans-serif;
+  font-size: 14px;
+  color: #16a34a;
+  text-align: center;
+  margin-top: 16px;
+}

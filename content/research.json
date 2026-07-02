@@ -1,0 +1,63 @@
+[
+  {
+    "id": "clarity-gap",
+    "tag": "Research",
+    "tagType": "green",
+    "readTime": "10 min read",
+    "date": "April 2026",
+    "title": "The Clarity Gap:",
+    "subtitle": "Why more data produces less understanding",
+    "description": "Organisations accumulate instruments that measure, track, and surface. The paradox is that each new signal tends to obscure rather than illuminate. This is not a data problem — it is a systems design problem with a very specific solution.",
+    "essayLink": "#",
+    "filters": ["Research"],
+    "illustrationType": "graph"
+  },
+  {
+    "id": "designing-uncertainty",
+    "tag": "System",
+    "tagType": "blue",
+    "readTime": "10 min read",
+    "date": "December 2025",
+    "title": "Designing for Uncertainty:",
+    "subtitle": "A framework for adaptive business systems",
+    "description": "Stable systems are not systems that do not change. They are systems that know how to change — a breakdown of how to architect for environments where the rules keep shifting.",
+    "essayLink": "#",
+    "filters": ["Systems"]
+  },
+  {
+    "id": "inside-tcg-pricing",
+    "tag": "Case Study",
+    "tagType": "gray",
+    "readTime": "7 min read",
+    "date": "February 2026",
+    "title": "Inside TCG pricing:",
+    "subtitle": "How market fragmentation creates operational chaos",
+    "description": "Stable systems are not systems that do not change. They are systems that know how to change — a breakdown of how to architect for environments where the rules keep shifting.",
+    "essayLink": "#",
+    "filters": ["Case Studies"]
+  },
+  {
+    "id": "multi-agent-ecosystem",
+    "tag": "Research",
+    "tagType": "green",
+    "readTime": "18 min read",
+    "date": "April 2026",
+    "title": "Multi-Agent",
+    "subtitle": "Multi-Agent E-Commerce Ecosystem Architectures",
+    "description": "This study develops a decentralized system where specialized AI agents autonomously manage inventory, front-end adjustments, and TCG price volatility.",
+    "essayLink": "#",
+    "filters": ["Research"]
+  },
+  {
+    "id": "predictive-latency",
+    "tag": "Research",
+    "tagType": "green",
+    "readTime": "18 min read",
+    "date": "April 2026",
+    "title": "Predictive Latency",
+    "subtitle": "Predictive Latency in Scalable Systems",
+    "description": "This study develops a decentralized system where specialized AI agents autonomously manage inventory, front-end adjustments, and TCG price volatility.",
+    "essayLink": "#",
+    "filters": ["Research"]
+  }
+]
