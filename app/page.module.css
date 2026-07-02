@@ -308,7 +308,7 @@
   position: relative;
   width: auto;
   max-width: 452px;
-  height: 71px;
+  flex-wrap: wrap;
   margin-top: 8px;
 }
 
@@ -2316,4 +2316,14 @@
 
 :global([data-theme="dark"]) .navLink:hover {
   color: #e8e8f0;
+}
+
+@media (max-width: 900px) {
+  .tcgCards svg,
+  .tcgBottomText svg,
+  .helpGroup21 svg,
+  .helpDemoContent svg {
+    width: 100% !important;
+    height: auto !important;
+  }
 }

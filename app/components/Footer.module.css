@@ -23,6 +23,11 @@
   z-index: 2;
 }
 
+.footerSvg svg {
+  width: 100% !important;
+  height: auto !important;
+}
+
 :global([data-theme="dark"]) .footerSvg svg rect[fill="#ECECEC" i],
 :global([data-theme="dark"]) .footerSvg svg rect[fill="#ECECEC" i] {
   fill: var(--bg-primary);

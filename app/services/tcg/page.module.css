@@ -802,3 +802,114 @@
     -1px -1px 2px rgba(60,60,100,0.15),
     1px 1px 3px rgba(0,0,0,0.5);
 }
+
+@media (max-width: 1200px) {
+  .mainContainer {
+    margin-top: 0 !important;
+    padding: 48px 24px 80px !important;
+  }
+  .contentAlignContainer {
+    height: auto !important;
+    min-height: 500px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 48px !important;
+  }
+  .heroSection, .heroTitle, .heroLeftText, .heroRightText, .heroDescriptionBlock, .heroImageWrapper {
+    position: relative !important;
+    left: auto !important;
+    right: auto !important;
+    top: auto !important;
+    width: 100% !important;
+    max-width: 600px !important;
+    height: auto !important;
+    margin: 0 auto !important;
+    text-align: center !important;
+  }
+  .heroImageWrapper {
+    max-width: 500px !important;
+  }
+  .heroImage {
+    width: 100% !important;
+    height: auto !important;
+  }
+  .quickListHeader, .quickListGrid {
+    position: relative !important;
+    left: auto !important;
+    top: auto !important;
+    width: 100% !important;
+    max-width: 1200px !important;
+    height: auto !important;
+    margin: 0 auto !important;
+  }
+  .quickListGrid {
+    display: grid !important;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)) !important;
+    gap: 24px !important;
+  }
+  .quickCard {
+    width: 100% !important;
+    max-width: 320px !important;
+    margin: 0 auto !important;
+    position: relative !important;
+    left: auto !important;
+    top: auto !important;
+  }
+  .projectFinancingSection {
+    position: relative !important;
+    left: auto !important;
+    top: auto !important;
+    width: 100% !important;
+    max-width: 1200px !important;
+    height: auto !important;
+    margin: 0 auto !important;
+  }
+  .pfGrid {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+    gap: 24px !important;
+    position: relative !important;
+    left: auto !important;
+    top: auto !important;
+    width: 100% !important;
+    height: auto !important;
+  }
+  .pfCard {
+    position: relative !important;
+    left: auto !important;
+    top: auto !important;
+    width: 100% !important;
+    max-width: 320px !important;
+  }
+  .faqSection {
+    position: relative !important;
+    left: auto !important;
+    top: auto !important;
+    width: 100% !important;
+    max-width: 1200px !important;
+    height: auto !important;
+    margin: 0 auto !important;
+  }
+  .faqAccordion {
+    position: relative !important;
+    left: auto !important;
+    top: auto !important;
+    width: 100% !important;
+    height: auto !important;
+  }
+  .footerWrapper {
+    position: relative !important;
+    left: auto !important;
+    top: auto !important;
+    width: 100% !important;
+    max-width: 600px !important;
+    height: auto !important;
+    margin: 48px auto 0 !important;
+  }
+  .rightMarker, .sideIndicator {
+    display: none !important;
+  }
+}

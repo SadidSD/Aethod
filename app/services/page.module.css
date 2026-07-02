@@ -331,18 +331,18 @@
 
 .iconBg {
   position: absolute;
-  width: 74px;
-  height: 74px;
-  left: -6.9px;
-  top: -6.9px;
+  width: 13.68%;
+  height: 43.79%;
+  left: -1.27%;
+  top: -4.08%;
 }
 
 .gearIcon {
   position: absolute;
-  width: 34.49px;
-  height: 34.49px;
-  left: 11.5px;
-  top: 11.5px;
+  width: 6.38%;
+  height: 20.41%;
+  left: 2.13%;
+  top: 6.8%;
   transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1), filter 0.35s ease;
   filter: drop-shadow(0 0 0px transparent);
 }
@@ -354,26 +354,26 @@
 
 .card4Title {
   position: absolute;
-  width: 169px;
-  height: 35px;
-  left: 87px;
-  top: -2px;
+  width: 31.24%;
+  height: 20.71%;
+  left: 16.08%;
+  top: -1.18%;
 }
 
 .card4Subtitle {
   position: absolute;
-  width: 253px;
-  height: 25px;
-  left: 87px;
-  top: 33px;
+  width: 46.77%;
+  height: 14.79%;
+  left: 16.08%;
+  top: 19.53%;
 }
 
 .card4Desc {
   position: absolute;
-  width: 454px;
-  height: 90px;
-  left: 87px;
-  top: 78px;
+  width: 83.92%;
+  height: 53.25%;
+  left: 16.08%;
+  top: 46.15%;
 }
 
 .sideIndicator {
@@ -411,8 +411,8 @@
 
 .termsBorder {
   position: absolute;
-  width: 1346px;
-  height: 856px;
+  width: 100%;
+  height: 100%;
   left: 0px;
   top: 0px;
 }
@@ -420,25 +420,25 @@
 .termsDivider {
   position: absolute;
   width: 2px;
-  height: 856px;
-  left: 673px;
+  height: 100%;
+  left: 50%;
   top: 0px;
 }
 
 .termsContent {
   position: absolute;
-  width: 1208px;
-  height: 694px;
-  left: 72px;
-  top: 111px;
+  width: 89.75%;
+  height: 81.08%;
+  left: 5.35%;
+  top: 12.97%;
 }
 
 .btnTerms {
   position: absolute;
-  width: 85px;
-  height: 41px;
-  left: 545px;
-  top: 33px;
+  width: 6.32%;
+  height: 4.79%;
+  left: 40.49%;
+  top: 3.86%;
   cursor: pointer;
   transition: transform 0.3s ease;
 }
@@ -449,10 +449,10 @@
 
 .btnRules {
   position: absolute;
-  width: 78px;
-  height: 41px;
-  left: 1237px;
-  top: 33px;
+  width: 5.79%;
+  height: 4.79%;
+  left: 91.9%;
+  top: 3.86%;
   cursor: pointer;
   transition: transform 0.3s ease;
 }
@@ -897,5 +897,76 @@
 .card3:hover .sparkle2 {
   transform: scale(1.4) translate(-2px, -2px);
   opacity: 1;
+}
+
+@media (max-width: 950px) {
+  .mainContainer {
+    margin-top: 0 !important;
+    padding: 48px 24px 80px !important;
+  }
+  .contentAlignContainer {
+    height: auto !important;
+    min-height: 500px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 40px !important;
+  }
+  .heroTitle {
+    position: relative !important;
+    left: auto !important;
+    top: auto !important;
+    width: 100% !important;
+    max-width: 536px !important;
+    height: auto !important;
+  }
+  .card1, .card2, .card3, .card4 {
+    position: relative !important;
+    left: auto !important;
+    top: auto !important;
+    width: 100% !important;
+    max-width: 541px !important;
+    height: auto !important;
+    aspect-ratio: 541 / 169 !important;
+  }
+  .sideIndicator {
+    display: none !important;
+  }
+  .termsTitle {
+    position: relative !important;
+    left: auto !important;
+    top: auto !important;
+    width: 100% !important;
+    max-width: 526px !important;
+    height: auto !important;
+    margin-top: 32px !important;
+  }
+  .termsSubtitle {
+    position: relative !important;
+    left: auto !important;
+    top: auto !important;
+    width: 100% !important;
+    max-width: 602px !important;
+    height: auto !important;
+  }
+  .termsContainer {
+    position: relative !important;
+    left: auto !important;
+    top: auto !important;
+    width: 100% !important;
+    height: auto !important;
+    aspect-ratio: 1346 / 856 !important;
+    margin: 0 auto !important;
+  }
+  .footerWrapper {
+    position: relative !important;
+    left: auto !important;
+    top: auto !important;
+    width: 100% !important;
+    max-width: 600px !important;
+    height: auto !important;
+    margin: 48px auto 0 !important;
+  }
 }
 

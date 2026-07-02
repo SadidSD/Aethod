@@ -571,3 +571,42 @@
   width: 92px;
   height: 92px;
 }
+
+@media (max-width: 600px) {
+  .floatingAssistantBtn {
+    right: 16px !important;
+    bottom: 16px !important;
+    width: 64px !important;
+    height: 64px !important;
+  }
+  .floatingBtnIcon {
+    width: 52px !important;
+    height: 52px !important;
+  }
+  .chatboxPanel {
+    right: 16px !important;
+    left: 16px !important;
+    bottom: 16px !important;
+    width: auto !important;
+    height: calc(100vh - 32px) !important;
+    max-height: none !important;
+    border-radius: 28px !important;
+    padding: 16px !important;
+  }
+  .chatboxCloseBtn {
+    right: 16px !important;
+    bottom: 16px !important;
+    width: 56px !important;
+    height: 56px !important;
+  }
+  .closeBtnIcon {
+    width: 56px !important;
+    height: 56px !important;
+  }
+  .bottomRow {
+    padding-right: 68px !important;
+  }
+  .messageViewport {
+    padding: 12px !important;
+  }
+}

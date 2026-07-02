@@ -375,13 +375,12 @@
   display: block;
 }
 
-/* Interactive overlays for buttons */
 .backButtonOverlay {
   position: absolute;
-  left: 185px;
-  top: 107.5px;
-  width: 128px;
-  height: 55px;
+  left: 27.28%;
+  top: 62.86%;
+  width: 18.87%;
+  height: 32.16%;
   cursor: pointer;
   z-index: 10;
   border-radius: 10px;
@@ -389,10 +388,10 @@
 
 .homeButtonOverlay {
   position: absolute;
-  left: 354px;
-  top: 107.5px;
-  width: 135px;
-  height: 55px;
+  left: 52.21%;
+  top: 62.86%;
+  width: 19.91%;
+  height: 32.16%;
   cursor: pointer;
   z-index: 10;
   border-radius: 10px;
@@ -586,5 +585,41 @@
 
 :global([data-theme="dark"]) .navLink:hover {
   color: #e8e8f0;
+}
+
+@media (max-width: 950px) {
+  .mainContainer {
+    margin-top: 0 !important;
+    padding: 48px 24px 80px !important;
+  }
+  .contentAlignContainer {
+    height: auto !important;
+    min-height: 400px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 48px !important;
+  }
+  .frame91 {
+    position: relative !important;
+    left: auto !important;
+    top: auto !important;
+    width: 100% !important;
+    max-width: 238px !important;
+    height: auto !important;
+  }
+  .group64Container {
+    position: relative !important;
+    left: auto !important;
+    top: auto !important;
+    width: 100% !important;
+    max-width: 600px !important;
+    height: auto !important;
+    aspect-ratio: 678 / 171 !important;
+  }
+  .rightMarker {
+    display: none !important;
+  }
 }
 
