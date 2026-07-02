@@ -873,3 +873,12 @@
     height: calc(3350px * 100vw / 1440) !important;
   }
 }
+
+/* Ensure inline SVGs in the hero section scale responsively */
+.heroTitle :global(svg),
+.heroLeftText :global(svg),
+.heroRightText :global(svg) {
+  width: 100% !important;
+  height: auto !important;
+  display: block;
+}
