@@ -244,9 +244,9 @@ export default function ContactPage() {
       <div className={styles.pageContent}>
         <div className={styles.mainCard}>
           {/* ===== THEME SLIDE SWITCH ROW ===== */}
-          <div className={styles.toggleRow}>
+          {/* <div className={styles.toggleRow}>
             <ThemeToggle className={styles.slideButton} />
-          </div>
+          </div> */}
 
           {/* ===== LEFT COLUMN: Title, Subtitle ===== */}
           <div className={styles.textGroup}>
