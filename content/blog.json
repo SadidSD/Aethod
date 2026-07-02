@@ -1,32 +1,42 @@
 [
   {
-    "id": "intro-systems-thinking",
-    "tag": "Insight",
-    "tagType": "purple",
-    "readTime": "5 min read",
-    "date": "May 2026",
-    "title": "Systems Over Software",
-    "subtitle": "Why building code is secondary to mapping decisions",
-    "description": "Most engineering projects fail not due to bad code, but due to incorrect modeling of the business workflows. We explore how mapping decision parameters before writing a single line of React creates unbreakable products."
+    "id": "multi-agent-ecommerce",
+    "topic": "AI Behavior",
+    "readTime": "12 min read",
+    "date": "April 2026",
+    "title": "Multi-Agent E-Commerce Ecosystem Architectures",
+    "description": "This study develops a decentralized system where specialized AI agents autonomously manage inventory, front-end adjustments, and TCG price volatility.",
+    "tags": ["Multi-Agent Systems (MAS)", "TCG Logistics", "System Development", "Autonomous E-commerce"],
+    "illustration": "/blog/mass.svg"
   },
   {
-    "id": "ai-autonomy-real-world",
-    "tag": "Engineering",
-    "tagType": "blue",
-    "readTime": "8 min read",
+    "id": "aeo-post-seo",
+    "topic": "Complexity Research",
+    "readTime": "9 min read",
     "date": "March 2026",
-    "title": "Making AI Work Silently",
-    "subtitle": "How to design autonomous agent systems without chat interfaces",
-    "description": "Chatbots are a temporary interface. The real future of AI in business is headless, background automation that acts quietly, checking database queues and executing API actions without requiring human prompts."
+    "title": "AEO: The Post-SEO Marketing Era",
+    "description": "This research quantifies how \"Answer Engine Optimization\" (AEO) is replacing traditional SEO as AI assistants become the primary gatekeepers for consumer queries.",
+    "tags": ["AI Marketing", "Content Strategy", "Search Behavior", "AEO"],
+    "illustration": "/blog/mini graph.svg"
   },
   {
-    "id": "design-for-resilience",
-    "tag": "Design",
-    "tagType": "gray",
-    "readTime": "6 min read",
+    "id": "real-time-neural-asset",
+    "topic": "Diagram",
+    "readTime": "15 min read",
+    "date": "February 2026",
+    "title": "Real-Time Neural Asset Generation",
+    "description": "This paper introduces a generative pipeline that creates high-fidelity TCG card art and UI assets in real-time based on user interaction data.",
+    "tags": ["TCG Market", "Web Development", "UX Personalization", "Generative AI"],
+    "illustration": "/blog/neural.svg"
+  },
+  {
+    "id": "predictive-latency-scalable",
+    "topic": "Future System",
+    "readTime": "10 min read",
     "date": "January 2026",
-    "title": "The Neomorphic Surface",
-    "subtitle": "Tactile digital systems for high-stress interfaces",
-    "description": "Flat interfaces abstract away interaction. Tactical, 3D-shaded neomorphic design systems provide natural spatial awareness, reducing cognitive load for operators managing complex database pipelines."
+    "title": "Predictive Latency in Scalable Systems",
+    "description": "Researchers propose a new \"Model Context Protocol\" (MCP) to manage data ingestion and low-latency inference in large-scale system development.",
+    "tags": ["Scalability", "System Engineering", "Latency Optimization", "MCP"],
+    "illustration": "/blog/tri.svg"
   }
 ]

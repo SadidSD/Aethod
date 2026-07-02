@@ -1,355 +1,733 @@
+/* ==========================================================================
+   Blog Page — Neomorphic Design System
+   Background: #ECECEC | Font: Sora (var(--font-sora))
+   
+   Shadow vocabulary used throughout:
+     RAISED  – outer light/dark + subtle inset highlights
+     INSET   – inner light/dark  + subtle outer highlights
+   ========================================================================== */
+
+
+/* --------------------------------------------------------------------------
+   1. PAGE STRUCTURE
+   -------------------------------------------------------------------------- */
+
+/* Full-page wrapper — flex column so the content area can grow via flex:1.
+   The ::before pseudo-element applies a subtle noise texture overlay
+   to break up the flat #ECECEC background.                                  */
 .pageWrapper {
   min-height: 100vh;
-  background: var(--bg-primary, #ECECEC);
+  background: #ECECEC;
   display: flex;
   flex-direction: column;
+  font-family: var(--font-sora), sans-serif;
+  position: relative;
 }
 
-/* Subtle noise overlay */
+/* Subtle noise overlay — sits behind all content but above the background.
+   Uses a tiny base64 noise PNG tiled across the viewport.                   */
 .pageWrapper::before {
-  content: '';
+  content: "";
   position: fixed;
   inset: 0;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.025'/%3E%3C/svg%3E");
+  background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAABmJLR0QA/wD/AP+gvaeTAAAACXBIWXMAAA7DAAAOwwHHb6hkAAAAB3RJTUUH4AkEBigcSGjVMAAAAFVJREFUaN7t0EERAAAIA8Hd/DcGvqQgR5KdZOdtZ2a+I/Ij2cysaiPqsypJVZLSNE1VkurVq5IkSZIkSZIkSZIk6a8kSdJf0zRVSarzs6okpWma7gPnIhAR7aZGHQAAAABJRU5ErkJggg==");
+  opacity: 0.025;
   pointer-events: none;
   z-index: 0;
-  opacity: 0.8;
 }
 
+/* Centered content column — flex:1 pushes footer down naturally.            */
 .mainContainer {
   flex: 1;
-  padding: 40px 24px 80px;
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 48px 24px 80px;
   position: relative;
   z-index: 1;
-  width: 100%;
+  box-sizing: border-box;
 }
 
-.contentAlignContainer {
-  max-width: 1352px;
-  margin: 0 auto;
-  width: 100%;
-}
-
-/* Header Area */
-.blogHeader {
-  margin-bottom: 48px;
-  text-align: left;
-  padding-left: 12px;
-}
-
-.blogTitle {
-  font-family: var(--font-sora), sans-serif;
-  font-size: 64px;
-  font-weight: 300;
-  color: var(--text-primary, #1a1a2e);
-  margin: 0 0 8px 0;
-}
-
-.purpleText {
-  color: var(--accent-purple, #7c5cfc);
-}
-
-.blogSubtitle {
-  font-family: var(--font-sora), sans-serif;
-  font-size: 20px;
-  font-weight: 300;
-  color: var(--text-muted, #7a7a8e);
-  margin: 0;
-}
-
-/* Columns layout */
-.blogBody {
-  display: grid;
-  grid-template-columns: 320px 1fr;
+/* Horizontal layout: sidebar (left, fixed 200px) + content area (right).    */
+.blogLayout {
+  display: flex;
   gap: 48px;
-  align-items: start;
+  align-items: flex-start;
 }
 
-@media (max-width: 950px) {
-  .blogBody {
-    grid-template-columns: 1fr;
-    gap: 36px;
-  }
-}
 
-/* Sidebar styling */
+/* --------------------------------------------------------------------------
+   2. SIDEBAR  (left column, ~200px)
+   -------------------------------------------------------------------------- */
+
 .sidebar {
-  position: sticky;
-  top: 100px;
+  width: 200px;
+  flex-shrink: 0;
+  padding-top: 8px;
 }
 
-.sidebarCard {
-  background: var(--bg-primary, #ECECEC);
-  border-radius: 24px;
-  padding: 32px;
-  border: 1px solid rgba(163, 177, 198, 0.2);
-  box-shadow:
-    8px 8px 16px rgba(163, 177, 198, 0.4),
-    -8px -8px 16px rgba(255, 255, 255, 0.7);
-}
-
-[data-theme='dark'] .sidebarCard {
-  box-shadow:
-    8px 8px 20px rgba(0, 0, 0, 0.5),
-    -8px -8px 20px rgba(255, 255, 255, 0.03);
-  border-color: rgba(255, 255, 255, 0.02);
-}
-
-.sidebarLabel {
+/* Ultra-thin page title — large & lightweight for a refined look.           */
+.pageTitle {
   font-family: var(--font-sora), sans-serif;
-  font-size: 14px;
-  font-weight: 400;
-  color: var(--text-secondary, #4a4a5e);
-  margin: 0 0 12px 0;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
+  font-size: 52px;
+  font-weight: 100;
+  color: #0d0d0d;
+  margin: 0 0 4px;
+  line-height: 1.1;
 }
 
-.sidebarLabel:not(:first-of-type) {
-  margin-top: 32px;
-}
-
-/* Recessed Search Input */
-.searchContainer {
-  position: relative;
-  width: 100%;
-}
-
-.searchInput {
-  width: 100%;
-  background: var(--bg-primary, #ECECEC);
-  border: 1px solid rgba(163, 177, 198, 0.1);
-  border-radius: 12px;
-  padding: 12px 40px 12px 16px;
-  font-family: var(--font-sora), sans-serif;
-  font-size: 14px;
-  color: var(--text-primary, #1a1a2e);
-  outline: none;
-  box-shadow:
-    inset 3px 3px 6px rgba(163, 177, 198, 0.4),
-    inset -3px -3px 6px rgba(255, 255, 255, 0.8);
-}
-
-[data-theme='dark'] .searchInput {
-  box-shadow:
-    inset 3px 3px 6px rgba(0, 0, 0, 0.4),
-    inset -3px -3px 6px rgba(255, 255, 255, 0.02);
-  border-color: rgba(255, 255, 255, 0.03);
-}
-
-.searchIcon {
-  position: absolute;
-  right: 14px;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 16px;
-  height: 16px;
-  color: var(--text-muted, #7a7a8e);
-  pointer-events: none;
-}
-
-/* Category Filter Buttons */
-.filterGroup {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-.filterBtn {
-  width: 100%;
-  padding: 12px 16px;
-  background: var(--bg-primary, #ECECEC);
-  border: 1px solid rgba(163, 177, 198, 0.1);
-  border-radius: 12px;
-  font-family: var(--font-sora), sans-serif;
-  font-size: 14px;
-  font-weight: 300;
-  color: var(--text-primary, #1a1a2e);
-  text-align: left;
-  cursor: pointer;
-  box-shadow:
-    3px 3px 6px rgba(163, 177, 198, 0.3),
-    -3px -3px 6px rgba(255, 255, 255, 0.7);
-  transition: all 0.2s ease;
-}
-
-[data-theme='dark'] .filterBtn {
-  box-shadow:
-    3px 3px 6px rgba(0, 0, 0, 0.4),
-    -3px -3px 6px rgba(255, 255, 255, 0.03);
-}
-
-.filterBtn:hover {
-  color: var(--accent-purple, #7c5cfc);
-  transform: translateX(4px);
-}
-
-.filterBtnActive {
-  box-shadow:
-    inset 2px 2px 5px rgba(163, 177, 198, 0.4),
-    inset -2px -2px 5px rgba(255, 255, 255, 0.8);
-  color: var(--accent-purple, #7c5cfc);
-  font-weight: 400;
-}
-
-[data-theme='dark'] .filterBtnActive {
-  box-shadow:
-    inset 2px 2px 5px rgba(0, 0, 0, 0.5),
-    inset -2px -2px 5px rgba(255, 255, 255, 0.02);
-}
-
-/* Blog Cards Grid */
-.blogGrid {
-  display: flex;
-  flex-direction: column;
-  gap: 36px;
-}
-
-.postCard {
-  background: var(--bg-primary, #ECECEC);
-  border-radius: 24px;
-  padding: 40px;
-  border: 1px solid rgba(163, 177, 198, 0.2);
-  box-shadow:
-    8px 8px 16px rgba(163, 177, 198, 0.4),
-    -8px -8px 16px rgba(255, 255, 255, 0.7);
-  display: flex;
-  flex-direction: column;
-  transition: transform 0.3s ease;
-}
-
-[data-theme='dark'] .postCard {
-  box-shadow:
-    8px 8px 20px rgba(0, 0, 0, 0.5),
-    -8px -8px 20px rgba(255, 255, 255, 0.03);
-  border-color: rgba(255, 255, 255, 0.02);
-}
-
-.postCard:hover {
-  transform: translateY(-4px);
-}
-
-.cardHeader {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 20px;
-}
-
-.tagPill {
-  font-family: var(--font-sora), sans-serif;
-  font-size: 12px;
-  font-weight: 400;
-  padding: 6px 12px;
-  border-radius: 20px;
-  border: 1px solid transparent;
-}
-
-/* Tag Styles matching Research/Works page style rules */
-.tagPill_purple {
-  background: rgba(124, 92, 252, 0.08);
-  color: var(--accent-purple, #7c5cfc);
-  border-color: rgba(124, 92, 252, 0.2);
-}
-
-.tagPill_green {
-  background: rgba(16, 185, 129, 0.08);
-  color: #10b981;
-  border-color: rgba(16, 185, 129, 0.2);
-}
-
-.tagPill_blue {
-  background: rgba(59, 130, 246, 0.08);
-  color: #3b82f6;
-  border-color: rgba(59, 130, 246, 0.2);
-}
-
-.tagPill_gray {
-  background: rgba(107, 114, 128, 0.08);
-  color: #6b7280;
-  border-color: rgba(107, 114, 128, 0.2);
-}
-
-.dateText {
-  font-family: var(--font-sora), sans-serif;
-  font-size: 13px;
-  color: var(--text-muted, #7a7a8e);
-}
-
-.postTitle {
-  font-family: var(--font-sora), sans-serif;
-  font-size: 28px;
-  font-weight: 400;
-  color: var(--text-primary, #1a1a2e);
-  margin: 0 0 6px 0;
-}
-
-.postSubtitle {
-  font-family: var(--font-sora), sans-serif;
-  font-size: 18px;
-  font-weight: 300;
-  color: var(--text-secondary, #4a4a5e);
-  margin: 0 0 20px 0;
-  line-height: 1.4;
-}
-
-.postDesc {
+/* Subtle italic subtitle beneath the page title.                            */
+.pageSubtitle {
   font-family: var(--font-sora), sans-serif;
   font-size: 15px;
   font-weight: 300;
-  color: var(--text-muted, #7a7a8e);
-  margin: 0 0 32px 0;
-  line-height: 1.6;
+  color: #717171;
+  margin: 0 0 28px;
+  font-style: italic;
 }
 
-.cardFooter {
+
+/* --------------------------------------------------------------------------
+   2a. SEARCH BAR  (neomorphic pill)
+   -------------------------------------------------------------------------- */
+
+.searchWrapper {
+  margin-bottom: 32px;
+}
+
+/* Pill-shaped search container — raised neomorphic treatment with combined
+   outer and inner shadow layers for that characteristic soft-UI look.       */
+.searchInner {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  background: #ECECEC;
+  border-radius: 27px;
+  padding: 4px 4px 4px 0;
+  position: relative;
+  box-shadow:
+    5px 5px 13px rgba(201, 201, 201, 0.9),
+    -5px -5px 10px rgba(255, 255, 255, 0.9),
+    5px -5px 10px rgba(201, 201, 201, 0.2),
+    -5px 5px 10px rgba(201, 201, 201, 0.2),
+    inset -1px -1px 2px rgba(201, 201, 201, 0.5),
+    inset 1px 1px 2px rgba(255, 255, 255, 0.3);
+}
+
+/* Text input — transparent bg so the pill background shows through.         */
+.searchInput {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  padding: 10px 8px 10px 16px;
+  font-family: var(--font-sora), sans-serif;
+  font-size: 14px;
+  font-weight: 300;
+  color: #0d0d0d;
+}
+
+/* Placeholder uses a purple radial gradient for a branded accent.           */
+.searchInput::placeholder {
+  background: radial-gradient(circle, #5A69EA, #BF8BCA);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-weight: 300;
+}
+
+/* Small raised circle housing the search icon — sits at the right end
+   of the pill and acts as a click target.                                   */
+.searchIconCircle {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: #ECECEC;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow:
+    4px 4px 10px rgba(190, 190, 190, 0.9),
+    -4px -4px 8px rgba(255, 255, 255, 0.9),
+    inset -1px -1px 2px rgba(190, 190, 190, 0.5),
+    inset 1px 1px 2px rgba(255, 255, 255, 0.3);
+}
+
+
+/* --------------------------------------------------------------------------
+   2b. TOPICS LIST
+   -------------------------------------------------------------------------- */
+
+.topicsHeading {
+  font-family: var(--font-sora), sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  color: #0d0d0d;
+  margin: 0 0 16px;
+}
+
+.topicsList {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 12px;
+}
+
+/* Full-width button row per topic — text left, count right.                 */
+.topicBtn {
+  width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-top: 1px solid rgba(163, 177, 198, 0.15);
-  padding-top: 20px;
-}
-
-[data-theme='dark'] .cardFooter {
-  border-color: rgba(255, 255, 255, 0.03);
-}
-
-.readTime {
+  background: transparent;
+  border: none;
+  padding: 9px 0;
   font-family: var(--font-sora), sans-serif;
+  font-size: 15px;
+  font-weight: 300;
+  color: #404040;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.topicBtn:hover {
+  color: #7c5cfc;
+}
+
+/* Active state container — no special container styles needed.              */
+.topicBtnActive {
+  /* Inherits .topicBtn styles; child .topicName receives gradient */
+}
+
+/* When the topic is active, the label text gets the branded gradient.       */
+.topicBtnActive .topicName {
+  background: radial-gradient(circle, #5A69EA, #BF8BCA);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Topic label — inherits color from parent .topicBtn.                       */
+.topicName {
+  /* Inherits font / color from .topicBtn */
+}
+
+/* Small numeric count on the right side of each topic row.                  */
+.topicCount {
   font-size: 13px;
-  color: var(--text-muted, #7a7a8e);
+  color: #717171;
+  font-weight: 300;
 }
 
-.readLink {
-  font-family: var(--font-sora), sans-serif;
-  font-size: 14px;
-  font-weight: 400;
-  color: var(--accent-purple, #7c5cfc);
+/* "More" toggle at the bottom of the topics list.                           */
+.moreBtn {
   display: flex;
   align-items: center;
-  gap: 8px;
-  text-decoration: none;
-  transition: gap 0.2s ease;
+  gap: 6px;
+  background: transparent;
+  border: none;
+  font-family: var(--font-sora), sans-serif;
+  font-size: 15px;
+  font-weight: 300;
+  color: #404040;
+  cursor: pointer;
+  padding: 8px 0;
 }
 
-.readLink:hover {
+
+/* --------------------------------------------------------------------------
+   3. CONTENT AREA  (right column, flex 1)
+   -------------------------------------------------------------------------- */
+
+.contentArea {
+  flex: 1;
+  min-width: 0;
+}
+
+
+/* --------------------------------------------------------------------------
+   3a. FILTER BAR  (horizontal scrollable row of pill buttons)
+   -------------------------------------------------------------------------- */
+
+.filterBar {
+  display: flex;
+  align-items: center;
   gap: 12px;
-  color: var(--accent-violet, #8b5cf6);
+  margin-bottom: 28px;
 }
 
-.arrowIcon {
-  width: 16px;
-  height: 16px;
+/* Horizontally-scrolling track — hides scrollbar for a clean look.          */
+.filterScroll {
+  display: flex;
+  gap: 10px;
+  overflow-x: auto;
+  flex: 1;
+  scrollbar-width: none; /* Firefox */
 }
 
-/* Fallback Card */
+.filterScroll::-webkit-scrollbar {
+  display: none; /* Chrome / Safari / Edge */
+}
+
+/* Default (inactive) filter pill — raised neomorphic with a subtle
+   vertical gradient from near-white to light gray.                          */
+.filterBtn {
+  background: linear-gradient(180deg, #F8F8F8 0%, #E0E0E0 100%);
+  border: none;
+  border-radius: 15px;
+  padding: 10px 18px;
+  font-family: var(--font-sora), sans-serif;
+  font-size: 12px;
+  font-weight: 300;
+  color: #717171;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.25s;
+  box-shadow:
+    3px 3px 8px rgba(201, 201, 201, 0.9),
+    -3px -3px 6px rgba(255, 255, 255, 0.9),
+    3px -3px 6px rgba(201, 201, 201, 0.2),
+    -3px 3px 6px rgba(201, 201, 201, 0.2),
+    inset -1px -1px 2px rgba(201, 201, 201, 0.5),
+    inset 1px 1px 2px rgba(255, 255, 255, 0.3);
+}
+
+.filterBtn:hover {
+  opacity: 0.85;
+}
+
+/* Active filter pill — pressed/inset shadow replaces the raised one,
+   and the gradient background is swapped for a flat #ECECEC.                */
+.filterBtnActive {
+  background: #ECECEC;
+  font-weight: 400;
+  box-shadow:
+    inset 3px 3px 8px rgba(190, 190, 190, 0.9),
+    inset -3px -3px 6px rgba(255, 255, 255, 0.9),
+    inset 3px -3px 6px rgba(190, 190, 190, 0.2),
+    inset -3px 3px 6px rgba(190, 190, 190, 0.2),
+    -1px -1px 2px rgba(190, 190, 190, 0.5),
+    1px 1px 2px rgba(255, 255, 255, 0.3);
+}
+
+/* Transition wrapper for the filter button text content.                    */
+.filterBtnText {
+  transition: all 0.2s;
+}
+
+/* Active filter text gets the branded purple gradient.                      */
+.filterBtnActive .filterBtnText {
+  background: radial-gradient(circle, #5A69EA, #BF8BCA);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Left / right scroll arrows — small raised circles matching the
+   search-icon circle's shadow treatment.                                    */
+.scrollArrow {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: #ECECEC;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  flex-shrink: 0;
+  color: #717171;
+  box-shadow:
+    4px 4px 10px rgba(190, 190, 190, 0.9),
+    -4px -4px 8px rgba(255, 255, 255, 0.9),
+    inset -1px -1px 2px rgba(190, 190, 190, 0.5),
+    inset 1px 1px 2px rgba(255, 255, 255, 0.3);
+}
+
+
+/* --------------------------------------------------------------------------
+   3b. BLOG CARDS LIST
+   -------------------------------------------------------------------------- */
+
+.cardsList {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* Individual blog card — horizontal layout with illustration on the left
+   and text on the right. Generous border-radius for a soft, friendly feel.  */
+.blogCard {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  background: #ECECEC;
+  border-radius: 40px;
+  padding: 12px;
+  position: relative;
+  box-shadow:
+    4px 4px 10px rgba(190, 190, 190, 0.9),
+    -4px -4px 8px rgba(255, 255, 255, 0.9),
+    4px -4px 8px rgba(190, 190, 190, 0.2),
+    -4px 4px 8px rgba(190, 190, 190, 0.2),
+    inset -1px -1px 2px rgba(190, 190, 190, 0.5),
+    inset 1px 1px 2px rgba(255, 255, 255, 0.3);
+}
+
+
+/* --------------------------------------------------------------------------
+   3b-i. ILLUSTRATION BOX  (recessed inner square inside each card)
+   -------------------------------------------------------------------------- */
+
+/* Inset neomorphic container for the blog post illustration.
+   The inverted shadow layers create the impression of a sunken well.        */
+.cardIllustrationBox {
+  width: 230px;
+  height: 225px;
+  flex-shrink: 0;
+  border-radius: 35px;
+  background: #ECECEC;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  box-shadow:
+    -1px -1px 2px rgba(201, 201, 201, 0.5),
+    1px 1px 2px rgba(245, 245, 245, 0.3),
+    inset 5px 5px 13px rgba(201, 201, 201, 0.9),
+    inset -5px -5px 10px rgba(245, 245, 245, 0.9),
+    inset 5px -5px 10px rgba(201, 201, 201, 0.2),
+    inset -5px 5px 10px rgba(201, 201, 201, 0.2);
+}
+
+/* SVG illustration wrapper — constrained to 75% of the box so the
+   artwork doesn't bleed into the rounded shadow edges.                      */
+.illustrationSvg {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 75%;
+  height: 75%;
+}
+
+/* Force SVGs to scale fluidly within the wrapper.                           */
+.illustrationSvg svg {
+  width: 100% !important;
+  height: auto !important;
+  display: block;
+  max-width: 100%;
+}
+
+
+/* --------------------------------------------------------------------------
+   3b-ii. TEXT AREA  (right side of each card)
+   -------------------------------------------------------------------------- */
+
+.cardTextArea {
+  flex: 1;
+  padding: 16px 12px 16px 24px;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.cardTitle {
+  font-family: var(--font-sora), sans-serif;
+  font-size: 17px;
+  font-weight: 400;
+  color: #0d0d0d;
+  margin: 0 0 10px;
+  line-height: 1.3;
+}
+
+.cardDesc {
+  font-family: var(--font-sora), sans-serif;
+  font-size: 12px;
+  font-weight: 300;
+  color: #717171;
+  margin: 0 0 16px;
+  line-height: 1.55;
+}
+
+/* Tag row beneath the description — wraps when space runs out.              */
+.cardTags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+/* Individual tag pill — small raised neomorphic chip.                       */
+.tagPill {
+  background: #ECECEC;
+  border-radius: 15px;
+  padding: 8px 14px;
+  font-family: var(--font-sora), sans-serif;
+  font-size: 11px;
+  font-weight: 300;
+  color: #717171;
+  white-space: nowrap;
+  box-shadow:
+    2px 2px 5px rgba(190, 190, 190, 0.9),
+    -2px -2px 4px rgba(255, 255, 255, 0.9),
+    2px -2px 4px rgba(190, 190, 190, 0.2),
+    -2px 2px 4px rgba(190, 190, 190, 0.2),
+    inset -1px -1px 2px rgba(190, 190, 190, 0.5),
+    inset 1px 1px 2px rgba(255, 255, 255, 0.3);
+}
+
+
+/* --------------------------------------------------------------------------
+   3b-iii. EXPAND BUTTON  (circular toggle at bottom-right of card)
+   -------------------------------------------------------------------------- */
+
+.expandBtn {
+  position: absolute;
+  bottom: 16px;
+  right: 20px;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: rgba(113, 113, 113, 0.2);
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: #717171;
+  transition: transform 0.3s ease;
+}
+
+.expandBtn:hover {
+  background: rgba(113, 113, 113, 0.3);
+}
+
+/* When expanded, the chevron icon rotates 180°.                             */
+.expandBtnOpen {
+  transform: rotate(180deg);
+}
+
+/* SVGs inside the open-state button inherit the rotation from the parent.   */
+.expandBtnOpen svg {
+  /* Rotation inherited from .expandBtnOpen transform */
+}
+
+
+/* --------------------------------------------------------------------------
+   3c. NO POSTS EMPTY STATE
+   -------------------------------------------------------------------------- */
+
 .noPostsCard {
-  background: var(--bg-primary, #ECECEC);
+  background: #ECECEC;
   border-radius: 24px;
   padding: 48px;
   text-align: center;
   border: 1px dashed rgba(163, 177, 198, 0.4);
   font-family: var(--font-sora), sans-serif;
-  color: var(--text-muted, #7a7a8e);
   font-size: 16px;
+  color: #717171;
+}
+
+
+/* ==========================================================================
+   4. DARK THEME OVERRIDES
+   All dark-mode styles are scoped under [data-theme='dark'] so they only
+   activate when the theme attribute is set on a parent element.
+   ========================================================================== */
+
+/* Page background switches to the app's primary dark variable.              */
+[data-theme='dark'] .pageWrapper {
+  background: var(--bg-primary);
+}
+
+/* Noise overlay opacity reduced for dark backgrounds.                       */
+[data-theme='dark'] .pageWrapper::before {
+  opacity: 0.015;
+  mix-blend-mode: overlay;
+}
+
+/* Title & subtitle pick up CSS-variable text colors.                        */
+[data-theme='dark'] .pageTitle {
+  color: var(--text-primary, #e0e0e0);
+}
+
+[data-theme='dark'] .pageSubtitle {
+  color: var(--text-secondary, #999);
+}
+
+/* Topics heading.                                                           */
+[data-theme='dark'] .topicsHeading {
+  color: var(--text-primary, #e0e0e0);
+}
+
+/* Topic buttons.                                                            */
+[data-theme='dark'] .topicBtn {
+  color: var(--text-secondary, #aaa);
+}
+
+[data-theme='dark'] .topicBtn:hover {
+  color: #9b8aff;
+}
+
+[data-theme='dark'] .topicCount {
+  color: var(--text-secondary, #888);
+}
+
+[data-theme='dark'] .moreBtn {
+  color: var(--text-secondary, #aaa);
+}
+
+/* Search bar — dark neomorphic shadow swap.                                 */
+[data-theme='dark'] .searchInner {
+  background: var(--bg-primary);
+  box-shadow:
+    5px 5px 13px rgba(0, 0, 0, 0.4),
+    -5px -5px 10px rgba(255, 255, 255, 0.03),
+    5px -5px 10px rgba(0, 0, 0, 0.15),
+    -5px 5px 10px rgba(0, 0, 0, 0.15),
+    inset -1px -1px 2px rgba(0, 0, 0, 0.3),
+    inset 1px 1px 2px rgba(255, 255, 255, 0.03);
+}
+
+[data-theme='dark'] .searchInput {
+  color: var(--text-primary, #e0e0e0);
+}
+
+[data-theme='dark'] .searchIconCircle {
+  background: var(--bg-primary);
+  box-shadow:
+    4px 4px 10px rgba(0, 0, 0, 0.4),
+    -4px -4px 8px rgba(255, 255, 255, 0.03),
+    inset -1px -1px 2px rgba(0, 0, 0, 0.3),
+    inset 1px 1px 2px rgba(255, 255, 255, 0.03);
+}
+
+/* Blog card — dark raised shadow.                                           */
+[data-theme='dark'] .blogCard {
+  background: var(--bg-primary);
+  box-shadow:
+    4px 4px 10px rgba(0, 0, 0, 0.4),
+    -4px -4px 8px rgba(255, 255, 255, 0.03),
+    4px -4px 8px rgba(0, 0, 0, 0.15),
+    -4px 4px 8px rgba(0, 0, 0, 0.15),
+    inset -1px -1px 2px rgba(0, 0, 0, 0.3),
+    inset 1px 1px 2px rgba(255, 255, 255, 0.03);
+}
+
+/* Illustration box — dark inset shadow.                                     */
+[data-theme='dark'] .cardIllustrationBox {
+  background: var(--bg-primary);
+  box-shadow:
+    -1px -1px 2px rgba(0, 0, 0, 0.3),
+    1px 1px 2px rgba(255, 255, 255, 0.03),
+    inset 5px 5px 13px rgba(0, 0, 0, 0.4),
+    inset -5px -5px 10px rgba(255, 255, 255, 0.03),
+    inset 5px -5px 10px rgba(0, 0, 0, 0.15),
+    inset -5px 5px 10px rgba(0, 0, 0, 0.15);
+}
+
+/* Card text colors.                                                         */
+[data-theme='dark'] .cardTitle {
+  color: var(--text-primary, #e0e0e0);
+}
+
+[data-theme='dark'] .cardDesc {
+  color: var(--text-secondary, #999);
+}
+
+/* Tag pills — dark raised shadow.                                           */
+[data-theme='dark'] .tagPill {
+  background: var(--bg-primary);
+  color: var(--text-secondary, #999);
+  box-shadow:
+    2px 2px 5px rgba(0, 0, 0, 0.4),
+    -2px -2px 4px rgba(255, 255, 255, 0.03),
+    2px -2px 4px rgba(0, 0, 0, 0.15),
+    -2px 2px 4px rgba(0, 0, 0, 0.15),
+    inset -1px -1px 2px rgba(0, 0, 0, 0.3),
+    inset 1px 1px 2px rgba(255, 255, 255, 0.03);
+}
+
+/* Filter button — dark raised shadow.                                       */
+[data-theme='dark'] .filterBtn {
+  background: linear-gradient(180deg, var(--bg-primary) 0%, var(--bg-primary) 100%);
+  color: var(--text-secondary, #999);
+  box-shadow:
+    3px 3px 8px rgba(0, 0, 0, 0.4),
+    -3px -3px 6px rgba(255, 255, 255, 0.03),
+    3px -3px 6px rgba(0, 0, 0, 0.15),
+    -3px 3px 6px rgba(0, 0, 0, 0.15),
+    inset -1px -1px 2px rgba(0, 0, 0, 0.3),
+    inset 1px 1px 2px rgba(255, 255, 255, 0.03);
+}
+
+/* Active filter — dark inset shadow.                                        */
+[data-theme='dark'] .filterBtnActive {
+  background: var(--bg-primary);
+  box-shadow:
+    inset 3px 3px 8px rgba(0, 0, 0, 0.4),
+    inset -3px -3px 6px rgba(255, 255, 255, 0.03),
+    inset 3px -3px 6px rgba(0, 0, 0, 0.15),
+    inset -3px 3px 6px rgba(0, 0, 0, 0.15),
+    -1px -1px 2px rgba(0, 0, 0, 0.3),
+    1px 1px 2px rgba(255, 255, 255, 0.03);
+}
+
+/* Scroll arrows — dark mode.                                                */
+[data-theme='dark'] .scrollArrow {
+  background: var(--bg-primary);
+  color: var(--text-secondary, #999);
+  box-shadow:
+    4px 4px 10px rgba(0, 0, 0, 0.4),
+    -4px -4px 8px rgba(255, 255, 255, 0.03),
+    inset -1px -1px 2px rgba(0, 0, 0, 0.3),
+    inset 1px 1px 2px rgba(255, 255, 255, 0.03);
+}
+
+/* Expand button — slightly brighter on dark backgrounds.                    */
+[data-theme='dark'] .expandBtn {
+  color: var(--text-secondary, #999);
+}
+
+/* No-posts empty state — dark.                                              */
+[data-theme='dark'] .noPostsCard {
+  background: var(--bg-primary);
+  color: var(--text-secondary, #999);
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+
+/* ==========================================================================
+   5. RESPONSIVE — 850px breakpoint
+   Stack the sidebar above the content area and cards vertically.
+   ========================================================================== */
+
+@media (max-width: 850px) {
+
+  /* Switch from side-by-side to stacked layout.                             */
+  .blogLayout {
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  /* Sidebar spans the full width when stacked.                              */
+  .sidebar {
+    width: 100%;
+  }
+
+  /* Cards stack the illustration on top of the text area.                    */
+  .blogCard {
+    flex-direction: column;
+  }
+
+  /* Illustration box stretches full-width with a shorter fixed height.      */
+  .cardIllustrationBox {
+    width: 100%;
+    height: 200px;
+  }
+
+  /* Tighten text padding on smaller screens.                                */
+  .cardTextArea {
+    padding: 16px 8px;
+  }
 }
