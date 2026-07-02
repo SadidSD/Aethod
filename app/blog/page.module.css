@@ -105,7 +105,7 @@
   gap: 0;
   background: #ECECEC;
   border-radius: 27px;
-  padding: 4px 4px 4px 0;
+  padding: 4px;
   position: relative;
   box-shadow:
     5px 5px 13px rgba(201, 201, 201, 0.9),
@@ -119,10 +119,11 @@
 /* Text input — transparent bg so the pill background shows through.         */
 .searchInput {
   flex: 1;
+  min-width: 0;
   background: transparent;
   border: none;
   outline: none;
-  padding: 10px 8px 10px 16px;
+  padding: 8px 8px 8px 14px;
   font-family: var(--font-sora), sans-serif;
   font-size: 14px;
   font-weight: 300;
