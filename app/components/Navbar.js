@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { useChat } from "../context/ChatContext";
 import styles from "./Navbar.module.css";
+import ThemeToggle from "./ThemeToggle";
 
 function InlineSVG({ src, className }) {
   const [svgContent, setSvgContent] = useState("");
@@ -82,9 +83,9 @@ export default function Navbar({ activePage }) {
             </a>
           </div>
 
-          {/* Right Area: Phone button */}
+          {/* Right Area: Phone button & Theme Toggle */}
           <div className={styles.navRight}>
-
+            <ThemeToggle />
             {/* Telephone Call Circle Button */}
             {/* <a
               href="/contact"

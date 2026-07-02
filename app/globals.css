@@ -240,6 +240,7 @@ a, button, [role="button"], input[type="button"], input[type="submit"], input[ty
   width: 72px !important;
   height: 37px !important;
   display: block !important;
+  position: relative !important;
 }
 
 #theme-toggle [class*="slideTrack"] {
