@@ -581,6 +581,7 @@
   color: var(--text-muted);
   line-height: 1.4;
   padding: 4px 8px;
+  text-align: center;
 }
 
 .textRight {
@@ -589,6 +590,7 @@
   align-items: center;
   justify-content: center;
   position: relative;
+  text-align: center;
 }
 
 .textRightNormal {
@@ -600,7 +602,7 @@
   padding: 4px 8px;
   color: var(--text-primary);
   transition: color 0.3s ease;
-  white-space: nowrap;
+  text-align: center;
 }
 
 
@@ -618,7 +620,7 @@
   color: transparent;
   -webkit-text-fill-color: transparent;
   pointer-events: none;
-  white-space: nowrap;
+  text-align: center;
 }
 
 .strikethroughGradient {
