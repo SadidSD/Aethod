@@ -1319,9 +1319,12 @@
     max-width: 100% !important;
     display: flex !important;
     flex-direction: column !important;
-    align-items: stretch !important;
-    padding: 32px 24px !important;
-    box-sizing: border-box !important;
+    align-items: center !important;
+    padding: 0 !important;
+    border: none !important;
+    box-shadow: none !important;
+    background: transparent !important;
+    overflow: visible !important;
     gap: 24px !important;
   }
 
@@ -1330,24 +1333,52 @@
     display: none !important;
   }
 
-  .manifestoGroup01,
-  .manifestoGroup02,
-  .manifestoGroup03,
+  .manifestoGroup01 {
+    position: relative !important;
+    left: auto !important;
+    top: auto !important;
+    width: 542px !important;
+    height: calc(255px * (100vw - 48px) / 542) !important;
+    transform: scale(calc((100vw - 48px) / 542)) !important;
+    transform-origin: top center !important;
+    flex-shrink: 0 !important;
+    margin: 0 auto !important;
+  }
+
+  .manifestoGroup02 {
+    position: relative !important;
+    left: auto !important;
+    top: auto !important;
+    width: 489px !important;
+    height: calc(293px * (100vw - 48px) / 489) !important;
+    transform: scale(calc((100vw - 48px) / 489)) !important;
+    transform-origin: top center !important;
+    flex-shrink: 0 !important;
+    margin: 0 auto !important;
+  }
+
+  .manifestoGroup03 {
+    position: relative !important;
+    left: auto !important;
+    top: auto !important;
+    width: 489px !important;
+    height: calc(359px * (100vw - 48px) / 489) !important;
+    transform: scale(calc((100vw - 48px) / 489)) !important;
+    transform-origin: top center !important;
+    flex-shrink: 0 !important;
+    margin: 0 auto !important;
+  }
+
   .manifestoGroup04 {
     position: relative !important;
     left: auto !important;
     top: auto !important;
-    width: 100% !important;
-    max-width: 100% !important;
-    height: auto !important;
-    margin: 0 !important;
-  }
-
-  .manifestoGroup01,
-  .manifestoGroup02,
-  .manifestoGroup03 {
-    border-bottom: 1px solid rgba(113, 113, 113, 0.3) !important;
-    padding-bottom: 24px !important;
+    width: 489px !important;
+    height: calc(293px * (100vw - 48px) / 489) !important;
+    transform: scale(calc((100vw - 48px) / 489)) !important;
+    transform-origin: top center !important;
+    flex-shrink: 0 !important;
+    margin: 0 auto !important;
   }
 
   .manifestoTitle svg,
@@ -1356,6 +1387,23 @@
   .manifestoQuote svg {
     width: 100% !important;
     height: auto !important;
+    display: block !important;
+  }
+
+  .howWeWorkSection {
+    position: relative !important;
+    left: 50% !important;
+    transform: translateX(-50%) scale(calc(100vw / 1440)) !important;
+    transform-origin: top center !important;
+    width: 1440px !important;
+    height: calc(2541px * (100vw) / 1440) !important;
+    margin: 12px auto 0 !important;
+    display: block !important;
+  }
+
+  .howWeWorkSection svg {
+    width: 100% !important;
+    height: 100% !important;
     display: block !important;
   }
 
