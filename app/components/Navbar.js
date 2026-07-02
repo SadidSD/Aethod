@@ -52,14 +52,68 @@ export default function Navbar({ activePage }) {
 
   return (
     <div className={styles.navOuter}>
-      <nav className={`${styles.navbar} ${menuOpen ? styles.navbarOpen : ""}`} id="navbar">
+      {/* Drawer Backdrop Overlay */}
+      <div 
+        className={`${styles.drawerBackdrop} ${menuOpen ? styles.drawerBackdropOpen : ""}`}
+        onClick={() => setMenuOpen(false)}
+      />
+
+      {/* Drawer Panel (Slides from left) */}
+      <div className={`${styles.drawerPanel} ${menuOpen ? styles.drawerPanelOpen : ""}`}>
+        <div className={styles.drawerHeader}>
+          {/* Logo */}
+          <a href="/" className={styles.drawerLogo} onClick={() => setMenuOpen(false)}>
+            <InlineSVG src="/A.svg" className={styles.drawerLogoImg} />
+          </a>
+          
+          {/* Close Button */}
+          <button 
+            className={styles.drawerCloseBtn} 
+            onClick={() => setMenuOpen(false)}
+            aria-label="Close Navigation Menu"
+          >
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" style={{ display: 'block', color: 'var(--text-secondary)' }}>
+              <line x1="18" y1="6" x2="6" y2="18"></line>
+              <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+          </button>
+        </div>
+
+        {/* Navigation Links inside Drawer */}
+        <div className={styles.drawerLinks}>
+          <a href="/studio" className={getLinkClass("studio")} onClick={() => setMenuOpen(false)}>
+            Studio
+          </a>
+          <a href="/services" className={getLinkClass("services")} onClick={() => setMenuOpen(false)}>
+            Services
+          </a>
+          <a href="/research" className={getLinkClass("research")} onClick={() => setMenuOpen(false)}>
+            Research
+          </a>
+          <a href="/products" className={getLinkClass("products")} onClick={() => setMenuOpen(false)}>
+            Products
+          </a>
+          <a href="/works" className={getLinkClass("works")} onClick={() => setMenuOpen(false)}>
+            Works
+          </a>
+          <a href="/blog" className={getLinkClass("blog")} onClick={() => setMenuOpen(false)}>
+            Blog
+          </a>
+          <a href="/contact" className={getLinkClass("contact")} onClick={() => setMenuOpen(false)}>
+            Contact
+          </a>
+        </div>
+      </div>
+
+      {/* Main Navbar Pill */}
+      <nav className={styles.navbar} id="navbar">
         <div className={styles.navContent}>
           {/* Circular Logo */}
           <a href="/" className={styles.logo} aria-label="Aeethod Home">
             <InlineSVG src="/A.svg" className={styles.logoImg} />
           </a>
 
-          {/* Navigation Links */}
+          {/* Navigation Links (Desktop) */}
           <div className={styles.navLinks}>
             <a href="/studio" className={getLinkClass("studio")}>
               Studio
@@ -98,7 +152,7 @@ export default function Navbar({ activePage }) {
             </div>
           </button>
 
-          {/* Right Area: Phone button & Theme Toggle */}
+          {/* Right Area: Empty placeholder for alignment */}
           <div className={styles.navRight}>
           </div>
         </div>
