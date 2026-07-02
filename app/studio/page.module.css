@@ -1316,9 +1316,49 @@
   }
   .manifestoGridBox {
     height: auto !important;
-    aspect-ratio: 1231 / 658 !important;
     max-width: 100% !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+    padding: 32px 24px !important;
+    box-sizing: border-box !important;
+    gap: 24px !important;
   }
+
+  .manifestoGridLineVert,
+  .manifestoGridLineHoriz {
+    display: none !important;
+  }
+
+  .manifestoGroup01,
+  .manifestoGroup02,
+  .manifestoGroup03,
+  .manifestoGroup04 {
+    position: relative !important;
+    left: auto !important;
+    top: auto !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+    margin: 0 !important;
+  }
+
+  .manifestoGroup01,
+  .manifestoGroup02,
+  .manifestoGroup03 {
+    border-bottom: 1px solid rgba(113, 113, 113, 0.3) !important;
+    padding-bottom: 24px !important;
+  }
+
+  .manifestoTitle svg,
+  .manifestoSubtitle svg,
+  .manifestoGridBox svg,
+  .manifestoQuote svg {
+    width: 100% !important;
+    height: auto !important;
+    display: block !important;
+  }
+
   .capabilityGrid {
     max-width: 100% !important;
     height: auto !important;
