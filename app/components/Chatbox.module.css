@@ -572,7 +572,7 @@
   height: 92px;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 768px) {
   .floatingAssistantBtn {
     right: 16px !important;
     bottom: 16px !important;

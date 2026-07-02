@@ -512,3 +512,28 @@
     transform: translateY(-6px) rotate(-45deg);
   }
 }
+
+@media (max-width: 768px) {
+  .navbar {
+    padding: 0 16px !important;
+  }
+  .themeToggleWrapper {
+    right: 24px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .navbar {
+    padding: 0 12px !important;
+  }
+  .navbarOpen {
+    height: 380px !important;
+  }
+  .themeToggleWrapper {
+    right: 16px !important;
+  }
+  .navLink {
+    font-size: 15px !important;
+    padding: 6px 12px !important;
+  }
+}

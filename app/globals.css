@@ -296,3 +296,20 @@ a, button, [role="button"], input[type="button"], input[type="submit"], input[ty
   height: 37px;
   display: block;
 }
+
+/* ---------- GLOBAL RESPONSIVE RULES ---------- */
+@media (max-width: 768px) {
+  body {
+    font-size: 15px;
+  }
+}
+@media (max-width: 480px) {
+  body {
+    font-size: 14px;
+  }
+}
+.responsive-svg {
+  width: 100% !important;
+  height: auto !important;
+  max-width: 100% !important;
+}
