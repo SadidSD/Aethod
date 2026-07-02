@@ -404,15 +404,26 @@
   .navLinks {
     position: static !important;
     transform: none !important;
-    flex-wrap: wrap !important;
-    justify-content: center !important;
+    display: flex !important;
+    flex-direction: row !important;
+    overflow-x: auto !important;
+    white-space: nowrap !important;
     width: 100% !important;
-    gap: 8px !important;
+    justify-content: flex-start !important;
+    gap: 16px !important;
+    padding: 8px 12px !important;
+    box-sizing: border-box !important;
+    scrollbar-width: none !important;
+  }
+  .navLinks::-webkit-scrollbar {
+    display: none !important;
   }
   .navLink {
     font-size: 15px !important;
     line-height: 20px !important;
     padding: 6px 8px !important;
+    display: inline-block !important;
+    flex-shrink: 0 !important;
   }
   .navRight {
     width: 100% !important;

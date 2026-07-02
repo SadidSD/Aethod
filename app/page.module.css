@@ -1035,11 +1035,15 @@
     flex-direction: column;
     align-items: center;
     text-align: center;
+    gap: 24px;
   }
 
   .heroText {
     max-width: 100%;
     padding-top: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 
   .heroSubtext {
@@ -1049,18 +1053,44 @@
     padding-left: 0;
   }
 
-  .heroButtons {
-    justify-content: center;
+  .btnBar {
+    justify-content: center !important;
+    margin: 8px auto 0 !important;
   }
 
   .heroVisual {
-    width: 300px;
-    height: 260px;
+    width: 100% !important;
+    max-width: 320px !important;
+    height: auto !important;
+    aspect-ratio: 1 / 1;
+  }
+
+  .orbContainer {
+    width: 240px !important;
+    height: 240px !important;
+    left: 0 !important;
+    margin: 0 auto !important;
+  }
+
+  .orbGlow {
+    width: 240px !important;
+    height: 240px !important;
+  }
+
+  .orbVideoMask {
+    width: 240px !important;
+    height: 240px !important;
   }
 
   .orbVideo {
-    width: 180px;
-    height: 180px;
+    width: 100% !important;
+    height: 100% !important;
+    transform: scale(2.2) !important;
+  }
+
+  .crystalOrb {
+    width: 100% !important;
+    height: auto !important;
   }
 
   .servicesSection {
@@ -1068,13 +1098,18 @@
   }
 
   .servicesSection .alignContainer {
-    padding-bottom: 250px;
-    /* Generous empty spacer under the curve on mobile */
+    padding-bottom: 40px !important;
   }
 
   .servicesJourney {
     min-height: auto;
     aspect-ratio: auto;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 32px !important;
+    margin-top: 32px !important;
+    width: 100% !important;
   }
 
   .serviceCard {
@@ -1084,7 +1119,23 @@
     right: auto !important;
     bottom: auto !important;
     transform: none !important;
-    margin-bottom: 40px;
+    margin-bottom: 0 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    text-align: center !important;
+    width: 100% !important;
+    max-width: 320px !important;
+  }
+
+  .serviceCardSvg {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  .serviceCardSvg svg {
+    width: 100% !important;
+    height: auto !important;
   }
 
   .journeyPathSvg {
@@ -2319,9 +2370,14 @@
 }
 
 @media (max-width: 900px) {
+  .tcgCurrentFocus svg,
+  .tcgTitle svg,
+  .tcgSubtitle svg,
   .tcgCards svg,
+  .tcgScrollBtn svg,
   .tcgBottomText svg,
   .helpGroup21 svg,
+  .helpDemoTitle svg,
   .helpDemoContent svg {
     width: 100% !important;
     height: auto !important;
