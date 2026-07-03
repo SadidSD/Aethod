@@ -66,10 +66,9 @@
   padding-top: 8px;
 }
 
-/* Ultra-thin page title — large & lightweight with purple gradient.          */
 .pageTitle {
   font-family: var(--font-sora), sans-serif;
-  font-size: 52px;
+  font-size: clamp(36px, 8vw, 52px);
   font-weight: 100;
   margin: 0 0 4px;
   line-height: 1.1;
@@ -776,36 +775,81 @@
 
 
 /* ==========================================================================
-   5. RESPONSIVE — 850px breakpoint
-   Stack the sidebar above the content area and cards vertically.
+   5. RESPONSIVE DESIGN
    ========================================================================== */
 
-@media (max-width: 850px) {
-
-  /* Switch from side-by-side to stacked layout.                             */
+/* Tablet & Mobile Layout — Stacks sidebar on top, content on bottom */
+@media (max-width: 1024px) {
   .blogLayout {
     flex-direction: column;
     gap: 32px;
+    width: 100%;
   }
 
-  /* Sidebar spans the full width when stacked.                              */
   .sidebar {
     width: 100%;
   }
 
-  /* Cards stack the illustration on top of the text area.                    */
-  .blogCard {
-    flex-direction: column;
-  }
-
-  /* Illustration box stretches full-width with a shorter fixed height.      */
-  .cardIllustrationBox {
+  .contentArea {
     width: 100%;
-    height: 200px;
+    min-width: 0;
   }
 
-  /* Tighten text padding on smaller screens.                                */
+  /* Keep cards horizontal on tablets, but ensure they don't overflow */
+  .blogCard {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    box-sizing: border-box;
+  }
+}
+
+/* Mobile Screens — Stack cards vertically */
+@media (max-width: 768px) {
+  .blogCard {
+    flex-direction: column !important;
+    align-items: stretch !important;
+    border-radius: 28px !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  .cardIllustrationBox {
+    width: 100% !important;
+    height: 200px;
+    border-radius: 22px !important;
+    flex-shrink: 0 !important;
+  }
+
   .cardTextArea {
-    padding: 16px 8px;
+    padding: 16px 20px 24px 20px !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  .cardTitle {
+    font-size: 16px !important;
+  }
+
+  .cardDesc {
+    font-size: 11px !important;
+    margin-bottom: 12px !important;
+  }
+
+  .tagPill {
+    padding: 6px 12px !important;
+    font-size: 10px !important;
+  }
+  
+  .expandBtn {
+    right: 16px !important;
+    bottom: 16px !important;
+  }
+}
+
+/* Very Small Mobile Screens */
+@media (max-width: 480px) {
+  .mainContainer {
+    padding: 80px 16px 60px !important;
   }
 }

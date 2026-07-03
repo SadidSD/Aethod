@@ -704,3 +704,17 @@
   }
 }
 
+/* Mobile Screen Layout Adjustments */
+@media (max-width: 800px) {
+  .essayCard {
+    padding: 32px 24px !important;
+    border-bottom: 1.5px solid rgba(113, 113, 113, 0.25);
+  }
+  .essayCard:last-child {
+    border-bottom: none;
+  }
+  .essayCardInner {
+    max-width: 100% !important;
+  }
+}
+

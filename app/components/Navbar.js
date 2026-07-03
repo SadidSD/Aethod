@@ -66,6 +66,9 @@ export default function Navbar({ activePage }) {
             <InlineSVG src="/A.svg" className={styles.drawerLogoImg} />
           </a>
           
+          {/* Theme Toggle (Compact inside drawer) */}
+          <ThemeToggle />
+          
           {/* Close Button */}
           <button 
             className={styles.drawerCloseBtn} 
@@ -106,7 +109,7 @@ export default function Navbar({ activePage }) {
       </div>
 
       {/* Main Navbar Pill */}
-      <nav className={styles.navbar} id="navbar">
+      <nav className={`${styles.navbar} ${menuOpen ? styles.navbarOpen : ""}`} id="navbar">
         <div className={styles.navContent}>
           {/* Circular Logo */}
           <a href="/" className={styles.logo} aria-label="Aeethod Home">
@@ -152,7 +155,7 @@ export default function Navbar({ activePage }) {
             </div>
           </button>
 
-          {/* Right Area: Empty placeholder for alignment */}
+          {/* Right Area (Desktop placeholder) */}
           <div className={styles.navRight}>
           </div>
         </div>

@@ -149,17 +149,16 @@ export default function Chatbox() {
             </button>
 
             <div className={styles.chatInputWrapper}>
-              {/* SVG background — search icon + gradient placeholder text, pointer-events none so input works */}
-              <img
-                src="/chatbox/tEXT-ASK.svg"
-                alt=""
-                className={styles.textAskBg}
-                aria-hidden="true"
-              />
-              {/* Actual functional input overlaid on top */}
+              {/* Inline SVG search icon */}
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className={styles.searchIcon}>
+                <circle cx="11" cy="11" r="8"></circle>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+              </svg>
+              
+              {/* Functional input */}
               <input
                 type="text"
-                className={`${styles.chatInput} ${inputVal ? styles.hasText : ""}`}
+                className={styles.chatInput}
                 placeholder="Ask Smith about your query"
                 value={inputVal}
                 onChange={(e) => setInputVal(e.target.value)}

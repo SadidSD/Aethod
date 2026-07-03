@@ -125,6 +125,10 @@
   flex: 1 0 0%;
 }
 
+.navRightMobile {
+  display: none;
+}
+
 /* === Ask Bar (Figma-matched) === */
 .askBarOuter {
   display: flex;
@@ -387,13 +391,11 @@
   .themeToggleWrapper {
     right: 52px;
   }
-}
-
-@media (max-width: 950px) {
+}@media (max-width: 950px) {
   .navbar {
     height: 80px !important;
     padding: 0 24px !important;
-    transition: height 0.4s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
+    transition: none !important;
   }
 
   .navbarOpen {
@@ -403,7 +405,6 @@
   .navContent {
     flex-direction: row !important;
     height: 80px !important;
-    padding-right: 76px !important;
     position: relative !important;
     align-items: center !important;
     justify-content: space-between !important;
@@ -414,41 +415,8 @@
     flex: none !important;
   }
 
-  .navRight {
-    flex: none !important;
-  }
-
   .navLinks {
-    position: absolute !important;
-    top: 80px !important;
-    left: 24px !important;
-    right: 24px !important;
-    transform: translateY(-10px) !important;
-    display: flex !important;
-    flex-direction: column !important;
-    width: auto !important;
-    align-items: center !important;
-    gap: 8px !important;
-    padding: 16px 0 !important;
-    box-sizing: border-box !important;
-    opacity: 0 !important;
-    pointer-events: none !important;
-    transition: opacity 0.25s ease, transform 0.25s ease !important;
-    margin-top: 0 !important;
-  }
-
-  .navbarOpen .navLinks {
-    opacity: 1 !important;
-    pointer-events: auto !important;
-    transform: translateY(0) !important;
-  }
-
-  .navLink {
-    font-size: 17px !important;
-    line-height: 22px !important;
-    padding: 8px 16px !important;
-    width: 100% !important;
-    text-align: center !important;
+    display: none !important;
   }
 
   .navRight {
@@ -456,10 +424,7 @@
   }
 
   .themeToggleWrapper {
-    position: absolute !important;
-    top: 26px !important;
-    right: 32px !important;
-    z-index: 1001 !important;
+    display: none !important;
   }
 
   .hamburgerBtn {
@@ -521,9 +486,6 @@
   .navbar {
     padding: 0 16px !important;
   }
-  .themeToggleWrapper {
-    right: 24px !important;
-  }
 }
 
 @media (max-width: 480px) {
@@ -532,13 +494,6 @@
   }
   .navbarOpen {
     height: 80px !important;
-  }
-  .themeToggleWrapper {
-    right: 16px !important;
-  }
-  .navLink {
-    font-size: 15px !important;
-    padding: 6px 12px !important;
   }
 }
 

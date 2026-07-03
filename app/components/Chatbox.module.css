@@ -367,54 +367,60 @@
 /* Input field wrapper — CSS neumorphic styling matching the SVG filter */
 .chatInputWrapper {
   flex-grow: 1;
-  position: relative;
   display: flex;
   align-items: center;
   min-width: 0;
   height: 41px;
-  background: transparent;
-  border-radius: 10px;
-  overflow: hidden;
+  background: #ECECEC;
+  border-radius: 12px;
+  padding: 0 14px;
+  gap: 8px;
+  box-shadow:
+    inset 1px 1px 2px rgba(211, 211, 211, 0.9),
+    inset -1px -1px 2px rgba(255, 255, 255, 0.9),
+    inset 1px -1px 2px rgba(211, 211, 211, 0.2),
+    inset -1px 1px 2px rgba(211, 211, 211, 0.2);
 }
 
-/* Background SVG */
-.textAskBg {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: fill;
-  pointer-events: none;
-  user-select: none;
+[data-theme='dark'] .chatInputWrapper {
+  background: #141414;
+  box-shadow:
+    inset 2px 2px 4px rgba(0, 0, 0, 0.6),
+    inset -2px -2px 4px rgba(255, 255, 255, 0.03);
+}
+
+.searchIcon {
+  color: var(--text-muted);
+  opacity: 0.75;
+  flex-shrink: 0;
 }
 
 /* Functional input layered on top of textAskBg */
 .chatInput {
-  position: absolute;
-  top: 3px;
-  bottom: 3px;
-  left: 36px;
-  right: 3px;
+  flex: 1;
+  min-width: 0;
   background: transparent;
   border: none;
   outline: none;
   font-family: var(--font-inter), sans-serif;
   font-size: 13px;
-  padding: 0 10px 0 2px;
   color: #333333;
-  z-index: 1;
-  border-top-right-radius: 7px;
-  border-bottom-right-radius: 7px;
 }
 
 .chatInput::placeholder {
-  color: #a78bfa;
-  opacity: 0.7;
+  background: linear-gradient(135deg, #5A69EA 0%, #BF8BCA 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-weight: 300;
+  opacity: 0.85;
 }
 
 [data-theme='dark'] .chatInput::placeholder {
-  color: rgba(167, 139, 250, 0.5);
+  background: linear-gradient(135deg, #7c5cfc 0%, #BF8BCA 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 [data-theme='dark'] .chatInput {
@@ -523,7 +529,8 @@
   text-align: center;
   cursor: pointer;
   transition: all 0.25s ease;
-  white-space: nowrap;
+  white-space: normal;
+  word-break: break-word;
 }
 
 [data-theme='dark'] .suggestionPill {
@@ -605,6 +612,29 @@
   }
   .bottomRow {
     padding-right: 68px !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+  }
+  .suggestionsContainer {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 8px !important;
+    width: 100% !important;
+  }
+  .suggestionsRow1, .suggestionsRow2 {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 8px !important;
+    width: 100% !important;
+  }
+  .suggestionPill {
+    display: block !important;
+    width: 100% !important;
+    white-space: normal !important;
+    text-align: left !important;
+    padding: 8px 12px !important;
+    font-size: 10px !important;
+    line-height: 1.4 !important;
   }
   .messageViewport {
     padding: 12px !important;
