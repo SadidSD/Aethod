@@ -208,18 +208,18 @@
 }
 
 .workCard {
-  background: var(--bg-primary, #ECECEC);
+  background: var(--bg-surface, #F9F9FB);
   border-radius: 24px;
   border: 1px solid rgba(163, 177, 198, 0.2);
   box-shadow:
     8px 8px 16px rgba(163, 177, 198, 0.4),
     -8px -8px 16px rgba(255, 255, 255, 0.7);
-  padding: 32px;
-  height: 260px;
+  padding: 16px;
+  height: auto;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  gap: 16px;
   position: relative;
   cursor: pointer;
   overflow: hidden;
@@ -227,6 +227,7 @@
 }
 
 [data-theme='dark'] .workCard {
+  background: #1e1e1e;
   box-shadow:
     8px 8px 20px rgba(0, 0, 0, 0.5),
     -8px -8px 20px rgba(255, 255, 255, 0.03);
@@ -246,92 +247,100 @@
     -10px -10px 24px rgba(255, 255, 255, 0.04);
 }
 
-.workCardContent {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  justify-content: flex-start;
-}
-
-.workCardName {
-  font-family: var(--font-sora), sans-serif;
-  font-size: 26px;
-  font-weight: 400;
-  color: var(--text-primary, #0d0d0d);
-  margin: 0 0 12px 0;
-  line-height: 1.2;
-}
-
-.workCardDesc {
-  font-family: var(--font-sora), sans-serif;
-  font-size: 14px;
-  font-weight: 300;
-  color: var(--text-muted, #717171);
-  margin: 0 0 20px 0;
-  line-height: 1.5;
-  display: -webkit-box;
-  -webkit-line-clamp: 3;
-  -webkit-box-orient: vertical;
+.workCardImageContainer {
+  width: 100%;
+  aspect-ratio: 1.48;
+  border-radius: 16px;
   overflow: hidden;
+  background: rgba(0, 0, 0, 0.03);
 }
 
-.workCardTags {
-  margin-top: auto;
+.workCardImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.5s ease;
+}
+
+.workCard:hover .workCardImage {
+  transform: scale(1.03);
+}
+
+.workCardFooter {
   display: flex;
-  gap: 8px;
-  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 0 4px 4px 4px;
 }
 
-.workTag {
-  font-family: var(--font-sora), sans-serif;
-  font-size: 11px;
-  font-weight: 300;
-  color: var(--text-muted, #717171);
-  background: rgba(113, 113, 113, 0.05);
-  border: 1px solid rgba(113, 113, 113, 0.15);
-  border-radius: 12px;
-  padding: 4px 8px;
-}
-
-/* Absolute check button on bottom-right of card */
-.checkButton {
-  position: absolute;
-  right: 28px;
-  bottom: 28px;
-  width: 44px;
-  height: 44px;
-  border-radius: 50%;
-  background: var(--bg-primary, #ECECEC);
-  border: 1px solid rgba(163, 177, 198, 0.1);
+.workCardLeftGroup {
   display: flex;
   align-items: center;
-  justify-content: center;
-  color: var(--text-secondary, #404040);
-  box-shadow:
-    3px 3px 6px rgba(163, 177, 198, 0.4),
-    -3px -3px 6px rgba(255, 255, 255, 0.8);
-  transition: all 0.2s ease;
+  gap: 8px;
 }
 
-[data-theme='dark'] .checkButton {
-  box-shadow:
-    3px 3px 6px rgba(0, 0, 0, 0.4),
-    -3px -3px 6px rgba(255, 255, 255, 0.03);
-  color: #b0b0c8;
+.workCardAvatar {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1px solid rgba(0, 0, 0, 0.05);
 }
 
-.workCard:hover .checkButton {
-  background: var(--accent-purple, #7c5cfc);
-  color: #ffffff;
-  box-shadow:
-    3px 3px 6px rgba(124, 92, 252, 0.3),
-    -3px -3px 6px rgba(255, 255, 255, 0.1);
-  transform: scale(1.06);
+.workCardAuthorName {
+  font-family: var(--font-sora), sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-primary, #0d0d0d);
 }
 
-.checkIcon {
-  width: 20px;
-  height: 20px;
+[data-theme='dark'] .workCardAuthorName {
+  color: #e8e8f0;
+}
+
+.workCardTagBadge {
+  font-family: var(--font-sora), sans-serif;
+  font-size: 11px;
+  font-weight: 400;
+  color: #7c5cfc;
+  background: rgba(124, 92, 252, 0.1);
+  border-radius: 6px;
+  padding: 2px 8px;
+  text-transform: capitalize;
+}
+
+.workCardRightGroup {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--text-muted, #717171);
+  transition: color 0.2s ease;
+}
+
+[data-theme='dark'] .workCardRightGroup {
+  color: #a0a0b8;
+}
+
+.workCard:hover .workCardRightGroup {
+  color: #7c5cfc;
+}
+
+.workCardCheckText {
+  font-family: var(--font-sora), sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.checkIconSmall {
+  width: 16px;
+  height: 16px;
+  transition: transform 0.2s ease;
+}
+
+.workCard:hover .checkIconSmall {
+  transform: translate(2px, -2px);
 }
 
 /* Fallbacks */

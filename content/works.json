@@ -1,10 +1,66 @@
 [
-  { "id": 1, "name": "Hasib (UI)", "filters": ["All", "Recently Uploaded", "History"] },
-  { "id": 2, "name": "Sadid (AI)", "filters": ["All", "Recently Uploaded", "By Sadid Bin Hasan", "E-Commerce Related"] },
-  { "id": 3, "name": "Maruf (Website)", "filters": ["All", "Recently Uploaded", "History"] },
-  { "id": 4, "name": "Modi (UX)", "filters": ["All", "History"] },
-  { "id": 5, "name": "Sadid (AI) Row 2", "filters": ["All", "By Sadid Bin Hasan", "F-Commerce Related"] },
-  { "id": 6, "name": "Modi (UX) Row 2", "filters": ["All"] },
-  { "id": 7, "name": "Hasib (UI) Row 2", "filters": ["All"] },
-  { "id": 8, "name": "Maruf (Website) Row 2", "filters": ["All"] }
+  {
+    "id": 1,
+    "name": "Hasib",
+    "tag": "Ui",
+    "image": "/works/hasib_ui_mockup.png",
+    "avatar": "/works/hasib_ui_avatar.jpeg",
+    "filters": ["All", "Recently Uploaded", "History"]
+  },
+  {
+    "id": 2,
+    "name": "Sadid",
+    "tag": "Ai",
+    "image": "/works/sadid_ai_mockup.png",
+    "avatar": "/works/sadid_ai_avatar.jpeg",
+    "filters": ["All", "Recently Uploaded", "By Sadid Bin Hasan", "E-Commerce Related"]
+  },
+  {
+    "id": 3,
+    "name": "Maruf",
+    "tag": "Website",
+    "image": "/works/maruf_website_mockup.png",
+    "avatar": "/works/maruf_website_avatar.jpeg",
+    "filters": ["All", "Recently Uploaded", "History"]
+  },
+  {
+    "id": 4,
+    "name": "Modi",
+    "tag": "Ux",
+    "image": "/works/modi_ux_mockup.png",
+    "avatar": "/works/modi_ux_avatar.jpeg",
+    "filters": ["All", "History"]
+  },
+  {
+    "id": 5,
+    "name": "Sadid",
+    "tag": "Ai",
+    "image": "/works/sadid_ai_mockup.png",
+    "avatar": "/works/sadid_ai_avatar.jpeg",
+    "filters": ["All", "By Sadid Bin Hasan", "F-Commerce Related"]
+  },
+  {
+    "id": 6,
+    "name": "Modi",
+    "tag": "Ux",
+    "image": "/works/modi_ux_mockup.png",
+    "avatar": "/works/modi_ux_avatar.jpeg",
+    "filters": ["All"]
+  },
+  {
+    "id": 7,
+    "name": "Hasib",
+    "tag": "Ui",
+    "image": "/works/hasib_ui_mockup.png",
+    "avatar": "/works/hasib_ui_avatar.jpeg",
+    "filters": ["All"]
+  },
+  {
+    "id": 8,
+    "name": "Maruf",
+    "tag": "Website",
+    "image": "/works/maruf_website_mockup.png",
+    "avatar": "/works/maruf_website_avatar.jpeg",
+    "filters": ["All"]
+  }
 ]

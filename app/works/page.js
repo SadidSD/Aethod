@@ -157,22 +157,39 @@ export default function WorksPage() {
                   className={styles.workCard}
                   onClick={() => handleEssayClick(work.name)}
                 >
-                  <div className={styles.workCardContent}>
-                    <h3 className={styles.workCardName}>{work.name}</h3>
-                    {work.description && <p className={work.description ? styles.workCardDesc : styles.hidden}>{work.description}</p>}
-                    
-                    <div className={styles.workCardTags}>
-                      {(work.filters || []).filter(f => f !== "All").slice(0, 2).map(f => (
-                        <span key={f} className={styles.workTag}>{f}</span>
-                      ))}
-                    </div>
+                  {/* Card mockup image preview */}
+                  <div className={styles.workCardImageContainer}>
+                    {work.image && (
+                      <img 
+                        src={work.image} 
+                        alt={`${work.name} mockup`} 
+                        className={styles.workCardImage} 
+                      />
+                    )}
                   </div>
 
-                  {/* Play/Check Button inside card */}
-                  <div className={styles.checkButton}>
-                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className={styles.checkIcon}>
-                      <path d="M7 17L17 7M17 17V7H7" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
-                    </svg>
+                  {/* Card footer details */}
+                  <div className={styles.workCardFooter}>
+                    <div className={styles.workCardLeftGroup}>
+                      {work.avatar && (
+                        <img 
+                          src={work.avatar} 
+                          alt={work.name} 
+                          className={styles.workCardAvatar} 
+                        />
+                      )}
+                      <span className={styles.workCardAuthorName}>{work.name}</span>
+                      {work.tag && (
+                        <span className={styles.workCardTagBadge}>{work.tag}</span>
+                      )}
+                    </div>
+
+                    <div className={styles.workCardRightGroup}>
+                      <span className={styles.workCardCheckText}>Check</span>
+                      <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className={styles.checkIconSmall}>
+                        <path d="M7 17L17 7M17 17V7H7" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
+                      </svg>
+                    </div>
                   </div>
                 </div>
               ))
