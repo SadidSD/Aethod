@@ -182,31 +182,9 @@ export default function StudioPage() {
           {/* ----- SECTION 4: HOW WE WORK ----- */}
           <InlineSVG 
             src="/studio/how_we_work.svg" 
-            className={`${styles.howWeWorkTitleDesktop} ${styles.howWeWorkSectionDesktop}`} 
+            className={styles.howWeWorkSection} 
             isMobile={isMobile} 
-            crop="title"
           />
-          <InlineSVG 
-            src="/studio/how_we_work.svg" 
-            className={`${styles.howWeWorkImageDesktop} ${styles.howWeWorkSectionDesktop}`} 
-            isMobile={isMobile} 
-            crop="image"
-          />
-
-          <div className={styles.howWeWorkMobileWrapper}>
-            <InlineSVG 
-              src="/studio/how_we_work.svg" 
-              className={styles.howWeWorkTitleMobile} 
-              isMobile={isMobile} 
-              crop="title" 
-            />
-            <InlineSVG 
-              src="/studio/how_we_work.svg" 
-              className={styles.howWeWorkImageMobile} 
-              isMobile={isMobile} 
-              crop="image" 
-            />
-          </div>
 
           {/* ----- SECTION 5: CALL TO ACTION BANNER ----- */}
           <div className={styles.ctaContainer}>

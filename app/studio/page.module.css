@@ -245,7 +245,7 @@
   position: relative;
   width: 100%;
   max-width: 1440px;
-  height: 6709px;
+  height: 8250px;
   margin: 0 auto;
 }
 
@@ -951,21 +951,12 @@
   top: 4266px;
 }
 
-.howWeWorkTitleDesktop,
-.howWeWorkImageDesktop {
+.howWeWorkSection {
   position: absolute;
   width: 100vw;
+  height: 2541px;
   left: calc(50% - 50vw);
-}
-
-.howWeWorkTitleDesktop {
   top: 4266px;
-  height: 120px;
-}
-
-.howWeWorkImageDesktop {
-  top: 4386px;
-  height: 880px;
 }
 
 .howWeWorkMobileWrapper {
@@ -979,7 +970,7 @@
   width: 100vw;
   height: 190px;
   left: calc(50% - 50vw);
-  top: 5329px;
+  top: 6870px;
   background: transparent;
   display: flex;
   align-items: center;
@@ -1012,7 +1003,7 @@
   width: 612px;
   height: 218px;
   left: 131px;
-  top: 5734px;
+  top: 7275px;
 }
 
 .capabilityGridWrapper {
@@ -1024,7 +1015,7 @@
   width: 1308px;
   height: 1069px;
   left: 63px;
-  top: 6034px;
+  top: 7575px;
   overflow: visible;
 }
 
@@ -1061,7 +1052,7 @@
   width: 1346px;
   height: 282px;
   left: calc(50% - 1346px / 2 - 10px);
-  top: 7194px;
+  top: 8735px;
 }
 
 .footerSvg {
@@ -1444,37 +1435,6 @@
     display: none !important;
   }
 
-  .howWeWorkMobileWrapper {
-    display: flex !important;
-    flex-direction: column !important;
-    width: 100% !important;
-    max-width: 600px !important;
-    margin: 40px auto 0 !important;
-    gap: 32px !important;
-    box-sizing: border-box !important;
-    padding: 0 16px !important;
-  }
-
-  .howWeWorkTitleMobile,
-  .howWeWorkTextMobile,
-  .howWeWorkImageMobile {
-    width: 100% !important;
-    height: auto !important;
-    position: relative !important;
-    left: auto !important;
-    top: auto !important;
-    transform: none !important;
-    display: block !important;
-  }
-
-  .howWeWorkTitleMobile svg,
-  .howWeWorkTextMobile svg,
-  .howWeWorkImageMobile svg {
-    width: 100% !important;
-    height: auto !important;
-    display: block !important;
-  }
-
   .capabilityGridWrapper {
     width: 100% !important;
     max-width: 100% !important;
@@ -1545,6 +1505,6 @@
   .contentAlignContainer {
     transform: scale(calc(100vw / 1440)) !important;
     transform-origin: top center !important;
-    height: calc(6709px * 100vw / 1440) !important;
+    height: calc(8250px * 100vw / 1440) !important;
   }
 }
