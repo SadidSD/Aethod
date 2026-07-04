@@ -32,14 +32,14 @@ function InlineSVG({ src, className, style }) {
 export default function Footer() {
   return (
     <footer className={styles.footerSection} id="footer-section" suppressHydrationWarning={true}>
-      <div className={styles.footerAlignContainer}>
+      <div className={styles.footerAlignContainer} suppressHydrationWarning={true}>
         {/* Desktop SVG Footer */}
         <InlineSVG src="/footer.svg" className={styles.footerSvg} />
         
         {/* Mobile HTML Footer */}
-        <div className={styles.mobileFooterContent}>
-          <div className={styles.mobileFooterCard}>
-            <div className={styles.mobileFooterTop}>
+        <div className={styles.mobileFooterContent} suppressHydrationWarning={true}>
+          <div className={styles.mobileFooterCard} suppressHydrationWarning={true}>
+            <div className={styles.mobileFooterTop} suppressHydrationWarning={true}>
               <a href="/" className={styles.mobileLogoLink}>
                 <InlineSVG src="/A.svg" className={styles.mobileLogoImg} />
                 <span className={styles.mobileLogoText}>Aeethod</span>
@@ -50,7 +50,7 @@ export default function Footer() {
             </div>
 
             
-            <div className={styles.mobileFooterLinks}>
+            <div className={styles.mobileFooterLinks} suppressHydrationWarning={true}>
               <a href="/studio" className={styles.mobileLink}>Studio</a>
               <a href="/services" className={styles.mobileLink}>System</a>
               <a href="/research" className={styles.mobileLink}>Research</a>
@@ -59,7 +59,7 @@ export default function Footer() {
               <a href="/contact" className={styles.mobileLink}>Contract</a>
             </div>
             
-            <div className={styles.mobileFooterSocials}>
+            <div className={styles.mobileFooterSocials} suppressHydrationWarning={true}>
               <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className={styles.mobileSocialTile} aria-label="LinkedIn">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={styles.mobileSocialIcon}><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
               </a>
