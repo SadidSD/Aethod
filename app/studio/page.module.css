@@ -950,6 +950,29 @@
   top: 4266px;
 }
 
+.howWeWorkTitleDesktop,
+.howWeWorkTextDesktop,
+.howWeWorkImageDesktop {
+  position: absolute;
+  width: 100vw;
+  left: calc(50% - 50vw);
+}
+
+.howWeWorkTitleDesktop {
+  top: 4266px;
+  height: 120px;
+}
+
+.howWeWorkTextDesktop {
+  top: 5266px;
+  height: 1541px;
+}
+
+.howWeWorkImageDesktop {
+  top: 4386px;
+  height: 880px;
+}
+
 .howWeWorkMobileWrapper {
   display: none;
 }

@@ -26,8 +26,8 @@ function InlineSVG({ src, className, isMobile, crop }) {
   }, [src]);
 
   let processedContent = svgContent;
-  if (isMobile && svgContent) {
-    if (src === "/studio/Group 75.svg") {
+  if (svgContent) {
+    if (isMobile && src === "/studio/Group 75.svg") {
       processedContent = svgContent
         .replace(/viewBox="0 0 1339 1102"/, 'viewBox="0 0 452 2550"')
         .replace(/width="1339" height="1102"/, 'width="452" height="2550"');
@@ -47,7 +47,7 @@ function InlineSVG({ src, className, isMobile, crop }) {
           .replace(/viewBox="0 0 1440 2541"/, 'viewBox="0 120 1440 880"')
           .replace(/width="1440" height="2541"/, 'width="1440" height="880"')
           .replace(/preserveAspectRatio="none"/, 'preserveAspectRatio="xMidYMid meet"');
-      } else {
+      } else if (isMobile) {
         processedContent = svgContent
           .replace(/preserveAspectRatio="none"/, 'preserveAspectRatio="xMidYMid meet"');
       }
@@ -71,7 +71,7 @@ export default function StudioPage() {
 
   useEffect(() => {
     const handleResize = () => {
-      setIsMobile(window.innerWidth < 900);
+      setIsMobile(window.innerWidth <= 1200);
     };
     handleResize();
     window.addEventListener("resize", handleResize);
@@ -182,8 +182,21 @@ export default function StudioPage() {
           {/* ----- SECTION 4: HOW WE WORK ----- */}
           <InlineSVG 
             src="/studio/how_we_work.svg" 
-            className={`${styles.howWeWorkSection} ${styles.howWeWorkSectionDesktop}`} 
+            className={`${styles.howWeWorkTitleDesktop} ${styles.howWeWorkSectionDesktop}`} 
             isMobile={isMobile} 
+            crop="title"
+          />
+          <InlineSVG 
+            src="/studio/how_we_work.svg" 
+            className={`${styles.howWeWorkTextDesktop} ${styles.howWeWorkSectionDesktop}`} 
+            isMobile={isMobile} 
+            crop="text"
+          />
+          <InlineSVG 
+            src="/studio/how_we_work.svg" 
+            className={`${styles.howWeWorkImageDesktop} ${styles.howWeWorkSectionDesktop}`} 
+            isMobile={isMobile} 
+            crop="image"
           />
 
           <div className={styles.howWeWorkMobileWrapper}>
@@ -192,12 +205,6 @@ export default function StudioPage() {
               className={styles.howWeWorkTitleMobile} 
               isMobile={isMobile} 
               crop="title" 
-            />
-            <InlineSVG 
-              src="/studio/how_we_work.svg" 
-              className={styles.howWeWorkTextMobile} 
-              isMobile={isMobile} 
-              crop="text" 
             />
             <InlineSVG 
               src="/studio/how_we_work.svg" 
