@@ -37,6 +37,7 @@ export default function ResearchPage() {
   const [activeFilter, setActiveFilter] = useState("All");
   const [searchQuery, setSearchQuery] = useState("");
   const [essays, setEssays] = useState([]);
+  const [expandedEssays, setExpandedEssays] = useState({});
 
   const playClickSound = useCallback(() => {
     try {
@@ -47,6 +48,17 @@ export default function ResearchPage() {
       /* ignore */
     }
   }, []);
+
+  const toggleEssay = (id) => {
+    playClickSound();
+    setExpandedEssays((prev) => ({ ...prev, [id]: !prev[id] }));
+  };
+
+  const handleEssayClick = (e, essayTitle) => {
+    e.preventDefault();
+    playClickSound();
+    alert(`Opening research paper: "${essayTitle}"`);
+  };
 
   // Fetch research essays on mount
   useEffect(() => {
