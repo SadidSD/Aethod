@@ -245,7 +245,7 @@
   position: relative;
   width: 100%;
   max-width: 1440px;
-  height: 7600px;
+  height: 7520px;
   margin: 0 auto;
 }
 
@@ -948,7 +948,7 @@
   width: 100vw;
   left: calc(50% - 50vw);
   top: 4266px;
-  height: 1891px;
+  height: 1811px;
   display: flex;
   flex-direction: column;
 }
@@ -964,7 +964,7 @@
 }
 
 .howWeWorkBottom {
-  height: 1191px;
+  height: 1111px;
 }
 
 .howWeWorkTop svg,
@@ -981,7 +981,7 @@
   width: 100vw;
   height: 190px;
   left: calc(50% - 50vw);
-  top: 6220px;
+  top: 6140px;
   background: transparent;
   display: flex;
   align-items: center;
@@ -1014,7 +1014,7 @@
   width: 612px;
   height: 218px;
   left: 131px;
-  top: 6625px;
+  top: 6545px;
 }
 
 .capabilityGridWrapper {
@@ -1026,7 +1026,7 @@
   width: 1308px;
   height: 1069px;
   left: 63px;
-  top: 6925px;
+  top: 6845px;
   overflow: visible;
 }
 
@@ -1063,7 +1063,7 @@
   width: 1346px;
   height: 282px;
   left: calc(50% - 1346px / 2 - 10px);
-  top: 8085px;
+  top: 8005px;
 }
 
 .footerSvg {
@@ -1346,7 +1346,7 @@
   .studioTitle, .studioSubtitle, .rectangle158, .whoWeAre, .weAreNotAnAgencyContainer,
   .heroImageRight, .heroImageLowerLeft, .frame142, .whatIsTitle, .whatIsSubtitle,
   .whatIsSystemStudioContainer, .howWeDifferCardWrapper, .manifestoLineTop, .manifestoTitle,
-  .manifestoSubtitle, .manifestoGridBox, .manifestoQuote, .howWeWorkSection, .ctaContainer,
+  .manifestoSubtitle, .manifestoGridBox, .manifestoQuote, .ctaContainer,
   .capabilityHeader, .capabilityGrid, .footerWrapper {
     position: relative !important;
     left: auto !important;
@@ -1446,6 +1446,18 @@
     display: none !important;
   }
 
+  .howWeWorkSection {
+    position: relative !important;
+    left: auto !important;
+    top: auto !important;
+    width: 100vw !important;
+    max-width: 100vw !important;
+    height: auto !important;
+    margin: 0 !important;
+    margin-left: calc(-50vw + 50%) !important;
+    overflow: hidden !important;
+  }
+
   .howWeWorkTop,
   .howWeWorkBottom {
     height: auto !important;
@@ -1528,6 +1540,6 @@
   .contentAlignContainer {
     transform: scale(calc(100vw / 1440)) !important;
     transform-origin: top center !important;
-    height: calc(7600px * 100vw / 1440) !important;
+    height: calc(7520px * 100vw / 1440) !important;
   }
 }

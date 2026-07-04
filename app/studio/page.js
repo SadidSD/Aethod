@@ -39,8 +39,8 @@ function InlineSVG({ src, className, isMobile, crop }) {
           .replace(/preserveAspectRatio="none"/, 'preserveAspectRatio="xMidYMid meet"');
       } else if (crop === "bottom") {
         processedContent = svgContent
-          .replace(/viewBox="0 0 1440 2541"/, 'viewBox="0 1350 1440 1191"')
-          .replace(/width="1440" height="2541"/, 'width="1440" height="1191"')
+          .replace(/viewBox="0 0 1440 2541"/, 'viewBox="0 1430 1440 1111"')
+          .replace(/width="1440" height="2541"/, 'width="1440" height="1111"')
           .replace(/preserveAspectRatio="none"/, 'preserveAspectRatio="xMidYMid meet"');
       } else if (crop === "title") {
         processedContent = svgContent
