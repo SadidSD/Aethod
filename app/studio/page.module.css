@@ -675,7 +675,8 @@
   position: absolute;
   width: 163px;
   height: 19px;
-  left: 197.5px;
+  left: 50%;
+  transform: translateX(-50%);
   top: 56px;
   z-index: 2;
 }
