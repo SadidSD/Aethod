@@ -1471,7 +1471,8 @@
   }
 
   .howWeWorkBottom svg {
-    width: 135% !important;
+    width: 108% !important;
+    max-width: none !important;
     height: auto !important;
     display: block !important;
   }
