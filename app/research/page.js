@@ -176,11 +176,21 @@ export default function ResearchPage() {
                 </div>
                 <h2 className={styles.essayTitle}>{heroEssay.title}</h2>
                 <h3 className={styles.essaySubtitle}>{renderSubtitle(heroEssay.subtitle)}</h3>
-                <p className={styles.essayDesc}>{heroEssay.description}</p>
+                <div className={styles.essayDescContainer}>
+                  <p className={`${styles.essayDesc} ${expandedEssays[heroEssay.id] ? styles.expanded : ""}`}>
+                    {heroEssay.description}
+                  </p>
+                  <button 
+                    className={styles.seeMoreBtn}
+                    onClick={() => toggleEssay(heroEssay.id)}
+                  >
+                    {expandedEssays[heroEssay.id] ? "See Less" : "See More"}
+                  </button>
+                </div>
                 
                 <div className={styles.heroCardFooter}>
                   <span className={styles.readTime}>{heroEssay.readTime || "10 min read"}</span>
-                  <a href="#" className={styles.readLink} onClick={playClickSound}>
+                  <a href="#" className={styles.readLink} onClick={(e) => handleEssayClick(e, heroEssay.title)}>
                     Read essay
                     <svg className={styles.chevronIcon} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                       <polyline points="9 18 15 12 9 6" />
@@ -219,11 +229,21 @@ export default function ResearchPage() {
 
                     <h2 className={styles.essayGridTitle}>{essay.title}</h2>
                     <h3 className={styles.essayGridSubtitle}>{renderSubtitle(essay.subtitle)}</h3>
-                    <p className={styles.essayGridDesc}>{essay.description}</p>
+                    <div className={styles.essayDescContainer}>
+                      <p className={`${styles.essayGridDesc} ${expandedEssays[essay.id] ? styles.expanded : ""}`}>
+                        {essay.description}
+                      </p>
+                      <button 
+                        className={styles.seeMoreBtn}
+                        onClick={() => toggleEssay(essay.id)}
+                      >
+                        {expandedEssays[essay.id] ? "See Less" : "See More"}
+                      </button>
+                    </div>
 
                     <div className={styles.cardFooter}>
                       <span className={styles.readTime}>{essay.readTime || "10 min read"}</span>
-                      <a href="#" className={styles.readLink} onClick={playClickSound}>
+                      <a href="#" className={styles.readLink} onClick={(e) => handleEssayClick(e, essay.title)}>
                         Read essay
                         <svg className={styles.chevronIcon} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                           <polyline points="9 18 15 12 9 6" />
@@ -259,11 +279,21 @@ export default function ResearchPage() {
                       </div>
                       <h2 className={styles.essayTitle}>{essay.title}</h2>
                       <h3 className={styles.essaySubtitle}>{renderSubtitle(essay.subtitle)}</h3>
-                      <p className={styles.essayDesc}>{essay.description}</p>
+                      <div className={styles.essayDescContainer}>
+                        <p className={`${styles.essayDesc} ${expandedEssays[essay.id] ? styles.expanded : ""}`}>
+                          {essay.description}
+                        </p>
+                        <button 
+                          className={styles.seeMoreBtn}
+                          onClick={() => toggleEssay(essay.id)}
+                        >
+                          {expandedEssays[essay.id] ? "See Less" : "See More"}
+                        </button>
+                      </div>
                       
                       <div className={styles.heroCardFooter}>
                         <span className={styles.readTime}>{essay.readTime || "10 min read"}</span>
-                        <a href="#" className={styles.readLink} onClick={playClickSound}>
+                        <a href="#" className={styles.readLink} onClick={(e) => handleEssayClick(e, essay.title)}>
                           Read essay
                           <svg className={styles.chevronIcon} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                             <polyline points="9 18 15 12 9 6" />

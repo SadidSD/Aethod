@@ -718,3 +718,52 @@
   }
 }
 
+.essayDescContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.seeMoreBtn {
+  display: none;
+}
+
+@media (max-width: 950px) {
+  .essayDescContainer {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    width: 100% !important;
+  }
+  
+  .essayDesc,
+  .essayGridDesc {
+    display: -webkit-box !important;
+    -webkit-line-clamp: 3 !important;
+    -webkit-box-orient: vertical !important;
+    overflow: hidden !important;
+    margin-bottom: 8px !important;
+  }
+  
+  .essayDesc.expanded,
+  .essayGridDesc.expanded {
+    display: block !important;
+    -webkit-line-clamp: unset !important;
+    overflow: visible !important;
+  }
+  
+  .seeMoreBtn {
+    background: linear-gradient(135deg, #5A69EA 0%, #BF8BCA 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: 600;
+    cursor: pointer;
+    display: inline-block !important;
+    font-family: 'Sora', var(--font-sora), sans-serif;
+    font-size: 14px !important;
+    border: none !important;
+    background-color: transparent !important;
+    padding: 0 !important;
+    margin-bottom: 24px !important;
+  }
+}
+
