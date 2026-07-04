@@ -32,7 +32,17 @@ function InlineSVG({ src, className, isMobile, crop }) {
         .replace(/viewBox="0 0 1339 1102"/, 'viewBox="0 0 452 2550"')
         .replace(/width="1339" height="1102"/, 'width="452" height="2550"');
     } else if (src === "/studio/how_we_work.svg") {
-      if (crop === "title") {
+      if (crop === "top") {
+        processedContent = svgContent
+          .replace(/viewBox="0 0 1440 2541"/, 'viewBox="0 0 1440 700"')
+          .replace(/width="1440" height="2541"/, 'width="1440" height="700"')
+          .replace(/preserveAspectRatio="none"/, 'preserveAspectRatio="xMidYMid meet"');
+      } else if (crop === "bottom") {
+        processedContent = svgContent
+          .replace(/viewBox="0 0 1440 2541"/, 'viewBox="0 1350 1440 1191"')
+          .replace(/width="1440" height="2541"/, 'width="1440" height="1191"')
+          .replace(/preserveAspectRatio="none"/, 'preserveAspectRatio="xMidYMid meet"');
+      } else if (crop === "title") {
         processedContent = svgContent
           .replace(/viewBox="0 0 1440 2541"/, 'viewBox="0 0 1440 120"')
           .replace(/width="1440" height="2541"/, 'width="1440" height="120"')
@@ -180,11 +190,20 @@ export default function StudioPage() {
           <InlineSVG src="/studio/Humans architect. AI executes. Data makes it true. That is what we build..svg" className={styles.manifestoQuote} />
 
           {/* ----- SECTION 4: HOW WE WORK ----- */}
-          <InlineSVG 
-            src="/studio/how_we_work.svg" 
-            className={styles.howWeWorkSection} 
-            isMobile={isMobile} 
-          />
+          <div className={styles.howWeWorkSection}>
+            <InlineSVG 
+              src="/studio/how_we_work.svg" 
+              className={styles.howWeWorkTop}
+              isMobile={isMobile} 
+              crop="top"
+            />
+            <InlineSVG 
+              src="/studio/how_we_work.svg" 
+              className={styles.howWeWorkBottom}
+              isMobile={isMobile} 
+              crop="bottom"
+            />
+          </div>
 
           {/* ----- SECTION 5: CALL TO ACTION BANNER ----- */}
           <div className={styles.ctaContainer}>
