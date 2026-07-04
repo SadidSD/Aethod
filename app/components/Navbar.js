@@ -57,11 +57,12 @@ export default function Navbar({ activePage }) {
       <div 
         className={`${styles.drawerBackdrop} ${menuOpen ? styles.drawerBackdropOpen : ""}`}
         onClick={() => setMenuOpen(false)}
+        suppressHydrationWarning={true}
       />
 
       {/* Drawer Panel (Slides from left) */}
-      <div className={`${styles.drawerPanel} ${menuOpen ? styles.drawerPanelOpen : ""}`}>
-        <div className={styles.drawerHeader}>
+      <div className={`${styles.drawerPanel} ${menuOpen ? styles.drawerPanelOpen : ""}`} suppressHydrationWarning={true}>
+        <div className={styles.drawerHeader} suppressHydrationWarning={true}>
           {/* Logo */}
           <a href="/" className={styles.drawerLogo} onClick={() => setMenuOpen(false)}>
             <InlineSVG src="/A.svg" className={styles.drawerLogoImg} />
@@ -81,7 +82,7 @@ export default function Navbar({ activePage }) {
         </div>
 
         {/* Navigation Links inside Drawer */}
-        <div className={styles.drawerLinks}>
+        <div className={styles.drawerLinks} suppressHydrationWarning={true}>
           <a href="/studio" className={getLinkClass("studio")} onClick={() => setMenuOpen(false)}>
             Studio
           </a>
@@ -106,21 +107,21 @@ export default function Navbar({ activePage }) {
         </div>
 
         {/* Theme Toggle (Centered under the links) */}
-        <div className={styles.drawerThemeToggle}>
+        <div className={styles.drawerThemeToggle} suppressHydrationWarning={true}>
           <ThemeToggle />
         </div>
       </div>
 
       {/* Main Navbar Pill */}
-      <nav className={`${styles.navbar} ${menuOpen ? styles.navbarOpen : ""}`} id="navbar">
-        <div className={styles.navContent}>
+      <nav className={`${styles.navbar} ${menuOpen ? styles.navbarOpen : ""}`} id="navbar" suppressHydrationWarning={true}>
+        <div className={styles.navContent} suppressHydrationWarning={true}>
           {/* Circular Logo */}
           <a href="/" className={styles.logo} aria-label="Aeethod Home">
             <InlineSVG src="/A.svg" className={styles.logoImg} />
           </a>
 
           {/* Navigation Links (Desktop) */}
-          <div className={styles.navLinks}>
+          <div className={styles.navLinks} suppressHydrationWarning={true}>
             <a href="/studio" className={getLinkClass("studio")}>
               Studio
             </a>
@@ -151,7 +152,7 @@ export default function Navbar({ activePage }) {
             aria-expanded={menuOpen}
             aria-label="Toggle Navigation Menu"
           >
-            <div className={`${styles.hamburgerIcon} ${menuOpen ? styles.hamburgerIconOpen : ""}`}>
+            <div className={`${styles.hamburgerIcon} ${menuOpen ? styles.hamburgerIconOpen : ""}`} suppressHydrationWarning={true}>
               <span />
               <span />
               <span />
@@ -159,11 +160,11 @@ export default function Navbar({ activePage }) {
           </button>
 
           {/* Right Area (Desktop placeholder) */}
-          <div className={styles.navRight}>
+          <div className={styles.navRight} suppressHydrationWarning={true}>
           </div>
         </div>
       </nav>
-      <div className={styles.themeToggleWrapper}>
+      <div className={styles.themeToggleWrapper} suppressHydrationWarning={true}>
         <ThemeToggle />
       </div>
     </div>

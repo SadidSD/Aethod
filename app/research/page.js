@@ -120,17 +120,17 @@ export default function ResearchPage() {
       <main className={styles.mainContainer}>
         
         {/* ----- TITLE HEADER & SEARCH BAR ----- */}
-        <div className={styles.headerBlock}>
-          <div className={styles.headerBlockInner}>
+        <div className={styles.headerBlock} suppressHydrationWarning={true}>
+          <div className={styles.headerBlockInner} suppressHydrationWarning={true}>
             {/* Page title "Research" */}
-            <div className={styles.headerTitleContainer}>
+            <div className={styles.headerTitleContainer} suppressHydrationWarning={true}>
               <h1 className={styles.headerTitle}>Research</h1>
               <p className={styles.headerSubtitle}>insights and blueprints</p>
             </div>
 
             {/* Filter buttons & Search bar */}
-            <div className={styles.filtersRow}>
-              <div className={styles.filterTabs}>
+            <div className={styles.filtersRow} suppressHydrationWarning={true}>
+              <div className={styles.filterTabs} suppressHydrationWarning={true}>
                 {filters.map((f) => (
                   <button
                     key={f}
@@ -146,7 +146,7 @@ export default function ResearchPage() {
               </div>
 
               {/* Search Container */}
-              <div className={styles.searchContainer}>
+              <div className={styles.searchContainer} suppressHydrationWarning={true}>
                 <input
                   type="text"
                   placeholder="Search papers..."
