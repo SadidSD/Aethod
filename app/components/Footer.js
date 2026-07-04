@@ -24,13 +24,14 @@ function InlineSVG({ src, className, style }) {
       className={className}
       style={style}
       dangerouslySetInnerHTML={{ __html: svgContent }}
+      suppressHydrationWarning={true}
     />
   );
 }
 
 export default function Footer() {
   return (
-    <footer className={styles.footerSection} id="footer-section">
+    <footer className={styles.footerSection} id="footer-section" suppressHydrationWarning={true}>
       <div className={styles.footerAlignContainer}>
         {/* Desktop SVG Footer */}
         <InlineSVG src="/footer.svg" className={styles.footerSvg} />
@@ -74,13 +75,13 @@ export default function Footer() {
               </a>
             </div>
 
-            <div className={styles.mobileCopyrightPill}>
+            <div className={styles.mobileCopyrightPill} suppressHydrationWarning={true}>
               @2026 Aeethod. All rights reserved.
             </div>
           </div>
         </div>
 
-        <div className={styles.copyrightText}>
+        <div className={styles.copyrightText} suppressHydrationWarning={true}>
           @2026 Aeethod. All rights reserved.
         </div>
       </div>

@@ -25,6 +25,7 @@ function InlineSVG({ src, className }) {
     <div
       className={className}
       dangerouslySetInnerHTML={{ __html: svgContent }}
+      suppressHydrationWarning={true}
     />
   );
 }
@@ -51,7 +52,7 @@ export default function Navbar({ activePage }) {
   };
 
   return (
-    <div className={styles.navOuter}>
+    <div className={styles.navOuter} suppressHydrationWarning={true}>
       {/* Drawer Backdrop Overlay */}
       <div 
         className={`${styles.drawerBackdrop} ${menuOpen ? styles.drawerBackdropOpen : ""}`}

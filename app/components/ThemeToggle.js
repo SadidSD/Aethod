@@ -23,6 +23,7 @@ function InlineSVG({ src, className }) {
     <div
       className={className}
       dangerouslySetInnerHTML={{ __html: svgContent }}
+      suppressHydrationWarning={true}
     />
   );
 }
@@ -202,8 +203,8 @@ export default function ThemeToggle({ className }) {
       };
 
   return (
-    <div className={`${className || ""} slideButton`} id="theme-toggle">
-      <div className="slideTrack" ref={trackRef}>
+    <div className={`${className || ""} slideButton`} id="theme-toggle" suppressHydrationWarning={true}>
+      <div className="slideTrack" ref={trackRef} suppressHydrationWarning={true}>
         <InlineSVG src={isDark ? "/down_area_dark.svg" : "/down_area.svg"} className="slideTrackSvg" />
         <div
           className="slideKnob"
@@ -217,6 +218,7 @@ export default function ThemeToggle({ className }) {
           aria-checked={isDark}
           aria-label="Toggle dark mode"
           tabIndex={0}
+          suppressHydrationWarning={true}
         >
           <InlineSVG src={isDark ? "/button_up_dark.svg" : "/button_up.svg"} className="slideKnobSvg" />
         </div>
