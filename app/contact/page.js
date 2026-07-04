@@ -57,7 +57,6 @@ export default function ContactPage() {
   // Sound resources pre-loaded state
         
   // Form states
-  const [searchQuery, setSearchQuery] = useState("");
   const [mailEmail, setMailEmail] = useState("");
   const [mailMessage, setMailMessage] = useState("");
   const [footerEmail, setFooterEmail] = useState("");
@@ -74,136 +73,6 @@ export default function ContactPage() {
       /* ignore */
     }
   }, []);
-
-  // Theme synchronization logic
-  
-  
-  
-  
-  
-  
-  // Scroll Indicators Drag & Tracking
-  const [scrollTopProgress, setScrollTopProgress] = useState(0);
-  const [isDraggingScroll, setIsDraggingScroll] = useState(false);
-  const [maxScrollTravel, setMaxScrollTravel] = useState(0);
-
-  const isDraggingScrollRef = useRef(false);
-  const startScrollButtonYRef = useRef(0);
-  const startScrollTranslateYRef = useRef(0);
-  const scrollButtonRef = useRef(null);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      if (isDraggingScrollRef.current) return;
-
-      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-      const progress = docHeight > 0 ? window.scrollY / docHeight : 0;
-      setScrollTopProgress(progress);
-
-      const buttonHeight = 70;
-      const padding = 24;
-      const maxTravel = window.innerHeight - buttonHeight - padding * 2;
-      setMaxScrollTravel(maxTravel);
-
-      if (scrollButtonRef.current) {
-        scrollButtonRef.current.style.transform = `translateY(${progress * maxTravel}px)`;
-      }
-    };
-
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    window.addEventListener("resize", handleScroll);
-    handleScroll();
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-      window.removeEventListener("resize", handleScroll);
-    };
-  }, []);
-
-  const handleScrollPointerDown = useCallback((e) => {
-    e.preventDefault();
-
-    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-    const buttonHeight = 70;
-    const padding = 24;
-    const maxTravel = window.innerHeight - buttonHeight - padding * 2;
-
-    if (docHeight <= 0 || maxTravel <= 0) return;
-
-    document.documentElement.style.scrollBehavior = "auto";
-    isDraggingScrollRef.current = true;
-    setIsDraggingScroll(true);
-
-    startScrollButtonYRef.current = e.clientY;
-
-    const currentProgress = window.scrollY / docHeight;
-    startScrollTranslateYRef.current = currentProgress * maxTravel;
-
-    scrollButtonRef.current?.setPointerCapture(e.pointerId);
-  }, []);
-
-  const handleScrollPointerMove = useCallback((e) => {
-    if (!isDraggingScrollRef.current) return;
-
-    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-    const buttonHeight = 70;
-    const padding = 24;
-    const maxTravel = window.innerHeight - buttonHeight - padding * 2;
-
-    if (docHeight <= 0 || maxTravel <= 0) return;
-
-    const deltaY = e.clientY - startScrollButtonYRef.current;
-    const newTranslateY = Math.max(0, Math.min(maxTravel, startScrollTranslateYRef.current + deltaY));
-
-    if (scrollButtonRef.current) {
-      scrollButtonRef.current.style.transform = `translateY(${newTranslateY}px)`;
-    }
-
-    const scrollPercent = newTranslateY / maxTravel;
-    const newScrollTop = scrollPercent * docHeight;
-    window.scrollTo({ top: newScrollTop, behavior: "auto" });
-  }, []);
-
-  const handleScrollPointerUp = useCallback(
-    (e) => {
-      if (!isDraggingScrollRef.current) return;
-
-      try {
-        scrollButtonRef.current?.releasePointerCapture(e.pointerId);
-      } catch (err) {}
-
-      isDraggingScrollRef.current = false;
-      setIsDraggingScroll(false);
-
-      document.documentElement.style.scrollBehavior = "";
-
-      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-      const buttonHeight = 70;
-      const padding = 24;
-      const maxTravel = window.innerHeight - buttonHeight - padding * 2;
-
-      if (docHeight > 0 && maxTravel > 0) {
-        const currentProgress = window.scrollY / docHeight;
-        setScrollTopProgress(currentProgress);
-      }
-
-      // Check if it was a quick click to scroll home smoothly
-      const deltaY = Math.abs(e.clientY - startScrollButtonYRef.current);
-      if (deltaY < 5) {
-        window.scrollTo({ top: 0, behavior: "smooth" });
-      }
-    },
-    []
-  );
-
-  // Search Submit Handler
-  const handleSearchSubmit = (e) => {
-    e.preventDefault();
-    playClickSound();
-    if (searchQuery.trim()) {
-      alert(`Searching for: "${searchQuery}"`);
-      setSearchQuery("");
-    }
-  };
 
   // Quick Mail Form Submit Handler
   const handleMailSubmit = (e) => {
@@ -407,31 +276,12 @@ export default function ContactPage() {
             </div>
           </div>
 
-          {/* ===== SIDE INDICATOR ===== */}
-          <div className={styles.sideIndicator} />
         </div>
 
       </div>
 
       {/* ===== FOOTER ===== */}
       <Footer />
-
-      {/* ===== FLOATING SCROLL DEPTH BAR INDICATOR ===== */}
-      <div
-        className={styles.scrollButton}
-        ref={scrollButtonRef}
-        onPointerDown={handleScrollPointerDown}
-        onPointerMove={handleScrollPointerMove}
-        onPointerUp={handleScrollPointerUp}
-        onPointerCancel={handleScrollPointerUp}
-        role="slider"
-        aria-valuemin={0}
-        aria-valuemax={100}
-        aria-valuenow={Math.round(scrollTopProgress * 100)}
-        aria-label="Scroll position slider"
-      >
-        <div className={styles.scrollButtonInner} />
-      </div>
     </div>
   );
 }
