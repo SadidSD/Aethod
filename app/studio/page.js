@@ -38,31 +38,23 @@ function InlineSVG({ src, className, isMobile, crop }) {
           .replace(/<path[^>]*?d="M328\.76[^>]*?>/i, "")
           .replace(/<path[^>]*?d="M132\.696[^>]*?>/i, "")
           .replace(/viewBox="0 0 1440 2541"/, 'viewBox="0 0 1440 700"')
-          .replace(/width="1440" height="2541"/, 'width="1440" height="700"')
-          .replace(/preserveAspectRatio="none"/, 'preserveAspectRatio="xMidYMid meet"');
+          .replace(/width="1440" height="2541"/, 'width="1440" height="700"');
       } else if (crop === "bottom") {
         processedContent = svgContent
           .replace(/viewBox="0 0 1440 2541"/, 'viewBox="0 1430 1440 1111"')
-          .replace(/width="1440" height="2541"/, 'width="1440" height="1111"')
-          .replace(/preserveAspectRatio="none"/, 'preserveAspectRatio="xMidYMid meet"');
+          .replace(/width="1440" height="2541"/, 'width="1440" height="1111"');
       } else if (crop === "title") {
         processedContent = svgContent
           .replace(/viewBox="0 0 1440 2541"/, 'viewBox="0 0 1440 120"')
-          .replace(/width="1440" height="2541"/, 'width="1440" height="120"')
-          .replace(/preserveAspectRatio="none"/, 'preserveAspectRatio="xMidYMid meet"');
+          .replace(/width="1440" height="2541"/, 'width="1440" height="120"');
       } else if (crop === "text") {
         processedContent = svgContent
           .replace(/viewBox="0 0 1440 2541"/, 'viewBox="0 1000 1440 1541"')
-          .replace(/width="1440" height="2541"/, 'width="1440" height="1541"')
-          .replace(/preserveAspectRatio="none"/, 'preserveAspectRatio="xMidYMid meet"');
+          .replace(/width="1440" height="2541"/, 'width="1440" height="1541"');
       } else if (crop === "image") {
         processedContent = svgContent
           .replace(/viewBox="0 0 1440 2541"/, 'viewBox="0 120 1440 880"')
-          .replace(/width="1440" height="2541"/, 'width="1440" height="880"')
-          .replace(/preserveAspectRatio="none"/, 'preserveAspectRatio="xMidYMid meet"');
-      } else if (isMobile) {
-        processedContent = svgContent
-          .replace(/preserveAspectRatio="none"/, 'preserveAspectRatio="xMidYMid meet"');
+          .replace(/width="1440" height="2541"/, 'width="1440" height="880"');
       }
     }
   }
