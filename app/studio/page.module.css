@@ -1535,13 +1535,13 @@
 
   .howWeWorkSection {
     position: relative !important;
-    left: auto !important;
+    left: 50% !important;
     top: auto !important;
     width: 100vw !important;
     max-width: 100vw !important;
+    transform: translateX(-50%) !important;
     height: auto !important;
     margin: 0 !important;
-    margin-left: calc(-50vw + 50%) !important;
     overflow: hidden !important;
   }
 
@@ -1573,8 +1573,8 @@
 
   .contentAlignContainer .howWeWorkTop svg,
   .contentAlignContainer .howWeWorkBottom svg {
-    width: 108% !important;
-    max-width: none !important;
+    width: 100% !important;
+    max-width: 100% !important;
     height: auto !important;
     display: block !important;
   }
