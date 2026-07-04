@@ -188,12 +188,6 @@ export default function StudioPage() {
           />
           <InlineSVG 
             src="/studio/how_we_work.svg" 
-            className={`${styles.howWeWorkTextDesktop} ${styles.howWeWorkSectionDesktop}`} 
-            isMobile={isMobile} 
-            crop="text"
-          />
-          <InlineSVG 
-            src="/studio/how_we_work.svg" 
             className={`${styles.howWeWorkImageDesktop} ${styles.howWeWorkSectionDesktop}`} 
             isMobile={isMobile} 
             crop="image"

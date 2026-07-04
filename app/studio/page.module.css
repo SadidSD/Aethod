@@ -245,7 +245,7 @@
   position: relative;
   width: 100%;
   max-width: 1440px;
-  height: 8250px;
+  height: 6709px;
   margin: 0 auto;
 }
 
@@ -951,7 +951,6 @@
 }
 
 .howWeWorkTitleDesktop,
-.howWeWorkTextDesktop,
 .howWeWorkImageDesktop {
   position: absolute;
   width: 100vw;
@@ -961,11 +960,6 @@
 .howWeWorkTitleDesktop {
   top: 4266px;
   height: 120px;
-}
-
-.howWeWorkTextDesktop {
-  top: 5266px;
-  height: 1541px;
 }
 
 .howWeWorkImageDesktop {
@@ -984,7 +978,7 @@
   width: 100vw;
   height: 190px;
   left: calc(50% - 50vw);
-  top: 6870px;
+  top: 5329px;
   background: transparent;
   display: flex;
   align-items: center;
@@ -1017,7 +1011,7 @@
   width: 612px;
   height: 218px;
   left: 131px;
-  top: 7275px;
+  top: 5734px;
 }
 
 .capabilityGridWrapper {
@@ -1029,7 +1023,7 @@
   width: 1308px;
   height: 1069px;
   left: 63px;
-  top: 7575px;
+  top: 6034px;
   overflow: visible;
 }
 
@@ -1066,7 +1060,7 @@
   width: 1346px;
   height: 282px;
   left: calc(50% - 1346px / 2 - 10px);
-  top: 8735px;
+  top: 7194px;
 }
 
 .footerSvg {
@@ -1550,6 +1544,6 @@
   .contentAlignContainer {
     transform: scale(calc(100vw / 1440)) !important;
     transform-origin: top center !important;
-    height: calc(8250px * 100vw / 1440) !important;
+    height: calc(6709px * 100vw / 1440) !important;
   }
 }
