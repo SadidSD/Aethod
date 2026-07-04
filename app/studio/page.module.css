@@ -1461,11 +1461,17 @@
   .howWeWorkTop,
   .howWeWorkBottom {
     height: auto !important;
+    overflow: hidden !important;
   }
 
-  .howWeWorkTop svg,
-  .howWeWorkBottom svg {
+  .howWeWorkTop svg {
     width: 100% !important;
+    height: auto !important;
+    display: block !important;
+  }
+
+  .howWeWorkBottom svg {
+    width: 135% !important;
     height: auto !important;
     display: block !important;
   }
