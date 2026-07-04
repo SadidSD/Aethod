@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useCallback, useEffect } from "react";
+import Link from "next/link";
 import styles from "./page.module.css";
 import { useTheme } from "../context/ThemeContext";
 import Footer from "../components/Footer";
@@ -202,12 +203,12 @@ export default function ResearchPage() {
                 
                 <div className={styles.heroCardFooter}>
                   <span className={styles.readTime}>{heroEssay.readTime || "10 min read"}</span>
-                  <a href="#" className={styles.readLink} onClick={(e) => handleEssayClick(e, heroEssay.title)}>
+                  <Link href={`/research/${heroEssay.id}`} className={styles.readLink} onClick={playClickSound}>
                     Read essay
                     <svg className={styles.chevronIcon} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                       <polyline points="9 18 15 12 9 6" />
                     </svg>
-                  </a>
+                  </Link>
                 </div>
               </div>
 
@@ -255,12 +256,12 @@ export default function ResearchPage() {
 
                     <div className={styles.cardFooter}>
                       <span className={styles.readTime}>{essay.readTime || "10 min read"}</span>
-                      <a href="#" className={styles.readLink} onClick={(e) => handleEssayClick(e, essay.title)}>
+                      <Link href={`/research/${essay.id}`} className={styles.readLink} onClick={playClickSound}>
                         Read essay
                         <svg className={styles.chevronIcon} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                           <polyline points="9 18 15 12 9 6" />
                         </svg>
-                      </a>
+                      </Link>
                     </div>
                   </div>
                 </article>
@@ -305,12 +306,12 @@ export default function ResearchPage() {
                       
                       <div className={styles.heroCardFooter}>
                         <span className={styles.readTime}>{essay.readTime || "10 min read"}</span>
-                        <a href="#" className={styles.readLink} onClick={(e) => handleEssayClick(e, essay.title)}>
+                        <Link href={`/research/${essay.id}`} className={styles.readLink} onClick={playClickSound}>
                           Read essay
                           <svg className={styles.chevronIcon} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                             <polyline points="9 18 15 12 9 6" />
                           </svg>
-                        </a>
+                        </Link>
                       </div>
                     </div>
 

@@ -763,7 +763,17 @@
     border: none !important;
     background-color: transparent !important;
     padding: 0 !important;
-    margin-bottom: 24px !important;
+    margin-bottom: 8px !important;
+  }
+
+  .heroCardBody,
+  .specialCardBody {
+    gap: 16px !important;
+  }
+
+  .heroCardFooter,
+  .cardFooter {
+    margin-top: 12px !important;
   }
 }
 

@@ -1,0 +1,209 @@
+.pageWrapper {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  transition: background-color 0.5s ease, color 0.5s ease;
+}
+
+.mainContainer {
+  flex-grow: 1;
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 140px 24px 80px 24px;
+  box-sizing: border-box;
+}
+
+.backLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--text-secondary, #404040);
+  font-family: var(--font-sora), sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  text-decoration: none;
+  margin-bottom: 40px;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.backLink:hover {
+  color: #5A69EA;
+  transform: translateX(-4px);
+}
+
+.essayHeader {
+  margin-bottom: 32px;
+}
+
+.headerMeta {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.tagPill {
+  font-family: var(--font-sora), sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  padding: 6px 12px;
+  border-radius: 20px;
+}
+
+.tagPill_green {
+  background-color: #E8F5E9;
+  color: #2E7D32;
+}
+
+:global([data-theme='dark']) .tagPill_green {
+  background-color: rgba(46, 125, 50, 0.15) !important;
+  color: #81C784 !important;
+}
+
+.tagPill_blue {
+  background-color: #E3F2FD;
+  color: #1565C0;
+}
+
+:global([data-theme='dark']) .tagPill_blue {
+  background-color: rgba(21, 101, 192, 0.15) !important;
+  color: #90CAF9 !important;
+}
+
+.tagPill_gray {
+  background-color: #F5F5F5;
+  color: #616161;
+}
+
+:global([data-theme='dark']) .tagPill_gray {
+  background-color: rgba(255, 255, 255, 0.05) !important;
+  color: #B0B0B0 !important;
+}
+
+.dateText, .readTime {
+  font-family: var(--font-sora), sans-serif;
+  font-size: 13px;
+  color: var(--text-muted, #717171);
+}
+
+.essayTitle {
+  font-family: var(--font-sora), sans-serif;
+  font-size: 40px;
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--text-primary);
+  margin: 0 0 16px 0;
+}
+
+.essaySubtitle {
+  font-family: var(--font-sora), sans-serif;
+  font-size: 22px;
+  font-weight: 300;
+  line-height: 1.4;
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+.essaySubtitle span {
+  background: linear-gradient(135deg, #5A69EA 0%, #BF8BCA 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 400;
+}
+
+.divider {
+  width: 100%;
+  height: 1px;
+  background-color: rgba(113, 113, 113, 0.15);
+  margin: 32px 0 40px 0;
+}
+
+.essayBody {
+  font-family: var(--font-sora), sans-serif;
+  font-size: 16.5px;
+  line-height: 1.8;
+  font-weight: 300;
+  color: var(--text-secondary);
+}
+
+.essayBody h2 {
+  font-family: var(--font-sora), sans-serif;
+  font-size: 22px;
+  font-weight: 500;
+  color: var(--text-primary);
+  margin: 40px 0 16px 0;
+}
+
+.essayBody p {
+  margin: 0 0 20px 0;
+}
+
+.essayBody ul {
+  margin: 0 0 20px 0;
+  padding-left: 20px;
+}
+
+.essayBody li {
+  margin-bottom: 8px;
+}
+
+.essayBody blockquote {
+  margin: 32px 0;
+  padding: 16px 20px;
+  border-left: 3px solid #5A69EA;
+  background-color: rgba(90, 105, 234, 0.05);
+  font-style: italic;
+  font-size: 17.5px;
+  border-radius: 0 8px 8px 0;
+  color: var(--text-primary);
+}
+
+.notFoundContainer {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  padding: 40px 24px;
+  box-sizing: border-box;
+}
+
+.notFoundTitle {
+  font-family: var(--font-sora), sans-serif;
+  font-size: 32px;
+  margin-bottom: 16px;
+  text-align: center;
+}
+
+.notFoundDesc {
+  font-family: var(--font-sora), sans-serif;
+  font-size: 16px;
+  color: var(--text-secondary);
+  margin-bottom: 32px;
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  .mainContainer {
+    padding: 100px 20px 60px 20px;
+  }
+  .essayTitle {
+    font-size: 28px;
+  }
+  .essaySubtitle {
+    font-size: 16px;
+  }
+  .essayBody {
+    font-size: 15px;
+    line-height: 1.7;
+  }
+  .essayBody h2 {
+    font-size: 19px;
+    margin: 32px 0 12px 0;
+  }
+}
