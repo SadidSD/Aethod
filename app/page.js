@@ -636,7 +636,9 @@ export default function Home() {
                   {/* Main thin line */}
                   <path d="M 50,0 Q 15,250 50,500 T 50,1000" stroke="#B2CEFE" strokeWidth="2" strokeLinecap="round" fill="none" opacity="0.15" />
                 </svg>
-                  {/* Service Card 1: Systems Architecture */}
+              </div>
+
+              {/* Service Card 1: Systems Architecture */}
               <div id="service-card-1" className={`${styles.serviceCard} ${styles.serviceCard1} ${styles.serviceCardHidden}`} role="region" aria-label="Systems Architecture">
                 <div className={styles.serviceIcon}>
                   <div className={styles.serviceIconImg} role="img" aria-label="Systems Architecture Icon" style={{ WebkitMaskImage: "url('/temp_icon1.png')", maskImage: "url('/temp_icon1.png')" }} />
@@ -691,7 +693,6 @@ export default function Home() {
                     We study emerging systems. Then we turn insights into tools. Each with short, thoughtful descriptions.
                   </p>
                 </div>
-              </div>
               </div>
             </div>
           </div>
