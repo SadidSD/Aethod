@@ -8,6 +8,32 @@ import { useTheme } from "../../context/ThemeContext";
 import Footer from "../../components/Footer";
 import Navbar from "../../components/Navbar";
 
+function InlineSVG({ src, className, style }) {
+  const [svgContent, setSvgContent] = useState("");
+
+  useEffect(() => {
+    fetch(src)
+      .then((res) => {
+        if (!res.ok) throw new Error(`Failed to load SVG: ${src}`);
+        return res.text();
+      })
+      .then((text) => {
+        const cleanText = text.replace(/<\?xml[^>]*\?>/i, "");
+        setSvgContent(cleanText);
+      })
+      .catch((err) => console.error(err));
+  }, [src]);
+
+  return (
+    <div
+      className={className}
+      style={style}
+      dangerouslySetInnerHTML={{ __html: svgContent }}
+      suppressHydrationWarning={true}
+    />
+  );
+}
+
 const essaysContent = {
   "clarity-gap": {
     title: "The Clarity Gap",
@@ -16,6 +42,8 @@ const essaysContent = {
     readTime: "18 min read",
     tag: "Research",
     tagType: "green",
+    illustrationType: "svg",
+    illustrationSrc: "/research/mini_graph.svg",
     content: `
       <h2>1. The Paradox of Abundance</h2>
       <p>Modern enterprises are drowning in telemetry. We measure page load times, mouse movement heatmaps, SQL query execution plans, and API response micro-intervals. Yet, as the volume of dashboard metrics grows exponentially, the strategic clarity required to make critical decisions decreases. We call this the Clarity Gap.</p>
@@ -42,6 +70,8 @@ const essaysContent = {
     readTime: "10 min read",
     tag: "System",
     tagType: "blue",
+    illustrationType: "svg",
+    illustrationSrc: "/system/Architecture_details.svg",
     content: `
       <h2>1. The Myth of the Static System</h2>
       <p>Software architectures are often built on the assumption that requirements will remain stable once specified. This is a fundamental mistake. In commerce and systems engineering, market realities, user behaviors, and API dependencies are in a constant state of flux. Designing a system means designing for change.</p>
@@ -67,6 +97,8 @@ const essaysContent = {
     readTime: "7 min read",
     tag: "Case Study",
     tagType: "gray",
+    illustrationType: "svg",
+    illustrationSrc: "/system/Not_apps.svg",
     content: `
       <h2>1. The Trading Card Game Market Challenge</h2>
       <p>The collectibles market, particularly Trading Card Games (TCG), suffers from extreme pricing fragmentation. Value is driven by player demand, card condition, tournament results, and regional scarcity. With dozens of marketplaces reporting distinct price points, manual price management is impossible.</p>
@@ -87,6 +119,7 @@ const essaysContent = {
     readTime: "18 min read",
     tag: "Research",
     tagType: "green",
+    illustrationType: "multi-agent",
     content: `
       <h2>1. The Rise of Agentic Commerce</h2>
       <p>Traditional e-commerce pipelines rely on linear, cron-based automation scripts. These rigid pathways struggle to handle unpredictable variables like supplier delays, sudden price fluctuations, and dynamic ad performance. Multi-agent systems introduce autonomous, conversational intelligence to solve these challenges.</p>
@@ -113,6 +146,7 @@ const essaysContent = {
     readTime: "18 min read",
     tag: "Research",
     tagType: "green",
+    illustrationType: "predictive-latency",
     content: `
       <h2>1. The Cost of Latency</h2>
       <p>In modern web applications, milliseconds cost millions. Users expect instantaneous transitions and real-time responsiveness. However, database round-trips, network handshake overheads, and complex rendering operations introduce inevitable latency. Predictive latency addresses this challenge by guessing user actions before they occur.</p>
@@ -166,6 +200,45 @@ export default function EssayDetailPage() {
     return subtitle;
   };
 
+  const renderIllustration = (essay) => {
+    if (essay.illustrationType === "svg") {
+      return (
+        <div className={styles.essayIllustration} suppressHydrationWarning={true}>
+          <InlineSVG src={essay.illustrationSrc} />
+        </div>
+      );
+    }
+    if (essay.illustrationType === "multi-agent") {
+      return (
+        <div className={styles.essayIllustration} suppressHydrationWarning={true}>
+          <div className={styles.massContainer} suppressHydrationWarning={true}>
+            <div className={styles.massGraphicWrapper} suppressHydrationWarning={true}>
+              <InlineSVG src="/research/mass.svg" className={styles.massSvg} />
+              <div className={`${styles.agentLabel} ${styles.agentLabelLeft}`}>Agents 1</div>
+              <div className={`${styles.agentLabel} ${styles.agentLabelTop}`}>Agents 2</div>
+              <div className={`${styles.agentLabel} ${styles.agentLabelRight}`}>Agents 3</div>
+              <div className={`${styles.agentLabel} ${styles.agentLabelBottom}`}>Agents 4</div>
+            </div>
+          </div>
+        </div>
+      );
+    }
+    if (essay.illustrationType === "predictive-latency") {
+      return (
+        <div className={styles.essayIllustration} suppressHydrationWarning={true}>
+          <div className={styles.predictiveLatencyCardRight} suppressHydrationWarning={true}>
+            <InlineSVG src="/research/rec.svg" className={styles.recSvg} />
+            <div className={styles.predictiveLatencyContent} suppressHydrationWarning={true}>
+              <InlineSVG src="/research/tri.svg" className={styles.triSvg} />
+              <div className={styles.predictiveLatencyText}>Predictive Latency</div>
+            </div>
+          </div>
+        </div>
+      );
+    }
+    return null;
+  };
+
   if (!essay) {
     return (
       <div className={styles.notFoundContainer} data-theme={isDark ? "dark" : "light"} suppressHydrationWarning={true}>
@@ -201,6 +274,9 @@ export default function EssayDetailPage() {
         </article>
         
         <div className={styles.divider} />
+
+        {/* Render Dynamic Essay Illustration */}
+        {renderIllustration(essay)}
         
         <div 
           className={styles.essayBody}
