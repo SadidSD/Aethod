@@ -1571,13 +1571,8 @@
     overflow: hidden !important;
   }
 
-  .howWeWorkTop svg {
-    width: 100% !important;
-    height: auto !important;
-    display: block !important;
-  }
-
-  .howWeWorkBottom svg {
+  .contentAlignContainer .howWeWorkTop svg,
+  .contentAlignContainer .howWeWorkBottom svg {
     width: 108% !important;
     max-width: none !important;
     height: auto !important;
