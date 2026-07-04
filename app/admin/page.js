@@ -103,7 +103,7 @@ export default function AdminPage() {
   };
 
   return (
-    <div className={styles.pageWrapper} data-theme={isDark ? "dark" : "light"}>
+    <div className={styles.pageWrapper} data-theme={isDark ? "dark" : "light"} suppressHydrationWarning={true}>
       <Navbar activePage="admin" />
 
       <main className={styles.mainContainer}>

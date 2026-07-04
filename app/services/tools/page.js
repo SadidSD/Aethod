@@ -27,6 +27,7 @@ function InlineSVG({ src, className }) {
     <div
       className={className}
       dangerouslySetInnerHTML={{ __html: svgContent }}
+      suppressHydrationWarning={true}
     />
   );
 }
@@ -61,7 +62,7 @@ export default function ToolsPage() {
   };
 
   return (
-    <div className={styles.pageWrapper} data-theme={isDark ? "dark" : "light"}>
+    <div className={styles.pageWrapper} data-theme={isDark ? "dark" : "light"} suppressHydrationWarning={true}>
       {/* ===== FLOATING STICKY NAVIGATION ===== */}
       <Navbar activePage="services" />
 

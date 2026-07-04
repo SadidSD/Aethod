@@ -28,6 +28,7 @@ function InlineSVG({ src, className }) {
     <div
       className={className}
       dangerouslySetInnerHTML={{ __html: svgContent }}
+      suppressHydrationWarning={true}
     />
   );
 }
@@ -48,7 +49,7 @@ export default function ProductsPage() {
 
 
   return (
-    <div className={styles.pageWrapper} data-theme={isDark ? "dark" : "light"}>
+    <div className={styles.pageWrapper} data-theme={isDark ? "dark" : "light"} suppressHydrationWarning={true}>
       {/* Hidden global definitions for SVG gradients */}
       <svg style={{ position: "absolute", width: 0, height: 0, overflow: "hidden" }} aria-hidden="true">
         <defs>

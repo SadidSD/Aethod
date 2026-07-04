@@ -41,6 +41,7 @@ function InlineSVG({ src, className, isMobile }) {
     <div
       className={className}
       dangerouslySetInnerHTML={{ __html: processedContent }}
+      suppressHydrationWarning={true}
     />
   );
 }
@@ -82,7 +83,7 @@ export default function StudioPage() {
   }, []);
 
   return (
-    <div className={styles.pageWrapper} data-theme={isDark ? "dark" : "light"}>
+    <div className={styles.pageWrapper} data-theme={isDark ? "dark" : "light"} suppressHydrationWarning={true}>
       {/* ===== NAVIGATION ===== */}
       <Navbar activePage="studio" />
 

@@ -27,6 +27,7 @@ function InlineSVG({ src, className, style }) {
       className={className}
       style={style}
       dangerouslySetInnerHTML={{ __html: svgContent }}
+      suppressHydrationWarning={true}
     />
   );
 }
@@ -111,7 +112,7 @@ export default function ResearchPage() {
   };
 
   return (
-    <div className={styles.pageWrapper} data-theme={isDark ? "dark" : "light"}>
+    <div className={styles.pageWrapper} data-theme={isDark ? "dark" : "light"} suppressHydrationWarning={true}>
       {/* ===== NAVIGATION ===== */}
       <Navbar activePage="research" />
 

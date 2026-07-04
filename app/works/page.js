@@ -26,6 +26,7 @@ function InlineSVG({ src, className }) {
     <div
       className={className}
       dangerouslySetInnerHTML={{ __html: svgContent }}
+      suppressHydrationWarning={true}
     />
   );
 }
@@ -86,7 +87,7 @@ export default function WorksPage() {
   const filteredWorks = works.filter(isCardMatching);
 
   return (
-    <div className={styles.pageWrapper} data-theme={isDark ? "dark" : "light"}>
+    <div className={styles.pageWrapper} data-theme={isDark ? "dark" : "light"} suppressHydrationWarning={true}>
       {/* ===== NAVIGATION ===== */}
       <Navbar activePage="works" />
 

@@ -25,6 +25,7 @@ function InlineSVG({ src, className, style }) {
       className={className}
       style={style}
       dangerouslySetInnerHTML={{ __html: svgContent }}
+      suppressHydrationWarning={true}
     />
   );
 }
@@ -107,7 +108,7 @@ export default function BlogPage() {
   };
 
   return (
-    <div className={styles.pageWrapper} data-theme={isDark ? "dark" : "light"}>
+    <div className={styles.pageWrapper} data-theme={isDark ? "dark" : "light"} suppressHydrationWarning={true}>
       <Navbar activePage="blog" />
 
       <main className={styles.mainContainer}>

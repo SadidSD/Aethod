@@ -29,6 +29,7 @@ function InlineSVG({ src, className }) {
     <div
       className={className}
       dangerouslySetInnerHTML={{ __html: svgContent }}
+      suppressHydrationWarning={true}
     />
   );
 }
@@ -236,7 +237,7 @@ export default function ContactPage() {
   };
 
   return (
-    <div className={styles.pageWrapper} data-theme={isDark ? "dark" : "light"}>
+    <div className={styles.pageWrapper} data-theme={isDark ? "dark" : "light"} suppressHydrationWarning={true}>
       {/* ===== PILL NAVIGATION BAR ===== */}
       <Navbar activePage="contact" />
 
