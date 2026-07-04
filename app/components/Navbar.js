@@ -66,9 +66,6 @@ export default function Navbar({ activePage }) {
             <InlineSVG src="/A.svg" className={styles.drawerLogoImg} />
           </a>
           
-          {/* Theme Toggle (Compact inside drawer) */}
-          <ThemeToggle />
-          
           {/* Close Button */}
           <button 
             className={styles.drawerCloseBtn} 
@@ -105,6 +102,11 @@ export default function Navbar({ activePage }) {
           <a href="/contact" className={getLinkClass("contact")} onClick={() => setMenuOpen(false)}>
             Contact
           </a>
+        </div>
+
+        {/* Theme Toggle (Centered under the links) */}
+        <div className={styles.drawerThemeToggle}>
+          <ThemeToggle />
         </div>
       </div>
 
