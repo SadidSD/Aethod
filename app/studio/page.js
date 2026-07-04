@@ -72,6 +72,7 @@ export default function StudioPage() {
   const { isDark } = useTheme();
   const [gridInView, setGridInView] = useState(false);
   const gridRef = useRef(null);
+  const containerRef = useRef(null);
   const [isMobile, setIsMobile] = useState(false);
   const [expandedParagraphs, setExpandedParagraphs] = useState({});
 
@@ -80,8 +81,19 @@ export default function StudioPage() {
   };
 
   useEffect(() => {
+    if (!containerRef.current) return;
+    const observer = new ResizeObserver((entries) => {
+      for (let entry of entries) {
+        entry.target.style.setProperty('--content-height', `${entry.target.offsetHeight}px`);
+      }
+    });
+    observer.observe(containerRef.current);
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
     const handleResize = () => {
-      setIsMobile(window.innerWidth <= 1200);
+      setIsMobile(window.innerWidth <= 767);
     };
     handleResize();
     window.addEventListener("resize", handleResize);
@@ -116,7 +128,7 @@ export default function StudioPage() {
 
       {/* ===== MAIN CONTENT ===== */}
       <main className={styles.mainContainer}>
-        <div className={styles.contentAlignContainer}>
+        <div ref={containerRef} className={styles.contentAlignContainer}>
           {/* ----- SECTION 1: HERO ----- */}
           <InlineSVG src="/studio/Studio.svg" className={styles.studioTitle} />
           <InlineSVG src="/studio/intelligence_before_interface.svg" className={styles.studioSubtitle} />
