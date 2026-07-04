@@ -1090,6 +1090,12 @@
     flex-direction: column !important;
     gap: 0 !important;
   }
+  .termsColumn {
+    width: 100% !important;
+  }
+  .termsColumn:last-child {
+    margin-top: 60px !important;
+  }
   .columnHeader {
     justify-content: center !important;
     margin-bottom: 32px !important;

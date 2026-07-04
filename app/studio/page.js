@@ -81,6 +81,11 @@ export default function StudioPage() {
   const [gridInView, setGridInView] = useState(false);
   const gridRef = useRef(null);
   const [isMobile, setIsMobile] = useState(false);
+  const [expandedParagraphs, setExpandedParagraphs] = useState({});
+
+  const toggleParagraph = (id) => {
+    setExpandedParagraphs((prev) => ({ ...prev, [id]: !prev[id] }));
+  };
 
   useEffect(() => {
     const handleResize = () => {
@@ -151,22 +156,40 @@ export default function StudioPage() {
           <div className={styles.whatIsSystemStudioContainer}>
             <div className={styles.whatIsParagraphRow}>
               <InlineSVG src="/studio/round_arrow_card.svg" className={styles.roundArrowCard} />
-              <div className={styles.whatIsParagraphText}>
-                An agency executes. A SaaS company scales. A systems studio thinks.{" "}
-                <span className={styles.whatIsParagraphHighlight}>
-                  We spend time inside a problem before touching it — understanding the data, the decisions, the friction. Then we design the system that makes all three cleaner.
-                </span>{" "}
-                That is the difference.
+              <div className={styles.whatIsParagraphTextContainer}>
+                <div className={`${styles.whatIsParagraphText} ${expandedParagraphs.p1 ? styles.expanded : ""}`}>
+                  An agency executes. A SaaS company scales. A systems studio thinks.{" "}
+                  <span className={styles.whatIsParagraphHighlight}>
+                    We spend time inside a problem before touching it — understanding the data, the decisions, the friction. Then we design the system that makes all three cleaner.
+                  </span>{" "}
+                  That is the difference.
+                </div>
+                <button 
+                  className={styles.seeMoreBtn}
+                  onClick={() => toggleParagraph("p1")}
+                  aria-expanded={expandedParagraphs.p1}
+                >
+                  {expandedParagraphs.p1 ? "See Less" : "See More"}
+                </button>
               </div>
             </div>
             <div className={styles.whatIsParagraphRow}>
               <InlineSVG src="/studio/round_arrow_card.svg" className={styles.roundArrowCard} />
-              <div className={styles.whatIsParagraphText}>
-                The architect still matters. The machine is a tool.{" "}
-                <span className={styles.whatIsParagraphHighlight}>
-                  The person who designs the system, knows what the machine intelligence must do — and keeps both working in their correct order —
-                </span>{" "}
-                that is someone is a thinker. That is who we are.
+              <div className={styles.whatIsParagraphTextContainer}>
+                <div className={`${styles.whatIsParagraphText} ${expandedParagraphs.p2 ? styles.expanded : ""}`}>
+                  The architect still matters. The machine is a tool.{" "}
+                  <span className={styles.whatIsParagraphHighlight}>
+                    The person who designs the system, knows what the machine intelligence must do — and keeps both working in their correct order —
+                  </span>{" "}
+                  that is someone is a thinker. That is who we are.
+                </div>
+                <button 
+                  className={styles.seeMoreBtn}
+                  onClick={() => toggleParagraph("p2")}
+                  aria-expanded={expandedParagraphs.p2}
+                >
+                  {expandedParagraphs.p2 ? "See Less" : "See More"}
+                </button>
               </div>
             </div>
           </div>
