@@ -557,6 +557,10 @@
   transition: color 0.5s ease;
 }
 
+.seeMoreBtn {
+  display: none;
+}
+
 /* ---------- SECTION 4: FOOTER & FORM OVERLAYS ---------- */
 .footerWrapper {
   position: absolute;
@@ -1101,6 +1105,31 @@
   }
   .termsItemDesc {
     font-size: 13.5px !important;
+    display: -webkit-box !important;
+    -webkit-line-clamp: 2 !important;
+    -webkit-box-orient: vertical !important;
+    overflow: hidden !important;
+  }
+  
+  .termsItemDesc.expanded {
+    display: block !important;
+    -webkit-line-clamp: unset !important;
+    overflow: visible !important;
+  }
+
+  .seeMoreBtn {
+    background: linear-gradient(135deg, #5A69EA 0%, #BF8BCA 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: 600;
+    cursor: pointer;
+    display: inline-block !important;
+    font-family: var(--font-sora), sans-serif;
+    font-size: 13.5px !important;
+    border: none !important;
+    background-color: transparent !important;
+    padding: 0 !important;
+    margin-top: 8px !important;
   }
   .footerWrapper {
     position: relative !important;

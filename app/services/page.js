@@ -98,10 +98,52 @@ function AnimatedToolsIcon() {
   );
 }
 
+const terms = [
+  {
+    id: "t1",
+    number: 1,
+    title: "Scope and Architechure",
+    desc: "We build enduring digital systems, not temporary digital features. All engagements are defined strictly by the logical blueprint agreed upon before engineering begins. Any adjustments to the underlying architecture or workflow pipelines outside the initial scope will require a comprehensive evaluation and a separate engineering phase."
+  },
+  {
+    id: "t2",
+    number: 2,
+    title: "Delivery and Iterations",
+    desc: "We work through structural, mutually validated iterations. Our focus is systems architecture and engineering design; revisions are strictly bound to the performance, clarity, and structural integrity of the asset—not subjective visual trends."
+  },
+  {
+    id: "t3",
+    number: 3,
+    title: "System Integration & Liability",
+    desc: "Our architectures are engineered to process data with absolute technical precision. Once deployed and verified, the continuous operational integrity of the system depends on data environments being maintained according to our operational blueprints. Aethood is not responsible for data friction caused by external, unverified tool updates or unauthorized backend modifications."
+  }
+];
+
+const rules = [
+  {
+    id: "r1",
+    number: 1,
+    title: "Capital & Commitment",
+    desc: "Every intelligent framework requires an analysis phase. To secure a place in our studio's pipeline and initiate the initial blueprinting, a 50% upfront commitment fee is required. Engineering and deployment commence immediately upon payment, with the remaining balance is structured around predefined based milestones, ensuring mutual transparency at every step."
+  },
+  {
+    id: "r2",
+    number: 2,
+    title: "High-Signal Communication",
+    desc: "We don't believe in endless meetings or unnecessary noise. To maintain deep focus on engineering, operational updates happen through a centralized dashboard. We provide clear, structured updates once a week. This ensures you are aligned with the project's velocity without unnecessary chat widgets or distracting calls."
+  },
+  {
+    id: "r3",
+    number: 3,
+    title: "Absolute Timeline & Scope",
+    desc: "Systems intelligence cannot be rushed. We commit to technical deadlines built on careful research and build. Once a timeline is locked during the blueprinting phase, we commit to it fully. However, because our systems are deeply interconnected, any late-stage adjustments to the core data logic or scope will automatically recalibrate the final deployment date. Precision always takes priority over speed."
+  }
+];
+
 export default function ServicesPage() {
   const { isDark } = useTheme();
-              
-        
+  const [expandedItems, setExpandedItems] = useState({});
+
   const playClickSound = useCallback(() => {
     try {
       const audio = new Audio("/touchpad sd.mp3");
@@ -111,6 +153,11 @@ export default function ServicesPage() {
       /* ignore */
     }
   }, []);
+
+  const toggleItem = (id) => {
+    playClickSound();
+    setExpandedItems((prev) => ({ ...prev, [id]: !prev[id] }));
+  };
 
   return (
     <div className={styles.pageWrapper} data-theme={isDark ? "dark" : "light"} suppressHydrationWarning={true}>
@@ -181,35 +228,27 @@ export default function ServicesPage() {
                   <InlineSVG src="/services/Frame 198.svg" className={styles.btnTermsInline} />
                 </div>
                 <div className={styles.termsList}>
-                  <div className={styles.termsItem}>
-                    <div className={styles.termsNumber}>1</div>
-                    <div className={styles.termsText}>
-                      <h4 className={styles.termsItemTitle}>Scope and Architechure</h4>
-                      <p className={styles.termsItemDesc}>
-                        We build enduring digital systems, not temporary digital features. All engagements are defined strictly by the logical blueprint agreed upon before engineering begins. Any adjustments to the underlying architecture or workflow pipelines outside the initial scope will require a comprehensive evaluation and a separate engineering phase.
-                      </p>
-                    </div>
-                  </div>
-
-                  <div className={styles.termsItem}>
-                    <div className={styles.termsNumber}>2</div>
-                    <div className={styles.termsText}>
-                      <h4 className={styles.termsItemTitle}>Delivery and Iterations</h4>
-                      <p className={styles.termsItemDesc}>
-                        We work through structural, mutually validated iterations. Our focus is systems architecture and engineering design; revisions are strictly bound to the performance, clarity, and structural integrity of the asset—not subjective visual trends.
-                      </p>
-                    </div>
-                  </div>
-
-                  <div className={styles.termsItem}>
-                    <div className={styles.termsNumber}>3</div>
-                    <div className={styles.termsText}>
-                      <h4 className={styles.termsItemTitle}>System Integration & Liability</h4>
-                      <p className={styles.termsItemDesc}>
-                        Our architectures are engineered to process data with absolute technical precision. Once deployed and verified, the continuous operational integrity of the system depends on data environments being maintained according to our operational blueprints. Aethood is not responsible for data friction caused by external, unverified tool updates or unauthorized backend modifications.
-                      </p>
-                    </div>
-                  </div>
+                  {terms.map((item) => {
+                    const isExpanded = !!expandedItems[item.id];
+                    return (
+                      <div key={item.id} className={styles.termsItem}>
+                        <div className={styles.termsNumber}>{item.number}</div>
+                        <div className={styles.termsText}>
+                          <h4 className={styles.termsItemTitle}>{item.title}</h4>
+                          <p className={`${styles.termsItemDesc} ${isExpanded ? styles.expanded : ""}`}>
+                            {item.desc}
+                          </p>
+                          <button 
+                            className={styles.seeMoreBtn}
+                            onClick={() => toggleItem(item.id)}
+                            aria-expanded={isExpanded}
+                          >
+                            {isExpanded ? "See Less" : "See More"}
+                          </button>
+                        </div>
+                      </div>
+                    );
+                  })}
                 </div>
               </div>
 
@@ -219,35 +258,27 @@ export default function ServicesPage() {
                   <InlineSVG src="/services/Frame 199.svg" className={styles.btnRulesInline} />
                 </div>
                 <div className={styles.termsList}>
-                  <div className={styles.termsItem}>
-                    <div className={styles.termsNumber}>1</div>
-                    <div className={styles.termsText}>
-                      <h4 className={styles.termsItemTitle}>Capital & Commitment</h4>
-                      <p className={styles.termsItemDesc}>
-                        Every intelligent framework requires an analysis phase. To secure a place in our studio's pipeline and initiate the initial blueprinting, a 50% upfront commitment fee is required. Engineering and deployment commence immediately upon payment, with the remaining balance is structured around predefined based milestones, ensuring mutual transparency at every step.
-                      </p>
-                    </div>
-                  </div>
-
-                  <div className={styles.termsItem}>
-                    <div className={styles.termsNumber}>2</div>
-                    <div className={styles.termsText}>
-                      <h4 className={styles.termsItemTitle}>High-Signal Communication</h4>
-                      <p className={styles.termsItemDesc}>
-                        We don't believe in endless meetings or unnecessary noise. To maintain deep focus on engineering, operational updates happen through a centralized dashboard. We provide clear, structured updates once a week. This ensures you are aligned with the project's velocity without unnecessary chat widgets or distracting calls.
-                      </p>
-                    </div>
-                  </div>
-
-                  <div className={styles.termsItem}>
-                    <div className={styles.termsNumber}>3</div>
-                    <div className={styles.termsText}>
-                      <h4 className={styles.termsItemTitle}>Absolute Timeline & Scope</h4>
-                      <p className={styles.termsItemDesc}>
-                        Systems intelligence cannot be rushed. We commit to technical deadlines built on careful research and build. Once a timeline is locked during the blueprinting phase, we commit to it fully. However, because our systems are deeply interconnected, any late-stage adjustments to the core data logic or scope will automatically recalibrate the final deployment date. Precision always takes priority over speed.
-                      </p>
-                    </div>
-                  </div>
+                  {rules.map((item) => {
+                    const isExpanded = !!expandedItems[item.id];
+                    return (
+                      <div key={item.id} className={styles.termsItem}>
+                        <div className={styles.termsNumber}>{item.number}</div>
+                        <div className={styles.termsText}>
+                          <h4 className={styles.termsItemTitle}>{item.title}</h4>
+                          <p className={`${styles.termsItemDesc} ${isExpanded ? styles.expanded : ""}`}>
+                            {item.desc}
+                          </p>
+                          <button 
+                            className={styles.seeMoreBtn}
+                            onClick={() => toggleItem(item.id)}
+                            aria-expanded={isExpanded}
+                          >
+                            {isExpanded ? "See Less" : "See More"}
+                          </button>
+                        </div>
+                      </div>
+                    );
+                  })}
                 </div>
               </div>
             </div>
