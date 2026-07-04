@@ -53,6 +53,8 @@ export default function Home() {
   const journeyRef = useRef(null);
   const bluePathRef = useRef(null);
   const glowPathRef = useRef(null);
+  const bluePathTabletRef = useRef(null);
+  const glowPathTabletRef = useRef(null);
   const journeyStartedRef = useRef(false);
 
         
@@ -91,20 +93,37 @@ export default function Home() {
   // Journey path flow animation — triggered when section enters viewport
   useEffect(() => {
     const el = journeyRef.current;
-    const bluePath = bluePathRef.current;
-    if (!el || !bluePath) return;
+    if (!el) return;
 
-    const totalLength = bluePath.getTotalLength();
-    const glow = glowPathRef.current;
+    const paths = [];
+    if (bluePathRef.current) {
+      paths.push({
+        blue: bluePathRef.current,
+        glow: glowPathRef.current,
+        totalLength: bluePathRef.current.getTotalLength ? bluePathRef.current.getTotalLength() : 2000
+      });
+    }
+    if (bluePathTabletRef.current) {
+      paths.push({
+        blue: bluePathTabletRef.current,
+        glow: glowPathTabletRef.current,
+        totalLength: bluePathTabletRef.current.getTotalLength ? bluePathTabletRef.current.getTotalLength() : 2000
+      });
+    }
+
+    if (paths.length === 0) return;
+
     let animId;
 
     // Initialize: fully hidden
-    bluePath.style.strokeDasharray = totalLength;
-    bluePath.style.strokeDashoffset = totalLength;
-    if (glow) {
-      glow.style.strokeDasharray = totalLength;
-      glow.style.strokeDashoffset = totalLength;
-    }
+    paths.forEach(p => {
+      p.blue.style.strokeDasharray = p.totalLength;
+      p.blue.style.strokeDashoffset = p.totalLength;
+      if (p.glow) {
+        p.glow.style.strokeDasharray = p.totalLength;
+        p.glow.style.strokeDashoffset = p.totalLength;
+      }
+    });
 
     const observer = new IntersectionObserver(
       ([entry]) => {
@@ -126,9 +145,11 @@ export default function Home() {
             // Ease-out cubic for smooth deceleration
             const eased = 1 - Math.pow(1 - t, 3);
 
-            const offset = totalLength * (1 - eased);
-            bluePath.style.strokeDashoffset = offset;
-            if (glow) glow.style.strokeDashoffset = offset;
+            paths.forEach(p => {
+              const offset = p.totalLength * (1 - eased);
+              p.blue.style.strokeDashoffset = offset;
+              if (p.glow) p.glow.style.strokeDashoffset = offset;
+            });
 
             // Reveal cards as the flow reaches their position on the curve
             if (eased >= 0.13 && !c1) {
@@ -442,8 +463,8 @@ export default function Home() {
             {/* Journey Path with Services */}
             <div className={styles.servicesJourneyWrapper}>
               <div className={styles.servicesJourney} ref={journeyRef}>
-              {/* Animated SVG Journey Path */}
-              <div className={styles.journeyPathSvg}>
+              {/* Animated SVG Journey Path (Desktop) */}
+              <div className={`${styles.journeyPathSvg} ${styles.journeyPathSvgDesktop}`}>
                 <svg width="1166" height="365" viewBox="0 0 1166 365" fill="none" overflow="visible" xmlns="http://www.w3.org/2000/svg">
                   <defs>
                     <filter id="jBorderF" x="-5%" y="-15%" width="110%" height="140%" filterUnits="objectBoundingBox" colorInterpolationFilters="sRGB">
@@ -520,7 +541,102 @@ export default function Home() {
                 </svg>
               </div>
 
-              {/* Service Card 1: Systems Architecture */}
+              {/* Animated SVG Journey Path (Tablet) */}
+              <div className={`${styles.journeyPathSvg} ${styles.journeyPathSvgTablet}`}>
+                <svg width="768" height="320" viewBox="0 0 768 320" fill="none" overflow="visible" xmlns="http://www.w3.org/2000/svg">
+                  <defs>
+                    <filter id="jBorderFTablet" x="-5%" y="-15%" width="110%" height="140%" filterUnits="objectBoundingBox" colorInterpolationFilters="sRGB">
+                      <feFlood floodOpacity="0" result="BackgroundImageFix" />
+                      <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
+                      <feOffset dx="-3" dy="3" />
+                      <feGaussianBlur stdDeviation="3" />
+                      <feColorMatrix type="matrix" values="0 0 0 0 0.76078 0 0 0 0 0.75686 0 0 0 0 0.74902 0 0 0 0.2 0" />
+                      <feBlend mode="normal" in2="BackgroundImageFix" result="e1" />
+                      <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
+                      <feOffset dx="3" dy="-3" />
+                      <feGaussianBlur stdDeviation="3" />
+                      <feColorMatrix type="matrix" values="0 0 0 0 0.76078 0 0 0 0 0.75686 0 0 0 0 0.74902 0 0 0 0.2 0" />
+                      <feBlend mode="normal" in2="e1" result="e2" />
+                      <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
+                      <feOffset dx="-3" dy="-3" />
+                      <feGaussianBlur stdDeviation="3" />
+                      <feColorMatrix type="matrix" values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.9 0" />
+                      <feBlend mode="normal" in2="e2" result="e3" />
+                      <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
+                      <feOffset dx="3" dy="3" />
+                      <feGaussianBlur stdDeviation="4" />
+                      <feColorMatrix type="matrix" values="0 0 0 0 0.76078 0 0 0 0 0.75686 0 0 0 0 0.74902 0 0 0 0.9 0" />
+                      <feBlend mode="normal" in2="e3" result="e4" />
+                      <feBlend mode="normal" in="SourceGraphic" in2="e4" result="shape" />
+                      <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
+                      <feOffset dx="1" dy="1" />
+                      <feGaussianBlur stdDeviation="1" />
+                      <feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1" />
+                      <feColorMatrix type="matrix" values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.3 0" />
+                      <feBlend mode="normal" in2="shape" result="e5" />
+                      <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
+                      <feOffset dx="-1" dy="-1" />
+                      <feGaussianBlur stdDeviation="1" />
+                      <feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1" />
+                      <feColorMatrix type="matrix" values="0 0 0 0 0.76078 0 0 0 0 0.75686 0 0 0 0 0.74902 0 0 0 0.5 0" />
+                      <feBlend mode="normal" in2="e5" result="e6" />
+                    </filter>
+                    <filter id="jInnerFTablet" x="-5%" y="-15%" width="110%" height="140%" filterUnits="objectBoundingBox" colorInterpolationFilters="sRGB">
+                      <feFlood floodOpacity="0" result="BackgroundImageFix" />
+                      <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape" />
+                      <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
+                      <feOffset dx="3" dy="3" />
+                      <feGaussianBlur stdDeviation="4" />
+                      <feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1" />
+                      <feColorMatrix type="matrix" values="0 0 0 0 0.713726 0 0 0 0 0.709804 0 0 0 0 0.701961 0 0 0 0.9 0" />
+                      <feBlend mode="normal" in2="shape" result="e1" />
+                      <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
+                      <feOffset dx="-3" dy="-3" />
+                      <feGaussianBlur stdDeviation="3" />
+                      <feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1" />
+                      <feColorMatrix type="matrix" values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.9 0" />
+                      <feBlend mode="normal" in2="e1" result="e2" />
+                    </filter>
+                    <filter id="jGlowFTablet" x="-10%" y="-50%" width="120%" height="200%">
+                      <feGaussianBlur stdDeviation="8" result="blur" />
+                      <feMerge>
+                        <feMergeNode in="blur" />
+                        <feMergeNode in="blur" />
+                        <feMergeNode in="SourceGraphic" />
+                      </feMerge>
+                    </filter>
+                  </defs>
+                  {/* Outer border — static neumorphic track */}
+                  <g filter="url(#jBorderFTablet)">
+                    <path d="M 115,240 Q 250,260 384,165 T 653,90" stroke="#E5E5E3" strokeWidth="30" strokeLinecap="round" fill="none" />
+                  </g>
+                  {/* Inner blue path — animated flow fill */}
+                  <g filter="url(#jInnerFTablet)">
+                    <path ref={bluePathTabletRef} d="M 115,240 Q 250,260 384,165 T 653,90" stroke="#B2CEFE" strokeWidth="15" strokeLinecap="round" fill="none" strokeDasharray="2000" strokeDashoffset="2000" />
+                  </g>
+                  {/* Ambient glow — follows the flow for 3D depth */}
+                  <path ref={glowPathTabletRef} d="M 115,240 Q 250,260 384,165 T 653,90" stroke="#B2CEFE" strokeWidth="24" strokeLinecap="round" fill="none" opacity="0.3" filter="url(#jGlowFTablet)" strokeDasharray="2000" strokeDashoffset="2000" />
+                </svg>
+              </div>
+
+              {/* SVG Journey Path (Mobile) */}
+              <div className={`${styles.journeyPathSvg} ${styles.journeyPathSvgMobile}`}>
+                <svg width="100" height="1000" viewBox="0 0 100 1000" preserveAspectRatio="none" fill="none" overflow="visible" xmlns="http://www.w3.org/2000/svg">
+                  <defs>
+                    <filter id="jGlowFMobile" x="-200%" y="-50%" width="500%" height="200%">
+                      <feGaussianBlur stdDeviation="5" result="blur" />
+                      <feMerge>
+                        <feMergeNode in="blur" />
+                        <feMergeNode in="SourceGraphic" />
+                      </feMerge>
+                    </filter>
+                  </defs>
+                  {/* Ambient glow line */}
+                  <path d="M 50,0 Q 15,250 50,500 T 50,1000" stroke="#B8A0E8" strokeWidth="6" strokeLinecap="round" fill="none" opacity="0.10" filter="url(#jGlowFMobile)" />
+                  {/* Main thin line */}
+                  <path d="M 50,0 Q 15,250 50,500 T 50,1000" stroke="#B2CEFE" strokeWidth="2" strokeLinecap="round" fill="none" opacity="0.15" />
+                </svg>
+                  {/* Service Card 1: Systems Architecture */}
               <div id="service-card-1" className={`${styles.serviceCard} ${styles.serviceCard1} ${styles.serviceCardHidden}`} role="region" aria-label="Systems Architecture">
                 <div className={styles.serviceIcon}>
                   <div className={styles.serviceIconImg} role="img" aria-label="Systems Architecture Icon" style={{ WebkitMaskImage: "url('/temp_icon1.png')", maskImage: "url('/temp_icon1.png')" }} />
@@ -528,9 +644,17 @@ export default function Home() {
                 <span style={{ position: 'absolute', width: '1px', height: '1px', padding: '0', margin: '-1px', overflow: 'hidden', clip: 'rect(0, 0, 0, 0)', whiteSpace: 'nowrap', border: '0' }}>
                   Systems Architecture: We design intelligent digital systems. Not apps, not websites — systems
                 </span>
-                <InlineSVG src="/system archi.svg" className={styles.serviceCardSvg} />
+                <InlineSVG src="/system archi.svg" className={`${styles.serviceCardSvg} ${styles.serviceCardSvgDesktop}`} />
+                <div className={styles.serviceCardHtmlContent}>
+                  <h3 className={styles.serviceCardTitle}>
+                    Systems <span className={styles.serviceCardTitleHighlight}>Architecture</span>
+                  </h3>
+                  <p className={styles.serviceCardDesc}>
+                    We design intelligent digital systems. Not apps, not websites — systems
+                  </p>
+                </div>
               </div>
-
+ 
               {/* Service Card 2: AI-Driven Automation */}
               <div id="service-card-2" className={`${styles.serviceCard} ${styles.serviceCard2} ${styles.serviceCardHidden}`} role="region" aria-label="AI-Driven Automation">
                 <div className={styles.serviceIcon}>
@@ -539,9 +663,17 @@ export default function Home() {
                 <span style={{ position: 'absolute', width: '1px', height: '1px', padding: '0', margin: '-1px', overflow: 'hidden', clip: 'rect(0, 0, 0, 0)', whiteSpace: 'nowrap', border: '0' }}>
                   AI-Driven Automation: Operational intelligence. Decision support. Process orchestration.
                 </span>
-                <InlineSVG src="/ai driven.svg" className={styles.serviceCardSvg} />
+                <InlineSVG src="/ai driven.svg" className={`${styles.serviceCardSvg} ${styles.serviceCardSvgDesktop}`} />
+                <div className={styles.serviceCardHtmlContent}>
+                  <h3 className={styles.serviceCardTitle}>
+                    AI-Driven <span className={styles.serviceCardTitleHighlight}>Automation</span>
+                  </h3>
+                  <p className={styles.serviceCardDesc}>
+                    Operational intelligence. Decision support. Process orchestration.
+                  </p>
+                </div>
               </div>
-
+ 
               {/* Service Card 3: Applied Research */}
               <div id="service-card-3" className={`${styles.serviceCard} ${styles.serviceCard3} ${styles.serviceCardHidden}`} role="region" aria-label="Applied Research">
                 <div className={styles.serviceIcon}>
@@ -550,7 +682,16 @@ export default function Home() {
                 <span style={{ position: 'absolute', width: '1px', height: '1px', padding: '0', margin: '-1px', overflow: 'hidden', clip: 'rect(0, 0, 0, 0)', whiteSpace: 'nowrap', border: '0' }}>
                   Applied Research: We study emerging systems. Then we turn insights into tools. Each with short, thoughtful descriptions.
                 </span>
-                <InlineSVG src="/applied reserch.svg" className={styles.serviceCardSvg} />
+                <InlineSVG src="/applied reserch.svg" className={`${styles.serviceCardSvg} ${styles.serviceCardSvgDesktop}`} />
+                <div className={styles.serviceCardHtmlContent}>
+                  <h3 className={styles.serviceCardTitle}>
+                    Applied <span className={styles.serviceCardTitleHighlight}>Research</span>
+                  </h3>
+                  <p className={styles.serviceCardDesc}>
+                    We study emerging systems. Then we turn insights into tools. Each with short, thoughtful descriptions.
+                  </p>
+                </div>
+              </div>
               </div>
             </div>
           </div>

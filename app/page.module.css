@@ -836,6 +836,50 @@
   display: block;
 }
 
+.journeyPathSvgDesktop {
+  display: block;
+}
+
+.journeyPathSvgTablet {
+  display: none !important;
+}
+
+.journeyPathSvgMobile {
+  display: none !important;
+}
+
+/* Service Card HTML Content (hidden on desktop, styled for mobile/tablet) */
+.serviceCardHtmlContent {
+  display: none;
+}
+
+.serviceCardTitle {
+  font-family: var(--font-sora), 'Sora', sans-serif;
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 8px;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+}
+
+.serviceCardTitleHighlight {
+  background: linear-gradient(180deg, #5A69EA 0%, #BF8BCA 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-weight: 700;
+}
+
+.serviceCardDesc {
+  font-family: var(--font-sora), 'Sora', sans-serif;
+  font-size: 14px;
+  font-weight: 300;
+  color: var(--text-muted);
+  line-height: 1.55;
+  margin: 0;
+}
+
 /* Service Cards */
 .serviceCard {
   position: absolute;
@@ -1094,63 +1138,7 @@
     height: auto !important;
   }
 
-  .servicesSection {
-    padding: 40px 24px 0;
-  }
 
-  .servicesSection .alignContainer {
-    padding-bottom: 40px !important;
-  }
-
-  .servicesJourneyWrapper {
-    width: 100% !important;
-    height: auto !important;
-    overflow: visible !important;
-    display: block !important;
-    margin-top: 0 !important;
-  }
-
-  .servicesJourney {
-    min-height: auto !important;
-    aspect-ratio: auto !important;
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: center !important;
-    gap: 32px !important;
-    margin-top: 32px !important;
-    width: 100% !important;
-    transform: none !important;
-  }
-
-  .serviceCard {
-    position: relative !important;
-    top: auto !important;
-    left: auto !important;
-    right: auto !important;
-    bottom: auto !important;
-    transform: none !important;
-    margin-bottom: 0 !important;
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: center !important;
-    text-align: center !important;
-    width: 100% !important;
-    max-width: 320px !important;
-  }
-
-  .serviceCardSvg {
-    width: 100% !important;
-    max-width: 100% !important;
-  }
-
-  .serviceCardSvg svg {
-    width: 100% !important;
-    height: auto !important;
-  }
-
-  .journeyPathSvg {
-    display: none !important;
-  }
 
   .heroAiBtn {
     width: 60px;
@@ -1183,6 +1171,167 @@
   }
 }
 
+/* ==========================================================
+   WHAT WE ACTUALLY DO — RESPONSIVE LAYOUTS
+   ========================================================== */
+
+/* General overrides for all viewports under 1024px */
+@media (max-width: 1023px) {
+  .journeyPathSvgDesktop {
+    display: none !important;
+  }
+
+  .serviceCardSvgDesktop {
+    display: none !important;
+  }
+
+  .serviceCardHtmlContent {
+    display: flex !important;
+    flex-direction: column !important;
+    margin-top: 12px;
+    width: 100%;
+  }
+  
+  .servicesSection {
+    padding: 60px 24px 0;
+  }
+
+  .servicesSection .alignContainer {
+    padding-bottom: 40px !important;
+  }
+
+  .servicesJourneyWrapper {
+    width: 100% !important;
+    height: auto !important;
+    overflow: visible !important;
+    display: block !important;
+    margin-top: 0 !important;
+  }
+
+  .servicesHeading {
+    font-size: 38px !important;
+    line-height: 48px !important;
+    margin-bottom: 16px !important;
+  }
+}
+
+/* Tablet Viewport (768px - 1023px) */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .journeyPathSvgTablet {
+    display: block !important;
+  }
+
+  .servicesJourney {
+    position: relative !important;
+    margin: 40px auto 0 !important;
+    width: 100% !important;
+    max-width: 768px !important;
+    aspect-ratio: 768 / 320 !important;
+    min-height: auto !important;
+    transform: none !important;
+    display: block !important;
+  }
+
+  .serviceCard {
+    position: absolute !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    text-align: left !important;
+    transform: translate(-37.5px, -37.5px) !important;
+    margin-bottom: 0 !important;
+    width: auto !important;
+    max-width: 240px !important;
+  }
+
+  .serviceCardHtmlContent {
+    align-items: flex-start !important;
+    text-align: left !important;
+  }
+
+  .serviceCard1 {
+    left: 15% !important;
+    top: 80% !important;
+  }
+
+  .serviceCard2 {
+    left: 50% !important;
+    top: 55% !important;
+  }
+
+  .serviceCard3 {
+    left: 85% !important;
+    top: 30% !important;
+  }
+
+  .serviceCardSvg {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  .serviceCardSvg svg {
+    width: 100% !important;
+    height: auto !important;
+  }
+}
+
+/* Mobile Viewport (320px - 767px) */
+@media (max-width: 767px) {
+  .journeyPathSvgMobile {
+    display: block !important;
+  }
+
+  .servicesJourney {
+    position: relative !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 64px !important; /* Generous spacing (48–72px) */
+    margin-top: 48px !important;
+    width: 100% !important;
+    min-height: auto !important;
+    aspect-ratio: auto !important;
+    transform: none !important;
+  }
+
+  .serviceCard {
+    position: relative !important;
+    top: auto !important;
+    left: auto !important;
+    right: auto !important;
+    bottom: auto !important;
+    transform: none !important;
+    margin-bottom: 0 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    text-align: center !important;
+    width: 100% !important;
+    max-width: 320px !important;
+    z-index: 2 !important;
+  }
+
+  .serviceIcon {
+    z-index: 3 !important;
+  }
+
+  .serviceCardHtmlContent {
+    align-items: center !important;
+    text-align: center !important;
+  }
+
+  .serviceCardSvg {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin-top: 12px;
+  }
+
+  .serviceCardSvg svg {
+    width: 100% !important;
+    height: auto !important;
+  }
+}
+
 @media (max-width: 600px) {
   .heroHeading {
     font-size: 28px;
@@ -1190,7 +1339,9 @@
   }
 
   .servicesHeading {
-    font-size: 26px;
+    font-size: 32px !important;
+    line-height: 40px !important;
+    margin-bottom: 12px !important;
   }
 }
 
@@ -1243,8 +1394,9 @@
     font-size: 16px !important;
   }
   .servicesHeading {
-    font-size: 22px !important;
-    line-height: 30px !important;
+    font-size: 28px !important;
+    line-height: 36px !important;
+    margin-bottom: 12px !important;
   }
   .searchBar {
     min-width: 120px !important;
