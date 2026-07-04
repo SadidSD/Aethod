@@ -950,6 +950,10 @@
   top: 4266px;
 }
 
+.howWeWorkMobileWrapper {
+  display: none;
+}
+
 /* SECTION 5: CALL TO ACTION */
 .ctaContainer {
   box-sizing: border-box;
@@ -1418,18 +1422,36 @@
     display: block !important;
   }
 
-  .howWeWorkSection {
-    position: relative !important;
-    left: auto !important;
-    transform: none !important;
+  .howWeWorkSectionDesktop {
+    display: none !important;
+  }
+
+  .howWeWorkMobileWrapper {
+    display: flex !important;
+    flex-direction: column !important;
     width: 100% !important;
     max-width: 600px !important;
+    margin: 40px auto 0 !important;
+    gap: 32px !important;
+    box-sizing: border-box !important;
+    padding: 0 16px !important;
+  }
+
+  .howWeWorkTitleMobile,
+  .howWeWorkTextMobile,
+  .howWeWorkImageMobile {
+    width: 100% !important;
     height: auto !important;
-    margin: 12px auto 0 !important;
+    position: relative !important;
+    left: auto !important;
+    top: auto !important;
+    transform: none !important;
     display: block !important;
   }
 
-  .howWeWorkSection svg {
+  .howWeWorkTitleMobile svg,
+  .howWeWorkTextMobile svg,
+  .howWeWorkImageMobile svg {
     width: 100% !important;
     height: auto !important;
     display: block !important;

@@ -9,7 +9,7 @@ import Navbar from "../components/Navbar";
 
 import HowWeDifferTable from "./HowWeDifferTable";
 
-function InlineSVG({ src, className, isMobile }) {
+function InlineSVG({ src, className, isMobile, crop }) {
   const [svgContent, setSvgContent] = useState("");
 
   useEffect(() => {
@@ -32,8 +32,25 @@ function InlineSVG({ src, className, isMobile }) {
         .replace(/viewBox="0 0 1339 1102"/, 'viewBox="0 0 452 2550"')
         .replace(/width="1339" height="1102"/, 'width="452" height="2550"');
     } else if (src === "/studio/how_we_work.svg") {
-      processedContent = svgContent
-        .replace(/preserveAspectRatio="none"/, 'preserveAspectRatio="xMidYMid meet"');
+      if (crop === "title") {
+        processedContent = svgContent
+          .replace(/viewBox="0 0 1440 2541"/, 'viewBox="0 0 1440 120"')
+          .replace(/width="1440" height="2541"/, 'width="1440" height="120"')
+          .replace(/preserveAspectRatio="none"/, 'preserveAspectRatio="xMidYMid meet"');
+      } else if (crop === "text") {
+        processedContent = svgContent
+          .replace(/viewBox="0 0 1440 2541"/, 'viewBox="0 1000 1440 1541"')
+          .replace(/width="1440" height="2541"/, 'width="1440" height="1541"')
+          .replace(/preserveAspectRatio="none"/, 'preserveAspectRatio="xMidYMid meet"');
+      } else if (crop === "image") {
+        processedContent = svgContent
+          .replace(/viewBox="0 0 1440 2541"/, 'viewBox="0 120 1440 880"')
+          .replace(/width="1440" height="2541"/, 'width="1440" height="880"')
+          .replace(/preserveAspectRatio="none"/, 'preserveAspectRatio="xMidYMid meet"');
+      } else {
+        processedContent = svgContent
+          .replace(/preserveAspectRatio="none"/, 'preserveAspectRatio="xMidYMid meet"');
+      }
     }
   }
 
@@ -163,7 +180,32 @@ export default function StudioPage() {
           <InlineSVG src="/studio/Humans architect. AI executes. Data makes it true. That is what we build..svg" className={styles.manifestoQuote} />
 
           {/* ----- SECTION 4: HOW WE WORK ----- */}
-          <InlineSVG src="/studio/how_we_work.svg" className={styles.howWeWorkSection} isMobile={isMobile} />
+          <InlineSVG 
+            src="/studio/how_we_work.svg" 
+            className={`${styles.howWeWorkSection} ${styles.howWeWorkSectionDesktop}`} 
+            isMobile={isMobile} 
+          />
+
+          <div className={styles.howWeWorkMobileWrapper}>
+            <InlineSVG 
+              src="/studio/how_we_work.svg" 
+              className={styles.howWeWorkTitleMobile} 
+              isMobile={isMobile} 
+              crop="title" 
+            />
+            <InlineSVG 
+              src="/studio/how_we_work.svg" 
+              className={styles.howWeWorkTextMobile} 
+              isMobile={isMobile} 
+              crop="text" 
+            />
+            <InlineSVG 
+              src="/studio/how_we_work.svg" 
+              className={styles.howWeWorkImageMobile} 
+              isMobile={isMobile} 
+              crop="image" 
+            />
+          </div>
 
           {/* ----- SECTION 5: CALL TO ACTION BANNER ----- */}
           <div className={styles.ctaContainer}>
