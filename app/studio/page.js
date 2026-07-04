@@ -139,8 +139,8 @@ export default function StudioPage() {
           </div>
           
           <InlineSVG src="/studio/image 78.svg" className={styles.heroImageRight} />
-          <InlineSVG src="/studio/image 77.svg" className={styles.heroImageLowerLeft} />
           <InlineSVG src="/studio/Frame 142.svg" className={styles.frame142} />
+          <InlineSVG src="/studio/image 77.svg" className={styles.heroImageLowerLeft} />
 
           {/* ----- SECTION 2: WHAT IS SYSTEM STUDIO & HOW WE DIFFER ----- */}
           <InlineSVG src="/studio/what_is_system_studio.svg" className={styles.whatIsTitle} />
