@@ -34,6 +34,9 @@ function InlineSVG({ src, className, isMobile, crop }) {
     } else if (src === "/studio/how_we_work.svg") {
       if (crop === "top") {
         processedContent = svgContent
+          .replace(/<path[^>]*?d="M145\.568[^>]*?>/i, "")
+          .replace(/<path[^>]*?d="M328\.76[^>]*?>/i, "")
+          .replace(/<path[^>]*?d="M132\.696[^>]*?>/i, "")
           .replace(/viewBox="0 0 1440 2541"/, 'viewBox="0 0 1440 700"')
           .replace(/width="1440" height="2541"/, 'width="1440" height="700"')
           .replace(/preserveAspectRatio="none"/, 'preserveAspectRatio="xMidYMid meet"');
@@ -191,6 +194,14 @@ export default function StudioPage() {
 
           {/* ----- SECTION 4: HOW WE WORK ----- */}
           <div className={styles.howWeWorkSection}>
+            <div className={styles.howWeWorkTitleContainer}>
+              <h2 className={styles.howWeWorkTitle}>
+                How we <span className={styles.purpleHighlightText}>work</span>
+              </h2>
+              <p className={styles.howWeWorkSubtitle}>
+                05 steps from first conversation to delivered system. Each step has a clear input, output, and principle behind it.
+              </p>
+            </div>
             <InlineSVG 
               src="/studio/how_we_work.svg" 
               className={styles.howWeWorkTop}

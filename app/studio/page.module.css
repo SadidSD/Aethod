@@ -974,6 +974,46 @@
   display: block;
 }
 
+.howWeWorkTitleContainer {
+  position: absolute;
+  left: 145px;
+  top: 130px;
+  z-index: 10;
+  max-width: 500px;
+}
+
+.howWeWorkTitle {
+  font-family: var(--font-sora), sans-serif;
+  font-size: 56px;
+  font-weight: 300;
+  line-height: 1.1;
+  color: #0D0D0D;
+  margin: 0 0 24px 0;
+  transition: color 0.5s ease;
+}
+
+.purpleHighlightText {
+  color: #5A69EA;
+}
+
+.howWeWorkSubtitle {
+  font-family: var(--font-sora), sans-serif;
+  font-size: 20px;
+  font-weight: 200;
+  line-height: 1.5;
+  color: #717171;
+  margin: 0;
+  transition: color 0.5s ease;
+}
+
+:global([data-theme="dark"]) .howWeWorkTitle {
+  color: #e8e8f0;
+}
+
+:global([data-theme="dark"]) .howWeWorkSubtitle {
+  color: #b0b0c8;
+}
+
 /* SECTION 5: CALL TO ACTION */
 .ctaContainer {
   box-sizing: border-box;
@@ -1456,6 +1496,26 @@
     margin: 0 !important;
     margin-left: calc(-50vw + 50%) !important;
     overflow: hidden !important;
+  }
+
+  .howWeWorkTitleContainer {
+    position: relative !important;
+    left: auto !important;
+    top: auto !important;
+    width: 100% !important;
+    max-width: 600px !important;
+    margin: 40px auto 24px auto !important;
+    padding: 0 24px !important;
+    box-sizing: border-box !important;
+  }
+
+  .howWeWorkTitle {
+    font-size: 36px !important;
+    margin-bottom: 16px !important;
+  }
+
+  .howWeWorkSubtitle {
+    font-size: 16px !important;
   }
 
   .howWeWorkTop,
