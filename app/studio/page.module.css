@@ -249,6 +249,34 @@
   margin: 0 auto;
 }
 
+/* Passthrough wrappers for desktop compatibility */
+.section1Hero,
+.section2WhatIs,
+.section3Manifesto,
+.section4HowWeWork,
+.section5Cta,
+.section6Capabilities,
+.aboutCardWrapper,
+.heroImagesWrapper {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.section1Hero *,
+.section2WhatIs *,
+.section3Manifesto *,
+.section4HowWeWork *,
+.section5Cta *,
+.section6Capabilities *,
+.aboutCardWrapper *,
+.heroImagesWrapper * {
+  pointer-events: auto;
+}
+
 /* ---------- SVG Positions & Dimensions (Figma Perfect Match) ---------- */
 
 /* SECTION 1: HERO */
@@ -1653,23 +1681,372 @@
   }
 }
 
-@media (min-width: 768px) and (max-width: 1440px) {
+@media (min-width: 768px) and (max-width: 1366px) {
   .contentAlignContainer {
-    width: 1440px !important;
-    max-width: 1440px !important;
-    transform: scale(var(--scale-1440, 1)) !important;
-    transform-origin: top left !important;
-    height: calc(8000px * var(--scale-1440, 1)) !important;
-    margin: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: clamp(3rem, 6vw, 6rem) !important;
+    padding: clamp(3rem, 5vw, 5rem) clamp(1.5rem, 3vw, 3rem) !important;
+    transform: none !important;
+    margin: 0 auto !important;
+    box-sizing: border-box !important;
   }
 
+  /* Section wrappers: change from absolute layers to normal block wrappers */
+  .section1Hero,
+  .section2WhatIs,
+  .section3Manifesto,
+  .section4HowWeWork,
+  .section5Cta,
+  .section6Capabilities {
+    position: relative !important;
+    left: auto !important;
+    top: auto !important;
+    width: 100% !important;
+    height: auto !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: clamp(2rem, 4vw, 4rem) !important;
+    pointer-events: auto !important;
+    box-sizing: border-box !important;
+  }
+
+  /* --- SECTION 1: HERO --- */
+  .studioTitle {
+    position: relative !important;
+    left: auto !important;
+    top: auto !important;
+    width: 100% !important;
+    max-width: clamp(180px, 25vw, 240px) !important;
+    height: auto !important;
+    margin: 0 auto !important;
+  }
+
+  .studioSubtitle {
+    position: relative !important;
+    left: auto !important;
+    top: auto !important;
+    width: 100% !important;
+    max-width: clamp(320px, 45vw, 480px) !important;
+    height: auto !important;
+    margin: 0 auto !important;
+  }
+
+  .aboutCardWrapper {
+    position: relative !important;
+    left: auto !important;
+    top: auto !important;
+    width: 100% !important;
+    max-width: 500px !important;
+    height: 366px !important;
+    margin: 0 auto !important;
+    pointer-events: auto !important;
+  }
+
+  .rectangle158 {
+    position: absolute !important;
+    left: 0 !important;
+    top: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    display: block !important;
+  }
+
+  .whoWeAre {
+    position: absolute !important;
+    left: 94px !important;
+    top: 61px !important;
+    width: 229px !important;
+    height: 45px !important;
+  }
+
+  .weAreNotAnAgencyContainer {
+    position: absolute !important;
+    left: 94px !important;
+    top: 149px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 22px !important;
+  }
+
+  .heroImagesWrapper {
+    position: relative !important;
+    left: auto !important;
+    top: auto !important;
+    width: 100% !important;
+    height: auto !important;
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: clamp(1rem, 2vw, 2rem) !important;
+    pointer-events: auto !important;
+    margin-top: 1rem !important;
+  }
+
+  .heroImageRight {
+    grid-column: 1 / 2 !important;
+    position: relative !important;
+    left: auto !important;
+    top: auto !important;
+    width: 100% !important;
+    height: auto !important;
+    max-width: 100% !important;
+  }
+
+  .heroImageLowerLeft {
+    grid-column: 2 / 3 !important;
+    position: relative !important;
+    left: auto !important;
+    top: auto !important;
+    width: 100% !important;
+    height: auto !important;
+    max-width: 100% !important;
+  }
+
+  .frame142 {
+    grid-column: 1 / -1 !important;
+    position: relative !important;
+    left: auto !important;
+    top: auto !important;
+    width: 100% !important;
+    height: auto !important;
+    max-width: 100% !important;
+  }
+
+  /* --- SECTION 2: WHAT IS SYSTEM STUDIO & HOW WE DIFFER --- */
+  .section2WhatIs {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: clamp(2rem, 4vw, 4rem) !important;
+    align-items: start !important;
+  }
+
+  .whatIsTitle {
+    grid-column: 1 / -1 !important;
+    position: relative !important;
+    left: auto !important;
+    top: auto !important;
+    width: 100% !important;
+    max-width: clamp(500px, 70vw, 739px) !important;
+    height: auto !important;
+    margin: 0 auto !important;
+  }
+
+  .whatIsSubtitle {
+    grid-column: 1 / -1 !important;
+    position: relative !important;
+    left: auto !important;
+    top: auto !important;
+    width: 100% !important;
+    max-width: clamp(280px, 40vw, 373px) !important;
+    height: auto !important;
+    margin: 0 auto !important;
+  }
+
+  .whatIsSystemStudioContainer {
+    grid-column: 1 / 2 !important;
+    position: relative !important;
+    left: auto !important;
+    top: auto !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 40px !important;
+  }
+
+  .howWeDifferCardWrapper {
+    grid-column: 2 / 3 !important;
+    position: relative !important;
+    left: auto !important;
+    top: auto !important;
+    width: 100% !important;
+    max-width: 558px !important;
+    height: auto !important;
+    min-height: 600px !important;
+    margin: 0 auto !important;
+  }
+
+  /* Stack columns vertically on portrait/narrow tablets */
+  @media (max-width: 1023px) {
+    .section2WhatIs {
+      grid-template-columns: 1fr !important;
+      justify-items: center !important;
+    }
+    .whatIsSystemStudioContainer,
+    .howWeDifferCardWrapper {
+      grid-column: 1 / -1 !important;
+    }
+  }
+
+  /* --- SECTION 3: THE MANIFESTO --- */
+  .manifestoLineTop {
+    display: none !important;
+  }
+
+  .manifestoTitle {
+    position: relative !important;
+    left: auto !important;
+    top: auto !important;
+    width: 100% !important;
+    max-width: clamp(240px, 35vw, 321px) !important;
+    height: auto !important;
+    margin: 0 auto !important;
+  }
+
+  .manifestoSubtitle {
+    position: relative !important;
+    left: auto !important;
+    top: auto !important;
+    width: 100% !important;
+    max-width: clamp(360px, 50vw, 480px) !important;
+    height: auto !important;
+    margin: 0 auto !important;
+  }
+
+  .manifestoGridBox {
+    position: relative !important;
+    left: auto !important;
+    top: auto !important;
+    width: 100% !important;
+    max-width: 1000px !important;
+    height: auto !important;
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: clamp(1.5rem, 3vw, 3rem) !important;
+    padding: clamp(2rem, 4vw, 4rem) !important;
+    background: transparent !important;
+    border: 2px solid rgba(113, 113, 113, 0.3) !important;
+    border-radius: 20px !important;
+    box-sizing: border-box !important;
+    overflow: visible !important;
+  }
+
+  .manifestoGridLineVert,
+  .manifestoGridLineHoriz {
+    display: none !important;
+  }
+
+  .manifestoGroup01,
+  .manifestoGroup02,
+  .manifestoGroup03,
+  .manifestoGroup04 {
+    position: relative !important;
+    left: auto !important;
+    top: auto !important;
+    width: 100% !important;
+    height: auto !important;
+    max-width: 100% !important;
+    margin: 0 auto !important;
+  }
+
+  .manifestoQuote {
+    position: relative !important;
+    left: auto !important;
+    top: auto !important;
+    width: 100% !important;
+    max-width: clamp(600px, 85vw, 1000px) !important;
+    height: auto !important;
+    margin: 24px auto 0 auto !important;
+  }
+
+  @media (max-width: 1023px) {
+    .manifestoGridBox {
+      grid-template-columns: 1fr !important;
+      padding: 1.5rem !important;
+    }
+  }
+
+  /* --- SECTION 4: HOW WE WORK --- */
   .howWeWorkSection {
-    width: 1440px !important;
-    left: 0 !important;
+    position: relative !important;
+    left: auto !important;
+    top: auto !important;
+    width: 100% !important;
+    height: auto !important;
+    display: flex !important;
+    flex-direction: column !important;
+    margin: 0 auto !important;
   }
 
+  .howWeWorkTitleContainer {
+    position: relative !important;
+    left: auto !important;
+    top: auto !important;
+    width: 100% !important;
+    max-width: clamp(400px, 60vw, 600px) !important;
+    margin: 0 auto 32px auto !important;
+    text-align: center !important;
+  }
+
+  .howWeWorkTitle {
+    font-size: clamp(36px, 5vw, 56px) !important;
+    text-align: center !important;
+  }
+
+  .howWeWorkSubtitle {
+    text-align: center !important;
+  }
+
+  .howWeWorkTop,
+  .howWeWorkBottom {
+    width: 100% !important;
+    height: auto !important;
+    position: relative !important;
+  }
+
+  /* --- SECTION 5: CALL TO ACTION --- */
   .ctaContainer {
-    width: 1440px !important;
-    left: 0 !important;
+    position: relative !important;
+    left: auto !important;
+    top: auto !important;
+    width: 100% !important;
+    height: auto !important;
+    margin: 0 auto !important;
+    padding: 24px 0 !important;
+    gap: 16px !important;
+  }
+
+  .ctaLineTop,
+  .ctaLineBottom {
+    display: none !important;
+  }
+
+  .ctaText {
+    width: 100% !important;
+    max-width: clamp(600px, 85vw, 1040px) !important;
+    height: auto !important;
+    margin: 0 auto !important;
+  }
+
+  /* --- SECTION 6: CAPABILITIES --- */
+  .capabilityHeader {
+    position: relative !important;
+    left: auto !important;
+    top: auto !important;
+    width: 100% !important;
+    max-width: clamp(400px, 55vw, 612px) !important;
+    height: auto !important;
+    margin: 0 auto !important;
+  }
+
+  .capabilityGridWrapper {
+    width: 100% !important;
+    display: flex !important;
+    justify-content: center !important;
+  }
+
+  .capabilityGrid {
+    position: relative !important;
+    left: auto !important;
+    top: auto !important;
+    width: 100% !important;
+    max-width: clamp(700px, 90vw, 1200px) !important;
+    height: auto !important;
+    margin: 0 auto !important;
   }
 }
