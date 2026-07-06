@@ -898,9 +898,13 @@
 
 @media (min-width: 1201px) and (max-width: 1440px) {
   .contentAlignContainer {
+    width: 1440px !important;
+    max-width: 1440px !important;
     transform: scale(var(--scale-1440, 1)) !important;
     transform-origin: top center !important;
     height: calc(3880px * var(--scale-1440, 1)) !important;
+    margin-left: calc((100vw - 1440px) / 2) !important;
+    margin-right: 0 !important;
   }
 }
 

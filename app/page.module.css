@@ -2613,13 +2613,21 @@
 
 @media (min-width: 901px) and (max-width: 1440px) {
   .tcgAlignContainer {
+    width: 1440px !important;
+    max-width: 1440px !important;
     transform: scale(var(--scale-1440, 1)) !important;
     transform-origin: top center !important;
     height: calc(1420px * var(--scale-1440, 1)) !important;
+    margin-left: calc((100vw - 1440px) / 2) !important;
+    margin-right: 0 !important;
   }
   .helpAlignContainer {
+    width: 1440px !important;
+    max-width: 1440px !important;
     transform: scale(var(--scale-1440, 1)) !important;
     transform-origin: top center !important;
     height: calc(960px * var(--scale-1440, 1)) !important;
+    margin-left: calc((100vw - 1440px) / 2) !important;
+    margin-right: 0 !important;
   }
 }
