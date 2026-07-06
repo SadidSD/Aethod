@@ -482,9 +482,14 @@
 }
 
 
-/* --------------------------------------------------------------------------
-   3b-ii. TEXT AREA  (right side of each card)
-   -------------------------------------------------------------------------- */
+.cardIllustrationLink {
+  text-decoration: none;
+}
+
+.cardTitleLink {
+  text-decoration: none;
+  color: inherit;
+}
 
 .cardTextArea {
   flex: 1;

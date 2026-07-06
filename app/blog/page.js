@@ -5,6 +5,7 @@ import styles from "./page.module.css";
 import { useTheme } from "../context/ThemeContext";
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
+import Link from "next/link";
 
 function InlineSVG({ src, className, style }) {
   const [svgContent, setSvgContent] = useState("");
@@ -235,16 +236,20 @@ export default function BlogPage() {
                 filteredPosts.map((post) => (
                   <article key={post.id} className={styles.blogCard}>
                     {/* Left: Recessed Illustration Box */}
-                    <div className={styles.cardIllustrationBox}>
-                      <InlineSVG
-                        src={post.illustration}
-                        className={styles.illustrationSvg}
-                      />
-                    </div>
+                    <Link href={`/blog/${post.id}`} className={styles.cardIllustrationLink}>
+                      <div className={styles.cardIllustrationBox}>
+                        <InlineSVG
+                          src={post.illustration}
+                          className={styles.illustrationSvg}
+                        />
+                      </div>
+                    </Link>
 
                     {/* Right: Text Content */}
                     <div className={styles.cardTextArea}>
-                      <h2 className={styles.cardTitle}>{post.title}</h2>
+                      <Link href={`/blog/${post.id}`} className={styles.cardTitleLink}>
+                        <h2 className={styles.cardTitle}>{post.title}</h2>
+                      </Link>
                       <p className={styles.cardDesc}>{post.description}</p>
                       <div className={styles.cardTags}>
                         {post.tags &&
