@@ -2179,16 +2179,18 @@
     }
   }
 
-  /* --- SECTION 4: HOW WE WORK --- */
   .howWeWorkSection {
     position: relative !important;
     left: auto !important;
     top: auto !important;
-    width: 100% !important;
+    margin-left: calc(-1 * clamp(1.5rem, 3vw, 3rem)) !important;
+    margin-right: calc(-1 * clamp(1.5rem, 3vw, 3rem)) !important;
+    width: calc(100% + 2 * clamp(1.5rem, 3vw, 3rem)) !important;
+    max-width: calc(100% + 2 * clamp(1.5rem, 3vw, 3rem)) !important;
     height: auto !important;
     display: flex !important;
     flex-direction: column !important;
-    margin: 0 auto !important;
+    box-sizing: border-box !important;
   }
 
   .howWeWorkTitleContainer {
