@@ -1813,6 +1813,34 @@
     background-clip: text !important;
     color: transparent !important;
   }
+  .aboutCardWrapper {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 20px !important;
+    margin-top: 12px !important;
+    width: 100% !important;
+    padding: 0 24px !important;
+    box-sizing: border-box !important;
+  }
+  .weAreNotAnAgencyContainer {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 16px !important;
+    width: 100% !important;
+  }
+  .howWeDifferTitle {
+    text-align: center !important;
+    width: 100% !important;
+    position: relative !important;
+    left: auto !important;
+    transform: none !important;
+    margin: 0 auto 24px auto !important;
+  }
+  .capabilityHeader {
+    text-align: center !important;
+  }
 }
 
 @media (min-width: 768px) and (max-width: 1366px) {
