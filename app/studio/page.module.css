@@ -1833,12 +1833,13 @@
     width: 100% !important;
   }
   .howWeDifferTitle {
+    position: absolute !important;
+    top: 36px !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    width: auto !important;
+    margin: 0 !important;
     text-align: center !important;
-    width: 100% !important;
-    position: relative !important;
-    left: auto !important;
-    transform: none !important;
-    margin: 0 auto 24px auto !important;
   }
   .capabilityHeader {
     text-align: center !important;
@@ -2303,6 +2304,15 @@
       width: 100% !important;
       height: auto !important;
       display: block !important;
+    }
+    .howWeDifferTitle {
+      position: absolute !important;
+      top: 36px !important;
+      left: 50% !important;
+      transform: translateX(-50%) !important;
+      width: auto !important;
+      margin: 0 !important;
+      text-align: center !important;
     }
   }
 }
