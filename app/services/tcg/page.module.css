@@ -1364,14 +1364,13 @@
 
 /* Explore Other Services Button Styles */
 .exploreBtnContainer {
-  position: absolute;
-  top: 3940px;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 10;
+  position: relative;
+  margin: 40px auto 0;
+  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 10;
 }
 
 .exploreBtnLink {
@@ -1446,17 +1445,6 @@
 
 @media (min-width: 1024px) {
   .contentAlignContainer {
-    height: 4100px !important;
-  }
-}
-
-@media (max-width: 1200px) {
-  .exploreBtnContainer {
-    position: relative !important;
-    top: auto !important;
-    left: auto !important;
-    transform: none !important;
-    margin: 32px auto 0 !important;
-    width: 100% !important;
+    height: 4150px !important;
   }
 }
