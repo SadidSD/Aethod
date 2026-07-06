@@ -333,18 +333,18 @@ export default function Home() {
               <div className={styles.btnBar}>
                 <HomeButton
                   variant="purple"
-                  text="Services"
+                  text="Explore"
                   onClick={() => {
                     playClickSound();
-                    window.location.href = "/services";
+                    handleScrollToServices();
                   }}
                 />
                 <HomeButton
                   variant="blue"
-                  text="Contact"
+                  text="Thinking"
                   onClick={() => {
                     playClickSound();
-                    window.location.href = "/contact";
+                    window.location.href = "/blog";
                   }}
                 />
               </div>

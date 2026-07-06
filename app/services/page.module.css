@@ -1630,3 +1630,36 @@
     top: 77.5% !important;
   }
 }
+
+.cardDesc {
+  position: absolute;
+  width: 80%;
+  left: 16.08%;
+  top: 46.15%;
+  font-family: var(--font-sora), sans-serif;
+  font-size: clamp(10px, 2.4vw, 13px);
+  font-weight: 300;
+  line-height: 1.55;
+  color: var(--text-secondary);
+  pointer-events: none;
+  text-align: left;
+  z-index: 5;
+}
+
+.gradientText {
+  background: linear-gradient(135deg, #5A69EA 0%, #BF8BCA 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-weight: 300;
+}
+
+.inlineLink {
+  background: linear-gradient(135deg, #5A69EA 0%, #BF8BCA 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-weight: 700;
+  white-space: nowrap;
+}
+

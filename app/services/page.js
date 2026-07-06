@@ -175,21 +175,27 @@ export default function ServicesPage() {
           <a href="/services/tcg" className={styles.card1} onClick={playClickSound}>
             <InlineSVG src="/services/TCG Web.svg" />
             <AnimatedTcgIcon />
-            <span className={`${styles.learnMore} ${styles.learnMoreTcg}`}>... <strong>Learn More</strong></span>
+            <p className={styles.cardDesc}>
+              Your <span className={styles.gradientText}>inventory remains accurate and profitable</span>, no matter how fast the market shifts. We build ecosystems that seamlessly <span className={styles.gradientText}>absorb high-frequency price fluctuations</span>... <span className={styles.inlineLink}>Learn More →</span>
+            </p>
           </a>
 
           {/* Card 2: E-commerce Website Development */}
           <a href="/services/ecommerce" className={styles.card2} onClick={playClickSound}>
             <InlineSVG src="/services/Webs.svg" />
             <AnimatedWebIcon />
-            <span className={`${styles.learnMore} ${styles.learnMoreEcommerce}`}>... <strong>Learn More</strong></span>
+            <p className={styles.cardDesc}>
+              Experience total operational continuity with a digital <span className={styles.gradientText}>storefront that scales without friction</span>. By anchoring your frontend to a deeply structured architectural logic... <span className={styles.inlineLink}>Learn More →</span>
+            </p>
           </a>
 
           {/* Card 3: Custom E-commerce Tools */}
           <a href="/services/tools" className={styles.card3} onClick={playClickSound}>
             <InlineSVG src="/services/Custom Tools.svg" />
             <AnimatedToolsIcon />
-            <span className={`${styles.learnMore} ${styles.learnMoreTools}`}>... <strong>Learn More</strong></span>
+            <p className={styles.cardDesc}>
+              Replace fragmented manual workflows with dedicated digital instruments <span className={styles.gradientText}>built exclusively for your operational friction</span>. These bespoke tools compress hours of tedious data reconciliation... <span className={styles.inlineLink}>Learn More →</span>
+            </p>
           </a>
 
           {/* Card 4: Automation (Built from layers) */}
@@ -203,11 +209,9 @@ export default function ServicesPage() {
             {/* E-commerce Automation text header */}
             <InlineSVG src="/services/E-commerce Automation.svg" className={styles.card4Subtitle} />
             {/* Description text */}
-            <InlineSVG 
-              src="/services/Your business functions and scales silently around the clock, even when you are offline. Our AI-first pipelines take over complex data processing and repetitive decision paths, wiping out human error and keeping your operations moving forward with.svg" 
-              className={styles.card4Desc} 
-            />
-            <span className={`${styles.learnMore} ${styles.learnMoreAutomation}`}>... <strong>Learn More</strong></span>
+            <p className={styles.cardDesc}>
+              Your business functions and <span className={styles.gradientText}>scales silently around the clock, even when you are offline</span>. Our AI-first pipelines take over complex data processing and repetitive decision paths... <span className={styles.inlineLink}>Learn More →</span>
+            </p>
           </a>
 
           {/* Side Indicator */}
