@@ -82,6 +82,13 @@ export default function TcgPage() {
       {/* ===== MAIN CONTAINER FLOW ===== */}
       <main className={styles.mainContainer}>
         <div className={styles.contentAlignContainer}>
+          {/* Back to Services Button */}
+          <a href="/services" className={styles.backBtnWrapper}>
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className={styles.backBtnArrow}>
+              <path d="M19 12H5M5 12L12 19M5 12L12 5" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+            <span>Back to Services</span>
+          </a>
           
           {/* Title and Headers */}
           <InlineSVG src="/services/tcg/Group 76.svg" className={styles.heroTitle} />
