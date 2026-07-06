@@ -885,3 +885,268 @@
   height: auto !important;
   display: block;
 }
+
+/* Hide floater mini graphics and side indicator on smaller viewports */
+@media (max-width: 1023px) {
+  .sideIndicator, .rightMarker {
+    display: none !important;
+  }
+}
+
+/* Tablet Styles */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .mainContainer {
+    margin-top: 0 !important;
+    padding: 48px 24px 80px !important;
+  }
+  .contentAlignContainer {
+    height: auto !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 48px !important;
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+  .heroTitle {
+    position: relative !important;
+    left: auto !important;
+    top: auto !important;
+    width: 100% !important;
+    max-width: 536px !important;
+    height: auto !important;
+    margin: 0 auto !important;
+  }
+  .heroLeftText {
+    position: relative !important;
+    left: auto !important;
+    top: auto !important;
+    width: 100% !important;
+    max-width: 579px !important;
+    height: auto !important;
+    margin: 0 auto !important;
+  }
+  .btnBar {
+    position: relative !important;
+    left: auto !important;
+    top: auto !important;
+    width: 100% !important;
+    max-width: 452px !important;
+    height: auto !important;
+    aspect-ratio: 452 / 71 !important;
+    margin: 0 auto !important;
+  }
+  .invisibleBtnScroll {
+    left: 1.77% !important;
+    top: 11.27% !important;
+    width: 45.58% !important;
+    height: 77.46% !important;
+  }
+  .invisibleBtnWorks {
+    left: 52.88% !important;
+    top: 11.27% !important;
+    width: 45.35% !important;
+    height: 77.46% !important;
+  }
+  .heroImage {
+    position: relative !important;
+    left: auto !important;
+    top: auto !important;
+    width: 100% !important;
+    max-width: 600px !important;
+    height: auto !important;
+    margin: 0 auto !important;
+  }
+  .pfGrid {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 24px !important;
+    width: 100% !important;
+    max-width: 800px !important;
+    margin: 0 auto !important;
+  }
+  .pfCard {
+    height: auto !important;
+    padding: 32px 24px !important;
+  }
+  .faqGrid {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 24px !important;
+  }
+  .faqFormContainer {
+    margin-left: 0 !important;
+    width: 100% !important;
+  }
+}
+
+/* Mobile Styles */
+@media (max-width: 767px) {
+  .mainContainer {
+    margin-top: 0 !important;
+    padding: 32px 16px 60px !important;
+  }
+  .contentAlignContainer {
+    height: auto !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 32px !important;
+    width: 100% !important;
+  }
+  .heroTitle {
+    position: relative !important;
+    left: auto !important;
+    top: auto !important;
+    width: 100% !important;
+    max-width: 320px !important;
+    height: auto !important;
+    margin: 0 auto !important;
+  }
+  .heroLeftText {
+    position: relative !important;
+    left: auto !important;
+    top: auto !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+    margin: 0 auto !important;
+  }
+  .btnBar {
+    position: relative !important;
+    left: auto !important;
+    top: auto !important;
+    width: 100% !important;
+    max-width: 340px !important;
+    height: auto !important;
+    aspect-ratio: 452 / 71 !important;
+    margin: 0 auto !important;
+  }
+  .invisibleBtnScroll {
+    left: 1.77% !important;
+    top: 11.27% !important;
+    width: 45.58% !important;
+    height: 77.46% !important;
+  }
+  .invisibleBtnWorks {
+    left: 52.88% !important;
+    top: 11.27% !important;
+    width: 45.35% !important;
+    height: 77.46% !important;
+  }
+  .heroImage {
+    position: relative !important;
+    left: auto !important;
+    top: auto !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+    margin: 0 auto !important;
+  }
+  .quickListHeader {
+    text-align: center !important;
+    margin-bottom: 20px !important;
+  }
+  .quickListTitle {
+    font-size: clamp(24px, 6vw, 36px) !important;
+  }
+  .quickListSubtitle {
+    font-size: clamp(14px, 3.5vw, 18px) !important;
+  }
+  .quickListGrid {
+    grid-template-columns: 1fr !important;
+    gap: 20px !important;
+    width: 100% !important;
+  }
+  .quickCard {
+    max-width: 100% !important;
+    padding: 24px 20px !important;
+  }
+  .projectFinancingSection {
+    width: 100% !important;
+  }
+  .pfTitleContainer {
+    text-align: center !important;
+    margin-left: 0 !important;
+    margin-bottom: 24px !important;
+  }
+  .pfTitle {
+    font-size: clamp(24px, 6vw, 36px) !important;
+  }
+  .pfSubtitle {
+    font-size: clamp(14px, 3.5vw, 18px) !important;
+    max-width: 100% !important;
+  }
+  .pfGrid {
+    grid-template-columns: 1fr !important;
+    gap: 20px !important;
+    width: 100% !important;
+  }
+  .pfCard {
+    height: auto !important;
+    padding: 28px 20px !important;
+  }
+  .pfCardTitle {
+    font-size: 24px !important;
+    margin-bottom: 12px !important;
+  }
+  .pfCardPrice {
+    font-size: 24px !important;
+  }
+  .pfBottomText {
+    font-size: 14px !important;
+    line-height: 1.8 !important;
+    margin-top: 24px !important;
+  }
+  .faqSection {
+    width: 100% !important;
+  }
+  .faqHeaderContainer {
+    text-align: center !important;
+    margin-bottom: 24px !important;
+  }
+  .faqTitle {
+    font-size: clamp(24px, 6vw, 36px) !important;
+  }
+  .faqSubtitle {
+    font-size: clamp(14px, 3.5vw, 18px) !important;
+  }
+  .faqGrid {
+    grid-template-columns: 1fr !important;
+    gap: 20px !important;
+  }
+  .faqCard {
+    padding: 28px 20px !important;
+  }
+  .faqCardTitle {
+    font-size: 22px !important;
+    margin-bottom: 16px !important;
+  }
+  .faqCardText {
+    font-size: 14px !important;
+    line-height: 1.6 !important;
+  }
+  .faqFormContainer {
+    margin-left: 0 !important;
+    width: 100% !important;
+    padding: 28px 20px !important;
+  }
+  .faqFormTitle {
+    font-size: 22px !important;
+    margin-bottom: 20px !important;
+  }
+  .faqFormRow {
+    flex-direction: column !important;
+    height: auto !important;
+    gap: 12px !important;
+  }
+  .faqInput {
+    height: 48px !important;
+    width: 100% !important;
+  }
+  .faqSendBtnWrapper {
+    width: 100% !important;
+    height: 48px !important;
+  }
+  .faqSendBtnText {
+    font-size: 18px !important;
+  }
+}

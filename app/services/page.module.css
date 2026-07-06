@@ -1353,3 +1353,216 @@
     margin: 0 !important;
   }
 }
+
+/* Tablet Styles */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .mainContainer {
+    margin-top: 0 !important;
+    padding: 48px 24px 80px !important;
+  }
+  .contentAlignContainer {
+    height: auto !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 40px !important;
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+  .heroTitle {
+    position: relative !important;
+    left: auto !important;
+    top: auto !important;
+    width: 100% !important;
+    max-width: 536px !important;
+    height: auto !important;
+    margin: 0 auto !important;
+  }
+  .card1, .card2, .card3, .card4 {
+    position: relative !important;
+    left: auto !important;
+    top: auto !important;
+    width: 100% !important;
+    max-width: 541px !important;
+    height: auto !important;
+    aspect-ratio: 541 / 169 !important;
+    margin: 0 auto !important;
+  }
+  .termsTitle {
+    position: relative !important;
+    left: auto !important;
+    top: auto !important;
+    width: 100% !important;
+    max-width: 526px !important;
+    height: auto !important;
+    margin-top: 32px !important;
+  }
+  .termsSubtitle {
+    position: relative !important;
+    left: auto !important;
+    top: auto !important;
+    width: 100% !important;
+    max-width: 602px !important;
+    height: auto !important;
+    margin: 0 auto !important;
+  }
+  .termsContainer {
+    position: relative !important;
+    left: auto !important;
+    top: auto !important;
+    width: 100% !important;
+    max-width: 900px !important;
+    height: auto !important;
+    margin: 24px auto 0 !important;
+    padding: 40px 24px !important;
+    box-sizing: border-box !important;
+  }
+  .termsDivider {
+    position: absolute !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    width: 2px !important;
+    height: 100% !important;
+    margin: 0 !important;
+  }
+  .termsHtmlContent {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 40px !important;
+  }
+  .termsColumn {
+    width: 100% !important;
+    margin-top: 0 !important;
+  }
+}
+
+/* Mobile Styles */
+@media (max-width: 767px) {
+  .mainContainer {
+    margin-top: 0 !important;
+    padding: 32px 16px 60px !important;
+  }
+  .contentAlignContainer {
+    height: auto !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 24px !important;
+    width: 100% !important;
+  }
+  .heroTitle {
+    position: relative !important;
+    left: auto !important;
+    top: auto !important;
+    width: 100% !important;
+    max-width: 320px !important;
+    height: auto !important;
+    margin: 0 auto !important;
+  }
+  .card1, .card2, .card3, .card4 {
+    position: relative !important;
+    left: auto !important;
+    top: auto !important;
+    width: 100% !important;
+    max-width: 400px !important;
+    height: auto !important;
+    aspect-ratio: 541 / 169 !important;
+    margin: 0 auto !important;
+  }
+  .termsTitle {
+    position: relative !important;
+    left: auto !important;
+    top: auto !important;
+    width: 100% !important;
+    max-width: 280px !important;
+    height: auto !important;
+    margin-top: 24px !important;
+  }
+  .termsSubtitle {
+    position: relative !important;
+    left: auto !important;
+    top: auto !important;
+    width: 100% !important;
+    max-width: 320px !important;
+    height: auto !important;
+    margin: 0 auto !important;
+  }
+  .termsContainer {
+    position: relative !important;
+    left: auto !important;
+    top: auto !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+    aspect-ratio: auto !important;
+    margin: 16px auto 0 !important;
+    border: 2px solid rgba(113, 113, 113, 0.3) !important;
+    border-radius: 9px !important;
+    padding: 24px 16px !important;
+    box-sizing: border-box !important;
+  }
+  :global([data-theme="dark"]) .termsContainer {
+    border-color: rgba(232, 232, 240, 0.25) !important;
+  }
+  .termsBorder {
+    display: none !important;
+  }
+  .termsDivider {
+    position: relative !important;
+    left: auto !important;
+    top: auto !important;
+    transform: none !important;
+    width: 100% !important;
+    height: 1px !important;
+    margin: 24px 0 !important;
+    background-color: rgba(113, 113, 113, 0.3) !important;
+  }
+  :global([data-theme="dark"]) .termsDivider {
+    background-color: rgba(232, 232, 240, 0.25) !important;
+  }
+  .termsHtmlContent {
+    position: relative !important;
+    left: auto !important;
+    top: auto !important;
+    width: 100% !important;
+    height: auto !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 0 !important;
+  }
+  .termsColumn {
+    width: 100% !important;
+  }
+  .termsColumn:last-child {
+    margin-top: 0px !important;
+  }
+  .columnHeader {
+    justify-content: center !important;
+    margin-bottom: 20px !important;
+    height: auto !important;
+  }
+  .btnTermsInline,
+  .btnRulesInline {
+    height: 36px !important;
+  }
+  .termsList {
+    gap: 20px !important;
+  }
+  .termsItem {
+    gap: 12px !important;
+  }
+  .termsNumber {
+    width: 32px !important;
+    height: 32px !important;
+    font-size: 14px !important;
+  }
+  .termsItemTitle {
+    font-size: 16px !important;
+  }
+  .termsItemDesc {
+    font-size: 13px !important;
+  }
+  .seeMoreBtn {
+    font-size: 13px !important;
+  }
+}
