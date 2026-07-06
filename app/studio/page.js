@@ -312,13 +312,23 @@ export default function StudioPage() {
           {/* ----- SECTION 6: AI CAPABILITY AREAS ----- */}
           <div className={styles.section6Capabilities}>
             <h2 className={styles.capabilityHeader}>
-              {"AI Capability Areas".split("").map((char, i) => (
+              {"AI Capability ".split("").map((char, i) => (
                 <span
                   key={i}
                   className={styles.waveChar}
-                  style={{ animationDelay: `${i * 0.12}s` }}
+                  style={{ animationDelay: `${i * 0.15}s` }}
                 >
                   {char === " " ? "\u00A0" : char}
+                </span>
+              ))}
+              <br className={styles.capabilityBr} />
+              {"Areas".split("").map((char, i) => (
+                <span
+                  key={i + 14}
+                  className={styles.waveChar}
+                  style={{ animationDelay: `${(i + 14) * 0.15}s` }}
+                >
+                  {char}
                 </span>
               ))}
             </h2>

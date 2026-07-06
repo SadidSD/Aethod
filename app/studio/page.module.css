@@ -1173,27 +1173,42 @@
 }
 
 @keyframes waveGradient {
-  0%, 15%, 100% {
-    background: none;
-    -webkit-background-clip: unset;
+  0% {
     -webkit-text-fill-color: var(--text-primary);
-    background-clip: unset;
     color: var(--text-primary);
   }
-  5%, 10% {
+  3% {
     background: linear-gradient(135deg, #5A69EA 0%, #BF8BCA 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
     color: transparent;
   }
+  8% {
+    background: linear-gradient(135deg, #5A69EA 0%, #BF8BCA 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
+  }
+  11% {
+    -webkit-text-fill-color: var(--text-primary);
+    color: var(--text-primary);
+  }
+  100% {
+    -webkit-text-fill-color: var(--text-primary);
+    color: var(--text-primary);
+  }
 }
 
 .waveChar {
   display: inline-block;
-  animation: waveGradient 4s ease-in-out infinite;
+  animation: waveGradient 2.85s linear infinite;
   color: var(--text-primary);
-  transition: color 0.5s ease;
+}
+
+.capabilityBr {
+  display: none;
 }
 
 .capabilityGridWrapper {
@@ -1868,6 +1883,9 @@
   }
   .capabilityHeader {
     text-align: center !important;
+  }
+  .capabilityBr {
+    display: block !important;
   }
 }
 
