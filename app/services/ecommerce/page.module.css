@@ -1276,3 +1276,102 @@
     margin: 0 0 16px 16px !important;
   }
 }
+
+/* Explore Other Services Button Styles */
+.exploreBtnContainer {
+  position: absolute;
+  top: 3490px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.exploreBtnLink {
+  width: 240px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background: #ECECEC;
+  border: 1.5px solid #BF8BCA;
+  border-radius: 8px;
+  box-shadow:
+    -2px 2px 4px rgba(201, 201, 201, 0.2), 
+    2px -2px 4px rgba(201, 201, 201, 0.2), 
+    -2px -2px 4px rgba(255, 255, 255, 0.9), 
+    2px 2px 5px rgba(201, 201, 201, 0.9), 
+    inset 1px 1px 2px rgba(255, 255, 255, 0.3), 
+    inset -1px -1px 2px rgba(201, 201, 201, 0.5);
+  font-family: var(--font-sora), sans-serif;
+  font-size: 14px;
+  font-weight: 300;
+  color: #717171;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.exploreArrowSvg {
+  width: 16px;
+  height: 16px;
+  color: #717171;
+  transition: transform 0.2s ease;
+}
+
+.exploreBtnLink:hover {
+  transform: translateY(-1px);
+}
+
+.exploreBtnLink:hover .exploreArrowSvg {
+  transform: translateX(3px);
+}
+
+.exploreBtnLink:active {
+  box-shadow:
+    inset 2px 2px 5px rgba(201, 201, 201, 0.8),
+    inset -2px -2px 5px rgba(255, 255, 255, 0.9);
+  transform: translateY(0);
+}
+
+:global([data-theme="dark"]) .exploreBtnLink {
+  background: var(--bg-surface);
+  border-color: rgba(155, 125, 255, 0.3);
+  color: var(--text-secondary);
+  box-shadow:
+    -2px 2px 4px rgba(0, 0, 0, 0.45), 
+    2px -2px 4px rgba(0, 0, 0, 0.45), 
+    -2px -2px 4px rgba(60, 60, 90, 0.15), 
+    2px 2px 5px rgba(0, 0, 0, 0.5), 
+    inset 1px 1px 2px rgba(255, 255, 255, 0.05), 
+    inset -1px -1px 2px rgba(0, 0, 0, 0.3);
+}
+
+:global([data-theme="dark"]) .exploreArrowSvg {
+  color: var(--text-secondary);
+}
+
+:global([data-theme="dark"]) .exploreBtnLink:active {
+  box-shadow:
+    inset 2px 2px 5px rgba(0, 0, 0, 0.45),
+    inset -2px -2px 5px rgba(255, 255, 255, 0.05);
+}
+
+@media (min-width: 1024px) {
+  .contentAlignContainer {
+    height: 3650px !important;
+  }
+}
+
+@media (max-width: 1200px) {
+  .exploreBtnContainer {
+    position: relative !important;
+    top: auto !important;
+    left: auto !important;
+    transform: none !important;
+    margin: 32px auto 0 !important;
+    width: 100% !important;
+  }
+}
