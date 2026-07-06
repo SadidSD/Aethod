@@ -110,13 +110,14 @@ export default function StudioPage() {
       { threshold: 0.45 }
     );
 
-    if (gridRef.current) {
-      observer.observe(gridRef.current);
+    const currentGrid = gridRef.current;
+    if (currentGrid) {
+      observer.observe(currentGrid);
     }
 
     return () => {
-      if (gridRef.current) {
-        observer.unobserve(gridRef.current);
+      if (currentGrid) {
+        observer.unobserve(currentGrid);
       }
     };
   }, []);

@@ -195,31 +195,14 @@ img, video {
   color: #e8e8f0;
 }
 
-/* ---------- Custom Cursor Colors ---------- */
-/* Default: mouse logo cursor */
-html, body {
-  cursor: url('/mouse_logo.svg') 3 3, default;
-}
-
+/* ---------- Performance Optimized Transitions ---------- */
 body {
-  transition:
-    background-color 0.5s ease,
-    color 0.5s ease;
+  transition: background-color 0.3s ease;
 }
 
-/* Ensure all buttons, links, inputs, and interactive components display the custom cursor */
-a, button, [role="button"], input[type="button"], input[type="submit"], input[type="reset"] {
-  cursor: url('/mouse_logo.svg') 3 3, pointer;
-}
-
-/* Purple cursor when hovering blue elements */
-.cursor-purple {
-  cursor: url('/mouse_logo.svg') 3 3, pointer;
-}
-
-/* Blue cursor when hovering purple elements */
-.cursor-blue {
-  cursor: url('/mouse_logo.svg') 3 3, pointer;
+/* Snappy transitions for interactive elements without document reflows */
+a, button, [role="button"], input {
+  transition: color var(--transition-fast), background-color var(--transition-fast), border-color var(--transition-fast), box-shadow var(--transition-fast), transform var(--transition-fast);
 }
 
 /* Sync logo background circle fill with light/dark theme */
