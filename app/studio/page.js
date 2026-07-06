@@ -311,7 +311,17 @@ export default function StudioPage() {
 
           {/* ----- SECTION 6: AI CAPABILITY AREAS ----- */}
           <div className={styles.section6Capabilities}>
-            <h2 className={styles.capabilityHeader}>AI Capability Areas</h2>
+            <h2 className={styles.capabilityHeader}>
+              {"AI Capability Areas".split("").map((char, i) => (
+                <span
+                  key={i}
+                  className={styles.waveChar}
+                  style={{ animationDelay: `${i * 0.12}s` }}
+                >
+                  {char === " " ? "\u00A0" : char}
+                </span>
+              ))}
+            </h2>
             <div className={styles.capabilityGridWrapper}>
               <InlineSVG src="/studio/Group 75.svg" className={styles.capabilityGrid} isMobile={isMobile} />
             </div>

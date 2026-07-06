@@ -1169,6 +1169,31 @@
   color: var(--text-primary);
   margin: 0;
   letter-spacing: -0.02em;
+  display: inline-block;
+}
+
+@keyframes waveGradient {
+  0%, 15%, 100% {
+    background: none;
+    -webkit-background-clip: unset;
+    -webkit-text-fill-color: var(--text-primary);
+    background-clip: unset;
+    color: var(--text-primary);
+  }
+  5%, 10% {
+    background: linear-gradient(135deg, #5A69EA 0%, #BF8BCA 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
+  }
+}
+
+.waveChar {
+  display: inline-block;
+  animation: waveGradient 4s ease-in-out infinite;
+  color: var(--text-primary);
+  transition: color 0.5s ease;
 }
 
 .capabilityGridWrapper {
