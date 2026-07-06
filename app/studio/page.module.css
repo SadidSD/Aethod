@@ -1398,7 +1398,7 @@
     align-items: center !important;
     justify-content: center !important;
     gap: 48px !important;
-    padding: 0 !important;
+    padding: 0 24px !important;
     margin: 0 !important;
     margin-left: calc((100vw - 430px) / 2) !important;
   }
