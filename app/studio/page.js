@@ -9,7 +9,7 @@ import Navbar from "../components/Navbar";
 
 import HowWeDifferTable from "./HowWeDifferTable";
 
-function InlineSVG({ src, className, isMobile, crop }) {
+function InlineSVG({ src, className, isMobile, isTabletOrMobile, crop }) {
   const [svgContent, setSvgContent] = useState("");
 
   useEffect(() => {
@@ -37,12 +37,24 @@ function InlineSVG({ src, className, isMobile, crop }) {
           .replace(/<path[^>]*?d="M145\.568[^>]*?>/i, "")
           .replace(/<path[^>]*?d="M328\.76[^>]*?>/i, "")
           .replace(/<path[^>]*?d="M132\.696[^>]*?>/i, "")
-          .replace(/viewBox="0 0 1440 2541"/, 'viewBox="0 0 1440 700"')
-          .replace(/width="1440" height="2541"/, 'width="1440" height="700"');
+          .replace(
+            /viewBox="0 0 1440 2541"/,
+            isTabletOrMobile ? 'viewBox="117 -40 1205 740"' : 'viewBox="0 0 1440 700"'
+          )
+          .replace(
+            /width="1440" height="2541"/,
+            isTabletOrMobile ? 'width="1205" height="740"' : 'width="1440" height="700"'
+          );
       } else if (crop === "bottom") {
         processedContent = svgContent
-          .replace(/viewBox="0 0 1440 2541"/, 'viewBox="0 1430 1440 1111"')
-          .replace(/width="1440" height="2541"/, 'width="1440" height="1111"');
+          .replace(
+            /viewBox="0 0 1440 2541"/,
+            isTabletOrMobile ? 'viewBox="117 1430 1205 1111"' : 'viewBox="0 1430 1440 1111"'
+          )
+          .replace(
+            /width="1440" height="2541"/,
+            isTabletOrMobile ? 'width="1205" height="1111"' : 'width="1440" height="1111"'
+          );
       } else if (crop === "title") {
         processedContent = svgContent
           .replace(/viewBox="0 0 1440 2541"/, 'viewBox="0 0 1440 120"')
@@ -74,6 +86,7 @@ export default function StudioPage() {
   const gridRef = useRef(null);
   const containerRef = useRef(null);
   const [isMobile, setIsMobile] = useState(false);
+  const [isTabletOrMobile, setIsTabletOrMobile] = useState(false);
   const [expandedParagraphs, setExpandedParagraphs] = useState({});
 
   const toggleParagraph = (id) => {
@@ -94,6 +107,7 @@ export default function StudioPage() {
   useEffect(() => {
     const handleResize = () => {
       setIsMobile(window.innerWidth <= 767);
+      setIsTabletOrMobile(window.innerWidth < 1024);
     };
     handleResize();
     window.addEventListener("resize", handleResize);
@@ -256,12 +270,14 @@ export default function StudioPage() {
                 src="/studio/how_we_work.svg" 
                 className={styles.howWeWorkTop}
                 isMobile={isMobile} 
+                isTabletOrMobile={isTabletOrMobile} 
                 crop="top"
               />
               <InlineSVG 
                 src="/studio/how_we_work.svg" 
                 className={styles.howWeWorkBottom}
                 isMobile={isMobile} 
+                isTabletOrMobile={isTabletOrMobile} 
                 crop="bottom"
               />
             </div>

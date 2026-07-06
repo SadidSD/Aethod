@@ -1687,20 +1687,24 @@
     display: block !important;
   }
 
-  .howWeWorkSectionDesktop {
-    display: none !important;
+  .section4HowWeWork {
+    width: 100% !important;
+    max-width: 100% !important;
   }
 
   .howWeWorkSection {
     position: relative !important;
     left: auto !important;
     top: auto !important;
-    width: 100% !important;
-    max-width: 100% !important;
+    width: calc(100% + 48px) !important;
+    max-width: calc(100% + 48px) !important;
+    margin-left: -24px !important;
+    margin-right: -24px !important;
     transform: none !important;
-    margin: 0 !important;
     height: auto !important;
     overflow: hidden !important;
+    padding: 0 !important;
+    box-sizing: border-box !important;
   }
 
   .howWeWorkTitleContainer {
@@ -1800,6 +1804,14 @@
 
   .rightMarker, .sideIndicator, .manifestoLineTop, .ctaLineTop, .ctaLineBottom {
     display: none !important;
+  }
+  .purpleTabletAccent,
+  :global([data-theme="dark"]) .purpleTabletAccent {
+    background: linear-gradient(135deg, #5A69EA 0%, #BF8BCA 100%) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    background-clip: text !important;
+    color: transparent !important;
   }
 }
 
@@ -2190,5 +2202,50 @@
   }
   .tabletOnlyBr {
     display: block !important;
+  }
+
+  @media (max-width: 1023px) {
+    .mainContainer {
+      overflow-x: hidden !important;
+    }
+    .studioTitle {
+      margin-bottom: 3px !important;
+    }
+    .manifestoTitle {
+      text-align: center !important;
+      margin-bottom: 2px !important;
+    }
+    .manifestoSubtitle {
+      text-align: center !important;
+    }
+    .tabletOnlyBr {
+      display: none !important;
+    }
+    .purpleTabletAccent,
+    :global([data-theme="dark"]) .purpleTabletAccent {
+      background: linear-gradient(135deg, #5A69EA 0%, #BF8BCA 100%) !important;
+      -webkit-background-clip: text !important;
+      -webkit-text-fill-color: transparent !important;
+      background-clip: text !important;
+      color: transparent !important;
+    }
+    .section4HowWeWork {
+      width: 100% !important;
+      max-width: 100% !important;
+    }
+    .howWeWorkSection {
+      margin-left: calc(-1 * clamp(1.5rem, 3vw, 3rem)) !important;
+      margin-right: calc(-1 * clamp(1.5rem, 3vw, 3rem)) !important;
+      width: calc(100% + 2 * clamp(1.5rem, 3vw, 3rem)) !important;
+      max-width: calc(100% + 2 * clamp(1.5rem, 3vw, 3rem)) !important;
+      padding: 0 !important;
+      box-sizing: border-box !important;
+    }
+    .howWeWorkTop svg,
+    .howWeWorkBottom svg {
+      width: 100% !important;
+      height: auto !important;
+      display: block !important;
+    }
   }
 }
