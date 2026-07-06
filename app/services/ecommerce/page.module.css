@@ -1015,7 +1015,7 @@
     left: auto !important;
     top: auto !important;
     width: 100% !important;
-    max-width: 340px !important;
+    max-width: 452px !important;
     height: auto !important;
     aspect-ratio: 452 / 71 !important;
     margin: 0 auto !important;
@@ -1040,6 +1040,17 @@
     max-width: 100% !important;
     height: auto !important;
     margin: 0 auto !important;
+  }
+  /* Inline SVG scale elements */
+  .heroTitle :global(svg),
+  .heroLeftText :global(svg),
+  .heroRightText :global(svg),
+  .btnBar :global(svg),
+  .buttonsSvg :global(svg),
+  .heroImage :global(svg) {
+    width: 100% !important;
+    height: auto !important;
+    display: block !important;
   }
   .quickListHeader {
     text-align: center !important;
@@ -1076,12 +1087,17 @@
     max-width: 100% !important;
   }
   .pfGrid {
-    grid-template-columns: 1fr !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
     gap: 20px !important;
     width: 100% !important;
   }
   .pfCard {
+    width: 100% !important;
+    max-width: 480px !important;
     height: auto !important;
+    margin: 0 auto !important;
     padding: 28px 20px !important;
   }
   .pfCardTitle {
@@ -1115,6 +1131,9 @@
   }
   .faqCard {
     padding: 28px 20px !important;
+    width: 100% !important;
+    max-width: 480px !important;
+    margin: 0 auto !important;
   }
   .faqCardTitle {
     font-size: 22px !important;
@@ -1127,6 +1146,8 @@
   .faqFormContainer {
     margin-left: 0 !important;
     width: 100% !important;
+    max-width: 480px !important;
+    margin: 0 auto !important;
     padding: 28px 20px !important;
   }
   .faqFormTitle {

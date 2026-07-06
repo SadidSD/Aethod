@@ -1565,4 +1565,12 @@
   .seeMoreBtn {
     font-size: 13px !important;
   }
+  .footerWrapper {
+    position: relative !important;
+    left: auto !important;
+    top: auto !important;
+    width: 100% !important;
+    max-width: 480px !important;
+    margin: 32px auto 0 !important;
+  }
 }
