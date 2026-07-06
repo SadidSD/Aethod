@@ -1574,3 +1574,59 @@
     margin: 32px auto 0 !important;
   }
 }
+
+.learnMore {
+  position: absolute;
+  font-family: var(--font-sora), sans-serif;
+  font-size: clamp(8px, 2.3vw, 13px);
+  font-weight: 700;
+  background: linear-gradient(135deg, #5A69EA 0%, #BF8BCA 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  z-index: 10;
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+.learnMoreTcg {
+  left: 56.5%;
+  top: 79%;
+}
+
+.learnMoreEcommerce {
+  left: 69%;
+  top: 79%;
+}
+
+.learnMoreTools {
+  left: 60%;
+  top: 79%;
+}
+
+.learnMoreAutomation {
+  left: 61.5%;
+  top: 79%;
+}
+
+@media (max-width: 950px) {
+  .learnMore {
+    font-size: clamp(8px, 2.4vw, 13.5px) !important;
+  }
+  .learnMoreTcg {
+    left: 57.5% !important;
+    top: 77.5% !important;
+  }
+  .learnMoreEcommerce {
+    left: 70% !important;
+    top: 77.5% !important;
+  }
+  .learnMoreTools {
+    left: 61% !important;
+    top: 77.5% !important;
+  }
+  .learnMoreAutomation {
+    left: 62.5% !important;
+    top: 77.5% !important;
+  }
+}

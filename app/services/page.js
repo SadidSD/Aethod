@@ -175,18 +175,21 @@ export default function ServicesPage() {
           <a href="/services/tcg" className={styles.card1} onClick={playClickSound}>
             <InlineSVG src="/services/TCG Web.svg" />
             <AnimatedTcgIcon />
+            <span className={`${styles.learnMore} ${styles.learnMoreTcg}`}>... <strong>Learn More</strong></span>
           </a>
 
           {/* Card 2: E-commerce Website Development */}
           <a href="/services/ecommerce" className={styles.card2} onClick={playClickSound}>
             <InlineSVG src="/services/Webs.svg" />
             <AnimatedWebIcon />
+            <span className={`${styles.learnMore} ${styles.learnMoreEcommerce}`}>... <strong>Learn More</strong></span>
           </a>
 
           {/* Card 3: Custom E-commerce Tools */}
           <a href="/services/tools" className={styles.card3} onClick={playClickSound}>
             <InlineSVG src="/services/Custom Tools.svg" />
             <AnimatedToolsIcon />
+            <span className={`${styles.learnMore} ${styles.learnMoreTools}`}>... <strong>Learn More</strong></span>
           </a>
 
           {/* Card 4: Automation (Built from layers) */}
@@ -204,6 +207,7 @@ export default function ServicesPage() {
               src="/services/Your business functions and scales silently around the clock, even when you are offline. Our AI-first pipelines take over complex data processing and repetitive decision paths, wiping out human error and keeping your operations moving forward with.svg" 
               className={styles.card4Desc} 
             />
+            <span className={`${styles.learnMore} ${styles.learnMoreAutomation}`}>... <strong>Learn More</strong></span>
           </a>
 
           {/* Side Indicator */}
