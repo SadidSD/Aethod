@@ -1655,11 +1655,21 @@
 
 @media (min-width: 768px) and (max-width: 1440px) {
   .contentAlignContainer {
-    width: 100% !important;
-    max-width: 100% !important;
+    width: 1440px !important;
+    max-width: 1440px !important;
     transform: scale(var(--scale-1440, 1)) !important;
     transform-origin: top left !important;
     height: calc(8000px * var(--scale-1440, 1)) !important;
     margin: 0 !important;
+  }
+
+  .howWeWorkSection {
+    width: 1440px !important;
+    left: 0 !important;
+  }
+
+  .ctaContainer {
+    width: 1440px !important;
+    left: 0 !important;
   }
 }

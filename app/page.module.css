@@ -1217,6 +1217,10 @@
 
 /* Tablet Viewport (768px - 1023px) */
 @media (min-width: 768px) and (max-width: 1023px) {
+  .servicesSection .alignContainer {
+    padding-bottom: 220px !important;
+  }
+
   .journeyPathSvgTablet {
     display: block !important;
   }
@@ -2613,16 +2617,16 @@
 
 @media (min-width: 901px) and (max-width: 1440px) {
   .tcgAlignContainer {
-    width: 100% !important;
-    max-width: 100% !important;
+    width: 1440px !important;
+    max-width: 1440px !important;
     transform: scale(var(--scale-1440, 1)) !important;
     transform-origin: top left !important;
     height: calc(1420px * var(--scale-1440, 1)) !important;
     margin: 0 !important;
   }
   .helpAlignContainer {
-    width: 100% !important;
-    max-width: 100% !important;
+    width: 1440px !important;
+    max-width: 1440px !important;
     transform: scale(var(--scale-1440, 1)) !important;
     transform-origin: top left !important;
     height: calc(960px * var(--scale-1440, 1)) !important;

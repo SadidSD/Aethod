@@ -1172,7 +1172,7 @@
 .card2 :global(svg):not([class*="iconBg"]),
 .card3 :global(svg):not([class*="iconBg"]) {
   width: 100% !important;
-  transform: rotate(15deg) scale(1.05);
+  height: auto !important;
 }
 
 .sparkle1, .sparkle2 {
