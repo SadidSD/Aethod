@@ -1430,6 +1430,8 @@
     margin: 0 !important;
     margin-left: calc((100vw - 430px) / 2) !important;
   }
+  .section1Hero, .section2WhatIs, .section3Manifesto, .section4HowWeWork, .section5Cta, .section6Capabilities,
+  .aboutCardWrapper, .heroImagesWrapper,
   .studioTitle, .studioSubtitle, .rectangle158, .whoWeAre, .weAreNotAnAgencyContainer,
   .heroImageRight, .heroImageLowerLeft, .frame142, .whatIsTitle, .whatIsSubtitle,
   .whatIsSystemStudioContainer, .howWeDifferCardWrapper, .manifestoLineTop, .manifestoTitle,
