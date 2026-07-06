@@ -39,21 +39,21 @@ function InlineSVG({ src, className, isMobile, isTabletOrMobile, crop }) {
           .replace(/<path[^>]*?d="M132\.696[^>]*?>/i, "")
           .replace(
             /viewBox="0 0 1440 2541"/,
-            isTabletOrMobile ? 'viewBox="117 -40 1205 740"' : 'viewBox="0 0 1440 700"'
+            isTabletOrMobile ? 'viewBox="0 -40 1440 740"' : 'viewBox="0 0 1440 700"'
           )
           .replace(
             /width="1440" height="2541"/,
-            isTabletOrMobile ? 'width="1205" height="740"' : 'width="1440" height="700"'
+            isTabletOrMobile ? 'width="1440" height="740"' : 'width="1440" height="700"'
           );
       } else if (crop === "bottom") {
         processedContent = svgContent
           .replace(
             /viewBox="0 0 1440 2541"/,
-            isTabletOrMobile ? 'viewBox="117 1430 1205 1111"' : 'viewBox="0 1430 1440 1111"'
+            isTabletOrMobile ? 'viewBox="0 1430 1440 1111"' : 'viewBox="0 1430 1440 1111"'
           )
           .replace(
             /width="1440" height="2541"/,
-            isTabletOrMobile ? 'width="1205" height="1111"' : 'width="1440" height="1111"'
+            isTabletOrMobile ? 'width="1440" height="1111"' : 'width="1440" height="1111"'
           );
       } else if (crop === "title") {
         processedContent = svgContent
