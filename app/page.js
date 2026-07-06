@@ -734,7 +734,15 @@ export default function Home() {
           <InlineSVG src="/btn_scroll_details.svg" className={styles.tcgScrollBtn} />
 
           {/* Bottom text block: Stop doing manual tasks... */}
-          <InlineSVG src="/text_manual_tasks.svg" className={styles.tcgBottomText} />
+          <div className={styles.tcgBottomTextContainer}>
+            <h2 className={styles.tcgBottomTextTitle}>
+              Stop doing manual tasks.<br />
+              Our <span className={styles.tcgBottomTextHighlight}>AI can save your time.</span>
+            </h2>
+            <p className={styles.tcgBottomTextDesc}>
+              Eliminate the chaos of fragmented marketplaces, volatile pricing, and overselling. Our <span className={styles.tcgBottomTextDescHighlight}>high-performance engine</span> automatically distinguishes between NM and LP or other conditions, slashing your listing time by up to 80%.
+            </p>
+          </div>
         </div>
       </section>
 
@@ -745,7 +753,40 @@ export default function Home() {
           <InlineSVG src="/dice_mini_1.svg" className={`${styles.diceShape} ${styles.diceMini1}`} />
 
           {/* Group 21: How our AI will help you list */}
-          <InlineSVG src="/group_21.svg" className={styles.helpGroup21} />
+          <div className={styles.helpGroup21Container}>
+            <h2 className={styles.helpGroup21Title}>
+              How our <span className={styles.helpGroup21TitleHighlight}>AI will help you?</span>
+            </h2>
+            <p className={styles.helpGroup21Subtitle}>
+              A all-in-one E-commerce Hub designed for sellers.
+            </p>
+            <div className={styles.helpList}>
+              <div className={styles.helpListItem}>
+                <span className={styles.helpListNum}>1</span>
+                <span className={styles.helpListText}>Increase Inventory Speed</span>
+              </div>
+              <div className={styles.helpListItem}>
+                <span className={styles.helpListNum}>2</span>
+                <span className={styles.helpListText}>Real-time Data Driven Pricing ( with accuracy)</span>
+              </div>
+              <div className={styles.helpListItem}>
+                <span className={styles.helpListNum}>3</span>
+                <span className={styles.helpListText}>Multi Channel Reach and Bulk Managing</span>
+              </div>
+              <div className={styles.helpListItem}>
+                <span className={styles.helpListNum}>4</span>
+                <span className={styles.helpListText}>AI Scanning with Automatic Listing and Pricing</span>
+              </div>
+              <div className={styles.helpListItem}>
+                <span className={styles.helpListNum}>5</span>
+                <span className={styles.helpListText}>Distinguishes between Near mint and Lightly Played Card</span>
+              </div>
+              <div className={styles.helpListItem}>
+                <span className={styles.helpListNum}>7</span>
+                <span className={styles.helpListText}>Mobile Easy UX</span>
+              </div>
+            </div>
+          </div>
 
           {/* Background Dice 12 */}
           <InlineSVG src="/dice_mini_12.svg" className={`${styles.diceShape} ${styles.diceMini12}`} />

@@ -2202,41 +2202,49 @@
   transform: translateY(2px) scale(1.02);
 }
 
-.tcgBottomText {
+.tcgBottomTextContainer {
   position: absolute;
   width: 1111px;
-  height: 430px;
   left: 149px;
   top: 977px;
   z-index: 3;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.tcgBottomTextTitle {
+  font-family: var(--font-sora), sans-serif;
+  font-size: 44px;
+  font-weight: 300;
+  line-height: 1.25;
+  color: var(--text-primary);
+  margin-bottom: 24px;
+  letter-spacing: -0.02em;
+}
+
+.tcgBottomTextHighlight {
+  color: var(--accent-purple);
+  font-weight: 400;
+}
+
+.tcgBottomTextDesc {
+  font-family: var(--font-inter), sans-serif;
+  font-size: 20px;
+  font-weight: 300;
+  line-height: 1.6;
+  color: var(--text-secondary);
+  max-width: 900px;
+  letter-spacing: -0.01em;
+}
+
+.tcgBottomTextDescHighlight {
+  color: var(--accent-purple);
+  font-weight: 400;
 }
 
 /* Theme overrides for TCG inline SVGs */
-:global([data-theme="dark"]) .tcgCurrentFocus svg path[fill="#404040" i] {
-  fill: #b0b0c8;
-}
-
-:global([data-theme="dark"]) .tcgTitle svg path[fill="#0D0D0D" i],
-:global([data-theme="dark"]) .tcgTitle svg path[fill="#404040" i] {
-  fill: #e8e8f0;
-}
-
-:global([data-theme="dark"]) .tcgSubtitle svg path[fill="#404040" i] {
-  fill: #8888a8;
-}
-
-:global([data-theme="dark"]) .tcgScrollBtn svg rect {
-  stroke: #8888a8;
-}
-
-:global([data-theme="dark"]) .tcgScrollBtn svg path[fill="#404040" i] {
-  fill: #b0b0c8;
-}
-
-:global([data-theme="dark"]) .tcgBottomText svg path[fill="#0D0D0D" i],
-:global([data-theme="dark"]) .tcgBottomText svg path[fill="#404040" i] {
-  fill: #e8e8f0;
-}
 
 @media (max-width: 900px) {
   .tcgSection {
@@ -2305,9 +2313,26 @@
     height: 50px;
   }
 
-  .tcgBottomText {
-    width: 100%;
-    height: auto;
+  .tcgBottomTextContainer {
+    position: relative !important;
+    left: auto !important;
+    top: auto !important;
+    transform: none !important;
+    margin: 40px auto 0 !important;
+    width: 100% !important;
+    max-width: 600px !important;
+    padding: 0 24px !important;
+    text-align: center !important;
+  }
+
+  .tcgBottomTextTitle {
+    font-size: 28px !important;
+    margin-bottom: 16px !important;
+  }
+
+  .tcgBottomTextDesc {
+    font-size: 16px !important;
+    line-height: 1.5 !important;
   }
 
   .diceMini2,
@@ -2334,13 +2359,73 @@
   margin: 0 auto;
 }
 
-.helpGroup21 {
+.helpGroup21Container {
   position: absolute;
   width: 1278px;
-  height: 731px;
   left: 80.5px;
   top: 164px;
   z-index: 3;
+  text-align: left;
+}
+
+.helpGroup21Title {
+  font-family: var(--font-sora), sans-serif;
+  font-size: 40px;
+  font-weight: 300;
+  line-height: 1.2;
+  color: var(--text-primary);
+  margin-bottom: 8px;
+  letter-spacing: -0.02em;
+}
+
+.helpGroup21TitleHighlight {
+  color: var(--accent-purple);
+  font-weight: 400;
+}
+
+.helpGroup21Subtitle {
+  font-family: var(--font-inter), sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  color: var(--text-secondary);
+  margin-bottom: 48px;
+}
+
+.helpList {
+  width: 100%;
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+:global([data-theme="dark"]) .helpList {
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.helpListItem {
+  display: flex;
+  align-items: center;
+  padding: 22px 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+:global([data-theme="dark"]) .helpListItem {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.helpListNum {
+  width: 64px;
+  font-family: var(--font-inter), sans-serif;
+  font-size: 24px;
+  font-weight: 300;
+  color: var(--text-secondary);
+  flex-shrink: 0;
+}
+
+.helpListText {
+  font-family: var(--font-inter), sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  color: var(--text-primary);
+  letter-spacing: -0.01em;
 }
 
 .helpDemoTitle {
@@ -2434,14 +2519,6 @@
 }
 
 /* Dark Mode Overrides for Help and Footer SVGs */
-:global([data-theme="dark"]) .helpGroup21 svg path[fill="#0D0D0D" i],
-:global([data-theme="dark"]) .helpGroup21 svg path[fill="#404040" i] {
-  fill: #e8e8f0;
-}
-
-:global([data-theme="dark"]) .helpGroup21 svg path[stroke="#404040" i] {
-  stroke: #8888a8;
-}
 
 :global([data-theme="dark"]) .helpDemoTitle svg path[fill="#0D0D0D" i] {
   fill: #e8e8f0;
@@ -2482,7 +2559,7 @@
     gap: 40px;
   }
 
-  .helpGroup21,
+  .helpGroup21Container,
   .helpDemoTitle,
   .helpDemoContent {
     position: relative !important;
@@ -2494,8 +2571,34 @@
     height: auto !important;
   }
 
-  .helpGroup21 {
-    width: 100%;
+  .helpGroup21Container {
+    width: 100% !important;
+    max-width: 600px !important;
+    padding: 0 24px !important;
+    margin-top: 40px !important;
+  }
+
+  .helpGroup21Title {
+    font-size: 28px !important;
+    margin-bottom: 8px !important;
+  }
+
+  .helpGroup21Subtitle {
+    font-size: 14px !important;
+    margin-bottom: 32px !important;
+  }
+
+  .helpListItem {
+    padding: 16px 0 !important;
+  }
+
+  .helpListNum {
+    width: 40px !important;
+    font-size: 18px !important;
+  }
+
+  .helpListText {
+    font-size: 16px !important;
   }
 
   .helpDemoTitle {
@@ -2606,8 +2709,6 @@
   .tcgSubtitle svg,
   .tcgCards svg,
   .tcgScrollBtn svg,
-  .tcgBottomText svg,
-  .helpGroup21 svg,
   .helpDemoTitle svg,
   .helpDemoContent svg {
     width: 100% !important;
