@@ -1241,19 +1241,28 @@
     margin-bottom: 20px !important;
   }
   .faqFormRow {
-    flex-direction: column !important;
-    height: auto !important;
+    display: flex !important;
+    flex-direction: row !important;
+    height: 48px !important;
     gap: 12px !important;
+    width: 100% !important;
   }
   .faqInput {
+    flex: 1 !important;
     height: 48px !important;
-    width: 100% !important;
+    width: auto !important;
   }
   .faqSendBtnWrapper {
-    width: 100% !important;
+    width: 100px !important;
     height: 48px !important;
+    flex-shrink: 0 !important;
   }
   .faqSendBtnText {
-    font-size: 18px !important;
+    font-size: 14px !important;
+    gap: 6px !important;
+  }
+  .sendArrowSvg {
+    width: 14px !important;
+    height: 14px !important;
   }
 }
