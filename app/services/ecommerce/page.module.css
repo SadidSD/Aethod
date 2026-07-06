@@ -868,9 +868,9 @@
 
 @media (min-width: 1201px) and (max-width: 1440px) {
   .contentAlignContainer {
-    transform: scale(calc(100vw / 1440)) !important;
+    transform: scale(var(--scale-1440, 1)) !important;
     transform-origin: top center !important;
-    height: calc(3350px * 100vw / 1440) !important;
+    height: calc(3350px * var(--scale-1440, 1)) !important;
   }
 }
 

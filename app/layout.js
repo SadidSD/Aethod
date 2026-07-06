@@ -3,6 +3,7 @@ import "./globals.css";
 import { ThemeProvider } from "./context/ThemeContext";
 import { ChatProvider } from "./context/ChatContext";
 import Chatbox from "./components/Chatbox";
+import ResponsiveScaler from "./components/ResponsiveScaler";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -64,6 +65,7 @@ export default function RootLayout({ children }) {
         />
       </head>
       <body suppressHydrationWarning>
+        <ResponsiveScaler />
         <ThemeProvider>
           <ChatProvider>
             {children}

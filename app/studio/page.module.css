@@ -1384,13 +1384,14 @@
     margin-top: 0 !important;
     padding: 48px 0 80px !important;
     overflow-x: hidden !important;
+    height: calc(var(--content-height) * var(--scale-430, 1)) !important;
   }
   .contentAlignContainer {
     width: 430px !important;
     max-width: 430px !important;
-    transform: scale(calc(100vw / 430)) !important;
+    transform: scale(var(--scale-430, 1)) !important;
     transform-origin: top center !important;
-    height: calc(var(--content-height) * 100vw / 430) !important;
+    height: auto !important;
     min-height: 500px !important;
     display: flex !important;
     flex-direction: column !important;
@@ -1398,7 +1399,8 @@
     justify-content: center !important;
     gap: 48px !important;
     padding: 0 !important;
-    margin: 0 auto !important;
+    margin: 0 !important;
+    margin-left: calc((100vw - 430px) / 2) !important;
   }
   .studioTitle, .studioSubtitle, .rectangle158, .whoWeAre, .weAreNotAnAgencyContainer,
   .heroImageRight, .heroImageLowerLeft, .frame142, .whatIsTitle, .whatIsSubtitle,
@@ -1653,8 +1655,8 @@
 
 @media (min-width: 768px) and (max-width: 1440px) {
   .contentAlignContainer {
-    transform: scale(calc(100vw / 1440)) !important;
+    transform: scale(var(--scale-1440, 1)) !important;
     transform-origin: top center !important;
-    height: calc(8000px * 100vw / 1440) !important;
+    height: calc(8000px * var(--scale-1440, 1)) !important;
   }
 }
