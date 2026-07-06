@@ -3,7 +3,6 @@
 import { useState, useRef, useCallback, useEffect } from "react";
 import styles from "./page.module.css";
 import { useTheme } from "./context/ThemeContext";
-import ThemeToggle from "./components/ThemeToggle";
 import Footer from "./components/Footer";
 import Navbar from "./components/Navbar";
 import HomeButton from "./components/HomeButton";
@@ -352,9 +351,6 @@ export default function Home() {
 
             {/* Right — Orb */}
             <div className={styles.heroVisual}>
-              {/* Slide Toggle — Dark/Light Mode */}
-              {/* <ThemeToggle className={styles.slideButton} /> */}
-
               {/* Orb */}
               <div className={styles.orbContainer}>
                 <div className={styles.orbGlow} />

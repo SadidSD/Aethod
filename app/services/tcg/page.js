@@ -3,7 +3,6 @@
 import { useState, useRef, useCallback, useEffect } from "react";
 import styles from "./page.module.css";
 import { useTheme } from "../../context/ThemeContext";
-import ThemeToggle from "../../components/ThemeToggle";
 import Footer from "../../components/Footer";
 import Navbar from "../../components/Navbar";
 
@@ -272,9 +271,6 @@ export default function TcgPage() {
               </a>
             </div>
           </div>
-
-          {/* Theme Switcher slider */}
-          {/* <ThemeToggle className={styles.slideButton} /> */}
 
         </div>
       </main>

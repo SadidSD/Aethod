@@ -3,7 +3,6 @@
 import { useState, useRef, useCallback, useEffect } from "react";
 import styles from "./page.module.css";
 import { useTheme } from "../../context/ThemeContext";
-import ThemeToggle from "../../components/ThemeToggle";
 import Navbar from "../../components/Navbar";
 
 
@@ -256,10 +255,6 @@ export default function ToolsPage() {
           <div className={styles.footerWrapper}>
             <InlineSVG src="/services/tools/Footer.svg" className={styles.footerSvg} />
           </div>
-
-          {/* Theme Switcher slider */}
-          {/* <ThemeToggle className={styles.slideButton} /> */}
-
         </div>
       </main>
 

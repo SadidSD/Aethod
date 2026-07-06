@@ -3,7 +3,6 @@
 import { useState, useRef, useCallback, useEffect } from "react";
 import styles from "./page.module.css";
 import { useTheme } from "../context/ThemeContext";
-import ThemeToggle from "../components/ThemeToggle";
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
 
@@ -338,7 +337,6 @@ export default function StudioPage() {
           </div>
 
           {/* ===== 3D DRAGGABLE THEME SWITCH OVERLAY ===== */}
-          {/* <ThemeToggle className={styles.slideButton} /> */}
         </div>
       </main>
 
