@@ -579,7 +579,7 @@
   height: 92px;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 767px) {
   .floatingAssistantBtn {
     right: 16px !important;
     bottom: 16px !important;
@@ -638,5 +638,45 @@
   }
   .messageViewport {
     padding: 12px !important;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1366px) {
+  .floatingAssistantBtn {
+    position: fixed !important;
+    right: 64px !important;
+    bottom: 320px !important;
+    width: 92px !important;
+    height: 92px !important;
+  }
+  .floatingBtnIcon {
+    width: 72px !important;
+    height: 72px !important;
+  }
+  .chatboxPanel {
+    position: fixed !important;
+    right: 50px !important;
+    bottom: 306px !important;
+    left: auto !important;
+    top: auto !important;
+    transform: none !important;
+    width: 540px !important;
+    height: calc(100vh - 280px) !important;
+    max-height: 700px !important;
+    border-radius: 40px !important;
+    padding: 24px !important;
+    box-sizing: border-box !important;
+    animation: slideIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  }
+  .chatboxCloseBtn {
+    position: absolute !important;
+    right: 24px !important;
+    bottom: 24px !important;
+    width: 72px !important;
+    height: 72px !important;
+  }
+  .closeBtnIcon {
+    width: 72px !important;
+    height: 72px !important;
   }
 }
