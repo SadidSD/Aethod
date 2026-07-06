@@ -813,7 +813,7 @@
 }
 
 /* Mobile Screens — Stack cards vertically */
-@media (max-width: 768px) {
+@media (max-width: 767px) {
   .blogCard {
     flex-direction: column !important;
     align-items: stretch !important;
