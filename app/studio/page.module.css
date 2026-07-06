@@ -282,18 +282,29 @@
 /* SECTION 1: HERO */
 .studioTitle {
   position: absolute;
-  width: 163px;
-  height: 60px;
   left: 119px;
-  top: 251px;
+  top: 250px;
+  font-family: var(--font-sora), sans-serif;
+  font-size: var(--font-size-hero);
+  font-weight: 300;
+  line-height: 1.1;
+  color: var(--text-primary);
+  margin: 0;
+  letter-spacing: -0.03em;
 }
 
 .studioSubtitle {
   position: absolute;
-  width: 355px;
-  height: 30px;
+  width: 600px;
   left: 119px;
-  top: 314px;
+  top: 360px;
+  font-family: var(--font-sora), sans-serif;
+  font-size: var(--font-size-subtitle);
+  font-weight: 200;
+  line-height: 1.4;
+  color: var(--text-secondary);
+  margin: 0;
+  letter-spacing: -0.01em;
 }
 
 .rectangle158 {
@@ -310,10 +321,15 @@
 
 .whoWeAre {
   position: absolute;
-  width: 229px;
-  height: 45px;
   left: 213px;
   top: 479px;
+  font-family: var(--font-sora), sans-serif;
+  font-size: var(--font-size-heading);
+  font-weight: 300;
+  line-height: 1.15;
+  color: var(--text-primary);
+  margin: 0;
+  letter-spacing: -0.02em;
 }
 
 .weAreNotAnAgencyContainer {
@@ -332,8 +348,8 @@
   font-family: var(--font-sora), sans-serif;
   font-style: normal;
   font-weight: 300;
-  font-size: 20px;
-  line-height: 26px;
+  font-size: var(--font-size-body);
+  line-height: 1.5;
   color: #404040;
   white-space: nowrap;
   transition: color 0.5s ease;
@@ -343,8 +359,8 @@
   font-family: var(--font-sora), sans-serif;
   font-style: normal;
   font-weight: 300;
-  font-size: 20px;
-  line-height: 26px;
+  font-size: var(--font-size-body);
+  line-height: 1.5;
   color: #404040;
   white-space: nowrap;
   transition: color 0.5s ease;
@@ -440,18 +456,29 @@
 /* SECTION 2: WHAT IS SYSTEM STUDIO */
 .whatIsTitle {
   position: absolute;
-  width: 739px;
-  height: 60px;
   left: 123px;
   top: 1446px;
+  font-family: var(--font-sora), sans-serif;
+  font-size: var(--font-size-heading);
+  font-weight: 300;
+  line-height: 1.15;
+  color: #0D0D0D;
+  margin: 0;
+  letter-spacing: -0.02em;
 }
 
 .whatIsSubtitle {
   position: absolute;
-  width: 373px;
-  height: 30px;
+  width: 600px;
   left: 126px;
   top: 1514px;
+  font-family: var(--font-sora), sans-serif;
+  font-size: var(--font-size-subtitle);
+  font-weight: 200;
+  line-height: 1.4;
+  color: #717171;
+  margin: 0;
+  letter-spacing: -0.01em;
 }
 
 .whatIsSystemStudioContainer {
@@ -499,8 +526,8 @@
   font-family: var(--font-sora), sans-serif;
   font-style: normal;
   font-weight: 300;
-  font-size: 20px;
-  line-height: 35px;
+  font-size: var(--font-size-body);
+  line-height: 1.6;
   color: #404040;
   transition: color 0.5s ease;
 }
@@ -712,12 +739,19 @@
 
 .howWeDifferTitle {
   position: absolute;
-  width: 163px;
-  height: 19px;
   left: 50%;
   transform: translateX(-50%);
-  top: 56px;
+  top: 28px;
   z-index: 2;
+  font-family: var(--font-sora), sans-serif;
+  font-size: var(--font-size-subtitle);
+  font-weight: 300;
+  line-height: 1.15;
+  color: var(--text-primary);
+  margin: 0;
+  text-align: center;
+  white-space: nowrap;
+  letter-spacing: -0.02em;
 }
 
 .howWeDifferTitle :global(path[fill="#404040"]) {
@@ -747,18 +781,29 @@
 
 .manifestoTitle {
   position: absolute;
-  width: 321px;
-  height: 38px;
   left: 119px;
-  top: 2520px;
+  top: 2510px;
+  font-family: var(--font-sora), sans-serif;
+  font-size: var(--font-size-heading);
+  font-weight: 300;
+  line-height: 1.15;
+  color: var(--text-primary);
+  margin: 0;
+  letter-spacing: -0.02em;
 }
 
 .manifestoSubtitle {
   position: absolute;
-  width: 480px;
-  height: 60px;
+  width: 600px;
   left: 119px;
   top: 2580px;
+  font-family: var(--font-sora), sans-serif;
+  font-size: var(--font-size-subtitle);
+  font-weight: 200;
+  line-height: 1.4;
+  color: var(--text-secondary);
+  margin: 0;
+  letter-spacing: -0.01em;
 }
 
 .manifestoGridBox {
@@ -921,11 +966,12 @@
   font-family: var(--font-sora), sans-serif;
   font-style: normal;
   font-weight: 200;
-  font-size: 32px;
-  line-height: 35px;
+  font-size: var(--font-size-subtitle);
+  line-height: 1.35;
   color: #0D0D0D;
   margin: 0;
   transition: color 0.5s ease;
+  letter-spacing: -0.01em;
 }
 
 .manifestoGroup01 .manifestoHeader {
@@ -952,8 +998,8 @@
   font-family: var(--font-sora), sans-serif;
   font-style: normal;
   font-weight: 200;
-  font-size: 24px;
-  line-height: 35px;
+  font-size: var(--font-size-body);
+  line-height: 1.6;
   color: #717171;
   margin: 0;
   transition: color 0.5s ease;
@@ -976,9 +1022,16 @@
 .manifestoQuote {
   position: absolute;
   width: 1000px;
-  height: 120px;
   left: calc(50% - 1000px / 2);
   top: 3670px;
+  font-family: var(--font-sora), sans-serif;
+  font-size: var(--font-size-subtitle);
+  font-weight: 300;
+  line-height: 1.45;
+  color: var(--text-secondary);
+  text-align: center;
+  font-style: italic;
+  margin: 0;
 }
 
 /* SECTION 4: HOW WE WORK */
@@ -1023,12 +1076,13 @@
 
 .howWeWorkTitle {
   font-family: var(--font-sora), sans-serif;
-  font-size: 56px;
+  font-size: var(--font-size-heading);
   font-weight: 300;
-  line-height: 1.1;
+  line-height: 1.15;
   color: #0D0D0D;
   margin: 0 0 24px 0;
   transition: color 0.5s ease;
+  letter-spacing: -0.02em;
 }
 
 .purpleHighlightText {
@@ -1037,9 +1091,9 @@
 
 .howWeWorkSubtitle {
   font-family: var(--font-sora), sans-serif;
-  font-size: 20px;
+  font-size: var(--font-size-body);
   font-weight: 200;
-  line-height: 1.5;
+  line-height: 1.6;
   color: #717171;
   margin: 0;
   transition: color 0.5s ease;
@@ -1082,18 +1136,31 @@
 }
 
 .ctaText {
-  width: 1040px;
-  height: 90px;
-  display: block;
+  width: auto;
+  max-width: 900px;
+  font-family: var(--font-sora), sans-serif;
+  font-size: var(--font-size-subtitle);
+  font-weight: 300;
+  line-height: 1.45;
+  color: var(--text-primary);
+  text-align: center;
+  font-style: italic;
+  margin: 0 auto;
 }
 
 /* SECTION 6: CAPABILITIES */
 .capabilityHeader {
   position: absolute;
   width: 612px;
-  height: 218px;
   left: 131px;
   top: 6545px;
+  font-family: var(--font-sora), sans-serif;
+  font-size: var(--font-size-heading);
+  font-weight: 300;
+  line-height: 1.15;
+  color: var(--text-primary);
+  margin: 0;
+  letter-spacing: -0.02em;
 }
 
 .capabilityGridWrapper {

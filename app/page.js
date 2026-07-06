@@ -705,13 +705,17 @@ export default function Home() {
       <section className={styles.tcgSection} id="tcg-section">
         <div className={styles.tcgAlignContainer}>
           {/* Label: Current Focus */}
-          <InlineSVG src="/label_current_focus.svg" className={styles.tcgCurrentFocus} />
+          <span className={styles.tcgCurrentFocus}>Current Focus</span>
 
           {/* Heading: TCG & Trading Card Ecosystems */}
-          <InlineSVG src="/title_tcg_ecosystems.svg" className={styles.tcgTitle} />
+          <h2 className={styles.tcgTitle}>
+            TCG & Trading Card Ecosystems
+          </h2>
 
           {/* Subtitle Description */}
-          <InlineSVG src="/subtitle_tcg.svg" className={styles.tcgSubtitle} />
+          <p className={styles.tcgSubtitle}>
+            We build custom systems for trading card marketplaces, stores, and collectors.
+          </p>
 
           {/* Background Dice 2 */}
           <InlineSVG src="/dice_mini_2.svg" className={`${styles.diceShape} ${styles.diceMini2}`} />
@@ -795,7 +799,7 @@ export default function Home() {
           <InlineSVG src="/dice_mini_7.svg" className={`${styles.diceShape} ${styles.diceMini7}`} />
 
           {/* Demo Title */}
-          <InlineSVG src="/demo_title.svg" className={styles.helpDemoTitle} />
+          <h2 className={styles.helpDemoTitle}>Demo</h2>
 
           {/* Demo Content (Mockup screenshot) */}
           <InlineSVG src="/demo_content.svg" className={styles.helpDemoContent} />

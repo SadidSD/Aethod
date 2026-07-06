@@ -132,12 +132,12 @@ export default function StudioPage() {
         <div ref={containerRef} className={styles.contentAlignContainer}>
           {/* ----- SECTION 1: HERO ----- */}
           <div className={styles.section1Hero}>
-            <InlineSVG src="/studio/Studio.svg" className={styles.studioTitle} />
-            <InlineSVG src="/studio/intelligence_before_interface.svg" className={styles.studioSubtitle} />
+            <h1 className={styles.studioTitle}>Studio</h1>
+            <p className={styles.studioSubtitle}>Intelligence, before interface.</p>
             
             <div className={styles.aboutCardWrapper}>
               <div className={styles.rectangle158} />
-              <InlineSVG src="/studio/who_we_are.svg" className={styles.whoWeAre} />
+              <h2 className={styles.whoWeAre}>Who we are?</h2>
               <div className={styles.weAreNotAnAgencyContainer}>
                 <div className={styles.agencyFirstLine}>
                   <div className={styles.arrowBox}>
@@ -163,8 +163,8 @@ export default function StudioPage() {
 
           {/* ----- SECTION 2: WHAT IS SYSTEM STUDIO & HOW WE DIFFER ----- */}
           <div className={styles.section2WhatIs}>
-            <InlineSVG src="/studio/what_is_system_studio.svg" className={styles.whatIsTitle} />
-            <InlineSVG src="/studio/where_agencies_end.svg" className={styles.whatIsSubtitle} />
+            <h2 className={styles.whatIsTitle}>What is a systems studio?</h2>
+            <p className={styles.whatIsSubtitle}>Where agencies end.</p>
             <div className={styles.whatIsSystemStudioContainer}>
               <div className={styles.whatIsParagraphRow}>
                 <InlineSVG src="/studio/round_arrow_card.svg" className={styles.roundArrowCard} />
@@ -206,7 +206,7 @@ export default function StudioPage() {
               </div>
             </div>
             <div className={styles.howWeDifferCardWrapper}>
-              <InlineSVG src="/studio/how_we_differ.svg" className={styles.howWeDifferTitle} />
+              <h2 className={styles.howWeDifferTitle}>How we differ</h2>
               <HowWeDifferTable />
             </div>
           </div>
@@ -214,8 +214,8 @@ export default function StudioPage() {
           {/* ----- SECTION 3: THE MANIFESTO ----- */}
           <div className={styles.section3Manifesto}>
             <InlineSVG src="/studio/curved_line.svg" className={styles.manifestoLineTop} />
-            <InlineSVG src="/studio/The Manifesto.svg" className={styles.manifestoTitle} />
-            <InlineSVG src="/studio/Four things we believe.svg" className={styles.manifestoSubtitle} />
+            <h2 className={styles.manifestoTitle}>The Manifesto</h2>
+            <p className={styles.manifestoSubtitle}>Four things we believe.</p>
             
             <div className={styles.manifestoGridBox} ref={gridRef}>
               <InlineSVG src="/studio/Rectangle 90.svg" className={`${styles.manifestoGridLineVert} ${gridInView ? styles.animateVert : styles.hiddenVert}`} />
@@ -227,7 +227,10 @@ export default function StudioPage() {
               <InlineSVG src="/studio/Group 53.svg" className={styles.manifestoGroup04} />
             </div>
             
-            <InlineSVG src="/studio/Humans architect. AI executes. Data makes it true. That is what we build..svg" className={styles.manifestoQuote} />
+            <blockquote className={styles.manifestoQuote}>
+              Humans architect. AI executes. Data makes it true.<br />
+              That is what we build.
+            </blockquote>
           </div>
 
           {/* ----- SECTION 4: HOW WE WORK ----- */}
@@ -260,14 +263,16 @@ export default function StudioPage() {
           <div className={styles.section5Cta}>
             <div className={styles.ctaContainer}>
               <InlineSVG src="/studio/curved_line.svg" className={styles.ctaLineTop} />
-              <InlineSVG src={`/studio/_The first conversation costs nothing. The systems brief tells us both whether this is the right fit._.svg`} className={styles.ctaText} />
+              <blockquote className={styles.ctaText}>
+                The first conversation costs nothing. The systems brief tells us both whether this is the right fit.
+              </blockquote>
               <InlineSVG src="/studio/curved_line.svg" className={styles.ctaLineBottom} />
             </div>
           </div>
 
           {/* ----- SECTION 6: AI CAPABILITY AREAS ----- */}
           <div className={styles.section6Capabilities}>
-            <InlineSVG src="/studio/Frame 78.svg" className={styles.capabilityHeader} />
+            <h2 className={styles.capabilityHeader}>AI Capability Areas</h2>
             <div className={styles.capabilityGridWrapper}>
               <InlineSVG src="/studio/Group 75.svg" className={styles.capabilityGrid} isMobile={isMobile} />
             </div>
