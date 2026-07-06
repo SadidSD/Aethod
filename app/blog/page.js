@@ -238,10 +238,20 @@ export default function BlogPage() {
                     {/* Left: Recessed Illustration Box */}
                     <Link href={`/blog/${post.id}`} className={styles.cardIllustrationLink}>
                       <div className={styles.cardIllustrationBox}>
-                        <InlineSVG
-                          src={post.illustration}
-                          className={styles.illustrationSvg}
-                        />
+                        {post.illustration && post.illustration.includes("mass.svg") ? (
+                          <div className={styles.massGraphicWrapper} suppressHydrationWarning={true}>
+                            <InlineSVG src={post.illustration} className={styles.massSvg} />
+                            <div className={`${styles.agentLabel} ${styles.agentLabelLeft}`}>Agents 1</div>
+                            <div className={`${styles.agentLabel} ${styles.agentLabelTop}`}>Agents 2</div>
+                            <div className={`${styles.agentLabel} ${styles.agentLabelRight}`}>Agents 3</div>
+                            <div className={`${styles.agentLabel} ${styles.agentLabelBottom}`}>Agents 4</div>
+                          </div>
+                        ) : (
+                          <InlineSVG
+                            src={post.illustration}
+                            className={styles.illustrationSvg}
+                          />
+                        )}
                       </div>
                     </Link>
 

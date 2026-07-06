@@ -112,7 +112,17 @@ export default function BlogDetailPage() {
         {/* Render Neomorphic Illustration Container */}
         {blog.illustration && (
           <div className={styles.blogIllustrationContainer} suppressHydrationWarning={true}>
-            <InlineSVG src={blog.illustration} className={styles.illustrationSvg} />
+            {blog.illustration.includes("mass.svg") ? (
+              <div className={styles.massGraphicWrapper} suppressHydrationWarning={true}>
+                <InlineSVG src={blog.illustration} className={styles.massSvg} />
+                <div className={`${styles.agentLabel} ${styles.agentLabelLeft}`}>Agents 1</div>
+                <div className={`${styles.agentLabel} ${styles.agentLabelTop}`}>Agents 2</div>
+                <div className={`${styles.agentLabel} ${styles.agentLabelRight}`}>Agents 3</div>
+                <div className={`${styles.agentLabel} ${styles.agentLabelBottom}`}>Agents 4</div>
+              </div>
+            ) : (
+              <InlineSVG src={blog.illustration} className={styles.illustrationSvg} />
+            )}
           </div>
         )}
         
