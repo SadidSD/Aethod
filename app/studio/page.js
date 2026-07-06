@@ -88,6 +88,7 @@ export default function StudioPage() {
   const [isMobile, setIsMobile] = useState(false);
   const [isTabletOrMobile, setIsTabletOrMobile] = useState(false);
   const [expandedParagraphs, setExpandedParagraphs] = useState({});
+  const [manifestoExpanded, setManifestoExpanded] = useState(false);
 
   const toggleParagraph = (id) => {
     setExpandedParagraphs((prev) => ({ ...prev, [id]: !prev[id] }));
@@ -245,9 +246,23 @@ export default function StudioPage() {
               
               <InlineSVG src="/studio/Group 50.svg" className={styles.manifestoGroup01} />
               <InlineSVG src="/studio/Group 51.svg" className={styles.manifestoGroup02} />
-              <InlineSVG src="/studio/Group 52.svg" className={styles.manifestoGroup03} />
-              <InlineSVG src="/studio/Group 53.svg" className={styles.manifestoGroup04} />
+              {(!isTabletOrMobile || manifestoExpanded) && (
+                <>
+                  <InlineSVG src="/studio/Group 52.svg" className={styles.manifestoGroup03} />
+                  <InlineSVG src="/studio/Group 53.svg" className={styles.manifestoGroup04} />
+                </>
+              )}
             </div>
+
+            {isTabletOrMobile && (
+              <button 
+                className={styles.seeMoreBtn} 
+                onClick={() => setManifestoExpanded(!manifestoExpanded)}
+                style={{ display: 'block', margin: '24px auto 0 auto' }}
+              >
+                {manifestoExpanded ? "See Less" : "See More"}
+              </button>
+            )}
             
             <blockquote className={styles.manifestoQuote}>
               Humans architect. AI executes. Data makes it true.<br />

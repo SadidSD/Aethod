@@ -1598,13 +1598,15 @@
   }
 
   .seeMoreBtn {
-    background: linear-gradient(135deg, #5A69EA 0%, #BF8BCA 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    font-weight: 600;
-    cursor: pointer;
+    background: linear-gradient(135deg, #5A69EA 0%, #BF8BCA 100%) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    background-clip: text !important;
+    color: transparent !important;
+    font-weight: 600 !important;
+    cursor: pointer !important;
     display: inline-block !important;
-    font-family: var(--font-sora), sans-serif;
+    font-family: var(--font-sora), sans-serif !important;
     font-size: 14px !important;
     border: none !important;
     background-color: transparent !important;
@@ -2256,6 +2258,33 @@
       -webkit-text-fill-color: transparent !important;
       background-clip: text !important;
       color: transparent !important;
+    }
+    .whatIsParagraphText {
+      display: -webkit-box !important;
+      -webkit-line-clamp: 2 !important;
+      -webkit-box-orient: vertical !important;
+      overflow: hidden !important;
+    }
+    .whatIsParagraphText.expanded {
+      display: block !important;
+      -webkit-line-clamp: unset !important;
+      overflow: visible !important;
+    }
+    .seeMoreBtn {
+      background: linear-gradient(135deg, #5A69EA 0%, #BF8BCA 100%) !important;
+      -webkit-background-clip: text !important;
+      -webkit-text-fill-color: transparent !important;
+      background-clip: text !important;
+      color: transparent !important;
+      font-weight: 600 !important;
+      cursor: pointer !important;
+      display: inline-block !important;
+      font-family: var(--font-sora), sans-serif !important;
+      font-size: 14px !important;
+      border: none !important;
+      background-color: transparent !important;
+      padding: 0 !important;
+      margin-top: 8px !important;
     }
     .section4HowWeWork {
       width: 100% !important;
