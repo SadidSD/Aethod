@@ -133,7 +133,9 @@ export default function StudioPage() {
           {/* ----- SECTION 1: HERO ----- */}
           <div className={styles.section1Hero}>
             <h1 className={styles.studioTitle}>Studio</h1>
-            <p className={styles.studioSubtitle}>Intelligence, before interface.</p>
+            <p className={styles.studioSubtitle}>
+              Intelligence, <span className={styles.purpleTabletAccent}>before interface.</span>
+            </p>
             
             <div className={styles.aboutCardWrapper}>
               <div className={styles.rectangle158} />
@@ -214,8 +216,14 @@ export default function StudioPage() {
           {/* ----- SECTION 3: THE MANIFESTO ----- */}
           <div className={styles.section3Manifesto}>
             <InlineSVG src="/studio/curved_line.svg" className={styles.manifestoLineTop} />
-            <h2 className={styles.manifestoTitle}>The Manifesto</h2>
-            <p className={styles.manifestoSubtitle}>Four things we believe.</p>
+            <h2 className={styles.manifestoTitle}>
+              The <br className={styles.tabletOnlyBr} />
+              <span className={styles.purpleTabletAccent}>Manifesto</span>
+            </h2>
+            <p className={styles.manifestoSubtitle}>
+              Four things we believe <br className={styles.tabletOnlyBr} />
+              <span className={styles.purpleTabletAccent}>most studios won't say.</span>
+            </p>
             
             <div className={styles.manifestoGridBox} ref={gridRef}>
               <InlineSVG src="/studio/Rectangle 90.svg" className={`${styles.manifestoGridLineVert} ${gridInView ? styles.animateVert : styles.hiddenVert}`} />

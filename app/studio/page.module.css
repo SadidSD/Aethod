@@ -20,6 +20,14 @@
 }
 
 /* ---------- Navigation — Floating Neumorphic Pill ---------- */
+.purpleTabletAccent {
+  color: inherit;
+}
+
+.tabletOnlyBr {
+  display: none;
+}
+
 .navOuter {
   position: sticky;
   top: 0;
@@ -1841,9 +1849,10 @@
     left: auto !important;
     top: auto !important;
     width: 100% !important;
-    max-width: clamp(180px, 25vw, 240px) !important;
+    max-width: 500px !important;
     height: auto !important;
-    margin: 0 auto !important;
+    margin: 0 auto 16px auto !important;
+    text-align: left !important;
   }
 
   .studioSubtitle {
@@ -1851,9 +1860,10 @@
     left: auto !important;
     top: auto !important;
     width: 100% !important;
-    max-width: clamp(320px, 45vw, 480px) !important;
+    max-width: 500px !important;
     height: auto !important;
-    margin: 0 auto !important;
+    margin: 0 auto 32px auto !important;
+    text-align: left !important;
   }
 
   .aboutCardWrapper {
@@ -1880,8 +1890,9 @@
     position: absolute !important;
     left: 94px !important;
     top: 61px !important;
-    width: 229px !important;
-    height: 45px !important;
+    width: auto !important;
+    max-width: 350px !important;
+    height: auto !important;
   }
 
   .weAreNotAnAgencyContainer {
@@ -2012,9 +2023,10 @@
     left: auto !important;
     top: auto !important;
     width: 100% !important;
-    max-width: clamp(240px, 35vw, 321px) !important;
+    max-width: 1000px !important;
     height: auto !important;
-    margin: 0 auto !important;
+    margin: 0 auto 12px auto !important;
+    text-align: left !important;
   }
 
   .manifestoSubtitle {
@@ -2022,9 +2034,10 @@
     left: auto !important;
     top: auto !important;
     width: 100% !important;
-    max-width: clamp(360px, 50vw, 480px) !important;
+    max-width: 1000px !important;
     height: auto !important;
-    margin: 0 auto !important;
+    margin: 0 auto 24px auto !important;
+    text-align: left !important;
   }
 
   .manifestoGridBox {
@@ -2167,5 +2180,15 @@
     max-width: clamp(700px, 90vw, 1200px) !important;
     height: auto !important;
     margin: 0 auto !important;
+  }
+
+  .purpleTabletAccent {
+    color: #5A69EA !important;
+  }
+  :global([data-theme="dark"]) .purpleTabletAccent {
+    color: #B5A1E8 !important;
+  }
+  .tabletOnlyBr {
+    display: block !important;
   }
 }
