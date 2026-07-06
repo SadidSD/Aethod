@@ -483,8 +483,9 @@
 
 .pfLabelMid {
   position: absolute;
-  left: 44.5%;
-  top: 61%;
+  left: 43.6%;
+  top: 64%;
+  transform: translate(-50%, -50%);
   font-family: var(--font-sora), sans-serif;
   font-size: 13px;
   color: #717171;
