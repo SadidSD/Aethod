@@ -1684,6 +1684,11 @@
 }
 
 @media (min-width: 768px) and (max-width: 1366px) {
+  .mainContainer {
+    margin-top: 0 !important;
+    padding-top: 40px !important;
+  }
+
   .contentAlignContainer {
     width: 100% !important;
     max-width: 100% !important;
