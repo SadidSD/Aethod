@@ -6,6 +6,7 @@
   min-height: 100vh;
   background: var(--bg-primary);
   position: relative;
+  -webkit-overflow-scrolling: touch;
 }
 
 /* Subtle noise overlay for surface texture */
@@ -247,6 +248,7 @@
   position: relative;
   z-index: 1;
   width: 100%;
+  -webkit-overflow-scrolling: touch;
 }
 
 .contentAlignContainer {
@@ -1528,6 +1530,7 @@
     padding: 48px 0 80px !important;
     overflow-x: hidden !important;
     height: calc(var(--content-height) * var(--scale-430, 1)) !important;
+    -webkit-overflow-scrolling: touch !important;
   }
   .contentAlignContainer {
     width: 430px !important;
@@ -2283,6 +2286,7 @@
   @media (max-width: 1023px) {
     .mainContainer {
       overflow-x: hidden !important;
+      -webkit-overflow-scrolling: touch !important;
     }
     .studioTitle {
       margin-bottom: 3px !important;
