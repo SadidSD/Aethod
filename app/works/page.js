@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useCallback, useEffect } from "react";
+import Link from "next/link";
 import styles from "./page.module.css";
 import { useTheme } from "../context/ThemeContext";
 import Footer from "../components/Footer";
@@ -152,10 +153,11 @@ export default function WorksPage() {
           <section className={styles.worksGrid}>
             {filteredWorks.length > 0 ? (
               filteredWorks.map((work) => (
-                <div 
+                <Link 
                   key={work.id} 
+                  href={`/works/${work.id}`}
                   className={styles.workCard}
-                  onClick={() => handleEssayClick(work.name)}
+                  onClick={playClickSound}
                 >
                   {/* Card mockup image preview */}
                   <div className={styles.workCardImageContainer}>
@@ -191,7 +193,7 @@ export default function WorksPage() {
                       </svg>
                     </div>
                   </div>
-                </div>
+                </Link>
               ))
             ) : (
               <div className={styles.noWorksCard}>

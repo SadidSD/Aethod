@@ -1,66 +1,114 @@
 [
   {
-    "id": 1,
+    "id": "hasib-ui",
     "name": "Hasib",
     "tag": "Ui",
     "image": "/works/hasib_ui_mockup.png",
     "avatar": "/works/hasib_ui_avatar.jpeg",
-    "filters": ["All", "Recently Uploaded", "History"]
+    "filters": ["All", "Recently Uploaded", "History"],
+    "title": "Enterprise Productivity Dashboard",
+    "client": "Vortex Corp",
+    "date": "May 2026",
+    "role": "Lead UI Designer",
+    "description": "A high-fidelity neumorphic workspace designed to streamline multi-module SaaS workflows, scheduling, and team tasks.",
+    "content": "<h2>Overview</h2><p>Modern enterprises run on dozens of disjointed tools. Our objective was to consolidate communication, task scheduling, and analytics into a single cohesive workspace. By using soft shadows, high contrast text indicators, and responsive grid layouts, we created a dashboard that reduces cognitive load and keeps teams focused.</p><img src='/works/hasib_ui_mockup.png' style='width:100%; border-radius:12px; margin:24px 0;' alt='Dashboard Preview' /><h2>Key Features</h2><ul><li><strong>Module Hub:</strong> Access up to 5 enterprise SaaS modules from a unified sidebar.</li><li><strong>Intelligent Scheduler:</strong> Auto-groups upcoming events and assigns task statuses dynamically.</li><li><strong>Neumorphic Interactive Elements:</strong> Custom-designed buttons and sliders with active press states for a satisfying user experience.</li></ul><h2>Results</h2><p>User testing showed a 35% decrease in task transition times and high user satisfaction scores regarding visual aesthetics and layout clarity.</p>"
   },
   {
-    "id": 2,
+    "id": "sadid-ai",
     "name": "Sadid",
     "tag": "Ai",
     "image": "/works/sadid_ai_mockup.png",
     "avatar": "/works/sadid_ai_avatar.jpeg",
-    "filters": ["All", "Recently Uploaded", "By Sadid Bin Hasan", "E-Commerce Related"]
+    "filters": ["All", "Recently Uploaded", "By Sadid Bin Hasan", "E-Commerce Related"],
+    "title": "Decentralized AI Agents Portal",
+    "client": "Synergy Labs",
+    "date": "April 2026",
+    "role": "Systems Engineer",
+    "description": "An interactive management console that orchestrates multi-agent systems, logs AI actions, and manages edge compute routing.",
+    "content": "<h2>Overview</h2><p>As multi-agent ecosystems become the core of complex business pipelines, managing these agent clusters demands specialized consoles. The AI Agents Portal provides engineers with real-time insight into agent-to-agent negotiations, logs error traces, and allows human-in-the-loop approvals for sensitive API calls.</p><img src='/works/sadid_ai_mockup.png' style='width:100%; border-radius:12px; margin:24px 0;' alt='AI Console Preview' /><h2>Key Features</h2><ul><li><strong>Live Message Stream:</strong> Watch agent negotiations and decisions update in real-time.</li><li><strong>Safety Boundaries:</strong> Simple toggles to enforce operational guardrails.</li><li><strong>Resource Allocation:</strong> Track edge computing cost metrics and execution times.</li></ul><h2>Results</h2><p>Successfully deployed across 3 e-commerce clients, reducing human intervention in catalog management by 80% while preserving absolute system safety.</p>"
   },
   {
-    "id": 3,
+    "id": "maruf-website",
     "name": "Maruf",
     "tag": "Website",
     "image": "/works/maruf_website_mockup.png",
     "avatar": "/works/maruf_website_avatar.jpeg",
-    "filters": ["All", "Recently Uploaded", "History"]
+    "filters": ["All", "Recently Uploaded", "History"],
+    "title": "Premium Portfolio Website for Startups",
+    "client": "Aethood Internal",
+    "date": "March 2026",
+    "role": "Front-End Developer",
+    "description": "A responsive, high-performance website designed to showcase premium startup branding, dynamic client grids, and case studies.",
+    "content": "<h2>Overview</h2><p>In digital marketing, first impressions are critical. We built a showcase web platform using Next.js and pure CSS modules. The layout balances large typography, vibrant accent gradients, and smooth interactive hover effects to command user attention and build brand authority.</p><img src='/works/maruf_website_mockup.png' style='width:100%; border-radius:12px; margin:24px 0;' alt='Website Preview' /><h2>Key Features</h2><ul><li><strong>Turbopack Optimized:</strong> Zero compilation delays, static page pre-rendering, and image optimization for rapid load times.</li><li><strong>CSS Gradients & Shadows:</strong> Smooth borders, glassmorphic cards, and hover scaling.</li><li><strong>Responsive Core:</strong> Fully reflowable layouts for mobile devices and tablets.</li></ul><h2>Results</h2><p>Achieved a 99/100 Lighthouse performance rating and a 40% increase in inbound client conversions within the first two weeks of launching.</p>"
   },
   {
-    "id": 4,
+    "id": "modi-ux",
     "name": "Modi",
     "tag": "Ux",
     "image": "/works/modi_ux_mockup.png",
     "avatar": "/works/modi_ux_avatar.jpeg",
-    "filters": ["All", "History"]
+    "filters": ["All", "History"],
+    "title": "Real-time Financial Analytics Interface",
+    "client": "Modus UX",
+    "date": "February 2026",
+    "role": "Lead UX Researcher",
+    "description": "A comprehensive analysis and UX design system mapping enterprise financial indicators, graphs, and transaction tables.",
+    "content": "<h2>Overview</h2><p>Financial dashboards are often cluttered and overwhelm analysts. This project reimagined data visualization for high-velocity traders. By structuring information hierarchy into clean cards and using dynamic color-coding for status changes, we made complex financial metrics legible at a glance.</p><img src='/works/works/modi_ux_mockup.png' style='width:100%; border-radius:12px; margin:24px 0;' alt='Financial Analytics Preview' /><h2>Key Features</h2><ul><li><strong>Interactive Line Charts:</strong> Multi-axis charts with smooth hover tooltips and zoom capabilities.</li><li><strong>Data Density Controls:</strong> Toggle between dense list views and clean card grids.</li><li><strong>Accessibility Compliant:</strong> Tested with screen readers and optimized for color-blind accessibility.</li></ul><h2>Results</h2><p>UX research validation showed a 25% reduction in analysis errors and highly positive feedback from senior trading consultants.</p>"
   },
   {
-    "id": 5,
+    "id": "sadid-ai-2",
     "name": "Sadid",
     "tag": "Ai",
     "image": "/works/sadid_ai_mockup.png",
     "avatar": "/works/sadid_ai_avatar.jpeg",
-    "filters": ["All", "By Sadid Bin Hasan", "F-Commerce Related"]
+    "filters": ["All", "By Sadid Bin Hasan", "F-Commerce Related"],
+    "title": "Agentic E-commerce Logistics Engine",
+    "client": "TCG Logistics",
+    "date": "January 2026",
+    "role": "AI Engineer",
+    "description": "An automated supply-chain orchestrator using neural models to predict stock levels and route orders autonomously.",
+    "content": "<h2>Overview</h2><p>Handling dynamic stock pricing and vendor logistics manually is highly inefficient. We engineered a machine learning model that analyzes historical trends, competitor indices, and supplier latency. The interface gives coordinators a clean timeline of system actions and alerts.</p><img src='/works/sadid_ai_mockup.png' style='width:100%; border-radius:12px; margin:24px 0;' alt='Logistics Portal Preview' /><h2>Key Features</h2><ul><li><strong>Dynamic Price Updates:</strong> Automatic margins calculation and competitor tracking.</li><li><strong>Logistics Pipeline Visualizer:</strong> Track shipping paths and vendor delays.</li><li><strong>Automatic Invoicing:</strong> Drafts, confirms, and logs orders automatically.</li></ul><h2>Results</h2><p>Decreased stockout rates by 40% and improved supply chain efficiency scores by 3.2x over standard ERP software.</p>"
   },
   {
-    "id": 6,
+    "id": "modi-ux-2",
     "name": "Modi",
     "tag": "Ux",
     "image": "/works/modi_ux_mockup.png",
     "avatar": "/works/modi_ux_avatar.jpeg",
-    "filters": ["All"]
+    "filters": ["All"],
+    "title": "Intelligent Trading Platform Analytics",
+    "client": "Alpha Securities",
+    "date": "December 2025",
+    "role": "Senior UX Designer",
+    "description": "A research-focused redesign targeting retail trading interfaces, transaction flows, and portfolio charts.",
+    "content": "<h2>Overview</h2><p>Retail traders have different UX requirements compared to institutional users. They need simplified, educational onboarding and highly visual portfolio analysis. This design showcases a modern financial UI focusing on transaction tracking, performance charts, and goal setting.</p><img src='/works/modi_ux_mockup.png' style='width:100%; border-radius:12px; margin:24px 0;' alt='Retail Trading UX Preview' /><h2>Key Features</h2><ul><li><strong>Visual Progress Trackers:</strong> Clean circular meters representing investment progress.</li><li><strong>Simplified Order Entry:</strong> Two-click transaction confirmations for quick execution.</li><li><strong>Dark Mode Optimization:</strong> Highly contrasted neon indicators on deep blue surfaces.</li></ul><h2>Results</h2><p>The platform saw a 50% increase in trading engagement and a 15% increase in user retention rates post-implementation.</p>"
   },
   {
-    "id": 7,
+    "id": "hasib-ui-2",
     "name": "Hasib",
     "tag": "Ui",
     "image": "/works/hasib_ui_mockup.png",
     "avatar": "/works/hasib_ui_avatar.jpeg",
-    "filters": ["All"]
+    "filters": ["All"],
+    "title": "Sleek Neumorphic Mobile Design System",
+    "client": "Core Design",
+    "date": "November 2025",
+    "role": "Mobile UI Specialist",
+    "description": "A clean, highly custom design library introducing smooth tactile shadows and modern widgets for iOS and Android.",
+    "content": "<h2>Overview</h2><p>Neumorphic designs look beautiful but are notoriously difficult to implement accessibly. We created a mobile component library that leverages dynamic lighting algorithms to render soft shadows while maintaining accessible contrast ratios for text labels.</p><img src='/works/hasib_ui_mockup.png' style='width:100%; border-radius:12px; margin:24px 0;' alt='Mobile Library Preview' /><h2>Key Features</h2><ul><li><strong>Tactile Widgets:</strong> Sliders, toggles, and buttons that mimic physical interfaces.</li><li><strong>Dynamic Lighting Engine:</strong> Light sources shift based on user time-of-day or manual theme settings.</li><li><strong>CSS Utilities:</strong> Precompiled classes for rapid mobile app development.</li></ul><h2>Results</h2><p>Used by 12 internal startup teams, decreasing mobile front-end coding times by 50% and elevating UI aesthetics.</p>"
   },
   {
-    "id": 8,
+    "id": "maruf-website-2",
     "name": "Maruf",
     "tag": "Website",
     "image": "/works/maruf_website_mockup.png",
     "avatar": "/works/maruf_website_avatar.jpeg",
-    "filters": ["All"]
+    "filters": ["All"],
+    "title": "Automated Content & SEO Dashboard",
+    "client": "Content Labs",
+    "date": "October 2025",
+    "role": "Lead Web Developer",
+    "description": "A high-performance web dashboard featuring crawling analytics, indexation logs, and automated content performance cards.",
+    "content": "<h2>Overview</h2><p>SEO managers need real-time crawlers, error alerts, and content performance metrics. We engineered a SaaS portal that integrates Google Search Console and crawlers into a single, clean neumorphic dashboard. The layout highlights indexation logs and search ranking metrics.</p><img src='/works/maruf_website_mockup.png' style='width:100%; border-radius:12px; margin:24px 0;' alt='SEO Portal Preview' /><h2>Key Features</h2><ul><li><strong>Indexation Logs:</strong> Dynamic table tracking crawled pages and error responses.</li><li><strong>Auto-crawling Alerts:</strong> Push alerts for broken links and crawler warnings.</li><li><strong>SEO Performance Cards:</strong> Summaries of keywords, click-through-rates, and impressions.</li></ul><h2>Results</h2><p>Decreased crawl bug detection times from weeks to minutes, allowing teams to optimize search engine ranking positions rapidly.</p>"
   }
 ]
