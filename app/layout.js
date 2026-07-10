@@ -36,14 +36,14 @@ export const metadata = {
   ],
   icons: {
     icon: [
-      { url: "/icon-16.png?v=2", sizes: "16x16", type: "image/png" },
-      { url: "/icon-32.png?v=2", sizes: "32x32", type: "image/png" },
-      { url: "/icon-48.png?v=2", sizes: "48x48", type: "image/png" },
+      { url: "/icon-16.png?v=3", sizes: "16x16", type: "image/png" },
+      { url: "/icon-32.png?v=3", sizes: "32x32", type: "image/png" },
+      { url: "/icon-48.png?v=3", sizes: "48x48", type: "image/png" },
     ],
-    shortcut: "/favicon.ico?v=2",
-    apple: "/apple-touch-icon.png?v=2",
+    shortcut: "/favicon.ico?v=3",
+    apple: "/apple-touch-icon.png?v=3",
   },
-  manifest: "/site.webmanifest?v=2",
+  manifest: "/site.webmanifest?v=3",
   openGraph: {
     title: "Aeethod — Intelligent Systems for Complex Environments",
     description:
