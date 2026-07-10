@@ -255,7 +255,7 @@
   position: relative;
   width: 100%;
   max-width: 1440px;
-  height: 8000px;
+  height: 8040px;
   margin: 0 auto;
 }
 
@@ -819,7 +819,7 @@
 .manifestoGridBox {
   position: absolute;
   left: 119.79px;
-  top: 2656.77px;
+  top: 2696.77px;
   width: 1231.44px;
   height: 882.48px;
   background: transparent;
@@ -1026,14 +1026,14 @@
   width: 730px;
   height: 2px;
   left: calc(50% - 730px / 2);
-  top: 3600px;
+  top: 3640px;
 }
 
 .manifestoQuote {
   position: absolute;
   width: 1000px;
   left: calc(50% - 1000px / 2);
-  top: 3670px;
+  top: 3710px;
   font-family: var(--font-sora), sans-serif;
   font-size: var(--font-size-subtitle);
   font-weight: 300;
@@ -1049,7 +1049,7 @@
   position: absolute;
   width: 100vw;
   left: calc(50% - 50vw);
-  top: 4266px;
+  top: 4306px;
   height: 1811px;
   display: flex;
   flex-direction: column;
@@ -1124,7 +1124,7 @@
   width: 100vw;
   height: 190px;
   left: calc(50% - 50vw);
-  top: 6140px;
+  top: 6180px;
   background: transparent;
   display: flex;
   align-items: center;
@@ -1163,7 +1163,7 @@
   position: absolute;
   width: 612px;
   left: 131px;
-  top: 6545px;
+  top: 6585px;
   font-family: var(--font-sora), sans-serif;
   font-size: var(--font-size-heading);
   font-weight: 300;
@@ -1222,7 +1222,7 @@
   width: 1308px;
   height: 1069px;
   left: 63px;
-  top: 6845px;
+  top: 6885px;
   overflow: visible;
 }
 
@@ -1259,7 +1259,7 @@
   width: 1346px;
   height: 282px;
   left: calc(50% - 1346px / 2 - 10px);
-  top: 8005px;
+  top: 8045px;
 }
 
 .footerSvg {
@@ -1614,7 +1614,7 @@
     text-align: center !important;
   }
   .manifestoSubtitle {
-    margin: 0 auto 24px auto !important;
+    margin: 0 auto 40px auto !important;
     text-align: center !important;
   }
   .rectangle158 {
@@ -2133,7 +2133,7 @@
     width: 100% !important;
     max-width: 1000px !important;
     height: auto !important;
-    margin: 0 auto 24px auto !important;
+    margin: 0 auto 40px auto !important;
     text-align: left !important;
   }
 
