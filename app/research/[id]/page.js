@@ -244,8 +244,11 @@ export default function EssayDetailPage() {
       <div className={styles.notFoundContainer} data-theme={isDark ? "dark" : "light"} suppressHydrationWarning={true}>
         <h1 className={styles.notFoundTitle}>Essay Not Found</h1>
         <p className={styles.notFoundDesc}>The requested research blueprint could not be located.</p>
-        <Link href="/research" className={styles.backLink} onClick={playClickSound}>
-          Back to Research
+        <Link href="/research" className={styles.backBtnWrapper} onClick={playClickSound}>
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className={styles.backBtnArrow}>
+            <path d="M19 12H5M5 12L12 19M5 12L12 5" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
+          </svg>
+          <span>Back to Research</span>
         </Link>
       </div>
     );
@@ -256,8 +259,11 @@ export default function EssayDetailPage() {
       <Navbar activePage="research" />
       
       <main className={styles.mainContainer}>
-        <Link href="/research" className={styles.backLink} onClick={playClickSound}>
-          ← Back to Research
+        <Link href="/research" className={styles.backBtnWrapper} onClick={playClickSound}>
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className={styles.backBtnArrow}>
+            <path d="M19 12H5M5 12L12 19M5 12L12 5" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
+          </svg>
+          <span>Back to Research</span>
         </Link>
         
         <article className={styles.essayHeader} suppressHydrationWarning={true}>
