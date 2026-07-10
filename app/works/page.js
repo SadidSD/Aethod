@@ -50,7 +50,7 @@ export default function WorksPage() {
 
   // Fetch works from API on mount
   useEffect(() => {
-    fetch("/api/content?type=works")
+    fetch("/api/content?type=works", { cache: "no-store" })
       .then((res) => res.json())
       .then((data) => setWorks(data))
       .catch((err) => console.error("Failed to load works:", err));

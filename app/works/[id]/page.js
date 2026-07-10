@@ -26,10 +26,20 @@ export default function WorkDetailPage() {
 
   useEffect(() => {
     if (!id) return;
-    fetch("/api/content?type=works")
+    fetch("/api/content?type=works", { cache: "no-store" })
       .then((res) => res.json())
       .then((data) => {
-        const found = data.find((project) => project.id === id);
+        // 1. Try exact string/number match
+        let found = data.find((project) => String(project.id) === String(id));
+        
+        // 2. Fallback to index-based match if ID is a number (1-indexed for legacy compatibility)
+        if (!found && !isNaN(id)) {
+          const idx = parseInt(id) - 1;
+          if (idx >= 0 && idx < data.length) {
+            found = data[idx];
+          }
+        }
+        
         setWork(found);
         setLoading(false);
       })
