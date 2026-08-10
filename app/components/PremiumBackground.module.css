@@ -1,0 +1,184 @@
+.bgContainer {
+  position: fixed;
+  inset: 0;
+  z-index: -100;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  background-color: var(--bg-primary, #ECECEC);
+  transition: background-color 0.5s ease;
+  overflow: hidden;
+}
+
+/* Layer Base styling */
+.vignetteLayer,
+.materialNoiseLayer {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 0.5s ease, background 0.5s ease;
+  pointer-events: none;
+}
+
+/* ==========================================================
+   MODE 1: VIGNETTE (Soft Studio Light Falloff from Top-Left)
+   ========================================================== */
+.mode_vignette .vignetteLayer,
+.mode_ultimate .vignetteLayer {
+  opacity: 1;
+}
+
+.vignetteLayer {
+  /* An ultra-soft transition representing natural studio light falloff */
+  background: radial-gradient(circle at 10% 10%, #F5F5F7 0%, #ECECEC 55%, #E3E3E6 100%);
+}
+
+[data-theme='dark'] .vignetteLayer {
+  background: radial-gradient(circle at 10% 10%, #1e1e35 0%, #1a1a2e 65%, #141424 100%);
+}
+
+/* ==========================================================
+   MODE 2: ORGANIC MATERIAL NOISE (Micro-Texture Matte Finish)
+   ========================================================== */
+.mode_material .materialNoiseLayer,
+.mode_ultimate .materialNoiseLayer {
+  opacity: 1;
+}
+
+.materialNoiseLayer {
+  /* An incredibly fine, high-density micro-grain simulating sandblasted glass or premium matte paper */
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.99' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.025'/%3E%3C/svg%3E");
+}
+
+/* ==========================================================
+   FLOATING NEOMORPHIC CONTROLLER BUTTON
+   ========================================================== */
+.controlWrapper {
+  position: fixed;
+  bottom: 24px;
+  left: 24px;
+  z-index: 9999;
+}
+
+.cycleBtn {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: var(--bg-primary, #ECECEC);
+  border: 1px solid rgba(163, 177, 198, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-secondary, #404040);
+  cursor: pointer;
+  box-shadow:
+    4px 4px 10px rgba(163, 177, 198, 0.6),
+    -4px -4px 10px rgba(255, 255, 255, 0.85),
+    inset 1px 1px 0px rgba(255, 255, 255, 0.7),
+    inset -1px -1px 0px rgba(163, 177, 198, 0.15);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  padding: 0;
+  outline: none;
+}
+
+[data-theme='dark'] .cycleBtn {
+  background: var(--bg-surface, #22223a);
+  color: #b0b0c8;
+  box-shadow:
+    4px 4px 10px rgba(0, 0, 0, 0.5),
+    -4px -4px 10px rgba(255, 255, 255, 0.03),
+    inset 1px 1px 0px rgba(255, 255, 255, 0.05),
+    inset -1px -1px 0px rgba(0, 0, 0, 0.3);
+}
+
+.cycleBtn:hover {
+  transform: scale(1.08) rotate(30deg);
+  color: var(--accent-purple, #7c5cfc);
+  box-shadow:
+    5px 5px 12px rgba(163, 177, 198, 0.7),
+    -5px -5px 12px rgba(255, 255, 255, 0.95);
+}
+
+[data-theme='dark'] .cycleBtn:hover {
+  color: var(--accent-purple, #9b7dff);
+  box-shadow:
+    5px 5px 12px rgba(0, 0, 0, 0.6),
+    -5px -5px 12px rgba(255, 255, 255, 0.05);
+}
+
+.cycleBtn:active {
+  transform: scale(0.94);
+  box-shadow:
+    inset 3px 3px 6px rgba(163, 177, 198, 0.6),
+    inset -3px -3px 6px rgba(255, 255, 255, 0.85);
+}
+
+[data-theme='dark'] .cycleBtn:active {
+  box-shadow:
+    inset 3px 3px 6px rgba(0, 0, 0, 0.6),
+    inset -3px -3px 6px rgba(255, 255, 255, 0.02);
+}
+
+.icon {
+  width: 22px;
+  height: 22px;
+}
+
+/* ==========================================================
+   FLOATING TOAST NOTIFICATION
+   ========================================================== */
+.toastContainer {
+  position: fixed;
+  bottom: 86px;
+  left: 24px;
+  z-index: 10000;
+  pointer-events: none;
+  animation: slideUpFade 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.toastCard {
+  background: var(--bg-primary, #ECECEC);
+  border: 1px solid rgba(163, 177, 198, 0.2);
+  border-radius: 12px;
+  padding: 8px 16px;
+  box-shadow:
+    4px 4px 10px rgba(163, 177, 198, 0.4),
+    -4px -4px 10px rgba(255, 255, 255, 0.8),
+    inset 1px 1px 0px rgba(255, 255, 255, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+[data-theme='dark'] .toastCard {
+  background: var(--bg-surface, #22223a);
+  border-color: rgba(255, 255, 255, 0.02);
+  box-shadow:
+    4px 4px 10px rgba(0, 0, 0, 0.5),
+    -4px -4px 10px rgba(255, 255, 255, 0.03);
+}
+
+.toastCard span {
+  font-family: var(--font-sora), sans-serif;
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--text-secondary, #404040);
+  white-space: nowrap;
+}
+
+[data-theme='dark'] .toastCard span {
+  color: #b0b0c8;
+}
+
+@keyframes slideUpFade {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

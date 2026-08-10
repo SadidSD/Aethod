@@ -10,10 +10,9 @@
   content: '';
   position: fixed;
   inset: 0;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.025'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.035'/%3E%3C/svg%3E");
   pointer-events: none;
   z-index: 0;
-  opacity: 0.8;
 }
 
 .mainContainer {
@@ -107,8 +106,16 @@
   cursor: pointer;
   box-shadow:
     3px 3px 6px rgba(163, 177, 198, 0.3),
-    -3px -3px 6px rgba(255, 255, 255, 0.7);
+    -3px -3px 6px rgba(255, 255, 255, 0.7),
+    inset 1px 1px 0px rgba(255, 255, 255, 0.6),
+    inset -1px -1px 0px rgba(163, 177, 198, 0.15);
   transition: all 0.25s ease;
+}
+
+.filterBtn:active {
+  box-shadow: var(--shadow-inset);
+  transform: scale(0.97);
+  transition: box-shadow 0.08s ease, transform 0.08s ease;
 }
 
 [data-theme='dark'] .filterBtn {
@@ -186,7 +193,9 @@
   background: transparent;
   border-radius: 0;
   border: none;
-  box-shadow: none;
+  box-shadow:
+    inset 1px 1px 0px rgba(255, 255, 255, 0.6),
+    inset -1px -1px 0px rgba(163, 177, 198, 0.15);
   padding: 40px 0;
   margin-bottom: 48px;
   display: flex;
@@ -414,9 +423,17 @@
   background: transparent;
   border-radius: 0;
   border: none;
-  box-shadow: none;
+  box-shadow:
+    inset 1px 1px 0px rgba(255, 255, 255, 0.6),
+    inset -1px -1px 0px rgba(163, 177, 198, 0.15);
   display: flex;
   flex-direction: column;
+}
+
+.essayCard:active {
+  box-shadow: var(--shadow-inset);
+  transform: scale(0.97);
+  transition: box-shadow 0.08s ease, transform 0.08s ease;
 }
 
 [data-theme='dark'] .essayCard {

@@ -33,17 +33,29 @@ export default function Chatbox() {
   if (!isChatOpen) {
     // Render only the floating toggle button when chatbox is closed
     return (
-      <button
-        className={styles.floatingAssistantBtn}
-        onClick={toggleChat}
-        aria-label="Open AI Assistant"
-      >
-        <img
-          src="/chatbox/unclicked.svg"
-          alt="Open AI Assistant"
-          className={styles.closeBtnIcon}
-        />
-      </button>
+      <>
+        {/* SVG Water Ripple & Refraction Filter */}
+        <svg style={{ position: "absolute", width: 0, height: 0, pointerEvents: "none", opacity: 0 }} aria-hidden="true">
+          <filter id="waterRippleFilter" x="-20%" y="-20%" width="140%" height="140%">
+            <feTurbulence type="fractalNoise" baseFrequency="0.015 0.025" numOctaves="2" result="noise">
+              <animate attributeName="baseFrequency" values="0.012 0.02; 0.022 0.035; 0.012 0.02" dur="9s" repeatCount="indefinite" />
+            </feTurbulence>
+            <feDisplacementMap in="SourceGraphic" in2="noise" scale="1.2" xChannelSelector="R" yChannelSelector="G" />
+          </filter>
+        </svg>
+
+        <button
+          className={styles.floatingAssistantBtn}
+          onClick={toggleChat}
+          aria-label="Open AI Assistant"
+        >
+          <img
+            src="/logo-icon.png"
+            alt="Open AI Assistant"
+            className={styles.closeBtnIcon}
+          />
+        </button>
+      </>
     );
   }
 
