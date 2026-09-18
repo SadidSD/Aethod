@@ -46,18 +46,56 @@
   {
     "id": "murakkaz",
     "name": "Murakkaz",
-    "tag": "E-Com",
+    "tag": "E-Commerce / Luxury Perfume",
+    "category": "E-Commerce / Luxury Perfume",
     "image": "/works/murakkaz_hero.png",
+    "heroImage": "/works/murakkaz/hero.png",
     "avatar": "/works/murakkaz_avatar.png",
     "objectPosition": "center center",
-    "link": "https://murakkaz.com",
+    "link": "https://murakkaz.com/",
     "filters": ["All", "Recently Uploaded", "E-Commerce Related"],
-    "title": "Murakkaz - Luxury Artisanal Fragrance Storefront",
+    "title": "Murakkaz",
+    "subtitle": "A Modern Expression of Timeless Fragrance",
     "client": "Murakkaz",
     "date": "July 2026",
-    "role": "E-Commerce Experience & Frontend Engineering",
-    "description": "An immersive digital storefront for luxury perfumes, blending tactile editorial typography, bespoke product showcase, and automated fragrance discovery.",
-    "content": "<h2>Overview</h2><p>Murakkaz crafts bespoke luxury fragrances. We engineered an elevated e-commerce experience that conveys artisanal craftsmanship through editorial aesthetics and intuitive fragrance matching.</p><img src='/works/murakkaz_hero.png' style='width:100%; border-radius:12px; margin:24px 0;' alt='Murakkaz Hero Preview' /><h2>Key Features</h2><ul><li><strong>Interactive Fragrance Finder:</strong> Multi-note recommendation engine matching scent profiles to individual tastes.</li><li><strong>Editorial Motion Design:</strong> Silky smooth transitions and floating bottle perspectives.</li><li><strong>Seamless Checkout:</strong> Clean mobile-first cart and streamlined order fulfillment.</li></ul>"
+    "role": "UI/UX Design + Development",
+    "description": "Murakkaz is a luxury perfume e-commerce experience built around an elegant, editorial approach to fragrance discovery and shopping.",
+    "overview": [
+      "Murakkaz is a luxury fragrance e-commerce experience created to make perfume discovery feel as refined as the fragrances themselves.",
+      "The experience combines a visually rich storefront with thoughtful product storytelling, detailed scent information, curated discovery, and a personalized fragrance finder. Instead of treating perfume shopping as a simple product catalog, the experience guides customers through the world of each fragrance while keeping the path to purchase clear and intuitive.",
+      "The design focuses on creating a timeless digital identity through elegant typography, warm tones, editorial layouts, immersive imagery, and carefully considered interactions."
+    ],
+    "featuresIntro": "Murakkaz brings together immersive brand storytelling, intuitive fragrance discovery, detailed product information, and a personalized shopping experience. Every part of the interface is designed to make discovering a fragrance feel considered, elegant, and effortless.",
+    "features": [
+      {
+        "title": "Curated Scent Discovery & Filtered Shopping",
+        "description": "The shopping experience provides an intuitive fragrance catalog where customers can explore artisanal scents with tailored facet filtering. Shoppers can filter by fragrance family, gender, collection tier, and projection strength to find blends matching their olfactory preferences. Each product card presents clear scent provenance, customer ratings, and immediate purchase options without friction.",
+        "image": "/works/murakkaz/feature-01-catalog.png"
+      },
+      {
+        "title": "Side-by-Side Scent Comparison",
+        "description": "Choosing between niche fragrances often requires evaluating nuances across different scents. The dedicated comparison tool allows customers to place multiple perfumes side by side to evaluate their notes, bottle profiles, and characteristics. This tactile, deliberate comparison step gives collectors confidence in their fragrance selection before committing to an order.",
+        "image": "/works/murakkaz/feature-02-compare.png"
+      },
+      {
+        "title": "Interactive Signature Fragrance Finder",
+        "description": "To guide shoppers who are unsure where to start, the platform features a bespoke seven-question olfactory consultation. Designed with tactile stationery aesthetics, the interactive finder assesses individual lifestyle, mood, occasion, and scent notes to recommend personalized fragrance matches. This transforms blind perfume buying into an intimate, guided concierge experience.",
+        "image": "/works/murakkaz/feature-03-finder.png"
+      },
+      {
+        "title": "Editorial Video Guides & Scent Education",
+        "description": "Fragrance appreciation is inherently sensory and educational. Murakkaz integrates video journals and editorial guides directly into the storefront, offering behind-the-bottle breakdowns, scent application tips, and new arrival spotlights. Customers can watch curated recommendations and expert reviews to better visualize how each perfume wears in real life.",
+        "image": "/works/murakkaz/feature-04-videos.png"
+      },
+      {
+        "title": "Sensory Event Gallery & Community Showcases",
+        "description": "Murakkaz connects digital fragrance curation with physical community engagement through experiential pop-ups and scent exhibitions. The event gallery documents in-person olfactory stations, live university showcases, and luxury soirees across Bangladesh. This bridges the digital store with real-world sensory experiences, grounding the brand in an authentic community of perfume enthusiasts.",
+        "image": "/works/murakkaz/feature-05-events.png"
+      }
+    ],
+    "results": [
+      "Murakkaz transforms perfume shopping into a more immersive and intentional digital experience. By combining refined visual storytelling with structured product discovery and personalized fragrance guidance, the platform creates a cohesive journey from discovering a scent to understanding it and making a purchase."
+    ]
   },
   {
     "id": "hasib-ui",
