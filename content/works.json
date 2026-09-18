@@ -2,8 +2,6 @@
   {
     "id": "rng-gamez",
     "name": "RNG Gamez",
-    "tag": "E-Commerce / TCG",
-    "category": "E-Commerce / TCG",
     "image": "/works/rng_gamez_hero.png",
     "heroImage": "/works/rng-gamez/hero.png",
     "avatar": "/works/rng_gamez_avatar.png",
@@ -46,8 +44,6 @@
   {
     "id": "murakkaz",
     "name": "Murakkaz",
-    "tag": "E-Commerce / Luxury Perfume",
-    "category": "E-Commerce / Luxury Perfume",
     "image": "/works/murakkaz_hero.png",
     "heroImage": "/works/murakkaz/hero.png",
     "avatar": "/works/murakkaz_avatar.png",

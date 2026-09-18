@@ -100,7 +100,9 @@ export default function WorkDetailPage() {
         
         <header className={styles.workHeader} suppressHydrationWarning={true}>
           <div className={styles.headerMeta} suppressHydrationWarning={true}>
-            <span className={styles.tagPill}>{work.tag || work.category}</span>
+            {(work.tag || work.category) && (
+              <span className={styles.tagPill}>{work.tag || work.category}</span>
+            )}
             <span className={styles.metaLabel}>Client: <span className={styles.metaValue}>{work.client || "N/A"}</span></span>
             <span className={styles.metaLabel}>Date: <span className={styles.metaValue}>{work.date || "N/A"}</span></span>
             <span className={styles.metaLabel}>Role: <span className={styles.metaValue}>{work.role || "N/A"}</span></span>
