@@ -636,6 +636,7 @@
     inset 1px 1px 0px rgba(255, 255, 255, 0.6),
     inset -1px -1px 0px rgba(163, 177, 198, 0.15);
   border-radius: 10px;
+  overflow: hidden;
   z-index: 20;
   box-sizing: border-box;
   transition: background-color 0.5s ease, box-shadow 0.5s ease, border-color 0.5s ease;
@@ -669,6 +670,7 @@
   background-color: #717171;
   opacity: 0.8;
   pointer-events: none;
+  z-index: 2;
 }
 
 .hLine {
@@ -681,21 +683,26 @@
   background-color: #717171;
   opacity: 0.8;
   pointer-events: none;
+  z-index: 2;
 }
 
 .socialGridCell {
   position: absolute;
   display: flex;
-  align-items: center;
-  height: 50px;
-  border-radius: 8px;
-  transition: background-color 0.2s ease, transform 0.2s var(--ease-out-expo);
-  padding: 0 10px;
+  align-items: flex-start;
+  box-sizing: border-box;
+  text-decoration: none;
+  cursor: pointer;
+  z-index: 1;
+  transition: background-color 0.2s ease, box-shadow 0.2s ease;
 }
 
 .socialGridCell:hover {
   background-color: rgba(255, 255, 255, 0.15);
-  transform: translateY(-1px);
+}
+
+[data-theme="dark"] .socialGridCell:hover {
+  background-color: rgba(255, 255, 255, 0.05);
 }
 
 .socialGridCell:active {
@@ -703,37 +710,46 @@
   box-shadow: var(--shadow-inset);
 }
 
-/* Cell Position Mapping */
+.socialGridCell:focus-visible {
+  outline: 2px solid #4A72FF;
+  outline-offset: -2px;
+}
+
+/* Cell Position & Full Quadrant Hit Mapping (Desktop) */
 .whatsappCell {
-  width: 217px;
-  left: 103px;
-  /* 643 - 540 = 103 */
-  top: 32px;
-  /* 704 - 672 = 32 */
+  left: 0;
+  top: 0;
+  width: 410px;
+  height: 116px;
+  padding-left: 103px;
+  padding-top: 32px;
 }
 
 .discordCell {
-  width: 190px;
-  left: 522px;
-  /* 1062 - 540 = 522 */
-  top: 32px;
-  /* 704 - 672 = 32 */
+  left: 410px;
+  right: 0;
+  top: 0;
+  height: 116px;
+  padding-left: 112px;
+  padding-top: 32px;
 }
 
 .emailCell {
-  width: 159px;
-  left: 121px;
-  /* 661 - 540 = 121 */
-  top: 139px;
-  /* 811 - 672 = 139 */
+  left: 0;
+  top: 116px;
+  width: 410px;
+  bottom: 0;
+  padding-left: 121px;
+  padding-top: 23px;
 }
 
 .messengerCell {
-  width: 227px;
-  left: 522px;
-  /* 1062 - 540 = 522 */
-  top: 144px;
-  /* 816 - 672 = 144 */
+  left: 410px;
+  right: 0;
+  top: 116px;
+  bottom: 0;
+  padding-left: 112px;
+  padding-top: 28px;
 }
 
 .socialLeft {
@@ -1122,12 +1138,30 @@
   .socialGridCell {
     position: relative !important;
     left: auto !important;
+    right: auto !important;
     top: auto !important;
+    bottom: auto !important;
     width: 100% !important;
     height: 50px !important;
+    padding: 0 16px !important;
+    align-items: center !important;
     justify-content: space-between !important;
     background-color: rgba(255, 255, 255, 0.05);
     border: 1px solid rgba(113, 113, 113, 0.15);
+    border-radius: 8px;
+  }
+  .whatsappCell,
+  .discordCell,
+  .emailCell,
+  .messengerCell {
+    left: auto !important;
+    right: auto !important;
+    top: auto !important;
+    bottom: auto !important;
+    width: 100% !important;
+    height: 50px !important;
+    padding: 0 16px !important;
+    align-items: center !important;
   }
   .socialArrow {
     position: relative !important;

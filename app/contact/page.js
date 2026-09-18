@@ -51,6 +51,51 @@ const MessengerIcon = () => (
   <InlineSVG src="/messenger.svg" />
 );
 
+// ========================================================
+// CONTACT CHANNELS CONFIGURATION
+// Easily update destinations, URLs, and labels here:
+// ========================================================
+const CONTACT_CHANNELS = [
+  {
+    id: "whatsapp",
+    name: "Whatsapp",
+    // Format: https://wa.me/<country-code><phone-number-without-leading-zero>
+    url: "https://wa.me/8801319022151",
+    ariaLabel: "Contact on WhatsApp (01319-022151)",
+    isExternal: true,
+    Icon: WhatsappIcon,
+    cellClass: "whatsappCell",
+  },
+  {
+    id: "discord",
+    name: "Discord",
+    // Set invite link here (e.g. "https://discord.gg/yourserver") when ready
+    url: "#",
+    ariaLabel: "Discord community (Coming soon)",
+    isExternal: true,
+    Icon: DiscordIcon,
+    cellClass: "discordCell",
+  },
+  {
+    id: "email",
+    name: "Email",
+    url: "mailto:sadidbinhasan3@gmail.com",
+    ariaLabel: "Send email to sadidbinhasan3@gmail.com",
+    isExternal: false,
+    Icon: EmailIcon,
+    cellClass: "emailCell",
+  },
+  {
+    id: "messenger",
+    name: "Messenger",
+    url: "https://www.facebook.com/profile.php?id=61594266838782",
+    ariaLabel: "Message us on Facebook",
+    isExternal: true,
+    Icon: MessengerIcon,
+    cellClass: "messengerCell",
+  },
+];
+
 export default function ContactPage() {
   const { isDark } = useTheme();
               
@@ -172,107 +217,46 @@ export default function ContactPage() {
               <div className={styles.vLine} />
               <div className={styles.hLine} />
 
-              {/* Whatsapp */}
-              <a
-                href="https://wa.me/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className={`${styles.socialGridCell} ${styles.whatsappCell}`}
-                onClick={playClickSound}
-              >
-                <div className={styles.socialLeft}>
-                  <div className={styles.socialIcon}>
-                    <WhatsappIcon />
-                  </div>
-                  <span className={styles.socialName}>Whatsapp</span>
-                </div>
-                <svg
-                  className={styles.socialArrow}
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2.5"
-                  viewBox="0 0 24 24"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25" />
-                </svg>
-              </a>
+              {CONTACT_CHANNELS.map((item) => {
+                const IconComponent = item.Icon;
+                const isPending = !item.url || item.url === "#";
 
-              {/* Discord */}
-              <a
-                href="https://discord.gg/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className={`${styles.socialGridCell} ${styles.discordCell}`}
-                onClick={playClickSound}
-              >
-                <div className={styles.socialLeft}>
-                  <div className={styles.socialIcon}>
-                    <DiscordIcon />
-                  </div>
-                  <span className={styles.socialName}>Discord</span>
-                </div>
-                <svg
-                  className={styles.socialArrow}
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2.5"
-                  viewBox="0 0 24 24"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25" />
-                </svg>
-              </a>
-
-              {/* Email */}
-              <a
-                href="mailto:hello@aeethod.com"
-                className={`${styles.socialGridCell} ${styles.emailCell}`}
-                onClick={playClickSound}
-              >
-                <div className={styles.socialLeft}>
-                  <div className={styles.socialIcon}>
-                    <EmailIcon />
-                  </div>
-                  <span className={styles.socialName}>Email</span>
-                </div>
-                <svg
-                  className={styles.socialArrow}
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2.5"
-                  viewBox="0 0 24 24"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25" />
-                </svg>
-              </a>
-
-              {/* Messenger */}
-              <a
-                href="https://m.me/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className={`${styles.socialGridCell} ${styles.messengerCell}`}
-                onClick={playClickSound}
-              >
-                <div className={styles.socialLeft}>
-                  <div className={styles.socialIcon}>
-                    <MessengerIcon />
-                  </div>
-                  <span className={styles.socialName}>Messenger</span>
-                </div>
-                <svg
-                  className={styles.socialArrow}
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2.5"
-                  viewBox="0 0 24 24"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25" />
-                </svg>
-              </a>
+                return (
+                  <a
+                    key={item.id}
+                    href={item.url || "#"}
+                    target={item.isExternal && !isPending ? "_blank" : undefined}
+                    rel={item.isExternal && !isPending ? "noopener noreferrer" : undefined}
+                    className={`${styles.socialGridCell} ${styles[item.cellClass]}`}
+                    onClick={(e) => {
+                      playClickSound();
+                      if (isPending) {
+                        e.preventDefault();
+                      }
+                    }}
+                    aria-label={item.ariaLabel}
+                    aria-disabled={isPending ? "true" : undefined}
+                  >
+                    <div className={styles.socialLeft}>
+                      <div className={styles.socialIcon}>
+                        <IconComponent />
+                      </div>
+                      <span className={styles.socialName}>{item.name}</span>
+                    </div>
+                    <svg
+                      className={styles.socialArrow}
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2.5"
+                      viewBox="0 0 24 24"
+                      xmlns="http://www.w3.org/2000/svg"
+                      aria-hidden="true"
+                    >
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25" />
+                    </svg>
+                  </a>
+                );
+              })}
             </div>
           </div>
 
