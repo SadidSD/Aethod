@@ -152,49 +152,57 @@ export default function WorksPage() {
           {/* Dynamic Works Grid */}
           <section className={styles.worksGrid}>
             {filteredWorks.length > 0 ? (
-              filteredWorks.map((work) => (
-                <Link 
-                  key={work.id} 
-                  href={`/works/${work.id}`}
-                  className={styles.workCard}
-                  onClick={playClickSound}
-                >
-                  {/* Card mockup image preview */}
-                  <div className={styles.workCardImageContainer}>
-                    {work.image && (
-                      <img 
-                        src={work.image} 
-                        alt={`${work.name} mockup`} 
-                        className={styles.workCardImage} 
-                      />
-                    )}
-                  </div>
+              filteredWorks.map((work) => {
+                const isExternal = Boolean(work.link && work.link.startsWith("http"));
+                const targetUrl = work.link || `/works/${work.id}`;
 
-                  {/* Card footer details */}
-                  <div className={styles.workCardFooter}>
-                    <div className={styles.workCardLeftGroup}>
-                      {work.avatar && (
+                return (
+                  <Link 
+                    key={work.id} 
+                    href={targetUrl}
+                    target={isExternal ? "_blank" : undefined}
+                    rel={isExternal ? "noopener noreferrer" : undefined}
+                    className={styles.workCard}
+                    onClick={playClickSound}
+                  >
+                    {/* Card mockup image preview */}
+                    <div className={styles.workCardImageContainer}>
+                      {work.image && (
                         <img 
-                          src={work.avatar} 
-                          alt={work.name} 
-                          className={styles.workCardAvatar} 
+                          src={work.image} 
+                          alt={`${work.name} mockup`} 
+                          className={styles.workCardImage} 
+                          style={work.objectPosition ? { objectPosition: work.objectPosition } : undefined}
                         />
                       )}
-                      <span className={styles.workCardAuthorName}>{work.name}</span>
-                      {work.tag && (
-                        <span className={styles.workCardTagBadge}>{work.tag}</span>
-                      )}
                     </div>
 
-                    <div className={styles.workCardRightGroup}>
-                      <span className={styles.workCardCheckText}>Check</span>
-                      <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className={styles.checkIconSmall}>
-                        <path d="M7 17L17 7M17 17V7H7" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
-                      </svg>
+                    {/* Card footer details */}
+                    <div className={styles.workCardFooter}>
+                      <div className={styles.workCardLeftGroup}>
+                        {work.avatar && (
+                          <img 
+                            src={work.avatar} 
+                            alt={work.name} 
+                            className={styles.workCardAvatar} 
+                          />
+                        )}
+                        <span className={styles.workCardAuthorName}>{work.name}</span>
+                        {work.tag && (
+                          <span className={styles.workCardTagBadge}>{work.tag}</span>
+                        )}
+                      </div>
+
+                      <div className={styles.workCardRightGroup}>
+                        <span className={styles.workCardCheckText}>Check</span>
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className={styles.checkIconSmall}>
+                          <path d="M7 17L17 7M17 17V7H7" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
+                        </svg>
+                      </div>
                     </div>
-                  </div>
-                </Link>
-              ))
+                  </Link>
+                );
+              })
             ) : (
               <div className={styles.noWorksCard}>
                 <p>No projects found matching your filter selection.</p>

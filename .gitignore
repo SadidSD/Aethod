@@ -43,3 +43,6 @@ next-env.d.ts
 # extracted zip assets
 /aeethod_*_extracted
 *.zip
+
+# scratch
+/scratch/

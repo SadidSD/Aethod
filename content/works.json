@@ -1,5 +1,37 @@
 [
   {
+    "id": "rng-gamez",
+    "name": "RNG Gamez",
+    "tag": "TCG",
+    "image": "/works/rng_gamez_hero.png",
+    "avatar": "/works/rng_gamez_avatar.png",
+    "objectPosition": "28% center",
+    "link": "https://www.rng-gamez.com/",
+    "filters": ["All", "Recently Uploaded", "E-Commerce Related"],
+    "title": "RNG Gamez - Trading Card Marketplace Platform",
+    "client": "RNG Gamez",
+    "date": "August 2026",
+    "role": "Full-Stack Development & Design",
+    "description": "A high-performance trading card marketplace featuring real-time market pricing, comprehensive Magic: The Gathering cataloging, and an automated buylist engine.",
+    "content": "<h2>Overview</h2><p>RNG Gamez is a premier digital marketplace for trading card games, engineered for speed, real-time pricing synchronization, and intuitive collector search flows.</p><img src='/works/rng_gamez_hero.png' style='width:100%; border-radius:12px; margin:24px 0;' alt='RNG Gamez Hero Preview' /><h2>Key Features</h2><ul><li><strong>Live Market Pricing:</strong> Continuous synchronization with active trading indices and market values.</li><li><strong>Automated Buylist:</strong> Instant pricing algorithms for player card submissions.</li><li><strong>Card Catalog Search:</strong> Rapid faceted search across set, condition, language, and format.</li></ul>"
+  },
+  {
+    "id": "murakkaz",
+    "name": "Murakkaz",
+    "tag": "E-Com",
+    "image": "/works/murakkaz_hero.png",
+    "avatar": "/works/murakkaz_avatar.png",
+    "objectPosition": "center center",
+    "link": "https://murakkaz.com",
+    "filters": ["All", "Recently Uploaded", "E-Commerce Related"],
+    "title": "Murakkaz - Luxury Artisanal Fragrance Storefront",
+    "client": "Murakkaz",
+    "date": "July 2026",
+    "role": "E-Commerce Experience & Frontend Engineering",
+    "description": "An immersive digital storefront for luxury perfumes, blending tactile editorial typography, bespoke product showcase, and automated fragrance discovery.",
+    "content": "<h2>Overview</h2><p>Murakkaz crafts bespoke luxury fragrances. We engineered an elevated e-commerce experience that conveys artisanal craftsmanship through editorial aesthetics and intuitive fragrance matching.</p><img src='/works/murakkaz_hero.png' style='width:100%; border-radius:12px; margin:24px 0;' alt='Murakkaz Hero Preview' /><h2>Key Features</h2><ul><li><strong>Interactive Fragrance Finder:</strong> Multi-note recommendation engine matching scent profiles to individual tastes.</li><li><strong>Editorial Motion Design:</strong> Silky smooth transitions and floating bottle perspectives.</li><li><strong>Seamless Checkout:</strong> Clean mobile-first cart and streamlined order fulfillment.</li></ul>"
+  },
+  {
     "id": "hasib-ui",
     "name": "Hasib",
     "tag": "Ui",
