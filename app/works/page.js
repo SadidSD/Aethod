@@ -2,6 +2,7 @@
 
 import { useState, useCallback, useEffect } from "react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import styles from "./page.module.css";
 import { useTheme } from "../context/ThemeContext";
 import Footer from "../components/Footer";
@@ -33,6 +34,7 @@ function InlineSVG({ src, className }) {
 }
 
 export default function WorksPage() {
+  const router = useRouter();
   const { isDark } = useTheme();
   const [activeFilter, setActiveFilter] = useState("All");
   const [searchQuery, setSearchQuery] = useState("");
@@ -47,6 +49,15 @@ export default function WorksPage() {
       /* ignore */
     }
   }, []);
+
+  const handleCardClick = useCallback((e, workId) => {
+    // If clicked on or inside the Check live site button, don't trigger case study navigation
+    if (e.target.closest(`.${styles.workCardRightGroup}`)) {
+      return;
+    }
+    playClickSound();
+    router.push(`/works/${workId}`);
+  }, [playClickSound, router]);
 
   // Fetch works from API on mount
   useEffect(() => {
@@ -157,30 +168,41 @@ export default function WorksPage() {
                   <div 
                     key={work.id} 
                     className={styles.workCard}
+                    onClick={(e) => handleCardClick(e, work.id)}
                   >
-                    {/* Main card link covering full card area to go to case study article */}
+                    {/* The cover image - clicking it opens the case study page */}
                     <Link 
                       href={`/works/${work.id}`}
-                      className={styles.cardMainHitArea}
-                      onClick={playClickSound}
+                      className={styles.workCardImageLink}
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        playClickSound();
+                      }}
                       aria-label={`${work.name} Case Study`}
-                    />
-
-                    {/* Card mockup image preview */}
-                    <div className={styles.workCardImageContainer}>
-                      {work.image && (
-                        <img 
-                          src={work.image} 
-                          alt={`${work.name} mockup`} 
-                          className={styles.workCardImage} 
-                          style={work.objectPosition ? { objectPosition: work.objectPosition } : undefined}
-                        />
-                      )}
-                    </div>
+                    >
+                      <div className={styles.workCardImageContainer}>
+                        {work.image && (
+                          <img 
+                            src={work.image} 
+                            alt={`${work.name} mockup`} 
+                            className={styles.workCardImage} 
+                            style={work.objectPosition ? { objectPosition: work.objectPosition } : undefined}
+                          />
+                        )}
+                      </div>
+                    </Link>
 
                     {/* Card footer details */}
                     <div className={styles.workCardFooter}>
-                      <div className={styles.workCardLeftGroup}>
+                      {/* Left group (avatar, title, tag) - clicking it opens the case study page */}
+                      <Link 
+                        href={`/works/${work.id}`}
+                        className={styles.workCardLeftLink}
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          playClickSound();
+                        }}
+                      >
                         {work.avatar && (
                           <img 
                             src={work.avatar} 
@@ -192,9 +214,9 @@ export default function WorksPage() {
                         {work.tag && (
                           <span className={styles.workCardTagBadge}>{work.tag}</span>
                         )}
-                      </div>
+                      </Link>
 
-                      {/* Check button: opens live website directly in new tab, or case study */}
+                      {/* Check button: directly opens the LIVE website (e.g. murakkaz.com or rng-gamez.com) in new tab */}
                       {work.link ? (
                         <a 
                           href={work.link}
@@ -216,7 +238,10 @@ export default function WorksPage() {
                         <Link 
                           href={`/works/${work.id}`}
                           className={styles.workCardRightGroup}
-                          onClick={playClickSound}
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            playClickSound();
+                          }}
                         >
                           <span className={styles.workCardCheckText}>Check</span>
                           <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className={styles.checkIconSmall}>
