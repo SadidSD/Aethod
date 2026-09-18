@@ -153,18 +153,19 @@ export default function WorksPage() {
           <section className={styles.worksGrid}>
             {filteredWorks.length > 0 ? (
               filteredWorks.map((work) => {
-                const isExternal = Boolean(work.externalOnly && work.link && work.link.startsWith("http"));
-                const targetUrl = isExternal ? work.link : `/works/${work.id}`;
-
                 return (
-                  <Link 
+                  <div 
                     key={work.id} 
-                    href={targetUrl}
-                    target={isExternal ? "_blank" : undefined}
-                    rel={isExternal ? "noopener noreferrer" : undefined}
                     className={styles.workCard}
-                    onClick={playClickSound}
                   >
+                    {/* Main card link covering full card area to go to case study article */}
+                    <Link 
+                      href={`/works/${work.id}`}
+                      className={styles.cardMainHitArea}
+                      onClick={playClickSound}
+                      aria-label={`${work.name} Case Study`}
+                    />
+
                     {/* Card mockup image preview */}
                     <div className={styles.workCardImageContainer}>
                       {work.image && (
@@ -193,14 +194,38 @@ export default function WorksPage() {
                         )}
                       </div>
 
-                      <div className={styles.workCardRightGroup}>
-                        <span className={styles.workCardCheckText}>Check</span>
-                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className={styles.checkIconSmall}>
-                          <path d="M7 17L17 7M17 17V7H7" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
-                        </svg>
-                      </div>
+                      {/* Check button: opens live website directly in new tab, or case study */}
+                      {work.link ? (
+                        <a 
+                          href={work.link}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className={styles.workCardRightGroup}
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            playClickSound();
+                          }}
+                          title={`Visit ${work.name} Live Website`}
+                        >
+                          <span className={styles.workCardCheckText}>Check</span>
+                          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className={styles.checkIconSmall}>
+                            <path d="M7 17L17 7M17 17V7H7" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
+                          </svg>
+                        </a>
+                      ) : (
+                        <Link 
+                          href={`/works/${work.id}`}
+                          className={styles.workCardRightGroup}
+                          onClick={playClickSound}
+                        >
+                          <span className={styles.workCardCheckText}>Check</span>
+                          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className={styles.checkIconSmall}>
+                            <path d="M7 17L17 7M17 17V7H7" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
+                          </svg>
+                        </Link>
+                      )}
                     </div>
-                  </Link>
+                  </div>
                 );
               })
             ) : (

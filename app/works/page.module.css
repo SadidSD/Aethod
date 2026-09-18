@@ -281,12 +281,23 @@
     inset -4px -4px 8px rgba(255, 255, 255, 0.04);
 }
 
+.cardMainHitArea {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  text-decoration: none;
+  cursor: pointer;
+}
+
 .workCardImageContainer {
   width: 100%;
   aspect-ratio: 1.48;
   border-radius: 16px;
   overflow: hidden;
   background: rgba(0, 0, 0, 0.03);
+  position: relative;
+  z-index: 1;
+  pointer-events: none;
 }
 
 .workCardImage {
@@ -307,12 +318,16 @@
   align-items: center;
   width: 100%;
   padding: 0 4px 4px 4px;
+  position: relative;
+  z-index: 2;
+  pointer-events: none;
 }
 
 .workCardLeftGroup {
   display: flex;
   align-items: center;
   gap: 8px;
+  pointer-events: none;
 }
 
 .workCardAvatar {
@@ -350,7 +365,15 @@
   align-items: center;
   gap: 6px;
   color: var(--text-muted, #717171);
-  transition: color 0.2s ease;
+  text-decoration: none;
+  transition: color 0.2s ease, transform 0.2s ease;
+  position: relative;
+  z-index: 3;
+  pointer-events: auto;
+  cursor: pointer;
+  padding: 4px 6px;
+  margin: -4px -6px;
+  border-radius: 6px;
 }
 
 [data-theme='dark'] .workCardRightGroup {
@@ -359,6 +382,15 @@
 
 .workCard:hover .workCardRightGroup {
   color: #7c5cfc;
+}
+
+.workCardRightGroup:hover {
+  color: #6343e8;
+  transform: translateY(-1px);
+}
+
+[data-theme='dark'] .workCardRightGroup:hover {
+  color: #c4b5fd;
 }
 
 .workCardCheckText {
@@ -375,6 +407,10 @@
 
 .workCard:hover .checkIconSmall {
   transform: translate(2px, -2px);
+}
+
+.workCardRightGroup:hover .checkIconSmall {
+  transform: translate(3px, -3px);
 }
 
 /* Fallbacks */
