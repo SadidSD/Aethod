@@ -69,12 +69,9 @@ export default function WorksPage() {
 
   const filters = [
     "All",
-    "Recently Uploaded",
-    "History",
-    "By Sadid Bin Hasan",
-    "E-Commerce Related",
-    "F-Commerce Related"
+    ...Array.from(new Set(works.flatMap((w) => w.filters || []))).filter((f) => f !== "All"),
   ];
+
 
   const handleEssayClick = (essayTitle) => {
     playClickSound();
