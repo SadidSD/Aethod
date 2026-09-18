@@ -153,8 +153,8 @@ export default function WorksPage() {
           <section className={styles.worksGrid}>
             {filteredWorks.length > 0 ? (
               filteredWorks.map((work) => {
-                const isExternal = Boolean(work.link && work.link.startsWith("http"));
-                const targetUrl = work.link || `/works/${work.id}`;
+                const isExternal = Boolean(work.externalOnly && work.link && work.link.startsWith("http"));
+                const targetUrl = isExternal ? work.link : `/works/${work.id}`;
 
                 return (
                   <Link 

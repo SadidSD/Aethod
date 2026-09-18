@@ -2,18 +2,46 @@
   {
     "id": "rng-gamez",
     "name": "RNG Gamez",
-    "tag": "TCG",
+    "tag": "E-Commerce / TCG",
+    "category": "E-Commerce / TCG",
     "image": "/works/rng_gamez_hero.png",
+    "heroImage": "/works/rng-gamez/hero.png",
     "avatar": "/works/rng_gamez_avatar.png",
     "objectPosition": "28% center",
     "link": "https://www.rng-gamez.com/",
     "filters": ["All", "Recently Uploaded", "E-Commerce Related"],
-    "title": "RNG Gamez - Trading Card Marketplace Platform",
-    "client": "RNG Gamez",
+    "title": "RNG-Gamez",
+    "subtitle": "The Ultimate TCG Store",
+    "client": "RNG-Gamez",
     "date": "August 2026",
-    "role": "Full-Stack Development & Design",
-    "description": "A high-performance trading card marketplace featuring real-time market pricing, comprehensive Magic: The Gathering cataloging, and an automated buylist engine.",
-    "content": "<h2>Overview</h2><p>RNG Gamez is a premier digital marketplace for trading card games, engineered for speed, real-time pricing synchronization, and intuitive collector search flows.</p><img src='/works/rng_gamez_hero.png' style='width:100%; border-radius:12px; margin:24px 0;' alt='RNG Gamez Hero Preview' /><h2>Key Features</h2><ul><li><strong>Live Market Pricing:</strong> Continuous synchronization with active trading indices and market values.</li><li><strong>Automated Buylist:</strong> Instant pricing algorithms for player card submissions.</li><li><strong>Card Catalog Search:</strong> Rapid faceted search across set, condition, language, and format.</li></ul>"
+    "role": "UI/UX Design + Development",
+    "description": "RNG-Gamez is a modern trading card game e-commerce experience focused on making card discovery, purchasing, and selling easier for collectors and players.",
+    "overview": [
+      "RNG-Gamez is a modern TCG e-commerce experience designed around the way collectors and players actually shop for trading cards. The platform brings card discovery, product browsing, market-focused pricing, and card selling into one cohesive storefront.",
+      "The experience makes it easier for customers to find specific cards, explore different formats and collections, discover products and deals, and move between buying and selling within the same ecosystem.",
+      "The goal was to create a storefront that feels focused and approachable while still supporting the depth and complexity expected from a dedicated trading card marketplace."
+    ],
+    "featuresIntro": "The RNG-Gamez experience combines focused card discovery with flexible browsing, product shopping, and card-selling tools. Each part of the experience is designed to reduce friction while helping players and collectors find exactly what they are looking for.",
+    "features": [
+      {
+        "title": "Card Discovery",
+        "description": "A focused card discovery experience helps customers find the exact cards they are looking for without unnecessary friction. Cards can be explored through relevant attributes such as set, condition, language, and format, while market-aware pricing helps customers make more informed purchasing decisions.",
+        "image": "/works/rng-gamez/feature-01-discovery.png"
+      },
+      {
+        "title": "Sell Your Cards",
+        "description": "RNG-Gamez is designed not only for buying cards, but also for selling them. The selling experience gives customers a dedicated path to explore the buylist and understand their options for receiving value from their cards.\n\nThe experience is designed to make the transition from owning cards to selling them feel clear and straightforward.",
+        "image": "/works/rng-gamez/feature-02-sell.png"
+      },
+      {
+        "title": "A Connected TCG Experience",
+        "description": "Rather than treating browsing, buying, and selling as completely separate experiences, RNG-Gamez connects them within one consistent storefront.\n\nThis creates a more cohesive journey for customers — from discovering a card or collection, to exploring products, to purchasing or selling within the same ecosystem.",
+        "image": "/works/rng-gamez/feature-03-connected.png"
+      }
+    ],
+    "results": [
+      "RNG-Gamez brings card discovery, shopping, and selling together in a focused TCG storefront built for collectors and players. The result is a more cohesive digital experience that makes a large and specialized product catalog easier to explore while giving customers clear paths to both buy and sell."
+    ]
   },
   {
     "id": "murakkaz",

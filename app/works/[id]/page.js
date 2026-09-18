@@ -72,6 +72,20 @@ export default function WorkDetailPage() {
     );
   }
 
+  const isStructured = Boolean(work && ((work.features && work.features.length > 0) || work.overview));
+
+  const renderParagraphs = (textOrArray, customClass = styles.sectionParagraph) => {
+    if (!textOrArray) return null;
+    if (Array.isArray(textOrArray)) {
+      return textOrArray.map((p, i) => (
+        <p key={i} className={customClass}>{p}</p>
+      ));
+    }
+    return textOrArray.split("\n\n").map((p, i) => (
+      <p key={i} className={customClass}>{p}</p>
+    ));
+  };
+
   return (
     <div className={styles.pageWrapper} data-theme={isDark ? "dark" : "light"} suppressHydrationWarning={true}>
       <Navbar activePage="works" />
@@ -86,33 +100,98 @@ export default function WorkDetailPage() {
         
         <header className={styles.workHeader} suppressHydrationWarning={true}>
           <div className={styles.headerMeta} suppressHydrationWarning={true}>
-            <span className={styles.tagPill}>{work.tag}</span>
+            <span className={styles.tagPill}>{work.tag || work.category}</span>
             <span className={styles.metaLabel}>Client: <span className={styles.metaValue}>{work.client || "N/A"}</span></span>
             <span className={styles.metaLabel}>Date: <span className={styles.metaValue}>{work.date || "N/A"}</span></span>
             <span className={styles.metaLabel}>Role: <span className={styles.metaValue}>{work.role || "N/A"}</span></span>
+            {work.link && (
+              <a 
+                href={work.link} 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className={styles.liveSiteBtn}
+              >
+                <span>Live Site</span>
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className={styles.externalArrow}>
+                  <path d="M7 17L17 7M17 17V7H7" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+              </a>
+            )}
           </div>
           
           <h1 className={styles.workTitle}>{work.title || work.name}</h1>
+          {work.subtitle && (
+            <p className={styles.workSubtitle}>{work.subtitle}</p>
+          )}
         </header>
         
         <div className={styles.divider} />
 
-        {/* Render Mockup Preview Box */}
-        {work.image && (
+        {/* Render Mockup / Hero Preview Box */}
+        {(work.heroImage || work.image) && (
           <div className={styles.workIllustrationContainer} suppressHydrationWarning={true}>
-            <img src={work.image} className={styles.illustrationImg} alt={`${work.title || work.name} mockup`} />
+            <img 
+              src={work.heroImage || work.image} 
+              className={styles.illustrationImg} 
+              alt={`${work.title || work.name} preview`} 
+            />
           </div>
         )}
         
         {/* Render Case Study Context */}
-        <div 
-          className={styles.workBody}
-          dangerouslySetInnerHTML={{ __html: work.content || `<p>${work.description}</p>` }}
-          suppressHydrationWarning={true}
-        />
+        {isStructured ? (
+          <>
+            {work.overview && (
+              <section className={styles.sectionBlock}>
+                <h2 className={styles.sectionTitle}>Overview</h2>
+                {renderParagraphs(work.overview)}
+              </section>
+            )}
+
+            {work.features && work.features.length > 0 && (
+              <section className={styles.sectionBlock}>
+                <h2 className={styles.sectionTitle}>Key Features</h2>
+                {work.featuresIntro && (
+                  <p className={styles.featuresIntro}>{work.featuresIntro}</p>
+                )}
+                <div className={styles.featuresList}>
+                  {work.features.map((feature, idx) => (
+                    <div key={idx} className={styles.featureItem}>
+                      <h3 className={styles.featureTitle}>{feature.title}</h3>
+                      {renderParagraphs(feature.description, styles.featureDesc)}
+                      {feature.image && (
+                        <div className={styles.workIllustrationContainer}>
+                          <img 
+                            src={feature.image} 
+                            className={styles.illustrationImg} 
+                            alt={feature.title} 
+                          />
+                        </div>
+                      )}
+                    </div>
+                  ))}
+                </div>
+              </section>
+            )}
+
+            {work.results && (
+              <section className={styles.sectionBlock}>
+                <h2 className={styles.sectionTitle}>Results</h2>
+                {renderParagraphs(work.results)}
+              </section>
+            )}
+          </>
+        ) : (
+          <div 
+            className={styles.workBody}
+            dangerouslySetInnerHTML={{ __html: work.content || `<p>${work.description}</p>` }}
+            suppressHydrationWarning={true}
+          />
+        )}
       </main>
       
       <Footer />
     </div>
   );
 }
+
