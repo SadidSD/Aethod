@@ -49,10 +49,10 @@
 
 .floatingAssistantBtn {
   position: fixed;
-  bottom: 134px;
-  right: 146px;
-  width: 92px;
-  height: 92px;
+  bottom: 144px;
+  right: 156px;
+  width: 72px;
+  height: 72px;
   border-radius: 50%;
 
   /* ── Porcelain fill: near-opaque white, slight cool tint ── */
@@ -830,12 +830,12 @@
 }
 
 .floatingAssistantBtn .closeBtnIcon {
-  width: 78px;
-  height: 78px;
+  width: 72px;
+  height: 72px;
   position: relative;
   z-index: 1;
   object-fit: contain;
-  transform: scale(2.2);
+  transform: scale(1.4);
   filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.06));
 }
 
@@ -904,10 +904,10 @@
 @media (min-width: 768px) and (max-width: 1366px) {
   .floatingAssistantBtn {
     position: fixed !important;
-    right: 64px !important;
-    bottom: 320px !important;
-    width: 92px !important;
-    height: 92px !important;
+    right: 74px !important;
+    bottom: 330px !important;
+    width: 72px !important;
+    height: 72px !important;
   }
   .floatingBtnIcon {
     width: 72px !important;
