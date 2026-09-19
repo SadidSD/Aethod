@@ -2,6 +2,8 @@ import { NextResponse } from "next/server";
 import fs from "fs";
 import path from "path";
 
+import { verifySessionToken, SESSION_COOKIE_NAME } from "@/lib/session";
+
 const ADMIN_PASSCODE = "systems2026";
 
 // Helper to get absolute path to content folder
@@ -38,9 +40,13 @@ export async function POST(request) {
     const body = await request.json();
     const { type, passcode, data } = body;
 
-    // Verify Passcode
-    if (passcode !== ADMIN_PASSCODE) {
-      return NextResponse.json({ error: "Unauthorized passcode" }, { status: 401 });
+    // Verify Session Cookie or fallback Passcode
+    const cookie = request.cookies.get(SESSION_COOKIE_NAME);
+    const session = cookie ? await verifySessionToken(cookie.value) : null;
+    const isAuthorized = Boolean(session && session.email) || passcode === ADMIN_PASSCODE;
+
+    if (!isAuthorized) {
+      return NextResponse.json({ error: "Unauthorized. Admin authentication required." }, { status: 401 });
     }
 
     if (!type || !["research", "works", "blog"].includes(type)) {

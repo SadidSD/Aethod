@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useCallback } from "react";
+import Link from "next/link";
 import styles from "./page.module.css";
 import { useTheme } from "../context/ThemeContext";
 import Navbar from "../components/Navbar";
@@ -8,9 +9,8 @@ import Footer from "../components/Footer";
 
 export default function AdminPage() {
   const { isDark } = useTheme();
-  const [passcode, setPasscode] = useState("");
-  const [isAuthorized, setIsAuthorized] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
+  const [isLoggingOut, setIsLoggingOut] = useState(false);
 
   // Form states
   const [contentType, setContentType] = useState("blog");
@@ -33,15 +33,19 @@ export default function AdminPage() {
     }
   }, []);
 
-  const handleLogin = (e) => {
-    e.preventDefault();
+  const handleLogout = async () => {
+    if (isLoggingOut) return;
+    setIsLoggingOut(true);
     playClickSound();
-    
-    if (passcode === "systems2026") {
-      setIsAuthorized(true);
-      setErrorMessage("");
-    } else {
-      setErrorMessage("Unauthorized passcode. Try again.");
+
+    try {
+      await fetch("/api/admin/logout", {
+        method: "POST",
+      });
+    } catch (err) {
+      console.error("Logout request failed:", err);
+    } finally {
+      window.location.href = "/yamal19";
     }
   };
 
@@ -62,7 +66,6 @@ export default function AdminPage() {
 
     const payload = {
       type: contentType,
-      passcode: passcode,
       data: {
         title,
         subtitle,
@@ -86,7 +89,7 @@ export default function AdminPage() {
 
       if (res.ok) {
         setSuccessMessage(`Successfully posted new entry to ${contentType}!`);
-        // Reset form inputs except passcode
+        // Reset form inputs
         setTitle("");
         setSubtitle("");
         setDescription("");
@@ -108,32 +111,24 @@ export default function AdminPage() {
 
       <main className={styles.mainContainer}>
         <div className={styles.contentAlignContainer}>
-          {!isAuthorized ? (
-            /* ===== LOGIN CARD ===== */
-            <div className={styles.loginCard}>
-              <h1 className={styles.cardHeading}>Admin Access</h1>
-              <p className={styles.cardSubtext}>Enter passcode to post new articles</p>
-              
-              <form onSubmit={handleLogin} className={styles.formContainer}>
-                <input
-                  type="password"
-                  placeholder="Enter Passcode"
-                  value={passcode}
-                  onChange={(e) => setPasscode(e.target.value)}
-                  className={styles.inputField}
-                  required
-                />
-                <button type="submit" className={styles.submitBtn}>
-                  Authenticate
-                </button>
-              </form>
-              {errorMessage && <p className={styles.errorText}>{errorMessage}</p>}
+          {/* ===== DASHBOARD CARD ===== */}
+          <div className={styles.dashboardCard}>
+            <div className={styles.adminHeaderRow}>
+              <Link href="/yamal19/analytics" className={styles.backLink}>
+                ← Studio Analytics
+              </Link>
+              <button
+                onClick={handleLogout}
+                disabled={isLoggingOut}
+                className={styles.logoutBtn}
+                aria-label="Log out of Admin"
+              >
+                {isLoggingOut ? "Logging out..." : "Log out"}
+              </button>
             </div>
-          ) : (
-            /* ===== DASHBOARD CARD ===== */
-            <div className={styles.dashboardCard}>
-              <h1 className={styles.cardHeading}>Publish Content</h1>
-              <p className={styles.cardSubtext}>Post new work case studies, research essays, or blog thoughts</p>
+
+            <h1 className={styles.cardHeading}>Publish Content</h1>
+            <p className={styles.cardSubtext}>Post new work case studies, research essays, or blog thoughts</p>
 
               <form onSubmit={handleSubmit} className={styles.formContainer}>
                 {/* Content Type Select */}
@@ -252,7 +247,6 @@ export default function AdminPage() {
               {successMessage && <p className={styles.successText}>{successMessage}</p>}
               {errorMessage && <p className={styles.errorText}>{errorMessage}</p>}
             </div>
-          )}
         </div>
       </main>
       <Footer />
