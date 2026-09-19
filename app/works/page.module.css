@@ -316,22 +316,22 @@
   border-top-right-radius: 10px;
   background: linear-gradient(
     to bottom,
-    rgba(255, 255, 255, 0.08) 0%,
-    rgba(255, 255, 255, 0.02) 50%,
+    rgba(255, 255, 255, 0.058) 0%,
+    rgba(255, 255, 255, 0.014) 50%,
     transparent 100%
   );
-  backdrop-filter: blur(2px);
-  -webkit-backdrop-filter: blur(2px);
+  backdrop-filter: blur(1.5px);
+  -webkit-backdrop-filter: blur(1.5px);
   mask-image: linear-gradient(
     to bottom,
     rgba(0, 0, 0, 1) 0%,
-    rgba(0, 0, 0, 0.4) 50%,
+    rgba(0, 0, 0, 0.35) 50%,
     transparent 100%
   );
   -webkit-mask-image: linear-gradient(
     to bottom,
     rgba(0, 0, 0, 1) 0%,
-    rgba(0, 0, 0, 0.4) 50%,
+    rgba(0, 0, 0, 0.35) 50%,
     transparent 100%
   );
 }
@@ -339,8 +339,8 @@
 [data-theme='dark'] .workCardImageContainer::after {
   background: linear-gradient(
     to bottom,
-    rgba(255, 255, 255, 0.05) 0%,
-    rgba(255, 255, 255, 0.01) 50%,
+    rgba(255, 255, 255, 0.038) 0%,
+    rgba(255, 255, 255, 0.008) 50%,
     transparent 100%
   );
 }
