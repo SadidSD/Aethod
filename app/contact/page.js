@@ -105,11 +105,11 @@ export default function ContactPage() {
   const [mailEmail, setMailEmail] = useState("");
   const [mailMessage, setMailMessage] = useState("");
   const [footerEmail, setFooterEmail] = useState("");
+  const [isSending, setIsSending] = useState(false);
+  const [mailStatus, setMailStatus] = useState(null);
 
-  
-  
   // Click sound — button click foley
-    const playClickSound = useCallback(() => {
+  const playClickSound = useCallback(() => {
     try {
       const audio = new Audio("/touchpad sd.mp3");
       audio.volume = 0.85;
@@ -120,22 +120,115 @@ export default function ContactPage() {
   }, []);
 
   // Quick Mail Form Submit Handler
-  const handleMailSubmit = (e) => {
+  const handleMailSubmit = async (e) => {
     e.preventDefault();
     playClickSound();
-    if (!mailEmail || !mailMessage) {
-      alert("Please fill out both the email and message fields.");
-      return;
-    }
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(mailEmail)) {
-      alert("Please enter a valid email address.");
+
+    const emailClean = (mailEmail || "").trim();
+    const messageClean = (mailMessage || "").trim();
+
+    if (!emailClean || !messageClean) {
+      setMailStatus({
+        type: "error",
+        message: "Please fill out both fields.",
+      });
       return;
     }
 
-    alert(`Message successfully sent!\nEmail: ${mailEmail}\nMessage: ${mailMessage}`);
-    setMailEmail("");
-    setMailMessage("");
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(emailClean)) {
+      setMailStatus({
+        type: "error",
+        message: "Please enter a valid email address.",
+      });
+      return;
+    }
+
+    setIsSending(true);
+    setMailStatus(null);
+
+    try {
+      // Step 1: Send via Next.js API route (/api/contact)
+      let success = false;
+      let statusMsg = "";
+
+      try {
+        const res = await fetch("/api/contact", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+          },
+          body: JSON.stringify({
+            email: emailClean,
+            message: messageClean,
+          }),
+        });
+
+        const data = await res.json().catch(() => ({}));
+        if (res.ok && data.success) {
+          success = true;
+          statusMsg = data.message || "Message sent successfully!";
+        }
+      } catch (apiErr) {
+        console.warn("API route failed, trying direct submission fallback:", apiErr);
+      }
+
+      // Step 2: Client-side fallback to FormSubmit
+      if (!success) {
+        const directRes = await fetch("https://formsubmit.co/ajax/sadidbinhasan3@gmail.com", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+          },
+          body: JSON.stringify({
+            email: emailClean,
+            message: messageClean,
+            _subject: `New Quick Mail from Aeethod (${emailClean})`,
+            _replyto: emailClean,
+            _template: "table",
+            _captcha: "false",
+          }),
+        });
+
+        const directData = await directRes.json().catch(() => ({}));
+        if (
+          directRes.ok &&
+          (directData.success === "true" ||
+            directData.success === true ||
+            (directData.message && directData.message.toLowerCase().includes("activation")))
+        ) {
+          success = true;
+          statusMsg = "Message sent successfully!";
+        }
+      }
+
+      if (success) {
+        setMailStatus({
+          type: "success",
+          message: statusMsg || "Message sent successfully!",
+        });
+        setMailEmail("");
+        setMailMessage("");
+        setTimeout(() => {
+          setMailStatus(null);
+        }, 7000);
+      } else {
+        throw new Error("Could not send mail");
+      }
+    } catch (error) {
+      console.error("Submission error:", error);
+      setMailStatus({
+        type: "error",
+        message: "Failed to send.",
+        mailto: `mailto:sadidbinhasan3@gmail.com?subject=${encodeURIComponent(
+          `Quick Mail from ${emailClean || "Aeethod Visitor"}`
+        )}&body=${encodeURIComponent(messageClean)}`,
+      });
+    } finally {
+      setIsSending(false);
+    }
   };
 
   // Footer Subscription Form Submit Handler
@@ -193,17 +286,51 @@ export default function ContactPage() {
                 className={styles.inputField}
                 value={mailEmail}
                 onChange={(e) => setMailEmail(e.target.value)}
+                disabled={isSending}
                 required
                 aria-label="Contact Email Address"
               />
-              <button type="submit" className={styles.sendButton}>
-                Send
+
+              {mailStatus && (
+                <div
+                  className={`${styles.statusMessage} ${
+                    mailStatus.type === "success"
+                      ? styles.statusSuccess
+                      : styles.statusError
+                  }`}
+                  role="status"
+                >
+                  <span>
+                    {mailStatus.message}{" "}
+                    {mailStatus.mailto && (
+                      <a
+                        href={mailStatus.mailto}
+                        className={styles.statusMailtoLink}
+                      >
+                        Send via Email app
+                      </a>
+                    )}
+                  </span>
+                </div>
+              )}
+
+              <button
+                type="submit"
+                className={styles.sendButton}
+                disabled={isSending}
+              >
+                {isSending
+                  ? "Sending..."
+                  : mailStatus?.type === "success"
+                  ? "Sent! ✓"
+                  : "Send"}
               </button>
               <textarea
                 placeholder="Hey.."
                 className={styles.textareaField}
                 value={mailMessage}
                 onChange={(e) => setMailMessage(e.target.value)}
+                disabled={isSending}
                 required
                 aria-label="Message Body"
               />

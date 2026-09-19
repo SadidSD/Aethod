@@ -573,7 +573,77 @@
   color: #404040;
   box-shadow: var(--shadow-btn);
   box-sizing: border-box;
+  cursor: pointer;
   transition: transform 0.2s var(--ease-out-expo), box-shadow 0.2s ease, color 0.2s ease, background-color 0.5s ease, border-color 0.5s ease;
+}
+
+.sendButton:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+  transform: none !important;
+  box-shadow: var(--shadow-btn) !important;
+}
+
+.statusMessage {
+  position: absolute;
+  left: 334px;
+  top: 18px;
+  width: 308px;
+  height: 54px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-family: var(--font-sora), sans-serif;
+  font-size: 12px;
+  line-height: 16px;
+  padding: 6px 14px;
+  border-radius: 10px;
+  box-sizing: border-box;
+  animation: fadeInStatus 0.3s ease;
+  z-index: 28;
+}
+
+.statusSuccess {
+  color: #059669;
+  background-color: rgba(16, 185, 129, 0.12);
+  border: 1px solid rgba(16, 185, 129, 0.35);
+}
+
+[data-theme="dark"] .statusSuccess {
+  color: #34d399;
+  background-color: rgba(16, 185, 129, 0.16);
+  border-color: rgba(52, 211, 153, 0.4);
+}
+
+.statusError {
+  color: #dc2626;
+  background-color: rgba(239, 68, 68, 0.1);
+  border: 1px solid rgba(239, 68, 68, 0.35);
+}
+
+[data-theme="dark"] .statusError {
+  color: #f87171;
+  background-color: rgba(239, 68, 68, 0.18);
+  border-color: rgba(248, 113, 113, 0.4);
+}
+
+.statusMailtoLink {
+  color: inherit;
+  font-weight: 500;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+@keyframes fadeInStatus {
+  from {
+    opacity: 0;
+    transform: translateY(-2px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 [data-theme="dark"] .sendButton {
@@ -1114,6 +1184,15 @@
   .sendButton {
     order: 3 !important;
     margin-top: 8px !important;
+  }
+  .statusMessage {
+    position: relative !important;
+    left: auto !important;
+    top: auto !important;
+    width: 100% !important;
+    height: auto !important;
+    padding: 10px 14px !important;
+    order: 4 !important;
   }
   .socialGridCard {
     position: relative !important;
