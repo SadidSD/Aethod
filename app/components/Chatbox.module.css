@@ -49,8 +49,8 @@
 
 .floatingAssistantBtn {
   position: fixed;
-  bottom: 144px;
-  right: 156px;
+  bottom: 32px;
+  right: 40px;
   width: 72px;
   height: 72px;
   border-radius: 50%;
@@ -348,10 +348,10 @@
 /* Chatbox Panel Container */
 .chatboxPanel {
   position: fixed;
-  right: 132px;
-  bottom: 120px;
+  right: 40px;
+  bottom: 32px;
   width: 480px;
-  height: calc(100vh - 300px);
+  height: calc(100vh - 120px);
   max-height: 680px;
   z-index: 1000;
   background: #ECECEC;
@@ -366,6 +366,7 @@
     -10px -10px 20px rgba(255, 255, 255, 0.9),
     inset 1px 1px 2px rgba(255, 255, 255, 0.3),
     inset -1px -1px 2px rgba(183, 183, 181, 0.5);
+  transform-origin: bottom right;
   animation: slideIn 0.4s cubic-bezier(0.16, 1, 0.3, 1);
   transform: translate3d(0, 0, 0);
   backface-visibility: hidden;
@@ -904,8 +905,8 @@
 @media (min-width: 768px) and (max-width: 1366px) {
   .floatingAssistantBtn {
     position: fixed !important;
-    right: 74px !important;
-    bottom: 330px !important;
+    right: 40px !important;
+    bottom: 32px !important;
     width: 72px !important;
     height: 72px !important;
   }
@@ -915,14 +916,14 @@
   }
   .chatboxPanel {
     position: fixed !important;
-    right: 50px !important;
-    bottom: 306px !important;
+    right: 40px !important;
+    bottom: 32px !important;
     left: auto !important;
     top: auto !important;
-    transform: none !important;
-    width: 540px !important;
-    height: calc(100vh - 280px) !important;
-    max-height: 700px !important;
+    transform-origin: bottom right !important;
+    width: min(500px, calc(100vw - 80px)) !important;
+    height: calc(100vh - 120px) !important;
+    max-height: 680px !important;
     border-radius: 40px !important;
     padding: 24px !important;
     box-sizing: border-box !important;
