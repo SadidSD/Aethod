@@ -250,3 +250,46 @@
     display: none;
   }
 }
+
+/* Custom Date Range Picker */
+.customDateWrapper {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: #EAEAEF;
+  padding: 4px 8px;
+  border-radius: 12px;
+  box-shadow:
+    inset 1px 1px 3px rgba(163, 177, 198, 0.4),
+    inset -1px -1px 3px rgba(255, 255, 255, 0.9);
+}
+
+[data-theme="dark"] .customDateWrapper {
+  background: #191823;
+  box-shadow:
+    inset 1px 1px 3px rgba(0, 0, 0, 0.5),
+    inset -1px -1px 3px rgba(45, 43, 60, 0.3);
+}
+
+.customDateInput {
+  border: none;
+  background: transparent;
+  font-family: var(--font-inter), sans-serif;
+  font-size: 11px;
+  color: var(--text-primary, #1A1A2E);
+  outline: none;
+  cursor: pointer;
+  padding: 2px 4px;
+}
+
+[data-theme="dark"] .customDateInput {
+  color: #E2E8F0;
+  color-scheme: dark;
+}
+
+.dateSeparator {
+  font-size: 11px;
+  color: var(--text-muted, #7A7A8E);
+  font-family: var(--font-inter), sans-serif;
+}
+

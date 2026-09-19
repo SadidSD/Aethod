@@ -3,7 +3,23 @@
 import styles from "./CampaignTable.module.css";
 
 export default function CampaignTable({ campaigns = [] }) {
-  if (!campaigns || campaigns.length === 0) return null;
+  if (!campaigns || campaigns.length === 0) {
+    return (
+      <div className={styles.tableCard}>
+        <div className={styles.cardHeader}>
+          <div>
+            <h2 className={styles.cardTitle}>Campaign Performance</h2>
+            <p className={styles.cardSubtext}>Attributed UTM campaign parameters, inquiry conversions, and lead yield</p>
+          </div>
+          <span className={styles.campaignBadge}>0 active initiatives</span>
+        </div>
+        <div style={{ padding: "48px 24px", textAlign: "center", color: "var(--color-text-secondary, #94A3B8)", fontSize: "0.875rem" }}>
+          No campaign parameters (UTM tags) detected in this period. Inbound links with utm_source, utm_medium, or utm_campaign will appear here automatically.
+        </div>
+      </div>
+    );
+  }
+
 
   return (
     <div className={styles.tableCard}>

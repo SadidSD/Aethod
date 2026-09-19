@@ -25,10 +25,13 @@ export default function FunnelChart({ funnel = [] }) {
           const isLast = idx === funnel.length - 1;
           const prevStep = idx > 0 ? funnel[idx - 1] : null;
 
-          // Drop-off percentage from previous stage
+          // Drop-off percentage from previous stage (guarded against division by zero)
           const dropoffPct = prevStep
-            ? (((prevStep.count - step.count) / prevStep.count) * 100).toFixed(1)
+            ? (prevStep.count > 0
+                ? (((prevStep.count - step.count) / prevStep.count) * 100).toFixed(1)
+                : (step.dropoff !== null && step.dropoff !== undefined ? step.dropoff : "0.0"))
             : null;
+
 
           return (
             <div key={idx} className={styles.stepBlock}>
@@ -79,23 +82,24 @@ export default function FunnelChart({ funnel = [] }) {
         <div className={styles.insightItem}>
           <span className={styles.insightLabel}>Overall Funnel Yield</span>
           <span className={styles.insightValue}>
-            {funnel[funnel.length - 1]?.percentage}%
+            {funnel[funnel.length - 1]?.percentage ?? 0}%
           </span>
         </div>
         <div className={styles.insightDivider} />
         <div className={styles.insightItem}>
           <span className={styles.insightLabel}>Exploration Rate</span>
           <span className={styles.insightValue}>
-            {funnel[1]?.percentage}%
+            {funnel[1]?.percentage ?? 0}%
           </span>
         </div>
         <div className={styles.insightDivider} />
         <div className={styles.insightItem}>
           <span className={styles.insightLabel}>Contact Initiation</span>
           <span className={styles.insightValue}>
-            {funnel[2]?.percentage}%
+            {funnel[2]?.percentage ?? 0}%
           </span>
         </div>
+
       </div>
     </div>
   );

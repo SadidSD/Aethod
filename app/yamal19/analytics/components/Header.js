@@ -13,11 +13,14 @@ const DATE_RANGES = [
 export default function Header({
   selectedRange,
   onRangeChange,
+  customDates,
+  onCustomDatesChange,
   isRefreshing,
   onRefresh,
   onToggleMobileMenu,
   lastUpdated,
 }) {
+
   return (
     <header className={styles.header}>
       {/* Title & Subtitle Area */}
@@ -77,6 +80,28 @@ export default function Header({
             );
           })}
         </div>
+
+        {/* Custom Date Inputs if 'custom' is active */}
+        {selectedRange === "custom" && (
+
+        <div className={styles.customDateWrapper}>
+          <input
+            type="date"
+            className={styles.customDateInput}
+            value={customDates?.from || ""}
+            onChange={(e) => onCustomDatesChange?.({ ...customDates, from: e.target.value })}
+            aria-label="Custom start date"
+          />
+          <span className={styles.dateSeparator}>to</span>
+          <input
+            type="date"
+            className={styles.customDateInput}
+            value={customDates?.to || ""}
+            onChange={(e) => onCustomDatesChange?.({ ...customDates, to: e.target.value })}
+            aria-label="Custom end date"
+          />
+        </div>
+      )}
 
         {/* Refresh Button */}
         <button

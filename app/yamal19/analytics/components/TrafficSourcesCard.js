@@ -51,9 +51,10 @@ export default function TrafficSourcesCard({ sources = [] }) {
                 <div
                   className={styles.miniBarFill}
                   style={{
-                    width: `${(item.percentage / sources[0].percentage) * 100}%`,
+                    width: `${sources[0]?.percentage > 0 ? (item.percentage / sources[0].percentage) * 100 : 0}%`,
                     backgroundColor: item.color,
                   }}
+
                 />
               </div>
               <span className={styles.sourceCount}>

@@ -3,9 +3,25 @@
 import styles from "./TopPagesTable.module.css";
 
 export default function TopPagesTable({ pages = [] }) {
-  if (!pages || pages.length === 0) return null;
+  if (!pages || pages.length === 0) {
+    return (
+      <div className={styles.tableCard}>
+        <div className={styles.cardHeader}>
+          <div>
+            <h2 className={styles.cardTitle}>Top Pages</h2>
+            <p className={styles.cardSubtext}>Highest velocity routes, engagement dwell times, and audience volume</p>
+          </div>
+          <span className={styles.totalBadge}>0 active routes</span>
+        </div>
+        <div style={{ padding: "48px 24px", textAlign: "center", color: "var(--color-text-secondary, #94A3B8)", fontSize: "0.875rem" }}>
+          No pageviews recorded yet for this period. Visited routes will populate here automatically.
+        </div>
+      </div>
+    );
+  }
 
   const maxViews = Math.max(...pages.map((p) => p.views), 1);
+
 
   return (
     <div className={styles.tableCard}>

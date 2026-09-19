@@ -26,7 +26,11 @@ export default function DeviceDonut({ devices = [] }) {
     return { ...d, strokeDasharray, strokeDashoffset, index: i };
   });
 
-  const activeDevice = hoveredIdx !== null ? devices[hoveredIdx] : devices[0];
+  const activeDevice = (hoveredIdx !== null ? devices[hoveredIdx] : devices[0]) || {
+    type: "All Devices",
+    percentage: 0,
+    count: 0,
+  };
 
   return (
     <div className={styles.card}>
