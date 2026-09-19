@@ -49,8 +49,8 @@
 
 .floatingAssistantBtn {
   position: fixed;
-  bottom: 32px;
-  right: 40px;
+  bottom: 20px;
+  right: 20px;
   width: 72px;
   height: 72px;
   border-radius: 50%;
@@ -348,8 +348,8 @@
 /* Chatbox Panel Container */
 .chatboxPanel {
   position: fixed;
-  right: 40px;
-  bottom: 32px;
+  right: 20px;
+  bottom: 20px;
   width: 480px;
   height: calc(100vh - 120px);
   max-height: 680px;
@@ -905,8 +905,8 @@
 @media (min-width: 768px) and (max-width: 1366px) {
   .floatingAssistantBtn {
     position: fixed !important;
-    right: 40px !important;
-    bottom: 32px !important;
+    right: 20px !important;
+    bottom: 20px !important;
     width: 72px !important;
     height: 72px !important;
   }
@@ -916,8 +916,8 @@
   }
   .chatboxPanel {
     position: fixed !important;
-    right: 40px !important;
-    bottom: 32px !important;
+    right: 20px !important;
+    bottom: 20px !important;
     left: auto !important;
     top: auto !important;
     transform-origin: bottom right !important;
