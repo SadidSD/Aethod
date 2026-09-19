@@ -21,17 +21,19 @@ export default function TrafficSourcesCard({ sources = [] }) {
 
       {/* Multi-segment stacked horizontal bar */}
       <div className={styles.stackedBar}>
-        {sources.map((item) => (
-          <div
-            key={item.source}
-            className={styles.barSegment}
-            style={{
-              width: `${item.percentage}%`,
-              backgroundColor: item.color,
-            }}
-            title={`${item.source}: ${item.percentage}% (${item.count.toLocaleString()})`}
-          />
-        ))}
+        {sources
+          .filter((item) => item.percentage > 0)
+          .map((item) => (
+            <div
+              key={item.source}
+              className={styles.barSegment}
+              style={{
+                width: `${item.percentage}%`,
+                backgroundColor: item.color,
+              }}
+              title={`${item.source}: ${item.percentage}% (${item.count.toLocaleString()})`}
+            />
+          ))}
       </div>
 
       {/* Ranked source breakdown list */}

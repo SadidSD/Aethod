@@ -17,6 +17,7 @@ import TopPagesTable from "./components/TopPagesTable";
 import GeographyCard from "./components/GeographyCard";
 import TechnologyCard from "./components/TechnologyCard";
 import CampaignTable from "./components/CampaignTable";
+import AiReferralsCard from "./components/AiReferralsCard";
 import LoadingSkeleton from "./components/LoadingSkeleton";
 
 export default function StudioAnalyticsPage() {
@@ -248,6 +249,9 @@ export default function StudioAnalyticsPage() {
 
                   {/* 7. Campaign Performance Table */}
                   <CampaignTable campaigns={data.campaigns} />
+
+                  {/* 8. AI Referral Attribution */}
+                  <AiReferralsCard aiReferrals={data.aiReferrals} />
                 </>
               )}
 
@@ -265,6 +269,18 @@ export default function StudioAnalyticsPage() {
                   <div className={styles.twoColGrid}>
                     <TrafficSourcesCard sources={data.trafficSources} />
                     <DeviceDonut devices={data.devices} />
+                  </div>
+                  <AiReferralsCard aiReferrals={data.aiReferrals} />
+                </>
+              )}
+
+              {/* AI Referrals Tab */}
+              {activeTab === "ai" && (
+                <>
+                  <AiReferralsCard aiReferrals={data.aiReferrals} />
+                  <div className={styles.twoColGrid}>
+                    <TrafficSourcesCard sources={data.trafficSources} />
+                    <CampaignTable campaigns={data.campaigns} />
                   </div>
                 </>
               )}
