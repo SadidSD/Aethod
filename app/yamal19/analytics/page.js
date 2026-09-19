@@ -1,14 +1,80 @@
 "use client";
 
-import { useState } from "react";
-import Link from "next/link";
+import { useState, useEffect, useTransition } from "react";
 import styles from "./page.module.css";
 import { useTheme } from "../../context/ThemeContext";
+import { fetchAnalyticsData, getMockAnalytics } from "@/lib/analytics/mockData";
+
+// Modular Dashboard Components
+import Sidebar from "./components/Sidebar";
+import Header from "./components/Header";
+import MetricCards from "./components/MetricCards";
+import TrafficChart from "./components/TrafficChart";
+import FunnelChart from "./components/FunnelChart";
+import DeviceDonut from "./components/DeviceDonut";
+import TrafficSourcesCard from "./components/TrafficSourcesCard";
+import TopPagesTable from "./components/TopPagesTable";
+import GeographyCard from "./components/GeographyCard";
+import TechnologyCard from "./components/TechnologyCard";
+import CampaignTable from "./components/CampaignTable";
+import LoadingSkeleton from "./components/LoadingSkeleton";
 
 export default function StudioAnalyticsPage() {
   const { isDark } = useTheme();
-  const [isLoggingOut, setIsLoggingOut] = useState(false);
 
+  // Navigation & Filter States
+  const [activeTab, setActiveTab] = useState("overview");
+  const [selectedRange, setSelectedRange] = useState("7d");
+  const [data, setData] = useState(() => getMockAnalytics("7d"));
+  const [isLoading, setIsLoading] = useState(false);
+  const [isRefreshing, setIsRefreshing] = useState(false);
+  const [isMobileNavOpen, setIsMobileNavOpen] = useState(false);
+  const [lastUpdated, setLastUpdated] = useState("Just now");
+  const [isLoggingOut, setIsLoggingOut] = useState(false);
+  const [, startTransition] = useTransition();
+
+  // Load analytics dataset when range changes
+  useEffect(() => {
+    let isMounted = true;
+    setIsLoading(true);
+
+    fetchAnalyticsData(selectedRange).then((result) => {
+      if (!isMounted) return;
+      startTransition(() => {
+        setData(result);
+        setIsLoading(false);
+        const now = new Date();
+        setLastUpdated(
+          now.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })
+        );
+      });
+    });
+
+    return () => {
+      isMounted = false;
+    };
+  }, [selectedRange]);
+
+  // Handle manual refresh
+  const handleRefresh = async () => {
+    if (isRefreshing) return;
+    setIsRefreshing(true);
+
+    try {
+      const refreshedData = await fetchAnalyticsData(selectedRange);
+      setData(refreshedData);
+      const now = new Date();
+      setLastUpdated(
+        now.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })
+      );
+    } catch (err) {
+      console.error("Refresh failed:", err);
+    } finally {
+      setTimeout(() => setIsRefreshing(false), 450);
+    }
+  };
+
+  // Secure Logout Handler
   const handleLogout = async () => {
     if (isLoggingOut) return;
     setIsLoggingOut(true);
@@ -26,206 +92,187 @@ export default function StudioAnalyticsPage() {
 
   return (
     <div
-      className={styles.dashboardWrapper}
+      className={styles.dashboardShell}
       data-theme={isDark ? "dark" : "light"}
       suppressHydrationWarning={true}
     >
-      {/* Studio Navigation Bar */}
-      <header className={styles.topBar}>
-        <div className={styles.brandArea}>
-          <div className={styles.logoCircle}>
-            <img
-              src="/logo-icon.png"
-              alt="Aeethod Logo"
-              className={styles.brandLogo}
-            />
-          </div>
-          <div className={styles.brandText}>
-            <span className={styles.brandTitle}>Aeethod Studio</span>
-            <span className={styles.brandSubtitle}>
-              Systems Operations &amp; Telemetry
-            </span>
-          </div>
+      {/* Left Sidebar / Navigation */}
+      <Sidebar
+        activeTab={activeTab}
+        onSelectTab={setActiveTab}
+        isMobileOpen={isMobileNavOpen}
+        onCloseMobile={() => setIsMobileNavOpen(false)}
+        onLogout={handleLogout}
+        isLoggingOut={isLoggingOut}
+      />
+
+      {/* Main Content Area */}
+      <div className={styles.mainWrapper}>
+        <div className={styles.contentContainer}>
+          {/* Header */}
+          <Header
+            selectedRange={selectedRange}
+            onRangeChange={setSelectedRange}
+            isRefreshing={isRefreshing}
+            onRefresh={handleRefresh}
+            onToggleMobileMenu={() => setIsMobileNavOpen(true)}
+            lastUpdated={lastUpdated}
+          />
+
+          {/* Loading Skeleton during filter transitions */}
+          {isLoading || !data ? (
+            <LoadingSkeleton />
+          ) : (
+            <main className={styles.dashboardBody}>
+              {/* Overview Tab (Full 360 View) */}
+              {activeTab === "overview" && (
+                <>
+                  {/* 1. Top 8 Metrics */}
+                  <MetricCards
+                    metrics={data.metrics}
+                    comparisonLabel={data.comparisonLabel}
+                  />
+
+                  {/* 2. Traffic & Pageviews Line/Area Chart */}
+                  <TrafficChart
+                    data={data.trafficChart}
+                    rangeLabel={data.rangeLabel}
+                  />
+
+                  {/* 3. Agency Conversion Funnel */}
+                  <FunnelChart funnel={data.funnel} />
+
+                  {/* 4. Two Column: Devices & Traffic Sources */}
+                  <div className={styles.twoColGrid}>
+                    <DeviceDonut devices={data.devices} />
+                    <TrafficSourcesCard sources={data.trafficSources} />
+                  </div>
+
+                  {/* 5. Top Pages Table */}
+                  <TopPagesTable pages={data.topPages} />
+
+                  {/* 6. Two Column: Geography & Technology */}
+                  <div className={styles.twoColGrid}>
+                    <GeographyCard geography={data.geography} />
+                    <TechnologyCard technology={data.technology} />
+                  </div>
+
+                  {/* 7. Campaign Performance Table */}
+                  <CampaignTable campaigns={data.campaigns} />
+                </>
+              )}
+
+              {/* Traffic Tab */}
+              {activeTab === "traffic" && (
+                <>
+                  <MetricCards
+                    metrics={data.metrics}
+                    comparisonLabel={data.comparisonLabel}
+                  />
+                  <TrafficChart
+                    data={data.trafficChart}
+                    rangeLabel={data.rangeLabel}
+                  />
+                  <div className={styles.twoColGrid}>
+                    <TrafficSourcesCard sources={data.trafficSources} />
+                    <DeviceDonut devices={data.devices} />
+                  </div>
+                </>
+              )}
+
+              {/* Pages Tab */}
+              {activeTab === "pages" && (
+                <>
+                  <TopPagesTable pages={data.topPages} />
+                  <div className={styles.twoColGrid}>
+                    <TechnologyCard technology={data.technology} />
+                    <DeviceDonut devices={data.devices} />
+                  </div>
+                </>
+              )}
+
+              {/* Audience Tab */}
+              {activeTab === "audience" && (
+                <>
+                  <GeographyCard geography={data.geography} />
+                  <div className={styles.twoColGrid}>
+                    <DeviceDonut devices={data.devices} />
+                    <TechnologyCard technology={data.technology} />
+                  </div>
+                </>
+              )}
+
+              {/* Conversions Tab */}
+              {activeTab === "conversions" && (
+                <>
+                  <FunnelChart funnel={data.funnel} />
+                  <CampaignTable campaigns={data.campaigns} />
+                </>
+              )}
+
+              {/* Campaigns Tab */}
+              {activeTab === "campaigns" && (
+                <>
+                  <CampaignTable campaigns={data.campaigns} />
+                  <TrafficSourcesCard sources={data.trafficSources} />
+                </>
+              )}
+
+              {/* Settings / System Telemetry Tab */}
+              {activeTab === "settings" && (
+                <div className={styles.settingsPanel}>
+                  <div className={styles.settingsCard}>
+                    <h2 className={styles.settingsTitle}>Database &amp; Pipeline Status</h2>
+                    <p className={styles.settingsDesc}>
+                      Aeethod Studio private telemetric telemetry architecture status.
+                    </p>
+
+                    <div className={styles.statusList}>
+                      <div className={styles.statusRow}>
+                        <div className={styles.statusLeft}>
+                          <span className={styles.statusDotLive} />
+                          <span className={styles.statusName}>PostgreSQL Database Foundation</span>
+                        </div>
+                        <span className={styles.statusTagActive}>Verified &amp; Connected</span>
+                      </div>
+
+                      <div className={styles.statusRow}>
+                        <div className={styles.statusLeft}>
+                          <span className={styles.statusDotLive} />
+                          <span className={styles.statusName}>Row-Level Security (RLS)</span>
+                        </div>
+                        <span className={styles.statusTagActive}>Enforced (No Public Access)</span>
+                      </div>
+
+                      <div className={styles.statusRow}>
+                        <div className={styles.statusLeft}>
+                          <span className={styles.statusDotLive} />
+                          <span className={styles.statusName}>Data Privacy Compliance</span>
+                        </div>
+                        <span className={styles.statusTagActive}>Zero Raw IP Persistence</span>
+                      </div>
+
+                      <div className={styles.statusRow}>
+                        <div className={styles.statusLeft}>
+                          <span className={styles.statusDotNeutral} />
+                          <span className={styles.statusName}>Tracking Engine Ingestion</span>
+                        </div>
+                        <span className={styles.statusTagPending}>Phase 2 Pending</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              )}
+            </main>
+          )}
+
+          {/* Footer note */}
+          <footer className={styles.dashboardFooter}>
+            <span>Aeethod Studio Telemetry · Private 360° Analytics v1.0</span>
+            <span className={styles.footerNodeBadge}>NODE SECURED</span>
+          </footer>
         </div>
-
-        <div className={styles.topActions}>
-          <div className={styles.statusPill}>
-            <span className={styles.liveDot} />
-            NODE SECURED
-          </div>
-
-          <Link href="/admin" className={styles.navLinkBtn}>
-            Content Manager
-          </Link>
-
-          <button
-            onClick={handleLogout}
-            disabled={isLoggingOut}
-            className={styles.logoutBtn}
-            aria-label="Log out of Aeethod Studio"
-          >
-            {isLoggingOut ? "Logging out..." : "Log out"}
-          </button>
-        </div>
-      </header>
-
-      {/* Main Dashboard Content */}
-      <main className={styles.mainContainer}>
-        <div className={styles.sectionHeader}>
-          <div>
-            <h1 className={styles.pageTitle}>Studio Analytics</h1>
-            <p className={styles.pageSubtext}>
-              Real-time telemetry, autonomous pipeline operations, and system nodes.
-            </p>
-          </div>
-        </div>
-
-        {/* Top-Level Metrics Grid */}
-        <div className={styles.metricsGrid}>
-          <div className={styles.metricCard}>
-            <span className={styles.metricLabel}>Active System Nodes</span>
-            <span className={styles.metricValue}>6 / 6</span>
-            <span className={styles.metricDelta}>100% Operational</span>
-          </div>
-
-          <div className={styles.metricCard}>
-            <span className={styles.metricLabel}>Intelligence Latency</span>
-            <span className={styles.metricValue}>24ms</span>
-            <span className={styles.metricDelta}>Optimal Speed</span>
-          </div>
-
-          <div className={styles.metricCard}>
-            <span className={styles.metricLabel}>Telemetry Events (24h)</span>
-            <span className={styles.metricValue}>18,420</span>
-            <span className={styles.metricDelta}>+14.2% vs yesterday</span>
-          </div>
-
-          <div className={styles.metricCard}>
-            <span className={styles.metricLabel}>Active Consultations</span>
-            <span className={styles.metricValue}>12</span>
-            <span className={styles.metricDelta}>Client Pipelines</span>
-          </div>
-        </div>
-
-        {/* Two-Column Telemetry & Activity Feed */}
-        <div className={styles.dashboardCols}>
-          {/* Autonomous Node Architecture */}
-          <div className={styles.panelCard}>
-            <div className={styles.panelHeader}>
-              <h2 className={styles.panelHeading}>Subsystem Nodes</h2>
-              <span className={styles.panelBadge}>Core Health 100%</span>
-            </div>
-
-            <div className={styles.nodeList}>
-              <div className={styles.nodeRow}>
-                <div className={styles.nodeInfo}>
-                  <span className={styles.nodeName}>
-                    Core Architecture Node (Smith)
-                  </span>
-                  <span className={styles.nodeDetail}>
-                    Subagent Engine &amp; Conversational Reasoning
-                  </span>
-                </div>
-                <div className={styles.nodeStatus}>
-                  <span className={styles.liveDot} /> Active
-                </div>
-              </div>
-
-              <div className={styles.nodeRow}>
-                <div className={styles.nodeInfo}>
-                  <span className={styles.nodeName}>
-                    Content Publishing Pipeline
-                  </span>
-                  <span className={styles.nodeDetail}>
-                    Works Case Studies, Research &amp; Blog Dispatch
-                  </span>
-                </div>
-                <div className={styles.nodeStatus}>
-                  <span className={styles.liveDot} /> Synchronized
-                </div>
-              </div>
-
-              <div className={styles.nodeRow}>
-                <div className={styles.nodeInfo}>
-                  <span className={styles.nodeName}>
-                    Neumorphic Edge Asset Cache
-                  </span>
-                  <span className={styles.nodeDetail}>
-                    Instant WebP &amp; SVG Distribution
-                  </span>
-                </div>
-                <div className={styles.nodeStatus}>
-                  <span className={styles.liveDot} /> Optimized
-                </div>
-              </div>
-
-              <div className={styles.nodeRow}>
-                <div className={styles.nodeInfo}>
-                  <span className={styles.nodeName}>
-                    Admin Security Gateway (/yamal19)
-                  </span>
-                  <span className={styles.nodeDetail}>
-                    Edge Middleware, Argon2/Scrypt Verification
-                  </span>
-                </div>
-                <div className={styles.nodeStatus}>
-                  <span className={styles.liveDot} /> Protected
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Operational Audit Log */}
-          <div className={styles.panelCard}>
-            <div className={styles.panelHeader}>
-              <h2 className={styles.panelHeading}>Recent Audit Log</h2>
-              <span className={styles.panelBadge}>Encrypted</span>
-            </div>
-
-            <div className={styles.activityList}>
-              <div className={styles.activityItem}>
-                <span className={styles.activityDot} />
-                <div className={styles.activityContent}>
-                  <span className={styles.activityTitle}>
-                    Admin gateway session authenticated
-                  </span>
-                  <span className={styles.activityTime}>Just now</span>
-                </div>
-              </div>
-
-              <div className={styles.activityItem}>
-                <span className={styles.activityDot} />
-                <div className={styles.activityContent}>
-                  <span className={styles.activityTitle}>
-                    Work project cards WebP skeleton optimized
-                  </span>
-                  <span className={styles.activityTime}>1 hour ago</span>
-                </div>
-              </div>
-
-              <div className={styles.activityItem}>
-                <span className={styles.activityDot} />
-                <div className={styles.activityContent}>
-                  <span className={styles.activityTitle}>
-                    Chatbox launcher aligned to bottom-right corner
-                  </span>
-                  <span className={styles.activityTime}>2 hours ago</span>
-                </div>
-              </div>
-
-              <div className={styles.activityItem}>
-                <span className={styles.activityDot} />
-                <div className={styles.activityContent}>
-                  <span className={styles.activityTitle}>
-                    System telemetry health check passed
-                  </span>
-                  <span className={styles.activityTime}>4 hours ago</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </main>
+      </div>
     </div>
   );
 }

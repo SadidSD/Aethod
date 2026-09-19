@@ -1,0 +1,212 @@
+/* TopPagesTable Styling — Aeethod Studio Analytics */
+
+.tableCard {
+  background: #F4F4F6;
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.75);
+  padding: 24px;
+  box-shadow:
+    6px 6px 14px rgba(163, 177, 198, 0.35),
+    -6px -6px 14px rgba(255, 255, 255, 0.95);
+  margin-bottom: 28px;
+  box-sizing: border-box;
+}
+
+[data-theme="dark"] .tableCard {
+  background: #201E2B;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  box-shadow:
+    6px 6px 16px rgba(0, 0, 0, 0.45),
+    -4px -4px 12px rgba(45, 43, 60, 0.3);
+}
+
+.cardHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.cardTitle {
+  font-family: var(--font-sora), sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--text-primary, #1A1A2E);
+  margin: 0 0 4px 0;
+}
+
+.cardSubtext {
+  font-size: 12.5px;
+  color: var(--text-muted, #7A7A8E);
+  margin: 0;
+}
+
+.totalBadge {
+  font-family: var(--font-inter), sans-serif;
+  font-size: 11px;
+  color: var(--text-muted, #7A7A8E);
+  background: rgba(0, 0, 0, 0.04);
+  padding: 3px 8px;
+  border-radius: 12px;
+}
+
+[data-theme="dark"] .totalBadge {
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.tableScrollWrapper {
+  overflow-x: auto;
+  scrollbar-width: thin;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  min-width: 600px;
+}
+
+.table th {
+  font-family: var(--font-inter), sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-muted, #7A7A8E);
+  padding: 10px 14px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+[data-theme="dark"] .table th {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.thPage {
+  width: 44%;
+}
+
+.thViews {
+  width: 24%;
+}
+
+.thUnique {
+  width: 16%;
+}
+
+.thTime {
+  width: 16%;
+}
+
+.tr {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+  transition: background 0.15s ease;
+}
+
+[data-theme="dark"] .tr {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.tr:hover {
+  background: rgba(0, 0, 0, 0.02);
+}
+
+[data-theme="dark"] .tr:hover {
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.tdPage {
+  padding: 14px 14px;
+}
+
+.pageTitleMeta {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.pageTitleText {
+  font-family: var(--font-inter), sans-serif;
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--text-primary, #1A1A2E);
+}
+
+.pathBadge {
+  display: inline-block;
+  font-family: monospace;
+  font-size: 11px;
+  color: var(--accent-purple, #7C5CFC);
+  background: rgba(124, 92, 252, 0.07);
+  padding: 1px 6px;
+  border-radius: 6px;
+  width: fit-content;
+}
+
+.tdViews {
+  padding: 14px 14px;
+}
+
+.viewsCell {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.viewsCount {
+  font-family: var(--font-sora), sans-serif;
+  font-size: 13.5px;
+  font-weight: 700;
+  color: var(--text-primary, #1A1A2E);
+}
+
+.viewBarTrack {
+  width: 100%;
+  max-width: 130px;
+  height: 4px;
+  background: rgba(0, 0, 0, 0.06);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+[data-theme="dark"] .viewBarTrack {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.viewBarFill {
+  height: 100%;
+  border-radius: 4px;
+  background: linear-gradient(90deg, #60A5FA 0%, #7C5CFC 100%);
+}
+
+.tdUnique {
+  padding: 14px 14px;
+}
+
+.uniqueCount {
+  font-family: var(--font-sora), sans-serif;
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--text-secondary, #4A4A5E);
+}
+
+.tdTime {
+  padding: 14px 14px;
+}
+
+.dwellTimePill {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-family: var(--font-inter), sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--text-secondary, #4A4A5E);
+  background: rgba(0, 0, 0, 0.04);
+  padding: 3px 8px;
+  border-radius: 12px;
+}
+
+[data-theme="dark"] .dwellTimePill {
+  background: rgba(255, 255, 255, 0.05);
+}

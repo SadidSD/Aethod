@@ -1,0 +1,206 @@
+/* CampaignTable Styling — Aeethod Studio Analytics */
+
+.tableCard {
+  background: #F4F4F6;
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.75);
+  padding: 24px;
+  box-shadow:
+    6px 6px 14px rgba(163, 177, 198, 0.35),
+    -6px -6px 14px rgba(255, 255, 255, 0.95);
+  margin-bottom: 28px;
+  box-sizing: border-box;
+}
+
+[data-theme="dark"] .tableCard {
+  background: #201E2B;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  box-shadow:
+    6px 6px 16px rgba(0, 0, 0, 0.45),
+    -4px -4px 12px rgba(45, 43, 60, 0.3);
+}
+
+.cardHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.cardTitle {
+  font-family: var(--font-sora), sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--text-primary, #1A1A2E);
+  margin: 0 0 4px 0;
+}
+
+.cardSubtext {
+  font-size: 12.5px;
+  color: var(--text-muted, #7A7A8E);
+  margin: 0;
+}
+
+.campaignBadge {
+  font-family: var(--font-inter), sans-serif;
+  font-size: 11px;
+  color: var(--text-muted, #7A7A8E);
+  background: rgba(0, 0, 0, 0.04);
+  padding: 3px 8px;
+  border-radius: 12px;
+}
+
+[data-theme="dark"] .campaignBadge {
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.tableScrollWrapper {
+  overflow-x: auto;
+  scrollbar-width: thin;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  min-width: 650px;
+}
+
+.table th {
+  font-family: var(--font-inter), sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-muted, #7A7A8E);
+  padding: 10px 14px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+[data-theme="dark"] .table th {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.thCampaign {
+  width: 28%;
+}
+
+.thSource {
+  width: 26%;
+}
+
+.thSessions {
+  width: 11%;
+}
+
+.thVisitors {
+  width: 11%;
+}
+
+.thConversions {
+  width: 12%;
+}
+
+.thRate {
+  width: 12%;
+}
+
+.tr {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+  transition: background 0.15s ease;
+}
+
+[data-theme="dark"] .tr {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.tr:hover {
+  background: rgba(0, 0, 0, 0.02);
+}
+
+[data-theme="dark"] .tr:hover {
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.tdCampaign {
+  padding: 14px 14px;
+}
+
+.campaignName {
+  font-family: var(--font-inter), sans-serif;
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--text-primary, #1A1A2E);
+}
+
+.tdSource {
+  padding: 14px 14px;
+}
+
+.sourceBadges {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.sourceTag {
+  font-family: var(--font-inter), sans-serif;
+  font-size: 11.5px;
+  font-weight: 600;
+  color: var(--text-primary, #1A1A2E);
+  background: rgba(0, 0, 0, 0.04);
+  padding: 2px 7px;
+  border-radius: 6px;
+}
+
+[data-theme="dark"] .sourceTag {
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.mediumTag {
+  font-family: monospace;
+  font-size: 10.5px;
+  color: var(--accent-purple, #7C5CFC);
+  background: rgba(124, 92, 252, 0.08);
+  padding: 2px 6px;
+  border-radius: 6px;
+}
+
+.tdSessions,
+.tdVisitors {
+  padding: 14px 14px;
+}
+
+.num {
+  font-family: var(--font-sora), sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-secondary, #4A4A5E);
+}
+
+.tdConversions {
+  padding: 14px 14px;
+}
+
+.conversionBadge {
+  display: inline-block;
+  font-family: var(--font-sora), sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  color: #10B981;
+  background: rgba(16, 185, 129, 0.08);
+  padding: 2px 7px;
+  border-radius: 8px;
+}
+
+.tdRate {
+  padding: 14px 14px;
+}
+
+.rateHighlight {
+  font-family: var(--font-sora), sans-serif;
+  font-size: 13.5px;
+  font-weight: 700;
+  color: var(--accent-purple, #7C5CFC);
+}

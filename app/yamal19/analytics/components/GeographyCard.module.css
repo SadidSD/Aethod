@@ -1,0 +1,235 @@
+/* GeographyCard Styling — Aeethod Studio Analytics */
+
+.card {
+  background: #F4F4F6;
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.75);
+  padding: 24px;
+  box-shadow:
+    6px 6px 14px rgba(163, 177, 198, 0.35),
+    -6px -6px 14px rgba(255, 255, 255, 0.95);
+  box-sizing: border-box;
+}
+
+[data-theme="dark"] .card {
+  background: #201E2B;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  box-shadow:
+    6px 6px 16px rgba(0, 0, 0, 0.45),
+    -4px -4px 12px rgba(45, 43, 60, 0.3);
+}
+
+.cardHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.cardTitle {
+  font-family: var(--font-sora), sans-serif;
+  font-size: 17px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--text-primary, #1A1A2E);
+  margin: 0 0 3px 0;
+}
+
+.cardSubtext {
+  font-size: 12px;
+  color: var(--text-muted, #7A7A8E);
+  margin: 0;
+}
+
+.countryCountBadge {
+  font-family: var(--font-inter), sans-serif;
+  font-size: 11px;
+  color: var(--text-muted, #7A7A8E);
+  background: rgba(0, 0, 0, 0.04);
+  padding: 3px 8px;
+  border-radius: 12px;
+}
+
+[data-theme="dark"] .countryCountBadge {
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.geoGrid {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 28px;
+}
+
+.geoCol {
+  display: flex;
+  flex-direction: column;
+}
+
+.colHeader {
+  font-family: var(--font-inter), sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-muted, #7A7A8E);
+  margin-bottom: 12px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+[data-theme="dark"] .colHeader {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+/* Country Rows */
+.countryList {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.countryRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 4px 0;
+}
+
+.countryLeft {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 125px;
+}
+
+.countryCodeBadge {
+  font-family: monospace;
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--accent-purple, #7C5CFC);
+  background: rgba(124, 92, 252, 0.08);
+  padding: 2px 5px;
+  border-radius: 4px;
+}
+
+.countryName {
+  font-family: var(--font-inter), sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-primary, #1A1A2E);
+}
+
+.countryRight {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex: 1;
+  justify-content: flex-end;
+}
+
+.barTrack {
+  flex: 1;
+  max-width: 110px;
+  height: 5px;
+  background: rgba(0, 0, 0, 0.05);
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+[data-theme="dark"] .barTrack {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.barFill {
+  height: 100%;
+  border-radius: 6px;
+  background: linear-gradient(90deg, #60A5FA 0%, #7C5CFC 100%);
+}
+
+.countryCount {
+  font-family: var(--font-sora), sans-serif;
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--text-primary, #1A1A2E);
+  min-width: 38px;
+  text-align: right;
+}
+
+.countryPct {
+  font-size: 11px;
+  color: var(--text-muted, #7A7A8E);
+  min-width: 36px;
+  text-align: right;
+}
+
+/* City Rows */
+.cityList {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.cityRow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 10px;
+  border-radius: 10px;
+  background: rgba(0, 0, 0, 0.02);
+}
+
+[data-theme="dark"] .cityRow {
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.cityRank {
+  font-family: var(--font-sora), sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--accent-purple, #7C5CFC);
+  width: 22px;
+}
+
+.cityInfo {
+  flex: 1;
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+}
+
+.cityName {
+  font-family: var(--font-inter), sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-primary, #1A1A2E);
+}
+
+.cityCountry {
+  font-size: 11px;
+  color: var(--text-muted, #7A7A8E);
+}
+
+.citySessions {
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+}
+
+.cityCount {
+  font-family: var(--font-sora), sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text-primary, #1A1A2E);
+}
+
+.cityUnit {
+  font-size: 10.5px;
+  color: var(--text-muted, #7A7A8E);
+}
+
+@media (max-width: 768px) {
+  .geoGrid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+}
