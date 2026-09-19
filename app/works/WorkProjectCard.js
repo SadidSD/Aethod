@@ -20,6 +20,9 @@ export default function WorkProjectCard({ work, playClickSound }) {
 
   const handleLiveLinkClick = (e) => {
     e.stopPropagation();
+    if (liveUrl === "#") {
+      e.preventDefault();
+    }
     if (playClickSound) playClickSound();
   };
 

@@ -106,7 +106,7 @@ export default function WorkDetailPage() {
             <span className={styles.metaLabel}>Client: <span className={styles.metaValue}>{work.client || "N/A"}</span></span>
             <span className={styles.metaLabel}>Date: <span className={styles.metaValue}>{work.date || "N/A"}</span></span>
             <span className={styles.metaLabel}>Role: <span className={styles.metaValue}>{work.role || "N/A"}</span></span>
-            {work.link && (
+            {work.link && work.link !== "#" && (
               <a 
                 href={work.link} 
                 target="_blank" 

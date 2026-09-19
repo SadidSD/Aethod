@@ -219,8 +219,8 @@
 /* Dynamic Works Cards Grid */
 .worksGrid {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 32px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
   width: 100%;
 }
 
@@ -486,6 +486,13 @@
 }
 
 /* ========== RESPONSIVE DESIGN ========== */
+@media (max-width: 1080px) and (min-width: 769px) {
+  .worksGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 24px !important;
+  }
+}
+
 @media (max-width: 768px) {
   .mainContainer {
     padding: 80px 16px 60px !important;
