@@ -7,7 +7,8 @@ import styles from "./page.module.css";
 import { useTheme } from "../context/ThemeContext";
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
-import WorkProjectCard from "./WorkProjectCard";
+import WorkProjectCard, { WorkCardSkeleton } from "./WorkProjectCard";
+import initialWorksData from "@/content/works.json";
 
 function InlineSVG({ src, className }) {
   const [svgContent, setSvgContent] = useState("");
@@ -39,7 +40,8 @@ export default function WorksPage() {
   const { isDark } = useTheme();
   const [activeFilter, setActiveFilter] = useState("All");
   const [searchQuery, setSearchQuery] = useState("");
-  const [works, setWorks] = useState([]);
+  const [works, setWorks] = useState(initialWorksData || []);
+  const [isLoading, setIsLoading] = useState(!initialWorksData || initialWorksData.length === 0);
 
   const playClickSound = useCallback(() => {
     try {
@@ -64,8 +66,16 @@ export default function WorksPage() {
   useEffect(() => {
     fetch("/api/content?type=works", { cache: "no-store" })
       .then((res) => res.json())
-      .then((data) => setWorks(data))
-      .catch((err) => console.error("Failed to load works:", err));
+      .then((data) => {
+        if (Array.isArray(data) && data.length > 0) {
+          setWorks(data);
+        }
+        setIsLoading(false);
+      })
+      .catch((err) => {
+        console.error("Failed to load works:", err);
+        setIsLoading(false);
+      });
   }, []);
 
   const filters = [
@@ -160,11 +170,18 @@ export default function WorksPage() {
 
           {/* Dynamic Works Grid */}
           <section className={styles.worksGrid}>
-            {filteredWorks.length > 0 ? (
-              filteredWorks.map((work) => (
+            {isLoading && works.length === 0 ? (
+              <>
+                <WorkCardSkeleton />
+                <WorkCardSkeleton />
+                <WorkCardSkeleton />
+              </>
+            ) : filteredWorks.length > 0 ? (
+              filteredWorks.map((work, index) => (
                 <WorkProjectCard
                   key={work.id}
                   work={work}
+                  priority={index < 3}
                   playClickSound={playClickSound}
                 />
               ))

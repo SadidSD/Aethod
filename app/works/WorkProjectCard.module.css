@@ -84,10 +84,39 @@
   border-radius: 50%;
   background: #94A3B8;
   opacity: 0.9;
+  transition: opacity 0.3s ease;
 }
 
 [data-theme='dark'] .browserDot {
   background: #71717a;
+}
+
+/* Premium Dot Pulse Animation for Loading State */
+@keyframes dotPulse {
+  0%, 100% {
+    opacity: 0.3;
+    transform: scale(0.92);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.08);
+  }
+}
+
+.dotPulsing {
+  animation: dotPulse 1.4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+.browserDots .dotPulsing:nth-child(1) {
+  animation-delay: 0s;
+}
+
+.browserDots .dotPulsing:nth-child(2) {
+  animation-delay: 0.22s;
+}
+
+.browserDots .dotPulsing:nth-child(3) {
+  animation-delay: 0.44s;
 }
 
 /* Domain Pill */
@@ -127,12 +156,67 @@
   position: relative;
   overflow: hidden;
   text-decoration: none;
-  background: #FFFFFF;
+  background: #EEF2F6;
   aspect-ratio: 16 / 9.6;
 }
 
 [data-theme='dark'] .browserImageLink {
-  background: #18181b;
+  background: #202227;
+}
+
+/* Skeleton Hero Placeholder Layer */
+.skeletonHero {
+  position: absolute;
+  inset: 0;
+  background: #EEF2F6;
+  transition: opacity 0.28s ease;
+  z-index: 1;
+  pointer-events: none;
+}
+
+[data-theme='dark'] .skeletonHero {
+  background: #202227;
+}
+
+.skeletonHeroFaded {
+  opacity: 0;
+}
+
+/* Subtle Skeleton Shimmer */
+@keyframes skeletonShimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.skeletonShimmer {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.5) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  background-size: 200% 100%;
+  animation: skeletonShimmer 1.8s ease-in-out infinite;
+}
+
+[data-theme='dark'] .skeletonShimmer {
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.07) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  background-size: 200% 100%;
+}
+
+.pictureWrapper {
+  display: contents;
 }
 
 .browserImage {
@@ -140,7 +224,14 @@
   height: 100%;
   object-fit: cover;
   display: block;
-  transition: transform 0.5s ease;
+  position: relative;
+  z-index: 2;
+  opacity: 0;
+  transition: opacity 0.28s cubic-bezier(0.2, 0, 0.2, 1), transform 0.5s ease;
+}
+
+.imageLoaded {
+  opacity: 1;
 }
 
 .card:hover .browserImage {
@@ -172,16 +263,54 @@
   align-items: center;
   flex-shrink: 0;
   gap: 6px;
+  position: relative;
 }
 
-.avatar {
+.avatarWrapper {
+  position: relative;
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  object-fit: cover;
-  display: block;
+  overflow: hidden;
   background: #000000;
   border: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+[data-theme='dark'] .avatarWrapper {
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+.avatar {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
+  opacity: 0;
+  transition: opacity 0.25s ease;
+  position: relative;
+  z-index: 2;
+}
+
+.avatarLoaded {
+  opacity: 1;
+}
+
+.avatarSkeleton {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: #EEF2F6;
+  transition: opacity 0.25s ease;
+  z-index: 1;
+}
+
+[data-theme='dark'] .avatarSkeleton {
+  background: #27272a;
+}
+
+.avatarSkeletonFaded {
+  opacity: 0;
 }
 
 [data-theme='dark'] .avatar {
@@ -314,3 +443,73 @@
     display: none;
   }
 }
+
+/* Standalone Card Skeleton Specific Styles */
+@keyframes skeletonPulse {
+  0%, 100% {
+    opacity: 0.45;
+  }
+  50% {
+    opacity: 0.85;
+  }
+}
+
+.skeletonDomainBar {
+  width: 76px;
+  height: 9px;
+  border-radius: 4px;
+  background: rgba(148, 163, 184, 0.28);
+  animation: skeletonPulse 1.6s ease-in-out infinite;
+}
+
+[data-theme='dark'] .skeletonDomainBar {
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.skeletonYearBar {
+  width: 26px;
+  height: 10px;
+  border-radius: 4px;
+  background: rgba(148, 163, 184, 0.28);
+  animation: skeletonPulse 1.6s ease-in-out infinite;
+}
+
+[data-theme='dark'] .skeletonYearBar {
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.skeletonTitleBar {
+  width: 108px;
+  height: 16px;
+  border-radius: 4px;
+  background: rgba(15, 23, 42, 0.12);
+  animation: skeletonPulse 1.6s ease-in-out infinite;
+}
+
+[data-theme='dark'] .skeletonTitleBar {
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.skeletonTagBar {
+  height: 19px;
+  border-radius: 6px;
+  background: #E2E8F0;
+  animation: skeletonPulse 1.6s ease-in-out infinite;
+}
+
+[data-theme='dark'] .skeletonTagBar {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.skeletonLinkBar {
+  width: 82px;
+  height: 15px;
+  border-radius: 4px;
+  background: rgba(71, 85, 105, 0.18);
+  animation: skeletonPulse 1.6s ease-in-out infinite;
+}
+
+[data-theme='dark'] .skeletonLinkBar {
+  background: rgba(255, 255, 255, 0.12);
+}
+
