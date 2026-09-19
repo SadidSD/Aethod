@@ -7,6 +7,7 @@ import styles from "./page.module.css";
 import { useTheme } from "../context/ThemeContext";
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
+import WorkProjectCard from "./WorkProjectCard";
 
 function InlineSVG({ src, className }) {
   const [svgContent, setSvgContent] = useState("");
@@ -160,96 +161,13 @@ export default function WorksPage() {
           {/* Dynamic Works Grid */}
           <section className={styles.worksGrid}>
             {filteredWorks.length > 0 ? (
-              filteredWorks.map((work) => {
-                return (
-                  <div 
-                    key={work.id} 
-                    className={styles.workCard}
-                    onClick={(e) => handleCardClick(e, work.id)}
-                  >
-                    {/* The cover image - clicking it opens the case study page */}
-                    <Link 
-                      href={`/works/${work.id}`}
-                      className={styles.workCardImageLink}
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        playClickSound();
-                      }}
-                      aria-label={`${work.name} Case Study`}
-                    >
-                      <div className={styles.workCardImageContainer}>
-                        {work.image && (
-                          <img 
-                            src={work.image} 
-                            alt={`${work.name} mockup`} 
-                            className={styles.workCardImage} 
-                            style={work.objectPosition ? { objectPosition: work.objectPosition } : undefined}
-                          />
-                        )}
-                      </div>
-                    </Link>
-
-                    {/* Card footer details */}
-                    <div className={styles.workCardFooter}>
-                      {/* Left group (avatar, title, tag) - clicking it opens the case study page */}
-                      <Link 
-                        href={`/works/${work.id}`}
-                        className={styles.workCardLeftLink}
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          playClickSound();
-                        }}
-                      >
-                        {work.avatar && (
-                          <img 
-                            src={work.avatar} 
-                            alt={work.name} 
-                            className={styles.workCardAvatar} 
-                          />
-                        )}
-                        <span className={styles.workCardAuthorName}>{work.name}</span>
-                        {work.tag && (
-                          <span className={styles.workCardTagBadge}>{work.tag}</span>
-                        )}
-                      </Link>
-
-                      {/* Check button: directly opens the LIVE website (e.g. murakkaz.com or rng-gamez.com) in new tab */}
-                      {work.link ? (
-                        <a 
-                          href={work.link}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className={styles.workCardRightGroup}
-                          onClick={(e) => {
-                            e.stopPropagation();
-                            playClickSound();
-                          }}
-                          title={`Visit ${work.name} Live Website`}
-                        >
-                          <span className={styles.workCardCheckText}>Check</span>
-                          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className={styles.checkIconSmall}>
-                            <path d="M7 17L17 7M17 17V7H7" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
-                          </svg>
-                        </a>
-                      ) : (
-                        <Link 
-                          href={`/works/${work.id}`}
-                          className={styles.workCardRightGroup}
-                          onClick={(e) => {
-                            e.stopPropagation();
-                            playClickSound();
-                          }}
-                        >
-                          <span className={styles.workCardCheckText}>Check</span>
-                          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className={styles.checkIconSmall}>
-                            <path d="M7 17L17 7M17 17V7H7" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
-                          </svg>
-                        </Link>
-                      )}
-                    </div>
-                  </div>
-                );
-              })
+              filteredWorks.map((work) => (
+                <WorkProjectCard
+                  key={work.id}
+                  work={work}
+                  playClickSound={playClickSound}
+                />
+              ))
             ) : (
               <div className={styles.noWorksCard}>
                 <p>No projects found matching your filter selection.</p>

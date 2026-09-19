@@ -219,8 +219,8 @@
 /* Dynamic Works Cards Grid */
 .worksGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, 310px);
-  gap: 36px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 32px;
   width: 100%;
 }
 
@@ -500,21 +500,14 @@
     gap: 16px !important;
   }
   .worksGrid {
-    grid-template-columns: repeat(auto-fill, 310px) !important;
-    justify-content: center !important;
+    grid-template-columns: 1fr !important;
     gap: 24px !important;
-  }
-  .workCard {
-    width: 310px !important;
-    height: 300px !important;
-    border-radius: 10px !important;
-    padding: 0 !important;
   }
 }
 
 @media (max-width: 480px) {
   .worksGrid {
-    grid-template-columns: 310px !important;
-    justify-content: center !important;
+    grid-template-columns: 1fr !important;
+    gap: 20px !important;
   }
 }
