@@ -1,92 +1,75 @@
 <svg width="73" height="73" viewBox="0 0 73 73" fill="none" xmlns="http://www.w3.org/2000/svg">
-<g filter="url(#filter0_ddiiii_1184_1291)">
-<path d="M70 36.5C70 55.0015 55.0015 70 36.5 70C24.805 70 14.5098 64.0072 8.51753 54.925C5.02997 49.639 3 43.3066 3 36.5C3 17.9985 17.9985 3 36.5 3C55.0015 3 70 17.9985 70 36.5Z" fill="#F2F1EF"/>
-</g>
-<g filter="url(#filter1_ddddii_1184_1291)">
-<circle cx="36.4992" cy="36.5" r="26.8" fill="url(#paint0_linear_1184_1291)"/>
-</g>
-<g transform="translate(36.5, 36.5) scale(0.102) translate(-134, -134)">
-<path d="M39.4444 196.903L3 262C3 262 44.1852 230.036 52.7778 225.359C61.3704 220.681 68.4864 214.519 80.3333 210.936C94.8183 206.555 104.346 205.92 119.444 208.208C138.419 211.083 152.926 222.11 163 228.477C163 226.528 147 209.377 147 209.377C142.556 203.92 117.667 178.973 103.444 173.515C89.2222 168.058 78.1111 170.007 67.8888 172.346C59.711 174.217 45.5185 189.497 39.4444 196.903Z" fill="#F2F1EF"/>
-<path d="M132.607 3L68.678 132.197C68.678 132.197 47.8216 170.088 59.61 152.74C71.3984 135.392 97.0415 115.424 114.471 119.871C122.395 121.892 134.344 130.586 138.501 141.784C143.489 144.523 173.609 212.419 186.109 233.545C186.109 233.545 209.585 269.196 265 264.589L132.607 3Z" fill="#F2F1EF"/>
-</g>
-<defs>
-<filter id="filter0_ddiiii_1184_1291" x="0" y="0" width="73" height="73" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-<feFlood flood-opacity="0" result="BackgroundImageFix"/>
-<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
-<feOffset dx="-1" dy="-1"/>
-<feGaussianBlur stdDeviation="1"/>
-<feColorMatrix type="matrix" values="0 0 0 0 0.807843 0 0 0 0 0.803922 0 0 0 0 0.796078 0 0 0 0.5 0"/>
-<feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_1184_1291"/>
-<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
-<feOffset dx="1" dy="1"/>
-<feGaussianBlur stdDeviation="1"/>
-<feColorMatrix type="matrix" values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.3 0"/>
-<feBlend mode="normal" in2="effect1_dropShadow_1184_1291" result="effect2_dropShadow_1184_1291"/>
-<feBlend mode="normal" in="SourceGraphic" in2="effect2_dropShadow_1184_1291" result="shape"/>
-<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
-<feOffset dx="2" dy="2"/>
-<feGaussianBlur stdDeviation="2.5"/>
-<feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1"/>
-<feColorMatrix type="matrix" values="0 0 0 0 0.807843 0 0 0 0 0.803922 0 0 0 0 0.796078 0 0 0 0.9 0"/>
-<feBlend mode="normal" in2="shape" result="effect3_innerShadow_1184_1291"/>
-<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
-<feOffset dx="-2" dy="-2"/>
-<feGaussianBlur stdDeviation="2"/>
-<feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1"/>
-<feColorMatrix type="matrix" values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.9 0"/>
-<feBlend mode="normal" in2="effect3_innerShadow_1184_1291" result="effect4_innerShadow_1184_1291"/>
-<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
-<feOffset dx="2" dy="-2"/>
-<feGaussianBlur stdDeviation="2"/>
-<feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1"/>
-<feColorMatrix type="matrix" values="0 0 0 0 0.807843 0 0 0 0 0.803922 0 0 0 0 0.796078 0 0 0 0.2 0"/>
-<feBlend mode="normal" in2="effect4_innerShadow_1184_1291" result="effect5_innerShadow_1184_1291"/>
-<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
-<feOffset dx="-2" dy="2"/>
-<feGaussianBlur stdDeviation="2"/>
-<feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1"/>
-<feColorMatrix type="matrix" values="0 0 0 0 0.807843 0 0 0 0 0.803922 0 0 0 0 0.796078 0 0 0 0.2 0"/>
-<feBlend mode="normal" in2="effect5_innerShadow_1184_1291" result="effect6_innerShadow_1184_1291"/>
-</filter>
-<filter id="filter1_ddddii_1184_1291" x="3.69922" y="3.69995" width="66.5996" height="66.6" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-<feFlood flood-opacity="0" result="BackgroundImageFix"/>
-<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
-<feOffset dx="2" dy="2"/>
-<feGaussianBlur stdDeviation="2.5"/>
-<feColorMatrix type="matrix" values="0 0 0 0 0.654902 0 0 0 0 0.760784 0 0 0 0 0.905882 0 0 0 0.9 0"/>
-<feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_1184_1291"/>
-<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
-<feOffset dx="-2" dy="-2"/>
-<feGaussianBlur stdDeviation="2"/>
-<feColorMatrix type="matrix" values="0 0 0 0 0.741176 0 0 0 0 0.854902 0 0 0 0 1 0 0 0 0.9 0"/>
-<feBlend mode="normal" in2="effect1_dropShadow_1184_1291" result="effect2_dropShadow_1184_1291"/>
-<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
-<feOffset dx="2" dy="-2"/>
-<feGaussianBlur stdDeviation="2"/>
-<feColorMatrix type="matrix" values="0 0 0 0 0.654902 0 0 0 0 0.760784 0 0 0 0 0.905882 0 0 0 0.2 0"/>
-<feBlend mode="normal" in2="effect2_dropShadow_1184_1291" result="effect3_dropShadow_1184_1291"/>
-<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
-<feOffset dx="-2" dy="2"/>
-<feGaussianBlur stdDeviation="2"/>
-<feColorMatrix type="matrix" values="0 0 0 0 0.654902 0 0 0 0 0.760784 0 0 0 0 0.905882 0 0 0 0.2 0"/>
-<feBlend mode="normal" in2="effect3_dropShadow_1184_1291" result="effect4_dropShadow_1184_1291"/>
-<feBlend mode="normal" in="SourceGraphic" in2="effect4_dropShadow_1184_1291" result="shape"/>
-<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
-<feOffset dx="-1" dy="-1"/>
-<feGaussianBlur stdDeviation="1"/>
-<feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1"/>
-<feColorMatrix type="matrix" values="0 0 0 0 0.654902 0 0 0 0 0.760784 0 0 0 0 0.905882 0 0 0 0.5 0"/>
-<feBlend mode="normal" in2="shape" result="effect5_innerShadow_1184_1291"/>
-<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
-<feOffset dx="1" dy="1"/>
-<feGaussianBlur stdDeviation="1"/>
-<feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1"/>
-<feColorMatrix type="matrix" values="0 0 0 0 0.741176 0 0 0 0 0.854902 0 0 0 0 1 0 0 0 0.3 0"/>
-<feBlend mode="normal" in2="effect5_innerShadow_1184_1291" result="effect6_innerShadow_1184_1291"/>
-</filter>
-<linearGradient id="paint0_linear_1184_1291" x1="9.69922" y1="9.69995" x2="63.2992" y2="63.2999" gradientUnits="userSpaceOnUse">
-<stop offset="1" stop-color="#A9C4EC"/>
-<stop stop-color="#BBD8FF"/>
-</linearGradient>
-</defs>
+  <defs>
+    <!-- Purple Ambient Glow Filter -->
+    <filter id="purpleGlow" x="-20%" y="-20%" width="140%" height="140%" filterUnits="userSpaceOnUse">
+      <feGaussianBlur stdDeviation="5" result="blur"/>
+    </filter>
+
+    <!-- Porcelain Neomorphic Drop & Inner Shadows Filter -->
+    <filter id="porcelainShadows" x="0" y="0" width="73" height="73" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+      
+      <!-- Top-left white highlight drop shadow -->
+      <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+      <feOffset dx="-2" dy="-2"/>
+      <feGaussianBlur stdDeviation="2"/>
+      <feColorMatrix type="matrix" values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.9 0"/>
+      <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropWhite"/>
+
+      <!-- Bottom-right soft shadow -->
+      <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+      <feOffset dx="3" dy="3"/>
+      <feGaussianBlur stdDeviation="3.5"/>
+      <feColorMatrix type="matrix" values="0 0 0 0 0.64 0 0 0 0 0.69 0 0 0 0 0.78 0 0 0 0.5 0"/>
+      <feBlend mode="normal" in2="effect1_dropWhite" result="effect2_dropDark"/>
+
+      <feBlend mode="normal" in="SourceGraphic" in2="effect2_dropDark" result="shape"/>
+
+      <!-- Inner bottom-right shadow -->
+      <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+      <feOffset dx="1" dy="1"/>
+      <feGaussianBlur stdDeviation="1"/>
+      <feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1"/>
+      <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.08 0"/>
+      <feBlend mode="normal" in2="shape" result="effect3_innerDark"/>
+
+      <!-- Inner top-left highlight -->
+      <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+      <feOffset dx="-1" dy="-1"/>
+      <feGaussianBlur stdDeviation="1"/>
+      <feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1"/>
+      <feColorMatrix type="matrix" values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.8 0"/>
+      <feBlend mode="normal" in2="effect3_innerDark" result="effect4_innerWhite"/>
+    </filter>
+
+    <!-- Porcelain subtle gradient fill -->
+    <linearGradient id="porcelainGrad" x1="12" y1="12" x2="60" y2="60" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#FAF8FD"/>
+      <stop offset="50%" stop-color="#F4F1F9"/>
+      <stop offset="100%" stop-color="#EBE7F3"/>
+    </linearGradient>
+
+    <!-- Upper-left specular sheen -->
+    <radialGradient id="sheenGrad" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.85"/>
+      <stop offset="50%" stop-color="#FFFFFF" stop-opacity="0.25"/>
+      <stop offset="85%" stop-color="#FFFFFF" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <!-- 1. Ambient Purple Glow Behind Button -->
+  <circle cx="36.5" cy="35" r="28" fill="#9682eb" opacity="0.32" filter="url(#purpleGlow)"/>
+  <ellipse cx="36.5" cy="33" rx="25" ry="22" fill="#9682eb" opacity="0.25" filter="url(#purpleGlow)"/>
+
+  <!-- 2. Porcelain Disc with Neomorphic Shadows -->
+  <circle cx="36.5" cy="36.5" r="26.8" fill="url(#porcelainGrad)" filter="url(#porcelainShadows)"/>
+
+  <!-- 3. Specular Sheen on Upper-Left -->
+  <ellipse cx="32" cy="27" rx="11" ry="7" fill="url(#sheenGrad)" opacity="0.45" pointer-events="none"/>
+
+  <!-- 4. Black Aethod Logo -->
+  <g transform="translate(36.5, 36.5) scale(0.102) translate(-134, -134)">
+    <path d="M39.4444 196.903L3 262C3 262 44.1852 230.036 52.7778 225.359C61.3704 220.681 68.4864 214.519 80.3333 210.936C94.8183 206.555 104.346 205.92 119.444 208.208C138.419 211.083 152.926 222.11 163 228.477C163 226.528 147 209.377 147 209.377C142.556 203.92 117.667 178.973 103.444 173.515C89.2222 168.058 78.1111 170.007 67.8888 172.346C59.711 174.217 45.5185 189.497 39.4444 196.903Z" fill="#191918"/>
+    <path d="M132.607 3L68.678 132.197C68.678 132.197 47.8216 170.088 59.61 152.74C71.3984 135.392 97.0415 115.424 114.471 119.871C122.395 121.892 134.344 130.586 138.501 141.784C143.489 144.523 173.609 212.419 186.109 233.545C186.109 233.545 209.585 269.196 265 264.589L132.607 3Z" fill="#191918"/>
+  </g>
 </svg>
