@@ -69,19 +69,46 @@ export async function POST(request) {
       console.error("Analytics Error [visitor upsert]:", visitorError.message);
     }
 
-    // 5. Upsert Session record
+    // 5. Upsert Session record with First-Touch Source Preservation
+    const { data: existingSession } = await supabase
+      .from("sessions")
+      .select("traffic_source, referrer, utm_source, utm_medium, utm_campaign, utm_term, utm_content")
+      .eq("session_id", sessionId)
+      .maybeSingle();
+
+    let finalTrafficSource = trafficSource;
+    let finalReferrer = referrer || null;
+    let finalUtmSource = utm?.utm_source || null;
+    let finalUtmMedium = utm?.utm_medium || null;
+    let finalUtmCampaign = utm?.utm_campaign || null;
+    let finalUtmTerm = utm?.utm_term || null;
+    let finalUtmContent = utm?.utm_content || null;
+
+    if (existingSession && existingSession.traffic_source && existingSession.traffic_source !== "Direct") {
+      // Preserve first-touched source: do not overwrite reliable attribution with Direct
+      if (!trafficSource || trafficSource === "Direct") {
+        finalTrafficSource = existingSession.traffic_source;
+        finalReferrer = existingSession.referrer;
+        finalUtmSource = existingSession.utm_source;
+        finalUtmMedium = existingSession.utm_medium;
+        finalUtmCampaign = existingSession.utm_campaign;
+        finalUtmTerm = existingSession.utm_term;
+        finalUtmContent = existingSession.utm_content;
+      }
+    }
+
     const { error: sessionError } = await supabase.from("sessions").upsert(
       {
         session_id: sessionId,
         visitor_id: visitorId,
         last_activity_at: nowIso,
-        referrer: referrer || null,
-        utm_source: utm?.utm_source || null,
-        utm_medium: utm?.utm_medium || null,
-        utm_campaign: utm?.utm_campaign || null,
-        utm_term: utm?.utm_term || null,
-        utm_content: utm?.utm_content || null,
-        traffic_source: trafficSource,
+        referrer: finalReferrer,
+        utm_source: finalUtmSource,
+        utm_medium: finalUtmMedium,
+        utm_campaign: finalUtmCampaign,
+        utm_term: finalUtmTerm,
+        utm_content: finalUtmContent,
+        traffic_source: finalTrafficSource,
         device_type: device?.device_type || null,
         operating_system: device?.operating_system || null,
         browser: device?.browser || null,
