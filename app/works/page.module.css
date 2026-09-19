@@ -228,7 +228,7 @@
   width: 310px;
   height: 300px;
   background: var(--bg-surface, #F9F9FB);
-  border-radius: 24px;
+  border-radius: 10px;
   border: 1px solid rgba(163, 177, 198, 0.2);
   box-shadow:
     8px 8px 16px rgba(163, 177, 198, 0.6),
@@ -282,10 +282,10 @@
 
 .workCardImageLink {
   position: absolute;
-  left: 4px;
+  left: 5px;
   top: 5px;
-  width: 299.97px;
-  height: 235.41px;
+  width: 300px;
+  height: 235px;
   border-radius: 10px;
   overflow: hidden;
   display: block;
@@ -319,13 +319,13 @@
 .workCardFooter {
   position: absolute;
   left: 0;
-  top: 240.41px;
+  top: 240px;
   width: 310px;
-  height: 59.59px;
+  height: 60px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 24px 0 22px;
+  padding: 0 22px;
   box-sizing: border-box;
   z-index: 2;
 }
@@ -465,6 +465,7 @@
   .workCard {
     width: 310px !important;
     height: 300px !important;
+    border-radius: 10px !important;
     padding: 0 !important;
   }
 }
