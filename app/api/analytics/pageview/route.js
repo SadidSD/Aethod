@@ -5,6 +5,20 @@ import {
   extractGeoFromHeaders,
   PageViewSchema,
 } from "@/lib/analytics/serverAnalytics";
+import { detectAiReferral, AI_ATTRIBUTION_TYPES } from "@/lib/analytics/aiPlatforms.js";
+
+// Cached flag to check if sessions table has ai_platform and ai_attribution_type columns
+let hasAiColumns = null;
+async function getHasAiColumns(supabase) {
+  if (hasAiColumns !== null) return hasAiColumns;
+  try {
+    const { error } = await supabase.from("sessions").select("ai_platform").limit(0);
+    hasAiColumns = !error;
+  } catch {
+    hasAiColumns = false;
+  }
+  return hasAiColumns;
+}
 
 export async function POST(request) {
   try {
@@ -38,6 +52,8 @@ export async function POST(request) {
       path,
       referrer,
       trafficSource,
+      aiPlatform,
+      aiAttributionType,
       utm,
       device,
     } = parseResult.data;
@@ -69,15 +85,50 @@ export async function POST(request) {
       console.error("Analytics Error [visitor upsert]:", visitorError.message);
     }
 
-    // 5. Upsert Session record with First-Touch Source Preservation
+    // 5. Server-side verification of AI signal
+    let effectiveTrafficSource = trafficSource || "Direct";
+    let effectiveAiPlatform = aiPlatform || null;
+    let effectiveAiAttributionType = aiAttributionType || null;
+
+    if (effectiveTrafficSource !== "AI Referral") {
+      const dummySearch = new URLSearchParams();
+      if (utm?.utm_source) dummySearch.set("utm_source", utm.utm_source);
+      if (utm?.utm_medium) dummySearch.set("utm_medium", utm.utm_medium);
+
+      const serverAiCheck = detectAiReferral(referrer || "", dummySearch);
+      if (serverAiCheck.isAiReferral && serverAiCheck.attributionType === AI_ATTRIBUTION_TYPES.VERIFIED_AI_REFERRAL) {
+        effectiveTrafficSource = "AI Referral";
+        effectiveAiPlatform = serverAiCheck.platform;
+        effectiveAiAttributionType = AI_ATTRIBUTION_TYPES.VERIFIED_AI_REFERRAL;
+      }
+    } else if (!effectiveAiPlatform && (referrer || utm?.utm_source)) {
+      const dummySearch = new URLSearchParams();
+      if (utm?.utm_source) dummySearch.set("utm_source", utm.utm_source);
+      if (utm?.utm_medium) dummySearch.set("utm_medium", utm.utm_medium);
+      const serverAiCheck = detectAiReferral(referrer || "", dummySearch);
+      if (serverAiCheck.isAiReferral) {
+        effectiveAiPlatform = serverAiCheck.platform;
+        effectiveAiAttributionType = serverAiCheck.attributionType;
+      }
+    }
+
+    // 6. Upsert Session record with First-Touch Source Preservation
+    const supportsAiColumns = await getHasAiColumns(supabase);
+
+    const sessionSelectFields = supportsAiColumns
+      ? "traffic_source, referrer, utm_source, utm_medium, utm_campaign, utm_term, utm_content, ai_platform, ai_attribution_type"
+      : "traffic_source, referrer, utm_source, utm_medium, utm_campaign, utm_term, utm_content";
+
     const { data: existingSession } = await supabase
       .from("sessions")
-      .select("traffic_source, referrer, utm_source, utm_medium, utm_campaign, utm_term, utm_content")
+      .select(sessionSelectFields)
       .eq("session_id", sessionId)
       .maybeSingle();
 
-    let finalTrafficSource = trafficSource;
+    let finalTrafficSource = effectiveTrafficSource;
     let finalReferrer = referrer || null;
+    let finalAiPlatform = effectiveAiPlatform || null;
+    let finalAiAttributionType = effectiveAiAttributionType || null;
     let finalUtmSource = utm?.utm_source || null;
     let finalUtmMedium = utm?.utm_medium || null;
     let finalUtmCampaign = utm?.utm_campaign || null;
@@ -86,7 +137,7 @@ export async function POST(request) {
 
     if (existingSession && existingSession.traffic_source && existingSession.traffic_source !== "Direct") {
       // Preserve first-touched source: do not overwrite reliable attribution with Direct
-      if (!trafficSource || trafficSource === "Direct") {
+      if (!effectiveTrafficSource || effectiveTrafficSource === "Direct") {
         finalTrafficSource = existingSession.traffic_source;
         finalReferrer = existingSession.referrer;
         finalUtmSource = existingSession.utm_source;
@@ -94,27 +145,38 @@ export async function POST(request) {
         finalUtmCampaign = existingSession.utm_campaign;
         finalUtmTerm = existingSession.utm_term;
         finalUtmContent = existingSession.utm_content;
+        if (supportsAiColumns) {
+          finalAiPlatform = existingSession.ai_platform || finalAiPlatform;
+          finalAiAttributionType = existingSession.ai_attribution_type || finalAiAttributionType;
+        }
       }
     }
 
+    const sessionPayload = {
+      session_id: sessionId,
+      visitor_id: visitorId,
+      last_activity_at: nowIso,
+      referrer: finalReferrer,
+      utm_source: finalUtmSource,
+      utm_medium: finalUtmMedium,
+      utm_campaign: finalUtmCampaign,
+      utm_term: finalUtmTerm,
+      utm_content: finalUtmContent,
+      traffic_source: finalTrafficSource,
+      device_type: device?.device_type || null,
+      operating_system: device?.operating_system || null,
+      browser: device?.browser || null,
+      country: country || null,
+      city: city || null,
+    };
+
+    if (supportsAiColumns) {
+      sessionPayload.ai_platform = finalAiPlatform;
+      sessionPayload.ai_attribution_type = finalAiAttributionType;
+    }
+
     const { error: sessionError } = await supabase.from("sessions").upsert(
-      {
-        session_id: sessionId,
-        visitor_id: visitorId,
-        last_activity_at: nowIso,
-        referrer: finalReferrer,
-        utm_source: finalUtmSource,
-        utm_medium: finalUtmMedium,
-        utm_campaign: finalUtmCampaign,
-        utm_term: finalUtmTerm,
-        utm_content: finalUtmContent,
-        traffic_source: finalTrafficSource,
-        device_type: device?.device_type || null,
-        operating_system: device?.operating_system || null,
-        browser: device?.browser || null,
-        country: country || null,
-        city: city || null,
-      },
+      sessionPayload,
       {
         onConflict: "session_id",
         ignoreDuplicates: false,
@@ -125,7 +187,7 @@ export async function POST(request) {
       console.error("Analytics Error [session upsert]:", sessionError.message);
     }
 
-    // 6. Insert Page View record
+    // 7. Insert Page View record
     const { data: pageViewData, error: pageViewError } = await supabase
       .from("page_views")
       .insert({

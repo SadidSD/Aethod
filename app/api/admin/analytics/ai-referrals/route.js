@@ -20,10 +20,22 @@ export async function GET(request) {
     const supabase = getSupabaseServerClient();
     const rangeInfo = parseDateRange(request.nextUrl.searchParams);
 
+    let hasAiCols = false;
+    try {
+      const { error } = await supabase.from("sessions").select("ai_platform").limit(0);
+      hasAiCols = !error;
+    } catch {
+      hasAiCols = false;
+    }
+
+    const sessionSelect = hasAiCols
+      ? "session_id, visitor_id, traffic_source, referrer, utm_source, utm_medium, started_at, ai_platform, ai_attribution_type"
+      : "session_id, visitor_id, traffic_source, referrer, utm_source, utm_medium, started_at";
+
     const [sessionsRes, pageViewsRes, eventsRes] = await Promise.all([
       supabase
         .from("sessions")
-        .select("session_id, visitor_id, traffic_source, referrer, utm_source, utm_medium, started_at")
+        .select(sessionSelect)
         .gte("started_at", rangeInfo.from.toISOString())
         .lte("started_at", rangeInfo.to.toISOString()),
       supabase
