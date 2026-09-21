@@ -1,12 +1,17 @@
 "use client";
 
+import { useState } from "react";
 import styles from "./GeographyCard.module.css";
 
 export default function GeographyCard({ geography }) {
+  const [showDiagnostics, setShowDiagnostics] = useState(true);
+
   if (!geography) return null;
 
-  const { countries = [] } = geography;
+  const { countries = [], diagnostics = [] } = geography;
   const maxSessions = countries[0]?.sessions || 1;
+
+  const investigatedSessions = diagnostics.filter((d) => d.geoStatus === "Investigate");
 
   return (
     <div className={styles.card}>
@@ -55,6 +60,119 @@ export default function GeographyCard({ geography }) {
           </div>
         </div>
       </div>
+
+      {/* Admin-Only Geo Diagnostics & Audit Log */}
+      {diagnostics.length > 0 && (
+        <div className={styles.diagSection}>
+          <div className={styles.diagHeader}>
+            <div className={styles.diagTitleWrapper}>
+              <span className={styles.diagDot} />
+              <span className={styles.diagTitle}>Geo Attribution Audit Log</span>
+              <span className={styles.diagSubtitle}>Server IP Geolocation • Zero Raw IPs Stored</span>
+            </div>
+            <button
+              type="button"
+              className={styles.diagToggleBtn}
+              onClick={() => setShowDiagnostics((prev) => !prev)}
+            >
+              {showDiagnostics ? "Hide Audit" : "Show Audit"} ({diagnostics.length})
+            </button>
+          </div>
+
+          {showDiagnostics && (
+            <div className={styles.diagBody}>
+              {/* Detailed Forensic Audit Cards for Investigate sessions */}
+              {investigatedSessions.length > 0 && (
+                <div className={styles.auditCardsWrapper}>
+                  <div className={styles.auditCardsHeading}>Forensic Session Analysis</div>
+                  <div className={styles.auditCardsGrid}>
+                    {investigatedSessions.map((s, idx) => (
+                      <div key={idx} className={styles.auditCard}>
+                        <div className={styles.auditCardHeader}>
+                          <span className={styles.auditCountryBadge}>
+                            [{s.countryCode}] {s.country}
+                          </span>
+                          <span className={styles.statusInvestigate}>Investigate</span>
+                        </div>
+                        <div className={styles.auditDetails}>
+                          <div className={styles.auditRow}>
+                            <span className={styles.auditLabel}>Session:</span>
+                            <span className={styles.auditValCode}>{s.sessionId}</span>
+                          </div>
+                          <div className={styles.auditRow}>
+                            <span className={styles.auditLabel}>Detected Country:</span>
+                            <span className={styles.auditValBold}>{s.country}</span>
+                          </div>
+                          <div className={styles.auditRow}>
+                            <span className={styles.auditLabel}>Geo Provider:</span>
+                            <span className={styles.auditVal}>{s.geoProvider}</span>
+                          </div>
+                          <div className={styles.auditRow}>
+                            <span className={styles.auditLabel}>Detection Source:</span>
+                            <span className={styles.auditVal}>{s.detectionSource}</span>
+                          </div>
+                          <div className={styles.auditRow}>
+                            <span className={styles.auditLabel}>Confidence / Result:</span>
+                            <span className={styles.auditValConfidence}>{s.confidence}</span>
+                          </div>
+                          <div className={styles.auditNoteRow}>
+                            <span className={styles.auditNote}>{s.auditNote}</span>
+                          </div>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {/* Recent Sessions Table */}
+              <div className={styles.tableWrapper}>
+                <table className={styles.diagTable}>
+                  <thead>
+                    <tr>
+                      <th>Time</th>
+                      <th>Country</th>
+                      <th>Source</th>
+                      <th>Device</th>
+                      <th>Browser</th>
+                      <th>OS</th>
+                      <th>Geo Status</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {diagnostics.map((row, idx) => (
+                      <tr key={idx} className={row.geoStatus === "Investigate" ? styles.rowInvestigate : ""}>
+                        <td className={styles.tdTime}>{row.time}</td>
+                        <td>
+                          <span className={styles.tableCountry}>
+                            <span className={styles.tableCodeBadge}>{row.countryCode}</span>
+                            {row.country}
+                          </span>
+                        </td>
+                        <td>{row.source}</td>
+                        <td className={styles.tdCapitalize}>{row.device}</td>
+                        <td>{row.browser}</td>
+                        <td>{row.os}</td>
+                        <td>
+                          <span
+                            className={
+                              row.geoStatus === "Valid"
+                                ? styles.statusValid
+                                : styles.statusInvestigate
+                            }
+                          >
+                            {row.geoStatus}
+                          </span>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          )}
+        </div>
+      )}
     </div>
   );
 }

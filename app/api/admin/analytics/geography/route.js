@@ -22,7 +22,7 @@ export async function GET(request) {
 
     const { data: sessions, error } = await supabase
       .from("sessions")
-      .select("country")
+      .select("session_id, started_at, country, traffic_source, device_type, browser, operating_system")
       .gte("started_at", rangeInfo.from.toISOString())
       .lte("started_at", rangeInfo.to.toISOString());
 
