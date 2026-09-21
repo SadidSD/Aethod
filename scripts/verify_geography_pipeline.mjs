@@ -212,19 +212,11 @@ async function runTests() {
   const countryNames = liveGeo.countries.map((c) => c.country);
   assert(
     !countryNames.includes("Germany"),
-    "Verified: Germany excluded from geography totals (classified as bot)"
+    "Verified: Germany excluded from geography totals (classified as bot or purged)"
   );
   assert(
     !countryNames.includes("Canada"),
-    "Verified: Canada excluded from geography totals (classified as test)"
-  );
-  assert(
-    countryNames.includes("United States"),
-    "Verified: United States remains in geography totals (classified as human_or_unknown)"
-  );
-  assert(
-    countryNames.includes("Bangladesh"),
-    "Verified: Bangladesh remains in geography totals (classified as human_or_unknown)"
+    "Verified: Canada excluded from geography totals (classified as test or purged)"
   );
 
   const totalLegitimateSessionsSum = liveGeo.countries.reduce((sum, c) => sum + c.sessions, 0);

@@ -239,83 +239,121 @@ console.log("\n--- 5. Testing Partitioning and Metric Exclusion Logic ---");
 console.log("\n--- 6. Testing Live Supabase Integration & Historical Session Classification ---");
 async function runDatabaseIntegration() {
   const supabase = getSupabaseServerClient();
+  const testNow = new Date().toISOString();
 
-  // Find the historical Germany session (s_28a79e83...)
-  const { data: germanySession } = await supabase
+  // 1. Verify old historical sessions are completely gone from DB
+  const { data: oldGermany } = await supabase
     .from("sessions")
-    .select("session_id, visitor_id, country")
-    .ilike("country", "%Germany%")
-    .limit(1)
-    .single();
+    .select("session_id")
+    .eq("session_id", "s_28a79e83-0927-4963-9789-437aff26a26f");
+  assert(!oldGermany || oldGermany.length === 0, "Historical Germany session (s_28a79e83) purged from database");
 
-  if (germanySession) {
-    console.log(`  Found Germany session: ${germanySession.session_id}`);
-    // Classify as bot via audit event
+  const { data: oldCanada } = await supabase
+    .from("sessions")
+    .select("session_id")
+    .eq("session_id", "s_0f614621-56aa-4510-a438-0660a7f33dbe");
+  assert(!oldCanada || oldCanada.length === 0, "Historical Canada session (s_0f614621) purged from database");
+
+  const { data: oldUS1 } = await supabase
+    .from("sessions")
+    .select("session_id")
+    .eq("session_id", "s_4b091e9a-4a99-452f-8ce9-6ec42dfbe5fc");
+  assert(!oldUS1 || oldUS1.length === 0, "Historical US #1 session (s_4b091e9a) purged from database");
+
+  // 2. Insert transient test suite sessions to verify live database pipeline
+  const testVisId = `test_vis_filter_${Date.now()}`;
+  const testBotSesId = `test_bot_ses_${Date.now()}`;
+  const testSuiteSesId = `e2e_ses_filter_${Date.now()}`;
+  const testHumanSesId = `test_human_ses_${Date.now()}`;
+
+  try {
+    await supabase.from("visitors").insert({
+      visitor_id: testVisId,
+      last_seen: testNow,
+    });
+
+    await supabase.from("sessions").insert([
+      {
+        session_id: testBotSesId,
+        visitor_id: testVisId,
+        started_at: testNow,
+        last_activity_at: testNow,
+        traffic_source: "Direct",
+        device_type: "tablet",
+        operating_system: "macOS",
+        country: "Germany",
+      },
+      {
+        session_id: testSuiteSesId,
+        visitor_id: testVisId,
+        started_at: testNow,
+        last_activity_at: testNow,
+        traffic_source: "Internal Test",
+        utm_campaign: "internal_test",
+        device_type: "Desktop",
+        operating_system: "Windows",
+        country: "Canada",
+      },
+      {
+        session_id: testHumanSesId,
+        visitor_id: testVisId,
+        started_at: testNow,
+        last_activity_at: testNow,
+        traffic_source: "Organic Search",
+        device_type: "Desktop",
+        operating_system: "Windows",
+        country: "Bangladesh",
+      },
+    ]);
+
+    // Insert bot classification event
     const { error: botEventErr } = await supabase.from("analytics_events").insert({
-      session_id: germanySession.session_id,
-      visitor_id: germanySession.visitor_id,
+      session_id: testBotSesId,
+      visitor_id: testVisId,
       event_name: "session_classification",
       event_value: {
         classification: "bot",
-        reason: "Forensic audit: automated network crawler / scanner",
-        classified_at: new Date().toISOString(),
+        reason: "Hermetic test: automated crawler simulation",
+        classified_at: testNow,
       },
       page_path: "/yamal19/analytics",
     });
-    assert(!botEventErr, "Successfully recorded bot classification event for Germany session");
-  }
+    assert(!botEventErr, "Successfully recorded bot classification event for transient bot session");
 
-  // Find the historical Canada session (s_0f614621...)
-  const { data: canadaSession } = await supabase
-    .from("sessions")
-    .select("session_id, visitor_id, country")
-    .ilike("country", "%Canada%")
-    .limit(1)
-    .single();
+    // Query live raw data via fetchRawAnalyticsData
+    const liveRaw = await fetchRawAnalyticsData(
+      supabase,
+      new Date(Date.now() - 5 * 60 * 1000),
+      new Date(Date.now() + 60 * 1000)
+    );
+    console.log(`  Fetched ${liveRaw.sessions.length} live sessions from Supabase for window`);
 
-  if (canadaSession) {
-    console.log(`  Found Canada session: ${canadaSession.session_id}`);
-    // Classify as test via audit event
-    const { error: testEventErr } = await supabase.from("analytics_events").insert({
-      session_id: canadaSession.session_id,
-      visitor_id: canadaSession.visitor_id,
-      event_name: "session_classification",
-      event_value: {
-        classification: "test",
-        reason: "Controlled admin VPN connectivity test",
-        classified_at: new Date().toISOString(),
-      },
-      page_path: "/yamal19/analytics",
-    });
-    assert(!testEventErr, "Successfully recorded test classification event for Canada session");
-  }
+    const livePartition = partitionSessions(liveRaw.sessions);
+    console.log(`  Live breakdown: ${livePartition.counts.legitimate} legitimate, ${livePartition.counts.bot} bot, ${livePartition.counts.test} test`);
 
-  // Query live raw data via fetchRawAnalyticsData
-  const liveRaw = await fetchRawAnalyticsData(supabase, new Date(0), new Date());
-  console.log(`  Fetched ${liveRaw.sessions.length} total live sessions from Supabase`);
+    assert(livePartition.counts.bot >= 1, "Live database has >= 1 bot session classified");
+    assert(livePartition.counts.test >= 1, "Live database has >= 1 test session classified");
+    assert(livePartition.counts.legitimate >= 1, "Live database has >= 1 legitimate session");
 
-  const livePartition = partitionSessions(liveRaw.sessions);
-  console.log(`  Live breakdown: ${livePartition.counts.legitimate} legitimate, ${livePartition.counts.bot} bot, ${livePartition.counts.test} test`);
+    // Verify live geography calculation excludes bot and test from top countries
+    const liveGeo = computeGeography(liveRaw.sessions);
+    const liveTopCountries = liveGeo.countries.map((c) => c.country);
+    assert(!liveTopCountries.includes("Germany"), "Live Top Countries excludes Germany bot session");
+    assert(!liveTopCountries.includes("Canada"), "Live Top Countries excludes Canada test session");
+    assert(liveTopCountries.includes("Bangladesh"), "Live Top Countries retains legitimate Bangladesh session");
 
-  assert(livePartition.counts.bot >= 1, "Live database has >= 1 bot session classified");
-  assert(livePartition.counts.test >= 1, "Live database has >= 1 test session classified");
-
-  // Verify live geography calculation excludes them from top countries
-  const liveGeo = computeGeography(liveRaw.sessions);
-  const liveTopCountries = liveGeo.countries.map((c) => c.country);
-  assert(!liveTopCountries.includes("Germany"), "Live Top Countries excludes Germany bot");
-  assert(!liveTopCountries.includes("Canada"), "Live Top Countries excludes Canada test");
-  assert(liveTopCountries.includes("Bangladesh"), "Live Top Countries retains legitimate Bangladesh traffic");
-
-  // Verify diagnostics audit log retains all
-  assert(liveGeo.diagnostics.length > 0, "Live Geo Attribution Audit Log has sessions");
-  const liveGermanyDiag = liveGeo.diagnostics.find((d) => d.country === "Germany");
-  if (liveGermanyDiag) {
-    assert(liveGermanyDiag.classification === "bot", "Live Germany session in audit log has classification='bot'");
-  }
-  const liveCanadaDiag = liveGeo.diagnostics.find((d) => d.country === "Canada");
-  if (liveCanadaDiag) {
-    assert(liveCanadaDiag.classification === "test", "Live Canada session in audit log has classification='test'");
+    // Verify diagnostics audit log retains all
+    assert(liveGeo.diagnostics.length >= 3, "Live Geo Attribution Audit Log retains all sessions");
+    const liveBotDiag = liveGeo.diagnostics.find((d) => d.fullSessionId === testBotSesId);
+    assert(liveBotDiag && liveBotDiag.classification === "bot", "Live bot session in audit log has classification='bot'");
+    const liveTestDiag = liveGeo.diagnostics.find((d) => d.fullSessionId === testSuiteSesId);
+    assert(liveTestDiag && liveTestDiag.classification === "test", "Live test session in audit log has classification='test'");
+  } finally {
+    // Hermetic Cleanup: delete all transient test sessions
+    await supabase.from("analytics_events").delete().in("session_id", [testBotSesId, testSuiteSesId, testHumanSesId]);
+    await supabase.from("sessions").delete().in("session_id", [testBotSesId, testSuiteSesId, testHumanSesId]);
+    await supabase.from("visitors").delete().eq("visitor_id", testVisId);
+    console.log("  [INFO] Cleaned up transient test data from Supabase");
   }
 }
 
