@@ -339,13 +339,15 @@
 }
 
 .heroHighlight {
-  background: linear-gradient(135deg, #5162FF 0%, #B872C8 100%);
+  background: linear-gradient(135deg, #5A69EA 0%, #BF8BCA 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
   font-weight: 600;
   font-style: normal;
-  filter: drop-shadow(0 2px 12px rgba(124, 92, 252, 0.3));
+  text-shadow: none;
 }
 
 .heroLineBreak {
@@ -1585,7 +1587,9 @@
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  filter: drop-shadow(0 2px 14px rgba(155, 125, 255, 0.45));
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+  text-shadow: none;
 }
 
 :global([data-theme="dark"]) .heroSubtext {
