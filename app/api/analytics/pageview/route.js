@@ -19,6 +19,7 @@ async function getSupportedSessionColumns(supabase) {
   const candidateColumns = [
     "ai_platform",
     "ai_attribution_type",
+    "detection_method",
     "ai_referrer_host",
     "ai_referrer_path",
     "landing_page",
@@ -98,6 +99,7 @@ export async function POST(request) {
       trafficSource,
       aiPlatform,
       aiAttributionType,
+      detectionMethod,
       aiReferrerHost,
       aiReferrerPath,
       unknownReferrerHost,
@@ -133,6 +135,11 @@ export async function POST(request) {
       effectiveTrafficSource === "AI Referral"
         ? AI_ATTRIBUTION_TYPES.VERIFIED_AI_REFERRAL
         : AI_ATTRIBUTION_TYPES.UNKNOWN_AI;
+    let effectiveDetectionMethod = serverAcquisition.detectionMethod || detectionMethod || null;
+    if (effectiveTrafficSource === "AI Referral" && !effectiveDetectionMethod) {
+      effectiveDetectionMethod = utm?.utm_source || utm?.utm_medium ? "utm" : "referrer";
+    }
+
     let effectiveAiReferrerHost = serverAcquisition.referrerHost || aiReferrerHost || null;
     let effectiveAiReferrerPath = serverAcquisition.referrerPath || aiReferrerPath || null;
     let effectiveUnknownReferrerHost = serverAcquisition.unknownReferrerHost || unknownReferrerHost || null;
@@ -201,6 +208,7 @@ export async function POST(request) {
     let finalReferrer = referrer || serverReferer || null;
     let finalAiPlatform = effectiveAiPlatform || null;
     let finalAiAttributionType = effectiveAiAttributionType || null;
+    let finalDetectionMethod = effectiveDetectionMethod || null;
     let finalAiReferrerHost = effectiveAiReferrerHost || null;
     let finalAiReferrerPath = effectiveAiReferrerPath || null;
     let finalUnknownReferrerHost = effectiveUnknownReferrerHost || null;
@@ -212,23 +220,53 @@ export async function POST(request) {
     let finalUtmTerm = utm?.utm_term || null;
     let finalUtmContent = utm?.utm_content || null;
 
-    if (existingSession && existingSession.traffic_source && existingSession.traffic_source !== "Direct") {
-      // First-touch preservation: never downgrade reliable attribution to Direct
-      if (!effectiveTrafficSource || effectiveTrafficSource === "Direct") {
-        finalTrafficSource = existingSession.traffic_source;
-        finalReferrer = existingSession.referrer;
-        finalUtmSource = existingSession.utm_source;
-        finalUtmMedium = existingSession.utm_medium;
-        finalUtmCampaign = existingSession.utm_campaign;
-        finalUtmTerm = existingSession.utm_term;
-        finalUtmContent = existingSession.utm_content;
-        finalAiPlatform = existingSession.ai_platform || finalAiPlatform;
-        finalAiAttributionType = existingSession.ai_attribution_type || finalAiAttributionType;
-        finalAiReferrerHost = existingSession.ai_referrer_host || finalAiReferrerHost;
-        finalAiReferrerPath = existingSession.ai_referrer_path || finalAiReferrerPath;
-        finalUnknownReferrerHost = existingSession.unknown_referrer_host || finalUnknownReferrerHost;
-        finalLandingPage = existingSession.landing_page || finalLandingPage;
-        finalReason = existingSession.attribution_reason || finalReason;
+    if (existingSession) {
+      if (existingSession.traffic_source && existingSession.traffic_source !== "Direct") {
+        // First-touch preservation: never downgrade reliable attribution to Direct
+        if (!effectiveTrafficSource || effectiveTrafficSource === "Direct") {
+          finalTrafficSource = existingSession.traffic_source;
+          finalReferrer = existingSession.referrer;
+          finalUtmSource = existingSession.utm_source;
+          finalUtmMedium = existingSession.utm_medium;
+          finalUtmCampaign = existingSession.utm_campaign;
+          finalUtmTerm = existingSession.utm_term;
+          finalUtmContent = existingSession.utm_content;
+          finalAiPlatform = existingSession.ai_platform || finalAiPlatform;
+          finalAiAttributionType = existingSession.ai_attribution_type || finalAiAttributionType;
+          finalDetectionMethod = existingSession.detection_method || finalDetectionMethod;
+          finalAiReferrerHost = existingSession.ai_referrer_host || finalAiReferrerHost;
+          finalAiReferrerPath = existingSession.ai_referrer_path || finalAiReferrerPath;
+          finalUnknownReferrerHost = existingSession.unknown_referrer_host || finalUnknownReferrerHost;
+          finalLandingPage = existingSession.landing_page || finalLandingPage;
+          finalReason = existingSession.attribution_reason || finalReason;
+        }
+      } else if (existingSession.traffic_source === "Direct" && effectiveTrafficSource && effectiveTrafficSource !== "Direct" && effectiveTrafficSource !== "Bot") {
+        // UPGRADE from unclassified Direct to newly verified acquisition (e.g. AI Referral landing in active session)
+        finalTrafficSource = effectiveTrafficSource;
+        finalReferrer = referrer || serverReferer || existingSession.referrer;
+        finalUtmSource = utm?.utm_source || existingSession.utm_source;
+        finalUtmMedium = utm?.utm_medium || existingSession.utm_medium;
+        finalUtmCampaign = utm?.utm_campaign || existingSession.utm_campaign;
+        finalAiPlatform = effectiveAiPlatform;
+        finalAiAttributionType = effectiveAiAttributionType;
+        finalDetectionMethod = effectiveDetectionMethod;
+      }
+    }
+
+    // Safety fallback: if AI Referral is detected but referrer & UTM were completely empty,
+    // establish canonical platform URL so that standard SQL queries & raw schema dumps recognize the AI platform
+    if (finalTrafficSource === "AI Referral") {
+      if (!finalAiPlatform) finalAiPlatform = "ChatGPT";
+      if (!finalReferrer && !finalUtmSource) {
+        finalReferrer = finalAiPlatform === "ChatGPT"
+          ? "https://chatgpt.com/"
+          : finalAiPlatform === "Claude"
+          ? "https://claude.ai/"
+          : finalAiPlatform === "Perplexity"
+          ? "https://perplexity.ai/"
+          : finalAiPlatform === "Gemini"
+          ? "https://gemini.google.com/"
+          : `https://${finalAiPlatform.toLowerCase().replace(/\s+/g, "")}.ai/`;
       }
     }
 
@@ -253,6 +291,7 @@ export async function POST(request) {
     // Dynamically attach optional columns supported by Supabase schema
     if (availableCols.has("ai_platform")) sessionPayload.ai_platform = finalAiPlatform;
     if (availableCols.has("ai_attribution_type")) sessionPayload.ai_attribution_type = finalAiAttributionType;
+    if (availableCols.has("detection_method")) sessionPayload.detection_method = finalDetectionMethod;
     if (availableCols.has("ai_referrer_host")) sessionPayload.ai_referrer_host = finalAiReferrerHost;
     if (availableCols.has("ai_referrer_path")) sessionPayload.ai_referrer_path = finalAiReferrerPath;
     if (availableCols.has("landing_page")) sessionPayload.landing_page = finalLandingPage;
@@ -296,18 +335,40 @@ export async function POST(request) {
       return NextResponse.json({ error: "Failed to record pageview" }, { status: 500 });
     }
 
-    return NextResponse.json(
-      {
-        success: true,
-        pageViewId: pageViewData?.id,
-        acquisition: {
-          source: finalTrafficSource,
-          aiPlatform: finalAiPlatform,
-          confidence: serverAcquisition.confidence,
-        },
+    const isDebug =
+      process.env.NODE_ENV === "development" ||
+      request.headers.get("x-aeethod-debug") === "1" ||
+      request.nextUrl.searchParams.get("__debug") === "1";
+
+    const responsePayload = {
+      success: true,
+      pageViewId: pageViewData?.id,
+      acquisition: {
+        source: finalTrafficSource,
+        aiPlatform: finalAiPlatform,
+        detectionMethod: finalDetectionMethod,
+        confidence: serverAcquisition.confidence,
       },
-      { status: 201 }
-    );
+    };
+
+    if (isDebug) {
+      responsePayload.debug = {
+        rawReferrer: referrer || serverReferer || null,
+        normalizedReferrer: serverAcquisition.referrerHost || null,
+        landingUrl: finalLandingPage,
+        utmSource: finalUtmSource,
+        utmMedium: finalUtmMedium,
+        utmCampaign: finalUtmCampaign,
+        detectedPlatform: finalAiPlatform,
+        detectionMethod: finalDetectionMethod,
+        trafficSource: finalTrafficSource,
+        sessionId,
+        visitorId,
+        aiAttributionStatus: finalAiAttributionType,
+      };
+    }
+
+    return NextResponse.json(responsePayload, { status: 201 });
   } catch (err) {
     console.error("Analytics Pageview Unhandled Error:", err);
     return NextResponse.json({ error: "Internal server error" }, { status: 500 });

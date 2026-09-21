@@ -23,6 +23,8 @@ export default function AiReferralsCard({ aiReferrals }) {
     aiConversionRate = "0.0%",
     platforms = [],
     funnel = [],
+    detectionMethods = { utm: 0, referrer: 0, redirect: 0, other: 0 },
+    lastAiReferral = null,
   } = safeData;
 
   const hasTraffic = aiSessions > 0;
@@ -87,6 +89,42 @@ export default function AiReferralsCard({ aiReferrals }) {
               <span className={styles.kpiLabel}>Conversion Rate</span>
               <span className={`${styles.kpiValue} ${styles.kpiHighlight}`}>{aiConversionRate}</span>
             </div>
+          </div>
+
+          {/* Diagnostic Signals Ribbon */}
+          <div className={styles.signalsRibbon}>
+            <div className={styles.signalsLeft}>
+              <span className={styles.signalsLabel}>Detection Signals:</span>
+              <span className={styles.signalPill}>
+                Referrer: <strong>{detectionMethods?.referrer || 0}</strong>
+              </span>
+              <span className={styles.signalPill}>
+                UTM Campaign: <strong>{detectionMethods?.utm || 0}</strong>
+              </span>
+              {detectionMethods?.redirect > 0 && (
+                <span className={styles.signalPill}>
+                  Redirect/Path: <strong>{detectionMethods.redirect}</strong>
+                </span>
+              )}
+              {detectionMethods?.other > 0 && (
+                <span className={styles.signalPill}>
+                  Other: <strong>{detectionMethods.other}</strong>
+                </span>
+              )}
+            </div>
+            {lastAiReferral && (
+              <div className={styles.signalsRight}>
+                <span className={styles.lastReferralLabel}>Last Inbound AI Visit:</span>
+                <span className={styles.lastReferralTime}>
+                  {new Date(lastAiReferral).toLocaleString(undefined, {
+                    month: "short",
+                    day: "numeric",
+                    hour: "2-digit",
+                    minute: "2-digit",
+                  })}
+                </span>
+              </div>
+            )}
           </div>
 
           {/* Platform Breakdown Table */}

@@ -3,6 +3,7 @@ import { getSupabaseServerClient } from "@/lib/supabase/server";
 import {
   requireAdminAuth,
   parseDateRange,
+  fetchRawAnalyticsData,
   computeAiReferralAnalytics,
 } from "@/lib/analytics/adminQueries";
 
@@ -20,44 +21,12 @@ export async function GET(request) {
     const supabase = getSupabaseServerClient();
     const rangeInfo = parseDateRange(request.nextUrl.searchParams);
 
-    let hasAiCols = false;
-    try {
-      const { error } = await supabase.from("sessions").select("ai_platform").limit(0);
-      hasAiCols = !error;
-    } catch {
-      hasAiCols = false;
-    }
-
-    const sessionSelect = hasAiCols
-      ? "session_id, visitor_id, traffic_source, referrer, utm_source, utm_medium, started_at, ai_platform, ai_attribution_type"
-      : "session_id, visitor_id, traffic_source, referrer, utm_source, utm_medium, started_at";
-
-    const [sessionsRes, pageViewsRes, eventsRes] = await Promise.all([
-      supabase
-        .from("sessions")
-        .select(sessionSelect)
-        .gte("started_at", rangeInfo.from.toISOString())
-        .lte("started_at", rangeInfo.to.toISOString()),
-      supabase
-        .from("page_views")
-        .select("session_id, path, viewed_at")
-        .gte("viewed_at", rangeInfo.from.toISOString())
-        .lte("viewed_at", rangeInfo.to.toISOString()),
-      supabase
-        .from("analytics_events")
-        .select("session_id, event_name, created_at")
-        .gte("created_at", rangeInfo.from.toISOString())
-        .lte("created_at", rangeInfo.to.toISOString()),
-    ]);
-
-    if (sessionsRes.error) throw sessionsRes.error;
-    if (pageViewsRes.error) throw pageViewsRes.error;
-    if (eventsRes.error) throw eventsRes.error;
+    const rawData = await fetchRawAnalyticsData(supabase, rangeInfo.from, rangeInfo.to);
 
     const aiReferrals = computeAiReferralAnalytics(
-      sessionsRes.data || [],
-      pageViewsRes.data || [],
-      eventsRes.data || []
+      rawData.sessions,
+      rawData.pageViews,
+      rawData.events
     );
 
     return NextResponse.json(
