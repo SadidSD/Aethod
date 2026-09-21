@@ -56,7 +56,7 @@ export default function Footer() {
               <a href="/research" className={styles.mobileLink}>Research</a>
               <a href="/products" className={styles.mobileLink}>Products</a>
               <a href="/blog" className={styles.mobileLink}>Journals</a>
-              <a href="/contact" className={styles.mobileLink}>Contract</a>
+              <a href="/contact" className={styles.mobileLink}>Contact</a>
             </div>
             
             <div className={styles.mobileFooterSocials} suppressHydrationWarning={true}>

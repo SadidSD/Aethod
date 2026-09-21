@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef, useCallback, useEffect } from "react";
+import { useState, useCallback, useEffect } from "react";
 import styles from "./page.module.css";
 import { useTheme } from "../context/ThemeContext";
 import ThemeToggle from "../components/ThemeToggle";
@@ -104,7 +104,6 @@ export default function ContactPage() {
   // Form states
   const [mailEmail, setMailEmail] = useState("");
   const [mailMessage, setMailMessage] = useState("");
-  const [footerEmail, setFooterEmail] = useState("");
   const [isSending, setIsSending] = useState(false);
   const [mailStatus, setMailStatus] = useState(null);
 
@@ -148,66 +147,29 @@ export default function ContactPage() {
     setMailStatus(null);
 
     try {
-      // Step 1: Send via Next.js API route (/api/contact)
-      let success = false;
-      let statusMsg = "";
+      // Collect honeypot value (hidden field — bots fill it, humans don't see it)
+      const honeyField = e.target.querySelector('input[name="_honey"]');
+      const honeyValue = honeyField ? honeyField.value : "";
 
-      try {
-        const res = await fetch("/api/contact", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            Accept: "application/json",
-          },
-          body: JSON.stringify({
-            email: emailClean,
-            message: messageClean,
-          }),
-        });
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          email: emailClean,
+          message: messageClean,
+          _honey: honeyValue,
+        }),
+      });
 
-        const data = await res.json().catch(() => ({}));
-        if (res.ok && data.success) {
-          success = true;
-          statusMsg = data.message || "Message sent successfully!";
-        }
-      } catch (apiErr) {
-        console.warn("API route failed, trying direct submission fallback:", apiErr);
-      }
+      const data = await res.json().catch(() => ({}));
 
-      // Step 2: Client-side fallback to FormSubmit
-      if (!success) {
-        const directRes = await fetch("https://formsubmit.co/ajax/sadidbinhasan3@gmail.com", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            Accept: "application/json",
-          },
-          body: JSON.stringify({
-            email: emailClean,
-            message: messageClean,
-            _subject: `New Quick Mail from Aeethod (${emailClean})`,
-            _replyto: emailClean,
-            _template: "table",
-            _captcha: "false",
-          }),
-        });
-
-        const directData = await directRes.json().catch(() => ({}));
-        if (
-          directRes.ok &&
-          (directData.success === "true" ||
-            directData.success === true ||
-            (directData.message && directData.message.toLowerCase().includes("activation")))
-        ) {
-          success = true;
-          statusMsg = "Message sent successfully!";
-        }
-      }
-
-      if (success) {
+      if (res.ok && data.success) {
         setMailStatus({
           type: "success",
-          message: statusMsg || "Message sent successfully!",
+          message: data.message || "Message sent successfully!",
         });
         setMailEmail("");
         setMailMessage("");
@@ -215,7 +177,10 @@ export default function ContactPage() {
           setMailStatus(null);
         }, 7000);
       } else {
-        throw new Error("Could not send mail");
+        setMailStatus({
+          type: "error",
+          message: data.error || "Failed to send. Please try again.",
+        });
       }
     } catch (error) {
       console.error("Submission error:", error);
@@ -228,18 +193,6 @@ export default function ContactPage() {
       });
     } finally {
       setIsSending(false);
-    }
-  };
-
-  // Footer Subscription Form Submit Handler
-  const handleSubscribe = (e) => {
-    e.preventDefault();
-    playClickSound();
-    if (footerEmail) {
-      alert(`Thank you for subscribing with: ${footerEmail}`);
-      setFooterEmail("");
-    } else {
-      alert("Please enter a valid email address.");
     }
   };
 
@@ -280,6 +233,15 @@ export default function ContactPage() {
             <InlineSVG src="/union.svg" className={styles.quickMailFrame} />
             <div className={styles.tabHeader}>Quick Mail</div>
             <form onSubmit={handleMailSubmit} className={styles.formCard}>
+              {/* Honeypot field — hidden from humans, bots auto-fill it */}
+              <input
+                type="text"
+                name="_honey"
+                tabIndex={-1}
+                autoComplete="off"
+                style={{ position: "absolute", left: "-9999px", opacity: 0, height: 0, width: 0 }}
+                aria-hidden="true"
+              />
               <input
                 type="email"
                 placeholder="yourmail@gmail.com"
