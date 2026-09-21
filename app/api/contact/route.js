@@ -5,7 +5,7 @@ import { z } from "zod/v4";
 // ─── Configuration ──────────────────────────────────────────────────────────
 const RESEND_API_KEY = process.env.RESEND_API_KEY;
 const SADID_EMAIL = process.env.SADID_EMAIL || "sadidbinhasan3@gmail.com";
-const MAIL_FROM = process.env.MAIL_FROM || "Aeethod <onboarding@resend.dev>";
+const MAIL_FROM = process.env.MAIL_FROM || "Aeethod <contact@aeethod.com>";
 
 // ─── Input Validation Schema (Zod) ─────────────────────────────────────────
 const contactSchema = z.object({
