@@ -320,9 +320,12 @@ export default function Home() {
             {/* Left — Copy */}
             <div className={styles.heroText}>
               <h1 className={styles.heroHeading}>
-                You have outgrown the marketplaces,{"\n"}
-                Build the platform{" "}
-                <span className={styles.heroHighlight}>your brand deserves.</span>
+                You have outgrown the{" "}
+                <span className={styles.heroHighlight}>marketplaces</span>,{"\n"}
+                Build the{" "}
+                <span className={styles.heroHighlight}>platform</span>{" "}
+                your{" "}
+                <span className={styles.heroHighlight}>brand</span> deserves.
               </h1>
               <p className={styles.heroSubtext}>
                 Aeethod builds custom digital platforms, ecommerce systems, and automation for growing TCG businesses—so your technology can evolve with the way your business actually works.
