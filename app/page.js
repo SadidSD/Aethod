@@ -320,30 +320,29 @@ export default function Home() {
             {/* Left — Copy */}
             <div className={styles.heroText}>
               <h1 className={styles.heroHeading}>
-                We design{" "}
-                <span className={styles.heroHighlight}>intelligent{"\n"}systems</span>{" "}
-                for complex environments.
+                You have outgrown the marketplaces,{"\n"}
+                Build the platform{" "}
+                <span className={styles.heroHighlight}>your brand deserves.</span>
               </h1>
               <p className={styles.heroSubtext}>
-                AI-first architectures, automation, and decision
-                systems for businesses operating in uncertainty.
+                Aeethod builds custom digital platforms, ecommerce systems, and automation for growing TCG businesses—so your technology can evolve with the way your business actually works.
               </p>
               {/* Action Button Bar */}
               <div className={styles.btnBar}>
                 <HomeButton
                   variant="purple"
-                  text="Explore"
+                  text="Works"
                   onClick={() => {
                     playClickSound();
-                    handleScrollToServices();
+                    window.location.href = "/works";
                   }}
                 />
                 <HomeButton
                   variant="blue"
-                  text="Thinking"
+                  text="Contact"
                   onClick={() => {
                     playClickSound();
-                    window.location.href = "/blog";
+                    window.location.href = "/contact";
                   }}
                 />
               </div>
