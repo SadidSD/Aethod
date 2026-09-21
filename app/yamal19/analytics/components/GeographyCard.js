@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import styles from "./GeographyCard.module.css";
 
 export default function GeographyCard({ geography }) {
-  const [showDiagnostics, setShowDiagnostics] = useState(true);
+  const [showDiagnostics, setShowDiagnostics] = useState(false);
   const [sessionList, setSessionList] = useState([]);
   const [updatingId, setUpdatingId] = useState(null);
 
@@ -71,9 +71,8 @@ export default function GeographyCard({ geography }) {
   const displayList = sessionList.length > 0 ? sessionList : diagnostics;
   const investigatedSessions = displayList.filter(
     (d) =>
-      d.geoStatus === "Investigate" ||
-      d.classification === "bot" ||
-      d.classification === "test"
+      d.geoStatus === "Investigate" &&
+      (!d.classification || d.classification === "human_or_unknown")
   );
 
   return (

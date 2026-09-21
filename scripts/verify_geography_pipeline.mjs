@@ -1,5 +1,5 @@
 import { resolveCountryFromIp, extractGeoFromHeaders } from "../lib/analytics/serverAnalytics.js";
-import { computeGeography } from "../lib/analytics/adminQueries.js";
+import { computeGeography, fetchRawAnalyticsData } from "../lib/analytics/adminQueries.js";
 import { getSupabaseServerClient } from "../lib/supabase/server.js";
 
 async function runTests() {
@@ -191,15 +191,14 @@ async function runTests() {
   console.log("\n--- 4. Live Supabase Geography Integrity Verification ---");
 
   const supabase = getSupabaseServerClient();
-  const { data: dbSessions, error: dbErr } = await supabase
-    .from("sessions")
-    .select("country, city");
+  const rawData = await fetchRawAnalyticsData(supabase, new Date(0), new Date());
+  const dbSessions = rawData.sessions || [];
 
-  assert(!dbErr, `Supabase sessions fetch succeeded`);
-
-  const liveGeo = computeGeography(dbSessions || []);
-  console.log(`Live Supabase Total Sessions: ${dbSessions.length}`);
-  console.log("Live Top Countries Breakdown:");
+  const liveGeo = computeGeography(dbSessions);
+  console.log(`Live Supabase Total Raw Sessions: ${dbSessions.length}`);
+  console.log(`Legitimate Sessions (Human/Unknown): ${liveGeo.filterSummary.legitimateCount}`);
+  console.log(`Excluded Sessions (Bot/Test): ${liveGeo.filterSummary.excludedCount}`);
+  console.log("Live Top Countries Breakdown (Human/Unknown Only):");
   for (const c of liveGeo.countries) {
     console.log(`  ${c.country} (${c.code}) — ${c.sessions} sessions — ${c.percentage}%`);
   }
@@ -209,10 +208,29 @@ async function runTests() {
     `Verified: Live geography output has 0 cities/metros`
   );
 
-  const totalSessionsSum = liveGeo.countries.reduce((sum, c) => sum + c.sessions, 0);
+  // Top Countries must strictly exclude bot (Germany) and test (Canada/e2e)
+  const countryNames = liveGeo.countries.map((c) => c.country);
   assert(
-    totalSessionsSum === dbSessions.length,
-    `All sessions accounted for (${totalSessionsSum} === ${dbSessions.length})`
+    !countryNames.includes("Germany"),
+    "Verified: Germany excluded from geography totals (classified as bot)"
+  );
+  assert(
+    !countryNames.includes("Canada"),
+    "Verified: Canada excluded from geography totals (classified as test)"
+  );
+  assert(
+    countryNames.includes("United States"),
+    "Verified: United States remains in geography totals (classified as human_or_unknown)"
+  );
+  assert(
+    countryNames.includes("Bangladesh"),
+    "Verified: Bangladesh remains in geography totals (classified as human_or_unknown)"
+  );
+
+  const totalLegitimateSessionsSum = liveGeo.countries.reduce((sum, c) => sum + c.sessions, 0);
+  assert(
+    totalLegitimateSessionsSum === liveGeo.filterSummary.legitimateCount,
+    `Only legitimate sessions accounted in geography totals (${totalLegitimateSessionsSum} === ${liveGeo.filterSummary.legitimateCount})`
   );
 
   // Check no session has a city
