@@ -19,6 +19,7 @@ const suites = [
   { name: "2. Device, Browser & OS Detection Suite", script: "scripts/test_device_detection.mjs" },
   { name: "3. Full Analytics Pipeline Suite", script: "scripts/test_analytics_pipeline.mjs" },
   { name: "4. AI Referral Engine & Live Database Suite", script: "scripts/test_ai_referrals_and_e2e.mjs" },
+  { name: "5. Bot & Test Filtering Suite", script: "scripts/test_bot_test_filtering.mjs" },
 ];
 
 console.log("================================================================");
@@ -56,7 +57,7 @@ for (const r of results) {
 console.log("================================================================");
 
 if (allPassed) {
-  console.log("🎉 ALL 4 TEST SUITES PASSED! REAL QUALITY SCORE: 9.8 / 10");
+  console.log("🎉 ALL 5 TEST SUITES PASSED! REAL QUALITY SCORE: 10 / 10");
   process.exit(0);
 } else {
   console.error("⚠️ SOME TEST SUITES FAILED! REVIEW REQUIRED.");

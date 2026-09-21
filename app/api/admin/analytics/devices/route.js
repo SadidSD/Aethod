@@ -3,6 +3,7 @@ import { getSupabaseServerClient } from "@/lib/supabase/server";
 import {
   requireAdminAuth,
   parseDateRange,
+  fetchRawAnalyticsData,
   computeDeviceBreakdown,
 } from "@/lib/analytics/adminQueries";
 
@@ -20,15 +21,8 @@ export async function GET(request) {
     const supabase = getSupabaseServerClient();
     const rangeInfo = parseDateRange(request.nextUrl.searchParams);
 
-    const { data: sessions, error } = await supabase
-      .from("sessions")
-      .select("device_type")
-      .gte("started_at", rangeInfo.from.toISOString())
-      .lte("started_at", rangeInfo.to.toISOString());
-
-    if (error) throw error;
-
-    const devices = computeDeviceBreakdown(sessions || []);
+    const rawData = await fetchRawAnalyticsData(supabase, rangeInfo.from, rangeInfo.to);
+    const devices = computeDeviceBreakdown(rawData.sessions || []);
 
     return NextResponse.json(
       {

@@ -3,6 +3,7 @@ import { getSupabaseServerClient } from "@/lib/supabase/server";
 import {
   requireAdminAuth,
   parseDateRange,
+  fetchRawAnalyticsData,
   computeGeography,
 } from "@/lib/analytics/adminQueries";
 
@@ -20,15 +21,8 @@ export async function GET(request) {
     const supabase = getSupabaseServerClient();
     const rangeInfo = parseDateRange(request.nextUrl.searchParams);
 
-    const { data: sessions, error } = await supabase
-      .from("sessions")
-      .select("session_id, started_at, country, traffic_source, device_type, browser, operating_system")
-      .gte("started_at", rangeInfo.from.toISOString())
-      .lte("started_at", rangeInfo.to.toISOString());
-
-    if (error) throw error;
-
-    const geography = computeGeography(sessions || []);
+    const rawData = await fetchRawAnalyticsData(supabase, rangeInfo.from, rangeInfo.to);
+    const geography = computeGeography(rawData.sessions || []);
 
     return NextResponse.json(
       {

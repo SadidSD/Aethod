@@ -1,17 +1,80 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import styles from "./GeographyCard.module.css";
 
 export default function GeographyCard({ geography }) {
   const [showDiagnostics, setShowDiagnostics] = useState(true);
+  const [sessionList, setSessionList] = useState([]);
+  const [updatingId, setUpdatingId] = useState(null);
+
+  useEffect(() => {
+    if (geography?.diagnostics) {
+      setSessionList(geography.diagnostics);
+    }
+  }, [geography?.diagnostics]);
 
   if (!geography) return null;
 
   const { countries = [], diagnostics = [] } = geography;
   const maxSessions = countries[0]?.sessions || 1;
 
-  const investigatedSessions = diagnostics.filter((d) => d.geoStatus === "Investigate");
+  const handleClassificationChange = async (sessionId, newClassification) => {
+    if (!sessionId || sessionId === "—") return;
+    setUpdatingId(sessionId);
+
+    // Optimistic UI update
+    setSessionList((prev) =>
+      prev.map((item) =>
+        item.fullSessionId === sessionId
+          ? {
+              ...item,
+              classification: newClassification,
+              classificationLabel:
+                newClassification === "bot"
+                  ? "Bot (Excluded)"
+                  : newClassification === "test"
+                  ? "Test (Excluded)"
+                  : "Legitimate",
+              geoStatus:
+                newClassification === "bot"
+                  ? "Excluded (Bot)"
+                  : newClassification === "test"
+                  ? "Excluded (Test)"
+                  : "Valid",
+            }
+          : item
+      )
+    );
+
+    try {
+      const res = await fetch("/api/admin/analytics/classify-session", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          sessionId,
+          classification: newClassification,
+          reason: "Manual admin reclassification from audit log",
+        }),
+      });
+
+      if (!res.ok) {
+        console.error("Failed to reclassify session:", await res.text());
+      }
+    } catch (err) {
+      console.error("Error reclassifying session:", err);
+    } finally {
+      setUpdatingId(null);
+    }
+  };
+
+  const displayList = sessionList.length > 0 ? sessionList : diagnostics;
+  const investigatedSessions = displayList.filter(
+    (d) =>
+      d.geoStatus === "Investigate" ||
+      d.classification === "bot" ||
+      d.classification === "test"
+  );
 
   return (
     <div className={styles.card}>
@@ -62,29 +125,29 @@ export default function GeographyCard({ geography }) {
       </div>
 
       {/* Admin-Only Geo Diagnostics & Audit Log */}
-      {diagnostics.length > 0 && (
+      {displayList.length > 0 && (
         <div className={styles.diagSection}>
           <div className={styles.diagHeader}>
             <div className={styles.diagTitleWrapper}>
               <span className={styles.diagDot} />
               <span className={styles.diagTitle}>Geo Attribution Audit Log</span>
-              <span className={styles.diagSubtitle}>Server IP Geolocation • Zero Raw IPs Stored</span>
+              <span className={styles.diagSubtitle}>Server IP Geolocation • Excluded Traffic Preserved</span>
             </div>
             <button
               type="button"
               className={styles.diagToggleBtn}
               onClick={() => setShowDiagnostics((prev) => !prev)}
             >
-              {showDiagnostics ? "Hide Audit" : "Show Audit"} ({diagnostics.length})
+              {showDiagnostics ? "Hide Audit" : "Show Audit"} ({displayList.length})
             </button>
           </div>
 
           {showDiagnostics && (
             <div className={styles.diagBody}>
-              {/* Detailed Forensic Audit Cards for Investigate sessions */}
+              {/* Detailed Forensic Audit Cards for Investigate / Excluded sessions */}
               {investigatedSessions.length > 0 && (
                 <div className={styles.auditCardsWrapper}>
-                  <div className={styles.auditCardsHeading}>Forensic Session Analysis</div>
+                  <div className={styles.auditCardsHeading}>Forensic Session & Classification Analysis</div>
                   <div className={styles.auditCardsGrid}>
                     {investigatedSessions.map((s, idx) => (
                       <div key={idx} className={styles.auditCard}>
@@ -92,7 +155,19 @@ export default function GeographyCard({ geography }) {
                           <span className={styles.auditCountryBadge}>
                             [{s.countryCode}] {s.country}
                           </span>
-                          <span className={styles.statusInvestigate}>Investigate</span>
+                          <span
+                            className={
+                              s.classification === "bot"
+                                ? styles.statusBot
+                                : s.classification === "test"
+                                ? styles.statusTest
+                                : s.geoStatus === "Investigate"
+                                ? styles.statusInvestigate
+                                : styles.statusValid
+                            }
+                          >
+                            {s.classificationLabel || s.geoStatus}
+                          </span>
                         </div>
                         <div className={styles.auditDetails}>
                           <div className={styles.auditRow}>
@@ -102,6 +177,19 @@ export default function GeographyCard({ geography }) {
                           <div className={styles.auditRow}>
                             <span className={styles.auditLabel}>Detected Country:</span>
                             <span className={styles.auditValBold}>{s.country}</span>
+                          </div>
+                          <div className={styles.auditRow}>
+                            <span className={styles.auditLabel}>Classification:</span>
+                            <select
+                              className={styles.classificationSelect}
+                              value={s.classification || "human_or_unknown"}
+                              disabled={updatingId === s.fullSessionId}
+                              onChange={(e) => handleClassificationChange(s.fullSessionId, e.target.value)}
+                            >
+                              <option value="human_or_unknown">Legitimate (Normal)</option>
+                              <option value="bot">Bot (Exclude)</option>
+                              <option value="test">Test (Exclude)</option>
+                            </select>
                           </div>
                           <div className={styles.auditRow}>
                             <span className={styles.auditLabel}>Geo Provider:</span>
@@ -135,13 +223,24 @@ export default function GeographyCard({ geography }) {
                       <th>Source</th>
                       <th>Device</th>
                       <th>Browser</th>
-                      <th>OS</th>
-                      <th>Geo Status</th>
+                      <th>Classification</th>
+                      <th>Action</th>
                     </tr>
                   </thead>
                   <tbody>
-                    {diagnostics.map((row, idx) => (
-                      <tr key={idx} className={row.geoStatus === "Investigate" ? styles.rowInvestigate : ""}>
+                    {displayList.map((row, idx) => (
+                      <tr
+                        key={idx}
+                        className={
+                          row.classification === "bot"
+                            ? styles.rowInvestigate
+                            : row.classification === "test"
+                            ? styles.rowInvestigate
+                            : row.geoStatus === "Investigate"
+                            ? styles.rowInvestigate
+                            : ""
+                        }
+                      >
                         <td className={styles.tdTime}>{row.time}</td>
                         <td>
                           <span className={styles.tableCountry}>
@@ -152,17 +251,33 @@ export default function GeographyCard({ geography }) {
                         <td>{row.source}</td>
                         <td className={styles.tdCapitalize}>{row.device}</td>
                         <td>{row.browser}</td>
-                        <td>{row.os}</td>
                         <td>
                           <span
                             className={
-                              row.geoStatus === "Valid"
-                                ? styles.statusValid
-                                : styles.statusInvestigate
+                              row.classification === "bot"
+                                ? styles.statusBot
+                                : row.classification === "test"
+                                ? styles.statusTest
+                                : row.geoStatus === "Investigate"
+                                ? styles.statusInvestigate
+                                : styles.statusValid
                             }
                           >
-                            {row.geoStatus}
+                            {row.classificationLabel || (row.geoStatus === "Valid" ? "Legitimate" : row.geoStatus)}
                           </span>
+                        </td>
+                        <td>
+                          <select
+                            className={styles.classificationSelect}
+                            value={row.classification || "human_or_unknown"}
+                            disabled={updatingId === row.fullSessionId}
+                            onChange={(e) => handleClassificationChange(row.fullSessionId, e.target.value)}
+                            title="Reclassify session traffic"
+                          >
+                            <option value="human_or_unknown">Legitimate</option>
+                            <option value="bot">Bot (Exclude)</option>
+                            <option value="test">Test (Exclude)</option>
+                          </select>
                         </td>
                       </tr>
                     ))}

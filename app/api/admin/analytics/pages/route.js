@@ -3,6 +3,8 @@ import { getSupabaseServerClient } from "@/lib/supabase/server";
 import {
   requireAdminAuth,
   parseDateRange,
+  fetchRawAnalyticsData,
+  partitionSessions,
   computeTopPages,
 } from "@/lib/analytics/adminQueries";
 
@@ -22,15 +24,12 @@ export async function GET(request) {
     const limitParam = parseInt(request.nextUrl.searchParams.get("limit") || "10", 10);
     const limit = isNaN(limitParam) ? 10 : Math.max(1, Math.min(limitParam, 50));
 
-    const { data: pageViews, error } = await supabase
-      .from("page_views")
-      .select("path, visitor_id, duration_seconds")
-      .gte("viewed_at", rangeInfo.from.toISOString())
-      .lte("viewed_at", rangeInfo.to.toISOString());
+    const rawData = await fetchRawAnalyticsData(supabase, rangeInfo.from, rangeInfo.to);
+    const { legitimate } = partitionSessions(rawData.sessions || []);
+    const legitimateIdSet = new Set(legitimate.map((s) => s.session_id));
+    const legitimatePageViews = (rawData.pageViews || []).filter((pv) => legitimateIdSet.has(pv.session_id));
 
-    if (error) throw error;
-
-    const topPages = computeTopPages(pageViews || [], limit);
+    const topPages = computeTopPages(legitimatePageViews, limit);
 
     return NextResponse.json(
       {

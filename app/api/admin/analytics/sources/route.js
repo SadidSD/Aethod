@@ -3,6 +3,7 @@ import { getSupabaseServerClient } from "@/lib/supabase/server";
 import {
   requireAdminAuth,
   parseDateRange,
+  fetchRawAnalyticsData,
   computeTrafficSources,
 } from "@/lib/analytics/adminQueries";
 
@@ -20,15 +21,8 @@ export async function GET(request) {
     const supabase = getSupabaseServerClient();
     const rangeInfo = parseDateRange(request.nextUrl.searchParams);
 
-    const { data: sessions, error } = await supabase
-      .from("sessions")
-      .select("traffic_source")
-      .gte("started_at", rangeInfo.from.toISOString())
-      .lte("started_at", rangeInfo.to.toISOString());
-
-    if (error) throw error;
-
-    const trafficSources = computeTrafficSources(sessions || []);
+    const rawData = await fetchRawAnalyticsData(supabase, rangeInfo.from, rangeInfo.to);
+    const trafficSources = computeTrafficSources(rawData.sessions || []);
 
     return NextResponse.json(
       {

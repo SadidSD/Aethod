@@ -9,6 +9,7 @@ import {
 } from "@/lib/analytics/serverAnalytics";
 import { parseDeviceInfo } from "@/lib/analytics/device";
 import { AI_ATTRIBUTION_TYPES } from "@/lib/analytics/aiPlatforms.js";
+import { detectSessionClassification, SESSION_CLASSIFICATIONS } from "@/lib/analytics/classification.js";
 
 // Cache of supported session table columns in Supabase
 let supportedSessionColumns = null;
@@ -31,6 +32,7 @@ async function getSupportedSessionColumns(supabase) {
     "region_name",
     "metro",
     "timezone",
+    "classification",
   ];
 
   const detected = new Set();
@@ -299,6 +301,13 @@ export async function POST(request) {
       city: null,
     };
 
+    // Determine session classification (human_or_unknown, bot, or test)
+    const detectedClassification = detectSessionClassification(request, body);
+    let finalClassification = detectedClassification.classification;
+    if (existingSession?.classification) {
+      finalClassification = existingSession.classification;
+    }
+
     // Dynamically attach optional columns supported by Supabase schema (country only, zero city/metro)
     if (availableCols.has("ai_platform")) sessionPayload.ai_platform = finalAiPlatform;
     if (availableCols.has("ai_attribution_type")) sessionPayload.ai_attribution_type = finalAiAttributionType;
@@ -314,6 +323,7 @@ export async function POST(request) {
     if (availableCols.has("region_name")) sessionPayload.region_name = null;
     if (availableCols.has("metro")) sessionPayload.metro = null;
     if (availableCols.has("timezone")) sessionPayload.timezone = null;
+    if (availableCols.has("classification")) sessionPayload.classification = finalClassification;
 
     const { error: sessionError } = await supabase.from("sessions").upsert(
       sessionPayload,
@@ -325,6 +335,25 @@ export async function POST(request) {
 
     if (sessionError) {
       console.error("Analytics Error [session upsert]:", sessionError.message);
+    }
+
+    // If session is classified as bot or test, log forensic event in analytics_events
+    if (finalClassification !== SESSION_CLASSIFICATIONS.HUMAN_OR_UNKNOWN) {
+      try {
+        await supabase.from("analytics_events").insert({
+          session_id: sessionId,
+          visitor_id: visitorId,
+          event_name: "session_classification",
+          event_value: {
+            classification: finalClassification,
+            reason: detectedClassification.reason,
+            detected_at: nowIso,
+          },
+          page_path: effectiveLandingPage,
+        });
+      } catch {
+        // non-blocking audit event
+      }
     }
 
     // 8. Insert Page View record

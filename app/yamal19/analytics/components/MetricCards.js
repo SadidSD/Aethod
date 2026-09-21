@@ -65,7 +65,12 @@ export default function MetricCards({ metrics, comparisonLabel = "vs previous pe
             <span className={styles.mainNumber}>{totalSessions.value.toLocaleString()}</span>
           </div>
           <div className={styles.cardFooter}>
-            <span className={styles.comparisonText}>{comparisonLabel}</span>
+            <span
+              className={styles.comparisonText}
+              title={totalSessions.formattedLabel || comparisonLabel}
+            >
+              {totalSessions.formattedLabel || comparisonLabel}
+            </span>
           </div>
         </div>
 

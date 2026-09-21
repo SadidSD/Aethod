@@ -3,6 +3,7 @@ import { getSupabaseServerClient } from "@/lib/supabase/server";
 import {
   requireAdminAuth,
   parseDateRange,
+  fetchRawAnalyticsData,
   computeCampaigns,
 } from "@/lib/analytics/adminQueries";
 
@@ -20,24 +21,8 @@ export async function GET(request) {
     const supabase = getSupabaseServerClient();
     const rangeInfo = parseDateRange(request.nextUrl.searchParams);
 
-    const [sessionsRes, eventsRes] = await Promise.all([
-      supabase
-        .from("sessions")
-        .select("session_id, visitor_id, utm_source, utm_medium, utm_campaign")
-        .gte("started_at", rangeInfo.from.toISOString())
-        .lte("started_at", rangeInfo.to.toISOString()),
-      supabase
-        .from("analytics_events")
-        .select("session_id, event_name")
-        .gte("created_at", rangeInfo.from.toISOString())
-        .lte("created_at", rangeInfo.to.toISOString())
-        .in("event_name", ["inquiry_submitted", "call_booked", "contact_form_submit"]),
-    ]);
-
-    if (sessionsRes.error) throw sessionsRes.error;
-    if (eventsRes.error) throw eventsRes.error;
-
-    const campaigns = computeCampaigns(sessionsRes.data || [], eventsRes.data || []);
+    const rawData = await fetchRawAnalyticsData(supabase, rangeInfo.from, rangeInfo.to);
+    const campaigns = computeCampaigns(rawData.sessions || [], rawData.events || []);
 
     return NextResponse.json(
       {
