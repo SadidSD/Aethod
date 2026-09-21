@@ -22,7 +22,7 @@ export async function GET(request) {
 
     const { data: sessions, error } = await supabase
       .from("sessions")
-      .select("country, city")
+      .select("country")
       .gte("started_at", rangeInfo.from.toISOString())
       .lte("started_at", rangeInfo.to.toISOString());
 

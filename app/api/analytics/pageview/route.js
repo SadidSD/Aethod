@@ -146,10 +146,10 @@ export async function POST(request) {
     let effectiveLandingPage = landingPage || path || "/";
     let effectiveReason = serverAcquisition.reason;
 
-    // 5. Extract non-sensitive geo metadata from Edge headers (or IP fallback)
+    // 5. Extract non-sensitive country from client IP / Edge headers (ONLY country, zero city/metro)
     const geoData = await extractGeoFromHeaders(request);
-    const storedCountry = geoData.country && geoData.country !== "Unknown" ? geoData.country : null;
-    const storedCity = geoData.city && geoData.city !== "Unknown" ? geoData.city : null;
+    const storedCountry = geoData.countryName && geoData.countryName !== "Unknown" ? geoData.countryName : null;
+    const storedCountryCode = geoData.countryCode || null;
 
     // Fallback: derive device, OS, and browser server-side from user-agent if client telemetry is missing
     const serverDevice = (!device?.browser || device.browser === "Other")
@@ -163,7 +163,7 @@ export async function POST(request) {
     const supabase = getSupabaseServerClient();
     const nowIso = new Date().toISOString();
 
-    // 6. Upsert Visitor record
+    // 6. Upsert Visitor record (country only, city strictly null)
     const { error: visitorError } = await supabase.from("visitors").upsert(
       {
         visitor_id: visitorId,
@@ -172,7 +172,7 @@ export async function POST(request) {
         operating_system: finalOS,
         browser: finalBrowser,
         country: storedCountry,
-        city: storedCity,
+        city: null,
       },
       {
         onConflict: "visitor_id",
@@ -184,10 +184,11 @@ export async function POST(request) {
       console.error("Analytics Error [visitor upsert]:", visitorError.message);
     }
 
-    // 7. Upsert Session record with First-Touch Source Preservation
+    // 7. Upsert Session record with First-Touch Source & Session Country Preservation
     const availableCols = await getSupportedSessionColumns(supabase);
 
     const sessionSelectFields = [
+      "country",
       "traffic_source",
       "referrer",
       "utm_source",
@@ -220,7 +221,17 @@ export async function POST(request) {
     let finalUtmTerm = utm?.utm_term || null;
     let finalUtmContent = utm?.utm_content || null;
 
+    let finalCountry = storedCountry;
+    let finalCountryCode = storedCountryCode;
+
     if (existingSession) {
+      // Session country immutability: once a session is assigned a country, it cannot be changed
+      const existingCountry = existingSession.country_name || existingSession.country;
+      if (existingCountry && existingCountry !== "Unknown") {
+        finalCountry = existingCountry;
+        finalCountryCode = existingSession.country_code || null;
+      }
+
       if (existingSession.traffic_source && existingSession.traffic_source !== "Direct") {
         // First-touch preservation: never downgrade reliable attribution to Direct
         if (!effectiveTrafficSource || effectiveTrafficSource === "Direct") {
@@ -284,11 +295,11 @@ export async function POST(request) {
       device_type: finalDeviceType,
       operating_system: finalOS,
       browser: finalBrowser,
-      country: storedCountry,
-      city: storedCity,
+      country: finalCountry,
+      city: null,
     };
 
-    // Dynamically attach optional columns supported by Supabase schema
+    // Dynamically attach optional columns supported by Supabase schema (country only, zero city/metro)
     if (availableCols.has("ai_platform")) sessionPayload.ai_platform = finalAiPlatform;
     if (availableCols.has("ai_attribution_type")) sessionPayload.ai_attribution_type = finalAiAttributionType;
     if (availableCols.has("detection_method")) sessionPayload.detection_method = finalDetectionMethod;
@@ -297,12 +308,12 @@ export async function POST(request) {
     if (availableCols.has("landing_page")) sessionPayload.landing_page = finalLandingPage;
     if (availableCols.has("unknown_referrer_host")) sessionPayload.unknown_referrer_host = finalUnknownReferrerHost;
     if (availableCols.has("attribution_reason")) sessionPayload.attribution_reason = finalReason;
-    if (availableCols.has("country_code")) sessionPayload.country_code = geoData.countryCode || null;
-    if (availableCols.has("country_name")) sessionPayload.country_name = geoData.countryName || null;
-    if (availableCols.has("region_code")) sessionPayload.region_code = geoData.regionCode || null;
-    if (availableCols.has("region_name")) sessionPayload.region_name = geoData.regionName || null;
-    if (availableCols.has("metro")) sessionPayload.metro = geoData.metro || null;
-    if (availableCols.has("timezone")) sessionPayload.timezone = geoData.timezone || null;
+    if (availableCols.has("country_code")) sessionPayload.country_code = finalCountryCode;
+    if (availableCols.has("country_name")) sessionPayload.country_name = finalCountry;
+    if (availableCols.has("region_code")) sessionPayload.region_code = null;
+    if (availableCols.has("region_name")) sessionPayload.region_name = null;
+    if (availableCols.has("metro")) sessionPayload.metro = null;
+    if (availableCols.has("timezone")) sessionPayload.timezone = null;
 
     const { error: sessionError } = await supabase.from("sessions").upsert(
       sessionPayload,
