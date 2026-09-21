@@ -46,7 +46,11 @@ export default function Navbar({ activePage }) {
   };
 
   const getLinkClass = (pageName) => {
-    return activePage === pageName
+    const isMatch =
+      activePage === pageName ||
+      (pageName === "works" && (activePage === "work" || activePage === "works")) ||
+      (pageName === "studio" && (activePage === "studio" || activePage === "about" || activePage === "about-the-studio"));
+    return isMatch
       ? `${styles.navLink} ${styles.activeNavLink}`
       : styles.navLink;
   };
@@ -83,20 +87,20 @@ export default function Navbar({ activePage }) {
 
         {/* Navigation Links inside Drawer */}
         <div className={styles.drawerLinks} suppressHydrationWarning={true}>
-          <a href="/studio" className={getLinkClass("studio")} onClick={() => setMenuOpen(false)}>
-            Studio
+          <a href="/works" className={getLinkClass("works")} onClick={() => setMenuOpen(false)}>
+            Work
           </a>
           <a href="/services" className={getLinkClass("services")} onClick={() => setMenuOpen(false)}>
             Services
           </a>
-          <a href="/research" className={getLinkClass("research")} onClick={() => setMenuOpen(false)}>
-            Research
-          </a>
           <a href="/products" className={getLinkClass("products")} onClick={() => setMenuOpen(false)}>
             Products
           </a>
-          <a href="/works" className={getLinkClass("works")} onClick={() => setMenuOpen(false)}>
-            Works
+          <a href="/research" className={getLinkClass("research")} onClick={() => setMenuOpen(false)}>
+            Research
+          </a>
+          <a href="/studio" className={getLinkClass("studio")} onClick={() => setMenuOpen(false)}>
+            About the Studio
           </a>
           <a href="/blog" className={getLinkClass("blog")} onClick={() => setMenuOpen(false)}>
             Blog
@@ -122,20 +126,20 @@ export default function Navbar({ activePage }) {
 
           {/* Navigation Links (Desktop) */}
           <div className={styles.navLinks} suppressHydrationWarning={true}>
-            <a href="/studio" className={getLinkClass("studio")}>
-              Studio
+            <a href="/works" className={getLinkClass("works")}>
+              Work
             </a>
             <a href="/services" className={getLinkClass("services")}>
               Services
             </a>
-            <a href="/research" className={getLinkClass("research")}>
-              Research
-            </a>
             <a href="/products" className={getLinkClass("products")}>
               Products
             </a>
-            <a href="/works" className={getLinkClass("works")}>
-              Works
+            <a href="/research" className={getLinkClass("research")}>
+              Research
+            </a>
+            <a href="/studio" className={getLinkClass("studio")}>
+              About the Studio
             </a>
             <a href="/blog" className={getLinkClass("blog")}>
               Blog
