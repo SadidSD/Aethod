@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
+import Link from "next/link";
 import { useChat } from "../context/ChatContext";
 import styles from "./Navbar.module.css";
 import ThemeToggle from "./ThemeToggle";
@@ -91,27 +92,27 @@ export default function Navbar({ activePage }) {
 
         {/* Navigation Links inside Drawer */}
         <div className={styles.drawerLinks} suppressHydrationWarning={true}>
-          <a href="/works" className={getLinkClass("works")} onClick={() => setMenuOpen(false)}>
+          <Link href="/works" className={getLinkClass("works")} onClick={() => setMenuOpen(false)}>
             Work
-          </a>
-          <a href="/services" className={getLinkClass("services")} onClick={() => setMenuOpen(false)}>
+          </Link>
+          <Link href="/services" className={getLinkClass("services")} onClick={() => setMenuOpen(false)}>
             Services
-          </a>
-          <a href="/products" className={getLinkClass("products")} onClick={() => setMenuOpen(false)}>
+          </Link>
+          <Link href="/products" className={getLinkClass("products")} onClick={() => setMenuOpen(false)}>
             Products
-          </a>
-          <a href="/research" className={getLinkClass("research")} onClick={() => setMenuOpen(false)}>
+          </Link>
+          <Link href="/research" className={getLinkClass("research")} onClick={() => setMenuOpen(false)}>
             Research
-          </a>
-          <a href="/studio" className={getLinkClass("studio")} onClick={() => setMenuOpen(false)}>
+          </Link>
+          <Link href="/studio" className={getLinkClass("studio")} onClick={() => setMenuOpen(false)}>
             About the Studio
-          </a>
-          <a href="/blog" className={getLinkClass("blog")} onClick={() => setMenuOpen(false)}>
+          </Link>
+          <Link href="/blog" className={getLinkClass("blog")} onClick={() => setMenuOpen(false)}>
             Blog
-          </a>
-          <a href="/contact" className={getLinkClass("contact")} onClick={() => setMenuOpen(false)}>
+          </Link>
+          <Link href="/contact" className={getLinkClass("contact")} onClick={() => setMenuOpen(false)}>
             Contact
-          </a>
+          </Link>
         </div>
 
         {/* Theme Toggle (Centered under the links) */}
@@ -125,7 +126,7 @@ export default function Navbar({ activePage }) {
         <div className={styles.navContent} suppressHydrationWarning={true}>
           {/* Circular Logo (Route-Aware: Curved on Home, Popped on other pages) */}
           <div className={styles.logoWrapper} suppressHydrationWarning={true}>
-            <a
+            <Link
               href="/"
               className={`${styles.logoBtn} ${isHomePage ? styles.logoBtnCurved : styles.logoBtnPopped}`}
               onClick={(e) => {
@@ -154,35 +155,35 @@ export default function Navbar({ activePage }) {
                   fill="currentColor"
                 />
               </svg>
-            </a>
+            </Link>
           </div>
 
           {/* Navigation Links (Desktop) */}
           <div className={styles.navLinks} suppressHydrationWarning={true}>
-            <a href="/works" className={getLinkClass("works")}>
+            <Link href="/works" className={getLinkClass("works")}>
               Work
-            </a>
-            <a href="/services" className={getLinkClass("services")}>
+            </Link>
+            <Link href="/services" className={getLinkClass("services")}>
               Services
-            </a>
-            <a href="/products" className={getLinkClass("products")}>
+            </Link>
+            <Link href="/products" className={getLinkClass("products")}>
               Products
-            </a>
-            <a href="/research" className={getLinkClass("research")}>
+            </Link>
+            <Link href="/research" className={getLinkClass("research")}>
               Research
-            </a>
-            <a href="/studio" className={getLinkClass("studio")}>
+            </Link>
+            <Link href="/studio" className={getLinkClass("studio")}>
               About the Studio
-            </a>
-            <a href="/blog" className={getLinkClass("blog")}>
+            </Link>
+            <Link href="/blog" className={getLinkClass("blog")}>
               Blog
-            </a>
+            </Link>
           </div>
 
           {/* Right Area: Contact Button & Hamburger Toggle */}
           <div className={styles.navRight} suppressHydrationWarning={true}>
             {/* Contact Circle Button (Route-Aware: Popped / Curved Downward) */}
-            <a
+            <Link
               href="/contact"
               className={`${styles.contactBtn} ${isContactPage ? styles.contactBtnCurved : styles.contactBtnPopped}`}
               onClick={(e) => {
@@ -217,7 +218,7 @@ export default function Navbar({ activePage }) {
                   strokeLinejoin="round"
                 />
               </svg>
-            </a>
+            </Link>
 
             {/* Hamburger Menu Toggle (Mobile Only) */}
             <button 

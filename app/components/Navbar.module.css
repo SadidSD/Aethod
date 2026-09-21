@@ -48,27 +48,73 @@
   justify-content: center;
   text-decoration: none;
   flex-shrink: 0;
-  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1),
-              box-shadow 0.25s ease,
-              margin 0.25s ease,
-              opacity 0.2s ease;
   cursor: pointer;
   position: relative;
   z-index: 2;
+  margin: 0;
+  will-change: transform;
+  transform: translate3d(0, 0, 0);
+  transition: transform 0.38s cubic-bezier(0.16, 1, 0.3, 1),
+              opacity 0.25s ease;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
 }
 
-/* Popped-out state (on all pages except Home /) */
-.logoBtnPopped {
-  margin-left: -10px;
+/* Layered Neumorphic Shadows (Hardware-Accelerated Opacity Cross-Fade) */
+.logoBtn::before,
+.contactBtn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  pointer-events: none;
+  opacity: 0;
+  z-index: 1;
   box-shadow:
     -5px -5px 12px rgba(255, 255, 255, 0.95),
     5px 5px 14px rgba(163, 177, 198, 0.65),
     inset 1px 1px 0px rgba(255, 255, 255, 0.7),
     inset -1px -1px 0px rgba(163, 177, 198, 0.2);
+  transition: opacity 0.38s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.38s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity;
+}
+
+.logoBtn::after,
+.contactBtn::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  pointer-events: none;
+  opacity: 0;
+  z-index: 1;
+  box-shadow:
+    inset 3px 3px 6px rgba(163, 177, 198, 0.65),
+    inset 2px 2px 4px rgba(0, 0, 0, 0.1),
+    inset -3px -3px 6px rgba(255, 255, 255, 0.95);
+  transition: opacity 0.38s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity;
+}
+
+/* Popped-out state (on all pages except Home /) */
+.logoBtnPopped {
+  transform: translate3d(-10px, 0, 0);
+}
+
+.logoBtnPopped::before {
+  opacity: 1;
+}
+
+.logoBtnPopped::after {
+  opacity: 0;
 }
 
 .logoBtnPopped:hover {
-  transform: scale(1.05);
+  transform: translate3d(-10px, 0, 0) scale(1.05);
+}
+
+.logoBtnPopped:hover::before {
   box-shadow:
     -6px -6px 14px rgba(255, 255, 255, 1),
     6px 6px 16px rgba(163, 177, 198, 0.75),
@@ -77,20 +123,29 @@
 }
 
 .logoBtnPopped:active {
-  transform: scale(0.97);
-  box-shadow:
-    inset 3px 3px 6px rgba(163, 177, 198, 0.6),
-    inset -3px -3px 6px rgba(255, 255, 255, 0.85);
+  transform: translate3d(-10px, 0, 0) scale(0.97);
+}
+
+.logoBtnPopped:active::before {
+  opacity: 0.25;
+}
+
+.logoBtnPopped:active::after {
+  opacity: 0.75;
 }
 
 /* Curved / Downward state (on Home page /) */
 .logoBtnCurved {
-  margin-left: 0;
-  box-shadow:
-    inset 3px 3px 6px rgba(163, 177, 198, 0.65),
-    inset 2px 2px 4px rgba(0, 0, 0, 0.1),
-    inset -3px -3px 6px rgba(255, 255, 255, 0.95);
+  transform: translate3d(0, 0, 0);
   cursor: default;
+}
+
+.logoBtnCurved::before {
+  opacity: 0;
+}
+
+.logoBtnCurved::after {
+  opacity: 1;
 }
 
 .logoBtnCurved:hover {
@@ -102,25 +157,19 @@
   background: var(--bg-surface, #2a2a2a);
 }
 
-[data-theme='dark'] .logoBtnPopped {
+[data-theme='dark'] .logoBtn::before {
   box-shadow:
     -5px -5px 12px rgba(255, 255, 255, 0.05),
     5px 5px 14px rgba(0, 0, 0, 0.7);
 }
 
-[data-theme='dark'] .logoBtnPopped:hover {
+[data-theme='dark'] .logoBtnPopped:hover::before {
   box-shadow:
     -6px -6px 14px rgba(255, 255, 255, 0.08),
     6px 6px 16px rgba(0, 0, 0, 0.85);
 }
 
-[data-theme='dark'] .logoBtnPopped:active {
-  box-shadow:
-    inset 3px 3px 6px rgba(0, 0, 0, 0.7),
-    inset -3px -3px 6px rgba(255, 255, 255, 0.05);
-}
-
-[data-theme='dark'] .logoBtnCurved {
+[data-theme='dark'] .logoBtn::after {
   box-shadow:
     inset 3px 3px 6px rgba(0, 0, 0, 0.75),
     inset -3px -3px 6px rgba(255, 255, 255, 0.05);
@@ -132,7 +181,10 @@
   height: 28px;
   color: #111111;
   display: block;
-  transition: color 0.2s ease;
+  position: relative;
+  z-index: 2;
+  pointer-events: none;
+  transition: color 0.2s ease, transform 0.38s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 [data-theme='dark'] .logoMark {
@@ -480,27 +532,36 @@
   justify-content: center;
   text-decoration: none;
   flex-shrink: 0;
-  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1),
-              box-shadow 0.25s ease,
-              margin 0.25s ease,
-              opacity 0.2s ease;
   cursor: pointer;
   position: relative;
   z-index: 2;
+  margin: 0;
+  will-change: transform;
+  transform: translate3d(0, 0, 0);
+  transition: transform 0.38s cubic-bezier(0.16, 1, 0.3, 1),
+              opacity 0.25s ease;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
 }
 
 /* Popped-out state (on standard pages: /, /studio, /services, etc.) */
 .contactBtnPopped {
-  margin-right: -10px;
-  box-shadow:
-    -5px -5px 12px rgba(255, 255, 255, 0.95),
-    5px 5px 14px rgba(163, 177, 198, 0.65),
-    inset 1px 1px 0px rgba(255, 255, 255, 0.7),
-    inset -1px -1px 0px rgba(163, 177, 198, 0.2);
+  transform: translate3d(10px, 0, 0);
+}
+
+.contactBtnPopped::before {
+  opacity: 1;
+}
+
+.contactBtnPopped::after {
+  opacity: 0;
 }
 
 .contactBtnPopped:hover {
-  transform: scale(1.05);
+  transform: translate3d(10px, 0, 0) scale(1.05);
+}
+
+.contactBtnPopped:hover::before {
   box-shadow:
     -6px -6px 14px rgba(255, 255, 255, 1),
     6px 6px 16px rgba(163, 177, 198, 0.75),
@@ -509,50 +570,53 @@
 }
 
 .contactBtnPopped:active {
-  transform: scale(0.97);
-  box-shadow:
-    inset 3px 3px 6px rgba(163, 177, 198, 0.6),
-    inset -3px -3px 6px rgba(255, 255, 255, 0.85);
+  transform: translate3d(10px, 0, 0) scale(0.97);
+}
+
+.contactBtnPopped:active::before {
+  opacity: 0.25;
+}
+
+.contactBtnPopped:active::after {
+  opacity: 0.75;
 }
 
 /* Curved / Downward state (on /contact page) */
 .contactBtnCurved {
-  margin-right: 0;
-  box-shadow:
-    inset 3px 3px 6px rgba(163, 177, 198, 0.65),
-    inset 2px 2px 4px rgba(0, 0, 0, 0.1),
-    inset -3px -3px 6px rgba(255, 255, 255, 0.95);
+  transform: translate3d(0, 0, 0);
   cursor: default;
+}
+
+.contactBtnCurved::before {
+  opacity: 0;
+}
+
+.contactBtnCurved::after {
+  opacity: 1;
 }
 
 .contactBtnCurved:hover {
   opacity: 0.95;
 }
 
-/* Dark theme styles */
+/* Dark theme styles for contact button */
 [data-theme='dark'] .contactBtn {
   background: var(--bg-surface, #2a2a2a);
 }
 
-[data-theme='dark'] .contactBtnPopped {
+[data-theme='dark'] .contactBtn::before {
   box-shadow:
     -5px -5px 12px rgba(255, 255, 255, 0.05),
     5px 5px 14px rgba(0, 0, 0, 0.7);
 }
 
-[data-theme='dark'] .contactBtnPopped:hover {
+[data-theme='dark'] .contactBtnPopped:hover::before {
   box-shadow:
     -6px -6px 14px rgba(255, 255, 255, 0.08),
     6px 6px 16px rgba(0, 0, 0, 0.85);
 }
 
-[data-theme='dark'] .contactBtnPopped:active {
-  box-shadow:
-    inset 3px 3px 6px rgba(0, 0, 0, 0.7),
-    inset -3px -3px 6px rgba(255, 255, 255, 0.05);
-}
-
-[data-theme='dark'] .contactBtnCurved {
+[data-theme='dark'] .contactBtn::after {
   box-shadow:
     inset 3px 3px 6px rgba(0, 0, 0, 0.75),
     inset -3px -3px 6px rgba(255, 255, 255, 0.05);
@@ -564,7 +628,10 @@
   height: 20px;
   color: #333333;
   display: block;
-  transition: color 0.2s ease;
+  position: relative;
+  z-index: 2;
+  pointer-events: none;
+  transition: color 0.2s ease, transform 0.38s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 [data-theme='dark'] .contactIcon {
@@ -610,7 +677,20 @@
   .logoBtn {
     width: 44px !important;
     height: 44px !important;
-    margin-left: 0 !important;
+    transform: translate3d(0, 0, 0) !important;
+  }
+
+  .logoBtnPopped,
+  .logoBtnCurved {
+    transform: translate3d(0, 0, 0) !important;
+  }
+
+  .logoBtnPopped:hover {
+    transform: scale(1.05) !important;
+  }
+
+  .logoBtnPopped:active {
+    transform: scale(0.97) !important;
   }
 
   .logoMark {
@@ -633,7 +713,20 @@
   .contactBtn {
     width: 44px !important;
     height: 44px !important;
-    margin-right: 0 !important;
+    transform: translate3d(0, 0, 0) !important;
+  }
+
+  .contactBtnPopped,
+  .contactBtnCurved {
+    transform: translate3d(0, 0, 0) !important;
+  }
+
+  .contactBtnPopped:hover {
+    transform: scale(1.05) !important;
+  }
+
+  .contactBtnPopped:active {
+    transform: scale(0.97) !important;
   }
 
   .contactIcon {
