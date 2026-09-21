@@ -18,13 +18,16 @@ export default function DeviceDonut({ devices = [] }) {
   const center = size / 2;
 
   // Compute strokeDasharray offsets
-  let accumulatedPercent = 0;
-  const slices = devices.map((d, i) => {
-    const strokeDasharray = `${(d.percentage / 100) * circumference} ${circumference}`;
-    const strokeDashoffset = -((accumulatedPercent / 100) * circumference);
-    accumulatedPercent += d.percentage;
-    return { ...d, strokeDasharray, strokeDashoffset, index: i };
-  });
+  const { slices } = devices.reduce(
+    (acc, d, i) => {
+      const strokeDasharray = `${(d.percentage / 100) * circumference} ${circumference}`;
+      const strokeDashoffset = -((acc.offset / 100) * circumference);
+      acc.slices.push({ ...d, strokeDasharray, strokeDashoffset, index: i });
+      acc.offset += d.percentage;
+      return acc;
+    },
+    { slices: [], offset: 0 }
+  );
 
   const activeDevice = (hoveredIdx !== null ? devices[hoveredIdx] : devices[0]) || {
     type: "All Devices",

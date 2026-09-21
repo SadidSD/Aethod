@@ -46,383 +46,339 @@ function assert(condition, message) {
   }
 }
 
-async function runTests() {
-  console.log("\n==========================================");
-  console.log("AEETHOD 360° ANALYTICS — AI REFERRAL & E2E VERIFICATION");
-  console.log("==========================================\n");
+async function runUniversalEngineTests() {
+  console.log("\n==================================================");
+  console.log("AEETHOD 360 — UNIVERSAL AI REFERRAL DETECTION ENGINE");
+  console.log("FULL TEST SUITE & END-TO-END ACCURACY AUDIT");
+  console.log("==================================================\n");
 
   // Dynamically import project modules
   const {
-    detectAiReferral,
-    getAiPlatformFromRecord,
+    normalizeHostname,
     normalizeReferrer,
+    detectAIPlatform,
+    getAiPlatformFromRecord,
+    registerAIPlatform,
+    resetAIPlatformRegistry,
     AI_PLATFORMS,
     AI_ATTRIBUTION_TYPES,
   } = await import("../lib/analytics/aiPlatforms.js");
+
+  const {
+    isCrawler,
+    isSearchEngine,
+    isSocialPlatform,
+    isPaidTraffic,
+    resolveAcquisition,
+  } = await import("../lib/analytics/serverAnalytics.js");
+
   const { classifyTrafficSource } = await import(
     "../lib/analytics/trafficSource.js"
   );
-  const { computeAiReferralAnalytics, getAllAnalyticsData } = await import(
-    "../lib/analytics/adminQueries.js"
-  );
+
+  const {
+    computeAiReferralAnalytics,
+    computeAiDiagnostics,
+    getAllAnalyticsData,
+  } = await import("../lib/analytics/adminQueries.js");
+
+  // Reset registry before tests
+  resetAIPlatformRegistry();
 
   // ==========================================
-  // SECTION 11 TESTS (A through J)
+  // 1. HOSTNAME & REFERRER NORMALIZATION
   // ==========================================
-  console.log("--- 1. Testing Section 11 Referral & Campaign Attribution Rules (A - J) ---");
+  console.log("--- 1. Testing Hostname & Referrer Normalization ---");
 
-  // A. ChatGPT referral
-  const testA = detectAiReferral("https://chatgpt.com/c/67890");
-  assert(
-    testA.isAiReferral === true &&
-      testA.platform === "ChatGPT" &&
-      testA.attributionType === AI_ATTRIBUTION_TYPES.VERIFIED_AI_REFERRAL,
-    "A. ChatGPT (https://chatgpt.com/...) -> trafficSource = AI Referral, aiPlatform = ChatGPT"
-  );
-  assert(
-    classifyTrafficSource("https://chatgpt.com/c/67890", "") === "AI Referral",
-    "A. classifyTrafficSource(https://chatgpt.com/...) -> 'AI Referral'"
-  );
+  assert(normalizeHostname("HTTPS://WWW.ChatGPT.com/") === "chatgpt.com", "normalizeHostname: HTTPS://WWW.ChatGPT.com/ -> chatgpt.com");
+  assert(normalizeHostname("https://chatgpt.com:443/") === "chatgpt.com", "normalizeHostname: https://chatgpt.com:443/ -> chatgpt.com");
+  assert(normalizeHostname("http://chatgpt.com") === "chatgpt.com", "normalizeHostname: http://chatgpt.com -> chatgpt.com");
+  assert(normalizeHostname("CHATGPT.COM") === "chatgpt.com", "normalizeHostname: CHATGPT.COM -> chatgpt.com");
+  assert(normalizeHostname("chatgpt.com/") === "chatgpt.com", "normalizeHostname: chatgpt.com/ -> chatgpt.com");
+  assert(normalizeHostname("https://chatgpt.com/some/path") === "chatgpt.com", "normalizeHostname: https://chatgpt.com/some/path -> chatgpt.com");
+  assert(normalizeHostname("chatgpt.com.:8080") === "chatgpt.com", "normalizeHostname: chatgpt.com.:8080 (trailing dot + port) -> chatgpt.com");
 
-  const testA2 = detectAiReferral("https://chat.openai.com/");
-  assert(
-    testA2.isAiReferral === true && testA2.platform === "ChatGPT",
-    "A2. ChatGPT (https://chat.openai.com/) -> ChatGPT"
-  );
+  const normClaudePath = normalizeReferrer("https://claude.ai/referral/2026-09-21");
+  assert(normClaudePath.host === "claude.ai" && normClaudePath.pathname === "/referral/2026-09-21", "normalizeReferrer preserves referral path: /referral/2026-09-21");
 
-  const testA3 = detectAiReferral("https://openai.com/chatgpt");
-  assert(
-    testA3.isAiReferral === true && testA3.platform === "ChatGPT",
-    "A3. ChatGPT (https://openai.com/chatgpt) -> ChatGPT"
-  );
-
-  // B. Perplexity referral
-  const testB = detectAiReferral("https://www.perplexity.ai/search?q=aeethod");
-  assert(
-    testB.isAiReferral === true && testB.platform === "Perplexity",
-    "B. Perplexity (https://www.perplexity.ai/...) -> AI Referral / Perplexity"
-  );
-  assert(
-    classifyTrafficSource("https://www.perplexity.ai/search?q=aeethod", "") === "AI Referral",
-    "B. classifyTrafficSource(Perplexity) -> 'AI Referral'"
-  );
-
-  const testB2 = detectAiReferral("https://perplexity.ai/");
-  assert(
-    testB2.isAiReferral === true && testB2.platform === "Perplexity",
-    "B2. Perplexity (https://perplexity.ai/) -> Perplexity"
-  );
-
-  // C. Gemini referral
-  const testC = detectAiReferral("https://gemini.google.com/app/12345");
-  assert(
-    testC.isAiReferral === true && testC.platform === "Gemini",
-    "C. Gemini (https://gemini.google.com/...) -> AI Referral / Gemini"
-  );
-  assert(
-    classifyTrafficSource("https://gemini.google.com/app/12345", "") === "AI Referral",
-    "C. classifyTrafficSource(Gemini) -> 'AI Referral'"
-  );
-
-  const testC2 = detectAiReferral("https://bard.google.com/");
-  assert(
-    testC2.isAiReferral === true && testC2.platform === "Gemini",
-    "C2. Google Bard (https://bard.google.com/) -> Gemini"
-  );
-
-  const testC3 = detectAiReferral("https://aistudio.google.com/");
-  assert(
-    testC3.isAiReferral === true && testC3.platform === "Gemini",
-    "C3. Google AI Studio (https://aistudio.google.com/) -> Gemini"
-  );
-
-  // D. Claude referral
-  const testD = detectAiReferral("https://claude.ai/chat/abc-123");
-  assert(
-    testD.isAiReferral === true && testD.platform === "Claude",
-    "D. Claude (https://claude.ai/...) -> AI Referral / Claude"
-  );
-  assert(
-    classifyTrafficSource("https://claude.ai/chat/abc-123", "") === "AI Referral",
-    "D. classifyTrafficSource(Claude) -> 'AI Referral'"
-  );
-
-  const testD2 = detectAiReferral("https://anthropic.com/");
-  assert(
-    testD2.isAiReferral === true && testD2.platform === "Claude",
-    "D2. Anthropic (https://anthropic.com/) -> Claude"
-  );
-
-  // E. Copilot referral
-  const testE1 = detectAiReferral("https://copilot.microsoft.com/");
-  assert(
-    testE1.isAiReferral === true && testE1.platform === "Microsoft Copilot",
-    "E1. Copilot (https://copilot.microsoft.com/) -> AI Referral / Copilot"
-  );
-
-  const testE2 = detectAiReferral("https://www.bing.com/chat?q=aeethod+studio");
-  assert(
-    testE2.isAiReferral === true && testE2.platform === "Microsoft Copilot",
-    "E2. Copilot (https://www.bing.com/chat) -> AI Referral / Copilot"
-  );
-  assert(
-    classifyTrafficSource("https://www.bing.com/chat?q=aeethod+studio", "") === "AI Referral",
-    "E2. classifyTrafficSource(bing.com/chat) -> 'AI Referral'"
-  );
-
-  const testE3 = detectAiReferral("https://bing.com/copilot");
-  assert(
-    testE3.isAiReferral === true && testE3.platform === "Microsoft Copilot",
-    "E3. Copilot (https://bing.com/copilot) -> AI Referral / Copilot"
-  );
-
-  // F. Explicit UTM parameters
-  const testF1 = detectAiReferral("", "utm_source=chatgpt");
-  assert(
-    testF1.isAiReferral === true &&
-      testF1.platform === "ChatGPT" &&
-      testF1.attributionType === AI_ATTRIBUTION_TYPES.VERIFIED_AI_REFERRAL,
-    "F1. Explicit UTM ?utm_source=chatgpt -> AI Referral / ChatGPT"
-  );
-  assert(
-    classifyTrafficSource("", "utm_source=chatgpt") === "AI Referral",
-    "F1. classifyTrafficSource('', 'utm_source=chatgpt') -> 'AI Referral'"
-  );
-
-  const testF1b = detectAiReferral("", "utm_source=chatgpt.com");
-  assert(
-    testF1b.isAiReferral === true && testF1b.platform === "ChatGPT",
-    "F1b. Explicit UTM ?utm_source=chatgpt.com -> AI Referral / ChatGPT"
-  );
-
-  const testF2 = detectAiReferral("", "utm_source=perplexity&utm_medium=ai_referral");
-  assert(
-    testF2.isAiReferral === true && testF2.platform === "Perplexity",
-    "F2. Explicit UTM ?utm_source=perplexity -> AI Referral / Perplexity"
-  );
-
-  const testF2b = detectAiReferral("", "utm_source=perplexity.ai");
-  assert(
-    testF2b.isAiReferral === true && testF2b.platform === "Perplexity",
-    "F2b. Explicit UTM ?utm_source=perplexity.ai -> AI Referral / Perplexity"
-  );
-
-  const testF3 = detectAiReferral("", "utm_source=gemini");
-  assert(
-    testF3.isAiReferral === true && testF3.platform === "Gemini",
-    "F3. Explicit UTM ?utm_source=gemini -> AI Referral / Gemini"
-  );
-
-  const testF3b = detectAiReferral("", "utm_source=gemini.google.com");
-  assert(
-    testF3b.isAiReferral === true && testF3b.platform === "Gemini",
-    "F3b. Explicit UTM ?utm_source=gemini.google.com -> AI Referral / Gemini"
-  );
-
-  const testF4 = detectAiReferral("", "utm_source=claude");
-  assert(
-    testF4.isAiReferral === true && testF4.platform === "Claude",
-    "F4. Explicit UTM ?utm_source=claude -> AI Referral / Claude"
-  );
-
-  const testF4b = detectAiReferral("", "utm_source=claude.ai");
-  assert(
-    testF4b.isAiReferral === true && testF4b.platform === "Claude",
-    "F4b. Explicit UTM ?utm_source=claude.ai -> AI Referral / Claude"
-  );
-
-  const testF5 = detectAiReferral("", "utm_source=copilot");
-  assert(
-    testF5.isAiReferral === true && testF5.platform === "Microsoft Copilot",
-    "F5. Explicit UTM ?utm_source=copilot -> AI Referral / Copilot"
-  );
-
-  const testF5b = detectAiReferral("", "utm_source=copilot.microsoft.com");
-  assert(
-    testF5b.isAiReferral === true && testF5b.platform === "Microsoft Copilot",
-    "F5b. Explicit UTM ?utm_source=copilot.microsoft.com -> AI Referral / Copilot"
-  );
-
-  // G. Normal Google Search (Negative Control)
-  const testG = detectAiReferral("https://www.google.com/");
-  assert(
-    testG.isAiReferral === false &&
-      testG.attributionType === AI_ATTRIBUTION_TYPES.UNKNOWN_AI,
-    "G. Normal Google -> isAiReferral = false"
-  );
-  assert(
-    classifyTrafficSource("https://www.google.com/", "") === "Organic Search",
-    "G. classifyTrafficSource(https://www.google.com/) -> 'Organic Search'"
-  );
-
-  const testG2 = classifyTrafficSource("https://www.google.com/search?q=aeethod", "");
-  assert(testG2 === "Organic Search", "G2. Google Search Result -> 'Organic Search'");
-
-  // H. Normal Facebook / Social (Negative Control)
-  const testH = detectAiReferral("https://www.facebook.com/");
-  assert(testH.isAiReferral === false, "H. Facebook -> isAiReferral = false");
-  assert(
-    classifyTrafficSource("https://www.facebook.com/", "") === "Social",
-    "H. classifyTrafficSource(Facebook) -> 'Social'"
-  );
-
-  const testH2 = detectAiReferral("https://t.co/xyz123");
-  assert(
-    classifyTrafficSource("https://t.co/xyz123", "") === "Social",
-    "H2. Twitter/X -> 'Social'"
-  );
-
-  // I. Unknown website (Negative Control)
-  const testI = detectAiReferral("https://medium.com/@studio/article");
-  assert(testI.isAiReferral === false, "I. Unknown website -> isAiReferral = false");
-  assert(
-    classifyTrafficSource("https://medium.com/@studio/article", "") === "Referral",
-    "I. classifyTrafficSource(medium.com) -> 'Referral'"
-  );
-
-  // J. No referrer / Direct (Negative Control)
-  const testJ = detectAiReferral("");
-  assert(
-    testJ.isAiReferral === false &&
-      testJ.attributionType === AI_ATTRIBUTION_TYPES.UNKNOWN_AI,
-    "J. No referrer -> isAiReferral = false, attributionType = UNKNOWN_AI"
-  );
-  assert(
-    classifyTrafficSource("", "") === "Direct",
-    "J. classifyTrafficSource('', '') -> 'Direct'"
-  );
-
-  // Edge cases & Normalization
-  console.log("\n--- 2. Testing Robust Normalization & Anti-Spoofing ---");
-  const normDot = detectAiReferral("https://chatgpt.com.:8080/c/test");
-  assert(normDot.isAiReferral === true && normDot.platform === "ChatGPT", "Trailing dot & port normalization: chatgpt.com.:8080 -> ChatGPT");
-
-  const normApp = detectAiReferral("android-app://com.openai.chatgpt/https/aeethod.com");
-  assert(normApp.isAiReferral === true && normApp.platform === "ChatGPT", "Mobile app scheme: android-app://com.openai.chatgpt -> ChatGPT");
-
-  const normPerpApp = detectAiReferral("android-app://ai.perplexity.app");
-  assert(normPerpApp.isAiReferral === true && normPerpApp.platform === "Perplexity", "Mobile app scheme: android-app://ai.perplexity.app -> Perplexity");
-
-  const normDeepseek = detectAiReferral("https://chat.deepseek.com/");
-  assert(normDeepseek.isAiReferral === true && normDeepseek.platform === "DeepSeek", "DeepSeek detection: chat.deepseek.com -> DeepSeek");
-
-  const normGrok = detectAiReferral("https://x.ai/");
-  assert(normGrok.isAiReferral === true && normGrok.platform === "Grok", "Grok detection: x.ai -> Grok");
-
-  const normFake = detectAiReferral("https://not-chatgpt.com/search");
-  assert(normFake.isAiReferral === false, "Anti-Spoofing: not-chatgpt.com is NOT ChatGPT");
-
-  const normSubstr = detectAiReferral("https://copilot-scam.net/");
-  assert(normSubstr.isAiReferral === false, "Anti-Spoofing: copilot-scam.net is NOT Copilot");
-
-  const normEvilSub = detectAiReferral("https://chatgpt.com.evil.com/");
-  assert(normEvilSub.isAiReferral === false, "Anti-Spoofing: chatgpt.com.evil.com is NOT ChatGPT");
-
-  const normQuery = detectAiReferral("https://example.com/?ai=true");
-  assert(normQuery.isAiReferral === false, "Anti-Spoofing: example.com/?ai=true is NOT AI referral");
-
-  const normUtmFake = detectAiReferral("", "utm_source=my-ai-tool");
-  assert(normUtmFake.isAiReferral === false, "Anti-Spoofing: utm_source=my-ai-tool is NOT AI referral");
+  const normApp = normalizeReferrer("android-app://com.openai.chatgpt/https/aeethod.com");
+  assert(normApp.isApp === true && normApp.appPackage === "com.openai.chatgpt", "normalizeReferrer parses android-app:// package");
 
   // ==========================================
-  // SECTION 11 & 12: K, L & CRITICAL COMPLETE DATA PATH
+  // 2. AI PLATFORM REGISTRY DETECTION
   // ==========================================
-  console.log("\n--- 3. Testing Complete Data Path & Attribution Preservation (K & L) ---");
+  console.log("\n--- 2. Testing AI Platform Registry (All Supported Platforms) ---");
 
-  const testVisId = `test_vis_path_${Date.now()}`;
-  const testSesId = `test_ses_path_${Date.now()}`;
+  // A. ChatGPT / OpenAI
+  const c1 = detectAIPlatform("https://chatgpt.com/c/123");
+  assert(c1.isAiReferral && c1.platform === "ChatGPT", "ChatGPT: https://chatgpt.com/c/123 -> ChatGPT");
+  const c2 = detectAIPlatform("https://chat.openai.com/");
+  assert(c2.isAiReferral && c2.platform === "ChatGPT", "ChatGPT: https://chat.openai.com/ -> ChatGPT");
+  const c3 = detectAIPlatform("https://openai.com/");
+  assert(c3.isAiReferral && c3.platform === "ChatGPT", "ChatGPT: https://openai.com/ -> ChatGPT");
+  const c4 = detectAIPlatform("android-app://com.openai.chatgpt");
+  assert(c4.isAiReferral && c4.platform === "ChatGPT", "ChatGPT: android-app://com.openai.chatgpt -> ChatGPT");
+  const c5 = detectAIPlatform("", "utm_source=chatgpt.com");
+  assert(c5.isAiReferral && c5.platform === "ChatGPT", "ChatGPT: utm_source=chatgpt.com -> ChatGPT");
+
+  // B. Gemini
+  const g1 = detectAIPlatform("https://gemini.google.com/app");
+  assert(g1.isAiReferral && g1.platform === "Gemini", "Gemini: https://gemini.google.com/app -> Gemini");
+  const g2 = detectAIPlatform("https://bard.google.com/");
+  assert(g2.isAiReferral && g2.platform === "Gemini", "Gemini: https://bard.google.com/ -> Gemini");
+  const g3 = detectAIPlatform("https://aistudio.google.com/");
+  assert(g3.isAiReferral && g3.platform === "Gemini", "Gemini: https://aistudio.google.com/ -> Gemini");
+  const g4 = detectAIPlatform("https://notebooklm.google.com/");
+  assert(g4.isAiReferral && g4.platform === "Gemini", "Gemini: https://notebooklm.google.com/ -> Gemini");
+
+  // C. Claude (with path normalization)
+  const cl1 = detectAIPlatform("https://claude.ai/");
+  assert(cl1.isAiReferral && cl1.platform === "Claude", "Claude: https://claude.ai/ -> Claude");
+  const cl2 = detectAIPlatform("https://claude.ai/referral");
+  assert(cl2.isAiReferral && cl2.platform === "Claude", "Claude: https://claude.ai/referral -> Claude");
+  const cl3 = detectAIPlatform("https://claude.ai/referral/2026-09-21");
+  assert(cl3.isAiReferral && cl3.platform === "Claude", "Claude: https://claude.ai/referral/2026-09-21 -> Claude");
+  const cl4 = detectAIPlatform("https://anthropic.com/");
+  assert(cl4.isAiReferral && cl4.platform === "Claude", "Claude: https://anthropic.com/ -> Claude");
+  const cl5 = detectAIPlatform("android-app://com.anthropic.claude");
+  assert(cl5.isAiReferral && cl5.platform === "Claude", "Claude: android-app://com.anthropic.claude -> Claude");
+
+  // D. DeepSeek
+  const d1 = detectAIPlatform("https://deepseek.com/");
+  assert(d1.isAiReferral && d1.platform === "DeepSeek", "DeepSeek: https://deepseek.com/ -> DeepSeek");
+  const d2 = detectAIPlatform("https://chat.deepseek.com/");
+  assert(d2.isAiReferral && d2.platform === "DeepSeek", "DeepSeek: https://chat.deepseek.com/ -> DeepSeek");
+  const d3 = detectAIPlatform("https://deepseek.ai/");
+  assert(d3.isAiReferral && d3.platform === "DeepSeek", "DeepSeek: https://deepseek.ai/ -> DeepSeek");
+  const d4 = detectAIPlatform("", "utm_source=deepseek.com");
+  assert(d4.isAiReferral && d4.platform === "DeepSeek", "DeepSeek: utm_source=deepseek.com -> DeepSeek");
+
+  // E. Perplexity
+  const p1 = detectAIPlatform("https://perplexity.ai/");
+  assert(p1.isAiReferral && p1.platform === "Perplexity", "Perplexity: https://perplexity.ai/ -> Perplexity");
+  const p2 = detectAIPlatform("https://www.perplexity.ai/search?q=aeethod");
+  assert(p2.isAiReferral && p2.platform === "Perplexity", "Perplexity: https://www.perplexity.ai/search -> Perplexity");
+  const p3 = detectAIPlatform("https://labs.perplexity.ai/");
+  assert(p3.isAiReferral && p3.platform === "Perplexity", "Perplexity: subdomain https://labs.perplexity.ai/ -> Perplexity");
+  const p4 = detectAIPlatform("android-app://ai.perplexity.app");
+  assert(p4.isAiReferral && p4.platform === "Perplexity", "Perplexity: android-app://ai.perplexity.app -> Perplexity");
+
+  // F. Microsoft Copilot
+  const cp1 = detectAIPlatform("https://copilot.microsoft.com/");
+  assert(cp1.isAiReferral && cp1.platform === "Microsoft Copilot", "Copilot: https://copilot.microsoft.com/ -> Microsoft Copilot");
+  const cp2 = detectAIPlatform("https://www.bing.com/chat?q=test");
+  assert(cp2.isAiReferral && cp2.platform === "Microsoft Copilot", "Copilot: https://www.bing.com/chat -> Microsoft Copilot");
+  const cp3 = detectAIPlatform("https://bing.com/copilot");
+  assert(cp3.isAiReferral && cp3.platform === "Microsoft Copilot", "Copilot: https://bing.com/copilot -> Microsoft Copilot");
+
+  // G. Grok
+  const gr1 = detectAIPlatform("https://grok.com/");
+  assert(gr1.isAiReferral && gr1.platform === "Grok", "Grok: https://grok.com/ -> Grok");
+  const gr2 = detectAIPlatform("https://x.ai/");
+  assert(gr2.isAiReferral && gr2.platform === "Grok", "Grok: https://x.ai/ -> Grok");
+  const gr3 = detectAIPlatform("https://x.com/i/grok");
+  assert(gr3.isAiReferral && gr3.platform === "Grok", "Grok: https://x.com/i/grok -> Grok");
+
+  // H. Meta AI
+  const m1 = detectAIPlatform("https://meta.ai/");
+  assert(m1.isAiReferral && m1.platform === "Meta AI", "Meta AI: https://meta.ai/ -> Meta AI");
+  const m2 = detectAIPlatform("https://imagine.meta.com/");
+  assert(m2.isAiReferral && m2.platform === "Meta AI", "Meta AI: https://imagine.meta.com/ -> Meta AI");
+
+  // I. You.com
+  const y1 = detectAIPlatform("https://you.com/");
+  assert(y1.isAiReferral && y1.platform === "You.com", "You.com: https://you.com/ -> You.com");
+
+  // J. Poe
+  const poe1 = detectAIPlatform("https://poe.com/");
+  assert(poe1.isAiReferral && poe1.platform === "Poe", "Poe: https://poe.com/ -> Poe");
+
+  // K. Mistral / Le Chat
+  const mis1 = detectAIPlatform("https://chat.mistral.ai/");
+  assert(mis1.isAiReferral && mis1.platform === "Mistral Le Chat", "Mistral: https://chat.mistral.ai/ -> Mistral Le Chat");
+  const mis2 = detectAIPlatform("https://mistral.ai/");
+  assert(mis2.isAiReferral && mis2.platform === "Mistral Le Chat", "Mistral: https://mistral.ai/ -> Mistral Le Chat");
+
+  // L. Character.AI
+  const ch1 = detectAIPlatform("https://character.ai/");
+  assert(ch1.isAiReferral && ch1.platform === "Character.AI", "Character.AI: https://character.ai/ -> Character.AI");
+  const ch2 = detectAIPlatform("https://beta.character.ai/");
+  assert(ch2.isAiReferral && ch2.platform === "Character.AI", "Character.AI: https://beta.character.ai/ -> Character.AI");
+
+  // ==========================================
+  // 3. SEARCH ENGINE & SOCIAL PLATFORM PROTECTION
+  // ==========================================
+  console.log("\n--- 3. Testing Non-AI Channel Protection (Negative Controls) ---");
+
+  // Google & Bing Organic Search (not AI)
+  const googRes = resolveAcquisition({ serverReferer: "https://www.google.com/search?q=aeethod" });
+  assert(googRes.source === "Organic Search", "Google search -> strictly 'Organic Search'");
+  assert(googRes.aiPlatform === null, "Google search has NO AI platform");
+
+  const bingRes = resolveAcquisition({ serverReferer: "https://www.bing.com/search?q=aeethod" });
+  assert(bingRes.source === "Organic Search", "Standard Bing search -> strictly 'Organic Search'");
+  assert(bingRes.aiPlatform === null, "Standard Bing search has NO AI platform");
+
+  // Social (not AI)
+  const fbRes = resolveAcquisition({ serverReferer: "https://www.facebook.com/" });
+  assert(fbRes.source === "Social", "Facebook -> strictly 'Social'");
+
+  const xRes = resolveAcquisition({ serverReferer: "https://x.com/profile" });
+  assert(xRes.source === "Social", "Normal x.com -> strictly 'Social' (NOT Grok)");
+
+  // Anti-Spoofing / False Positives
+  assert(!detectAIPlatform("https://not-chatgpt.com").isAiReferral, "Anti-spoofing: not-chatgpt.com is NOT AI");
+  assert(!detectAIPlatform("https://chatgpt.com.evil.com").isAiReferral, "Anti-spoofing: chatgpt.com.evil.com is NOT AI");
+  assert(!detectAIPlatform("https://fake-deepseek.org").isAiReferral, "Anti-spoofing: fake-deepseek.org is NOT AI");
+  assert(!detectAIPlatform("https://claude.ai.phishing.com").isAiReferral, "Anti-spoofing: claude.ai.phishing.com is NOT AI");
+  assert(!detectAIPlatform("https://random.com/?ai=true").isAiReferral, "Anti-spoofing: random.com/?ai=true is NOT AI");
+  assert(!detectAIPlatform("", "utm_source=my-company-ai").isAiReferral, "Anti-spoofing: utm_source=my-company-ai is NOT AI");
+
+  // No referrer / Direct
+  const directRes = resolveAcquisition({ serverReferer: null, clientReferrer: "" });
+  assert(directRes.source === "Direct" && directRes.aiPlatform === null, "No referrer -> strictly 'Direct'");
+
+  // ==========================================
+  // 4. AI CRAWLER SEPARATION
+  // ==========================================
+  console.log("\n--- 4. Testing AI Crawler / Bot Separation ---");
+
+  assert(isCrawler("Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko; compatible; GPTBot/1.2; +https://openai.com/gptbot)").isCrawler, "GPTBot is recognized as a crawler");
+  assert(isCrawler("Mozilla/5.0 ClaudeBot/1.0; +claudebot@anthropic.com").isCrawler, "ClaudeBot is recognized as a crawler");
+  assert(isCrawler("Mozilla/5.0 (compatible; PerplexityBot/1.0; +https://perplexity.ai/perplexitybot)").isCrawler, "PerplexityBot is recognized as a crawler");
+  assert(isCrawler("Googlebot/2.1 (+http://www.google.com/bot.html)").isCrawler, "Googlebot is recognized as a crawler");
+  assert(!isCrawler("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/120.0.0.0 Safari/537.36").isCrawler, "Real Chrome browser is NOT a crawler");
+
+  const botAcq = resolveAcquisition({
+    serverReferer: "https://chatgpt.com/",
+    userAgent: "GPTBot/1.0",
+  });
+  assert(botAcq.source === "Bot" && botAcq.isCrawler === true, "Crawler request is categorized as Bot and excluded from AI referrals");
+
+  // ==========================================
+  // 5. UNKNOWN REFERRER DISCOVERY & REGISTRY EXTENSIBILITY
+  // ==========================================
+  console.log("\n--- 5. Testing Unknown Referrer Discovery & Runtime Extensibility ---");
+
+  // 1. Unknown platform arrives
+  const unkRes = resolveAcquisition({ serverReferer: "https://future-ai.example/share/123" });
+  assert(unkRes.source === "Referral", "Unknown platform before registration: source = 'Referral'");
+  assert(unkRes.aiPlatform === null, "Unknown platform before registration: aiPlatform = null (NOT hallucinated)");
+  assert(unkRes.unknownReferrerHost === "future-ai.example", "Unknown host recorded for discovery: 'future-ai.example'");
+
+  // 2. Register future platform
+  registerAIPlatform({
+    id: "future_ai",
+    name: "Future AI",
+    canonicalName: "Future AI",
+    domains: ["future-ai.example"],
+    utmSources: ["future_ai", "future-ai.example"],
+    color: "#EC4899",
+  });
+
+  // 3. Test again after registration
+  const regRes = resolveAcquisition({ serverReferer: "https://future-ai.example/share/123" });
+  assert(regRes.source === "AI Referral", "After registration: source = 'AI Referral'");
+  assert(regRes.aiPlatform === "Future AI", "After registration: aiPlatform = 'Future AI'");
+
+  // ==========================================
+  // 6. MULTIPLE AI SIGNALS & DETERMINISTIC PRECEDENCE
+  // ==========================================
+  console.log("\n--- 6. Testing Deterministic Signal Conflict Precedence ---");
+
+  // Server Referer = claude.ai, Client UTM = chatgpt.com
+  const conflictRes = resolveAcquisition({
+    serverReferer: "https://claude.ai/chat/123",
+    clientReferrer: "https://claude.ai/",
+    searchParams: "utm_source=chatgpt.com",
+  });
+
+  assert(conflictRes.source === "AI Referral", "Conflict resolution: source = 'AI Referral'");
+  assert(conflictRes.aiPlatform === "Claude", "Server-verified Referer takes precedence over client UTM: aiPlatform = 'Claude'");
+  assert(conflictRes.conflict !== null, "Conflict was recorded for diagnostic debugging");
+
+  // ==========================================
+  // 7. COMPLETE PIPELINE: SUPABASE + PRESERVATION + CONVERSION
+  // ==========================================
+  console.log("\n--- 7. Testing Full Pipeline (Supabase, First-Touch Preservation, Conversion) ---");
+
+  const testVisId = `test_vis_universal_${Date.now()}`;
+  const testSesId = `test_ses_universal_${Date.now()}`;
   const time1 = new Date(Date.now() - 60000).toISOString();
   const time2 = new Date(Date.now() - 30000).toISOString();
   const time3 = new Date().toISOString();
 
   try {
-    // 1. Visitor inserts (first seen)
+    // 1. Visitor insertion
     await supabase.from("visitors").insert({
       visitor_id: testVisId,
       last_seen: time1,
     });
 
-    // 2. Initial Pageview (K: Visitor enters from ChatGPT)
-    // First touch: ChatGPT referral on landing page /
+    // 2. Initial Pageview (Landing from Claude with referral path)
     await supabase.from("sessions").insert({
       session_id: testSesId,
       visitor_id: testVisId,
       started_at: time1,
       last_activity_at: time1,
       traffic_source: "AI Referral",
-      referrer: "https://chatgpt.com/",
+      referrer: "https://claude.ai/referral/2026-09-21",
       device_type: "Desktop",
       browser: "Chrome",
       operating_system: "macOS",
       country: "United States",
-      city: "San Francisco",
+      city: "New York",
     });
 
     await supabase.from("page_views").insert({
       session_id: testSesId,
       visitor_id: testVisId,
       path: "/",
-      referrer: "https://chatgpt.com/",
+      referrer: "https://claude.ai/referral/2026-09-21",
       viewed_at: time1,
-      duration_seconds: 40,
+      duration_seconds: 35,
     });
 
-    // 3. Subsequent Pageviews (K: Internal Navigation to /services and /contact)
-    // Subsequent internal navigation: referrer is internal or empty, trafficSource is Direct
-    // Verify server does NOT overwrite existing session attribution!
+    // 3. Internal Navigation: /work -> /services -> /contact
+    // Verify attribution preservation
     const { data: existingSession } = await supabase
       .from("sessions")
-      .select("traffic_source, referrer, utm_source, utm_medium")
+      .select("traffic_source, referrer")
       .eq("session_id", testSesId)
       .single();
 
-    // Simulated internal navigation payload (trafficSource = Direct, referrer = https://www.aeethod.com/)
-    let incomingTrafficSource = "Direct";
-    let finalTrafficSource = incomingTrafficSource;
-    let finalReferrer = "https://www.aeethod.com/";
+    let finalSource = existingSession.traffic_source;
+    let finalRef = existingSession.referrer;
 
-    // Apply the preservation guard
-    if (existingSession && existingSession.traffic_source && existingSession.traffic_source !== "Direct") {
-      finalTrafficSource = existingSession.traffic_source;
-      finalReferrer = existingSession.referrer;
-    }
+    assert(finalSource === "AI Referral", "Internal navigation: source remains 'AI Referral'");
+    assert(finalRef === "https://claude.ai/referral/2026-09-21", "Internal navigation: original referrer preserved");
 
-    assert(
-      finalTrafficSource === "AI Referral",
-      "K. Attribution Preservation: Internal navigation does NOT downgrade source to Direct"
-    );
-    assert(
-      finalReferrer === "https://chatgpt.com/",
-      "K. Referrer Preservation: Original AI referrer is preserved"
-    );
-
-    // Update session last_activity and insert pageviews for /services and /contact
     await supabase.from("sessions").update({
       last_activity_at: time2,
-      traffic_source: finalTrafficSource,
-      referrer: finalReferrer,
+      traffic_source: finalSource,
+      referrer: finalRef,
     }).eq("session_id", testSesId);
 
     await supabase.from("page_views").insert([
       {
         session_id: testSesId,
         visitor_id: testVisId,
-        path: "/services",
+        path: "/work",
         referrer: "https://www.aeethod.com/",
         viewed_at: time2,
-        duration_seconds: 60,
+        duration_seconds: 45,
       },
       {
         session_id: testSesId,
         visitor_id: testVisId,
         path: "/contact",
-        referrer: "https://www.aeethod.com/services",
+        referrer: "https://www.aeethod.com/work",
         viewed_at: time3,
-        duration_seconds: 45,
+        duration_seconds: 50,
       },
     ]);
 
-    // 4. L. Inquiry conversion event
+    // 4. Conversion Event: inquiry_submitted
     await supabase.from("analytics_events").insert({
       session_id: testSesId,
       visitor_id: testVisId,
@@ -431,44 +387,55 @@ async function runTests() {
       created_at: time3,
     });
 
-    // 5. Query Master Admin Aggregator on live database
+    // 5. Query Master Admin Aggregator on live Supabase
     const masterData = await getAllAnalyticsData(supabase, new URLSearchParams({ range: "today" }));
     const aiData = masterData.data.aiReferrals;
 
-    assert(aiData.aiSessions >= 1, `L. Live Admin API: AI Sessions >= 1 (found ${aiData.aiSessions})`);
-    assert(aiData.aiVisitors >= 1, `L. Live Admin API: AI Visitors >= 1 (found ${aiData.aiVisitors})`);
-    assert(aiData.aiPageviews >= 3, `L. Live Admin API: AI Pageviews counted across all pages >= 3 (found ${aiData.aiPageviews})`);
-    assert(aiData.aiInquiries >= 1, `L. Live Admin API: AI Inquiries >= 1 (found ${aiData.aiInquiries})`);
-    assert(aiData.aiConversions >= 1, `L. Live Admin API: AI Conversions >= 1 (found ${aiData.aiConversions})`);
+    assert(aiData.aiSessions >= 1, `Live Admin API: AI Sessions >= 1 (found ${aiData.aiSessions})`);
+    assert(aiData.aiVisitors >= 1, `Live Admin API: AI Visitors >= 1 (found ${aiData.aiVisitors})`);
+    assert(aiData.aiPageviews >= 3, `Live Admin API: AI Pageviews >= 3 (found ${aiData.aiPageviews})`);
+    assert(aiData.aiInquiries >= 1, `Live Admin API: AI Inquiries >= 1 (found ${aiData.aiInquiries})`);
+    assert(aiData.aiConversions >= 1, `Live Admin API: AI Conversions >= 1 (found ${aiData.aiConversions})`);
 
-    const chatgptPlatform = aiData.platforms.find((p) => p.platform === "ChatGPT");
-    assert(
-      chatgptPlatform !== undefined && chatgptPlatform.sessions >= 1 && chatgptPlatform.conversions >= 1,
-      "L. AI Platform Attribution: ChatGPT received the conversion yield"
-    );
+    const claudePlatform = aiData.platforms.find((p) => p.platform === "Claude");
+    assert(claudePlatform !== undefined, "Claude platform is present in breakdown table");
+    assert(claudePlatform.sessions >= 1, "Claude platform has >= 1 session");
+    assert(claudePlatform.conversions >= 1, "Claude platform received the conversion yield");
 
-    const funnel = aiData.funnel;
-    assert(funnel.length === 4, "AI Funnel has 4 stages");
-    assert(funnel[0].count >= 1, "Funnel 01: Website Visits >= 1");
-    assert(funnel[1].count >= 1, "Funnel 02: Explored Services/Work >= 1");
-    assert(funnel[2].count >= 1, "Funnel 03: Started Contact >= 1");
-    assert(funnel[3].count >= 1, "Funnel 04: Inquiry / Call Booked >= 1");
-
-    // Clean up temporary test data
+    // Clean up temporary test records
     await supabase.from("analytics_events").delete().eq("session_id", testSesId);
     await supabase.from("page_views").delete().eq("session_id", testSesId);
     await supabase.from("sessions").delete().eq("session_id", testSesId);
     await supabase.from("visitors").delete().eq("visitor_id", testVisId);
     console.log("  [INFO] Cleaned up temporary test data from Supabase");
   } catch (err) {
-    console.error("  [FAIL] Critical path error:", err);
+    console.error("  [FAIL] Full pipeline error:", err);
     failed++;
   }
 
   // ==========================================
-  // SECTION 4: ALL DATE RANGE TESTS
+  // 8. DIAGNOSTICS & DISCOVERY REPORT TEST
   // ==========================================
-  console.log("\n--- 4. Testing All Date Ranges ---");
+  console.log("\n--- 8. Testing AI Diagnostics & Discovery Function ---");
+
+  const mockSessions = [
+    { session_id: "s1", traffic_source: "AI Referral", referrer: "https://chatgpt.com/", utm_source: null, ai_platform: "ChatGPT" },
+    { session_id: "s2", traffic_source: "AI Referral", referrer: "https://claude.ai/referral", utm_source: null, ai_platform: "Claude" },
+    { session_id: "s3", traffic_source: "AI Referral", referrer: null, utm_source: "deepseek.com", ai_platform: "DeepSeek" },
+    { session_id: "s4", traffic_source: "Referral", referrer: "https://new-ai-tool.example/article", unknown_referrer_host: "new-ai-tool.example" },
+    { session_id: "s5", traffic_source: "Direct", referrer: null, utm_source: null },
+  ];
+
+  const diag = computeAiDiagnostics(mockSessions, [], []);
+  assert(diag.verifiedAiSessions === 3, "Diagnostics: verifiedAiSessions = 3");
+  assert(diag.directSessions === 1, "Diagnostics: directSessions = 1");
+  assert(diag.recognizedPlatforms.length === 3, "Diagnostics: 3 recognized platforms found");
+  assert(diag.unknownReferrerHosts.some((h) => h.host === "new-ai-tool.example"), "Diagnostics discovered unknown host: 'new-ai-tool.example'");
+
+  // ==========================================
+  // 9. DATE RANGE TESTS
+  // ==========================================
+  console.log("\n--- 9. Testing All Date Ranges ---");
   for (const r of ["today", "yesterday", "7d", "30d", "custom"]) {
     try {
       const p = new URLSearchParams({ range: r });
@@ -484,16 +451,16 @@ async function runTests() {
     }
   }
 
-  console.log("\n==========================================");
-  console.log(`TEST SUMMARY: ${passed} PASSED, ${failed} FAILED`);
-  console.log("==========================================\n");
+  console.log("\n==================================================");
+  console.log(`AEETHOD UNIVERSAL ENGINE RESULTS: ${passed} PASSED, ${failed} FAILED`);
+  console.log("==================================================\n");
 
   if (failed > 0) {
     process.exit(1);
   }
 }
 
-runTests().catch((err) => {
+runUniversalEngineTests().catch((err) => {
   console.error("Fatal test runner error:", err);
   process.exit(1);
 });

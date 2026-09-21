@@ -69,7 +69,7 @@ export default function GeographyCard({ geography }) {
                   <div className={styles.cityRank}>0{idx + 1}</div>
                   <div className={styles.cityInfo}>
                     <span className={styles.cityName}>{cityItem.city}</span>
-                    <span className={styles.cityCountry}>{cityItem.country}</span>
+                    <span className={styles.cityCountry}>{cityItem.countryName || cityItem.country}</span>
                   </div>
                   <div className={styles.citySessions}>
                     <span className={styles.cityCount}>

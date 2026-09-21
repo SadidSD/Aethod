@@ -3,21 +3,52 @@ import { getSupabaseServerClient } from "@/lib/supabase/server";
 import {
   checkRateLimit,
   extractGeoFromHeaders,
+  isCrawler,
+  resolveAcquisition,
   PageViewSchema,
 } from "@/lib/analytics/serverAnalytics";
-import { detectAiReferral, AI_ATTRIBUTION_TYPES } from "@/lib/analytics/aiPlatforms.js";
+import { parseDeviceInfo } from "@/lib/analytics/device";
+import { AI_ATTRIBUTION_TYPES } from "@/lib/analytics/aiPlatforms.js";
 
-// Cached flag to check if sessions table has ai_platform and ai_attribution_type columns
-let hasAiColumns = null;
-async function getHasAiColumns(supabase) {
-  if (hasAiColumns !== null) return hasAiColumns;
-  try {
-    const { error } = await supabase.from("sessions").select("ai_platform").limit(0);
-    hasAiColumns = !error;
-  } catch {
-    hasAiColumns = false;
-  }
-  return hasAiColumns;
+// Cache of supported session table columns in Supabase
+let supportedSessionColumns = null;
+
+async function getSupportedSessionColumns(supabase) {
+  if (supportedSessionColumns !== null) return supportedSessionColumns;
+
+  const candidateColumns = [
+    "ai_platform",
+    "ai_attribution_type",
+    "ai_referrer_host",
+    "ai_referrer_path",
+    "landing_page",
+    "unknown_referrer_host",
+    "attribution_reason",
+    "country_code",
+    "country_name",
+    "region_code",
+    "region_name",
+    "metro",
+    "timezone",
+  ];
+
+  const detected = new Set();
+
+  await Promise.all(
+    candidateColumns.map(async (col) => {
+      try {
+        const { error } = await supabase.from("sessions").select(col).limit(0);
+        if (!error) {
+          detected.add(col);
+        }
+      } catch {
+        // column not available
+      }
+    })
+  );
+
+  supportedSessionColumns = detected;
+  return supportedSessionColumns;
 }
 
 export async function POST(request) {
@@ -30,7 +61,19 @@ export async function POST(request) {
       );
     }
 
-    // 2. Parse & Validate body
+    const userAgent = request.headers.get("user-agent") || "";
+    const serverReferer = request.headers.get("referer") || null;
+
+    // 2. Separate AI Crawlers / Bots from human referral visitors
+    const crawlerCheck = isCrawler(userAgent);
+    if (crawlerCheck.isCrawler) {
+      return NextResponse.json(
+        { message: "Crawler acknowledged, excluded from analytics", bot: crawlerCheck.botName },
+        { status: 200 }
+      );
+    }
+
+    // 3. Parse & Validate body
     let body;
     try {
       body = await request.json();
@@ -50,30 +93,79 @@ export async function POST(request) {
       visitorId,
       sessionId,
       path,
+      landingPage,
       referrer,
       trafficSource,
       aiPlatform,
       aiAttributionType,
+      aiReferrerHost,
+      aiReferrerPath,
+      unknownReferrerHost,
       utm,
       device,
     } = parseResult.data;
 
-    // 3. Extract non-sensitive geo metadata from Edge headers
-    const { country, city } = extractGeoFromHeaders(request);
+    // 4. Server-Side Acquisition Resolution (Server is Source of Truth)
+    const utmSearch = new URLSearchParams();
+    if (utm?.utm_source) utmSearch.set("utm_source", utm.utm_source);
+    if (utm?.utm_medium) utmSearch.set("utm_medium", utm.utm_medium);
+    if (utm?.utm_campaign) utmSearch.set("utm_campaign", utm.utm_campaign);
+
+    const serverAcquisition = resolveAcquisition({
+      serverReferer,
+      clientReferrer: referrer,
+      searchParams: utmSearch,
+      currentOrigin: request.nextUrl.origin,
+      userAgent,
+    });
+
+    // Determine effective acquisition attributes
+    let effectiveTrafficSource = serverAcquisition.source;
+    if (effectiveTrafficSource === "Bot") effectiveTrafficSource = "Direct";
+
+    // If client had a valid verified AI referral from landing and server referer was empty, respect client verified signal
+    if (effectiveTrafficSource === "Direct" && trafficSource === "AI Referral") {
+      effectiveTrafficSource = "AI Referral";
+    }
+
+    let effectiveAiPlatform = serverAcquisition.aiPlatform || (effectiveTrafficSource === "AI Referral" ? aiPlatform : null);
+    let effectiveAiAttributionType =
+      effectiveTrafficSource === "AI Referral"
+        ? AI_ATTRIBUTION_TYPES.VERIFIED_AI_REFERRAL
+        : AI_ATTRIBUTION_TYPES.UNKNOWN_AI;
+    let effectiveAiReferrerHost = serverAcquisition.referrerHost || aiReferrerHost || null;
+    let effectiveAiReferrerPath = serverAcquisition.referrerPath || aiReferrerPath || null;
+    let effectiveUnknownReferrerHost = serverAcquisition.unknownReferrerHost || unknownReferrerHost || null;
+    let effectiveLandingPage = landingPage || path || "/";
+    let effectiveReason = serverAcquisition.reason;
+
+    // 5. Extract non-sensitive geo metadata from Edge headers (or IP fallback)
+    const geoData = await extractGeoFromHeaders(request);
+    const storedCountry = geoData.country && geoData.country !== "Unknown" ? geoData.country : null;
+    const storedCity = geoData.city && geoData.city !== "Unknown" ? geoData.city : null;
+
+    // Fallback: derive device, OS, and browser server-side from user-agent if client telemetry is missing
+    const serverDevice = (!device?.browser || device.browser === "Other")
+      ? parseDeviceInfo(userAgent)
+      : device;
+
+    const finalDeviceType = device?.device_type || serverDevice.device_type || "desktop";
+    const finalOS = device?.operating_system || serverDevice.operating_system || "Other";
+    const finalBrowser = device?.browser || serverDevice.browser || "Other";
 
     const supabase = getSupabaseServerClient();
     const nowIso = new Date().toISOString();
 
-    // 4. Upsert Visitor record
+    // 6. Upsert Visitor record
     const { error: visitorError } = await supabase.from("visitors").upsert(
       {
         visitor_id: visitorId,
         last_seen: nowIso,
-        device_type: device?.device_type || null,
-        operating_system: device?.operating_system || null,
-        browser: device?.browser || null,
-        country: country || null,
-        city: city || null,
+        device_type: finalDeviceType,
+        operating_system: finalOS,
+        browser: finalBrowser,
+        country: storedCountry,
+        city: storedCity,
       },
       {
         onConflict: "visitor_id",
@@ -85,39 +177,19 @@ export async function POST(request) {
       console.error("Analytics Error [visitor upsert]:", visitorError.message);
     }
 
-    // 5. Server-side verification of AI signal
-    let effectiveTrafficSource = trafficSource || "Direct";
-    let effectiveAiPlatform = aiPlatform || null;
-    let effectiveAiAttributionType = aiAttributionType || null;
+    // 7. Upsert Session record with First-Touch Source Preservation
+    const availableCols = await getSupportedSessionColumns(supabase);
 
-    if (effectiveTrafficSource !== "AI Referral") {
-      const dummySearch = new URLSearchParams();
-      if (utm?.utm_source) dummySearch.set("utm_source", utm.utm_source);
-      if (utm?.utm_medium) dummySearch.set("utm_medium", utm.utm_medium);
-
-      const serverAiCheck = detectAiReferral(referrer || "", dummySearch);
-      if (serverAiCheck.isAiReferral && serverAiCheck.attributionType === AI_ATTRIBUTION_TYPES.VERIFIED_AI_REFERRAL) {
-        effectiveTrafficSource = "AI Referral";
-        effectiveAiPlatform = serverAiCheck.platform;
-        effectiveAiAttributionType = AI_ATTRIBUTION_TYPES.VERIFIED_AI_REFERRAL;
-      }
-    } else if (!effectiveAiPlatform && (referrer || utm?.utm_source)) {
-      const dummySearch = new URLSearchParams();
-      if (utm?.utm_source) dummySearch.set("utm_source", utm.utm_source);
-      if (utm?.utm_medium) dummySearch.set("utm_medium", utm.utm_medium);
-      const serverAiCheck = detectAiReferral(referrer || "", dummySearch);
-      if (serverAiCheck.isAiReferral) {
-        effectiveAiPlatform = serverAiCheck.platform;
-        effectiveAiAttributionType = serverAiCheck.attributionType;
-      }
-    }
-
-    // 6. Upsert Session record with First-Touch Source Preservation
-    const supportsAiColumns = await getHasAiColumns(supabase);
-
-    const sessionSelectFields = supportsAiColumns
-      ? "traffic_source, referrer, utm_source, utm_medium, utm_campaign, utm_term, utm_content, ai_platform, ai_attribution_type"
-      : "traffic_source, referrer, utm_source, utm_medium, utm_campaign, utm_term, utm_content";
+    const sessionSelectFields = [
+      "traffic_source",
+      "referrer",
+      "utm_source",
+      "utm_medium",
+      "utm_campaign",
+      "utm_term",
+      "utm_content",
+      ...Array.from(availableCols),
+    ].join(", ");
 
     const { data: existingSession } = await supabase
       .from("sessions")
@@ -126,9 +198,14 @@ export async function POST(request) {
       .maybeSingle();
 
     let finalTrafficSource = effectiveTrafficSource;
-    let finalReferrer = referrer || null;
+    let finalReferrer = referrer || serverReferer || null;
     let finalAiPlatform = effectiveAiPlatform || null;
     let finalAiAttributionType = effectiveAiAttributionType || null;
+    let finalAiReferrerHost = effectiveAiReferrerHost || null;
+    let finalAiReferrerPath = effectiveAiReferrerPath || null;
+    let finalUnknownReferrerHost = effectiveUnknownReferrerHost || null;
+    let finalLandingPage = effectiveLandingPage;
+    let finalReason = effectiveReason;
     let finalUtmSource = utm?.utm_source || null;
     let finalUtmMedium = utm?.utm_medium || null;
     let finalUtmCampaign = utm?.utm_campaign || null;
@@ -136,7 +213,7 @@ export async function POST(request) {
     let finalUtmContent = utm?.utm_content || null;
 
     if (existingSession && existingSession.traffic_source && existingSession.traffic_source !== "Direct") {
-      // Preserve first-touched source: do not overwrite reliable attribution with Direct
+      // First-touch preservation: never downgrade reliable attribution to Direct
       if (!effectiveTrafficSource || effectiveTrafficSource === "Direct") {
         finalTrafficSource = existingSession.traffic_source;
         finalReferrer = existingSession.referrer;
@@ -145,10 +222,13 @@ export async function POST(request) {
         finalUtmCampaign = existingSession.utm_campaign;
         finalUtmTerm = existingSession.utm_term;
         finalUtmContent = existingSession.utm_content;
-        if (supportsAiColumns) {
-          finalAiPlatform = existingSession.ai_platform || finalAiPlatform;
-          finalAiAttributionType = existingSession.ai_attribution_type || finalAiAttributionType;
-        }
+        finalAiPlatform = existingSession.ai_platform || finalAiPlatform;
+        finalAiAttributionType = existingSession.ai_attribution_type || finalAiAttributionType;
+        finalAiReferrerHost = existingSession.ai_referrer_host || finalAiReferrerHost;
+        finalAiReferrerPath = existingSession.ai_referrer_path || finalAiReferrerPath;
+        finalUnknownReferrerHost = existingSession.unknown_referrer_host || finalUnknownReferrerHost;
+        finalLandingPage = existingSession.landing_page || finalLandingPage;
+        finalReason = existingSession.attribution_reason || finalReason;
       }
     }
 
@@ -163,17 +243,27 @@ export async function POST(request) {
       utm_term: finalUtmTerm,
       utm_content: finalUtmContent,
       traffic_source: finalTrafficSource,
-      device_type: device?.device_type || null,
-      operating_system: device?.operating_system || null,
-      browser: device?.browser || null,
-      country: country || null,
-      city: city || null,
+      device_type: finalDeviceType,
+      operating_system: finalOS,
+      browser: finalBrowser,
+      country: storedCountry,
+      city: storedCity,
     };
 
-    if (supportsAiColumns) {
-      sessionPayload.ai_platform = finalAiPlatform;
-      sessionPayload.ai_attribution_type = finalAiAttributionType;
-    }
+    // Dynamically attach optional columns supported by Supabase schema
+    if (availableCols.has("ai_platform")) sessionPayload.ai_platform = finalAiPlatform;
+    if (availableCols.has("ai_attribution_type")) sessionPayload.ai_attribution_type = finalAiAttributionType;
+    if (availableCols.has("ai_referrer_host")) sessionPayload.ai_referrer_host = finalAiReferrerHost;
+    if (availableCols.has("ai_referrer_path")) sessionPayload.ai_referrer_path = finalAiReferrerPath;
+    if (availableCols.has("landing_page")) sessionPayload.landing_page = finalLandingPage;
+    if (availableCols.has("unknown_referrer_host")) sessionPayload.unknown_referrer_host = finalUnknownReferrerHost;
+    if (availableCols.has("attribution_reason")) sessionPayload.attribution_reason = finalReason;
+    if (availableCols.has("country_code")) sessionPayload.country_code = geoData.countryCode || null;
+    if (availableCols.has("country_name")) sessionPayload.country_name = geoData.countryName || null;
+    if (availableCols.has("region_code")) sessionPayload.region_code = geoData.regionCode || null;
+    if (availableCols.has("region_name")) sessionPayload.region_name = geoData.regionName || null;
+    if (availableCols.has("metro")) sessionPayload.metro = geoData.metro || null;
+    if (availableCols.has("timezone")) sessionPayload.timezone = geoData.timezone || null;
 
     const { error: sessionError } = await supabase.from("sessions").upsert(
       sessionPayload,
@@ -187,7 +277,7 @@ export async function POST(request) {
       console.error("Analytics Error [session upsert]:", sessionError.message);
     }
 
-    // 7. Insert Page View record
+    // 8. Insert Page View record
     const { data: pageViewData, error: pageViewError } = await supabase
       .from("page_views")
       .insert({
@@ -207,7 +297,15 @@ export async function POST(request) {
     }
 
     return NextResponse.json(
-      { success: true, pageViewId: pageViewData?.id },
+      {
+        success: true,
+        pageViewId: pageViewData?.id,
+        acquisition: {
+          source: finalTrafficSource,
+          aiPlatform: finalAiPlatform,
+          confidence: serverAcquisition.confidence,
+        },
+      },
       { status: 201 }
     );
   } catch (err) {
