@@ -279,37 +279,42 @@
 
 .heroText {
   flex: 1;
-  max-width: 650px;
+  max-width: 680px;
   padding-top: 30px;
 }
 
 .heroHeading {
-  font-family: var(--font-sora), 'Sora', sans-serif;
+  font-family: var(--font-dm-sans), 'DM Sans', -apple-system, sans-serif;
   font-style: normal;
-  font-weight: 300;
-  font-size: var(--font-size-hero);
-  line-height: 1.1;
-  color: #404040;
-  margin-bottom: 24px;
-  letter-spacing: -0.03em;
+  font-weight: 500;
+  font-size: clamp(2.35rem, 3.8vw, 3.4rem);
+  line-height: 1.15;
+  color: #2b2b36;
+  margin-bottom: 22px;
+  letter-spacing: -0.025em;
 }
 
 .heroHighlight {
-  background: linear-gradient(180deg, #5A69EA 0%, #BF8BCA 100%);
+  background: linear-gradient(135deg, #5162FF 0%, #B872C8 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  font-style: italic;
+  font-weight: 600;
+  font-style: normal;
+}
+
+.heroLineBreak {
+  display: block;
 }
 
 .heroSubtext {
-  font-family: var(--font-sora), 'Sora', sans-serif;
+  font-family: var(--font-dm-sans), 'DM Sans', -apple-system, sans-serif;
   font-style: normal;
-  font-weight: 300;
-  font-size: clamp(1rem, 1.15vw, 1.15rem);
+  font-weight: 400;
+  font-size: clamp(0.95rem, 1.1vw, 1.05rem);
   line-height: 1.6;
-  color: #404040;
-  max-width: 540px;
+  color: #555566;
+  max-width: 530px;
   margin-bottom: 32px;
   letter-spacing: -0.01em;
 }
@@ -1516,11 +1521,18 @@
 
 /* ----- Hero ----- */
 :global([data-theme="dark"]) .heroHeading {
-  color: #d0d0e0;
+  color: #e4e4f0;
+}
+
+:global([data-theme="dark"]) .heroHighlight {
+  background: linear-gradient(135deg, #7C8BFF 0%, #DC93EC 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 :global([data-theme="dark"]) .heroSubtext {
-  color: #8888a8;
+  color: #9090aa;
 }
 
 /* ----- Services Header ----- */

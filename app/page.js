@@ -321,10 +321,10 @@ export default function Home() {
             <div className={styles.heroText}>
               <h1 className={styles.heroHeading}>
                 You have outgrown the{" "}
-                <span className={styles.heroHighlight}>marketplaces</span>,{"\n"}
+                <span className={styles.heroHighlight}>marketplaces</span>,
+                <br className={styles.heroLineBreak} />
                 Build the{" "}
-                <span className={styles.heroHighlight}>platform</span>{" "}
-                your{" "}
+                <span className={styles.heroHighlight}>platform</span> your{" "}
                 <span className={styles.heroHighlight}>brand</span> deserves.
               </h1>
               <p className={styles.heroSubtext}>
