@@ -319,13 +319,15 @@ export default function Home() {
           <div className={styles.heroContent}>
             {/* Left — Copy */}
             <div className={styles.heroText}>
+              <div className={styles.heroEyebrow}>
+                <span className={styles.eyebrowDot} />
+                <span>TCG & Digital Platform Architecture</span>
+              </div>
               <h1 className={styles.heroHeading}>
-                You have outgrown the{" "}
-                <span className={styles.heroHighlight}>marketplaces</span>,
+                You have outgrown the marketplaces,
                 <br className={styles.heroLineBreak} />
                 Build the{" "}
-                <span className={styles.heroHighlight}>platform</span> your{" "}
-                <span className={styles.heroHighlight}>brand</span> deserves.
+                <span className={styles.heroHighlight}>platform your brand deserves.</span>
               </h1>
               <p className={styles.heroSubtext}>
                 Aeethod builds custom digital platforms, ecommerce systems, and automation for growing TCG businesses—so your technology can evolve with the way your business actually works.
