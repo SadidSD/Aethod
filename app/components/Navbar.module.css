@@ -19,7 +19,7 @@
   max-width: 1352px;
   margin: 0 auto;
   position: relative;
-  overflow: hidden;
+  overflow: visible;
   transition: all 0.5s ease;
 }
 
@@ -126,6 +126,10 @@
 }
 
 .navRightMobile {
+  display: none;
+}
+
+.hamburgerBtn {
   display: none;
 }
 
@@ -356,53 +360,106 @@
 }
 
 
-.callButton {
+/* Contact Button — Circular Neumorphic */
+.contactBtn {
   width: 55px;
   height: 55px;
   border-radius: 50%;
-  background: #ECECEC;
-  box-shadow:
-    -5px 5px 10px rgba(163, 177, 198, 0.25),
-    5px -5px 10px rgba(163, 177, 198, 0.25),
-    -5px -5px 10px rgba(255, 255, 255, 0.95),
-    5px 5px 13px rgba(163, 177, 198, 0.65),
-    inset 1px 1px 0px rgba(255, 255, 255, 0.7),
-    inset -1px -1px 0px rgba(163, 177, 198, 0.2);
+  background: var(--bg-primary, #ECECEC);
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  text-decoration: none;
   flex-shrink: 0;
+  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1),
+              box-shadow 0.25s ease,
+              margin 0.25s ease,
+              opacity 0.2s ease;
+  cursor: pointer;
+  position: relative;
+  z-index: 2;
 }
 
-[data-theme='dark'] .callButton {
-  background: #2a2a2a;
+/* Popped-out state (on standard pages: /, /studio, /services, etc.) */
+.contactBtnPopped {
+  margin-right: -10px;
   box-shadow:
-    -5px 5px 10px rgba(0, 0, 0, 0.5),
-    5px -5px 10px rgba(0, 0, 0, 0.5),
-    -5px -5px 10px rgba(255, 255, 255, 0.05),
-    5px 5px 13px rgba(0, 0, 0, 0.5);
+    -5px -5px 12px rgba(255, 255, 255, 0.95),
+    5px 5px 14px rgba(163, 177, 198, 0.65),
+    inset 1px 1px 0px rgba(255, 255, 255, 0.7),
+    inset -1px -1px 0px rgba(163, 177, 198, 0.2);
 }
 
-.callButton:hover {
-  transform: scale(1.06);
+.contactBtnPopped:hover {
+  transform: scale(1.05);
+  box-shadow:
+    -6px -6px 14px rgba(255, 255, 255, 1),
+    6px 6px 16px rgba(163, 177, 198, 0.75),
+    inset 1px 1px 0px rgba(255, 255, 255, 0.8),
+    inset -1px -1px 0px rgba(163, 177, 198, 0.25);
 }
 
-.callButton:active {
+.contactBtnPopped:active {
+  transform: scale(0.97);
   box-shadow:
     inset 3px 3px 6px rgba(163, 177, 198, 0.6),
     inset -3px -3px 6px rgba(255, 255, 255, 0.85);
-  transform: scale(0.96);
 }
 
-.callIcon {
+/* Curved / Downward state (on /contact page) */
+.contactBtnCurved {
+  margin-right: 0;
+  box-shadow:
+    inset 3px 3px 6px rgba(163, 177, 198, 0.65),
+    inset 2px 2px 4px rgba(0, 0, 0, 0.1),
+    inset -3px -3px 6px rgba(255, 255, 255, 0.95);
+  cursor: default;
+}
+
+.contactBtnCurved:hover {
+  opacity: 0.95;
+}
+
+/* Dark theme styles */
+[data-theme='dark'] .contactBtn {
+  background: var(--bg-surface, #2a2a2a);
+}
+
+[data-theme='dark'] .contactBtnPopped {
+  box-shadow:
+    -5px -5px 12px rgba(255, 255, 255, 0.05),
+    5px 5px 14px rgba(0, 0, 0, 0.7);
+}
+
+[data-theme='dark'] .contactBtnPopped:hover {
+  box-shadow:
+    -6px -6px 14px rgba(255, 255, 255, 0.08),
+    6px 6px 16px rgba(0, 0, 0, 0.85);
+}
+
+[data-theme='dark'] .contactBtnPopped:active {
+  box-shadow:
+    inset 3px 3px 6px rgba(0, 0, 0, 0.7),
+    inset -3px -3px 6px rgba(255, 255, 255, 0.05);
+}
+
+[data-theme='dark'] .contactBtnCurved {
+  box-shadow:
+    inset 3px 3px 6px rgba(0, 0, 0, 0.75),
+    inset -3px -3px 6px rgba(255, 255, 255, 0.05);
+}
+
+/* Phone Contact Icon */
+.contactIcon {
   width: 20px;
   height: 20px;
+  color: #333333;
   display: block;
+  transition: color 0.2s ease;
 }
 
-[data-theme='dark'] .callIcon path {
-  stroke: #ffffff;
+[data-theme='dark'] .contactIcon {
+  color: #ffffff;
 }
 
 .themeToggleWrapper {
@@ -446,7 +503,22 @@
   }
 
   .navRight {
-    display: none !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: flex-end !important;
+    gap: 12px !important;
+    flex: none !important;
+  }
+
+  .contactBtn {
+    width: 44px !important;
+    height: 44px !important;
+    margin-right: 0 !important;
+  }
+
+  .contactIcon {
+    width: 18px !important;
+    height: 18px !important;
   }
 
   .themeToggleWrapper {
@@ -520,6 +592,21 @@
   }
   .navbarOpen {
     height: 80px !important;
+  }
+  .navRight {
+    gap: 8px !important;
+  }
+  .contactBtn {
+    width: 40px !important;
+    height: 40px !important;
+  }
+  .contactIcon {
+    width: 16px !important;
+    height: 16px !important;
+  }
+  .hamburgerBtn {
+    width: 40px !important;
+    height: 40px !important;
   }
 }
 

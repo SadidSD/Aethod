@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
 import { useChat } from "../context/ChatContext";
 import styles from "./Navbar.module.css";
 import ThemeToggle from "./ThemeToggle";
@@ -31,6 +32,8 @@ function InlineSVG({ src, className }) {
 }
 
 export default function Navbar({ activePage }) {
+  const pathname = usePathname();
+  const isContactPage = pathname === "/contact" || activePage === "contact";
   const { chatQuery, setChatQuery, openChat, sendMessage } = useChat();
   const [menuOpen, setMenuOpen] = useState(false);
 
@@ -144,27 +147,61 @@ export default function Navbar({ activePage }) {
             <a href="/blog" className={getLinkClass("blog")}>
               Blog
             </a>
-            <a href="/contact" className={getLinkClass("contact")}>
-              Contact
-            </a>
           </div>
 
-          {/* Hamburger Menu Toggle (Mobile Only) */}
-          <button 
-            className={styles.hamburgerBtn} 
-            onClick={() => setMenuOpen(!menuOpen)}
-            aria-expanded={menuOpen}
-            aria-label="Toggle Navigation Menu"
-          >
-            <div className={`${styles.hamburgerIcon} ${menuOpen ? styles.hamburgerIconOpen : ""}`} suppressHydrationWarning={true}>
-              <span />
-              <span />
-              <span />
-            </div>
-          </button>
-
-          {/* Right Area (Desktop placeholder) */}
+          {/* Right Area: Contact Button & Hamburger Toggle */}
           <div className={styles.navRight} suppressHydrationWarning={true}>
+            {/* Contact Circle Button (Route-Aware: Popped / Curved Downward) */}
+            <a
+              href="/contact"
+              className={`${styles.contactBtn} ${isContactPage ? styles.contactBtnCurved : styles.contactBtnPopped}`}
+              onClick={(e) => {
+                if (isContactPage) {
+                  e.preventDefault();
+                }
+              }}
+              aria-label="Contact Us"
+              aria-current={isContactPage ? "page" : undefined}
+              suppressHydrationWarning={true}
+            >
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                className={styles.contactIcon}
+              >
+                <path
+                  d="M15.05 5A5 5 0 0 1 19 8.95M15.05 1A9 9 0 0 1 23 8.94"
+                  stroke="currentColor"
+                  strokeWidth="2.2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+                <path
+                  d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"
+                  stroke="currentColor"
+                  strokeWidth="2.2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
+            </a>
+
+            {/* Hamburger Menu Toggle (Mobile Only) */}
+            <button 
+              className={styles.hamburgerBtn} 
+              onClick={() => setMenuOpen(!menuOpen)}
+              aria-expanded={menuOpen}
+              aria-label="Toggle Navigation Menu"
+            >
+              <div className={`${styles.hamburgerIcon} ${menuOpen ? styles.hamburgerIconOpen : ""}`} suppressHydrationWarning={true}>
+                <span />
+                <span />
+                <span />
+              </div>
+            </button>
           </div>
         </div>
       </nav>
