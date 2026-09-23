@@ -1,0 +1,1002 @@
+/* TcgOperations.module.css - Neumorphic styling for TCG Operations components */
+
+/* ===== COMMON STYLES ===== */
+.componentCard {
+  width: 100%;
+  border-radius: 24px;
+  background: var(--card-bg, #f2f3f5);
+  box-shadow: var(--neumorph-flat-shadow, 9px 9px 18px #d1d5db, -9px -9px 18px #ffffff);
+  border: 1px solid var(--border-subtle, rgba(255, 255, 255, 0.7));
+  padding: 36px 32px;
+  margin-bottom: 40px;
+  box-sizing: border-box;
+  font-family: 'Sora', sans-serif;
+  position: relative;
+  overflow: hidden;
+}
+
+.sectionBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  background: rgba(90, 105, 234, 0.12);
+  color: #5A69EA;
+  margin-bottom: 16px;
+}
+
+.badgeDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #5A69EA;
+  box-shadow: 0 0 8px #5A69EA;
+}
+
+.componentTitle {
+  font-size: 26px;
+  font-weight: 800;
+  color: var(--text-primary, #1e1e24);
+  margin: 0 0 10px 0;
+  line-height: 1.25;
+}
+
+.componentTitleHighlight {
+  background: linear-gradient(135deg, #5A69EA 0%, #BF8BCA 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.componentDesc {
+  font-size: 14px;
+  color: var(--text-secondary, #64748b);
+  line-height: 1.6;
+  margin: 0 0 28px 0;
+  max-width: 780px;
+}
+
+/* ===== BUYLIST INTAKE SIMULATOR ===== */
+.cardPickerBar {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 24px;
+  overflow-x: auto;
+  padding-bottom: 6px;
+}
+
+.cardPickerBtn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 16px;
+  border-radius: 14px;
+  border: 1px solid var(--border-subtle, rgba(255, 255, 255, 0.8));
+  background: var(--card-bg, #f2f3f5);
+  box-shadow: var(--neumorph-btn-shadow, 4px 4px 8px #d1d5db, -4px -4px 8px #ffffff);
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--text-secondary, #64748b);
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  white-space: nowrap;
+}
+
+.cardPickerBtnActive {
+  background: linear-gradient(135deg, rgba(90, 105, 234, 0.15) 0%, rgba(191, 139, 202, 0.15) 100%);
+  border-color: #5A69EA;
+  color: #5A69EA;
+  box-shadow: inset 2px 2px 5px rgba(90, 105, 234, 0.2), inset -2px -2px 5px rgba(255, 255, 255, 0.7);
+}
+
+.simulatorGrid {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 28px;
+}
+
+.intakePanel {
+  border-radius: 20px;
+  background: var(--card-bg, #f2f3f5);
+  box-shadow: inset 3px 3px 7px rgba(0, 0, 0, 0.06), inset -3px -3px 7px rgba(255, 255, 255, 0.8);
+  padding: 24px;
+  border: 1px solid var(--border-subtle, rgba(255, 255, 255, 0.6));
+}
+
+.cardDetailHeader {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--border-subtle, rgba(0, 0, 0, 0.06));
+  margin-bottom: 20px;
+}
+
+.cardThumbnail {
+  width: 54px;
+  height: 76px;
+  border-radius: 8px;
+  background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  flex-shrink: 0;
+}
+
+.cardMetaName {
+  font-size: 16px;
+  font-weight: 800;
+  color: var(--text-primary, #1e1e24);
+  margin: 0 0 4px 0;
+}
+
+.cardMetaSub {
+  font-size: 12px;
+  color: var(--text-secondary, #64748b);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.marketTag {
+  font-size: 12px;
+  font-weight: 700;
+  color: #10b981;
+  background: rgba(16, 185, 129, 0.1);
+  padding: 2px 8px;
+  border-radius: 6px;
+}
+
+.controlGroup {
+  margin-bottom: 22px;
+}
+
+.controlLabel {
+  display: block;
+  font-size: 11px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-secondary, #64748b);
+  margin-bottom: 10px;
+}
+
+.conditionGrid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 8px;
+}
+
+.conditionBtn {
+  padding: 10px 4px;
+  border-radius: 12px;
+  border: 1px solid var(--border-subtle, rgba(255, 255, 255, 0.8));
+  background: var(--card-bg, #f2f3f5);
+  box-shadow: var(--neumorph-btn-shadow, 3px 3px 6px #d1d5db, -3px -3px 6px #ffffff);
+  cursor: pointer;
+  font-family: inherit;
+  text-align: center;
+  transition: all 0.2s ease;
+}
+
+.conditionBtnActive {
+  background: #5A69EA;
+  border-color: #5A69EA;
+  box-shadow: inset 1px 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.conditionCode {
+  display: block;
+  font-size: 13px;
+  font-weight: 800;
+  color: var(--text-primary, #1e1e24);
+}
+
+.conditionBtnActive .conditionCode {
+  color: #ffffff;
+}
+
+.conditionRate {
+  display: block;
+  font-size: 10px;
+  color: var(--text-secondary, #64748b);
+  margin-top: 2px;
+}
+
+.conditionBtnActive .conditionRate {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.payoutModeGroup {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.payoutModeBtn {
+  padding: 14px 16px;
+  border-radius: 14px;
+  border: 1px solid var(--border-subtle, rgba(255, 255, 255, 0.8));
+  background: var(--card-bg, #f2f3f5);
+  box-shadow: var(--neumorph-btn-shadow, 4px 4px 8px #d1d5db, -4px -4px 8px #ffffff);
+  cursor: pointer;
+  font-family: inherit;
+  text-align: left;
+  transition: all 0.2s ease;
+  position: relative;
+}
+
+.payoutModeBtnActive {
+  border-color: #5A69EA;
+  background: linear-gradient(135deg, rgba(90, 105, 234, 0.12) 0%, rgba(191, 139, 202, 0.12) 100%);
+  box-shadow: inset 2px 2px 5px rgba(90, 105, 234, 0.2), inset -2px -2px 5px rgba(255, 255, 255, 0.8);
+}
+
+.payoutBadge {
+  position: absolute;
+  top: -8px;
+  right: 12px;
+  font-size: 9px;
+  font-weight: 800;
+  text-transform: uppercase;
+  padding: 2px 6px;
+  border-radius: 6px;
+  background: #10b981;
+  color: #ffffff;
+}
+
+.payoutTitle {
+  display: block;
+  font-size: 13px;
+  font-weight: 800;
+  color: var(--text-primary, #1e1e24);
+  margin-bottom: 2px;
+}
+
+.payoutSub {
+  display: block;
+  font-size: 11px;
+  color: var(--text-secondary, #64748b);
+}
+
+/* Receipt Preview Panel */
+.receiptPanel {
+  border-radius: 20px;
+  background: #ffffff;
+  color: #1e1e24;
+  padding: 24px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+  border: 1px dashed #cbd5e1;
+  font-family: 'Courier New', Courier, monospace;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+:global([data-theme="dark"]) .receiptPanel {
+  background: #16181f;
+  color: #e2e8f0;
+  border-color: #334155;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+}
+
+.receiptHeader {
+  text-align: center;
+  border-bottom: 1px dashed #cbd5e1;
+  padding-bottom: 14px;
+  margin-bottom: 14px;
+}
+
+:global([data-theme="dark"]) .receiptHeader {
+  border-color: #334155;
+}
+
+.receiptShopName {
+  font-size: 14px;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  margin: 0 0 4px 0;
+}
+
+.receiptMeta {
+  font-size: 11px;
+  color: #64748b;
+  margin: 0;
+}
+
+.receiptRows {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  font-size: 12px;
+  margin-bottom: 16px;
+}
+
+.receiptRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.receiptLabel {
+  color: #64748b;
+}
+
+.receiptValue {
+  font-weight: 700;
+}
+
+.receiptDivider {
+  border-top: 1px dashed #cbd5e1;
+  margin: 8px 0;
+}
+
+:global([data-theme="dark"]) .receiptDivider {
+  border-color: #334155;
+}
+
+.payoutHighlightRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: 10px 0;
+}
+
+.payoutTotalLabel {
+  font-size: 13px;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.payoutTotalAmount {
+  font-size: 22px;
+  font-weight: 900;
+  color: #5A69EA;
+}
+
+.receiptBarcode {
+  text-align: center;
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px dashed #cbd5e1;
+}
+
+:global([data-theme="dark"]) .receiptBarcode {
+  border-color: #334155;
+}
+
+.barcodeLines {
+  display: inline-block;
+  letter-spacing: 2px;
+  font-weight: 900;
+  font-size: 14px;
+  color: #334155;
+}
+
+:global([data-theme="dark"]) .barcodeLines {
+  color: #94a3b8;
+}
+
+.barcodeNum {
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  color: #94a3b8;
+  margin-top: 4px;
+}
+
+/* Margin Lock Callout */
+.marginCallout {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 18px;
+  padding: 12px 18px;
+  border-radius: 12px;
+  background: rgba(16, 185, 129, 0.1);
+  border: 1px solid rgba(16, 185, 129, 0.25);
+  font-family: 'Sora', sans-serif;
+  font-size: 12px;
+  color: #10b981;
+}
+
+.marginCalloutVal {
+  font-weight: 800;
+}
+
+/* ===== GRADING MATRIX COMPONENT ===== */
+.gradingGrid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 16px;
+  margin-top: 20px;
+}
+
+.gradeCard {
+  border-radius: 16px;
+  background: var(--card-bg, #f2f3f5);
+  box-shadow: var(--neumorph-flat-shadow, 6px 6px 12px #d1d5db, -6px -6px 12px #ffffff);
+  border: 1px solid var(--border-subtle, rgba(255, 255, 255, 0.7));
+  padding: 20px 16px;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.2s ease;
+}
+
+.gradeCard:hover {
+  transform: translateY(-3px);
+}
+
+.gradeTag {
+  font-size: 18px;
+  font-weight: 900;
+  color: #5A69EA;
+  margin-bottom: 4px;
+}
+
+.gradeName {
+  font-size: 13px;
+  font-weight: 800;
+  color: var(--text-primary, #1e1e24);
+  margin-bottom: 8px;
+}
+
+.gradePayout {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 800;
+  padding: 4px 8px;
+  border-radius: 6px;
+  background: rgba(90, 105, 234, 0.12);
+  color: #5A69EA;
+  margin-bottom: 14px;
+  align-self: flex-start;
+}
+
+.criteriaList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 11px;
+  color: var(--text-secondary, #64748b);
+  line-height: 1.4;
+}
+
+.criteriaItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 6px;
+}
+
+.criteriaBullet {
+  color: #5A69EA;
+  font-weight: 800;
+}
+
+/* ===== BUYLIST ROI CALCULATOR ===== */
+.sliderWrapper {
+  margin-bottom: 30px;
+  padding: 24px;
+  border-radius: 18px;
+  background: var(--card-bg, #f2f3f5);
+  box-shadow: inset 3px 3px 6px rgba(0, 0, 0, 0.05), inset -3px -3px 6px rgba(255, 255, 255, 0.8);
+}
+
+.sliderHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 14px;
+}
+
+.sliderLabel {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text-primary, #1e1e24);
+}
+
+.sliderValue {
+  font-size: 26px;
+  font-weight: 900;
+  color: #5A69EA;
+}
+
+.rangeSlider {
+  width: 100%;
+  -webkit-appearance: none;
+  height: 8px;
+  border-radius: 4px;
+  background: #cbd5e1;
+  outline: none;
+  margin: 12px 0;
+}
+
+:global([data-theme="dark"]) .rangeSlider {
+  background: #334155;
+}
+
+.rangeSlider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: #5A69EA;
+  cursor: pointer;
+  box-shadow: 0 0 10px rgba(90, 105, 234, 0.6);
+  border: 2px solid #ffffff;
+}
+
+.calcComparisonGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+
+.calcCardOld {
+  border-radius: 18px;
+  background: var(--card-bg, #f2f3f5);
+  border: 1px solid rgba(239, 68, 68, 0.25);
+  box-shadow: var(--neumorph-flat-shadow, 6px 6px 14px #d1d5db, -6px -6px 14px #ffffff);
+  padding: 24px;
+}
+
+.calcCardNew {
+  border-radius: 18px;
+  background: var(--card-bg, #f2f3f5);
+  border: 1px solid rgba(16, 185, 129, 0.35);
+  box-shadow: var(--neumorph-flat-shadow, 6px 6px 14px #d1d5db, -6px -6px 14px #ffffff);
+  padding: 24px;
+  position: relative;
+}
+
+.calcCardBadge {
+  position: absolute;
+  top: 14px;
+  right: 18px;
+  font-size: 10px;
+  font-weight: 800;
+  text-transform: uppercase;
+  padding: 3px 8px;
+  border-radius: 6px;
+  background: rgba(16, 185, 129, 0.15);
+  color: #10b981;
+}
+
+.calcCardTitle {
+  font-size: 12px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-secondary, #64748b);
+  margin: 0 0 6px 0;
+}
+
+.calcCardBigNumRed {
+  font-size: 32px;
+  font-weight: 900;
+  color: #ef4444;
+  margin: 0 0 4px 0;
+}
+
+.calcCardBigNumGreen {
+  font-size: 32px;
+  font-weight: 900;
+  color: #10b981;
+  margin: 0 0 4px 0;
+}
+
+.calcCardSub {
+  font-size: 12px;
+  color: var(--text-secondary, #64748b);
+  margin: 0 0 18px 0;
+}
+
+.calcPointsList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  font-size: 12px;
+}
+
+.calcPointRed {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  color: #b91c1c;
+}
+
+:global([data-theme="dark"]) .calcPointRed {
+  color: #f87171;
+}
+
+.calcPointGreen {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  color: #047857;
+}
+
+:global([data-theme="dark"]) .calcPointGreen {
+  color: #34d399;
+}
+
+/* Payback Banner */
+.paybackBanner {
+  margin-top: 24px;
+  padding: 16px 20px;
+  border-radius: 14px;
+  background: linear-gradient(135deg, rgba(90, 105, 234, 0.08) 0%, rgba(191, 139, 202, 0.08) 100%);
+  border: 1px solid rgba(90, 105, 234, 0.2);
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  font-size: 13px;
+  color: var(--text-primary, #1e1e24);
+}
+
+.paybackIcon {
+  font-size: 20px;
+}
+
+/* ===== PRICING SECTION ===== */
+.pricingHeader {
+  text-align: center;
+  margin-bottom: 36px;
+}
+
+.pricingGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.pricingCard {
+  border-radius: 20px;
+  background: var(--card-bg, #f2f3f5);
+  box-shadow: var(--neumorph-flat-shadow, 8px 8px 16px #d1d5db, -8px -8px 16px #ffffff);
+  border: 1px solid var(--border-subtle, rgba(255, 255, 255, 0.7));
+  padding: 32px 26px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.pricingCard:hover {
+  transform: translateY(-4px);
+}
+
+.pricingCardFeatured {
+  border: 2px solid #5A69EA;
+  box-shadow: 0 12px 30px rgba(90, 105, 234, 0.2), var(--neumorph-flat-shadow, 8px 8px 16px #d1d5db, -8px -8px 16px #ffffff);
+}
+
+.popularBadge {
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: linear-gradient(135deg, #5A69EA 0%, #BF8BCA 100%);
+  color: #ffffff;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 4px 14px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(90, 105, 234, 0.4);
+}
+
+.pricingTierName {
+  font-size: 12px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-secondary, #64748b);
+  margin-bottom: 6px;
+}
+
+.pricingPackageTitle {
+  font-size: 20px;
+  font-weight: 800;
+  color: var(--text-primary, #1e1e24);
+  margin: 0 0 10px 0;
+  line-height: 1.25;
+}
+
+.pricingDesc {
+  font-size: 12px;
+  color: var(--text-secondary, #64748b);
+  line-height: 1.5;
+  margin-bottom: 20px;
+  min-height: 54px;
+}
+
+.priceDisplay {
+  padding: 16px 0;
+  border-top: 1px solid var(--border-subtle, rgba(0, 0, 0, 0.06));
+  border-bottom: 1px solid var(--border-subtle, rgba(0, 0, 0, 0.06));
+  margin-bottom: 20px;
+}
+
+.priceAmount {
+  font-size: 28px;
+  font-weight: 900;
+  color: var(--text-primary, #1e1e24);
+}
+
+.priceType {
+  font-size: 11px;
+  color: var(--text-secondary, #64748b);
+  margin-top: 4px;
+}
+
+.pricingCtaBtn {
+  width: 100%;
+  padding: 12px 18px;
+  border-radius: 14px;
+  border: none;
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 800;
+  cursor: pointer;
+  margin-bottom: 24px;
+  transition: all 0.2s ease;
+  background: var(--card-bg, #f2f3f5);
+  box-shadow: var(--neumorph-btn-shadow, 4px 4px 8px #d1d5db, -4px -4px 8px #ffffff);
+  color: var(--text-primary, #1e1e24);
+}
+
+.pricingCtaBtnFeatured {
+  background: linear-gradient(135deg, #5A69EA 0%, #BF8BCA 100%);
+  color: #ffffff;
+  box-shadow: 0 6px 16px rgba(90, 105, 234, 0.35);
+}
+
+.deliverablesList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  font-size: 12px;
+  color: var(--text-secondary, #64748b);
+  line-height: 1.45;
+}
+
+.deliverableItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.deliverableItemCheck {
+  color: #10b981;
+  font-weight: 900;
+  flex-shrink: 0;
+}
+
+.deliverableItemCross {
+  color: #cbd5e1;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+/* ===== STAGE SWITCHER ===== */
+.stageSwitcherWrapper {
+  width: 100%;
+  margin-bottom: 40px;
+  position: sticky;
+  top: 90px;
+  z-index: 20;
+}
+
+.stageSwitcherInner {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  padding: 8px;
+  border-radius: 18px;
+  background: var(--card-bg, #f2f3f5);
+  box-shadow: var(--neumorph-flat-shadow, 6px 6px 14px #d1d5db, -6px -6px 14px #ffffff);
+  border: 1px solid var(--border-subtle, rgba(255, 255, 255, 0.7));
+  backdrop-filter: blur(12px);
+}
+
+.stageBtn {
+  padding: 10px 14px;
+  border-radius: 12px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font-family: inherit;
+  text-align: left;
+  transition: all 0.2s ease;
+}
+
+.stageBtnActive {
+  background: #ffffff;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.06);
+}
+
+:global([data-theme="dark"]) .stageBtnActive {
+  background: #252836;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.stageBtnNum {
+  font-size: 10px;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: #5A69EA;
+  margin-bottom: 2px;
+}
+
+.stageBtnTitle {
+  font-size: 12px;
+  font-weight: 800;
+  color: var(--text-primary, #1e1e24);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 900px) {
+  .simulatorGrid,
+  .calcComparisonGrid,
+  .pricingGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .gradingGrid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .stageSwitcherInner {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .gradingGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .conditionGrid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .payoutModeGroup {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ===== DARK MODE OVERRIDES ===== */
+:global([data-theme="dark"]) .componentCard {
+  background: #141420;
+  border-color: rgba(255, 255, 255, 0.06);
+  box-shadow: 8px 8px 24px rgba(0, 0, 0, 0.55), -4px -4px 16px rgba(255, 255, 255, 0.02);
+}
+
+:global([data-theme="dark"]) .componentTitle {
+  color: #FFFFFF;
+}
+
+:global([data-theme="dark"]) .componentDesc {
+  color: #9E9EAF;
+}
+
+:global([data-theme="dark"]) .intakePanel {
+  background: #0F0F18;
+  border-color: rgba(255, 255, 255, 0.06);
+  box-shadow: inset 2px 2px 6px rgba(0, 0, 0, 0.5), inset -2px -2px 6px rgba(255, 255, 255, 0.02);
+}
+
+:global([data-theme="dark"]) .cardMetaName {
+  color: #FFFFFF;
+}
+
+:global([data-theme="dark"]) .cardPickerBtn {
+  background: #151522;
+  color: #A5A5BA;
+  border-color: rgba(255, 255, 255, 0.08);
+  box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.4), -2px -2px 8px rgba(255, 255, 255, 0.02);
+}
+
+:global([data-theme="dark"]) .conditionBtn {
+  background: #151522;
+  border-color: rgba(255, 255, 255, 0.08);
+  box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.4), -2px -2px 6px rgba(255, 255, 255, 0.02);
+}
+
+:global([data-theme="dark"]) .conditionCode {
+  color: #FFFFFF;
+}
+
+:global([data-theme="dark"]) .payoutModeBtn {
+  background: #151522;
+  border-color: rgba(255, 255, 255, 0.08);
+  box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.4), -2px -2px 8px rgba(255, 255, 255, 0.02);
+}
+
+:global([data-theme="dark"]) .payoutTitle {
+  color: #FFFFFF;
+}
+
+:global([data-theme="dark"]) .gradeCard {
+  background: #141420;
+  border-color: rgba(255, 255, 255, 0.06);
+  box-shadow: 5px 5px 16px rgba(0, 0, 0, 0.45), -3px -3px 10px rgba(255, 255, 255, 0.02);
+}
+
+:global([data-theme="dark"]) .gradeName {
+  color: #FFFFFF;
+}
+
+:global([data-theme="dark"]) .sliderWrapper {
+  background: #0F0F18;
+  box-shadow: inset 2px 2px 6px rgba(0, 0, 0, 0.5), inset -2px -2px 6px rgba(255, 255, 255, 0.02);
+}
+
+:global([data-theme="dark"]) .sliderLabel {
+  color: #FFFFFF;
+}
+
+:global([data-theme="dark"]) .calcCardOld {
+  background: #141420;
+  box-shadow: 6px 6px 18px rgba(0, 0, 0, 0.45), -3px -3px 10px rgba(255, 255, 255, 0.02);
+}
+
+:global([data-theme="dark"]) .calcCardNew {
+  background: #141420;
+  box-shadow: 6px 6px 18px rgba(0, 0, 0, 0.45), -3px -3px 10px rgba(255, 255, 255, 0.02);
+}
+
+:global([data-theme="dark"]) .pricingCard {
+  background: #141420;
+  border-color: rgba(255, 255, 255, 0.06);
+  box-shadow: 8px 8px 24px rgba(0, 0, 0, 0.45), -4px -4px 14px rgba(255, 255, 255, 0.02);
+}
+
+:global([data-theme="dark"]) .pricingPackageTitle {
+  color: #FFFFFF;
+}
+
+:global([data-theme="dark"]) .priceAmount {
+  color: #FFFFFF;
+}
+
+:global([data-theme="dark"]) .pricingCtaBtn {
+  background: #1a1a28;
+  color: #FFFFFF;
+  box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.4), -2px -2px 8px rgba(255, 255, 255, 0.02);
+}
+
+:global([data-theme="dark"]) .stageSwitcherInner {
+  background: #141420;
+  border-color: rgba(255, 255, 255, 0.06);
+  box-shadow: 6px 6px 18px rgba(0, 0, 0, 0.5), -3px -3px 12px rgba(255, 255, 255, 0.02);
+}
+
+:global([data-theme="dark"]) .stageBtnTitle {
+  color: #FFFFFF;
+}
+
+:global([data-theme="dark"]) .paybackBanner {
+  background: rgba(90, 105, 234, 0.15);
+  border-color: rgba(90, 105, 234, 0.3);
+  color: #E2E2EC;
+}
+

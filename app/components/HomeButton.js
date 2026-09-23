@@ -2,14 +2,20 @@
 
 import styles from "./HomeButton.module.css";
 
-export default function HomeButton({ variant = "purple", text, onClick, ...props }) {
+export default function HomeButton({ variant = "purple", text, onClick, className, style, width, ...props }) {
   const isPurple = variant === "purple";
   const bgColor = isPurple ? "#BF8BCA" : "#B2CEFE";
   const accentColor = isPurple ? "#BF8BCA" : "#B2CEFE";
 
+  const btnStyle = {
+    ...(width ? { width } : {}),
+    ...style,
+  };
+
   return (
     <button
-      className={styles.btnWrapper}
+      className={`${styles.btnWrapper} ${className || ""}`}
+      style={btnStyle}
       onClick={onClick}
       {...props}
     >

@@ -1,0 +1,203 @@
+/* ==========================================================================
+   Conversation CTA Section — 'Have you outgrown your platform?'
+   Premium Neumorphic Design · Apple/Linear Minimalist Aesthetic
+   ========================================================================== */
+
+.section {
+  position: relative;
+  width: 100%;
+  padding: 130px 0 150px;
+  background: var(--bg-primary, #ECECEC);
+  overflow: hidden;
+  transition: background-color 0.4s ease;
+}
+
+/* Subtle ambient radial spotlight centered behind copy */
+.section::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 65%;
+  height: 75%;
+  border-radius: 50%;
+  background: radial-gradient(
+    ellipse,
+    rgba(129, 140, 248, 0.08) 0%,
+    rgba(191, 139, 202, 0.04) 45%,
+    transparent 70%
+  );
+  filter: blur(55px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+:global([data-theme="dark"]) .section::before {
+  background: radial-gradient(
+    ellipse,
+    rgba(129, 140, 248, 0.12) 0%,
+    rgba(191, 139, 202, 0.06) 45%,
+    transparent 70%
+  );
+}
+
+.container {
+  position: relative;
+  width: 100%;
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 0 32px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  box-sizing: border-box;
+  z-index: 1;
+}
+
+/* --------------------------------------------------------------------------
+   Eyebrow Badge
+   -------------------------------------------------------------------------- */
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 5px 14px;
+  border-radius: 20px;
+  background: var(--bg-primary, #ECECEC);
+  box-shadow:
+    2px 3px 8px rgba(163, 177, 198, 0.5),
+    -2px -2px 8px rgba(255, 255, 255, 0.85),
+    inset 0.5px 0.5px 0 rgba(255, 255, 255, 0.8);
+  margin-bottom: 24px;
+  transition: all 0.3s ease;
+}
+
+:global([data-theme="dark"]) .eyebrow {
+  background: #1e1e32;
+  box-shadow:
+    2px 3px 8px rgba(10, 10, 20, 0.65),
+    -2px -2px 8px rgba(45, 45, 75, 0.4),
+    inset 0.5px 0.5px 0 rgba(255, 255, 255, 0.07);
+}
+
+.eyebrowDot {
+  width: 5.5px;
+  height: 5.5px;
+  border-radius: 50%;
+  background: #6366F1;
+  box-shadow: 0 0 6px rgba(99, 102, 241, 0.7);
+  flex-shrink: 0;
+}
+
+.eyebrowText {
+  font-family: var(--font-sora), 'Sora', sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  color: #64748B;
+  text-transform: uppercase;
+  line-height: 1;
+}
+
+:global([data-theme="dark"]) .eyebrowText {
+  color: #94A3B8;
+}
+
+/* --------------------------------------------------------------------------
+   Heading
+   -------------------------------------------------------------------------- */
+.heading {
+  font-family: var(--font-sora), 'Sora', sans-serif;
+  font-weight: 300;
+  font-size: clamp(34px, 4.2vw, 56px);
+  line-height: 1.15;
+  letter-spacing: -0.03em;
+  color: #1E293B;
+  margin: 0 0 24px 0;
+  max-width: 780px;
+}
+
+:global([data-theme="dark"]) .heading {
+  color: #F1F5F9;
+}
+
+.highlight {
+  background: linear-gradient(180deg, #5A69EA 0%, #BF8BCA 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-weight: 300;
+  font-style: italic;
+  display: inline-block;
+  padding-right: 0.25em;
+  margin-right: -0.1em;
+}
+
+/* --------------------------------------------------------------------------
+   Subline Narrative
+   -------------------------------------------------------------------------- */
+.sublineWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-bottom: 44px;
+  max-width: 620px;
+}
+
+.subline {
+  font-family: var(--font-sora), 'Sora', sans-serif;
+  font-size: clamp(16px, 1.4vw, 19px);
+  font-weight: 400;
+  line-height: 1.55;
+  color: #64748B;
+  margin: 0;
+}
+
+:global([data-theme="dark"]) .subline {
+  color: #94A3B8;
+}
+
+/* --------------------------------------------------------------------------
+   Hero-Style Action Button
+   -------------------------------------------------------------------------- */
+.ctaWrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.conversationBtn {
+  width: 320px !important;
+  max-width: 100%;
+}
+
+.conversationBtn span {
+  font-size: 18px !important;
+}
+
+@media (max-width: 480px) {
+  .conversationBtn {
+    width: 290px !important;
+  }
+
+  .conversationBtn span {
+    font-size: 16px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .section {
+    padding: 70px 0 90px;
+  }
+
+  .heading {
+    font-size: 28px;
+    line-height: 1.2;
+    margin-bottom: 18px;
+  }
+
+  .subline {
+    font-size: 15px;
+  }
+}

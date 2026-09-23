@@ -6,6 +6,8 @@ import { useTheme } from "./context/ThemeContext";
 import Footer from "./components/Footer";
 import Navbar from "./components/Navbar";
 import HomeButton from "./components/HomeButton";
+import IntegrationHub from "./components/IntegrationHub";
+import ConversationCtaSection from "./components/ConversationCtaSection";
 
 
 const CURVE_PATH = "M10.502 301.037C10.502 301.037 278.19 379.737 387.502 346.037C465.301 322.052 519.222 255.036 594.502 224.037C717.17 173.524 741.006 227.347 853.502 157.037C933.502 107.037 953.502 83.0367 953.502 83.0367C953.502 83.0367 999.582 34.0816 1081.5 16.9464C1123.96 8.06441 1155.5 10.9464 1155.5 10.9464";
@@ -327,7 +329,10 @@ export default function Home() {
                 You have outgrown the marketplaces,
                 <br className={styles.heroLineBreak} />
                 Build the{" "}
-                <span className={styles.heroHighlight}>platform your brand deserves.</span>
+                <span className={styles.heroHighlight}>platform</span>{" "}
+                <span className={styles.heroHighlight}>your</span>{" "}
+                <span className={styles.heroHighlight}>brand</span>{" "}
+                <span className={styles.heroHighlight}>deserves.</span>
               </h1>
               <p className={styles.heroSubtext}>
                 Aeethod builds custom digital platforms, ecommerce systems, and automation for growing TCG businesses—so your technology can evolve with the way your business actually works.
@@ -445,19 +450,18 @@ export default function Home() {
         </div>
       </div>
 
-      {/* ===== WHAT WE ACTUALLY DO ===== */}
+      {/* ===== WHAT WE ACTUALLY BUILD ===== */}
       <section className={styles.servicesSection} id="services">
         <div className={styles.alignContainer}>
           <div className={styles.servicesContent}>
             <div className={styles.servicesHeader}>
               <h2 className={styles.servicesHeading}>
-                What We <span className={styles.servicesHighlight}>Actually Do</span>
+                What We{" "}
+                <span className={styles.servicesHighlight}>Actually</span>{" "}
+                <span className={styles.servicesHighlight}>Build</span>
               </h2>
               <p className={styles.servicesSubtext}>
-                Operations are overloaded with platforms.{"\n"}
-                Signals are buried under systems.{" "}
-                <a href="#" className={styles.aeethodLink}>Aeethod</a>{"\n"}
-                converts complexity into coordinated action.
+                No fragmented plugins or fragile templates. We engineer unified digital architectures that connect your inventory across platforms, automate your daily operations, and give you real sales intelligence.
               </p>
             </div>
 
@@ -639,59 +643,47 @@ export default function Home() {
                 </svg>
               </div>
 
-              {/* Service Card 1: Systems Architecture */}
-              <div id="service-card-1" className={`${styles.serviceCard} ${styles.serviceCard1} ${styles.serviceCardHidden}`} role="region" aria-label="Systems Architecture">
+              {/* Service Card 1: Connected Inventory */}
+              <div id="service-card-1" className={`${styles.serviceCard} ${styles.serviceCard1} ${styles.serviceCardHidden}`} role="region" aria-label="Connected Inventory">
                 <div className={styles.serviceIcon}>
-                  <div className={styles.serviceIconImg} role="img" aria-label="Systems Architecture Icon" style={{ WebkitMaskImage: "url('/temp_icon1.png')", maskImage: "url('/temp_icon1.png')" }} />
+                  <div className={styles.serviceIconImg} role="img" aria-label="Connected Inventory Icon" style={{ WebkitMaskImage: "url('/temp_icon1.png')", maskImage: "url('/temp_icon1.png')" }} />
                 </div>
-                <span style={{ position: 'absolute', width: '1px', height: '1px', padding: '0', margin: '-1px', overflow: 'hidden', clip: 'rect(0, 0, 0, 0)', whiteSpace: 'nowrap', border: '0' }}>
-                  Systems Architecture: We design intelligent digital systems. Not apps, not websites — systems
-                </span>
-                <InlineSVG src="/system archi.svg" className={`${styles.serviceCardSvg} ${styles.serviceCardSvgDesktop}`} />
                 <div className={styles.serviceCardHtmlContent}>
                   <h3 className={styles.serviceCardTitle}>
-                    Systems <span className={styles.serviceCardTitleHighlight}>Architecture</span>
+                    Connected <span className={styles.serviceCardTitleHighlight}>Inventory</span>
                   </h3>
                   <p className={styles.serviceCardDesc}>
-                    We design intelligent digital systems. Not apps, not websites — systems
+                    One central source of truth. Real-time stock synchronization across your web store, marketplaces (TCGplayer, eBay), and physical POS—preventing overselling for good.
                   </p>
                 </div>
               </div>
  
-              {/* Service Card 2: AI-Driven Automation */}
-              <div id="service-card-2" className={`${styles.serviceCard} ${styles.serviceCard2} ${styles.serviceCardHidden}`} role="region" aria-label="AI-Driven Automation">
+              {/* Service Card 2: Operations Automation */}
+              <div id="service-card-2" className={`${styles.serviceCard} ${styles.serviceCard2} ${styles.serviceCardHidden}`} role="region" aria-label="Operations Automation">
                 <div className={styles.serviceIcon}>
-                  <div className={styles.serviceIconImg} role="img" aria-label="AI-Driven Automation Icon" style={{ WebkitMaskImage: "url('/temp_icon2.png')", maskImage: "url('/temp_icon2.png')" }} />
+                  <div className={styles.serviceIconImg} role="img" aria-label="Operations Automation Icon" style={{ WebkitMaskImage: "url('/temp_icon2.png')", maskImage: "url('/temp_icon2.png')" }} />
                 </div>
-                <span style={{ position: 'absolute', width: '1px', height: '1px', padding: '0', margin: '-1px', overflow: 'hidden', clip: 'rect(0, 0, 0, 0)', whiteSpace: 'nowrap', border: '0' }}>
-                  AI-Driven Automation: Operational intelligence. Decision support. Process orchestration.
-                </span>
-                <InlineSVG src="/ai driven.svg" className={`${styles.serviceCardSvg} ${styles.serviceCardSvgDesktop}`} />
                 <div className={styles.serviceCardHtmlContent}>
                   <h3 className={styles.serviceCardTitle}>
-                    AI-Driven <span className={styles.serviceCardTitleHighlight}>Automation</span>
+                    Operations <span className={styles.serviceCardTitleHighlight}>Automation</span>
                   </h3>
                   <p className={styles.serviceCardDesc}>
-                    Operational intelligence. Decision support. Process orchestration.
+                    Put repetitive daily tasks on autopilot. Automated market-based repricing, instant order processing, condition grading intake, and automated shipping workflows.
                   </p>
                 </div>
               </div>
  
-              {/* Service Card 3: Applied Research */}
-              <div id="service-card-3" className={`${styles.serviceCard} ${styles.serviceCard3} ${styles.serviceCardHidden}`} role="region" aria-label="Applied Research">
+              {/* Service Card 3: Sales & Profit Analytics */}
+              <div id="service-card-3" className={`${styles.serviceCard} ${styles.serviceCard3} ${styles.serviceCardHidden}`} role="region" aria-label="Sales and Revenue Analytics">
                 <div className={styles.serviceIcon}>
-                  <div className={styles.serviceIconImg} role="img" aria-label="Applied Research Icon" style={{ WebkitMaskImage: "url('/temp_icon3.png')", maskImage: "url('/temp_icon3.png')" }} />
+                  <div className={styles.serviceIconImg} role="img" aria-label="Sales and Revenue Analytics Icon" style={{ WebkitMaskImage: "url('/temp_icon3.png')", maskImage: "url('/temp_icon3.png')" }} />
                 </div>
-                <span style={{ position: 'absolute', width: '1px', height: '1px', padding: '0', margin: '-1px', overflow: 'hidden', clip: 'rect(0, 0, 0, 0)', whiteSpace: 'nowrap', border: '0' }}>
-                  Applied Research: We study emerging systems. Then we turn insights into tools. Each with short, thoughtful descriptions.
-                </span>
-                <InlineSVG src="/applied reserch.svg" className={`${styles.serviceCardSvg} ${styles.serviceCardSvgDesktop}`} />
                 <div className={styles.serviceCardHtmlContent}>
                   <h3 className={styles.serviceCardTitle}>
-                    Applied <span className={styles.serviceCardTitleHighlight}>Research</span>
+                    Sales & Profit <span className={styles.serviceCardTitleHighlight}>Analytics</span>
                   </h3>
                   <p className={styles.serviceCardDesc}>
-                    We study emerging systems. Then we turn insights into tools. Each with short, thoughtful descriptions.
+                    Actionable intelligence without the clutter. Real-time dashboards tracking net margins, inventory velocity, top-selling categories, and revenue trends.
                   </p>
                 </div>
               </div>
@@ -701,116 +693,11 @@ export default function Home() {
       </div>
     </section>
 
-      {/* ===== TCG & TRADING CARD ECOSYSTEMS SECTION ===== */}
-      <section className={styles.tcgSection} id="tcg-section">
-        <div className={styles.tcgAlignContainer}>
-          {/* Label: Current Focus */}
-          <span className={styles.tcgCurrentFocus}>Current Focus</span>
+      {/* ===== INTEGRATION ECOSYSTEM HUB ===== */}
+      <IntegrationHub />
 
-          {/* Heading: TCG & Trading Card Ecosystems */}
-          <h2 className={styles.tcgTitle}>
-            TCG & Trading Card Ecosystems
-          </h2>
-
-          {/* Subtitle Description */}
-          <p className={styles.tcgSubtitle}>
-            We build custom systems for trading card marketplaces, stores, and collectors.
-          </p>
-
-          {/* Background Dice 2 */}
-          <InlineSVG src="/dice_mini_2.svg" className={`${styles.diceShape} ${styles.diceMini2}`} />
-
-          {/* Background Dice 6 */}
-          <InlineSVG src="/dice_mini_6.svg" className={`${styles.diceShape} ${styles.diceMini6}`} />
-
-          {/* Background Dice 3 */}
-          <InlineSVG src="/dice_mini_3.svg" className={`${styles.diceShape} ${styles.diceMini3}`} />
-
-          {/* Trading Cards */}
-          <InlineSVG src="/aeethod4.svg" className={styles.tcgCards} />
-
-          {/* Glassmorphic Pill: We Understand What Matters */}
-          <div className={styles.tcgGlassPill}>
-            <span className={styles.tcgGlassPillText}>We Understand What Matters</span>
-          </div>
-
-          {/* Scroll Down Button */}
-          <InlineSVG src="/btn_scroll_details.svg" className={styles.tcgScrollBtn} />
-
-          {/* Bottom text block: Stop doing manual tasks... */}
-          <div className={styles.tcgBottomTextContainer}>
-            <h2 className={styles.tcgBottomTextTitle}>
-              Stop doing manual tasks.<br />
-              Our <span className={styles.tcgBottomTextHighlight}>AI can save your time.</span>
-            </h2>
-            <p className={styles.tcgBottomTextDesc}>
-              Eliminate the chaos of fragmented marketplaces, volatile pricing, and overselling. Our <span className={styles.tcgBottomTextDescHighlight}>high-performance engine</span> automatically distinguishes between NM and LP or other conditions, slashing your listing time by up to 80%.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* ===== HOW OUR AI WILL HELP YOU & DEMO SECTION ===== */}
-      <section className={styles.helpSection} id="help-section">
-        <div className={styles.helpAlignContainer}>
-          {/* Background Dice 1 */}
-          <InlineSVG src="/dice_mini_1.svg" className={`${styles.diceShape} ${styles.diceMini1}`} />
-
-          {/* Group 21: How our AI will help you list */}
-          <div className={styles.helpGroup21Container}>
-            <h2 className={styles.helpGroup21Title}>
-              How our <span className={styles.helpGroup21TitleHighlight}>AI will help you?</span>
-            </h2>
-            <p className={styles.helpGroup21Subtitle}>
-              A all-in-one E-commerce Hub designed for sellers.
-            </p>
-            <div className={styles.helpList}>
-              <div className={styles.helpListItem}>
-                <span className={styles.helpListNum}>1</span>
-                <span className={styles.helpListText}>Increase Inventory Speed</span>
-              </div>
-              <div className={styles.helpListItem}>
-                <span className={styles.helpListNum}>2</span>
-                <span className={styles.helpListText}>Real-time Data Driven Pricing ( with accuracy)</span>
-              </div>
-              <div className={styles.helpListItem}>
-                <span className={styles.helpListNum}>3</span>
-                <span className={styles.helpListText}>Multi Channel Reach and Bulk Managing</span>
-              </div>
-              <div className={styles.helpListItem}>
-                <span className={styles.helpListNum}>4</span>
-                <span className={styles.helpListText}>AI Scanning with Automatic Listing and Pricing</span>
-              </div>
-              <div className={styles.helpListItem}>
-                <span className={styles.helpListNum}>5</span>
-                <span className={styles.helpListText}>Distinguishes between Near mint and Lightly Played Card</span>
-              </div>
-              <div className={styles.helpListItem}>
-                <span className={styles.helpListNum}>7</span>
-                <span className={styles.helpListText}>Mobile Easy UX</span>
-              </div>
-            </div>
-          </div>
-
-          {/* Background Dice 12 */}
-          <InlineSVG src="/dice_mini_12.svg" className={`${styles.diceShape} ${styles.diceMini12}`} />
-
-          {/* Background Dice 7 */}
-          <InlineSVG src="/dice_mini_7.svg" className={`${styles.diceShape} ${styles.diceMini7}`} />
-
-          {/* Demo Title */}
-          <h2 className={styles.helpDemoTitle}>Demo</h2>
-
-          {/* Demo Content (Mockup screenshot) */}
-          <InlineSVG src="/demo_content.svg" className={styles.helpDemoContent} />
-
-          {/* Background Dice 9 */}
-          <InlineSVG src="/dice_mini_9.svg" className={`${styles.diceShape} ${styles.diceMini9}`} />
-
-          {/* Background Dice 13 */}
-          <InlineSVG src="/dice_mini_13.svg" className={`${styles.diceShape} ${styles.diceMini13}`} />
-        </div>
-      </section>
+      {/* ===== CONVERSATION CTA SECTION ===== */}
+      <ConversationCtaSection />
 
       {/* ===== FOOTER SECTION ===== */}
       <Footer />

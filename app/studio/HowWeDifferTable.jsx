@@ -5,9 +5,9 @@ import { useRef } from "react";
 import styles from "./page.module.css";
 
 const rowsData = [
-  { others: ["Deliver features"], aeethod: "Design systems", height: 93 },
+  { others: ["Deliver websites"], aeethod: "Architect systems", height: 93 },
   { others: ["Chase trends"], aeethod: "Study patterns", height: 85 },
-  { others: ["Sell automation"], aeethod: "Build intelligence", height: 87 },
+  { others: ["Fragmented tools"], aeethod: "Unified infrastructure", height: 87 },
   { others: ["Scale fast"], aeethod: "Build to last", height: 62 },
   { others: ["Many clients,", "thin work"], aeethod: "Few clients, deep work", height: 85 },
   { others: ["Start with", "solutions"], aeethod: "Start with understanding", height: 152.5 }

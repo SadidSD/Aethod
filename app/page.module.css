@@ -329,13 +329,13 @@
 .heroHeading {
   font-family: var(--font-sora), 'Sora', sans-serif;
   font-style: normal;
-  font-weight: 500;
-  font-size: clamp(2.35rem, 3.8vw, 3.4rem);
-  line-height: 1.15;
-  color: #2b2b36;
-  margin-bottom: 22px;
+  font-weight: 300;
+  font-size: var(--font-size-hero);
+  line-height: 1.1;
+  color: #404040;
+  margin-bottom: 24px;
   letter-spacing: -0.03em;
-  text-shadow: 0 1px 1px rgba(255, 255, 255, 0.9);
+  text-shadow: none;
 }
 
 .heroHighlight {
@@ -358,10 +358,10 @@
   font-family: var(--font-sora), 'Sora', sans-serif;
   font-style: normal;
   font-weight: 300;
-  font-size: clamp(0.95rem, 1.1vw, 1.05rem);
-  line-height: 1.65;
-  color: #484858;
-  max-width: 530px;
+  font-size: clamp(1.125rem, 1.35vw, 1.3rem);
+  line-height: 1.55;
+  color: #404040;
+  max-width: 580px;
   margin-bottom: 32px;
   letter-spacing: -0.01em;
 }
@@ -812,8 +812,8 @@
 }
 
 .servicesSection .alignContainer {
-  padding-bottom: 450px;
-  /* Generous empty spacer under the curve */
+  padding-bottom: 220px;
+  /* Clean breathing room under the curve before the footer */
 }
 
 .servicesContent {
@@ -827,9 +827,9 @@
   flex-direction: column;
   align-items: flex-start;
   text-align: left;
-  margin-bottom: 12px;
+  margin-bottom: 16px;
   width: 100%;
-  max-width: 504px;
+  max-width: 920px;
 }
 
 .servicesHeading {
@@ -842,6 +842,7 @@
   margin-bottom: 12px;
   text-align: left;
   letter-spacing: -0.02em;
+  overflow: visible;
 }
 
 .servicesHighlight {
@@ -850,16 +851,22 @@
   -webkit-text-fill-color: transparent;
   background-clip: text;
   font-weight: 300;
+  font-style: italic;
+  display: inline-block;
+  padding-right: 0.35em;
+  margin-right: -0.15em;
+  padding-left: 0.04em;
+  overflow: visible;
 }
 
 .servicesSubtext {
   font-family: var(--font-sora), 'Sora', sans-serif;
   font-style: normal;
   font-weight: 300;
-  font-size: var(--font-size-body);
+  font-size: clamp(1rem, 1.15vw, 1.15rem);
   line-height: 1.6;
   color: #404040;
-  max-width: 455px;
+  max-width: 580px;
   margin-top: 0;
   text-align: left;
   letter-spacing: -0.01em;
@@ -916,17 +923,21 @@
   display: none !important;
 }
 
-/* Service Card HTML Content (hidden on desktop, styled for mobile/tablet) */
+/* Service Card HTML Content (visible and responsive across viewports) */
 .serviceCardHtmlContent {
-  display: none;
+  display: flex;
+  flex-direction: column;
+  margin-top: 10px;
+  width: 350px;
+  max-width: 370px;
 }
 
 .serviceCardTitle {
   font-family: var(--font-sora), 'Sora', sans-serif;
-  font-size: var(--font-size-subtitle);
-  font-weight: 700;
-  color: var(--text-primary);
-  margin-bottom: 10px;
+  font-size: 24px;
+  font-weight: 300;
+  color: #404040;
+  margin-bottom: 8px;
   line-height: 1.25;
   letter-spacing: -0.02em;
 }
@@ -936,15 +947,18 @@
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  font-weight: 700;
+  font-weight: 300;
+  display: inline-block;
+  padding-right: 0.15em;
+  margin-right: -0.05em;
 }
 
 .serviceCardDesc {
   font-family: var(--font-sora), 'Sora', sans-serif;
-  font-size: var(--font-size-small);
+  font-size: 14px;
   font-weight: 300;
-  color: var(--text-muted);
-  line-height: 1.6;
+  color: #404040;
+  line-height: 1.55;
   margin: 0;
 }
 
@@ -1578,12 +1592,11 @@
 }
 
 :global([data-theme="dark"]) .heroHeading {
-  color: #e4e4f0;
-  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.7);
+  color: #d0d0e0;
 }
 
 :global([data-theme="dark"]) .heroHighlight {
-  background: linear-gradient(135deg, #7C8BFF 0%, #DC93EC 100%);
+  background: linear-gradient(180deg, #7C8BFF 0%, #DC93EC 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -1593,15 +1606,48 @@
 }
 
 :global([data-theme="dark"]) .heroSubtext {
-  color: #9090aa;
+  color: #8888a8;
 }
 
-/* ----- Services Header ----- */
+/* ----- Services Header & Cards (Dark Mode) ----- */
 :global([data-theme="dark"]) .servicesHeading {
   color: #e8e8f0;
 }
 
+:global([data-theme="dark"]) .servicesHighlight {
+  background: linear-gradient(180deg, #7C8BFF 0%, #DC93EC 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-style: italic;
+  text-shadow: none !important;
+  display: inline-block;
+  padding-right: 0.35em;
+  margin-right: -0.15em;
+  padding-left: 0.04em;
+  overflow: visible;
+}
+
 :global([data-theme="dark"]) .servicesSubtext {
+  color: #8888a8;
+}
+
+:global([data-theme="dark"]) .serviceCardTitle {
+  color: #e4e4f0;
+}
+
+:global([data-theme="dark"]) .serviceCardTitleHighlight {
+  background: linear-gradient(180deg, #7C8BFF 0%, #DC93EC 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-weight: 300;
+  display: inline-block;
+  padding-right: 0.15em;
+  margin-right: -0.05em;
+}
+
+:global([data-theme="dark"]) .serviceCardDesc {
   color: #8888a8;
 }
 

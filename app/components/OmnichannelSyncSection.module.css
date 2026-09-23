@@ -1,0 +1,1136 @@
+/* ==========================================================================
+   Aeethod Omnichannel Sync Section — Ultra-Premium Sovereign Hub
+   6 Premium Upgrades: Neumorphic Stage · Isometric 3D Core ·
+   Bézier Conduits · Neumorphic Cards · TCG Card Frames · Typography Rhythm
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   Section Wrapper
+   -------------------------------------------------------------------------- */
+.section {
+  position: relative;
+  width: 100%;
+  padding: 110px 0 140px;
+  overflow: hidden;
+  background: var(--bg-primary, #ECECEC);
+  transition: background-color 0.4s ease;
+}
+
+.container {
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 44px;
+  box-sizing: border-box;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1.4fr;
+  gap: 56px;
+  align-items: center;
+}
+
+/* --------------------------------------------------------------------------
+   LEFT: Typography — Heading + Subline + Stat Row
+   -------------------------------------------------------------------------- */
+
+.narrativeCol {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  z-index: 2;
+}
+
+.heading {
+  font-family: var(--font-sora), 'Sora', sans-serif;
+  font-weight: 300;
+  font-size: clamp(34px, 3.8vw, 54px);
+  line-height: 1.14;
+  letter-spacing: -0.026em;
+  color: #383838;
+  margin: 0;
+}
+
+:global([data-theme="dark"]) .heading {
+  color: #E8E8F2;
+}
+
+.lineOne {
+  display: block;
+  white-space: nowrap;
+}
+
+.lineTwo {
+  display: block;
+  white-space: nowrap;
+  margin-top: 8px;
+}
+
+.highlight {
+  background: linear-gradient(180deg, #5A69EA 0%, #BF8BCA 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-weight: 300;
+  font-style: italic;
+  display: inline-block;
+  padding-right: 0.38em;
+  margin-right: -0.15em;
+  padding-left: 0.04em;
+  overflow: visible;
+}
+
+/* Subline */
+.subline {
+  font-family: var(--font-sora), 'Sora', sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 1.6;
+  color: var(--text-muted, #7a7a8e);
+  letter-spacing: -0.01em;
+  max-width: 340px;
+  margin: 0;
+}
+
+:global([data-theme="dark"]) .subline {
+  color: #8080A0;
+}
+
+/* Stat Row */
+.statRow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.statItem {
+  font-family: var(--font-sora), 'Sora', sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--text-muted, #7a7a8e);
+  letter-spacing: 0.005em;
+}
+
+.statNumber {
+  font-weight: 600;
+  color: var(--text-secondary, #4a4a5e);
+}
+
+:global([data-theme="dark"]) .statNumber {
+  color: #B0B0C8;
+}
+
+.statDivider {
+  color: var(--text-muted, #7a7a8e);
+  opacity: 0.5;
+  font-size: 14px;
+}
+
+/* --------------------------------------------------------------------------
+   RIGHT: Premium Neumorphic Diagram Stage (Upgrade #1)
+   -------------------------------------------------------------------------- */
+
+.visualizerCol {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+/* Neumorphic raised surface — uses site's own design tokens */
+.diagramStage {
+  position: relative;
+  width: 100%;
+  max-width: 720px;
+  aspect-ratio: 720 / 480;
+  box-sizing: border-box;
+  user-select: none;
+  border-radius: 32px;
+  background: var(--bg-primary, #ECECEC);
+  box-shadow:
+    10px 10px 24px rgba(163, 177, 198, 0.72),
+    -10px -10px 24px rgba(255, 255, 255, 0.88),
+    inset 1px 1px 0px rgba(255, 255, 255, 0.65),
+    inset -1px -1px 0px rgba(163, 177, 198, 0.18);
+  padding: 20px;
+}
+
+:global([data-theme="dark"]) .diagramStage {
+  background: var(--bg-primary, #1a1a2e);
+  box-shadow:
+    10px 10px 28px rgba(0, 0, 0, 0.52),
+    -10px -10px 28px rgba(60, 60, 90, 0.15),
+    inset 1px 1px 0px rgba(255, 255, 255, 0.04),
+    inset -1px -1px 0px rgba(0, 0, 0, 0.25);
+}
+
+/* Luminous center floor bloom */
+.floorBackglow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 400px;
+  height: 280px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(129, 140, 248, 0.2) 0%, rgba(192, 132, 252, 0.08) 50%, transparent 72%);
+  filter: blur(40px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+:global([data-theme="dark"]) .floorBackglow {
+  background: radial-gradient(circle, rgba(99, 102, 241, 0.28) 0%, rgba(168, 85, 247, 0.14) 50%, transparent 72%);
+  filter: blur(50px);
+}
+
+/* --------------------------------------------------------------------------
+   SVG Conduit Layer — Smooth Bézier Curves + Energy Packets (Upgrade #4)
+   -------------------------------------------------------------------------- */
+
+.streamsSvg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* Ambient base layer — thick, low opacity gradient fill */
+.streamBase {
+  stroke-width: 14;
+  stroke-linecap: round;
+  fill: none;
+  transition: stroke-width 0.35s ease, opacity 0.35s ease;
+  opacity: 0.65;
+}
+
+:global([data-theme="dark"]) .streamBase {
+  opacity: 0.45;
+}
+
+.streamBaseActive {
+  stroke-width: 20 !important;
+  opacity: 1;
+  filter: url(#beamGlow);
+}
+
+/* Energy packet layer — thin animated dashes */
+.streamPacket {
+  stroke: #818CF8;
+  stroke-width: 2;
+  stroke-dasharray: 5 28;
+  stroke-linecap: round;
+  fill: none;
+  animation: packetFlow 3.2s linear infinite;
+  opacity: 0.7;
+}
+
+.streamPacketActive {
+  stroke: #C084FC;
+  stroke-width: 3.5;
+  opacity: 1;
+  stroke-dasharray: 7 18;
+  animation-duration: 1.8s;
+  filter: drop-shadow(0 0 4px rgba(192, 132, 252, 0.7));
+}
+
+@keyframes packetFlow {
+  from { stroke-dashoffset: 33; }
+  to   { stroke-dashoffset: 0; }
+}
+
+/* Terminal connection node dots at card endpoints */
+.terminalNode {
+  fill: #818CF8;
+  opacity: 0.5;
+  transition: opacity 0.3s ease;
+}
+
+/* --------------------------------------------------------------------------
+   Miniature Holographic TCG Cards in Flight
+   -------------------------------------------------------------------------- */
+
+.flyingMiniCard {
+  position: absolute;
+  z-index: 3;
+  width: 20px;
+  height: 28px;
+  border-radius: 4px;
+  pointer-events: none;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.22), 0 0 12px rgba(129, 140, 248, 0.45);
+  animation: cardFloatAnim 3.4s ease-in-out infinite alternate;
+}
+
+.miniCardShell {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 4px;
+  border: 1px solid rgba(255, 255, 255, 0.92);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.miniCardFoil {
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    135deg,
+    rgba(255,255,255,0) 30%,
+    rgba(255,255,255,0.58) 50%,
+    rgba(255,255,255,0) 70%
+  );
+  animation: foilShine 3.8s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes foilShine {
+  0%   { transform: translateY(-28%) rotate(25deg); }
+  100% { transform: translateY(28%) rotate(25deg); }
+}
+
+.miniCardSymbol {
+  font-size: 9px;
+  filter: drop-shadow(0 1px 2px rgba(0,0,0,0.4));
+  z-index: 2;
+}
+
+/* Flight path positions */
+.flyStore      { top: 31%; left: 50%;   transform: translate(-50%,-50%);               animation-delay: 0s; }
+.flyTcg        { top: 36%; left: 36%;   transform: translate(-50%,-50%) rotate(-15deg); animation-delay: 0.5s; }
+.flyShopify    { top: 36%; left: 64%;   transform: translate(-50%,-50%) rotate(15deg);  animation-delay: 0.9s; }
+.flyEbay       { top: 51%; left: 33%;   transform: translate(-50%,-50%) rotate(-5deg);  animation-delay: 1.4s; }
+.flyCardmarket { top: 51%; left: 67%;   transform: translate(-50%,-50%) rotate(5deg);   animation-delay: 1.8s; }
+.flyManapool   { top: 65%; left: 36%;   transform: translate(-50%,-50%) rotate(-17deg); animation-delay: 2.2s; }
+.flyPos        { top: 65%; left: 64%;   transform: translate(-50%,-50%) rotate(17deg);  animation-delay: 2.6s; }
+
+@keyframes cardFloatAnim {
+  0%   { transform: translate(-50%,-50%) translateY(0px)  scale(0.96); }
+  100% { transform: translate(-50%,-50%) translateY(-5px) scale(1.06); }
+}
+
+/* --------------------------------------------------------------------------
+   Central 3D Isometric Sovereign Core Podium (Upgrade #3)
+   -------------------------------------------------------------------------- */
+
+.centralHexPodium {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -52%);
+  width: 158px;
+  z-index: 4;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: transform 0.32s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.podiumHovered,
+.centralHexPodium:hover {
+  transform: translate(-50%, -54%) scale(1.05);
+}
+
+/* Ambient radial underglow beneath the prism */
+.hexUnderglow {
+  position: absolute;
+  bottom: 48px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 180px;
+  height: 52px;
+  border-radius: 50%;
+  background: radial-gradient(ellipse, rgba(129, 140, 248, 0.42) 0%, rgba(192, 132, 252, 0.2) 50%, transparent 70%);
+  filter: blur(18px);
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* The SVG isometric hex prism */
+.hexPrismSvg {
+  width: 130px;
+  height: auto;
+  display: block;
+  margin-bottom: -6px;
+  filter: drop-shadow(0 8px 18px rgba(99, 102, 241, 0.22));
+}
+
+/* Isometric face CSS fills — overrideable for dark mode */
+.hexFaceTop {
+  fill: #EEF2FF;
+  transition: fill 0.35s ease;
+}
+
+.hexFaceLeft {
+  fill: #C5D0F0;
+  transition: fill 0.35s ease;
+}
+
+.hexFaceRight {
+  fill: #A0B2E0;
+  transition: fill 0.35s ease;
+}
+
+.hexRimLight {
+  opacity: 0.9;
+  transition: opacity 0.35s ease;
+}
+
+.hexBottomSeam {
+  opacity: 0.6;
+}
+
+/* Hover: top face brightens */
+.podiumHovered .hexFaceTop,
+.centralHexPodium:hover .hexFaceTop {
+  fill: #F5F7FF;
+}
+
+:global([data-theme="dark"]) .hexFaceTop {
+  fill: #2C2C48;
+}
+
+:global([data-theme="dark"]) .hexFaceLeft {
+  fill: #1E1E34;
+}
+
+:global([data-theme="dark"]) .hexFaceRight {
+  fill: #161628;
+}
+
+:global([data-theme="dark"]) .hexRimLight {
+  opacity: 0.25;
+}
+
+/* Telemetry fascia card below the prism */
+.hexFrontFascia {
+  width: 148px;
+  background: var(--bg-primary, #ECECEC);
+  border-radius: 14px;
+  box-shadow:
+    6px 6px 14px rgba(163, 177, 198, 0.7),
+    -6px -6px 14px rgba(255, 255, 255, 0.85),
+    inset 1px 1px 0px rgba(255, 255, 255, 0.6),
+    inset -1px -1px 0px rgba(163, 177, 198, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  padding: 8px 12px;
+  text-align: center;
+}
+
+:global([data-theme="dark"]) .hexFrontFascia {
+  background: var(--bg-elevated, #2a2a44);
+  box-shadow:
+    6px 6px 14px rgba(0,0,0,0.45),
+    -6px -6px 14px rgba(60,60,90,0.12);
+  border-color: rgba(255,255,255,0.07);
+}
+
+.fasciaInner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.fasciaTitle {
+  font-family: var(--font-sora), 'Sora', sans-serif;
+  font-size: 9.5px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  color: #1E293B;
+  text-transform: uppercase;
+}
+
+:global([data-theme="dark"]) .fasciaTitle {
+  color: #CBD5E1;
+}
+
+.fasciaMeta {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.emeraldPulseDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #10B981;
+  box-shadow: 0 0 7px #10B981;
+  animation: pulseDot 2.2s ease-in-out infinite;
+}
+
+@keyframes pulseDot {
+  0%, 100% { transform: scale(0.9);  opacity: 0.75; }
+  50%       { transform: scale(1.35); opacity: 1; }
+}
+
+.fasciaLiveText {
+  font-family: var(--font-sora), 'Sora', sans-serif;
+  font-size: 9px;
+  font-weight: 500;
+  color: #64748B;
+}
+
+:global([data-theme="dark"]) .fasciaLiveText {
+  color: #94A3B8;
+}
+
+/* --------------------------------------------------------------------------
+   7 Premium Neumorphic Channel Cards (Upgrade #2)
+   -------------------------------------------------------------------------- */
+
+.channelCard {
+  position: absolute;
+  z-index: 5;
+  background: var(--bg-primary, #ECECEC);
+  border-radius: 16px;
+  padding: 9px 11px;
+
+  /* Full neumorphic raised treatment using site tokens */
+  box-shadow:
+    6px 6px 14px rgba(163, 177, 198, 0.7),
+    -6px -6px 14px rgba(255, 255, 255, 0.85),
+    inset 1px 1px 0px rgba(255, 255, 255, 0.6),
+    inset -1px -1px 0px rgba(163, 177, 198, 0.15),
+    inset 2.5px 0 0 0 #818CF8;   /* accent left border via inset shadow */
+
+  border: 1px solid rgba(255, 255, 255, 0.75);
+  cursor: pointer;
+  transition:
+    transform 0.28s cubic-bezier(0.34, 1.56, 0.64, 1),
+    box-shadow 0.28s ease,
+    border-color 0.28s ease;
+  box-sizing: border-box;
+}
+
+:global([data-theme="dark"]) .channelCard {
+  background: var(--bg-elevated, #2a2a44);
+  box-shadow:
+    6px 6px 14px rgba(0,0,0,0.45),
+    -6px -6px 14px rgba(60,60,90,0.12),
+    inset 1px 1px 0px rgba(255,255,255,0.04),
+    inset -1px -1px 0px rgba(0,0,0,0.25),
+    inset 2.5px 0 0 0 #6366F1;
+  border-color: rgba(255,255,255,0.06);
+}
+
+/* Ambient hover halo */
+.channelCard::before {
+  content: '';
+  position: absolute;
+  inset: -8px;
+  border-radius: 22px;
+  background: radial-gradient(ellipse at 30% 50%, rgba(129, 140, 248, 0.14) 0%, transparent 70%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.channelCard:hover::before,
+.cardActive::before {
+  opacity: 1;
+}
+
+.channelCard:hover,
+.cardActive {
+  transform: translateY(-6px) scale(1.028);
+  box-shadow:
+    8px 20px 32px -4px rgba(99, 102, 241, 0.24),
+    -6px -6px 14px rgba(255, 255, 255, 0.85),
+    inset 1px 1px 0px rgba(255, 255, 255, 0.6),
+    inset 3px 0 0 0 #6366F1;    /* brighter accent on hover */
+  border-color: rgba(129, 140, 248, 0.4);
+}
+
+:global([data-theme="dark"]) .channelCard:hover,
+:global([data-theme="dark"]) .cardActive {
+  box-shadow:
+    8px 20px 32px rgba(0,0,0,0.5),
+    -4px -4px 10px rgba(60,60,90,0.1),
+    inset 1px 1px 0px rgba(255,255,255,0.05),
+    inset 3px 0 0 0 #818CF8;
+  border-color: rgba(129, 140, 248, 0.25);
+}
+
+/* Positions — 720×480 coordinate space */
+.cardYourStore {
+  top: 2.5%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 182px;
+}
+
+.cardYourStore:hover,
+.cardYourStore.cardActive {
+  transform: translateX(-50%) translateY(-6px) scale(1.028);
+}
+
+.cardTcg        { top: 16%;  left:  2.5%; width: 154px; }
+.cardShopify    { top: 16%;  right: 2.5%; width: 154px; }
+.cardEbay       { top: 44%;  left:  1.5%; width: 148px; }
+.cardCardmarket { top: 44%;  right: 1.5%; width: 154px; }
+.cardManapool   { top: 72%;  left:  2.5%; width: 154px; }
+.cardPos        { top: 72%;  right: 2.5%; width: 148px; }
+
+/* --------------------------------------------------------------------------
+   Card Header & Brand Rows
+   -------------------------------------------------------------------------- */
+
+.cardTopRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 7px;
+}
+
+.cardBrandRow {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.brandName {
+  font-family: var(--font-sora), 'Sora', sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-primary, #1a1a2e);
+  letter-spacing: -0.01em;
+}
+
+:global([data-theme="dark"]) .brandName {
+  color: #E2E8F0;
+}
+
+.liveBadge {
+  font-family: var(--font-sora), 'Sora', sans-serif;
+  font-size: 8px;
+  color: #94A3B8;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+}
+
+/* Brand Logos */
+.logoTcg {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5px;
+  width: 11px;
+  height: 11px;
+}
+.logoTcg span {
+  width: 4.8px;
+  height: 4.8px;
+  border-radius: 1px;
+}
+
+.logoShopify {
+  width: 13px;
+  height: 13px;
+}
+
+.logoEbay {
+  font-family: 'Inter', sans-serif;
+  font-weight: 800;
+  font-size: 13px;
+  letter-spacing: -0.5px;
+  line-height: 1;
+}
+
+.logoCardmarket {
+  display: flex;
+  align-items: center;
+}
+
+.logoManapoolStar {
+  color: #38BDF8;
+  font-size: 12px;
+  line-height: 1;
+}
+
+.logoPosSquare {
+  width: 12px;
+  height: 12px;
+  border-radius: 2.5px;
+  background: #1E3A8A;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.posInnerSquare {
+  width: 5.5px;
+  height: 5.5px;
+  border-radius: 1px;
+  background: #FFFFFF;
+}
+
+/* --------------------------------------------------------------------------
+   High-Fidelity Pokémon TCG Card Miniatures (Upgrade #5)
+   -------------------------------------------------------------------------- */
+
+.cardItemRow {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+}
+
+/* Properly proportioned 2.5:3.5 TCG card frame */
+.pokemonCardMini {
+  position: relative;
+  width: 36px;
+  height: 50px;
+  border-radius: 5px;
+  box-shadow:
+    0 3px 8px rgba(0,0,0,0.2),
+    0 0 0 1.5px rgba(255,255,255,0.25);  /* outer frame ring */
+  flex-shrink: 0;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 2.5px 3px;
+  box-sizing: border-box;
+  cursor: default;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+/* Prismatic foil sweep — triggers on parent card hover/active */
+.pokemonCardMini::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    115deg,
+    transparent 0%,
+    rgba(168, 85, 247, 0.35) 35%,
+    rgba(99, 102, 241, 0.45) 50%,
+    rgba(56, 189, 248, 0.35) 65%,
+    transparent 100%
+  );
+  transform: translateX(-120%);
+  transition: none;
+  pointer-events: none;
+  z-index: 10;
+  mix-blend-mode: screen;
+}
+
+/* Trigger prismatic sweep on parent hover */
+.cardActive .pokemonCardMini::after,
+.channelCard:hover .pokemonCardMini::after {
+  animation: prismaticSweep 0.7s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+@keyframes prismaticSweep {
+  0%   { transform: translateX(-120%) skewX(-12deg); }
+  100% { transform: translateX(220%)  skewX(-12deg); }
+}
+
+/* Colored backgrounds per Pokémon */
+.cardCharizard { background: linear-gradient(160deg, #DC2626 0%, #EA580C 55%, #F59E0B 100%); }
+.cardBlastoise { background: linear-gradient(160deg, #0284C7 0%, #0369A1 55%, #1D4ED8 100%); }
+.cardMewtwo    { background: linear-gradient(160deg, #7C3AED 0%, #9333EA 55%, #581C87 100%); }
+.cardPikachu   { background: linear-gradient(160deg, #EAB308 0%, #F59E0B 55%, #D97706 100%); }
+.cardLugia     { background: linear-gradient(160deg, #0EA5E9 0%, #38BDF8 55%, #64748B 100%); }
+.cardEevee     { background: linear-gradient(160deg, #D97706 0%, #B45309 55%, #78350F 100%); }
+
+/* Card inner border frame (simulates the actual TCG card border) */
+.cardFrame {
+  position: absolute;
+  inset: 2px;
+  border: 1px solid rgba(255,255,255,0.28);
+  border-radius: 3px;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Holographic foil overlay */
+.cardFoilOverlay {
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    135deg,
+    rgba(255,255,255,0) 35%,
+    rgba(255,255,255,0.5) 50%,
+    rgba(255,255,255,0) 65%
+  );
+  animation: foilShine 5s linear infinite;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.cardHeaderMicro {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  z-index: 3;
+}
+
+.cardMicroHp {
+  font-family: var(--font-sora), 'Sora', sans-serif;
+  font-size: 5.5px;
+  font-weight: 700;
+  color: #FFFFFF;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.7);
+  letter-spacing: -0.02em;
+}
+
+.cardTypeIcon {
+  font-size: 6.5px;
+  line-height: 1;
+  z-index: 3;
+}
+
+.pokemonArtSvg {
+  width: 100%;
+  height: 24px;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.5));
+  z-index: 3;
+}
+
+.cardFooterMicro {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  background: rgba(0,0,0,0.4);
+  border-radius: 2.5px;
+  padding: 1px 0;
+  z-index: 3;
+}
+
+.cardMicroName {
+  font-family: var(--font-sora), 'Sora', sans-serif;
+  font-size: 5px;
+  font-weight: 700;
+  color: #FFFFFF;
+  white-space: nowrap;
+  letter-spacing: -0.01em;
+}
+
+/* Item metadata column */
+.itemMetaCol {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.itemName {
+  font-family: var(--font-sora), 'Sora', sans-serif;
+  font-size: 10.5px;
+  font-weight: 600;
+  color: var(--text-primary, #1a1a2e);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 1.25;
+}
+
+:global([data-theme="dark"]) .itemName {
+  color: #E2E8F0;
+}
+
+.itemSet {
+  font-family: var(--font-sora), 'Sora', sans-serif;
+  font-size: 8.5px;
+  color: #94A3B8;
+  margin-bottom: 4px;
+}
+
+.itemBadgeRow {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.condBadge {
+  font-family: var(--font-sora), 'Sora', sans-serif;
+  font-size: 8px;
+  font-weight: 600;
+  color: #475569;
+  background: rgba(163, 177, 198, 0.28);
+  padding: 1.5px 4px;
+  border-radius: 4px;
+  box-shadow: inset 1px 1px 0 rgba(255,255,255,0.6), inset -1px -1px 0 rgba(163,177,198,0.2);
+}
+
+:global([data-theme="dark"]) .condBadge {
+  background: rgba(60,60,90,0.5);
+  color: #CBD5E1;
+  box-shadow: none;
+}
+
+.qtyBadge {
+  font-family: var(--font-sora), 'Sora', sans-serif;
+  font-size: 8.5px;
+  font-weight: 600;
+  color: #334155;
+}
+
+:global([data-theme="dark"]) .qtyBadge {
+  color: #CBD5E1;
+}
+
+/* --------------------------------------------------------------------------
+   Your Store Card — Mini Browser Preview
+   -------------------------------------------------------------------------- */
+
+.cardHeaderSmall {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 6px;
+}
+
+.cardTitleStrong {
+  font-family: var(--font-sora), 'Sora', sans-serif;
+  font-size: 11.5px;
+  font-weight: 600;
+  color: var(--text-primary, #1a1a2e);
+  line-height: 1.2;
+}
+
+:global([data-theme="dark"]) .cardTitleStrong {
+  color: #E2E8F0;
+}
+
+.cardSubtitleMuted {
+  font-family: var(--font-sora), 'Sora', sans-serif;
+  font-size: 8.5px;
+  color: #94A3B8;
+}
+
+.miniStorePreview {
+  width: 100%;
+  height: 44px;
+  border-radius: 8px;
+  background: #0F172A;
+  padding: 4px 7px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  box-shadow: inset 0 1px 3px rgba(0,0,0,0.4);
+}
+
+.miniStoreNav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.miniDots { display: flex; gap: 2.5px; }
+.miniDots span:nth-child(1) { width: 3.5px; height: 3.5px; border-radius: 50%; background: #EF4444; }
+.miniDots span:nth-child(2) { width: 3.5px; height: 3.5px; border-radius: 50%; background: #F59E0B; }
+.miniDots span:nth-child(3) { width: 3.5px; height: 3.5px; border-radius: 50%; background: #10B981; }
+
+.miniSearchBar {
+  width: 52px;
+  height: 5px;
+  border-radius: 2.5px;
+  background: #1E293B;
+  display: flex;
+  align-items: center;
+  padding: 0 2px;
+}
+
+.miniSearchText {
+  width: 36px;
+  height: 2px;
+  border-radius: 1px;
+  background: #475569;
+}
+
+.miniStoreHero {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex: 1;
+}
+
+.miniStoreCardThumb {
+  position: relative;
+  width: 18px;
+  height: 26px;
+  border-radius: 3px;
+  background: linear-gradient(135deg, #F97316 0%, #EA580C 100%);
+  border: 0.8px solid rgba(255,255,255,0.65);
+  overflow: hidden;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.4);
+}
+
+.miniCardSheen {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(255,255,255,0.55) 0%, transparent 60%);
+}
+
+.miniStoreLines {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5px;
+  flex: 1;
+}
+
+.miniStoreLine1 { width: 72%; height: 3.5px; border-radius: 2px; background: #38BDF8; }
+.miniStoreLine2 { width: 48%; height: 3px;   border-radius: 2px; background: #64748B; }
+
+.miniStoreBadges { display: flex; gap: 2.5px; margin-top: 1px; }
+.miniPill        { width: 10px; height: 2.5px; border-radius: 1px; background: #334155; }
+
+/* --------------------------------------------------------------------------
+   Sync Status Pill
+   -------------------------------------------------------------------------- */
+
+.syncStatusPill {
+  position: absolute;
+  bottom: 3.5%;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 5;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 6px 16px;
+  border-radius: 9999px;
+  background: var(--bg-primary, #ECECEC);
+  box-shadow:
+    4px 4px 10px rgba(163, 177, 198, 0.6),
+    -4px -4px 10px rgba(255, 255, 255, 0.85),
+    inset 1px 1px 0px rgba(255,255,255,0.6),
+    inset -1px -1px 0px rgba(163,177,198,0.15);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+}
+
+:global([data-theme="dark"]) .syncStatusPill {
+  background: var(--bg-elevated, #2a2a44);
+  box-shadow:
+    4px 4px 10px rgba(0,0,0,0.4),
+    -4px -4px 10px rgba(60,60,90,0.1);
+  border-color: rgba(255,255,255,0.06);
+}
+
+.rotatingSyncIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #6366F1;
+  animation: spinSync 3s linear infinite;
+}
+
+@keyframes spinSync {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+.syncStatusText {
+  font-family: var(--font-sora), 'Sora', sans-serif;
+  font-size: 10px;
+  font-weight: 500;
+  color: #64748B;
+  white-space: nowrap;
+}
+
+:global([data-theme="dark"]) .syncStatusText {
+  color: #94A3B8;
+}
+
+/* --------------------------------------------------------------------------
+   Responsive Breakpoints
+   -------------------------------------------------------------------------- */
+
+@media (max-width: 1120px) {
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+
+  .narrativeCol {
+    align-items: center;
+    text-align: center;
+  }
+
+  .lineOne,
+  .lineTwo {
+    white-space: normal;
+  }
+
+  .subline {
+    max-width: 480px;
+    text-align: center;
+  }
+
+  .statRow {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 768px) {
+  .section {
+    padding: 65px 0 85px;
+  }
+
+  .container {
+    padding: 0 16px;
+  }
+
+  .diagramStage {
+    border-radius: 24px;
+    padding: 14px;
+    aspect-ratio: 720 / 540;
+  }
+
+  .channelCard {
+    padding: 6px 8px;
+    border-radius: 12px;
+  }
+
+  .cardYourStore { width: 148px; }
+  .cardTcg, .cardShopify, .cardEbay,
+  .cardCardmarket, .cardManapool, .cardPos { width: 128px; }
+
+  .brandName { font-size: 10px; }
+  .itemName  { font-size: 9.5px; }
+
+  .pokemonCardMini { width: 30px; height: 42px; }
+
+  .hexPrismSvg { width: 110px; }
+  .hexFrontFascia { width: 128px; padding: 6px 8px; }
+  .fasciaTitle { font-size: 8.5px; }
+}
+
+@media (max-width: 480px) {
+  .heading { font-size: 28px; line-height: 1.18; }
+
+  .channelCard { padding: 5px 6px; }
+
+  .cardYourStore { width: 130px; }
+  .cardTcg, .cardShopify, .cardEbay,
+  .cardCardmarket, .cardManapool, .cardPos { width: 110px; }
+
+  .itemName { font-size: 8.5px; }
+
+  .pokemonCardMini { width: 26px; height: 36px; }
+}

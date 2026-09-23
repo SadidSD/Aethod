@@ -1,0 +1,658 @@
+/* ==========================================================================
+   Aeethod Integration Hub — Premium Animated Ecosystem Diagram
+   Off-white Neumorphic Aesthetic · Radial SVG Composition · CSS SMIL Animations
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   Section
+   -------------------------------------------------------------------------- */
+.section {
+  position: relative;
+  width: 100%;
+  padding: 100px 0 130px;
+  background: var(--bg-primary, #ECECEC);
+  overflow: hidden;
+  transition: background-color 0.4s ease;
+}
+
+/* Subtle radial ambient spotlight behind diagram */
+.section::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  right: 5%;
+  transform: translateY(-50%);
+  width: 60%;
+  height: 85%;
+  border-radius: 50%;
+  background: radial-gradient(ellipse, rgba(129, 140, 248, 0.08) 0%, rgba(191, 139, 202, 0.04) 45%, transparent 70%);
+  filter: blur(50px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+:global([data-theme="dark"]) .section::before {
+  background: radial-gradient(ellipse, rgba(129, 140, 248, 0.12) 0%, rgba(191, 139, 202, 0.06) 45%, transparent 70%);
+}
+
+.container {
+  position: relative;
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 44px;
+  display: grid;
+  grid-template-columns: 1fr 1.45fr;
+  gap: 56px;
+  align-items: center;
+  box-sizing: border-box;
+  z-index: 1;
+}
+
+/* --------------------------------------------------------------------------
+   Left Column: Heading
+   -------------------------------------------------------------------------- */
+.headingCol {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.heading {
+  font-family: var(--font-sora), 'Sora', sans-serif;
+  font-weight: 300;
+  font-size: clamp(34px, 3.8vw, 54px);
+  line-height: 1.14;
+  letter-spacing: -0.026em;
+  color: #383838;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+:global([data-theme="dark"]) .heading {
+  color: #E8E8F2;
+}
+
+.headingLine1 {
+  display: block;
+  white-space: nowrap;
+}
+
+.headingLine2 {
+  display: block;
+  white-space: nowrap;
+}
+
+.highlight {
+  background: linear-gradient(180deg, #5A69EA 0%, #BF8BCA 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-weight: 300;
+  font-style: italic;
+  display: inline-block;
+  padding-right: 0.35em;
+  margin-right: -0.12em;
+  overflow: visible;
+}
+
+/* --------------------------------------------------------------------------
+   Right Column: Neumorphic Stage
+   -------------------------------------------------------------------------- */
+.visualCol {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Stage: matches SVG viewBox ratio exactly so CSS % positions align */
+.stage {
+  position: relative;
+  width: 100%;
+  max-width: 720px;
+  aspect-ratio: 800 / 540;
+}
+
+/* SVG conduit + particle layer — runs underneath central inventory and cards */
+.svgLayer {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 2;
+  overflow: visible;
+}
+
+/* Centre ambient bloom pulse */
+.centerBloom {
+  animation: bloomPulse 5s ease-in-out infinite;
+}
+
+@keyframes bloomPulse {
+  0%, 100% { opacity: 0.6; transform-origin: 400px 270px; transform: scale(1); }
+  50%       { opacity: 1;   transform-origin: 400px 270px; transform: scale(1.15); }
+}
+
+/* --------------------------------------------------------------------------
+   Conduits (Dual-Layer: Ambient Glow + Minimal Precision Core)
+   -------------------------------------------------------------------------- */
+/* Ambient soft glow aura along the conduit track */
+.conduitGlow {
+  fill: none;
+  stroke: rgba(129, 140, 248, 0.16);
+  stroke-width: 4px;
+  stroke-linecap: round;
+  transition: stroke 0.3s ease, stroke-width 0.3s ease;
+}
+
+:global([data-theme="dark"]) .conduitGlow {
+  stroke: rgba(129, 140, 248, 0.22);
+}
+
+.conduitGlowActive {
+  stroke: rgba(129, 140, 248, 0.38);
+  stroke-width: 6px;
+}
+
+/* Precision core fiber conduit line (sharp, minimal, highly visible) */
+.conduitCore {
+  fill: none;
+  stroke: rgba(99, 102, 241, 0.48);
+  stroke-width: 1.5px;
+  stroke-linecap: round;
+  transition: stroke 0.3s ease, stroke-width 0.3s ease;
+}
+
+:global([data-theme="dark"]) .conduitCore {
+  stroke: rgba(165, 180, 252, 0.65);
+}
+
+.conduitCoreActive {
+  stroke: #6366F1;
+  stroke-width: 2px;
+}
+
+:global([data-theme="dark"]) .conduitCoreActive {
+  stroke: #818CF8;
+}
+
+/* --------------------------------------------------------------------------
+   Central Inventory Nexus — Stacked Vault Pedestal & Master Core
+   -------------------------------------------------------------------------- */
+.centralNexus {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 22%;
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 3;
+}
+
+/* Stacked Vault Tier 2 (Base Foundation Deck: +36px wider) */
+.vaultTier2 {
+  position: absolute;
+  width: calc(100% + 36px);
+  height: calc(100% + 36px);
+  border-radius: 34px;
+  background: var(--bg-primary, #ECECEC);
+  box-shadow:
+    10px 10px 24px rgba(163, 177, 198, 0.55),
+    -10px -10px 24px rgba(255, 255, 255, 0.85),
+    inset 1px 1px 0 rgba(255, 255, 255, 0.9),
+    inset -1px -1px 0 rgba(163, 177, 198, 0.15);
+  z-index: 1;
+  pointer-events: none;
+  transition: all 0.4s ease;
+}
+
+:global([data-theme="dark"]) .vaultTier2 {
+  background: #181829;
+  box-shadow:
+    10px 10px 24px rgba(10, 10, 20, 0.7),
+    -10px -10px 24px rgba(40, 40, 65, 0.4),
+    inset 1px 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+/* Stacked Vault Tier 1 (Mid Bevel Deck: +18px wider) */
+.vaultTier1 {
+  position: absolute;
+  width: calc(100% + 18px);
+  height: calc(100% + 18px);
+  border-radius: 30px;
+  background: var(--bg-primary, #ECECEC);
+  box-shadow:
+    8px 8px 18px rgba(163, 177, 198, 0.65),
+    -8px -8px 18px rgba(255, 255, 255, 0.9),
+    inset 1px 1px 0 rgba(255, 255, 255, 0.95),
+    inset -1px -1px 0 rgba(163, 177, 198, 0.12);
+  z-index: 2;
+  pointer-events: none;
+  transition: all 0.4s ease;
+}
+
+:global([data-theme="dark"]) .vaultTier1 {
+  background: #1c1c30;
+  box-shadow:
+    8px 8px 18px rgba(10, 10, 20, 0.75),
+    -8px -8px 18px rgba(40, 40, 65, 0.5),
+    inset 1px 1px 0 rgba(255, 255, 255, 0.07);
+}
+
+/* Main Central Core Device (176×176px) */
+.coreTile {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: var(--bg-primary, #ECECEC);
+  border-radius: 26px;
+  box-shadow:
+    7px 7px 16px rgba(163, 177, 198, 0.75),
+    -7px -7px 16px rgba(255, 255, 255, 0.98),
+    inset 1px 1px 0 rgba(255, 255, 255, 0.95),
+    inset -1px -1px 0 rgba(163, 177, 198, 0.15),
+    0 0 35px rgba(129, 140, 248, 0.16);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 14px 14px 14px;
+  box-sizing: border-box;
+  z-index: 3;
+  cursor: default;
+  animation: tileBreath 5s ease-in-out infinite;
+  transition: box-shadow 0.4s ease, transform 0.4s ease;
+}
+
+:global([data-theme="dark"]) .coreTile {
+  background: #202033;
+  box-shadow:
+    7px 7px 18px rgba(10, 10, 20, 0.7),
+    -7px -7px 18px rgba(45, 45, 75, 0.6),
+    inset 1px 1px 0 rgba(255, 255, 255, 0.08),
+    inset -1px -1px 0 rgba(0, 0, 0, 0.4),
+    0 0 35px rgba(129, 140, 248, 0.25);
+}
+
+.coreTileActive {
+  box-shadow:
+    9px 9px 22px rgba(163, 177, 198, 0.8),
+    -9px -9px 22px rgba(255, 255, 255, 0.98),
+    inset 1px 1px 0 rgba(255, 255, 255, 0.95),
+    0 0 45px rgba(129, 140, 248, 0.3) !important;
+  animation-play-state: paused;
+}
+
+:global([data-theme="dark"]) .coreTileActive {
+  box-shadow:
+    9px 9px 22px rgba(10, 10, 20, 0.85),
+    -9px -9px 22px rgba(45, 45, 75, 0.75),
+    inset 1px 1px 0 rgba(255, 255, 255, 0.1),
+    0 0 45px rgba(129, 140, 248, 0.45) !important;
+}
+
+@keyframes tileBreath {
+  0%, 100% {
+    box-shadow:
+      6px 6px 15px rgba(163, 177, 198, 0.7),
+      -6px -6px 15px rgba(255, 255, 255, 0.9),
+      inset 1px 1px 0 rgba(255, 255, 255, 0.9),
+      inset -1px -1px 0 rgba(163, 177, 198, 0.15),
+      0 0 25px rgba(129, 140, 248, 0.1);
+  }
+  50% {
+    box-shadow:
+      8px 8px 20px rgba(163, 177, 198, 0.8),
+      -8px -8px 20px rgba(255, 255, 255, 0.98),
+      inset 1px 1px 0 rgba(255, 255, 255, 0.95),
+      inset -1px -1px 0 rgba(163, 177, 198, 0.15),
+      0 0 45px rgba(129, 140, 248, 0.25);
+  }
+}
+
+/* Upper Brand Well */
+.coreLogoWell {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 74px;
+  height: 74px;
+  border-radius: 50%;
+  background: var(--bg-primary, #ECECEC);
+  box-shadow:
+    inset 3.5px 3.5px 8px rgba(163, 177, 198, 0.65),
+    inset -3.5px -3.5px 8px rgba(255, 255, 255, 0.95);
+  box-sizing: border-box;
+}
+
+:global([data-theme="dark"]) .coreLogoWell {
+  background: #19192b;
+  box-shadow:
+    inset 3.5px 3.5px 8px rgba(10, 10, 20, 0.8),
+    inset -3.5px -3.5px 8px rgba(45, 45, 75, 0.4);
+}
+
+.aeethodLogoSvg {
+  width: 44px;
+  height: 44px;
+  display: block;
+}
+
+:global([data-theme="dark"]) .aeethodLogoSvg path {
+  fill: #E2E8F0;
+}
+
+/* Laser-Etched Hardware Seam */
+.consoleDivider {
+  width: 82%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent 0%, rgba(163, 177, 198, 0.55) 20%, rgba(255, 255, 255, 0.95) 50%, rgba(163, 177, 198, 0.55) 80%, transparent 100%);
+  margin: 4px 0 2px 0;
+}
+
+:global([data-theme="dark"]) .consoleDivider {
+  background: linear-gradient(90deg, transparent 0%, rgba(45, 45, 75, 0.5) 20%, rgba(255, 255, 255, 0.15) 50%, rgba(45, 45, 75, 0.5) 80%, transparent 100%);
+}
+
+/* Integrated Hardware Telemetry Console */
+.telemetryConsole {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3.5px;
+  width: 100%;
+}
+
+.consoleHeader {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5.5px;
+}
+
+.consoleDot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #22C55E;
+  box-shadow: 0 0 6px rgba(34, 197, 94, 0.9);
+  animation: dotPulse 3s ease-in-out infinite;
+  flex-shrink: 0;
+}
+
+.consoleTitle {
+  font-family: var(--font-sora), 'Sora', sans-serif;
+  font-size: 8.5px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  color: #334155;
+  text-transform: uppercase;
+  line-height: 1;
+}
+
+:global([data-theme="dark"]) .consoleTitle {
+  color: #E2E8F0;
+}
+
+.consoleSubline {
+  font-family: var(--font-sora), 'Sora', sans-serif;
+  font-size: 7px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: #64748B;
+  text-transform: uppercase;
+  line-height: 1;
+}
+
+:global([data-theme="dark"]) .consoleSubline {
+  color: #94A3B8;
+}
+
+/* --------------------------------------------------------------------------
+   Platform Card Anchor (positions card centre at CSS left/top %)
+   -------------------------------------------------------------------------- */
+.cardAnchor {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  z-index: 5;
+}
+
+/* --------------------------------------------------------------------------
+   Platform Cards — Neumorphic Raised Panels
+   -------------------------------------------------------------------------- */
+.card {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 16px 10px 12px;
+  white-space: nowrap;
+  cursor: pointer;
+
+  background: var(--bg-primary, #ECECEC);
+  border-radius: 20px;
+  box-shadow:
+    6px 6px 14px rgba(163, 177, 198, 0.65),
+    -6px -6px 14px rgba(255, 255, 255, 0.92),
+    inset 1px 1px 0 rgba(255, 255, 255, 0.8),
+    inset -1px -1px 0 rgba(163, 177, 198, 0.12);
+
+  /* Gentle float animation */
+  animation: floatCard 6s ease-in-out infinite;
+  animation-delay: var(--float-delay, 0s);
+
+  /* Hover transition */
+  transition:
+    transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1),
+    box-shadow 0.3s ease;
+}
+
+:global([data-theme="dark"]) .card {
+  background: #222238;
+  box-shadow:
+    6px 6px 16px rgba(10, 10, 20, 0.6),
+    -6px -6px 16px rgba(45, 45, 75, 0.5),
+    inset 1px 1px 0 rgba(255, 255, 255, 0.06),
+    inset -1px -1px 0 rgba(0, 0, 0, 0.3);
+}
+
+/* Float: barely perceptible 2px vertical drift */
+@keyframes floatCard {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-2px); }
+}
+
+.cardHovered,
+.card:hover {
+  transform: translateY(-4px) !important;
+  animation-play-state: paused;
+  box-shadow:
+    8px 10px 22px rgba(163, 177, 198, 0.75),
+    -8px -8px 20px rgba(255, 255, 255, 0.95),
+    0 0 16px rgba(129, 140, 248, 0.3),
+    inset 1px 1px 0 rgba(255, 255, 255, 0.9);
+}
+
+:global([data-theme="dark"]) .card:hover,
+:global([data-theme="dark"]) .cardHovered {
+  box-shadow:
+    8px 10px 22px rgba(10, 10, 20, 0.8),
+    -8px -8px 20px rgba(45, 45, 75, 0.65),
+    0 0 20px rgba(129, 140, 248, 0.35);
+}
+
+/* --------------------------------------------------------------------------
+   Card internals & Neumorphic Icon Chip
+   -------------------------------------------------------------------------- */
+.cardLogo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 42px;
+  height: 42px;
+  border-radius: 14px;
+  background: var(--bg-primary, #ECECEC);
+  box-shadow:
+    3px 3px 7px rgba(163, 177, 198, 0.6),
+    -3px -3px 7px rgba(255, 255, 255, 0.9),
+    inset 0.5px 0.5px 0 rgba(255, 255, 255, 0.8);
+}
+
+:global([data-theme="dark"]) .cardLogo {
+  background: #1e1e30;
+  box-shadow:
+    3px 3px 8px rgba(10, 10, 20, 0.65),
+    -3px -3px 8px rgba(45, 45, 75, 0.45),
+    inset 0.5px 0.5px 0 rgba(255, 255, 255, 0.05);
+}
+
+.cardInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.cardName {
+  font-family: var(--font-sora), 'Sora', sans-serif;
+  font-size: 12.5px;
+  font-weight: 600;
+  color: #1E293B;
+  letter-spacing: -0.012em;
+  line-height: 1.2;
+}
+
+:global([data-theme="dark"]) .cardName {
+  color: #E2E8F0;
+}
+
+.cardStatus {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* Green sync dot — subtle opacity pulse */
+.dot {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #22C55E;
+  box-shadow: 0 0 6px rgba(34, 197, 94, 0.6);
+  animation: dotPulse 3.5s ease-in-out infinite;
+  flex-shrink: 0;
+}
+
+@keyframes dotPulse {
+  0%, 100% { opacity: 0.75; }
+  50%       { opacity: 1;    }
+}
+
+.syncedLabel {
+  font-family: var(--font-sora), 'Sora', sans-serif;
+  font-size: 10.5px;
+  font-weight: 500;
+  color: #64748B;
+  letter-spacing: 0.01em;
+}
+
+:global([data-theme="dark"]) .syncedLabel {
+  color: #94A3B8;
+}
+
+/* --------------------------------------------------------------------------
+   Reduced Motion — disable all movement, keep layout + shadows
+   -------------------------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  .coreTile,
+  .centerBloom,
+  .card,
+  .dot,
+  .consoleDot {
+    animation: none !important;
+  }
+
+  .card {
+    transition: box-shadow 0.2s ease;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Responsive
+   -------------------------------------------------------------------------- */
+@media (max-width: 1100px) {
+  .container {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+
+  .headingCol {
+    align-items: center;
+    text-align: center;
+  }
+
+  .headingLine1,
+  .headingLine2 {
+    white-space: normal;
+    text-align: center;
+  }
+
+  .stage {
+    max-width: 600px;
+  }
+}
+
+@media (max-width: 680px) {
+  .section {
+    padding: 64px 0 80px;
+  }
+
+  .container {
+    padding: 0 16px;
+  }
+
+  .stage {
+    aspect-ratio: 1 / 1.4;
+    max-width: 380px;
+  }
+
+  /* Compact cards on mobile */
+  .card {
+    padding: 8px 12px 8px 9px;
+    gap: 9px;
+    border-radius: 16px;
+  }
+
+  .cardLogo {
+    width: 34px;
+    height: 34px;
+    border-radius: 11px;
+  }
+
+  .cardName {
+    font-size: 11px;
+  }
+
+  .syncedLabel {
+    font-size: 9.5px;
+  }
+
+  .dot {
+    width: 5px;
+    height: 5px;
+  }
+}
+
+@media (max-width: 480px) {
+  .heading {
+    font-size: 28px;
+    line-height: 1.18;
+  }
+}

@@ -9,8 +9,14 @@ export function ThemeProvider({ children }) {
 
   useEffect(() => {
     // Sync theme on initial mount
-    const saved = localStorage.getItem("theme");
-    const initialIsDark = saved ? saved === "dark" : false; // Default to light, or read saved theme
+    let initialIsDark = false;
+    try {
+      const urlTheme = new URLSearchParams(window.location.search).get("theme");
+      const saved = urlTheme || localStorage.getItem("theme");
+      initialIsDark = saved ? saved === "dark" : false;
+    } catch (e) {
+      /* ignore */
+    }
     
     setIsDark(initialIsDark);
     document.documentElement.setAttribute("data-theme", initialIsDark ? "dark" : "light");

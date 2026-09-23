@@ -7,6 +7,7 @@ import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
 
 import HowWeDifferTable from "./HowWeDifferTable";
+import CapabilityGrid from "./CapabilityGrid";
 
 function InlineSVG({ src, className, isMobile, isTabletOrMobile, crop }) {
   const [svgContent, setSvgContent] = useState("");
@@ -148,7 +149,7 @@ export default function StudioPage() {
           <div className={styles.section1Hero}>
             <h1 className={styles.studioTitle}>Studio</h1>
             <p className={styles.studioSubtitle}>
-              Intelligence, <span className={styles.purpleTabletAccent}>before interface.</span>
+              Infrastructure, <span className={styles.purpleTabletAccent}>beyond the platform.</span>
             </p>
             
             <div className={styles.aboutCardWrapper}>
@@ -165,7 +166,7 @@ export default function StudioPage() {
                   We are not a SaaS company.
                 </div>
                 <div className={`${styles.agencyTextLine} ${styles.systemsStudioGradientText}`}>
-                  We are a systems studio.
+                  We are a vertical technology studio.
                 </div>
               </div>
             </div>
@@ -179,16 +180,16 @@ export default function StudioPage() {
 
           {/* ----- SECTION 2: WHAT IS SYSTEM STUDIO & HOW WE DIFFER ----- */}
           <div className={styles.section2WhatIs}>
-            <h2 className={styles.whatIsTitle}>What is a systems studio?</h2>
-            <p className={styles.whatIsSubtitle}>Where agencies end.</p>
+            <h2 className={styles.whatIsTitle}>What is a vertical technology studio?</h2>
+            <p className={styles.whatIsSubtitle}>Where platforms end.</p>
             <div className={styles.whatIsSystemStudioContainer}>
               <div className={styles.whatIsParagraphRow}>
                 <InlineSVG src="/studio/round_arrow_card.svg" className={styles.roundArrowCard} />
                 <div className={styles.whatIsParagraphTextContainer}>
                   <div className={`${styles.whatIsParagraphText} ${expandedParagraphs.p1 ? styles.expanded : ""}`}>
-                    An agency executes. A SaaS company scales. A systems studio thinks.{" "}
+                    An agency builds websites. An off-the-shelf platform locks you in. A vertical technology studio architects infrastructure.{" "}
                     <span className={styles.whatIsParagraphHighlight}>
-                      We spend time inside a problem before touching it — understanding the data, the decisions, the friction. Then we design the system that makes all three cleaner.
+                      When your TCG business expands across marketplaces, physical storefronts, buylists, and inventory channels, fragmented tools break down. We spend time inside your operations to unify inventory, sync sales channels, and eliminate manual friction.
                     </span>{" "}
                     That is the difference.
                   </div>
@@ -205,11 +206,11 @@ export default function StudioPage() {
                 <InlineSVG src="/studio/round_arrow_card.svg" className={styles.roundArrowCard} />
                 <div className={styles.whatIsParagraphTextContainer}>
                   <div className={`${styles.whatIsParagraphText} ${expandedParagraphs.p2 ? styles.expanded : ""}`}>
-                    The architect still matters. The machine is a tool.{" "}
+                    Platforms are built for starting. They are not the final form of a growing business.{" "}
                     <span className={styles.whatIsParagraphHighlight}>
-                      The person who designs the system, knows what the machine intelligence must do — and keeps both working in their correct order —
+                      When off-the-shelf tools can no longer handle your catalogue velocity, multi-channel stock, and fulfillment complexity, you need custom digital infrastructure engineered specifically around how your TCG business operates.
                     </span>{" "}
-                    that is someone is a thinker. That is who we are.
+                    That is who we are.
                   </div>
                   <button 
                     className={styles.seeMoreBtn}
@@ -264,8 +265,8 @@ export default function StudioPage() {
             )}
             
             <blockquote className={styles.manifestoQuote}>
-              Humans architect. AI executes. Data makes it true.<br />
-              That is what we build.
+              Platforms help you start. Custom infrastructure lets you scale.<br />
+              When your TCG business outgrows its tools, we build what comes next.
             </blockquote>
           </div>
 
@@ -302,16 +303,16 @@ export default function StudioPage() {
             <div className={styles.ctaContainer}>
               <InlineSVG src="/studio/curved_line.svg" className={styles.ctaLineTop} />
               <blockquote className={styles.ctaText}>
-                The first conversation costs nothing. The systems brief tells us both whether this is the right fit.
+                The first conversation costs nothing. We examine your operations, map the friction, and determine if custom infrastructure is what should come next.
               </blockquote>
               <InlineSVG src="/studio/curved_line.svg" className={styles.ctaLineBottom} />
             </div>
           </div>
 
-          {/* ----- SECTION 6: AI CAPABILITY AREAS ----- */}
+          {/* ----- SECTION 6: SYSTEM CAPABILITY AREAS ----- */}
           <div className={styles.section6Capabilities}>
             <h2 className={styles.capabilityHeader}>
-              {"AI Capability ".split("").map((char, i) => (
+              {"System Capability ".split("").map((char, i) => (
                 <span
                   key={i}
                   className={styles.waveChar}
@@ -323,16 +324,16 @@ export default function StudioPage() {
               <br className={styles.capabilityBr} />
               {"Areas".split("").map((char, i) => (
                 <span
-                  key={i + 14}
+                  key={i + 18}
                   className={styles.waveChar}
-                  style={{ animationDelay: `${(i + 14) * 0.15}s` }}
+                  style={{ animationDelay: `${(i + 18) * 0.15}s` }}
                 >
                   {char}
                 </span>
               ))}
             </h2>
             <div className={styles.capabilityGridWrapper}>
-              <InlineSVG src="/studio/Group 75.svg" className={styles.capabilityGrid} isMobile={isMobile} />
+              <CapabilityGrid className={styles.capabilityGrid} />
             </div>
           </div>
 

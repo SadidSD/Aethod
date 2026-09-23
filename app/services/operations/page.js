@@ -1,146 +1,146 @@
 "use client";
 
 import { useState, useCallback } from "react";
-import styles from "./automation.module.css";
+import styles from "./operations.module.css";
 import { useTheme } from "../../context/ThemeContext";
 import Footer from "../../components/Footer";
 import Navbar from "../../components/Navbar";
 
-// Automation Components
-import TcgAutomationStageSwitcher from "./components/TcgAutomationStageSwitcher";
-import TcgRepricerSimulator from "./components/TcgRepricerSimulator";
-import TcgBatchFulfillmentMockup from "./components/TcgBatchFulfillmentMockup";
-import TcgAutomationCalculator from "./components/TcgAutomationCalculator";
-import TcgAutomationPricingCards from "./components/TcgAutomationPricingCards";
+// Operations Components
+import TcgOperationsStageSwitcher from "./components/TcgOperationsStageSwitcher";
+import TcgBuylistSimulator from "./components/TcgBuylistSimulator";
+import TcgGradingMatrix from "./components/TcgGradingMatrix";
+import TcgBuylistCalculator from "./components/TcgBuylistCalculator";
+import TcgOperationsPricingCards from "./components/TcgOperationsPricingCards";
 
 const HUD_STATS = [
-  { label: "Dynamic Market Repricing", val: "< 60s Global", highlight: true },
-  { label: "Packing Time Per Order", val: "70% Faster", highlight: true },
-  { label: "Margin Protected / Month", val: "$1,400+ Saved", highlight: false },
-  { label: "Ongoing Software SaaS", val: "$0 / Month", highlight: false }
+  { label: "Buylist Trade-In Intake", val: "3x Faster", highlight: true },
+  { label: "Condition Disputes Reduced", val: "85% Drop", highlight: true },
+  { label: "High-Ticket Slab Vault", val: "100% Serial Logged", highlight: false },
+  { label: "Nightly Register Closeout", val: "< 5 Min Reconcile", highlight: false }
 ];
 
 const PROBLEMS = [
   {
-    icon: "📉",
-    title: "Tournament Spikes Sniping Your Stock",
-    desc: "A card spikes 40% over the weekend after a championship win. You wake up on Monday morning to find your entire inventory cleared out at last month's obsolete prices."
+    icon: "⏱",
+    title: "45-Minute Binder Trade-In Lines",
+    desc: "Customers drop 200-card binders at the counter during peak Saturday tournaments. Staff manually lookup prices card-by-card on phones while lines back up out the door."
   },
   {
-    icon: "🖨",
-    title: "Single-Order Copy-Paste Shipping",
-    desc: "Staff spend 3 hours every afternoon printing shipping labels one by one, manually typing tracking numbers into TCGplayer, eBay, and your website."
+    icon: "⚖",
+    title: "Subjective Grading Disagreements",
+    desc: "A collector claims their vintage Holo is Near Mint. One clerk calls it LP; another calls it MP. Inconsistent evaluations burn customer trust and leak shop margin."
   },
   {
-    icon: "🔍",
-    title: "Hunting Through Disorganized Binders",
-    desc: "Fulfillers criss-cross the store searching through dozens of unsorted binders and display counters to track down a single $4 foil."
+    icon: "💳",
+    title: "Chaotic Cash vs. Store Credit Spreads",
+    desc: "Staff struggle with manual margin calculations (e.g. 60% cash vs 75% credit) across different game categories, leading to costly accounting mistakes at checkout."
   },
   {
-    icon: "📦",
-    title: "Low Inventory Blind Spots",
-    desc: "You run completely out of dragon shield sleeves, toploaders, or booster boxes before noticing, losing lucrative add-on sales at the register."
+    icon: "🔒",
+    title: "Untracked Graded Slabs in Display Cases",
+    desc: "High-value $500+ PSA and BGS slabs sit in glass cabinets without serialized tracking, creating inventory shrinkage and panic during shift handoffs."
   }
 ];
 
 const BLUEPRINT = [
   {
     num: "MODULE 01",
-    tag: "Pricing Engine",
-    title: "Dynamic Market Repricer",
-    desc: "Algorithmic rules that monitor TCGplayer market trends and automatically adjust prices while strictly enforcing your minimum profit floors."
+    tag: "Customer Portal",
+    title: "Online Customer Buylist Portal",
+    desc: "Allow collectors to search cards, check live cash/credit offer rates, and submit trade-in manifests from home before visiting."
   },
   {
     num: "MODULE 02",
-    tag: "Fulfillment",
-    title: "1-Click Thermal Batching",
-    desc: "Bulk generate packing slips and 4x6 shipping labels for Zebra and Rollo thermal printers without opening dozens of browser tabs."
+    tag: "Counter Terminal",
+    title: "Rapid Counter Staff Intake Screen",
+    desc: "High-speed intake interface with barcode scanning, batch acceptance, and 1-click condition adjustments."
   },
   {
     num: "MODULE 03",
-    tag: "Warehouse Routing",
-    title: "Single-Path Pick Lists",
-    desc: "Orders automatically organized into optimal walking paths across your vault, display showcases, and binder shelves for 2x faster picking."
+    tag: "Margin Engine",
+    title: "Algorithmic Valuation Spreads",
+    desc: "Automate custom margin spreads (e.g. 60% cash / 75% credit) tied dynamically to live TCGplayer market averages."
   },
   {
     num: "MODULE 04",
-    tag: "Hardware Bridge",
-    title: "High-Speed Scanner Ingestion",
-    desc: "Connect optical card scanners to automatically identify set symbols, card numbers, and conditions at up to 60 cards per minute."
+    tag: "Quality Control",
+    title: "Standardized Grading Matrix",
+    desc: "Objective physical inspection rules and condition checklist enforcing consistent NM/LP/MP/HP standards across all clerks."
   },
   {
     num: "MODULE 05",
-    tag: "Margin Security",
-    title: "Marketplace Fee Padding",
-    desc: "Automatically add marketplace commission buffers (+13.2% on eBay) so your net profit remains identical across all selling channels."
+    tag: "Vault Security",
+    title: "Graded Slab Serial Registry",
+    desc: "Track high-ticket slabs ($500+) by unique certification numbers, safe deposit bin location, and insurance records."
   },
   {
     num: "MODULE 06",
-    tag: "Inventory Alerts",
-    title: "Low-Stock Webhook Alerts",
-    desc: "Real-time Discord, Slack, or SMS notifications when high-velocity sealed product or supply essentials drop below safety thresholds."
+    tag: "Unified Ledger",
+    title: "Omnichannel Store Credit System",
+    desc: "Centralized customer credit balance usable interchangeably at the physical counter and on your web storefront."
   },
   {
     num: "MODULE 07",
-    tag: "Multi-Channel Broadcast",
-    title: "Instant Multi-Channel Push",
-    desc: "Broadcast newly updated prices and stock quantities across Storefront, TCGplayer Direct, and eBay in under 60 seconds."
+    tag: "Hardware Bridge",
+    title: "Thermal Slip & Barcode Pipeline",
+    desc: "Auto-print buylist intake claim tickets, customer trade agreement slips, and barcode stickers for binder sorting."
   },
   {
     num: "MODULE 08",
-    tag: "Auditing",
-    title: "End-of-Day Velocity Digest",
-    desc: "Automated daily summaries showing top-performing cards, repricing activity, and shipping velocity delivered to your phone."
+    tag: "Fraud Prevention",
+    title: "Employee Audit & Drawer Logs",
+    desc: "Granular audit trails of who accepted which trade, manager cash override logs, and balanced end-of-shift receipts."
   }
 ];
 
 const ONBOARDING_STEPS = [
   {
     step: "STEP 01",
-    title: "Pricing Rules & Margin Floor Audit",
-    desc: "We analyze your catalog to establish minimum profit thresholds, game-specific repricing rules, and marketplace commission buffers."
+    title: "Counter Hardware & POS Audit",
+    desc: "We review your counter registers, thermal receipt printers, barcode scanners, and display case setup to map optimal hardware tie-ins."
   },
   {
     step: "STEP 02",
-    title: "Repricing Simulation Mode",
-    desc: "The repricer runs in dry-run shadow mode for 7 days, letting you review simulated price adjustments before any live marketplace listings change."
+    title: "Buylist Margin & Grading Matrix Setup",
+    desc: "We configure your exact cash/credit spreads by card game (Pokémon, MTG, One Piece) and calibrate your condition discount multipliers."
   },
   {
     step: "STEP 03",
-    title: "Fulfillment & Printer Bridge Setup",
-    desc: "We configure your thermal shipping label printers (Zebra, Rollo) and connect your USPS/UPS shipping accounts for 1-click batch generation."
+    title: "Counter Staff Shadow Testing",
+    desc: "We run mock binder trade-in trials with your clerks to verify sub-minute batch scans, thermal print speeds, and override permissions."
   },
   {
     step: "STEP 04",
-    title: "Live Autonomous Cutover",
-    desc: "Autonomous repricing, batch fulfillment, and restock alerts go live. Staff hours are immediately reclaimed and margins are protected forever."
+    title: "Live Production Cutover",
+    desc: "Your counter intake terminal and customer buylist portal go live with zero downtime. Backlog lines disappear and trade margins are locked."
   }
 ];
 
 const FAQS = [
   {
-    q: "Will the repricer ever accidentally sell our cards below what we paid?",
-    a: "Never. Every card in your catalog is locked with a hard profit floor. Even if a competitor creates a fraudulent low-ball listing, the algorithm will never drop below your specified minimum margin."
+    q: "Can we set different cash/credit buy rates for Pokémon, Magic, and One Piece?",
+    a: "Yes. The valuation matrix allows you to set custom rules per game, set, rarity, or card price tier (e.g., 65% cash for Pokémon meta staples, 50% for bulk foils, 80% store credit on vintage)."
   },
   {
-    q: "How does 1-click thermal batch fulfillment work?",
-    a: "Instead of generating shipping labels individually across TCGplayer, eBay, and your website, Aeethod pools all pending orders into a unified queue. One click prints all 4x6 labels and packing slips directly to your thermal printer while automatically pushing tracking numbers back to all marketplaces."
+    q: "How does the buylist handle cards that don't match the customer's claimed condition?",
+    a: "Staff can click to adjust condition during intake (e.g., NM down to MP). The system automatically re-calculates the payout and prints a revised counter slip or emails an approval request to the customer."
   },
   {
-    q: "Can we exclude vintage or high-value cards from automatic repricing?",
-    a: "Yes. You can easily mark specific cards, graded slabs, or entire sets as 'Manual Price Only' so automated rules will never touch them."
+    q: "Does this connect to our existing thermal receipt printers and barcode scanners?",
+    a: "Yes. We configure standard ESC/POS thermal receipt printers (Epson, Star Micronics) and 2D barcode scanners so intake tickets and inventory labels print with one click."
   },
   {
-    q: "Do we have to pay monthly subscription fees for repricing or shipping?",
-    a: "No. Third-party tools charge $300 to $800+ every month. Aeethod builds dedicated cloud pipelines running on serverless infrastructure that you own forever with zero recurring software taxes."
+    q: "Can we restrict which employees are authorized to pay out cash trades over $200?",
+    a: "Yes. The system includes role-based permissions, requiring a manager PIN or override for trade-ins exceeding your specified cash threshold."
   },
   {
-    q: "Does this integrate with optical card scanners for fast intake?",
-    a: "Yes. We integrate high-speed card scanner feeds into our master catalog pipeline, allowing your staff to scan up to 60 singles per minute directly into inventory."
+    q: "How is Aeethod different from SaaS tools like BinderPOS or CardCastle?",
+    a: "Those platforms charge $300 to $1,000+ every month and lock your data inside their walled garden. Aeethod builds a dedicated operational engine that you own 100% with zero recurring software taxes."
   }
 ];
 
-export default function AutomationPage() {
+export default function OperationsPage() {
   const { isDark } = useTheme();
   const [activeStage, setActiveStage] = useState("stage-01");
   const [openFaq, setOpenFaq] = useState(0);
@@ -181,15 +181,15 @@ export default function AutomationPage() {
         {/* HERO SECTION */}
         <section className={styles.heroSection}>
           <div className={styles.heroLeft}>
-            <span className={styles.stageEyebrow}>Stage 04 · Operational Infrastructure</span>
+            <span className={styles.stageEyebrow}>Stage 03 · Behind The Counter</span>
             <h1 className={styles.heroTitle}>
-              Business <span className={styles.heroGradient}>Automation</span>
+              TCG Operations <span className={styles.heroGradient}>Systems</span>
             </h1>
             <p className={styles.heroSubtitle}>
-              Automate the repetitive grind. Reclaim 20+ hours of weekly staff time.
+              Build the high-velocity engine behind your shop counter.
             </p>
             <p className={styles.heroDesc}>
-              Remove daily retail busywork with automated dynamic repricing rules, 1-click batch thermal label printing, high-speed scanner intake, and low-inventory safety alerts. Turn your backroom into an autonomous distribution machine.
+              Streamline the hardest, most error-prone parts of card retail: high-volume buylist trade-ins, condition grading disputes, cash vs. store credit issuance, and in-store counter checkout. Turn counter bottlenecks into high-velocity profit centers.
             </p>
             <div className={styles.heroCtaRow}>
               <a
@@ -211,7 +211,7 @@ export default function AutomationPage() {
                   handleStageSelect("stage-01");
                 }}
               >
-                <span>Explore Automation Demos</span>
+                <span>Explore Counter Demos</span>
                 <span>→</span>
               </a>
             </div>
@@ -221,9 +221,9 @@ export default function AutomationPage() {
             <div className={styles.hudHeader}>
               <span className={styles.hudStatusPill}>
                 <span className={styles.hudDot} />
-                Autonomous Engine Active
+                Counter Engine Active
               </span>
-              <span className={styles.hudType}>Repricing & Logistics</span>
+              <span className={styles.hudType}>Intake & Vault System</span>
             </div>
             <div className={styles.hudGrid}>
               {HUD_STATS.map((stat, i) => (
@@ -239,18 +239,18 @@ export default function AutomationPage() {
         </section>
 
         {/* STICKY 3-STAGE SWITCHER */}
-        <TcgAutomationStageSwitcher activeStage={activeStage} onSelectStage={handleStageSelect} />
+        <TcgOperationsStageSwitcher activeStage={activeStage} onSelectStage={handleStageSelect} />
 
-        {/* ===== STAGE 01: OVERVIEW & AUTOMATION DEMOS ===== */}
+        {/* ===== STAGE 01: OVERVIEW & COUNTER DEMOS ===== */}
         <div id="stage-01">
           {/* Friction Removed Section */}
           <section className={styles.problemsSection}>
-            <div className={styles.sectionEyebrowCenter}>Retail Friction Removed</div>
+            <div className={styles.sectionEyebrowCenter}>Counter Friction Removed</div>
             <h2 className={styles.sectionTitleCenter}>
               Headaches You Won’t <span className={styles.heroGradient}>Face Again</span>
             </h2>
             <p className={styles.sectionSubtitleCenter}>
-              Say goodbye to sniped underpriced cards, copy-pasting tracking numbers, and wandering through disorganized binders.
+              Say goodbye to messy binder piles, awkward grading arguments, and disconnected cash drawers.
             </p>
 
             <div className={styles.problemsGrid}>
@@ -268,19 +268,19 @@ export default function AutomationPage() {
             </div>
           </section>
 
-          {/* Dynamic Market Repricer Simulator */}
-          <TcgRepricerSimulator />
+          {/* Live Buylist & Condition Grading Terminal */}
+          <TcgBuylistSimulator />
 
-          {/* Batch Fulfillment & Scanner Pipeline Mockup */}
-          <TcgBatchFulfillmentMockup />
+          {/* Standardized Grading Matrix Visualizer */}
+          <TcgGradingMatrix />
 
-          {/* Busywork Drain vs Automation ROI Calculator */}
-          <TcgAutomationCalculator />
+          {/* Manual Trade-In Drain vs Automated ROI Calculator */}
+          <TcgBuylistCalculator />
         </div>
 
         {/* ===== STAGE 02: PRICING (MIDDLE) ===== */}
         <div id="stage-02" style={{ paddingTop: "40px" }}>
-          <TcgAutomationPricingCards />
+          <TcgOperationsPricingCards />
         </div>
 
         {/* ===== STAGE 03: BLUEPRINT & ONBOARDING ===== */}
@@ -292,7 +292,7 @@ export default function AutomationPage() {
               The Architecture <span className={styles.heroGradient}>Blueprint</span>
             </h2>
             <p className={styles.sectionSubtitleCenter}>
-              Modular autonomous automation pipelines engineered directly into your store's inventory and shipping workflow.
+              Modular counter operational infrastructure engineered directly into your physical and digital store.
             </p>
 
             <div className={styles.blueprintGrid}>
@@ -313,10 +313,10 @@ export default function AutomationPage() {
           <section className={styles.stepsSection}>
             <div className={styles.sectionEyebrowCenter}>Zero-Friction Deployment</div>
             <h2 className={styles.sectionTitleCenter}>
-              How We Automate <span className={styles.heroGradient}>Your Operations</span>
+              How We Upgrade <span className={styles.heroGradient}>Your Counter</span>
             </h2>
             <p className={styles.sectionSubtitleCenter}>
-              A 4-step deployment protocol designed to activate autonomous repricing and fulfillment with zero risk to current sales.
+              A 4-step deployment protocol designed to upgrade your counter workflow without interrupting retail trading.
             </p>
 
             <div className={styles.stepsGrid}>
@@ -337,7 +337,7 @@ export default function AutomationPage() {
               Common Questions & <span className={styles.heroGradient}>Direct Answers</span>
             </h2>
             <p className={styles.sectionSubtitleCenter}>
-              Everything you need to know about profit floors, thermal hardware compatibility, and zero-subscription pipelines.
+              Everything you need to know about thermal hardware bridges, grading rules, and data ownership.
             </p>
 
             <div className={styles.faqAccordion}>
@@ -371,16 +371,16 @@ export default function AutomationPage() {
         {/* BOTTOM CTA FORM */}
         <section id="contact" className={styles.ctaSection}>
           <div className={styles.ctaCard}>
-            <h2 className={styles.ctaTitle}>Automate Your Card Shop Operations</h2>
+            <h2 className={styles.ctaTitle}>Upgrade Your Shop Counter Operations</h2>
             <p className={styles.ctaDesc}>
-              Ready to eliminate 20+ hours of weekly busywork? Speak directly with our systems automation architect.
+              Have questions about your current POS setup, barcode printers, or buylist trade rules? Let’s talk with our systems architect.
             </p>
             <form
               className={styles.ctaForm}
               onSubmit={(e) => {
                 e.preventDefault();
                 playClickSound();
-                alert("Thank you! Our automation systems architect will reach out shortly.");
+                alert("Thank you! Our operations systems architect will reach out shortly.");
               }}
             >
               <input
