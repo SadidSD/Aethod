@@ -1,0 +1,22 @@
+<svg width="35" height="35" viewBox="0 0 35 35" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="ig-grad" cx="25%" cy="105%" r="125%" fx="20%" fy="100%">
+      <stop offset="0%" stop-color="#fdf497" />
+      <stop offset="10%" stop-color="#fdf497" />
+      <stop offset="35%" stop-color="#fd5949" />
+      <stop offset="60%" stop-color="#d6249f" />
+      <stop offset="90%" stop-color="#285aeb" />
+    </radialGradient>
+  </defs>
+  <!-- Circular background badge -->
+  <circle cx="17.5" cy="17.5" r="17.5" fill="url(#ig-grad)" />
+  
+  <!-- Camera Rounded Rect Outline -->
+  <rect x="9" y="9" width="17" height="17" rx="4.8" fill="none" stroke="#FFFFFF" stroke-width="1.8" />
+  
+  <!-- Camera Center Lens Circle -->
+  <circle cx="17.5" cy="17.5" r="4.2" fill="none" stroke="#FFFFFF" stroke-width="1.8" />
+  
+  <!-- Camera Flash Dot -->
+  <circle cx="21.8" cy="13.2" r="1.15" fill="#FFFFFF" />
+</svg>

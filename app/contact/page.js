@@ -39,8 +39,8 @@ const WhatsappIcon = () => (
   <InlineSVG src="/whatsapp.svg" />
 );
 
-const DiscordIcon = () => (
-  <InlineSVG src="/discord.svg" />
+const InstagramIcon = () => (
+  <InlineSVG src="/instagram.svg" />
 );
 
 const EmailIcon = () => (
@@ -67,14 +67,13 @@ const CONTACT_CHANNELS = [
     cellClass: "whatsappCell",
   },
   {
-    id: "discord",
-    name: "Discord",
-    // Set invite link here (e.g. "https://discord.gg/yourserver") when ready
-    url: "#",
-    ariaLabel: "Discord community (Coming soon)",
+    id: "instagram",
+    name: "Instagram",
+    url: "https://www.instagram.com/sadidbinhasan?stkn=MWVsMWdnbnZkMGM0cw==",
+    ariaLabel: "Follow on Instagram (@sadidbinhasan)",
     isExternal: true,
-    Icon: DiscordIcon,
-    cellClass: "discordCell",
+    Icon: InstagramIcon,
+    cellClass: "instagramCell",
   },
   {
     id: "email",

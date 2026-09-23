@@ -795,7 +795,8 @@
   padding-top: 32px;
 }
 
-.discordCell {
+.discordCell,
+.instagramCell {
   left: 410px;
   right: 0;
   top: 0;
@@ -1231,6 +1232,7 @@
   }
   .whatsappCell,
   .discordCell,
+  .instagramCell,
   .emailCell,
   .messengerCell {
     left: auto !important;
