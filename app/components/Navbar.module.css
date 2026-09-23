@@ -622,19 +622,44 @@
     inset -3px -3px 6px rgba(255, 255, 255, 0.05);
 }
 
-/* Phone Contact Icon */
-.contactIcon {
-  width: 20px;
-  height: 20px;
-  color: #333333;
-  display: block;
+/* Contact Button Inner Content (Phone Icon + Contact Label) */
+.contactInner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   position: relative;
   z-index: 2;
   pointer-events: none;
-  transition: color 0.2s ease, transform 0.38s cubic-bezier(0.16, 1, 0.3, 1);
+  gap: 2px;
+  line-height: 1;
+}
+
+.contactIcon {
+  width: 18px;
+  height: 18px;
+  color: #222222;
+  display: block;
+  flex-shrink: 0;
+  transition: color 0.2s ease;
 }
 
 [data-theme='dark'] .contactIcon {
+  color: #ffffff;
+}
+
+.contactText {
+  font-family: var(--font-sora), sans-serif;
+  font-size: 8px;
+  font-weight: 500;
+  line-height: 1;
+  color: #222222;
+  letter-spacing: -0.01em;
+  transition: color 0.2s ease;
+  user-select: none;
+}
+
+[data-theme='dark'] .contactText {
   color: #ffffff;
 }
 
@@ -729,9 +754,17 @@
     transform: scale(0.97) !important;
   }
 
+  .contactInner {
+    gap: 1.5px !important;
+  }
+
   .contactIcon {
-    width: 18px !important;
-    height: 18px !important;
+    width: 16px !important;
+    height: 16px !important;
+  }
+
+  .contactText {
+    font-size: 7px !important;
   }
 
   .themeToggleWrapper {
@@ -821,9 +854,15 @@
     width: 40px !important;
     height: 40px !important;
   }
+  .contactInner {
+    gap: 1px !important;
+  }
   .contactIcon {
-    width: 16px !important;
-    height: 16px !important;
+    width: 14px !important;
+    height: 14px !important;
+  }
+  .contactText {
+    font-size: 6px !important;
   }
   .hamburgerBtn {
     width: 40px !important;
