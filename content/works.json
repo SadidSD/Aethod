@@ -98,41 +98,8 @@
     "results": [
       "Murakkaz transforms perfume shopping into a more immersive and intentional digital experience. By combining refined visual storytelling with structured product discovery and personalized fragrance guidance, the platform creates a cohesive journey from discovering a scent to understanding it and making a purchase."
     ]
-  },
-  {
-    "id": "coming-soon",
-    "name": "Coming Soon",
-    "image": "/works/coming_soon_hero.webp",
-    "heroImage": "/works/coming_soon_hero.png",
-    "avatar": "/works/coming_soon_avatar.webp",
-    "objectPosition": "center center",
-    "domain": "system.aeethod.com",
-    "year": "2026",
-    "tags": ["AI System", "Autonomous", "Enterprise"],
-    "link": "#",
-    "filters": ["All", "Recently Uploaded", "E-Commerce Related"],
-    "title": "Coming Soon",
-    "subtitle": "Next-Generation Intelligence System",
-    "client": "Aeethod Labs",
-    "date": "Late 2026",
-    "role": "System Architecture + Core AI",
-    "description": "Our upcoming next-generation intelligent system architecture designed for enterprise decision-making and autonomous workflows.",
-    "overview": [
-      "Aeethod is developing a new class of autonomous intelligent systems engineered to coordinate multi-agent operations, adaptive workflows, and enterprise automation.",
-      "Designed from first principles to deliver unprecedented reliability, speed, and real-time execution across complex enterprise domains."
-    ],
-    "featuresIntro": "Built on cutting-edge neural architecture and agentic coordination.",
-    "features": [
-      {
-        "title": "Autonomous Multi-Agent Core",
-        "description": "Orchestrates concurrent specialized AI entities to analyze data, execute decisions, and optimize processes with zero manual intervention.",
-        "image": "/works/coming_soon_hero.png"
-      }
-    ],
-    "results": [
-      "Next-generation intelligence infrastructure delivering real-time autonomous execution for enterprise scale."
-    ]
   }
 ]
+
 
 
