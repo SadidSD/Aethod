@@ -114,6 +114,7 @@ export async function POST(request) {
     if (utm?.utm_source) utmSearch.set("utm_source", utm.utm_source);
     if (utm?.utm_medium) utmSearch.set("utm_medium", utm.utm_medium);
     if (utm?.utm_campaign) utmSearch.set("utm_campaign", utm.utm_campaign);
+    if (utm?.ref) utmSearch.set("ref", utm.ref);
 
     const serverAcquisition = resolveAcquisition({
       serverReferer,

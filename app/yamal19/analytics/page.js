@@ -18,6 +18,7 @@ import GeographyCard from "./components/GeographyCard";
 import TechnologyCard from "./components/TechnologyCard";
 import CampaignTable from "./components/CampaignTable";
 import AiReferralsCard from "./components/AiReferralsCard";
+import PartnerTrackersCard from "./components/PartnerTrackersCard";
 import LoadingSkeleton from "./components/LoadingSkeleton";
 
 export default function StudioAnalyticsPage() {
@@ -238,19 +239,22 @@ export default function StudioAnalyticsPage() {
                     <TrafficSourcesCard sources={data.trafficSources} />
                   </div>
 
-                  {/* 5. Top Pages Table */}
+                  {/* 5. Inbound Partner Link Trackers (RNG Gamez & Murakkaz) */}
+                  <PartnerTrackersCard trackers={data.partnerTrackers} />
+
+                  {/* 6. Top Pages Table */}
                   <TopPagesTable pages={data.topPages} />
 
-                  {/* 6. Two Column: Geography & Technology */}
+                  {/* 7. Two Column: Geography & Technology */}
                   <div className={styles.twoColGrid}>
                     <GeographyCard geography={data.geography} />
                     <TechnologyCard technology={data.technology} />
                   </div>
 
-                  {/* 7. Campaign Performance Table */}
+                  {/* 8. Campaign Performance Table */}
                   <CampaignTable campaigns={data.campaigns} />
 
-                  {/* 8. AI Referral Attribution */}
+                  {/* 9. AI Referral Attribution */}
                   <AiReferralsCard aiReferrals={data.aiReferrals} />
                 </>
               )}
@@ -266,6 +270,7 @@ export default function StudioAnalyticsPage() {
                     data={data.trafficChart}
                     rangeLabel={data.rangeLabel}
                   />
+                  <PartnerTrackersCard trackers={data.partnerTrackers} />
                   <div className={styles.twoColGrid}>
                     <TrafficSourcesCard sources={data.trafficSources} />
                     <DeviceDonut devices={data.devices} />
@@ -318,6 +323,7 @@ export default function StudioAnalyticsPage() {
               {/* Campaigns Tab */}
               {activeTab === "campaigns" && (
                 <>
+                  <PartnerTrackersCard trackers={data.partnerTrackers} />
                   <CampaignTable campaigns={data.campaigns} />
                   <TrafficSourcesCard sources={data.trafficSources} />
                 </>
