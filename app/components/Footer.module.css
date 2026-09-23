@@ -37,9 +37,38 @@
   fill: #b0b0c8;
 }
 
+:global([data-theme="dark"]) .footerSvg svg svg[fill="#404040" i],
+:global([data-theme="dark"]) .footerSvg svg svg[fill="#404040" i] path {
+  fill: #b0b0c8;
+}
+
 :global([data-theme="dark"]) .footerSvg svg path[fill="black" i],
 :global([data-theme="dark"]) .footerSvg svg path[fill="#000000" i] {
   fill: #e8e8f0;
+}
+
+.footerSvg a {
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.footerNavLink {
+  transition: opacity 0.2s ease;
+}
+
+.footerNavLink:hover {
+  opacity: 0.65;
+}
+
+.footerSocialLink {
+  transition: opacity 0.2s ease, transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  transform-origin: center;
+  transform-box: fill-box;
+}
+
+.footerSocialLink:hover {
+  opacity: 0.85;
+  transform: translateY(-2px);
 }
 
 .copyrightText {
