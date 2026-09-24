@@ -542,21 +542,11 @@
   justify-content: center;
 }
 
-.heroHiddenVideo {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  opacity: 0;
-  pointer-events: none;
-  z-index: -1;
-}
-
-.heroAnimationCanvas {
+.heroAnimationVideo {
   width: 100%;
   height: 100%;
   object-fit: contain;
   display: block;
-  mix-blend-mode: multiply;
   background: transparent;
   pointer-events: none;
 }
@@ -568,11 +558,6 @@
   background: radial-gradient(ellipse 70% 60% at 50% 50%, rgba(124, 92, 252, 0.12) 0%, rgba(59, 130, 246, 0.05) 50%, transparent 75%);
   pointer-events: none;
   z-index: 0;
-}
-
-:global([data-theme="dark"]) .heroAnimationCanvas {
-  mix-blend-mode: multiply;
-  opacity: 0.95;
 }
 
 

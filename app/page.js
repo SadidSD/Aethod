@@ -38,33 +38,12 @@ function InlineSVG({ src, className }) {
 }
 
 function HeroEcosystemVisual() {
-  const canvasRef = useRef(null);
   const videoRef = useRef(null);
 
   useEffect(() => {
     const video = videoRef.current;
-    const canvas = canvasRef.current;
-    if (!video || !canvas) return;
-
-    let animId;
-    let isRunning = true;
-    const ctx = canvas.getContext("2d");
-
-    const render = () => {
-      if (!isRunning) return;
-      if (video.readyState >= 2) {
-        ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
-      }
-      animId = requestAnimationFrame(render);
-    };
-
+    if (!video) return;
     video.play().catch(() => {});
-    animId = requestAnimationFrame(render);
-
-    return () => {
-      isRunning = false;
-      cancelAnimationFrame(animId);
-    };
   }, []);
 
   return (
@@ -72,22 +51,17 @@ function HeroEcosystemVisual() {
       <div className={styles.heroVideoWrapper}>
         <video
           ref={videoRef}
-          src="/hero-animation.mp4"
           autoPlay
           loop
           muted
           playsInline
           preload="auto"
-          aria-hidden="true"
-          className={styles.heroHiddenVideo}
-        />
-        <canvas
-          ref={canvasRef}
-          width={1920}
-          height={1080}
-          className={styles.heroAnimationCanvas}
           aria-label="AEETHOD Platform Ecosystem Animation"
-        />
+          className={styles.heroAnimationVideo}
+        >
+          <source src="/hero-animation.webm" type="video/webm" />
+          <source src="/hero-animation.mp4" type="video/mp4" />
+        </video>
       </div>
     </div>
   );
