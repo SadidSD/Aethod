@@ -42,7 +42,7 @@ export const metadata = {
     template: "%s | Aeethod",
   },
   description:
-    "Aeethod is a vertical technology studio engineering custom TCG commerce platforms, multi-channel marketplace inventory synchronization, automated buylist systems, and algorithmic repricing infrastructure for card retailers.",
+    "Aeethod engineers custom TCG commerce platforms, automated buylists, and real-time inventory sync across TCGplayer and eBay with 0% ongoing software fees.",
   keywords: [
     "TCG commerce technology studio",
     "custom TCG website",

@@ -3,7 +3,7 @@ import JsonLd from "../../components/JsonLd";
 export const metadata = {
   title: "TCG Operations Systems — Automated Buylist & Grading",
   description:
-    "Automate card intake, trade-ins, condition verification (NM/LP/MP/HP/DMG), and thermal barcode batching. Built for card shops processing thousands of singles daily.",
+    "Automate card intake, trade-ins, condition grading (NM/LP/MP/DMG), and thermal barcode batching. Built for card shops processing high-volume singles.",
   alternates: {
     canonical: "/services/operations",
   },

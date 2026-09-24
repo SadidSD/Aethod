@@ -3,7 +3,7 @@ import JsonLd from "../components/JsonLd";
 export const metadata = {
   title: "About Aeethod — Vertical TCG Technology Studio",
   description:
-    "Aeethod is not a generic agency or off-the-shelf SaaS. We are a vertical technology studio engineering custom commerce platforms, inventory synchronization, and automation for growing card retailers.",
+    "Aeethod is a vertical technology studio engineering custom commerce platforms, inventory synchronization, and buylist automation for growing card retailers.",
   alternates: {
     canonical: "/studio",
   },

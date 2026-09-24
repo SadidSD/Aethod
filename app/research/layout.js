@@ -3,7 +3,7 @@ import JsonLd from "../components/JsonLd";
 export const metadata = {
   title: "Applied Systems Research & Whitepapers | Aeethod",
   description:
-    "Technical whitepapers and system blueprints on TCG pricing fragmentation, multi-agent retail ecosystems, adaptive business architectures, and predictive latency.",
+    "Technical whitepapers on TCG pricing fragmentation, multi-agent retail architectures, inventory complexity, and modern commerce infrastructure.",
   alternates: {
     canonical: "/research",
   },

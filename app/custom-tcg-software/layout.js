@@ -3,7 +3,7 @@ import JsonLd from "../components/JsonLd";
 export const metadata = {
   title: "Custom TCG Software Engineering — Tailored Retail Systems",
   description:
-    "Bespoke software engineering for enterprise card shops, distributors, and TCG marketplaces. Custom inventory pipelines, POS bridges, and high-velocity applications.",
+    "Bespoke software engineering for card shops, distributors, and TCG platforms. Custom inventory pipelines, POS bridges, and high-velocity applications.",
   alternates: {
     canonical: "/custom-tcg-software",
   },

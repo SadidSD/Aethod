@@ -3,7 +3,7 @@ import JsonLd from "../components/JsonLd";
 export const metadata = {
   title: "TCG Inventory Management System — Multi-Channel Card Software",
   description:
-    "Master inventory architecture for high-volume card stores. Real-time multi-channel sync, condition-level SKU normalization, and sub-2s auto-delisting across TCGplayer and eBay.",
+    "TCG inventory system for card shops. Real-time multi-channel sync, condition-level SKU normalization, and instant delisting across TCGplayer and eBay.",
   alternates: {
     canonical: "/tcg-inventory-system",
   },

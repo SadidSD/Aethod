@@ -3,14 +3,14 @@ import JsonLd from "../components/JsonLd";
 export const metadata = {
   title: "TCG Commerce Services — Custom Storefronts, Integrations & Automation",
   description:
-    "Specialized digital systems for TCG stores outgrowing their marketplaces. Custom e-commerce platforms, real-time inventory synchronization, buylists, and repricing.",
+    "Digital systems for TCG stores outgrowing marketplaces. Custom e-commerce platforms, real-time inventory synchronization, buylists, and repricing.",
   alternates: {
     canonical: "/services",
   },
   openGraph: {
     title: "TCG Commerce Services — Custom Storefronts, Integrations & Automation",
     description:
-      "Specialized digital systems for TCG stores outgrowing their marketplaces. Custom e-commerce platforms, real-time inventory synchronization, buylists, and repricing.",
+      "Digital systems for TCG stores outgrowing marketplaces. Custom e-commerce platforms, real-time inventory synchronization, buylists, and repricing.",
     url: "https://www.aeethod.com/services",
   },
 };

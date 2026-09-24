@@ -3,7 +3,7 @@ import JsonLd from "../components/JsonLd";
 export const metadata = {
   title: "TCG Marketplace vs. Own Website — The Complete Strategic Comparison",
   description:
-    "Should your card shop sell exclusively on TCGplayer and eBay or build an owned direct-to-collector storefront? Compare margins, traffic, and long-term brand equity.",
+    "Should your card shop rely on TCGplayer & eBay or build an owned store? Compare marketplace take rates, customer retention, and brand equity.",
   alternates: {
     canonical: "/tcg-marketplace-vs-own-website",
   },

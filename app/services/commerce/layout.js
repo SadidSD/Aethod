@@ -3,7 +3,7 @@ import JsonLd from "../../components/JsonLd";
 export const metadata = {
   title: "Custom TCG Commerce Platforms & Transparent Pricing ($3,500 – $18,500) | Aeethod",
   description:
-    "Explore transparent TCG website packages & pricing: Shopify Kickstart ($3,500–$4,800), Custom Flagship Storefront ($7,800–$9,800), and Omnichannel Enterprise ($14,500–$18,500). 100% code ownership, 0% sales commission.",
+    "Transparent TCG website pricing: Shopify Kickstart ($3,500), Custom Platform ($7,800), and Omnichannel ($14,500). 100% code ownership with 0% sales cut.",
   keywords: [
     "Aeethod pricing",
     "custom TCG website cost",
@@ -19,7 +19,7 @@ export const metadata = {
   openGraph: {
     title: "Custom TCG Commerce Platforms & Transparent Pricing ($3,500 – $18,500) | Aeethod",
     description:
-      "Explore transparent TCG website packages & pricing: Shopify Kickstart ($3,500–$4,800), Custom Flagship Storefront ($7,800–$9,800), and Omnichannel Enterprise ($14,500–$18,500). 100% code ownership, 0% sales commission.",
+      "Transparent TCG website pricing: Shopify Kickstart ($3,500), Custom Platform ($7,800), and Omnichannel ($14,500). 100% code ownership with 0% sales cut.",
     url: "https://www.aeethod.com/services/commerce",
   },
 };

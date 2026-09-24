@@ -3,7 +3,7 @@ import JsonLd from "../components/JsonLd";
 export const metadata = {
   title: "Has Your TCG Store Outgrown TCGplayer? — The Decision Framework",
   description:
-    "Evaluate whether your card store has outgrown TCGplayer. Analyze commission fee erosion, customer data lock-out, and the financial ROI of launching an owned platform.",
+    "Evaluate if your card store has outgrown TCGplayer. Analyze marketplace fee erosion, customer lock-out, and the ROI of launching an owned platform.",
   alternates: {
     canonical: "/outgrown-tcgplayer",
   },

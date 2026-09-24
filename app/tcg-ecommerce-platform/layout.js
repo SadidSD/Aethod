@@ -3,7 +3,7 @@ import JsonLd from "../components/JsonLd";
 export const metadata = {
   title: "TCG E-Commerce Platform Architecture & Software",
   description:
-    "An enterprise-grade TCG e-commerce platform built for high-volume card retail. Edge-cached search, unified buylist, and real-time marketplace inventory synchronization.",
+    "Enterprise TCG e-commerce platform for high-volume card stores. Sub-35ms search, unified buylist, and real-time marketplace inventory synchronization.",
   alternates: {
     canonical: "/tcg-ecommerce-platform",
   },

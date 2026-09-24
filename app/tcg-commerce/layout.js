@@ -3,7 +3,7 @@ import JsonLd from "../components/JsonLd";
 export const metadata = {
   title: "TCG Commerce Systems — Custom Platforms, Inventory & Automation",
   description:
-    "Aeethod architects dedicated TCG commerce platforms for high-volume card retailers. Sub-35ms catalog search, 100k+ singles variant support, and real-time marketplace synchronization.",
+    "Dedicated TCG commerce platforms for high-volume card shops. Sub-35ms card search, 100k+ singles variant support, and real-time marketplace inventory sync.",
   alternates: {
     canonical: "/tcg-commerce",
   },

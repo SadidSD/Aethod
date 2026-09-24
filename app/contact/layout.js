@@ -3,7 +3,7 @@ import JsonLd from "../components/JsonLd";
 export const metadata = {
   title: "Contact Aeethod — TCG Commerce Systems Consultation",
   description:
-    "Schedule a direct consultation with our systems engineers. We examine your store's inventory friction, marketplace limits, buylist workflows, and platform bottlenecks.",
+    "Consult directly with our systems engineers. We examine your card store's inventory friction, marketplace limits, buylist workflows, and bottlenecks.",
   alternates: {
     canonical: "/contact",
   },

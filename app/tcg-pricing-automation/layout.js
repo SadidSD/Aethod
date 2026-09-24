@@ -26,7 +26,7 @@ const serviceJsonLd = {
     url: "https://www.aeethod.com",
   },
   description:
-    "Automated dynamic repricing engine for card retailers. Adjusts prices in response to tournament meta shifts, market index trends, and competitor listing actions.",
+    "Automated dynamic repricing engine for card shops. Adjusts prices in response to tournament meta spikes, market trends, and competitor listing actions.",
 };
 
 const faqJsonLd = {
