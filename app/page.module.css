@@ -542,16 +542,23 @@
   justify-content: center;
 }
 
-.heroAnimationVideo {
+.heroHiddenVideo {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.heroAnimationCanvas {
   width: 100%;
   height: 100%;
   object-fit: contain;
   display: block;
-  -webkit-mask-image: radial-gradient(ellipse 96% 92% at 50% 50%, black 80%, transparent 100%);
-  mask-image: radial-gradient(ellipse 96% 92% at 50% 50%, black 80%, transparent 100%);
-  border: none;
-  outline: none;
+  mix-blend-mode: multiply;
   background: transparent;
+  pointer-events: none;
 }
 
 :global([data-theme="dark"]) .heroVideoWrapper::before {
@@ -563,10 +570,11 @@
   z-index: 0;
 }
 
-:global([data-theme="dark"]) .heroAnimationVideo {
+:global([data-theme="dark"]) .heroAnimationCanvas {
   mix-blend-mode: multiply;
   opacity: 0.95;
 }
+
 
 
 /* ===== Slide Toggle Button (Neumorphic 3D) ===== */
@@ -1123,7 +1131,7 @@
     aspect-ratio: 16 / 9 !important;
   }
 
-  .heroAnimationVideo {
+  .heroAnimationCanvas {
     width: 100% !important;
     height: 100% !important;
     object-fit: contain !important;
