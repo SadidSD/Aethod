@@ -7,6 +7,7 @@
   min-height: 100vh;
   background: var(--bg-primary);
   position: relative;
+  overflow-x: clip;
 }
 
 /* Subtle noise overlay for surface texture */
@@ -540,7 +541,13 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  transform: translate(32px, -20px);
+  transform: translate(70px, -20px);
+}
+
+@media (max-width: 1200px) and (min-width: 901px) {
+  .heroVideoWrapper {
+    transform: translate(36px, -20px);
+  }
 }
 
 .heroAnimationVideo {
