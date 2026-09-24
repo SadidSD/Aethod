@@ -38,18 +38,22 @@ function InlineSVG({ src, className }) {
 }
 
 function HeroEcosystemVisual() {
+  const canvasRef = useRef(null);
   const videoRef = useRef(null);
   const wrapperRef = useRef(null);
-  const [isVideoReady, setIsVideoReady] = useState(false);
   const [isEnded, setIsEnded] = useState(false);
 
   useEffect(() => {
     const video = videoRef.current;
-    if (!video) return;
+    const canvas = canvasRef.current;
+    if (!video || !canvas) return;
 
+    let animId;
+    let isRunning = true;
     let hasEndedTriggered = false;
+    let finalFrameUploaded = false;
 
-    const handleEnded = () => {
+    const triggerEnd = () => {
       if (hasEndedTriggered) return;
       hasEndedTriggered = true;
       video.pause();
@@ -59,27 +63,168 @@ function HeroEcosystemVisual() {
       }
     };
 
-    const handleReady = () => {
-      setIsVideoReady(true);
-    };
+    video.addEventListener("ended", triggerEnd);
 
-    video.addEventListener("playing", handleReady);
-    video.addEventListener("canplay", handleReady);
-    video.addEventListener("ended", handleEnded);
-
-    if (video.readyState >= 3) {
-      setIsVideoReady(true);
+    let gl = null;
+    try {
+      gl = canvas.getContext("webgl", {
+        alpha: true,
+        premultipliedAlpha: true,
+        antialias: true,
+        preserveDrawingBuffer: true,
+      });
+    } catch {
+      gl = null;
     }
-    if (video.ended) {
-      handleEnded();
-    } else {
+
+    if (gl) {
+      const vsSource = `
+        attribute vec2 a_position;
+        attribute vec2 a_texCoord;
+        varying vec2 v_texCoord;
+        void main() {
+          gl_Position = vec4(a_position, 0.0, 1.0);
+          v_texCoord = a_texCoord;
+        }
+      `;
+
+      const fsSource = `
+        precision mediump float;
+        uniform sampler2D u_image;
+        varying vec2 v_texCoord;
+        void main() {
+          vec2 rgbCoord = vec2(v_texCoord.x, v_texCoord.y * 0.5);
+          vec2 alphaCoord = vec2(v_texCoord.x, 0.5 + v_texCoord.y * 0.5);
+          vec4 rgb = texture2D(u_image, rgbCoord);
+          float a = texture2D(u_image, alphaCoord).r;
+          if (a < 0.05) {
+            discard;
+          }
+          gl_FragColor = vec4(rgb.rgb * a, a);
+        }
+      `;
+
+      const createShader = (glCtx, type, source) => {
+        const shader = glCtx.createShader(type);
+        glCtx.shaderSource(shader, source);
+        glCtx.compileShader(shader);
+        return shader;
+      };
+
+      const program = gl.createProgram();
+      const vs = createShader(gl, gl.VERTEX_SHADER, vsSource);
+      const fs = createShader(gl, gl.FRAGMENT_SHADER, fsSource);
+      gl.attachShader(program, vs);
+      gl.attachShader(program, fs);
+      gl.linkProgram(program);
+      gl.useProgram(program);
+
+      const posBuffer = gl.createBuffer();
+      gl.bindBuffer(gl.ARRAY_BUFFER, posBuffer);
+      gl.bufferData(
+        gl.ARRAY_BUFFER,
+        new Float32Array([
+          -1, -1,
+           1, -1,
+          -1,  1,
+          -1,  1,
+           1, -1,
+           1,  1,
+        ]),
+        gl.STATIC_DRAW
+      );
+
+      const posLoc = gl.getAttribLocation(program, "a_position");
+      gl.enableVertexAttribArray(posLoc);
+      gl.vertexAttribPointer(posLoc, 2, gl.FLOAT, false, 0, 0);
+
+      const texBuffer = gl.createBuffer();
+      gl.bindBuffer(gl.ARRAY_BUFFER, texBuffer);
+      gl.bufferData(
+        gl.ARRAY_BUFFER,
+        new Float32Array([
+          0, 1,
+          1, 1,
+          0, 0,
+          0, 0,
+          1, 1,
+          1, 0,
+        ]),
+        gl.STATIC_DRAW
+      );
+
+      const texLoc = gl.getAttribLocation(program, "a_texCoord");
+      gl.enableVertexAttribArray(texLoc);
+      gl.vertexAttribPointer(texLoc, 2, gl.FLOAT, false, 0, 0);
+
+      const texture = gl.createTexture();
+      gl.bindTexture(gl.TEXTURE_2D, texture);
+      gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE);
+      gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
+      gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR);
+      gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.LINEAR);
+
+      gl.enable(gl.BLEND);
+      gl.blendFunc(gl.ONE, gl.ONE_MINUS_SRC_ALPHA);
+
+      const render = () => {
+        if (!isRunning) return;
+        if (video.readyState >= 2) {
+          gl.viewport(0, 0, canvas.width, canvas.height);
+          gl.clearColor(0, 0, 0, 0);
+          gl.clear(gl.COLOR_BUFFER_BIT);
+
+          gl.bindTexture(gl.TEXTURE_2D, texture);
+          if (!video.ended) {
+            gl.texImage2D(
+              gl.TEXTURE_2D,
+              0,
+              gl.RGBA,
+              gl.RGBA,
+              gl.UNSIGNED_BYTE,
+              video
+            );
+          } else if (!finalFrameUploaded) {
+            gl.texImage2D(
+              gl.TEXTURE_2D,
+              0,
+              gl.RGBA,
+              gl.RGBA,
+              gl.UNSIGNED_BYTE,
+              video
+            );
+            finalFrameUploaded = true;
+            triggerEnd();
+          }
+          gl.drawArrays(gl.TRIANGLES, 0, 6);
+        }
+        animId = requestAnimationFrame(render);
+      };
+
       video.play().catch(() => {});
+      animId = requestAnimationFrame(render);
+    } else {
+      // 2D Canvas fallback
+      const ctx = canvas.getContext("2d");
+      const render2d = () => {
+        if (!isRunning) return;
+        if (video.readyState >= 2) {
+          ctx.clearRect(0, 0, canvas.width, canvas.height);
+          ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+          if (video.ended) {
+            triggerEnd();
+          }
+        }
+        animId = requestAnimationFrame(render2d);
+      };
+      video.play().catch(() => {});
+      animId = requestAnimationFrame(render2d);
     }
 
     return () => {
-      video.removeEventListener("playing", handleReady);
-      video.removeEventListener("canplay", handleReady);
-      video.removeEventListener("ended", handleEnded);
+      isRunning = false;
+      video.removeEventListener("ended", triggerEnd);
+      cancelAnimationFrame(animId);
     };
   }, []);
 
@@ -89,29 +234,15 @@ function HeroEcosystemVisual() {
         ref={wrapperRef}
         className={`${styles.heroVideoWrapper} ${isEnded ? styles.heroVideoFloating : ""}`}
       >
-        {/* Instant visual fallback matching initial frame: zero layout shift, zero blank box */}
-        <picture className={`${styles.heroPoster} ${isVideoReady ? styles.heroPosterHidden : ""}`}>
-          <source media="(max-width: 768px)" srcSet="/hero-poster-mobile.webp" type="image/webp" />
-          <img
-            src="/hero-poster.webp"
-            alt="AEETHOD Platform Ecosystem Preview"
-            width={1920}
-            height={1080}
-            fetchPriority="high"
-            decoding="async"
-            className={styles.heroPosterImg}
-          />
-        </picture>
-
-        {/* Hardware-decoded transparent video: zero canvas/WebGL CPU copy */}
         <video
           ref={videoRef}
+          src="/hero-animation-alpha.mp4"
           autoPlay
           muted
           playsInline
           preload="auto"
-          aria-label="AEETHOD Platform Ecosystem Animation"
-          className={`${styles.heroAnimationVideo} ${isVideoReady ? styles.heroVideoActive : ""}`}
+          aria-hidden="true"
+          style={{ display: "none" }}
           onEnded={() => {
             if (videoRef.current) {
               videoRef.current.pause();
@@ -121,10 +252,14 @@ function HeroEcosystemVisual() {
               wrapperRef.current.classList.add(styles.heroVideoFloating);
             }
           }}
-        >
-          <source media="(max-width: 768px)" src="/hero-animation-mobile.webm" type="video/webm" />
-          <source src="/hero-animation.webm" type="video/webm" />
-        </video>
+        />
+        <canvas
+          ref={canvasRef}
+          width={1920}
+          height={1080}
+          aria-label="AEETHOD Platform Ecosystem Animation"
+          className={styles.heroAnimationVideo}
+        />
       </div>
     </div>
   );
