@@ -542,21 +542,34 @@
   justify-content: center;
   transform: translateY(-20px) scale(1.065);
   transform-origin: center center;
-  animation: heroSubtleFloat 7s cubic-bezier(0.42, 0, 0.58, 1) infinite alternate;
   will-change: transform;
 }
 
-@keyframes heroSubtleFloat {
+.heroVideoFloating {
+  animation: heroFloatingIdle 8s cubic-bezier(0.42, 0, 0.58, 1) infinite;
+}
+
+@keyframes heroFloatingIdle {
   0% {
-    transform: translateY(-20px) scale(1.065);
+    transform: translateY(-20px) rotate(0deg) scale(1.065);
+  }
+  25% {
+    transform: translateY(-23px) rotate(0.25deg) scale(1.065);
+  }
+  50% {
+    transform: translateY(-25px) rotate(0deg) scale(1.065);
+  }
+  75% {
+    transform: translateY(-22px) rotate(-0.25deg) scale(1.065);
   }
   100% {
-    transform: translateY(-27px) scale(1.065);
+    transform: translateY(-20px) rotate(0deg) scale(1.065);
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .heroVideoWrapper {
+  .heroVideoWrapper,
+  .heroVideoFloating {
     animation: none !important;
     transform: translateY(-20px) scale(1.065) !important;
   }

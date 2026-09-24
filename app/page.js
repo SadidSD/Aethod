@@ -40,6 +40,8 @@ function InlineSVG({ src, className }) {
 function HeroEcosystemVisual() {
   const canvasRef = useRef(null);
   const videoRef = useRef(null);
+  const wrapperRef = useRef(null);
+  const [isEnded, setIsEnded] = useState(false);
 
   useEffect(() => {
     const video = videoRef.current;
@@ -48,6 +50,20 @@ function HeroEcosystemVisual() {
 
     let animId;
     let isRunning = true;
+    let hasEndedTriggered = false;
+    let finalFrameUploaded = false;
+
+    const triggerEnd = () => {
+      if (hasEndedTriggered) return;
+      hasEndedTriggered = true;
+      video.pause();
+      setIsEnded(true);
+      if (wrapperRef.current) {
+        wrapperRef.current.classList.add(styles.heroVideoFloating);
+      }
+    };
+
+    video.addEventListener("ended", triggerEnd);
 
     let gl = null;
     try {
@@ -151,11 +167,6 @@ function HeroEcosystemVisual() {
       gl.enable(gl.BLEND);
       gl.blendFunc(gl.ONE, gl.ONE_MINUS_SRC_ALPHA);
 
-      const handleEnded = () => {
-        video.pause();
-      };
-      video.addEventListener("ended", handleEnded);
-
       const render = () => {
         if (!isRunning) return;
         if (video.readyState >= 2) {
@@ -173,6 +184,17 @@ function HeroEcosystemVisual() {
               gl.UNSIGNED_BYTE,
               video
             );
+          } else if (!finalFrameUploaded) {
+            gl.texImage2D(
+              gl.TEXTURE_2D,
+              0,
+              gl.RGBA,
+              gl.RGBA,
+              gl.UNSIGNED_BYTE,
+              video
+            );
+            finalFrameUploaded = true;
+            triggerEnd();
           }
           gl.drawArrays(gl.TRIANGLES, 0, 6);
         }
@@ -189,6 +211,9 @@ function HeroEcosystemVisual() {
         if (video.readyState >= 2) {
           ctx.clearRect(0, 0, canvas.width, canvas.height);
           ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+          if (video.ended) {
+            triggerEnd();
+          }
         }
         animId = requestAnimationFrame(render2d);
       };
@@ -198,14 +223,17 @@ function HeroEcosystemVisual() {
 
     return () => {
       isRunning = false;
-      video.removeEventListener("ended", handleEnded);
+      video.removeEventListener("ended", triggerEnd);
       cancelAnimationFrame(animId);
     };
   }, []);
 
   return (
     <div className={styles.heroVisual}>
-      <div className={styles.heroVideoWrapper}>
+      <div
+        ref={wrapperRef}
+        className={`${styles.heroVideoWrapper} ${isEnded ? styles.heroVideoFloating : ""}`}
+      >
         <video
           ref={videoRef}
           src="/hero-animation-alpha.mp4"
@@ -215,6 +243,15 @@ function HeroEcosystemVisual() {
           preload="auto"
           aria-hidden="true"
           style={{ display: "none" }}
+          onEnded={() => {
+            if (videoRef.current) {
+              videoRef.current.pause();
+            }
+            setIsEnded(true);
+            if (wrapperRef.current) {
+              wrapperRef.current.classList.add(styles.heroVideoFloating);
+            }
+          }}
         />
         <canvas
           ref={canvasRef}
