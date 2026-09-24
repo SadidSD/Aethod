@@ -3,6 +3,7 @@ import { getSupabaseServerClient } from "@/lib/supabase/server";
 import {
   checkRateLimit,
   EventSchema,
+  extractGeoFromHeaders,
 } from "@/lib/analytics/serverAnalytics";
 
 export async function POST(request) {
@@ -41,6 +42,7 @@ export async function POST(request) {
 
     const supabase = getSupabaseServerClient();
     const nowIso = new Date().toISOString();
+    const geo = await extractGeoFromHeaders(request);
 
     // 3. Ensure foreign key targets exist (upsert minimal records if needed)
     await supabase.from("visitors").upsert(
@@ -51,14 +53,31 @@ export async function POST(request) {
       { onConflict: "visitor_id" }
     );
 
+    const sessionUpdate = {
+      session_id: sessionId,
+      visitor_id: visitorId,
+      last_activity_at: nowIso,
+    };
+    if (geo?.countryName && geo.countryName !== "Unknown") {
+      sessionUpdate.country = geo.countryName;
+    }
+
     await supabase.from("sessions").upsert(
-      {
-        session_id: sessionId,
-        visitor_id: visitorId,
-        last_activity_at: nowIso,
-      },
+      sessionUpdate,
       { onConflict: "session_id" }
     );
+
+    // Enrich eventValue with geo if country is available
+    let finalEventValue = eventValue || {};
+    if (typeof finalEventValue === "object" && finalEventValue !== null && !Array.isArray(finalEventValue)) {
+      if (!finalEventValue.country && geo?.countryName && geo.countryName !== "Unknown") {
+        finalEventValue = {
+          ...finalEventValue,
+          country: geo.countryName,
+          country_code: geo.countryCode,
+        };
+      }
+    }
 
     // 4. Insert Analytics Event
     const { data: eventData, error: eventError } = await supabase
@@ -67,7 +86,7 @@ export async function POST(request) {
         session_id: sessionId,
         visitor_id: visitorId,
         event_name: eventName,
-        event_value: eventValue || null,
+        event_value: finalEventValue,
         page_path: pagePath || null,
         created_at: nowIso,
       })
