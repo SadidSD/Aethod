@@ -527,67 +527,19 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  flex: 1.22;
-  max-width: 650px;
+  flex: 1.1;
+  max-width: 620px;
   width: 100%;
   align-self: center;
 }
 
 .heroVideoWrapper {
   position: relative;
-  z-index: 2;
   width: 100%;
   aspect-ratio: 16 / 9;
   display: flex;
   align-items: center;
   justify-content: center;
-  transform: translate(6px, -44px) scale(1.18);
-  transform-origin: center center;
-  animation: heroSubtleFloat 7s cubic-bezier(0.42, 0, 0.58, 1) infinite alternate;
-  will-change: transform;
-}
-
-@keyframes heroSubtleFloat {
-  0% {
-    transform: translate(6px, -44px) scale(1.18);
-  }
-  100% {
-    transform: translate(6px, -50px) scale(1.18);
-  }
-}
-
-.heroGroundingShadow {
-  position: absolute;
-  bottom: 18px;
-  left: 50%;
-  transform: translateX(-50%) scale(1);
-  width: 76%;
-  height: 24px;
-  border-radius: 50%;
-  background: radial-gradient(ellipse 65% 55% at 50% 50%, rgba(20, 26, 45, 0.08) 0%, rgba(30, 41, 59, 0.02) 50%, transparent 80%);
-  filter: blur(12px);
-  pointer-events: none;
-  z-index: 1;
-  animation: heroShadowBreathe 7s cubic-bezier(0.42, 0, 0.58, 1) infinite alternate;
-  will-change: transform, opacity;
-}
-
-@keyframes heroShadowBreathe {
-  0% {
-    transform: translateX(-50%) scale(1);
-    opacity: 0.9;
-    filter: blur(12px);
-  }
-  100% {
-    transform: translateX(-50%) scale(0.92);
-    opacity: 0.55;
-    filter: blur(15px);
-  }
-}
-
-:global([data-theme="dark"]) .heroGroundingShadow {
-  background: radial-gradient(ellipse 65% 55% at 50% 50%, rgba(0, 0, 0, 0.42) 0%, rgba(124, 92, 252, 0.06) 45%, transparent 80%);
-  filter: blur(14px);
 }
 
 .heroAnimationVideo {
@@ -599,37 +551,13 @@
   pointer-events: none;
 }
 
-@media (min-width: 901px) and (max-width: 1180px) {
-  .heroVisual {
-    max-width: 550px;
-    flex: 1.15;
-  }
-  .heroVideoWrapper {
-    transform: translate(4px, -32px) scale(1.12);
-    animation: heroCompactDesktopFloat 7s cubic-bezier(0.42, 0, 0.58, 1) infinite alternate;
-  }
-  .heroGroundingShadow {
-    bottom: 12px;
-    width: 72%;
-  }
-}
-
-@keyframes heroCompactDesktopFloat {
-  0% {
-    transform: translate(4px, -32px) scale(1.12);
-  }
-  100% {
-    transform: translate(4px, -38px) scale(1.12);
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .heroVideoWrapper {
-    animation: none !important;
-  }
-  .heroGroundingShadow {
-    animation: none !important;
-  }
+:global([data-theme="dark"]) .heroVideoWrapper::before {
+  content: '';
+  position: absolute;
+  inset: -8%;
+  background: radial-gradient(ellipse 70% 60% at 50% 50%, rgba(124, 92, 252, 0.12) 0%, rgba(59, 130, 246, 0.05) 50%, transparent 75%);
+  pointer-events: none;
+  z-index: 0;
 }
 
 
@@ -1186,14 +1114,6 @@
     width: 100% !important;
     max-width: 540px !important;
     aspect-ratio: 16 / 9 !important;
-    transform: translate(0, 0) scale(1.05) !important;
-    transform-origin: center center !important;
-    animation: heroTabletFloat 7s cubic-bezier(0.42, 0, 0.58, 1) infinite alternate !important;
-  }
-
-  .heroGroundingShadow {
-    bottom: 6px !important;
-    width: 68% !important;
   }
 
   .heroAnimationVideo {
@@ -1232,15 +1152,6 @@
   .scrollTopBtnInner {
     width: 48px;
     height: 48px;
-  }
-}
-
-@keyframes heroTabletFloat {
-  0% {
-    transform: translate(0, 0) scale(1.05);
-  }
-  100% {
-    transform: translate(0, -6px) scale(1.05);
   }
 }
 
@@ -1433,11 +1344,6 @@
   .heroVideoWrapper {
     max-width: 460px !important;
     width: 100% !important;
-    transform: translate(0, 0) scale(1.02) !important;
-  }
-  .heroGroundingShadow {
-    bottom: 4px !important;
-    width: 65% !important;
   }
   .floatingScrollBtn {
     right: 16px !important;
@@ -1453,10 +1359,6 @@
     max-width: 100% !important;
     margin: 12px auto 0 !important;
     transform: none !important;
-    animation: none !important;
-  }
-  .heroGroundingShadow {
-    display: none !important;
   }
   .heroHeading {
     font-size: 24px !important;
