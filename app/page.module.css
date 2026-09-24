@@ -521,129 +521,55 @@
   transform: translate(1px, -1px);
 }
 
-/* ---------- Orb Area ---------- */
+/* ---------- Hero Visual — AEETHOD Animated Ecosystem Video ---------- */
 .heroVisual {
   position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 340px;
-  height: 340px;
-  flex-shrink: 0;
+  flex: 1.1;
+  max-width: 620px;
+  width: 100%;
+  align-self: center;
 }
 
-.orbContainer {
+.heroVideoWrapper {
   position: relative;
-  width: 280px;
-  height: 280px;
+  width: 100%;
+  aspect-ratio: 16 / 9;
   display: flex;
   align-items: center;
   justify-content: center;
-  left: -90px;
 }
 
-/* Orb Glow Behind */
-.orbGlow {
-  position: absolute;
-  width: 280px;
-  height: 280px;
-  border-radius: 50%;
-  background: radial-gradient(circle,
-      rgba(167, 139, 250, 0.2) 0%,
-      rgba(139, 92, 246, 0.06) 50%,
-      transparent 75%);
-  filter: blur(24px);
-  animation: orbPulse 5s ease-in-out infinite;
-  z-index: 1;
-  pointer-events: none;
-}
-
-@keyframes orbPulse {
-
-  0%,
-  100% {
-    transform: scale(1);
-    opacity: 0.5;
-  }
-
-  50% {
-    transform: scale(1.05);
-    opacity: 0.7;
-  }
-}
-
-/* Premium floating animation */
-@keyframes orbFloat {
-
-  0%,
-  100% {
-    transform: translateY(0px);
-  }
-
-  50% {
-    transform: translateY(-10px);
-  }
-}
-
-/* Viewport to crop outer curves in video */
-.orbVideoMask {
-  width: 280px;
-  height: 280px;
-  border-radius: 50%;
-  overflow: hidden;
-  position: relative;
-  z-index: 2;
-  /* Outer soft rim glow to seamlessly blend sphere */
-  box-shadow:
-    0 0 24px rgba(255, 255, 255, 0.15),
-    inset 0 0 12px rgba(255, 255, 255, 0.25);
-}
-
-.orbVideo {
+.heroAnimationVideo {
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  position: relative;
-  transform: scale(2.2);
-  /* Zooms in perfectly to show only the central orb */
-  filter: saturate(1.08) contrast(1.02);
+  object-fit: contain;
+  display: block;
+  mix-blend-mode: multiply;
+  filter: contrast(1.02) brightness(1.01);
+  -webkit-mask-image: radial-gradient(ellipse 96% 92% at 50% 50%, black 75%, transparent 100%);
+  mask-image: radial-gradient(ellipse 96% 92% at 50% 50%, black 75%, transparent 100%);
+  border: none;
+  outline: none;
+  background: transparent;
 }
 
-/* Subtle, soft, horizontal shadow underneath the orb */
-.orbShadow {
+:global([data-theme="dark"]) .heroVideoWrapper::before {
+  content: '';
   position: absolute;
-  bottom: -60px;
-  width: 180px;
-  height: 12px;
-  border-radius: 50%;
-  background: radial-gradient(ellipse at center,
-      rgba(0, 0, 0, 0.75) 0%,
-      rgba(0, 0, 0, 0.4) 30%,
-      rgba(0, 0, 0, 0.1) 60%,
-      transparent 80%);
-  box-shadow: 0 4px 10px rgba(163, 177, 198, 0.3);
-  filter: blur(5px);
-  z-index: 1;
+  inset: -8%;
+  background: radial-gradient(ellipse 70% 60% at 50% 50%, rgba(124, 92, 252, 0.12) 0%, rgba(59, 130, 246, 0.05) 50%, transparent 75%);
   pointer-events: none;
-  transform: scale(1);
+  z-index: 0;
+}
+
+:global([data-theme="dark"]) .heroAnimationVideo {
+  mix-blend-mode: multiply;
   opacity: 0.95;
 }
 
-@keyframes shadowPulse {
-
-  0%,
-  100% {
-    transform: scale(1);
-    opacity: 0.9;
-    filter: blur(6px);
-  }
-
-  50% {
-    transform: scale(0.8);
-    opacity: 0.4;
-    filter: blur(10px);
-  }
-}
 
 /* ===== Slide Toggle Button (Neumorphic 3D) ===== */
 .slideButton {
@@ -1188,38 +1114,21 @@
 
   .heroVisual {
     width: 100% !important;
-    max-width: 320px !important;
+    max-width: 540px !important;
     height: auto !important;
-    aspect-ratio: 1 / 1;
-    margin-bottom: 16px !important;
+    margin: 24px auto 16px !important;
   }
 
-  .orbContainer {
-    width: 240px !important;
-    height: 240px !important;
-    left: 0 !important;
-    margin: 0 auto !important;
+  .heroVideoWrapper {
+    width: 100% !important;
+    max-width: 540px !important;
+    aspect-ratio: 16 / 9 !important;
   }
 
-  .orbGlow {
-    width: 240px !important;
-    height: 240px !important;
-  }
-
-  .orbVideoMask {
-    width: 240px !important;
-    height: 240px !important;
-  }
-
-  .orbVideo {
+  .heroAnimationVideo {
     width: 100% !important;
     height: 100% !important;
-    transform: scale(2.2) !important;
-  }
-
-  .crystalOrb {
-    width: 100% !important;
-    height: auto !important;
+    object-fit: contain !important;
   }
 
 
@@ -1438,15 +1347,12 @@
     gap: 24px !important;
   }
   .heroVisual {
-    max-width: 280px !important;
+    max-width: 460px !important;
+    width: 100% !important;
   }
-  .orbContainer {
-    width: 200px !important;
-    height: 200px !important;
-  }
-  .orbGlow, .orbVideoMask {
-    width: 200px !important;
-    height: 200px !important;
+  .heroVideoWrapper {
+    max-width: 460px !important;
+    width: 100% !important;
   }
   .floatingScrollBtn {
     right: 16px !important;
@@ -1456,6 +1362,11 @@
 @media (max-width: 480px) {
   .heroSection {
     padding: 16px 12px !important;
+  }
+  .heroVisual,
+  .heroVideoWrapper {
+    max-width: 100% !important;
+    margin: 12px auto 0 !important;
   }
   .heroHeading {
     font-size: 24px !important;
@@ -1746,28 +1657,6 @@
     inset 1px 1px 3px rgba(0, 0, 0, 0.4);
 }
 
-/* ----- Orb — Dark Mode ----- */
-:global([data-theme="dark"]) .orbContainer::before,
-:global([data-theme="dark"]) .orbContainer::after {
-  content: none !important;
-  display: none !important;
-}
-
-:global([data-theme="dark"]) .orbGlow {
-  background: radial-gradient(circle,
-      rgba(155, 125, 255, 0.25) 0%,
-      rgba(139, 92, 246, 0.12) 50%,
-      transparent 75%);
-}
-
-:global([data-theme="dark"]) .orbVideo {
-  box-shadow:
-    0 0 40px rgba(155, 125, 255, 0.18),
-    0 0 80px rgba(139, 92, 246, 0.1),
-    4px 4px 12px rgba(0, 0, 0, 0.3),
-    -3px -3px 8px rgba(50, 50, 80, 0.1);
-}
-
 .crystalOrb {
   width: 100%;
   height: 100%;
@@ -1904,7 +1793,6 @@
 .btnLabel,
 .heroHeading,
 .heroSubtext,
-.orbContainer::before,
 .settingsOrb,
 .settingsOrbInner,
 .serviceIcon,
@@ -2905,10 +2793,4 @@
     height: calc(960px * var(--scale-1440, 1)) !important;
     margin: 0 !important;
   }
-}
-
-@media (min-width: 768px) and (max-width: 1366px) {
-  .orbContainer {
-    left: 50px !important;
-  }
-}
+}

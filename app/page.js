@@ -358,31 +358,19 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Right — Orb */}
+            {/* Right — AEETHOD Animated Ecosystem Video */}
             <div className={styles.heroVisual}>
-              {/* Orb */}
-              <div className={styles.orbContainer}>
-                <div className={styles.orbGlow} />
-                <div className={styles.orbVideoMask}>
-                  {isDark ? (
-                    <>
-                      <div className={styles.crystalGlowBehind} />
-                      <div className={styles.crystalGlowBehind2} />
-                      <InlineSVG src="/crystsl1.svg" className={styles.crystalOrb} />
-                    </>
-                  ) : (
-                    <video
-                      className={styles.orbVideo}
-                      src="/orb1.mp4"
-                      autoPlay
-                      loop
-                      muted
-                      playsInline
-                    />
-                  )}
-                </div>
-                {/* Shadow underneath */}
-                <div className={styles.orbShadow} />
+              <div className={styles.heroVideoWrapper}>
+                <video
+                  className={styles.heroAnimationVideo}
+                  src="/hero-animation.mp4"
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  preload="auto"
+                  aria-label="AEETHOD Platform Ecosystem Animation"
+                />
               </div>
             </div>
           </div>
