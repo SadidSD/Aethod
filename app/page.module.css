@@ -540,22 +540,25 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  transform: translateY(-20px) scale(1.065);
+  transform-origin: center center;
   animation: heroSubtleFloat 7s cubic-bezier(0.42, 0, 0.58, 1) infinite alternate;
   will-change: transform;
 }
 
 @keyframes heroSubtleFloat {
   0% {
-    transform: translateY(0px);
+    transform: translateY(-20px) scale(1.065);
   }
   100% {
-    transform: translateY(-8px);
+    transform: translateY(-27px) scale(1.065);
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
   .heroVideoWrapper {
     animation: none !important;
+    transform: translateY(-20px) scale(1.065) !important;
   }
 }
 
