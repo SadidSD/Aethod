@@ -1,16 +1,25 @@
 import JsonLd from "../../components/JsonLd";
 
 export const metadata = {
-  title: "Custom TCG Commerce Platforms — High-Volume Storefronts",
+  title: "Custom TCG Commerce Platforms & Transparent Pricing ($3,500 – $18,500) | Aeethod",
   description:
-    "High-velocity custom storefronts built specifically for trading card games. Sub-35ms facet filtering, 100k+ singles SKU capacity, zero 100-variant limit, and direct buylist integration.",
+    "Explore transparent TCG website packages & pricing: Shopify Kickstart ($3,500–$4,800), Custom Flagship Storefront ($7,800–$9,800), and Omnichannel Enterprise ($14,500–$18,500). 100% code ownership, 0% sales commission.",
+  keywords: [
+    "Aeethod pricing",
+    "custom TCG website cost",
+    "TCG website pricing",
+    "TCG ecommerce packages",
+    "custom card shop website price",
+    "Shopify TCG kickstart cost",
+    "omnichannel TCG system cost"
+  ],
   alternates: {
     canonical: "/services/commerce",
   },
   openGraph: {
-    title: "Custom TCG Commerce Platforms — High-Volume Storefronts | Aeethod",
+    title: "Custom TCG Commerce Platforms & Transparent Pricing ($3,500 – $18,500) | Aeethod",
     description:
-      "High-velocity custom storefronts engineered for TCG singles, sealed product, condition variants, and sub-35ms facet filtering.",
+      "Explore transparent TCG website packages & pricing: Shopify Kickstart ($3,500–$4,800), Custom Flagship Storefront ($7,800–$9,800), and Omnichannel Enterprise ($14,500–$18,500). 100% code ownership, 0% sales commission.",
     url: "https://www.aeethod.com/services/commerce",
   },
 };
@@ -18,7 +27,7 @@ export const metadata = {
 const serviceJsonLd = {
   "@context": "https://schema.org",
   "@type": "Service",
-  name: "Custom TCG Commerce Platforms",
+  name: "Custom TCG Commerce Platforms & Development Packages",
   serviceType: "Trading Card Game E-Commerce Platform Engineering",
   provider: {
     "@type": "Organization",
@@ -27,11 +36,53 @@ const serviceJsonLd = {
   },
   description:
     "Turnkey custom e-commerce infrastructure built specifically for high-volume trading card stores, eliminating Shopify's 100-variant limit and marketplace commissions.",
-  offers: {
-    "@type": "Offer",
-    priceCurrency: "USD",
-    price: "4800",
-    availability: "https://schema.org/InStock",
+  hasOfferCatalog: {
+    "@type": "OfferCatalog",
+    name: "TCG Commerce Platform Engineering Packages",
+    itemListElement: [
+      {
+        "@type": "Offer",
+        name: "Shopify TCG Kickstart",
+        description: "A professionally configured Shopify storefront tailored for card shops entering online sales without custom engineering overhead.",
+        priceCurrency: "USD",
+        price: "3500",
+        priceSpecification: {
+          "@type": "PriceSpecification",
+          minPrice: "3500",
+          maxPrice: "4800",
+          priceCurrency: "USD",
+        },
+        availability: "https://schema.org/InStock",
+      },
+      {
+        "@type": "Offer",
+        name: "Custom TCG Commerce Platform (Flagship)",
+        description: "The dedicated high-performance storefront engineered from scratch. Solves the 100-variant limit, provides sub-second search across 100k+ singles, and captures 100% of direct sales margins.",
+        priceCurrency: "USD",
+        price: "7800",
+        priceSpecification: {
+          "@type": "PriceSpecification",
+          minPrice: "7800",
+          maxPrice: "9800",
+          priceCurrency: "USD",
+        },
+        availability: "https://schema.org/InStock",
+      },
+      {
+        "@type": "Offer",
+        name: "Advanced Omnichannel TCG System",
+        description: "The complete card retail operating system. Unifies your custom storefront with an automated customer buylist, live multi-channel inventory sync, and market price absorption.",
+        priceCurrency: "USD",
+        price: "14500",
+        priceSpecification: {
+          "@type": "PriceSpecification",
+          minPrice: "14500",
+          maxPrice: "18500",
+          priceCurrency: "USD",
+        },
+        availability: "https://schema.org/InStock",
+      },
+    ],
   },
   areaServed: "Worldwide",
 };
@@ -40,6 +91,14 @@ const faqJsonLd = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
   mainEntity: [
+    {
+      "@type": "Question",
+      name: "What is Aeethod's pricing for custom TCG websites and systems?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Aeethod offers three transparent turnkey deployment packages: 1) Shopify TCG Kickstart: $3,500 – $4,800 (2–3 weeks turnaround); 2) Custom TCG Commerce Platform (Flagship Standard): $7,800 – $9,800 (4–6 weeks turnkey delivery with 100% code ownership, deep variant matrix, and sub-35ms card search); 3) Advanced Omnichannel TCG System: $14,500 – $18,500 (6–8 weeks turnaround, includes customer buylist trade-in engine and real-time TCGplayer/eBay/POS sync). Aeethod charges 0% ongoing sales commissions.",
+      },
+    },
     {
       "@type": "Question",
       name: "Can you migrate our existing Shopify or BinderPOS inventory without losing card stock?",

@@ -90,6 +90,7 @@ export default function Footer() {
               <div className={styles.mobileTopicRow}>
                 <a href="/tcg-commerce" className={styles.mobileTopicLink}>TCG Commerce</a>
                 <a href="/custom-tcg-website" className={styles.mobileTopicLink}>Custom Storefronts</a>
+                <a href="/services/commerce#pricing-section" className={styles.mobileTopicLink}>Packages & Pricing</a>
                 <a href="/tcg-inventory-system" className={styles.mobileTopicLink}>Inventory System</a>
                 <a href="/tcg-marketplace-integration" className={styles.mobileTopicLink}>Marketplace Sync</a>
                 <a href="/tcg-buylist-system" className={styles.mobileTopicLink}>Buylist Portals</a>

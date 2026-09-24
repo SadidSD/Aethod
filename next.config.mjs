@@ -9,6 +9,8 @@ const nextConfig = {
       { source: "/research/multi-agent-ecosystem", destination: "/research/tcg-multi-agent-automation", permanent: true },
       { source: "/research/predictive-latency", destination: "/research/tcg-omnichannel-race-conditions", permanent: true },
       { source: "/research/designing-uncertainty", destination: "/research/tcg-grading-condition-variance", permanent: true },
+      { source: "/works/sadid-ai", destination: "/works/rng-gamez", permanent: true },
+      { source: "/works/coming-soon", destination: "/works", permanent: true },
     ];
   },
   async headers() {
