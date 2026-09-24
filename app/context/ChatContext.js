@@ -27,37 +27,37 @@ export function ChatProvider({ children }) {
     
     // Greeting
     if (q === "hi" || q === "hello" || q === "hey" || q.includes("how are you")) {
-      return "Hello sir! I am Smith, the Aeethod Core Architecture Node. How can I assist you with your systems and operations today?";
+      return "Hello! I am Smith, the Aeethod Core Architecture Node. How can I assist you with your TCG commerce platform, inventory synchronization, or store automation today?";
     }
     
     // How will you solve my problem
     if (q.includes("solve") || q.includes("problem")) {
-      return "At Aeethod, we solve complex operational problems by: 1) Deploying specialized autonomous subagents to handle targeted tasks, 2) Automating manual workflows with custom engineered pipelines, and 3) Integrating intelligent decision-support engines directly into your tech stack. This eliminates administrative overhead and converts raw inputs into coordinated corporate actions.";
+      return "At Aeethod, we solve TCG retailer operational bottlenecks by: 1) Engineering custom headless commerce platforms to escape marketplace commission decay, 2) Deploying sub-second omnichannel inventory synchronization across TCGplayer, eBay, and POS, and 3) Automating algorithmic repricing and live buylist ingestion pipelines.";
     }
 
     // About Aeethod
     if (q.includes("about") || q.includes("aeethod") || q.includes("who are you") || q.includes("what is this")) {
-      return "Aeethod designs intelligent systems for complex environments. We engineer AI-first architectures, operations automation, and decision support engines to bypass administrative overhead and deliver decisive corporate action.";
+      return "Aeethod is a specialized technology studio engineering custom commerce platforms, multi-channel marketplace inventory synchronization, automated buylist systems, and algorithmic repricing infrastructure for Trading Card Game (TCG) retailers outgrowing their marketplaces.";
     }
 
     // Cost / Pricing
     if (q.includes("cost") || q.includes("parameter") || q.includes("final cost") || q.includes("price") || q.includes("pricing") || q.includes("fee")) {
-      return "Our system costs are determined by: 1) Architectural complexity (data pipelines, model integration), 2) Scale and environment volatility, 3) Level of human-in-the-loop oversight required, and 4) Core computational throughput needs.";
+      return "Our TCG platform and engineering investments are structured around: 1) Catalog SKU complexity and multi-variant volume, 2) Multi-channel synchronization endpoints (TCGplayer, eBay, Shopify, POS), and 3) Custom buylist or algorithmic pricing automation needs.";
     }
 
     // Scope change
     if (q.includes("scope") || q.includes("change") || q.includes("project scope")) {
-      return "Aeethod systems are architected dynamically. If your operational parameters or project scope change, our core node adapts. We refactor the pipeline integration with minimal friction to align with your updated corporate objectives.";
+      return "Aeethod systems are architected modularly. As your card catalog expands or new marketplace channels emerge, our infrastructure scales with minimal friction to support your store's growth.";
     }
 
     // Services / Capabilities
     if (q.includes("services") || q.includes("what do you do") || q.includes("capabilities") || q.includes("offer")) {
-      return "Our core services include: 1) Systems Architecture (designing intelligent digital systems), 2) AI-Driven Automation (operational intelligence, decision support, process orchestration), and 3) Applied Research (turning emerging system insights into corporate tools).";
+      return "Our core services for TCG retailers include: 1) Custom TCG Commerce Platforms (high-speed card filtering, decklist pasting, sovereign checkout), 2) Multi-Marketplace Sync (sub-second stock arbitration between TCGplayer and eBay), 3) Automated Buylist Systems (real-time cash/credit valuation), and 4) Algorithmic Repricing & AI Automation.";
     }
 
     // Team / Founders
     if (q.includes("team") || q.includes("founder") || q.includes("who built") || q.includes("people")) {
-      return "Aeethod was founded by a team of systems architects and AI researchers dedicated to converting operational complexity into coordinated digital action. We build custom-engineered systems for organizations operating under uncertainty.";
+      return "Aeethod was founded by systems architects and e-commerce engineers dedicated to building high-performance sovereign technology for trading card game retailers.";
     }
 
     // Contact
