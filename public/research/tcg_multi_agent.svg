@@ -1,0 +1,101 @@
+<svg width="701" height="535" viewBox="0 0 701 535" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <filter id="agent_card_filter" x="0" y="0" width="701" height="535" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+      <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+      <feOffset dx="-2" dy="-2"/>
+      <feGaussianBlur stdDeviation="3"/>
+      <feColorMatrix type="matrix" values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.8 0"/>
+      <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow"/>
+      <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+      <feOffset dx="3" dy="3"/>
+      <feGaussianBlur stdDeviation="4"/>
+      <feColorMatrix type="matrix" values="0 0 0 0 0.64 0 0 0 0 0.69 0 0 0 0 0.78 0 0 0 0.35 0"/>
+      <feBlend mode="normal" in2="effect1_dropShadow" result="effect2_dropShadow"/>
+      <feBlend mode="normal" in="SourceGraphic" in2="effect2_dropShadow" result="shape"/>
+    </filter>
+
+    <linearGradient id="center_glow" x1="280" y1="200" x2="420" y2="340" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#7C5CFC"/>
+      <stop offset="100%" stop-color="#4F46E5"/>
+    </linearGradient>
+
+    <radialGradient id="ring_glow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#7C5CFC" stop-opacity="0.25"/>
+      <stop offset="100%" stop-color="#7C5CFC" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Neomorphic Frame -->
+  <g filter="url(#agent_card_filter)">
+    <rect x="8" y="8" width="685" height="519" rx="20" fill="#ECECEC"/>
+    <rect x="8.5" y="8.5" width="684" height="518" rx="19.5" stroke="#D1D5DB" stroke-width="1"/>
+  </g>
+
+  <!-- Title Badge -->
+  <rect x="42" y="30" width="310" height="28" rx="14" fill="#059669" fill-opacity="0.12"/>
+  <circle cx="56" cy="44" r="4" fill="#059669"/>
+  <text x="68" y="48" font-family="system-ui, -apple-system, sans-serif" font-size="12" font-weight="600" fill="#059669" letter-spacing="0.5">AUTONOMOUS TCG NEURAL AGENTS</text>
+
+  <!-- Radial Background Rings -->
+  <circle cx="350" cy="270" r="160" stroke="#7C5CFC" stroke-opacity="0.15" stroke-dasharray="6 6"/>
+  <circle cx="350" cy="270" r="110" stroke="#7C5CFC" stroke-opacity="0.25"/>
+
+  <!-- Connecting Bus Lines -->
+  <!-- Top Node Connector -->
+  <line x1="350" y1="210" x2="350" y2="120" stroke="#7C5CFC" stroke-width="2" stroke-linecap="round"/>
+  <!-- Right Node Connector -->
+  <line x1="410" y1="270" x2="500" y2="270" stroke="#7C5CFC" stroke-width="2" stroke-linecap="round"/>
+  <!-- Bottom Node Connector -->
+  <line x1="350" y1="330" x2="350" y2="420" stroke="#7C5CFC" stroke-width="2" stroke-linecap="round"/>
+  <!-- Left Node Connector -->
+  <line x1="290" y1="270" x2="200" y2="270" stroke="#7C5CFC" stroke-width="2" stroke-linecap="round"/>
+
+  <!-- Central Orchestrator Core -->
+  <circle cx="350" cy="270" r="58" fill="url(#center_glow)"/>
+  <circle cx="350" cy="270" r="68" stroke="#7C5CFC" stroke-width="1.5" stroke-dasharray="4 4"/>
+  <text x="350" y="264" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" font-weight="800" fill="#FFFFFF" letter-spacing="1">AEETHOD</text>
+  <text x="350" y="278" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" font-weight="600" fill="#E0E7FF">NEURAL CORE</text>
+  <text x="350" y="291" text-anchor="middle" font-family="monospace" font-size="9" fill="#A5B4FC">Event Bus v3</text>
+
+  <!-- Agent 1: TOP (Optical Card Scanner & Grader) -->
+  <g transform="translate(230, 68)">
+    <rect width="240" height="54" rx="12" fill="#FFFFFF" stroke="#7C5CFC" stroke-width="1.5"/>
+    <circle cx="22" cy="27" r="12" fill="#7C5CFC" fill-opacity="0.12"/>
+    <text x="22" y="31" text-anchor="middle" font-family="monospace" font-size="11" font-weight="700" fill="#7C5CFC">A1</text>
+    <text x="44" y="22" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#111827">CV Optical Card Scanner</text>
+    <text x="44" y="38" font-family="system-ui, sans-serif" font-size="10.5" font-weight="500" fill="#059669">650 Cards/Hr • NM 98.4% Precision</text>
+  </g>
+
+  <!-- Agent 2: RIGHT (Real-Time Market Repricer) -->
+  <g transform="translate(470, 243)">
+    <rect width="210" height="54" rx="12" fill="#FFFFFF" stroke="#4F46E5" stroke-width="1.5"/>
+    <circle cx="22" cy="27" r="12" fill="#4F46E5" fill-opacity="0.12"/>
+    <text x="22" y="31" text-anchor="middle" font-family="monospace" font-size="11" font-weight="700" fill="#4F46E5">A2</text>
+    <text x="44" y="22" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#111827">Market Maker Repricer</text>
+    <text x="44" y="38" font-family="system-ui, sans-serif" font-size="10.5" font-weight="500" fill="#6366F1">eBay/TCGplayer • Sub-90s Sync</text>
+  </g>
+
+  <!-- Agent 3: BOTTOM (Omnichannel Lock Arbitrator) -->
+  <g transform="translate(230, 418)">
+    <rect width="240" height="54" rx="12" fill="#FFFFFF" stroke="#059669" stroke-width="1.5"/>
+    <circle cx="22" cy="27" r="12" fill="#059669" fill-opacity="0.12"/>
+    <text x="22" y="31" text-anchor="middle" font-family="monospace" font-size="11" font-weight="700" fill="#059669">A3</text>
+    <text x="44" y="22" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#111827">Omnichannel Lock Arbitrator</text>
+    <text x="44" y="38" font-family="system-ui, sans-serif" font-size="10.5" font-weight="500" fill="#059669">Redis Redlock • 1.4s Delist</text>
+  </g>
+
+  <!-- Agent 4: LEFT (Algorithmic Buylist Ingestion) -->
+  <g transform="translate(20, 243)">
+    <rect width="210" height="54" rx="12" fill="#FFFFFF" stroke="#F59E0B" stroke-width="1.5"/>
+    <circle cx="22" cy="27" r="12" fill="#F59E0B" fill-opacity="0.12"/>
+    <text x="22" y="31" text-anchor="middle" font-family="monospace" font-size="11" font-weight="700" fill="#D97706">A4</text>
+    <text x="44" y="22" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#111827">Automated Buylist Engine</text>
+    <text x="44" y="38" font-family="system-ui, sans-serif" font-size="10.5" font-weight="500" fill="#D97706">54.2% Margin • +25% Credit</text>
+  </g>
+
+  <!-- Bottom Telemetry Metric Strip -->
+  <rect x="42" y="484" width="615" height="28" rx="8" fill="#F3F4F6"/>
+  <circle cx="58" cy="498" r="4" fill="#059669"/>
+  <text x="70" y="502" font-family="system-ui, sans-serif" font-size="11" font-weight="500" fill="#374151">Zero-Touch Collectibles Pipeline: -93.6% Labor Cost per Card Listed ($0.024 vs $0.38)</text>
+</svg>

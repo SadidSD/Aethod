@@ -396,11 +396,13 @@
   border-radius: 20px;
 }
 
-.miniGraphSvg svg {
+.miniGraphSvg svg,
+img.miniGraphSvg {
   width: 100% !important;
   height: auto !important;
   max-width: 100% !important;
   display: block;
+  border-radius: 20px;
 }
 
 /* Grid of regular essays */
@@ -428,6 +430,7 @@
     inset -1px -1px 0px rgba(163, 177, 198, 0.15);
   display: flex;
   flex-direction: column;
+  box-sizing: border-box;
 }
 
 .essayCard:active {
@@ -454,31 +457,36 @@
   .essayCard {
     padding-top: 48px;
     padding-bottom: 48px;
+    box-sizing: border-box;
   }
-  .essayCard:first-child {
+
+  /* Left column cards (all odd cards: 1, 3, 5, etc.) */
+  .essayCard:nth-child(odd) {
     border-right: 1.5px solid rgba(113, 113, 113, 0.25);
     padding-right: 48px;
     padding-left: max(24px, calc((100vw - 1352px) / 2 + 24px));
   }
-  .essayCard:last-child {
+
+  /* Right column cards (all even cards: 2, 4, 6, etc.) */
+  .essayCard:nth-child(even) {
     padding-left: 48px;
     padding-right: max(24px, calc((100vw - 1352px) / 2 + 24px));
+  }
+
+  /* Dividing horizontal borders between all rows (row 2, 3, etc.) */
+  .essayCard:nth-child(n + 3) {
+    border-top: 1.5px solid rgba(113, 113, 113, 0.25);
   }
 }
 
 @media (max-width: 800px) {
   .essayCard {
-    padding-left: 24px;
-    padding-right: 24px;
+    padding: 48px 24px;
+    box-sizing: border-box;
   }
-  .essayCard:first-child {
+  
+  .essayCard:not(:last-child) {
     border-bottom: 1.5px solid rgba(113, 113, 113, 0.25);
-    padding-top: 48px;
-    padding-bottom: 48px;
-  }
-  .essayCard:last-child {
-    padding-top: 48px;
-    padding-bottom: 48px;
   }
 }
 

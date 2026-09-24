@@ -11,37 +11,40 @@
     "tags": ["TCG", "E-commerce", "Custom System"],
     "link": "https://www.rng-gamez.com",
     "filters": ["All", "Recently Uploaded", "E-Commerce Related"],
-    "title": "RNG-Gamez",
-    "subtitle": "The Ultimate TCG Store",
+    "title": "How Aeethod Built a Custom Commerce Platform for RNG-Gamez",
+    "subtitle": "Engineering High-Velocity TCG Commerce & Buylist Infrastructure",
     "client": "RNG-Gamez",
     "date": "August 2026",
-    "role": "UI/UX Design + Development",
-    "description": "RNG-Gamez is a modern trading card game e-commerce experience focused on making card discovery, purchasing, and selling easier for collectors and players.",
+    "role": "TCG Systems Architecture & Full-Stack Development",
+    "description": "How Aeethod engineered a dedicated TCG commerce platform for RNG-Gamez, solving the 100-variant limit, enabling sub-35ms card searches, and launching an automated trade-in buylist.",
     "overview": [
-      "RNG-Gamez is a modern TCG e-commerce experience designed around the way collectors and players actually shop for trading cards. The platform brings card discovery, product browsing, market-focused pricing, and card selling into one cohesive storefront.",
-      "The experience makes it easier for customers to find specific cards, explore different formats and collections, discover products and deals, and move between buying and selling within the same ecosystem.",
-      "The goal was to create a storefront that feels focused and approachable while still supporting the depth and complexity expected from a dedicated trading card marketplace."
+      "RNG-Gamez is a specialized trading card game retailer catering to competitive players and high-end collectors across Pokémon, Magic: The Gathering, and One Piece.",
+      "Starting Point & Problem: Operating primarily on third-party marketplaces, RNG-Gamez was paying upwards of 13% in transaction commissions while facing severe platform constraints. Attempting to list deep single-card inventory on generic platforms like Shopify hit the hard 100-variant limit on cards with multiple conditions, languages, and finishes. Additionally, acquiring cards relied on manual counter appraisals that created staff bottlenecks.",
+      "The Solution: Aeethod designed and engineered a dedicated, custom TCG e-commerce platform. We collapsed 150+ condition permutations into single canonical card pages, indexed catalog search at the edge for sub-35ms response times, and built an automated 'Sell Your Cards' buylist portal that turns customer trade-ins into a 24/7 inventory acquisition engine."
     ],
-    "featuresIntro": "The RNG-Gamez experience combines focused card discovery with flexible browsing, product shopping, and card-selling tools. Each part of the experience is designed to reduce friction while helping players and collectors find exactly what they are looking for.",
+    "featuresIntro": "The RNG-Gamez architecture unifies high-velocity card discovery, edge-calculated condition pricing, automated trade-ins, and multi-channel fulfillment into one owned business asset.",
     "features": [
       {
-        "title": "Card Discovery",
-        "description": "A focused card discovery experience helps customers find the exact cards they are looking for without unnecessary friction. Cards can be explored through relevant attributes such as set, condition, language, and format, while market-aware pricing helps customers make more informed purchasing decisions.",
+        "title": "Sub-35ms Card Discovery & Variant Matrix",
+        "description": "Collectors can explore tens of thousands of singles with instant filtering by expansion set, collector number, condition (NM/LP/MP/HP/DMG), finish (Foil, Non-Foil, Reverse Holo), and grading slabs.\n\nAll variations are indexed onto a single canonical URL, preserving Google SEO equity while providing sub-second price and condition switching without page reloads.",
         "image": "/works/rng-gamez/feature-01-discovery.png"
       },
       {
-        "title": "Sell Your Cards",
-        "description": "RNG-Gamez is designed not only for buying cards, but also for selling them. The selling experience gives customers a dedicated path to explore the buylist and understand their options for receiving value from their cards.\n\nThe experience is designed to make the transition from owning cards to selling them feel clear and straightforward.",
+        "title": "Automated 'Sell Your Cards' Buylist Portal",
+        "description": "RNG-Gamez transforms passive website visitors into active suppliers. Collectors can search live cash and store credit buy rates, assemble trade-in lists from home, and submit collections for counter drop-off or mail-in.\n\nThe system automatically computes valuation totals, applies store credit bonus incentives (+25%), and generates thermal barcode intake receipts for rapid counter verification.",
         "image": "/works/rng-gamez/feature-02-sell.png"
       },
       {
-        "title": "A Connected TCG Experience",
-        "description": "Rather than treating browsing, buying, and selling as completely separate experiences, RNG-Gamez connects them within one consistent storefront.\n\nThis creates a more cohesive journey for customers — from discovering a card or collection, to exploring products, to purchasing or selling within the same ecosystem.",
+        "title": "Connected Omnichannel TCG Experience",
+        "description": "Rather than operating isolated silos, the platform synchronizes online storefront sales, in-store counter pickups, and trade-in balances.\n\nStore credit earned at the counter is immediately spendable online, and orders placed online can be picked up at the shop counter within minutes.",
         "image": "/works/rng-gamez/feature-03-connected.png"
       }
     ],
     "results": [
-      "RNG-Gamez brings card discovery, shopping, and selling together in a focused TCG storefront built for collectors and players. The result is a more cohesive digital experience that makes a large and specialized product catalog easier to explore while giving customers clear paths to both buy and sell."
+      "Sub-35ms catalog search and facet filter response across 50,000+ single cards.",
+      "Elimination of Shopify's 100-variant limitation, supporting 300+ condition, language, and finish variants per canonical card page.",
+      "100% direct customer data ownership, building an active collector email and SMS drop alert list.",
+      "Automated buylist intake accelerating counter trade-in processing by 3x while securing high-margin singles at 45%–60% gross profit."
     ]
   },
   {

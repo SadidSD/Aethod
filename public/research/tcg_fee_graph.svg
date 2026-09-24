@@ -1,0 +1,109 @@
+<svg width="701" height="535" viewBox="0 0 701 535" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Neomorphic card background shadow -->
+    <filter id="neo_card_filter" x="0" y="0" width="701" height="535" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+      <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+      <feOffset dx="-2" dy="-2"/>
+      <feGaussianBlur stdDeviation="3"/>
+      <feColorMatrix type="matrix" values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.8 0"/>
+      <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow"/>
+      <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+      <feOffset dx="3" dy="3"/>
+      <feGaussianBlur stdDeviation="4"/>
+      <feColorMatrix type="matrix" values="0 0 0 0 0.64 0 0 0 0 0.69 0 0 0 0 0.78 0 0 0 0.35 0"/>
+      <feBlend mode="normal" in2="effect1_dropShadow" result="effect2_dropShadow"/>
+      <feBlend mode="normal" in="SourceGraphic" in2="effect2_dropShadow" result="shape"/>
+    </filter>
+
+    <linearGradient id="curve_direct" x1="100" y1="380" x2="580" y2="120" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#7C5CFC"/>
+      <stop offset="100%" stop-color="#4F46E5"/>
+    </linearGradient>
+
+    <linearGradient id="area_profit" x1="320" y1="180" x2="580" y2="340" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#7C5CFC" stop-opacity="0.22"/>
+      <stop offset="100%" stop-color="#6366F1" stop-opacity="0.05"/>
+    </linearGradient>
+
+    <linearGradient id="curve_market" x1="100" y1="380" x2="580" y2="300" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#F59E0B"/>
+      <stop offset="100%" stop-color="#EF4444"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Container Box -->
+  <g filter="url(#neo_card_filter)">
+    <rect x="8" y="8" width="685" height="519" rx="20" fill="#ECECEC"/>
+    <rect x="8.5" y="8.5" width="684" height="518" rx="19.5" stroke="#D1D5DB" stroke-width="1"/>
+  </g>
+
+  <!-- Title Badge Inside Graphic -->
+  <rect x="42" y="32" width="275" height="28" rx="14" fill="#7C5CFC" fill-opacity="0.12"/>
+  <circle cx="56" cy="46" r="4" fill="#7C5CFC"/>
+  <text x="68" y="50" font-family="system-ui, -apple-system, sans-serif" font-size="12" font-weight="600" fill="#7C5CFC" letter-spacing="0.5">EMPIRICAL TCG MARGIN TELEMETRY</text>
+
+  <!-- Metric Callout Header -->
+  <text x="42" y="86" font-family="system-ui, -apple-system, sans-serif" font-size="20" font-weight="700" fill="#111827">+$93,700 / Year Recovered Profit</text>
+  <text x="42" y="106" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="400" fill="#6B7280">Per $1M GMV: 2.9% Direct Checkout vs. 12.75% Marketplace Commission</text>
+
+  <!-- Grid Axes -->
+  <!-- Y-Axis -->
+  <line x1="100" y1="130" x2="100" y2="430" stroke="#9CA3AF" stroke-opacity="0.4" stroke-width="1.5" stroke-dasharray="4 4"/>
+  <!-- X-Axis -->
+  <line x1="100" y1="430" x2="620" y2="430" stroke="#9CA3AF" stroke-opacity="0.4" stroke-width="1.5"/>
+
+  <!-- Y-Axis Labels (Net Margin) -->
+  <text x="90" y="145" text-anchor="end" font-family="monospace" font-size="11" fill="#6B7280">35% Net</text>
+  <text x="90" y="215" text-anchor="end" font-family="monospace" font-size="11" fill="#6B7280">25% Net</text>
+  <text x="90" y="285" text-anchor="end" font-family="monospace" font-size="11" fill="#6B7280">15% Net</text>
+  <text x="90" y="355" text-anchor="end" font-family="monospace" font-size="11" fill="#6B7280">8% Net</text>
+  <text x="90" y="425" text-anchor="end" font-family="monospace" font-size="11" fill="#6B7280">0%</text>
+
+  <!-- X-Axis Labels (Monthly GMV) -->
+  <text x="100" y="452" text-anchor="middle" font-family="monospace" font-size="11" fill="#6B7280">$0</text>
+  <text x="210" y="452" text-anchor="middle" font-family="monospace" font-size="11" fill="#6B7280">$25k/mo</text>
+  <text x="320" y="452" text-anchor="middle" font-family="monospace" font-size="11" fill="#7C5CFC" font-weight="700">$28.2k (ROI)</text>
+  <text x="440" y="452" text-anchor="middle" font-family="monospace" font-size="11" fill="#6B7280">$100k/mo</text>
+  <text x="580" y="452" text-anchor="middle" font-family="monospace" font-size="11" fill="#6B7280">$250k+/mo</text>
+
+  <!-- Horizontal Guide Lines -->
+  <line x1="100" y1="140" x2="620" y2="140" stroke="#E5E7EB" stroke-width="1"/>
+  <line x1="100" y1="210" x2="620" y2="210" stroke="#E5E7EB" stroke-width="1"/>
+  <line x1="100" y1="280" x2="620" y2="280" stroke="#E5E7EB" stroke-width="1"/>
+  <line x1="100" y1="350" x2="620" y2="350" stroke="#E5E7EB" stroke-width="1"/>
+
+  <!-- Shaded Profit Recovery Area -->
+  <path d="M 320 280 C 400 230, 480 180, 580 145 L 580 320 C 480 310, 400 295, 320 280 Z" fill="url(#area_profit)"/>
+
+  <!-- Marketplace Curve (Decaying Net Margin due to 12.75% take rate) -->
+  <path d="M 100 400 C 180 360, 260 310, 320 280 C 420 295, 500 310, 580 320" stroke="url(#curve_market)" stroke-width="3.5" stroke-linecap="round"/>
+
+  <!-- Owned Custom Headless Curve (Recovered Margins) -->
+  <path d="M 100 420 C 180 390, 260 330, 320 280 C 400 230, 480 180, 580 145" stroke="url(#curve_direct)" stroke-width="4" stroke-linecap="round"/>
+
+  <!-- Inflection Point Indicator ($28,200) -->
+  <line x1="320" y1="280" x2="320" y2="430" stroke="#7C5CFC" stroke-width="1.5" stroke-dasharray="3 3"/>
+  <circle cx="320" cy="280" r="7" fill="#7C5CFC" stroke="#FFFFFF" stroke-width="2.5"/>
+
+  <!-- Inflection Callout Bubble -->
+  <rect x="235" y="222" width="170" height="42" rx="8" fill="#1F2937"/>
+  <text x="320" y="238" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" font-weight="700" fill="#F9FAFB">INFLECTION POINT</text>
+  <text x="320" y="253" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" font-weight="400" fill="#9CA3AF">$28.2k/mo = 100% Payback</text>
+  <!-- Pointer triangle -->
+  <polygon points="315,264 325,264 320,272" fill="#1F2937"/>
+
+  <!-- Curve Labels -->
+  <!-- Direct Store Label -->
+  <rect x="445" y="125" width="165" height="26" rx="6" fill="#7C5CFC"/>
+  <text x="527" y="142" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" font-weight="600" fill="#FFFFFF">Owned Custom Store (+28.4%)</text>
+
+  <!-- Marketplace Label -->
+  <rect x="445" y="332" width="165" height="26" rx="6" fill="#EF4444" fill-opacity="0.15"/>
+  <text x="527" y="349" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" font-weight="600" fill="#DC2626">Marketplace Enclosure (-12.8%)</text>
+
+  <!-- Bottom Legend / Status -->
+  <rect x="42" y="475" width="615" height="34" rx="8" fill="#F3F4F6"/>
+  <circle cx="58" cy="492" r="4" fill="#10B981"/>
+  <text x="70" y="496" font-family="system-ui, sans-serif" font-size="11" font-weight="500" fill="#374151">Dataset: 142 TCG Stores | $118.4M Analyzed GMV | Zero Rented Commissions on Direct Channels</text>
+</svg>

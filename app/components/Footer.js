@@ -84,6 +84,20 @@ export default function Footer() {
               <a href="/blog" className={styles.mobileLink}>Journals</a>
               <a href="/contact" className={styles.mobileLink}>Contact</a>
             </div>
+
+            <div className={styles.mobileTopicLinks} suppressHydrationWarning={true}>
+              <span className={styles.mobileTopicHeading}>TCG Commerce Solutions</span>
+              <div className={styles.mobileTopicRow}>
+                <a href="/tcg-commerce" className={styles.mobileTopicLink}>TCG Commerce</a>
+                <a href="/custom-tcg-website" className={styles.mobileTopicLink}>Custom Storefronts</a>
+                <a href="/tcg-inventory-system" className={styles.mobileTopicLink}>Inventory System</a>
+                <a href="/tcg-marketplace-integration" className={styles.mobileTopicLink}>Marketplace Sync</a>
+                <a href="/tcg-buylist-system" className={styles.mobileTopicLink}>Buylist Portals</a>
+                <a href="/tcg-pricing-automation" className={styles.mobileTopicLink}>Pricing Automation</a>
+                <a href="/outgrown-tcgplayer" className={styles.mobileTopicLink}>Outgrown TCGplayer?</a>
+                <a href="/tcgplayer-vs-shopify" className={styles.mobileTopicLink}>TCGplayer vs Shopify</a>
+              </div>
+            </div>
             
             <div className={styles.mobileFooterSocials} suppressHydrationWarning={true}>
               <a href="https://www.facebook.com/profile.php?id=61594266838782" target="_blank" rel="noopener noreferrer" className={styles.mobileSocialTile} aria-label="Facebook">

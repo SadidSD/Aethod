@@ -6,29 +6,16 @@ import styles from "./page.module.css";
 import { useTheme } from "../context/ThemeContext";
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
+import initialEssays from "../../content/research.json";
 
-function InlineSVG({ src, className, style }) {
-  const [svgContent, setSvgContent] = useState("");
-
-  useEffect(() => {
-    fetch(src)
-      .then((res) => {
-        if (!res.ok) throw new Error(`Failed to load SVG: ${src}`);
-        return res.text();
-      })
-      .then((text) => {
-        const cleanText = text.replace(/<\?xml[^>]*\?>/i, "");
-        setSvgContent(cleanText);
-      })
-      .catch((err) => console.error(err));
-  }, [src]);
-
+function InlineSVG({ src, className, style, alt = "TCG Systems Diagram" }) {
   return (
-    <div
+    <img
+      src={src}
+      alt={alt}
       className={className}
       style={style}
-      dangerouslySetInnerHTML={{ __html: svgContent }}
-      suppressHydrationWarning={true}
+      loading="eager"
     />
   );
 }
@@ -37,7 +24,7 @@ export default function ResearchPage() {
   const { isDark } = useTheme();
   const [activeFilter, setActiveFilter] = useState("All");
   const [searchQuery, setSearchQuery] = useState("");
-  const [essays, setEssays] = useState([]);
+  const [essays, setEssays] = useState(initialEssays);
   const [expandedEssays, setExpandedEssays] = useState({});
 
   const playClickSound = useCallback(() => {
@@ -61,11 +48,15 @@ export default function ResearchPage() {
     alert(`Opening research paper: "${essayTitle}"`);
   };
 
-  // Fetch research essays on mount
+  // Re-sync research essays if needed
   useEffect(() => {
     fetch("/api/content?type=research")
       .then((res) => res.json())
-      .then((data) => setEssays(data))
+      .then((data) => {
+        if (Array.isArray(data) && data.length > 0) {
+          setEssays(data);
+        }
+      })
       .catch((err) => console.error("Failed to load research essays:", err));
   }, []);
 
@@ -88,13 +79,19 @@ export default function ResearchPage() {
     return matchesFilter && matchesSearch;
   });
 
-  // Separate special stacked essays (Multi-Agent and Predictive Latency)
+  // Separate special stacked essays (TCG Multi-Agent and TCG Omnichannel Lock Arbitration)
+  const isSpecialEssay = (id) =>
+    id === "tcg-multi-agent-automation" ||
+    id === "tcg-omnichannel-race-conditions" ||
+    id === "multi-agent-ecosystem" ||
+    id === "predictive-latency";
+
   const standardFilteredEssays = filteredEssays.filter(
-    (essay) => essay.id !== "multi-agent-ecosystem" && essay.id !== "predictive-latency"
+    (essay) => !isSpecialEssay(essay.id)
   );
   
   const specialEssays = filteredEssays.filter(
-    (essay) => essay.id === "multi-agent-ecosystem" || essay.id === "predictive-latency"
+    (essay) => isSpecialEssay(essay.id)
   );
 
   // Split standard essays into Hero (first) and Grid (rest)
@@ -102,14 +99,28 @@ export default function ResearchPage() {
   const gridEssays = standardFilteredEssays.slice(1);
 
   // Helper to highlight specific phrases in subtitles
-  const renderSubtitle = (subtitle) => {
+  const renderSubtitle = (subtitle, highlightedSubtitle) => {
+    if (!subtitle) return "";
     const highlights = [
-      "less understanding",
-      "adaptive business systems",
-      "fragmentation creates operational chaos",
-      "E-Commerce Ecosystem Architectures",
-      "Scalable Systems"
-    ];
+      highlightedSubtitle,
+      "owned headless stores",
+      "catalog explosion",
+      "buyout bots",
+      "secondary sourcing margins",
+      "Mass decklist paste parsing",
+      "digital binder sync",
+      "condition degradation curves",
+      "multi-agent architecture",
+      "Eliminating double-selling",
+      "owned infrastructure",
+      "variant explosion",
+      "undercut defense",
+      "gross margin velocity",
+      "cart conversion telemetry",
+      "retention economics",
+      "adaptive systems architectures"
+    ].filter(Boolean);
+
     const matchedHighlight = highlights.find((h) => subtitle.includes(h));
     if (matchedHighlight) {
       const parts = subtitle.split(matchedHighlight);
@@ -117,7 +128,7 @@ export default function ResearchPage() {
         <>
           {parts[0]}
           <span className={styles.highlightText}>{matchedHighlight}</span>
-          {parts[1]}
+          {parts.slice(1).join(matchedHighlight)}
         </>
       );
     }
@@ -188,7 +199,7 @@ export default function ResearchPage() {
                   <span className={styles.dateText}>{heroEssay.date}</span>
                 </div>
                 <h2 className={styles.essayTitle}>{heroEssay.title}</h2>
-                <h3 className={styles.essaySubtitle}>{renderSubtitle(heroEssay.subtitle)}</h3>
+                <h3 className={styles.essaySubtitle}>{renderSubtitle(heroEssay.subtitle, heroEssay.highlightedSubtitle)}</h3>
                 <div className={styles.essayDescContainer}>
                   <p className={`${styles.essayDesc} ${expandedEssays[heroEssay.id] ? styles.expanded : ""}`}>
                     {heroEssay.description}
@@ -214,13 +225,7 @@ export default function ResearchPage() {
 
               {/* Illustration box on the right */}
               <div className={styles.heroCardRight}>
-                {heroEssay.illustrationType === "graph" ? (
-                  <InlineSVG src="/research/mini_graph.svg" className={styles.miniGraphSvg} />
-                ) : (
-                  <div className={styles.placeholderVisual}>
-                    <InlineSVG src="/works/Line 39.svg" className={styles.visualLines} />
-                  </div>
-                )}
+                <InlineSVG src="/research/tcg_fee_graph.svg" className={styles.miniGraphSvg} />
               </div>
             </div>
           </div>
@@ -241,7 +246,7 @@ export default function ResearchPage() {
                     </div>
 
                     <h2 className={styles.essayGridTitle}>{essay.title}</h2>
-                    <h3 className={styles.essayGridSubtitle}>{renderSubtitle(essay.subtitle)}</h3>
+                    <h3 className={styles.essayGridSubtitle}>{renderSubtitle(essay.subtitle, essay.highlightedSubtitle)}</h3>
                     <div className={styles.essayDescContainer}>
                       <p className={`${styles.essayGridDesc} ${expandedEssays[essay.id] ? styles.expanded : ""}`}>
                         {essay.description}
@@ -278,7 +283,9 @@ export default function ResearchPage() {
         {specialEssays.length > 0 && (
           <div className={styles.specialCardsSection}>
             {specialEssays.map((essay) => {
-              const isMultiAgent = essay.id === "multi-agent-ecosystem";
+              const isMultiAgent =
+                essay.id === "tcg-multi-agent-automation" ||
+                essay.id === "multi-agent-ecosystem";
               
               return (
                 <div key={essay.id} className={styles.specialEssayCard}>
@@ -291,7 +298,7 @@ export default function ResearchPage() {
                         <span className={styles.dateText}>{essay.date}</span>
                       </div>
                       <h2 className={styles.essayTitle}>{essay.title}</h2>
-                      <h3 className={styles.essaySubtitle}>{renderSubtitle(essay.subtitle)}</h3>
+                      <h3 className={styles.essaySubtitle}>{renderSubtitle(essay.subtitle, essay.highlightedSubtitle)}</h3>
                       <div className={styles.essayDescContainer}>
                         <p className={`${styles.essayDesc} ${expandedEssays[essay.id] ? styles.expanded : ""}`}>
                           {essay.description}
@@ -317,23 +324,9 @@ export default function ResearchPage() {
 
                     <div className={styles.specialCardRight}>
                       {isMultiAgent ? (
-                        <div className={styles.massContainer}>
-                          <div className={styles.massGraphicWrapper}>
-                            <InlineSVG src="/research/mass.svg" className={styles.massSvg} />
-                            <div className={`${styles.agentLabel} ${styles.agentLabelLeft}`}>Agents 1</div>
-                            <div className={`${styles.agentLabel} ${styles.agentLabelTop}`}>Agents 2</div>
-                            <div className={`${styles.agentLabel} ${styles.agentLabelRight}`}>Agents 3</div>
-                            <div className={`${styles.agentLabel} ${styles.agentLabelBottom}`}>Agents 4</div>
-                          </div>
-                        </div>
+                        <InlineSVG src="/research/tcg_multi_agent.svg" className={styles.miniGraphSvg} />
                       ) : (
-                        <div className={styles.predictiveLatencyCardRight}>
-                          <InlineSVG src="/research/rec.svg" className={styles.recSvg} />
-                          <div className={styles.predictiveLatencyContent}>
-                            <InlineSVG src="/research/tri.svg" className={styles.triSvg} />
-                            <div className={styles.predictiveLatencyText}>Predictive Latency</div>
-                          </div>
-                        </div>
+                        <InlineSVG src="/research/tcg_omnichannel_sync.svg" className={styles.miniGraphSvg} />
                       )}
                     </div>
                   </div>

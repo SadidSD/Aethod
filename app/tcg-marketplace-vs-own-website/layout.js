@@ -1,0 +1,38 @@
+import JsonLd from "../components/JsonLd";
+
+export const metadata = {
+  title: "TCG Marketplace vs. Own Website — The Complete Strategic Comparison",
+  description:
+    "Should your card shop sell exclusively on TCGplayer and eBay or build an owned direct-to-collector storefront? Compare margins, traffic, and long-term brand equity.",
+  alternates: {
+    canonical: "/tcg-marketplace-vs-own-website",
+  },
+  openGraph: {
+    title: "TCG Marketplace vs. Own Website | Aeethod",
+    description:
+      "A strategic comparison of margins, customer lifetime value, and operational control between marketplace dependency and owned commerce.",
+    url: "https://aeethod.com/tcg-marketplace-vs-own-website",
+  },
+};
+
+const articleJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  headline: "TCG Marketplace vs. Own Website: The Operational Comparison",
+  description:
+    "Detailed guide on the trade-offs between third-party trading card marketplaces and owned e-commerce infrastructure.",
+  author: {
+    "@type": "Organization",
+    name: "Aeethod",
+    url: "https://aeethod.com",
+  },
+};
+
+export default function TcgMarketplaceVsOwnWebsiteLayout({ children }) {
+  return (
+    <>
+      <JsonLd data={articleJsonLd} />
+      {children}
+    </>
+  );
+}

@@ -563,6 +563,22 @@ export default function CommercePage() {
                   <span>Stage 04 · E-Commerce Automation Engines</span>
                   <span>→</span>
                 </Link>
+                <Link
+                  href="/outgrown-tcgplayer"
+                  className={styles.otherServicePill}
+                  onClick={playClickSound}
+                >
+                  <span>Guide · Has Your Store Outgrown TCGplayer?</span>
+                  <span>→</span>
+                </Link>
+                <Link
+                  href="/tcgplayer-vs-shopify"
+                  className={styles.otherServicePill}
+                  onClick={playClickSound}
+                >
+                  <span>Comparison · TCGplayer vs Shopify vs Custom</span>
+                  <span>→</span>
+                </Link>
               </div>
             </div>
           </div>

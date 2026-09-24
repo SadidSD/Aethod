@@ -1,0 +1,96 @@
+<svg width="701" height="535" viewBox="0 0 701 535" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <filter id="sync_card_filter" x="0" y="0" width="701" height="535" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+      <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+      <feOffset dx="-2" dy="-2"/>
+      <feGaussianBlur stdDeviation="3"/>
+      <feColorMatrix type="matrix" values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.8 0"/>
+      <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow"/>
+      <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+      <feOffset dx="3" dy="3"/>
+      <feGaussianBlur stdDeviation="4"/>
+      <feColorMatrix type="matrix" values="0 0 0 0 0.64 0 0 0 0 0.69 0 0 0 0 0.78 0 0 0 0.35 0"/>
+      <feBlend mode="normal" in2="effect1_dropShadow" result="effect2_dropShadow"/>
+      <feBlend mode="normal" in="SourceGraphic" in2="effect2_dropShadow" result="shape"/>
+    </filter>
+
+    <linearGradient id="hub_glow" x1="280" y1="200" x2="420" y2="340" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#059669"/>
+      <stop offset="100%" stop-color="#0D9488"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Container Box -->
+  <g filter="url(#sync_card_filter)">
+    <rect x="8" y="8" width="685" height="519" rx="20" fill="#ECECEC"/>
+    <rect x="8.5" y="8.5" width="684" height="518" rx="19.5" stroke="#D1D5DB" stroke-width="1"/>
+  </g>
+
+  <!-- Title Badge -->
+  <rect x="42" y="30" width="350" height="28" rx="14" fill="#059669" fill-opacity="0.12"/>
+  <circle cx="56" cy="44" r="4" fill="#059669"/>
+  <text x="68" y="48" font-family="system-ui, -apple-system, sans-serif" font-size="12" font-weight="600" fill="#059669" letter-spacing="0.5">SUB-SECOND OMNICHANNEL LOCK ARBITRATION</text>
+
+  <!-- Connective Hexagonal Mesh Lines -->
+  <line x1="350" y1="270" x2="160" y2="150" stroke="#059669" stroke-width="2" stroke-dasharray="4 4"/>
+  <line x1="350" y1="270" x2="540" y2="150" stroke="#059669" stroke-width="2" stroke-dasharray="4 4"/>
+  <line x1="350" y1="270" x2="540" y2="390" stroke="#059669" stroke-width="2" stroke-dasharray="4 4"/>
+  <line x1="350" y1="270" x2="160" y2="390" stroke="#059669" stroke-width="2" stroke-dasharray="4 4"/>
+
+  <!-- Outer Pulse Ring -->
+  <circle cx="350" cy="270" r="140" stroke="#059669" stroke-opacity="0.2" stroke-width="1.5"/>
+
+  <!-- Central Atomic Redis Redlock Hub -->
+  <circle cx="350" cy="270" r="62" fill="url(#hub_glow)"/>
+  <circle cx="350" cy="270" r="72" stroke="#059669" stroke-width="2" stroke-dasharray="4 4"/>
+  
+  <text x="350" y="258" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" font-weight="800" fill="#FFFFFF" letter-spacing="0.5">ATOMIC LOCK</text>
+  <text x="350" y="272" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" font-weight="600" fill="#A7F3D0">REDIS REDLOCK</text>
+  <text x="350" y="287" text-anchor="middle" font-family="monospace" font-size="9" fill="#D1FAE5">Lock: Qty=1 Card</text>
+
+  <!-- Channel 1: TOP-LEFT (Owned Headless Storefront) -->
+  <g transform="translate(45, 115)">
+    <rect width="230" height="68" rx="12" fill="#FFFFFF" stroke="#7C5CFC" stroke-width="1.5"/>
+    <circle cx="24" cy="34" r="10" fill="#7C5CFC" fill-opacity="0.15"/>
+    <text x="24" y="38" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" font-weight="700" fill="#7C5CFC">C1</text>
+    <text x="44" y="28" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#111827">Owned Headless Store</text>
+    <text x="44" y="44" font-family="monospace" font-size="10" font-weight="600" fill="#7C5CFC">Latency: 0ms (Local Lock)</text>
+    <text x="44" y="58" font-family="system-ui, sans-serif" font-size="9.5" fill="#6B7280">Zero Commission Direct Checkout</text>
+  </g>
+
+  <!-- Channel 2: TOP-RIGHT (TCGplayer Pro & Direct) -->
+  <g transform="translate(425, 115)">
+    <rect width="230" height="68" rx="12" fill="#FFFFFF" stroke="#059669" stroke-width="1.5"/>
+    <circle cx="24" cy="34" r="10" fill="#059669" fill-opacity="0.15"/>
+    <text x="24" y="38" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" font-weight="700" fill="#059669">C2</text>
+    <text x="44" y="28" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#111827">TCGplayer Pro API</text>
+    <text x="44" y="44" font-family="monospace" font-size="10" font-weight="600" fill="#059669">Latency: &lt; 1.4s (Delist API)</text>
+    <text x="44" y="58" font-family="system-ui, sans-serif" font-size="9.5" fill="#6B7280">Auto-Throttled on Cart Reservation</text>
+  </g>
+
+  <!-- Channel 3: BOTTOM-RIGHT (eBay REST Webhook) -->
+  <g transform="translate(425, 355)">
+    <rect width="230" height="68" rx="12" fill="#FFFFFF" stroke="#0284C7" stroke-width="1.5"/>
+    <circle cx="24" cy="34" r="10" fill="#0284C7" fill-opacity="0.15"/>
+    <text x="24" y="38" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" font-weight="700" fill="#0284C7">C3</text>
+    <text x="44" y="28" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#111827">eBay REST Webhooks</text>
+    <text x="44" y="44" font-family="monospace" font-size="10" font-weight="600" fill="#0284C7">Latency: &lt; 1.8s (REST Sync)</text>
+    <text x="44" y="58" font-family="system-ui, sans-serif" font-size="9.5" fill="#6B7280">Idempotent Delisting Queue</text>
+  </g>
+
+  <!-- Channel 4: BOTTOM-LEFT (In-Store Physical POS) -->
+  <g transform="translate(45, 355)">
+    <rect width="230" height="68" rx="12" fill="#FFFFFF" stroke="#D97706" stroke-width="1.5"/>
+    <circle cx="24" cy="34" r="10" fill="#D97706" fill-opacity="0.15"/>
+    <text x="24" y="38" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" font-weight="700" fill="#D97706">C4</text>
+    <text x="44" y="28" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#111827">Physical In-Store POS</text>
+    <text x="44" y="44" font-family="monospace" font-size="10" font-weight="600" fill="#D97706">Latency: &lt; 200ms (LAN Sync)</text>
+    <text x="44" y="58" font-family="system-ui, sans-serif" font-size="9.5" fill="#6B7280">Barcode / Scanner Instant Hold</text>
+  </g>
+
+  <!-- Bottom Telemetry Banner -->
+  <rect x="42" y="484" width="615" height="28" rx="8" fill="#F3F4F6"/>
+  <circle cx="58" cy="498" r="4" fill="#059669"/>
+  <text x="70" y="502" font-family="system-ui, sans-serif" font-size="11" font-weight="500" fill="#374151">Double-Sell Collision Rate: &lt; 0.01% (Eliminating Account Defects &amp; Out-of-Stock Cancellations)</text>
+</svg>

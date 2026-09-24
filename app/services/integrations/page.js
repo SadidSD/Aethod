@@ -563,6 +563,22 @@ export default function IntegrationsPage() {
                   <span>Stage 04 · E-Commerce Automation Engines</span>
                   <span>→</span>
                 </Link>
+                <Link
+                  href="/tcg-marketplace-integration"
+                  className={styles.otherServicePill}
+                  onClick={playClickSound}
+                >
+                  <span>Architecture · Multi-Channel Sync Engine</span>
+                  <span>→</span>
+                </Link>
+                <Link
+                  href="/tcg-inventory-system"
+                  className={styles.otherServicePill}
+                  onClick={playClickSound}
+                >
+                  <span>Architecture · Master Inventory Systems</span>
+                  <span>→</span>
+                </Link>
               </div>
             </div>
           </div>

@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useCallback } from "react";
+import Link from "next/link";
 import styles from "./operations.module.css";
 import { useTheme } from "../../context/ThemeContext";
 import Footer from "../../components/Footer";
@@ -394,6 +395,15 @@ export default function OperationsPage() {
                 <span>✈</span>
               </button>
             </form>
+          </div>
+
+          <div style={{ marginTop: "48px", display: "flex", gap: "16px", flexWrap: "wrap", justifyContent: "center" }}>
+            <Link href="/tcg-buylist-system" style={{ padding: "12px 24px", borderRadius: "9999px", background: "rgba(79, 70, 229, 0.08)", color: "#4F46E5", fontWeight: 600, fontSize: "14px", textDecoration: "none" }}>
+              Architecture · Turnkey TCG Buylist Portals →
+            </Link>
+            <Link href="/tcg-inventory-system" style={{ padding: "12px 24px", borderRadius: "9999px", background: "rgba(79, 70, 229, 0.08)", color: "#4F46E5", fontWeight: 600, fontSize: "14px", textDecoration: "none" }}>
+              Architecture · Master TCG Inventory Systems →
+            </Link>
           </div>
         </section>
       </main>

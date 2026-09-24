@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useCallback } from "react";
+import Link from "next/link";
 import styles from "./automation.module.css";
 import { useTheme } from "../../context/ThemeContext";
 import Footer from "../../components/Footer";
@@ -394,6 +395,15 @@ export default function AutomationPage() {
                 <span>✈</span>
               </button>
             </form>
+          </div>
+
+          <div style={{ marginTop: "48px", display: "flex", gap: "16px", flexWrap: "wrap", justifyContent: "center" }}>
+            <Link href="/tcg-pricing-automation" style={{ padding: "12px 24px", borderRadius: "9999px", background: "rgba(79, 70, 229, 0.08)", color: "#4F46E5", fontWeight: 600, fontSize: "14px", textDecoration: "none" }}>
+              Architecture · Algorithmic Repricing Engine →
+            </Link>
+            <Link href="/tcg-store-automation" style={{ padding: "12px 24px", borderRadius: "9999px", background: "rgba(79, 70, 229, 0.08)", color: "#4F46E5", fontWeight: 600, fontSize: "14px", textDecoration: "none" }}>
+              Architecture · Batch Fulfillment & Intake →
+            </Link>
           </div>
         </section>
       </main>

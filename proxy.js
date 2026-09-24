@@ -10,7 +10,7 @@ export const config = {
   ],
 };
 
-export async function middleware(request) {
+export async function proxy(request) {
   const { pathname } = request.nextUrl;
   const cookie = request.cookies.get(SESSION_COOKIE_NAME);
   const token = cookie ? cookie.value : null;
@@ -21,21 +21,25 @@ export async function middleware(request) {
   // 1. Gateway entry: /yamal19
   if (pathname === "/yamal19") {
     if (isAuthenticated) {
-      // Authenticated users are directly forwarded to the analytics dashboard
       const analyticsUrl = new URL("/yamal19/analytics", request.url);
-      return NextResponse.redirect(analyticsUrl);
+      const res = NextResponse.redirect(analyticsUrl);
+      res.headers.set("X-Robots-Tag", "noindex, nofollow");
+      return res;
     }
-    // Unauthenticated user is allowed to view the login gateway
-    return NextResponse.next();
+    const res = NextResponse.next();
+    res.headers.set("X-Robots-Tag", "noindex, nofollow");
+    return res;
   }
 
   // 2. Protected admin & analytics routes (/yamal19/analytics, /admin, etc.)
   if (!isAuthenticated) {
-    // Block unauthenticated direct access and redirect to the login gateway
     const loginUrl = new URL("/yamal19", request.url);
-    return NextResponse.redirect(loginUrl);
+    const res = NextResponse.redirect(loginUrl);
+    res.headers.set("X-Robots-Tag", "noindex, nofollow");
+    return res;
   }
 
-  // Authenticated user accessing protected routes
-  return NextResponse.next();
+  const res = NextResponse.next();
+  res.headers.set("X-Robots-Tag", "noindex, nofollow");
+  return res;
 }
