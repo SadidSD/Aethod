@@ -5,6 +5,7 @@ import { ChatProvider } from "./context/ChatContext";
 import Chatbox from "./components/Chatbox";
 import ResponsiveScaler from "./components/ResponsiveScaler";
 import AnalyticsTracker from "./components/AnalyticsTracker";
+import { Analytics } from "@vercel/analytics/next";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -199,6 +200,7 @@ export default function RootLayout({ children }) {
             <Chatbox />
           </ChatProvider>
         </ThemeProvider>
+        <Analytics />
       </body>
     </html>
   );
