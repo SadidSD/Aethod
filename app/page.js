@@ -58,9 +58,6 @@ function HeroEcosystemVisual() {
       hasEndedTriggered = true;
       video.pause();
       setIsEnded(true);
-      if (wrapperRef.current) {
-        wrapperRef.current.classList.add(styles.heroVideoFloating);
-      }
     };
 
     video.addEventListener("ended", triggerEnd);
@@ -232,7 +229,7 @@ function HeroEcosystemVisual() {
     <div className={styles.heroVisual}>
       <div
         ref={wrapperRef}
-        className={`${styles.heroVideoWrapper} ${isEnded ? styles.heroVideoFloating : ""}`}
+        className={styles.heroVideoWrapper}
       >
         <video
           ref={videoRef}
@@ -248,9 +245,6 @@ function HeroEcosystemVisual() {
               videoRef.current.pause();
             }
             setIsEnded(true);
-            if (wrapperRef.current) {
-              wrapperRef.current.classList.add(styles.heroVideoFloating);
-            }
           }}
         />
         <canvas
