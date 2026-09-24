@@ -11,7 +11,7 @@ const blogs = [
     title: "BinderPOS vs. CrystalCommerce vs. Custom TCG Website: The 2026 Comparison for Card Shops",
     description: "Tired of $500/month SaaS bills and sluggish checkouts? We compare BinderPOS, CrystalCommerce, and an owned custom platform by Aeethod across fees, speed, inventory sync, and code ownership.",
     tags: ["BinderPOS Alternatives", "CrystalCommerce", "Custom TCG Website", "Competitor Comparison", "Card Shop Software"],
-    illustration: "/blog/mini graph.svg",
+    illustration: "/blog/images/competitor_matrix_platform.jpg",
     content: `
       <h2>1. The Real Problem Card Shops Face with Generic Retail Tech</h2>
       <p>Running a trading card game (TCG) store is fundamentally different from selling t-shirts or coffee mugs. A single local game store easily manages 50,000 to 200,000 individual cards across Magic: The Gathering, Pokémon, Yu-Gi-Oh!, One Piece, and Lorcana. Each card has multiple condition grades (Near Mint, Lightly Played, Moderately Played, Damaged), foil and non-foil finishes, languages, and rapid market price changes.</p>
@@ -117,7 +117,7 @@ const blogs = [
     title: "How to Solve Shopify’s 100-Variant Limit for Trading Card Singles (Without Ruining Your SEO)",
     description: "Why Shopify’s 100-variant limit breaks TCG stores, why third-party variant apps destroy your SEO, and how Aeethod fits 300+ card variations on a single canonical page with sub-35ms speed.",
     tags: ["Shopify TCG", "100 Variant Limit", "TCG Singles E-Commerce", "Card Shop SEO", "Deep Variant Matrix"],
-    illustration: "/blog/mass.svg",
+    illustration: "/blog/images/card_variant_matrix.jpg",
     content: `
       <h2>1. The Math of TCG Singles: Why Shopify Breaks Out-of-the-Box</h2>
       <p>Shopify was designed for standard retail: shoes with 3 colors and 10 sizes (30 variants). In the trading card world, a single card listing like <em>Charizard ex</em> from Pokémon 151 or <em>The One Ring</em> from Magic: The Gathering contains far more combinations:</p>
@@ -173,7 +173,7 @@ const blogs = [
     title: "The Definitive Guide to TCGplayer Alternatives: When to Leave, Where to Go & How to Keep Your Profits",
     description: "Paying 13% to 15% in marketplace fees? Here is the exact mathematical threshold when card shops outgrow TCGplayer, and how to build a high-margin sovereign website with Aeethod.",
     tags: ["TCGplayer Alternatives", "When to Leave TCGplayer", "Marketplace Fees", "TCG E-Commerce", "Card Retail Margins"],
-    illustration: "/blog/mini graph.svg",
+    illustration: "/blog/images/competitor_matrix_platform.jpg",
     content: `
       <h2>1. The Commercial Dilemma: Liquidity vs. The Commission Tax</h2>
       <p>When you first open a card shop or start selling singles online, TCGplayer is an invaluable resource. Millions of players visit the platform daily, giving you immediate liquidity for your cards without needing to spend a dime on marketing. In the early stages, surrendering a 12.75% to 15% blended fee (commission + payment processing) is a reasonable price to pay for survival.</p>
@@ -242,7 +242,7 @@ const blogs = [
     title: "How to Stop Double-Selling Cards Across TCGplayer, eBay, and Your Website (The 2-Second Rule)",
     description: "The dreaded double-sale nightmare: a card sells at your counter or on eBay, but TCGplayer doesn't know for 20 minutes. Here is how Aeethod's sub-2-second sync stops stockouts forever.",
     tags: ["Double Selling", "TCG Inventory Sync", "TCGplayer eBay Integration", "Omnichannel POS", "Inventory Automation"],
-    illustration: "/blog/tri.svg",
+    illustration: "/blog/images/inventory_sync_hub.jpg",
     content: `
       <h2>1. The Double-Sale Nightmare: An All-Too-Familiar Saturday Afternoon</h2>
       <p>It is Saturday afternoon at your card shop. The store is packed for a tournament, and a regular customer walks up to the counter and buys a Near Mint <em>Mox Diamond</em> or vintage <em>Charizard</em> for $450. You ring it up on your register and put the card in their hands.</p>
@@ -290,7 +290,7 @@ const blogs = [
     title: "How Much Does a Custom TCG Website Cost? (Full Pricing Breakdown & ROI Math)",
     description: "Transparent pricing for card shop websites: SaaS rental traps vs. custom engineering. Compare Shopify app costs ($450/mo) against Aeethod's fixed one-time packages ($3,500–$18,500).",
     tags: ["Custom TCG Website Cost", "TCG Website Pricing", "Aeethod Pricing", "Card Shop Website Packages", "TCG ROI"],
-    illustration: "/blog/mini graph.svg",
+    illustration: "/blog/images/pricing_automation_spike.jpg",
     content: `
       <h2>1. The True Cost of Building an Online Card Shop</h2>
       <p>One of the most common questions card shop owners ask is: <em>"How much does it actually cost to build a website for my card shop?"</em></p>
@@ -378,7 +378,7 @@ const blogs = [
     title: "How an Automated TCG Buylist Doubled Sourcing Margins for Local Game Stores",
     description: "Why card shops make 50%+ profit margins on customer trade-ins, why long counter lines kill deals, and how Aeethod's self-service buylist portal automates trade-in intake 24/7.",
     tags: ["TCG Buylist Software", "Card Shop Trade-In System", "Automated Buylist", "LGS Sourcing Margins", "Store Credit Flywheel"],
-    illustration: "/blog/mass.svg",
+    illustration: "/blog/images/buylist_counter_kiosk.jpg",
     content: `
       <h2>1. The Real Profit Engine of Card Shops: Customer Trade-Ins</h2>
       <p>Ask any seasoned card shop owner where their biggest profits come from, and the answer is never sealed booster boxes. Distributor margins on sealed product are thin (often 12% to 18%), and capital gets tied up in cases for months.</p>
@@ -426,7 +426,7 @@ const blogs = [
     title: "Why Your Card Shop Website Needs a 'Mass Decklist Paste' Tool (And How It Doubles Cart Sizes)",
     description: "Competitive players buy 60-card decks, not single cards. Discover why decklist pasting increases average order value from $18 to $95 and keeps players on your website.",
     tags: ["Mass Decklist Paste", "TCG Cart Optimizer", "Tournament Deck Builder", "Card Shop Conversion", "TCG UX"],
-    illustration: "/blog/tri.svg",
+    illustration: "/blog/images/tournament_deck_builder.jpg",
     content: `
       <h2>1. How Competitive TCG Players Actually Shop</h2>
       <p>Competitive card players—whether playing Magic: The Gathering Modern, Pokémon Standard, Yu-Gi-Oh! Advanced, or One Piece—do not browse websites like casual shoppers. They don't casually scroll through cards hoping something catches their eye.</p>
@@ -474,7 +474,7 @@ const blogs = [
     title: "TCG Pricing Automation: How to Protect Your Profits from Tournament Spikes and Buyout Bots",
     description: "How card shops lose thousands during weekend tournament spikes, why manual repricing fails, and how Aeethod's algorithmic repricing engine locks in profit margins 24/7.",
     tags: ["TCG Pricing Automation", "Tournament Spikes", "Buyout Bot Protection", "Algorithmic Card Repricing", "Profit Floors"],
-    illustration: "/blog/neural.svg",
+    illustration: "/blog/images/pricing_automation_spike.jpg",
     content: `
       <h2>1. The Saturday Morning Tournament Spike Disaster</h2>
       <p>Every card shop owner has experienced this painful scenario: On Saturday morning at 10:00 AM, a major Regional or Pro Tour tournament begins. By Round 4, a brand-new rogue deck is dominating the top tables, fueled by an obscure, previously bulk rare card.</p>
@@ -520,7 +520,7 @@ const blogs = [
     title: "Shopify vs. WooCommerce vs. Custom Next.js for TCG Stores: Which Actually Works?",
     description: "Thinking of building on WooCommerce or Shopify? We break down database performance, variant limits, plugin bloat, and why high-volume card shops switch to custom Next.js platforms.",
     tags: ["Shopify vs WooCommerce", "TCG Website Platforms", "Card Shop E-Commerce", "Next.js E-Commerce", "Platform Comparison"],
-    illustration: "/blog/mini graph.svg",
+    illustration: "/blog/images/sub_35ms_card_search.jpg",
     content: `
       <h2>1. The Platform Dilemma for Independent Card Shops</h2>
       <p>When an independent card shop decides to build their own website, the first debate is almost always: <em>"Should we build on Shopify, WooCommerce, or go custom?"</em></p>
@@ -562,7 +562,7 @@ const blogs = [
     title: "Why Slow Card Search Kills Sales (And How Sub-35ms Faceted Filtering Boosts Conversions by 24%)",
     description: "In TCG e-commerce, collectors won't wait 3 seconds for search results. Discover how edge-indexed faceted filtering doubles card shop conversion rates and outranks slow competitors.",
     tags: ["TCG Search Speed", "Faceted Filtering", "Card Shop Conversion Rate", "Edge Search Engine", "TCG UX"],
-    illustration: "/blog/mass.svg",
+    illustration: "/blog/images/sub_35ms_card_search.jpg",
     content: `
       <h2>1. The 3-Second Rule in Card Collector Psychology</h2>
       <p>Card collectors are high-frequency, search-driven shoppers. A typical MTG or Pokémon buyer searches for 5 to 15 different cards during a single shopping session. If every search takes 2 to 3 seconds to reload the catalog, the collector spends more time staring at loading spinners than buying cards.</p>
@@ -592,7 +592,7 @@ const blogs = [
     title: "Selling Graded PSA/BGS/CGC Slabs Online: How High-Resolution Cert Verification Sells $1,000+ Cards",
     description: "Selling $500 to $5,000 graded slabs online requires trust. Learn how Aeethod's interactive high-res slab inspector and live PSA/BGS cert verification eliminate buyer hesitation.",
     tags: ["Graded Card Slabs", "PSA Cert Verification", "High-End TCG Retail", "Vintage Pokémon Cards", "Slab Inspector"],
-    illustration: "/blog/tri.svg",
+    illustration: "/blog/images/graded_card_slabs.jpg",
     content: `
       <h2>1. The Trust Barrier in High-End Graded Slabs</h2>
       <p>Selling a $2 Near Mint common card is easy. But selling a $1,500 PSA 10 <em>Charizard</em> or a $4,000 BGS 9.5 <em>Black Lotus</em> requires an extraordinary level of buyer confidence.</p>
@@ -621,7 +621,7 @@ const blogs = [
     title: "Why 68% of Collectors Shop on Mobile (And Why Most Card Shop Websites Fail on Phones)",
     description: "Most card shop websites are designed on desktop laptops, but nearly 70% of card purchases happen on mobile phones. Here is how mobile-first architecture drives explosive growth.",
     tags: ["Mobile TCG E-Commerce", "Mobile Checkout", "Apple Pay for Card Shops", "TCG UX Design", "Mobile Conversion"],
-    illustration: "/blog/neural.svg",
+    illustration: "/blog/images/mobile_card_checkout.jpg",
     content: `
       <h2>1. The Mobile Reality in Trading Card Retail</h2>
       <p>Look at your Google Analytics data today: over <strong>65% to 72% of all visits to card shop websites come from smartphones</strong>. Collectors browse card listings while sitting on the couch, during tournament lunch breaks, or while opening packs at a friend's house.</p>
@@ -654,7 +654,7 @@ const blogs = [
     title: "How to Pick and Pack 500 Single-Card Orders a Day Without Errors: Barcode Warehouse Logistics",
     description: "Shipping hundreds of singles daily? Manual picking leads to wrong cards and angry buyers. Learn how Aeethod's barcode routing and picker manifests streamline fulfillment.",
     tags: ["TCG Shipping Logistics", "Barcode Scanning", "Card Shop Fulfillment", "Picker Manifests", "Warehouse Automation"],
-    illustration: "/blog/mass.svg",
+    illustration: "/blog/images/barcode_warehouse_scanner.jpg",
     content: `
       <h2>1. The Shipping Nightmare as Your Card Store Scales</h2>
       <p>When you ship 10 orders a day, finding cards in binders is easy. But when your store grows to 150, 300, or 500 orders a day, fulfillment becomes an operational crisis:</p>
@@ -684,7 +684,7 @@ const blogs = [
     title: "In-Store Pickup for Card Shops: How to Turn Local Orders into In-Store Sales and Loyalty",
     description: "Local customers hate waiting 3 days for shipping when they live 10 minutes away. Learn how automated in-store counter pickup drives foot traffic and repeat buys.",
     tags: ["Local In-Store Pickup", "LGS Technology", "BOPIS Card Shops", "Customer Retention", "POS Integration"],
-    illustration: "/blog/tri.svg",
+    illustration: "/blog/images/in_store_pickup_lgs.jpg",
     content: `
       <h2>1. Why Shipping to Local Customers Wastes Money</h2>
       <p>Card shop customers are hyper-local. On tournament nights (Friday Night Magic, Pokémon League, Yu-Gi-Oh! Locals), players need cards <em>immediately</em> to finish their decks for the evening.</p>
@@ -714,7 +714,7 @@ const blogs = [
     title: "How to Run Bot-Resistant High-Demand Sealed Box Drops (Pokémon 151, Lorcana, Team Up)",
     description: "Tired of scalper bots crashing your website and buying out all your booster boxes in 5 seconds? Here is how Aeethod builds bot-resistant drop queues and raffle portals.",
     tags: ["Sealed Box Drops", "Anti-Bot Queuing", "Pokemon Scalper Defense", "High Demand Drops", "TCG E-Commerce"],
-    illustration: "/blog/neural.svg",
+    illustration: "/blog/images/sealed_booster_boxes.jpg",
     content: `
       <h2>1. The Scalper Bot Nightmare on Big Release Days</h2>
       <p>Whenever a high-demand sealed set releases—like Pokémon 151, prismatic booster boxes, or limited Magic Collector Booster displays—card shop websites face an onslaught of automated scalper bots.</p>
@@ -743,7 +743,7 @@ const blogs = [
     title: "The Store Credit Flywheel: How Offering +25% Trade-In Credit Traps Cash Inside Your Store",
     description: "Why cash trade-ins drain bank accounts while store credit trade-ins generate high-margin growth. Discover how to engineer a closed-loop credit ecosystem for your card shop.",
     tags: ["Store Credit Flywheel", "TCG Loyalty System", "Trade-In Incentives", "Card Shop Profitability", "Customer Retention"],
-    illustration: "/blog/mini graph.svg",
+    illustration: "/blog/images/store_credit_loyalty.jpg",
     content: `
       <h2>1. The Cash Drain of Traditional Card Buylists</h2>
       <p>When a customer brings in a $1,000 collection and demands cash, you have to hand over $600 from your operational bank account. Your bank balance drops, and you must wait weeks or months to resell those cards to recover your capital.</p>
@@ -780,7 +780,7 @@ const blogs = [
     title: "Setting Up an In-Store Card Appraisal Kiosk: Cutting Counter Wait Times from 40 Minutes to 3 Minutes",
     description: "Turn chaos at your front counter into an automated trade-in assembly line. How in-store iPad kiosks empower customers to self-appraise trade-ins.",
     tags: ["In-Store Kiosk", "TCG Trade-In Station", "Counter Efficiency", "LGS Operations", "Staff Productivity"],
-    illustration: "/blog/mass.svg",
+    illustration: "/blog/images/buylist_counter_kiosk.jpg",
     content: `
       <h2>1. The Saturday Counter Bottleneck</h2>
       <p>On tournament weekends, your front counter staff is overwhelmed. Answering phone calls, ringing up drinks and packs, checking in tournament players—and then a customer plops down a 400-card trade-in box.</p>
@@ -806,7 +806,7 @@ const blogs = [
     title: "Differential Channel Pricing: How to Mark Up eBay/TCGplayer +12% While Offering the Best Deals on Your Website",
     description: "Why selling cards for the same price everywhere is a financial mistake. How automated differential pricing offsets marketplace fees while driving customers to your direct store.",
     tags: ["Differential Channel Pricing", "TCGplayer Markup Rules", "Margin Protection", "Multi-Channel Pricing", "Direct Sales Incentives"],
-    illustration: "/blog/mini graph.svg",
+    illustration: "/blog/images/pricing_automation_spike.jpg",
     content: `
       <h2>1. The Parity Pricing Mistake Most Card Shops Make</h2>
       <p>Most card store owners list their cards at the exact same price across all channels: $100 on their website, $100 on TCGplayer, and $100 on eBay.</p>
@@ -831,7 +831,7 @@ const blogs = [
     title: "Is TCGplayer Direct Worth the 50% Fee Cut on Cheap Singles? (The Independent Math)",
     description: "TCGplayer Direct saves fulfillment time, but taking up to 50% in fees on sub-$3 cards eats your profits. We break down the real numbers and how to fulfill profitably yourself.",
     tags: ["TCGplayer Direct", "Card Sourcing Margins", "Fulfillment Costs", "TCGplayer Fees", "LGS Profitability"],
-    illustration: "/blog/tri.svg",
+    illustration: "/blog/images/barcode_warehouse_scanner.jpg",
     content: `
       <h2>1. The Allure and Trap of TCGplayer Direct</h2>
       <p>TCGplayer Direct is tempting: you don't have to package individual envelopes for thousands of 50-cent commons. TCGplayer ships them from their Syracuse warehouse, and you simply ship a bulk replacement box once a week.</p>
@@ -859,7 +859,7 @@ const blogs = [
     title: "Managing Card Consignments & High-End Vault Accounting for Local Game Stores",
     description: "Consignment of $5,000+ vintage cards and graded slabs can generate massive revenue with zero inventory risk. Learn how to track consignment payouts automatically.",
     tags: ["Card Consignments", "Vintage TCG Vault", "Consignment Accounting", "High-End Cards", "Card Shop Systems"],
-    illustration: "/blog/neural.svg",
+    illustration: "/blog/images/graded_card_slabs.jpg",
     content: `
       <h2>1. The High-End Consignment Opportunity</h2>
       <p>Many local collectors own $10,000 to $50,000 in vintage cards (1st Edition Shadowless Charizards, Power Nine, serialized foils), but don't want to deal with eBay scammers or shipping risks. They want their trusted local game store to sell it for an 8% to 15% consignment fee.</p>
@@ -887,7 +887,7 @@ const blogs = [
     title: "Ion Suite vs. BinderPOS vs. Aeethod: Complete Card Shop Software Comparison for 2026",
     description: "Comparing the top card shop software options in 2026: Ion Suite, BinderPOS, and Aeethod. We evaluate POS speed, inventory sync, search performance, and long-term costs.",
     tags: ["Ion Suite", "BinderPOS", "Aeethod", "Card Shop POS", "TCG Software Comparison"],
-    illustration: "/blog/mini graph.svg",
+    illustration: "/blog/images/competitor_matrix_platform.jpg",
     content: `
       <h2>1. The 2026 Card Shop Software Landscape</h2>
       <p>Card shop owners are investing heavily in their technology stack. The top three solutions discussed in local game store owner groups today are <strong>Ion Suite</strong>, <strong>BinderPOS</strong>, and <strong>Aeethod</strong>. Here is how they stack up across critical operational metrics:</p>
@@ -951,7 +951,7 @@ const blogs = [
     title: "TCGplayer Pro vs. Owning Your Card Shop Website: The Real Truth About Fees and Brand Equity",
     description: "TCGplayer Pro looks cheap on the surface, but it locks your store into their ecosystem. Discover why owning your storefront generates 4x higher customer lifetime value.",
     tags: ["TCGplayer Pro", "Custom Card Website", "Brand Equity", "TCG Margins", "Store Ownership"],
-    illustration: "/blog/mini graph.svg",
+    illustration: "/blog/images/competitor_matrix_platform.jpg",
     content: `
       <h2>1. The Illusion of the 'Free' TCGplayer Pro Website</h2>
       <p>TCGplayer Pro offers sellers a website tied directly to their TCGplayer inventory. It sounds like an unbeatable deal: no upfront design cost, instant catalog integration, and basic payment processing.</p>
