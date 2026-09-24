@@ -547,10 +547,8 @@
   height: 100%;
   object-fit: contain;
   display: block;
-  mix-blend-mode: multiply;
-  filter: contrast(1.02) brightness(1.01);
-  -webkit-mask-image: radial-gradient(ellipse 96% 92% at 50% 50%, black 75%, transparent 100%);
-  mask-image: radial-gradient(ellipse 96% 92% at 50% 50%, black 75%, transparent 100%);
+  -webkit-mask-image: radial-gradient(ellipse 96% 92% at 50% 50%, black 80%, transparent 100%);
+  mask-image: radial-gradient(ellipse 96% 92% at 50% 50%, black 80%, transparent 100%);
   border: none;
   outline: none;
   background: transparent;
