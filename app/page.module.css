@@ -272,7 +272,7 @@
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
-  max-width: 1200px;
+  max-width: 1280px;
   margin: 0 auto;
   gap: 40px;
 }
@@ -527,8 +527,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  flex: 1.1;
-  max-width: 660px;
+  flex: 1.25;
+  max-width: 740px;
   width: 100%;
   align-self: center;
 }
@@ -540,7 +540,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  transform: translateY(-20px);
+  transform: translate(32px, -20px);
 }
 
 .heroAnimationVideo {
@@ -1115,6 +1115,7 @@
     width: 100% !important;
     max-width: 540px !important;
     aspect-ratio: 16 / 9 !important;
+    transform: none !important;
   }
 
   .heroAnimationVideo {
