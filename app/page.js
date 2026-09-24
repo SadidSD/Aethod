@@ -86,7 +86,7 @@ function HeroEcosystemVisual() {
       `;
 
       const fsSource = `
-        precision mediump float;
+        precision highp float;
         uniform sampler2D u_image;
         varying vec2 v_texCoord;
         void main() {
@@ -94,9 +94,6 @@ function HeroEcosystemVisual() {
           vec2 alphaCoord = vec2(v_texCoord.x, 0.5 + v_texCoord.y * 0.5);
           vec4 rgb = texture2D(u_image, rgbCoord);
           float a = texture2D(u_image, alphaCoord).r;
-          if (a < 0.05) {
-            discard;
-          }
           gl_FragColor = vec4(rgb.rgb * a, a);
         }
       `;

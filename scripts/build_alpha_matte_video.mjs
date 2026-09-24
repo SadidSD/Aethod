@@ -3,34 +3,37 @@ import fs from 'fs';
 import path from 'path';
 import sharp from 'sharp';
 
-const ffmpegPath = path.resolve('node_modules/ffmpeg-static/ffmpeg.exe');
-const sourceVideo = path.resolve('../elements/hero animation.mp4');
+const ffmpegBinary = 'ffmpeg';
+const sourceVideo = path.resolve('public/hero-animation.mp4');
 const tempRawDir = path.resolve('temp_raw_frames');
 const tempStackedDir = path.resolve('temp_stacked_frames');
 const outputAlphaMp4 = path.resolve('public/hero-animation-alpha.mp4');
 
 function processFrame(data, W, H) {
-  // 1. Screens flood fill (Phone screen & Tablet screen)
-  const isScreen = new Uint8Array(W * H);
+  // 1. Flood fill pure white background from outer canvas edges
+  const isBg = new Uint8Array(W * H);
   const queue = new Int32Array(W * H);
   let qLen = 0;
 
-  const seeds = [
-    [150, 250], [200, 250], [150, 400], [180, 400], [200, 400], [150, 600], [200, 600],
-    [1200, 300], [1400, 300], [1600, 300],
-    [1200, 500], [1400, 500], [1600, 500],
-    [1200, 700], [1400, 700], [1600, 700]
-  ];
-
-  for (const [sx, sy] of seeds) {
-    const sidx = sy * W + sx;
-    if (!isScreen[sidx]) {
-      const idx = sidx * 3;
-      const maxC = Math.max(data[idx], data[idx+1], data[idx+2]);
-      if (maxC >= 65) {
-        isScreen[sidx] = 1;
-        queue[qLen++] = sidx;
-      }
+  // Add outer border near-white pixels
+  for (let x = 0; x < W; x++) {
+    const topIdx = x * 3;
+    const botIdx = ((H - 1) * W + x) * 3;
+    if (data[topIdx] >= 248 && data[topIdx+1] >= 248 && data[topIdx+2] >= 248) {
+      isBg[x] = 1; queue[qLen++] = x;
+    }
+    if (data[botIdx] >= 248 && data[botIdx+1] >= 248 && data[botIdx+2] >= 248) {
+      isBg[(H - 1) * W + x] = 1; queue[qLen++] = (H - 1) * W + x;
+    }
+  }
+  for (let y = 0; y < H; y++) {
+    const leftIdx = (y * W) * 3;
+    const rightIdx = (y * W + (W - 1)) * 3;
+    if (data[leftIdx] >= 248 && data[leftIdx+1] >= 248 && data[leftIdx+2] >= 248) {
+      if (!isBg[y * W]) { isBg[y * W] = 1; queue[qLen++] = y * W; }
+    }
+    if (data[rightIdx] >= 248 && data[rightIdx+1] >= 248 && data[rightIdx+2] >= 248) {
+      if (!isBg[y * W + W - 1]) { isBg[y * W + W - 1] = 1; queue[qLen++] = y * W + W - 1; }
     }
   }
 
@@ -48,89 +51,127 @@ function processFrame(data, W, H) {
     ];
 
     for (const n of neighbors) {
-      if (n !== -1 && !isScreen[n]) {
+      if (n !== -1 && !isBg[n]) {
         const idx = n * 3;
-        const maxC = Math.max(data[idx], data[idx+1], data[idx+2]);
-        if (maxC >= 65) {
-          isScreen[n] = 1;
+        const r = data[idx], g = data[idx+1], b = data[idx+2];
+        const minC = Math.min(r, g, b);
+        const maxC = Math.max(r, g, b);
+        const chroma = maxC - minC;
+
+        // Background is pure white (min >= 251 and chroma <= 3)
+        if (minC >= 251 && chroma <= 3) {
+          isBg[n] = 1;
           queue[qLen++] = n;
         }
       }
     }
   }
 
-  // 2. Hub platform
-  function insidePlatform(x, y) {
-    const dx = x - 756;
-    const dy = y - 648;
-    const topDiamond = (Math.abs(dx) / 195 + Math.abs(dy + 5) / 115) <= 1.02;
-    const bottomPedestal = (Math.abs(dx) / 195 + (dy - 30) / 135) <= 1.02 && dy >= 0 && dy <= 165 && Math.abs(dx) <= 195;
-    return topDiamond || bottomPedestal;
+  // 2. Base alpha: all unreached pixels (inside devices, cables, hub) are 100% foreground (1.0)
+  const alpha = new Float32Array(W * H);
+  for (let i = 0; i < W * H; i++) {
+    if (!isBg[i]) alpha[i] = 1.0;
   }
 
-  // 3. Compute RGBA buffer
-  const rgba = Buffer.alloc(W * H * 4);
+  // 3. Find transition border pixels (foreground touching background)
+  const isBorder = new Uint8Array(W * H);
+  for (let y = 1; y < H - 1; y++) {
+    for (let x = 1; x < W - 1; x++) {
+      const i = y * W + x;
+      if (!isBg[i]) {
+        if (isBg[i - 1] || isBg[i + 1] || isBg[i - W] || isBg[i + W] ||
+            isBg[i - W - 1] || isBg[i - W + 1] || isBg[i + W - 1] || isBg[i + W + 1]) {
+          isBorder[i] = 1;
+        }
+      }
+    }
+  }
+
+  // Apply smooth anti-aliased feathering on the 1-2px border based on original subpixel luminance
+  for (let y = 1; y < H - 1; y++) {
+    for (let x = 1; x < W - 1; x++) {
+      const i = y * W + x;
+      if (isBorder[i]) {
+        const idx = i * 3;
+        const r = data[idx], g = data[idx+1], b = data[idx+2];
+        const minC = Math.min(r, g, b);
+        const maxC = Math.max(r, g, b);
+        const chroma = maxC - minC;
+
+        if (minC >= 225 && chroma <= 18) {
+          const t = (255 - minC) / 30.0;
+          alpha[i] = Math.min(1.0, Math.max(0.08, t * t * (3.0 - 2.0 * t)));
+        } else {
+          alpha[i] = 1.0;
+        }
+      }
+    }
+  }
+
+  // 4. Build Stacked Buffer (1920 x 2160 x 3)
+  // Top half: De-fringed RGB (white edge bleed removed so dark mode has zero halo)
+  // Bottom half: Grayscale Alpha
+  const stacked = Buffer.alloc(W * (H * 2) * 3);
+
   for (let y = 0; y < H; y++) {
     for (let x = 0; x < W; x++) {
       const i = y * W + x;
       const srcIdx = i * 3;
-      const dstIdx = i * 4;
+      const aFloat = alpha[i];
+      const aByte = Math.round(aFloat * 255);
 
-      const r = data[srcIdx];
-      const g = data[srcIdx+1];
-      const b = data[srcIdx+2];
+      const topIdx = i * 3;
+      const botIdx = ((H + y) * W + x) * 3;
 
-      const minC = Math.min(r, g, b);
-      const maxC = Math.max(r, g, b);
-      const chroma = maxC - minC;
-
-      let alpha = 0;
-
-      if (isScreen[i]) {
-        alpha = 255;
-      } else if (insidePlatform(x, y)) {
-        if (b - r >= 4 || chroma >= 5 || minC <= 245) {
-          alpha = 255;
-        } else {
-          alpha = 0;
-        }
+      if (aByte === 0) {
+        // Transparent background in top half
+        stacked[topIdx] = 0;
+        stacked[topIdx+1] = 0;
+        stacked[topIdx+2] = 0;
       } else {
-        // Cables & surrounding artwork: tight chroma threshold with anti-aliasing
-        if (chroma >= 18 || minC < 232) {
-          alpha = 255;
-        } else if (chroma >= 10 || minC < 242) {
-          const t = Math.max((chroma - 10) / 8, (242 - minC) / 10);
-          alpha = Math.round(255 * Math.min(1, Math.max(0, t)));
-        } else {
-          alpha = 0;
+        const r = data[srcIdx], g = data[srcIdx+1], b = data[srcIdx+2];
+        let cleanR = r, cleanG = g, cleanB = b;
+
+        // De-fringe edge pixels against white background
+        if (aFloat > 0.05 && aFloat < 0.98) {
+          cleanR = Math.max(0, Math.min(255, Math.round((r - (1 - aFloat) * 255) / aFloat)));
+          cleanG = Math.max(0, Math.min(255, Math.round((g - (1 - aFloat) * 255) / aFloat)));
+          cleanB = Math.max(0, Math.min(255, Math.round((b - (1 - aFloat) * 255) / aFloat)));
         }
+
+        stacked[topIdx] = cleanR;
+        stacked[topIdx+1] = cleanG;
+        stacked[topIdx+2] = cleanB;
       }
 
-      // Store in RGBA
-      rgba[dstIdx] = r;
-      rgba[dstIdx+1] = g;
-      rgba[dstIdx+2] = b;
-      rgba[dstIdx+3] = alpha;
+      // Bottom half: Grayscale Alpha
+      stacked[botIdx] = aByte;
+      stacked[botIdx+1] = aByte;
+      stacked[botIdx+2] = aByte;
     }
   }
 
-  return rgba;
+  return stacked;
 }
 
 async function main() {
-  console.log('=== Starting Clean Universal Alpha Matte Video Generation ===');
+  console.log('=== Starting Ultra-Smooth Anti-Aliased Alpha Video Generation ===');
+
+  if (!fs.existsSync(sourceVideo)) {
+    throw new Error(`Source video not found: ${sourceVideo}`);
+  }
 
   if (!fs.existsSync(tempRawDir)) fs.mkdirSync(tempRawDir, { recursive: true });
   if (!fs.existsSync(tempStackedDir)) fs.mkdirSync(tempStackedDir, { recursive: true });
 
   console.log('Step 1: Extracting raw frames from source video...');
-  const extractCmd = `"${ffmpegPath}" -y -i "${sourceVideo}" -q:v 2 "${tempRawDir}/frame_%04d.png"`;
+  const extractCmd = `"${ffmpegBinary}" -y -i "${sourceVideo}" -q:v 2 "${tempRawDir}/frame_%04d.png"`;
   execSync(extractCmd, { stdio: 'inherit' });
 
   const rawFiles = fs.readdirSync(tempRawDir).filter(f => f.endsWith('.png')).sort();
   console.log(`Extracted ${rawFiles.length} frames.`);
 
-  console.log('Step 2: Processing and generating stacked RGB + Alpha frames (1920x2160)...');
+  console.log('Step 2: Processing frames with edge anti-aliasing & white de-fringing (1920x2160)...');
   const concurrency = 8;
   let completed = 0;
 
@@ -143,40 +184,7 @@ async function main() {
       const { data: raw, info } = await sharp(rawPath).raw().toBuffer({ resolveWithObject: true });
       const W = info.width, H = info.height;
 
-      const rgba = processFrame(raw, W, H);
-
-      // Stacked buffer: 1920 x 2160 (RGB)
-      // Top half: RGB with background zeroed out (premultiplied against dark fringe)
-      // Bottom half: Grayscale alpha
-      const stacked = Buffer.alloc(W * (H * 2) * 3);
-
-      for (let y = 0; y < H; y++) {
-        for (let x = 0; x < W; x++) {
-          const srcIdx = (y * W + x) * 4;
-          const r = rgba[srcIdx];
-          const g = rgba[srcIdx+1];
-          const b = rgba[srcIdx+2];
-          const a = rgba[srcIdx+3];
-
-          // Top half: RGB
-          const topIdx = (y * W + x) * 3;
-          if (a === 0) {
-            stacked[topIdx] = 0;
-            stacked[topIdx+1] = 0;
-            stacked[topIdx+2] = 0;
-          } else {
-            stacked[topIdx] = r;
-            stacked[topIdx+1] = g;
-            stacked[topIdx+2] = b;
-          }
-
-          // Bottom half: Alpha as grayscale
-          const botIdx = ((H + y) * W + x) * 3;
-          stacked[botIdx] = a;
-          stacked[botIdx+1] = a;
-          stacked[botIdx+2] = a;
-        }
-      }
+      const stacked = processFrame(raw, W, H);
 
       await sharp(stacked, {
         raw: {
@@ -193,18 +201,18 @@ async function main() {
     }));
   }
 
-  console.log('Step 3: Encoding H.264 MP4 with faststart...');
-  const encodeCmd = `"${ffmpegPath}" -y -framerate 24 -i "${tempStackedDir}/frame_%04d.png" -c:v libx264 -pix_fmt yuv420p -crf 18 -preset fast -movflags +faststart "${outputAlphaMp4}"`;
+  console.log('Step 3: Encoding H.264 MP4 with high-fidelity CRF 15 & slow preset...');
+  const encodeCmd = `"${ffmpegBinary}" -y -framerate 24 -i "${tempStackedDir}/frame_%04d.png" -c:v libx264 -pix_fmt yuv420p -crf 15 -preset slow -movflags +faststart "${outputAlphaMp4}"`;
   execSync(encodeCmd, { stdio: 'inherit' });
 
   const stats = fs.statSync(outputAlphaMp4);
-  console.log(`Generated Alpha Matte MP4: ${outputAlphaMp4} (${(stats.size / 1024 / 1024).toFixed(2)} MB)`);
+  console.log(`Generated Smooth Alpha Video: ${outputAlphaMp4} (${(stats.size / 1024 / 1024).toFixed(2)} MB)`);
 
-  console.log('Cleaning up temporary directories...');
+  console.log('Cleaning up temporary frame directories...');
   fs.rmSync(tempRawDir, { recursive: true, force: true });
   fs.rmSync(tempStackedDir, { recursive: true, force: true });
 
-  console.log('=== Universal Alpha Matte Video Generation Complete! ===');
+  console.log('=== Ultra-Smooth Alpha Video Generation Complete! ===');
 }
 
 main().catch(err => {
