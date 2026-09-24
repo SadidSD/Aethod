@@ -207,8 +207,8 @@ async function main() {
   if (!fs.existsSync(tempRawDir)) fs.mkdirSync(tempRawDir, { recursive: true });
   if (!fs.existsSync(tempStackedDir)) fs.mkdirSync(tempStackedDir, { recursive: true });
 
-  console.log('Step 1: Extracting raw frames from source video...');
-  const extractCmd = `"${ffmpegBinary}" -y -i "${sourceVideo}" -q:v 2 "${tempRawDir}/frame_%04d.png"`;
+  console.log('Step 1: Extracting raw frames for the first 7 seconds from source video...');
+  const extractCmd = `"${ffmpegBinary}" -y -t 7 -i "${sourceVideo}" -q:v 2 "${tempRawDir}/frame_%04d.png"`;
   execSync(extractCmd, { stdio: 'inherit' });
 
   const rawFiles = fs.readdirSync(tempRawDir).filter(f => f.endsWith('.png')).sort();
