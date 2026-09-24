@@ -4,10 +4,16 @@ import JsonLd from "../../components/JsonLd";
 
 function getWorkItem(id) {
   try {
+    const aliasMap = {
+      "sadid-ai": "rng-gamez",
+      "coming-soon": "rng-gamez"
+    };
+    const targetId = aliasMap[id] || id;
+
     const filePath = path.join(process.cwd(), "content", "works.json");
     if (!fs.existsSync(filePath)) return null;
     const works = JSON.parse(fs.readFileSync(filePath, "utf-8"));
-    return works.find((w) => w.id === id) || null;
+    return works.find((w) => w.id === targetId) || null;
   } catch {
     return null;
   }
