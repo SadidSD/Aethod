@@ -80,7 +80,25 @@ function HeroEcosystemVisual() {
           vec2 alphaCoord = vec2(v_texCoord.x, 0.5 + v_texCoord.y * 0.5);
           vec4 rgb = texture2D(u_image, rgbCoord);
           float a = texture2D(u_image, alphaCoord).r;
-          gl_FragColor = vec4(rgb.rgb * a, a);
+
+          // Discard H.264 compression artifacts in background
+          if (a < 0.25) {
+            discard;
+          }
+
+          // Smooth alpha transition to preserve crisp vector anti-aliased contours
+          float cleanAlpha = smoothstep(0.25, 0.85, a);
+
+          // Suppress edge halos on semi-transparent background pixels
+          float minC = min(rgb.r, min(rgb.g, rgb.b));
+          float maxC = max(rgb.r, max(rgb.g, rgb.b));
+          float chroma = maxC - minC;
+          if (minC > 0.85 && chroma < 0.08 && cleanAlpha < 0.95) {
+            cleanAlpha *= smoothstep(0.85, 0.95, cleanAlpha);
+            if (cleanAlpha < 0.25) discard;
+          }
+
+          gl_FragColor = vec4(rgb.rgb * cleanAlpha, cleanAlpha);
         }
       `;
 
@@ -213,6 +231,7 @@ function HeroEcosystemVisual() {
           className={styles.heroAnimationVideo}
         />
       </div>
+      <div className={styles.heroGroundingShadow} aria-hidden="true" />
     </div>
   );
 }
