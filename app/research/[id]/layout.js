@@ -25,23 +25,27 @@ export async function generateMetadata({ params }) {
   }
 
   const fullTitle = `${paper.title} ${paper.subtitle || ""}`.trim();
+  const metaDescription =
+    paper.description && paper.description.length > 158
+      ? paper.description.slice(0, 155).trim() + "..."
+      : paper.description || "Applied systems research and technical whitepapers by Aeethod.";
 
   return {
     title: `${fullTitle} | Aeethod Systems Research`,
-    description: paper.description,
+    description: metaDescription,
     alternates: {
       canonical: `/research/${id}`,
     },
     openGraph: {
       title: `${fullTitle} | Aeethod Systems Research`,
-      description: paper.description,
+      description: metaDescription,
       url: `https://www.aeethod.com/research/${id}`,
       type: "article",
     },
     twitter: {
       card: "summary_large_image",
       title: fullTitle,
-      description: paper.description,
+      description: metaDescription,
     },
   };
 }

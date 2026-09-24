@@ -31,10 +31,15 @@ export async function generateMetadata({ params }) {
   }
 
   const title = `${work.name} — ${work.subtitle || "TCG Platform Case Study"}`;
-  const description =
-    Array.isArray(work.overview) && work.overview.length
+  const rawDescription =
+    work.description ||
+    (Array.isArray(work.overview) && work.overview.length
       ? work.overview[0]
-      : `${work.name} custom commerce platform engineered by Aeethod.`;
+      : `${work.name} custom commerce platform engineered by Aeethod.`);
+  const description =
+    rawDescription.length > 158
+      ? rawDescription.slice(0, 155).trim() + "..."
+      : rawDescription;
 
   return {
     title,

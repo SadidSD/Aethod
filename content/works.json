@@ -8,15 +8,23 @@
     "objectPosition": "28% center",
     "domain": "rng-gamez.com",
     "year": "2026",
-    "tags": ["TCG", "E-commerce", "Custom System"],
+    "tags": [
+      "TCG",
+      "E-commerce",
+      "Custom System"
+    ],
     "link": "https://www.rng-gamez.com",
-    "filters": ["All", "Recently Uploaded", "E-Commerce Related"],
+    "filters": [
+      "All",
+      "Recently Uploaded",
+      "E-Commerce Related"
+    ],
     "title": "How Aeethod Built a Custom Commerce Platform for RNG-Gamez",
     "subtitle": "Engineering High-Velocity TCG Commerce & Buylist Infrastructure",
     "client": "RNG-Gamez",
     "date": "August 2026",
     "role": "TCG Systems Architecture & Full-Stack Development",
-    "description": "How Aeethod engineered a dedicated TCG commerce platform for RNG-Gamez, solving the 100-variant limit, enabling sub-35ms card searches, and launching an automated trade-in buylist.",
+    "description": "How Aeethod engineered a dedicated TCG commerce platform for RNG-Gamez, solving the 100-variant limit, enabling sub-35ms card searches, and launching an.",
     "overview": [
       "RNG-Gamez is a specialized trading card game retailer catering to competitive players and high-end collectors across Pokémon, Magic: The Gathering, and One Piece.",
       "Starting Point & Problem: Operating primarily on third-party marketplaces, RNG-Gamez was paying upwards of 13% in transaction commissions while facing severe platform constraints. Attempting to list deep single-card inventory on generic platforms like Shopify hit the hard 100-variant limit on cards with multiple conditions, languages, and finishes. Additionally, acquiring cards relied on manual counter appraisals that created staff bottlenecks.",
@@ -56,9 +64,17 @@
     "objectPosition": "center center",
     "domain": "murakkaz.com",
     "year": "2026",
-    "tags": ["Fragrance", "E-commerce", "Brand Website"],
+    "tags": [
+      "Fragrance",
+      "E-commerce",
+      "Brand Website"
+    ],
     "link": "https://murakkaz.com/",
-    "filters": ["All", "Recently Uploaded", "E-Commerce Related"],
+    "filters": [
+      "All",
+      "Recently Uploaded",
+      "E-Commerce Related"
+    ],
     "title": "Murakkaz",
     "subtitle": "A Modern Expression of Timeless Fragrance",
     "client": "Murakkaz",
@@ -103,6 +119,3 @@
     ]
   }
 ]
-
-
-

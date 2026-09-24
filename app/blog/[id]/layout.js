@@ -35,15 +35,20 @@ export async function generateMetadata({ params }) {
     };
   }
 
+  const metaDescription =
+    post.description && post.description.length > 158
+      ? post.description.slice(0, 155).trim() + "..."
+      : post.description || "Systems architecture and TCG commerce research by Aeethod.";
+
   return {
     title: `${post.title} | Aeethod Insights`,
-    description: post.description,
+    description: metaDescription,
     alternates: {
       canonical: `/blog/${id}`,
     },
     openGraph: {
       title: `${post.title} | Aeethod Insights`,
-      description: post.description,
+      description: metaDescription,
       url: `https://www.aeethod.com/blog/${id}`,
       type: "article",
       images: post.illustration ? [{ url: post.illustration }] : undefined,
@@ -51,7 +56,7 @@ export async function generateMetadata({ params }) {
     twitter: {
       card: "summary_large_image",
       title: post.title,
-      description: post.description,
+      description: metaDescription,
     },
   };
 }
