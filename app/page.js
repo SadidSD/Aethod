@@ -62,6 +62,21 @@ function HeroEcosystemVisual() {
 
     video.addEventListener("ended", triggerEnd);
 
+    // Responsive DPR Canvas Sizing (prevents browser compositor skip-pixel aliasing)
+    const resizeCanvas = () => {
+      if (!canvas) return;
+      const rect = canvas.getBoundingClientRect();
+      const dpr = Math.min(window.devicePixelRatio || 1, 2);
+      const displayWidth = rect.width > 0 ? rect.width : (wrapperRef.current?.getBoundingClientRect().width || 660);
+      const targetWidth = Math.max(320, Math.round(displayWidth * dpr));
+      const targetHeight = Math.round(targetWidth * (1080 / 1920));
+      if (canvas.width !== targetWidth || canvas.height !== targetHeight) {
+        canvas.width = targetWidth;
+        canvas.height = targetHeight;
+        if (gl) gl.viewport(0, 0, targetWidth, targetHeight);
+      }
+    };
+
     let gl = null;
     try {
       gl = canvas.getContext("webgl", {
@@ -74,7 +89,11 @@ function HeroEcosystemVisual() {
       gl = null;
     }
 
+    let onResize;
+
     if (gl) {
+      resizeCanvas();
+
       const vsSource = `
         attribute vec2 a_position;
         attribute vec2 a_texCoord;
@@ -85,16 +104,28 @@ function HeroEcosystemVisual() {
         }
       `;
 
+      // 4-tap rotated-grid bilinear supersampling for anti-aliasing during minification
       const fsSource = `
         precision highp float;
         uniform sampler2D u_image;
+        uniform vec2 u_texelSize;
         varying vec2 v_texCoord;
-        void main() {
-          vec2 rgbCoord = vec2(v_texCoord.x, v_texCoord.y * 0.5);
-          vec2 alphaCoord = vec2(v_texCoord.x, 0.5 + v_texCoord.y * 0.5);
+
+        vec4 sampleColor(vec2 uv) {
+          vec2 rgbCoord = vec2(uv.x, uv.y * 0.5);
+          vec2 alphaCoord = vec2(uv.x, 0.5 + uv.y * 0.5);
           vec4 rgb = texture2D(u_image, rgbCoord);
           float a = texture2D(u_image, alphaCoord).r;
-          gl_FragColor = vec4(rgb.rgb * a, a);
+          return vec4(rgb.rgb * a, a);
+        }
+
+        void main() {
+          vec2 d = u_texelSize * 0.65;
+          vec4 c0 = sampleColor(v_texCoord + vec2(-d.x,  d.y * 0.5));
+          vec4 c1 = sampleColor(v_texCoord + vec2( d.x, -d.y * 0.5));
+          vec4 c2 = sampleColor(v_texCoord + vec2(-d.x * 0.5, -d.y));
+          vec4 c3 = sampleColor(v_texCoord + vec2( d.x * 0.5,  d.y));
+          gl_FragColor = (c0 + c1 + c2 + c3) * 0.25;
         }
       `;
 
@@ -112,6 +143,9 @@ function HeroEcosystemVisual() {
       gl.attachShader(program, fs);
       gl.linkProgram(program);
       gl.useProgram(program);
+
+      const texelLoc = gl.getUniformLocation(program, "u_texelSize");
+      gl.uniform2f(texelLoc, 1.0 / 1920.0, 1.0 / 2160.0);
 
       const posBuffer = gl.createBuffer();
       gl.bindBuffer(gl.ARRAY_BUFFER, posBuffer);
@@ -164,6 +198,7 @@ function HeroEcosystemVisual() {
       const render = () => {
         if (!isRunning) return;
         if (video.readyState >= 2) {
+          resizeCanvas();
           gl.viewport(0, 0, canvas.width, canvas.height);
           gl.clearColor(0, 0, 0, 0);
           gl.clear(gl.COLOR_BUFFER_BIT);
@@ -195,14 +230,28 @@ function HeroEcosystemVisual() {
         animId = requestAnimationFrame(render);
       };
 
+      onResize = () => {
+        resizeCanvas();
+        if (finalFrameUploaded && gl) {
+          gl.viewport(0, 0, canvas.width, canvas.height);
+          gl.clearColor(0, 0, 0, 0);
+          gl.clear(gl.COLOR_BUFFER_BIT);
+          gl.bindTexture(gl.TEXTURE_2D, texture);
+          gl.drawArrays(gl.TRIANGLES, 0, 6);
+        }
+      };
+      window.addEventListener("resize", onResize);
+
       video.play().catch(() => {});
       animId = requestAnimationFrame(render);
     } else {
       // 2D Canvas fallback
+      resizeCanvas();
       const ctx = canvas.getContext("2d");
       const render2d = () => {
         if (!isRunning) return;
         if (video.readyState >= 2) {
+          resizeCanvas();
           ctx.clearRect(0, 0, canvas.width, canvas.height);
           ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
           if (video.ended) {
@@ -211,6 +260,9 @@ function HeroEcosystemVisual() {
         }
         animId = requestAnimationFrame(render2d);
       };
+      onResize = () => resizeCanvas();
+      window.addEventListener("resize", onResize);
+
       video.play().catch(() => {});
       animId = requestAnimationFrame(render2d);
     }
@@ -218,6 +270,7 @@ function HeroEcosystemVisual() {
     return () => {
       isRunning = false;
       video.removeEventListener("ended", triggerEnd);
+      if (onResize) window.removeEventListener("resize", onResize);
       cancelAnimationFrame(animId);
     };
   }, []);
@@ -230,7 +283,7 @@ function HeroEcosystemVisual() {
       >
         <video
           ref={videoRef}
-          src="/hero-animation-alpha.mp4"
+          src="/hero-animation-alpha.mp4?v=20260925_02"
           autoPlay
           muted
           playsInline
@@ -246,8 +299,8 @@ function HeroEcosystemVisual() {
         />
         <canvas
           ref={canvasRef}
-          width={1920}
-          height={1080}
+          width={1320}
+          height={742}
           aria-label="AEETHOD Platform Ecosystem Animation"
           className={styles.heroAnimationVideo}
         />

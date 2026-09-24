@@ -69,15 +69,25 @@ function processFrame(raw, W, H) {
       // Pure white background
       if (minC >= 238 && chroma < 18) {
         isBgCandidate[i] = 1;
-      } else if (y >= 840 && chroma < 18 && minC >= 90) {
-        // Floor shadow below devices (excluding device interiors)
-        if (x > 50 && x < 450 && y < 850) {
-          // Inside phone body
-        } else if (x > 1050 && x < 1850 && y < 862) {
-          // Inside tablet body
-        } else {
-          isBgCandidate[i] = 1;
-        }
+        continue;
+      }
+
+      // Floor shadow below tablet (tilted baseline starts at y=795)
+      if (x >= 1000 && x <= 1850 && y > (795 + (x - 1060) * 0.125) && chroma < 22 && minC >= 100) {
+        isBgCandidate[i] = 1;
+        continue;
+      }
+
+      // Floor shadow below phone
+      if (x <= 450 && y > 845 && chroma < 22 && minC >= 100) {
+        isBgCandidate[i] = 1;
+        continue;
+      }
+
+      // Floor shadow below hub
+      if (x >= cx - 200 && x <= cx + 200 && y > cy + 155 && chroma < 22 && minC >= 100) {
+        isBgCandidate[i] = 1;
+        continue;
       }
     }
   }
@@ -120,8 +130,10 @@ function processFrame(raw, W, H) {
   }
 
   // 4. Compute alpha matte and build 1920x2160 stacked frame
-  // Top half: de-fringed RGB
-  // Bottom half: greyscale Alpha
+  // INNER ANTI-ALIASING:
+  // - Pixels marked as isBg are strictly 0 alpha (never bleed into white background)
+  // - Only interior border pixels receive smooth cubic ease alpha based on foreground neighborhood
+  // - Edge colors are de-fringed from the white source background
   const stacked = Buffer.alloc(W * (H * 2) * 3);
 
   for (let y = 0; y < H; y++) {
@@ -134,31 +146,25 @@ function processFrame(raw, W, H) {
       if (isBg[idx]) {
         aFloat = 0.0;
       } else {
-        // Check 3x3 neighborhood for border with isBg
-        let isBoundary = false;
+        // Count background neighbors in 3x3
+        let bgCount = 0;
         for (let dy = -1; dy <= 1; dy++) {
           const ny = y + dy;
           if (ny < 0 || ny >= H) continue;
           for (let dx = -1; dx <= 1; dx++) {
+            if (dx === 0 && dy === 0) continue;
             const nx = x + dx;
             if (nx < 0 || nx >= W) continue;
-            if (isBg[ny * W + nx]) {
-              isBoundary = true;
-              break;
-            }
+            if (isBg[ny * W + nx]) bgCount++;
           }
-          if (isBoundary) break;
         }
 
-        if (!isBoundary) {
-          // Solid interior foreground (screens, hub, cables)
+        if (bgCount === 0) {
           aFloat = 1.0;
         } else {
-          // Boundary subpixel anti-aliasing
-          const minC = Math.min(r, g, b);
-          const whiteDist = 255 - minC;
-          const t = Math.max(0.0, Math.min(1.0, whiteDist / 40.0));
-          aFloat = t * t * (3.0 - 2.0 * t);
+          // Inner anti-aliasing
+          const fgFraction = (8 - bgCount) / 8.0;
+          aFloat = fgFraction * fgFraction * (3.0 - 2.0 * fgFraction);
         }
       }
 
