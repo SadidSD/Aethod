@@ -38,12 +38,157 @@ function InlineSVG({ src, className }) {
 }
 
 function HeroEcosystemVisual() {
+  const canvasRef = useRef(null);
   const videoRef = useRef(null);
 
   useEffect(() => {
     const video = videoRef.current;
-    if (!video) return;
-    video.play().catch(() => {});
+    const canvas = canvasRef.current;
+    if (!video || !canvas) return;
+
+    let animId;
+    let isRunning = true;
+
+    let gl = null;
+    try {
+      gl = canvas.getContext("webgl", {
+        alpha: true,
+        premultipliedAlpha: true,
+        antialias: true,
+      });
+    } catch {
+      gl = null;
+    }
+
+    if (gl) {
+      const vsSource = `
+        attribute vec2 a_position;
+        attribute vec2 a_texCoord;
+        varying vec2 v_texCoord;
+        void main() {
+          gl_Position = vec4(a_position, 0.0, 1.0);
+          v_texCoord = a_texCoord;
+        }
+      `;
+
+      const fsSource = `
+        precision mediump float;
+        uniform sampler2D u_image;
+        varying vec2 v_texCoord;
+        void main() {
+          vec2 rgbCoord = vec2(v_texCoord.x, v_texCoord.y * 0.5);
+          vec2 alphaCoord = vec2(v_texCoord.x, 0.5 + v_texCoord.y * 0.5);
+          vec4 rgb = texture2D(u_image, rgbCoord);
+          float a = texture2D(u_image, alphaCoord).r;
+          gl_FragColor = vec4(rgb.rgb * a, a);
+        }
+      `;
+
+      const createShader = (glCtx, type, source) => {
+        const shader = glCtx.createShader(type);
+        glCtx.shaderSource(shader, source);
+        glCtx.compileShader(shader);
+        return shader;
+      };
+
+      const program = gl.createProgram();
+      const vs = createShader(gl, gl.VERTEX_SHADER, vsSource);
+      const fs = createShader(gl, gl.FRAGMENT_SHADER, fsSource);
+      gl.attachShader(program, vs);
+      gl.attachShader(program, fs);
+      gl.linkProgram(program);
+      gl.useProgram(program);
+
+      const posBuffer = gl.createBuffer();
+      gl.bindBuffer(gl.ARRAY_BUFFER, posBuffer);
+      gl.bufferData(
+        gl.ARRAY_BUFFER,
+        new Float32Array([
+          -1, -1,
+           1, -1,
+          -1,  1,
+          -1,  1,
+           1, -1,
+           1,  1,
+        ]),
+        gl.STATIC_DRAW
+      );
+
+      const posLoc = gl.getAttribLocation(program, "a_position");
+      gl.enableVertexAttribArray(posLoc);
+      gl.vertexAttribPointer(posLoc, 2, gl.FLOAT, false, 0, 0);
+
+      const texBuffer = gl.createBuffer();
+      gl.bindBuffer(gl.ARRAY_BUFFER, texBuffer);
+      gl.bufferData(
+        gl.ARRAY_BUFFER,
+        new Float32Array([
+          0, 1,
+          1, 1,
+          0, 0,
+          0, 0,
+          1, 1,
+          1, 0,
+        ]),
+        gl.STATIC_DRAW
+      );
+
+      const texLoc = gl.getAttribLocation(program, "a_texCoord");
+      gl.enableVertexAttribArray(texLoc);
+      gl.vertexAttribPointer(texLoc, 2, gl.FLOAT, false, 0, 0);
+
+      const texture = gl.createTexture();
+      gl.bindTexture(gl.TEXTURE_2D, texture);
+      gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE);
+      gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
+      gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR);
+      gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.LINEAR);
+
+      gl.enable(gl.BLEND);
+      gl.blendFunc(gl.ONE, gl.ONE_MINUS_SRC_ALPHA);
+
+      const render = () => {
+        if (!isRunning) return;
+        if (video.readyState >= 2) {
+          gl.viewport(0, 0, canvas.width, canvas.height);
+          gl.clearColor(0, 0, 0, 0);
+          gl.clear(gl.COLOR_BUFFER_BIT);
+
+          gl.bindTexture(gl.TEXTURE_2D, texture);
+          gl.texImage2D(
+            gl.TEXTURE_2D,
+            0,
+            gl.RGBA,
+            gl.RGBA,
+            gl.UNSIGNED_BYTE,
+            video
+          );
+          gl.drawArrays(gl.TRIANGLES, 0, 6);
+        }
+        animId = requestAnimationFrame(render);
+      };
+
+      video.play().catch(() => {});
+      animId = requestAnimationFrame(render);
+    } else {
+      // 2D Canvas fallback
+      const ctx = canvas.getContext("2d");
+      const render2d = () => {
+        if (!isRunning) return;
+        if (video.readyState >= 2) {
+          ctx.clearRect(0, 0, canvas.width, canvas.height);
+          ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+        }
+        animId = requestAnimationFrame(render2d);
+      };
+      video.play().catch(() => {});
+      animId = requestAnimationFrame(render2d);
+    }
+
+    return () => {
+      isRunning = false;
+      cancelAnimationFrame(animId);
+    };
   }, []);
 
   return (
@@ -51,17 +196,22 @@ function HeroEcosystemVisual() {
       <div className={styles.heroVideoWrapper}>
         <video
           ref={videoRef}
+          src="/hero-animation-alpha.mp4"
           autoPlay
           loop
           muted
           playsInline
           preload="auto"
+          aria-hidden="true"
+          style={{ display: "none" }}
+        />
+        <canvas
+          ref={canvasRef}
+          width={1920}
+          height={1080}
           aria-label="AEETHOD Platform Ecosystem Animation"
           className={styles.heroAnimationVideo}
-        >
-          <source src="/hero-animation.webm" type="video/webm" />
-          <source src="/hero-animation.mp4" type="video/mp4" />
-        </video>
+        />
       </div>
     </div>
   );

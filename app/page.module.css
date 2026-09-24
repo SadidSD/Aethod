@@ -540,6 +540,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  transform: translate(18px, -14px) scale(1.18);
+  transform-origin: center center;
 }
 
 .heroAnimationVideo {
@@ -1114,9 +1116,11 @@
     width: 100% !important;
     max-width: 540px !important;
     aspect-ratio: 16 / 9 !important;
+    transform: translate(0, -6px) scale(1.06) !important;
+    transform-origin: center center !important;
   }
 
-  .heroAnimationCanvas {
+  .heroAnimationVideo {
     width: 100% !important;
     height: 100% !important;
     object-fit: contain !important;
@@ -1358,6 +1362,7 @@
   .heroVideoWrapper {
     max-width: 100% !important;
     margin: 12px auto 0 !important;
+    transform: none !important;
   }
   .heroHeading {
     font-size: 24px !important;
