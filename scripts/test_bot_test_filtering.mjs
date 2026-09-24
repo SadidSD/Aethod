@@ -148,7 +148,7 @@ console.log("\n--- 4. Testing Controlled Test Mode Activation ---");
   // Query param trigger
   const reqParam = {
     headers: new Headers(),
-    url: "https://aeethod.com/?aeethod_test=1",
+    url: "https://www.aeethod.com/?aeethod_test=1",
   };
   assert(detectSessionClassification(reqParam).classification === "test", "?aeethod_test=1 query param classified as test");
 

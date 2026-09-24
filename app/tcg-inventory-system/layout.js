@@ -11,7 +11,7 @@ export const metadata = {
     title: "TCG Inventory Management System — Multi-Channel Card Software | Aeethod",
     description:
       "Master inventory architecture for trading card retailers managing 100k+ singles across web, eBay, TCGplayer, and in-store POS.",
-    url: "https://aeethod.com/tcg-inventory-system",
+    url: "https://www.aeethod.com/tcg-inventory-system",
   },
 };
 
@@ -23,7 +23,7 @@ const serviceJsonLd = {
   provider: {
     "@type": "Organization",
     name: "Aeethod",
-    url: "https://aeethod.com",
+    url: "https://www.aeethod.com",
   },
   description:
     "Central source of truth for trading card inventory. Synchronizes singles, sealed product, and condition variants across web, POS, and marketplaces in real time.",

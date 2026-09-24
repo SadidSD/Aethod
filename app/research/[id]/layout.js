@@ -35,7 +35,7 @@ export async function generateMetadata({ params }) {
     openGraph: {
       title: `${fullTitle} | Aeethod Systems Research`,
       description: paper.description,
-      url: `https://aeethod.com/research/${id}`,
+      url: `https://www.aeethod.com/research/${id}`,
       type: "article",
     },
     twitter: {
@@ -62,19 +62,19 @@ export default async function ResearchPaperLayout({ children, params }) {
         author: {
           "@type": "Organization",
           name: "Aeethod",
-          url: "https://aeethod.com",
+          url: "https://www.aeethod.com",
         },
         publisher: {
           "@type": "Organization",
           name: "Aeethod",
           logo: {
             "@type": "ImageObject",
-            url: "https://aeethod.com/android-chrome-512x512.png",
+            url: "https://www.aeethod.com/android-chrome-512x512.png",
           },
         },
         mainEntityOfPage: {
           "@type": "WebPage",
-          "@id": `https://aeethod.com/research/${id}`,
+          "@id": `https://www.aeethod.com/research/${id}`,
         },
       }
     : null;

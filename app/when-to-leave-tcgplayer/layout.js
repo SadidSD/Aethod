@@ -11,7 +11,7 @@ export const metadata = {
     title: "When Should a TCG Store Build Its Own Website? | Aeethod",
     description:
       "Strategic guide outlining revenue triggers, SKU counts, and operational milestones for launching an owned TCG website.",
-    url: "https://aeethod.com/when-to-leave-tcgplayer",
+    url: "https://www.aeethod.com/when-to-leave-tcgplayer",
   },
 };
 
@@ -24,7 +24,7 @@ const articleJsonLd = {
   author: {
     "@type": "Organization",
     name: "Aeethod",
-    url: "https://aeethod.com",
+    url: "https://www.aeethod.com",
   },
 };
 

@@ -11,7 +11,7 @@ export const metadata = {
     title: "Applied Systems Research & Whitepapers | Aeethod",
     description:
       "Technical whitepapers and system blueprints on TCG pricing fragmentation, multi-agent retail ecosystems, and predictive latency.",
-    url: "https://aeethod.com/research",
+    url: "https://www.aeethod.com/research",
   },
 };
 
@@ -19,7 +19,7 @@ const researchJsonLd = {
   "@context": "https://schema.org",
   "@type": "CollectionPage",
   name: "Aeethod Systems Research & Blueprints",
-  url: "https://aeethod.com/research",
+  url: "https://www.aeethod.com/research",
   description:
     "Applied systems research on complexity, market fragmentation, and enterprise commerce architectures.",
 };

@@ -11,7 +11,7 @@ export const metadata = {
     title: "TCG Marketplace Integration — Real-Time Multi-Channel Sync | Aeethod",
     description:
       "Eliminate double-selling across TCGplayer, eBay, Shopify, Cardmarket, and ManaPool with sub-2-second auto-delisting webhooks and master SKU canonicalization.",
-    url: "https://aeethod.com/services/integrations",
+    url: "https://www.aeethod.com/services/integrations",
   },
 };
 
@@ -23,7 +23,7 @@ const serviceJsonLd = {
   provider: {
     "@type": "Organization",
     name: "Aeethod",
-    url: "https://aeethod.com",
+    url: "https://www.aeethod.com",
   },
   description:
     "Real-time bidirectional inventory synchronization between custom storefronts, TCGplayer Pro, eBay, Cardmarket, and in-store POS systems.",

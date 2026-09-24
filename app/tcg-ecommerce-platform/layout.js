@@ -11,7 +11,7 @@ export const metadata = {
     title: "TCG E-Commerce Platform Architecture & Software | Aeethod",
     description:
       "Enterprise e-commerce platform engineering designed specifically for trading card games.",
-    url: "https://aeethod.com/tcg-ecommerce-platform",
+    url: "https://www.aeethod.com/tcg-ecommerce-platform",
   },
 };
 
@@ -23,7 +23,7 @@ const serviceJsonLd = {
   provider: {
     "@type": "Organization",
     name: "Aeethod",
-    url: "https://aeethod.com",
+    url: "https://www.aeethod.com",
   },
   description:
     "Full-stack digital infrastructure for card retailers combining custom storefronts, real-time sync, and counter intake.",

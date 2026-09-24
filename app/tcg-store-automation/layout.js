@@ -11,7 +11,7 @@ export const metadata = {
     title: "TCG Store Automation — Batch Shipping, Scanning & Orders | Aeethod",
     description:
       "Automate repetitive card shop busywork: 1-click thermal batch shipping, scanner intake, and automated order routing.",
-    url: "https://aeethod.com/tcg-store-automation",
+    url: "https://www.aeethod.com/tcg-store-automation",
   },
 };
 
@@ -23,7 +23,7 @@ const serviceJsonLd = {
   provider: {
     "@type": "Organization",
     name: "Aeethod",
-    url: "https://aeethod.com",
+    url: "https://www.aeethod.com",
   },
   description:
     "End-to-end retail automation for card shops: batch fulfillment queues, thermal label printing, high-speed optical scanning intake, and inventory synchronization.",

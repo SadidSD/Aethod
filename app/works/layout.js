@@ -11,7 +11,7 @@ export const metadata = {
     title: "Our Work — TCG Platform Case Studies & Results | Aeethod",
     description:
       "Explore real-world commerce infrastructure, custom TCG platforms, and operational systems engineered by Aeethod.",
-    url: "https://aeethod.com/works",
+    url: "https://www.aeethod.com/works",
   },
 };
 
@@ -19,7 +19,7 @@ const worksJsonLd = {
   "@context": "https://schema.org",
   "@type": "CollectionPage",
   name: "Aeethod Case Studies & Engineered Systems",
-  url: "https://aeethod.com/works",
+  url: "https://www.aeethod.com/works",
   description:
     "Selected implementations of custom commerce platforms, buylist systems, and automation infrastructure.",
 };

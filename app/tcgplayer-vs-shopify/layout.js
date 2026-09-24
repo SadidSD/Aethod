@@ -11,7 +11,7 @@ export const metadata = {
     title: "TCGplayer vs. Shopify vs. Custom TCG Platform | Aeethod",
     description:
       "A complete technical and financial breakdown across commissions, variant limits, search latency, and inventory control.",
-    url: "https://aeethod.com/tcgplayer-vs-shopify",
+    url: "https://www.aeethod.com/tcgplayer-vs-shopify",
   },
 };
 
@@ -24,7 +24,7 @@ const articleJsonLd = {
   author: {
     "@type": "Organization",
     name: "Aeethod",
-    url: "https://aeethod.com",
+    url: "https://www.aeethod.com",
   },
 };
 

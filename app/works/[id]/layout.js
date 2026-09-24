@@ -39,7 +39,7 @@ export async function generateMetadata({ params }) {
     openGraph: {
       title: `${title} | Aeethod`,
       description,
-      url: `https://aeethod.com/works/${id}`,
+      url: `https://www.aeethod.com/works/${id}`,
       images: work.heroImage ? [{ url: work.heroImage }] : undefined,
     },
   };
@@ -59,13 +59,13 @@ export default async function WorkDetailLayout({ children, params }) {
         author: {
           "@type": "Organization",
           name: "Aeethod",
-          url: "https://aeethod.com",
+          url: "https://www.aeethod.com",
         },
         provider: {
           "@type": "Organization",
           name: "Aeethod",
         },
-        url: `https://aeethod.com/works/${id}`,
+        url: `https://www.aeethod.com/works/${id}`,
       }
     : null;
 

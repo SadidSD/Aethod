@@ -11,7 +11,7 @@ export const metadata = {
     title: "TCG Pricing Automation — Algorithmic Card Repricing Engine | Aeethod",
     description:
       "Automated card repricing: tournament spike capture, undercut defense, and hard profit floors across TCGplayer, eBay, and web.",
-    url: "https://aeethod.com/tcg-pricing-automation",
+    url: "https://www.aeethod.com/tcg-pricing-automation",
   },
 };
 
@@ -23,7 +23,7 @@ const serviceJsonLd = {
   provider: {
     "@type": "Organization",
     name: "Aeethod",
-    url: "https://aeethod.com",
+    url: "https://www.aeethod.com",
   },
   description:
     "Automated dynamic repricing engine for card retailers. Adjusts prices in response to tournament meta shifts, market index trends, and competitor listing actions.",

@@ -11,7 +11,7 @@ export const metadata = {
     title: "TCG Marketplace vs. Own Website | Aeethod",
     description:
       "A strategic comparison of margins, customer lifetime value, and operational control between marketplace dependency and owned commerce.",
-    url: "https://aeethod.com/tcg-marketplace-vs-own-website",
+    url: "https://www.aeethod.com/tcg-marketplace-vs-own-website",
   },
 };
 
@@ -24,7 +24,7 @@ const articleJsonLd = {
   author: {
     "@type": "Organization",
     name: "Aeethod",
-    url: "https://aeethod.com",
+    url: "https://www.aeethod.com",
   },
 };
 

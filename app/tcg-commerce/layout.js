@@ -11,7 +11,7 @@ export const metadata = {
     title: "TCG Commerce Systems — Custom Platforms, Inventory & Automation | Aeethod",
     description:
       "Enterprise commerce infrastructure engineered specifically for trading card retail.",
-    url: "https://aeethod.com/tcg-commerce",
+    url: "https://www.aeethod.com/tcg-commerce",
   },
 };
 
@@ -23,7 +23,7 @@ const serviceJsonLd = {
   provider: {
     "@type": "Organization",
     name: "Aeethod",
-    url: "https://aeethod.com",
+    url: "https://www.aeethod.com",
   },
   description:
     "Dedicated digital infrastructure for high-scale TCG stores: custom storefronts, multi-channel marketplace synchronization, and buylist automation.",

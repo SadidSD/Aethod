@@ -116,7 +116,7 @@ function buildEmailHtml(email, message, timestamp) {
           <!-- Footer -->
           <tr>
             <td style="background:#f9fafb;padding:16px 32px;text-align:center;border-top:1px solid #f3f4f6;">
-              <p style="margin:0;font-size:12px;color:#9ca3af;">Sent from <a href="https://aeethod.com" style="color:#2563eb;text-decoration:none;">aeethod.com</a> Quick Mail</p>
+              <p style="margin:0;font-size:12px;color:#9ca3af;">Sent from <a href="https://www.aeethod.com" style="color:#2563eb;text-decoration:none;">aeethod.com</a> Quick Mail</p>
             </td>
           </tr>
         </table>

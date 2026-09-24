@@ -11,7 +11,7 @@ export const metadata = {
     title: "Custom TCG Commerce Platforms — High-Volume Storefronts | Aeethod",
     description:
       "High-velocity custom storefronts engineered for TCG singles, sealed product, condition variants, and sub-35ms facet filtering.",
-    url: "https://aeethod.com/services/commerce",
+    url: "https://www.aeethod.com/services/commerce",
   },
 };
 
@@ -23,7 +23,7 @@ const serviceJsonLd = {
   provider: {
     "@type": "Organization",
     name: "Aeethod",
-    url: "https://aeethod.com",
+    url: "https://www.aeethod.com",
   },
   description:
     "Turnkey custom e-commerce infrastructure built specifically for high-volume trading card stores, eliminating Shopify's 100-variant limit and marketplace commissions.",

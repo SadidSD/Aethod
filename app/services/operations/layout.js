@@ -11,7 +11,7 @@ export const metadata = {
     title: "TCG Operations Systems — Automated Buylist & Grading | Aeethod",
     description:
       "Automate card intake, trade-ins, condition verification (NM/LP/MP/HP/DMG), and thermal barcode batching for high-volume card shops.",
-    url: "https://aeethod.com/services/operations",
+    url: "https://www.aeethod.com/services/operations",
   },
 };
 
@@ -23,7 +23,7 @@ const serviceJsonLd = {
   provider: {
     "@type": "Organization",
     name: "Aeethod",
-    url: "https://aeethod.com",
+    url: "https://www.aeethod.com",
   },
   description:
     "Behind-the-counter operational infrastructure for card shops: automated buylists, 5-tier condition grading matrices, and thermal receipt intake terminals.",

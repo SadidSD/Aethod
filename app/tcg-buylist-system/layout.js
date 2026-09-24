@@ -11,7 +11,7 @@ export const metadata = {
     title: "Custom TCG Buylist & Trade-In Software | Aeethod",
     description:
       "Automate card intake and trade-ins with custom TCG buylist software. Cash vs. store credit bonuses and thermal receipt printing.",
-    url: "https://aeethod.com/tcg-buylist-system",
+    url: "https://www.aeethod.com/tcg-buylist-system",
   },
 };
 
@@ -23,7 +23,7 @@ const serviceJsonLd = {
   provider: {
     "@type": "Organization",
     name: "Aeethod",
-    url: "https://aeethod.com",
+    url: "https://www.aeethod.com",
   },
   description:
     "Turnkey buylist and trade-in software for card shops. Dynamic valuation formulas, condition grading reconciliation, and thermal barcode intake.",

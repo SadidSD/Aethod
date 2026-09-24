@@ -13,6 +13,6 @@ export default function robots() {
         ],
       },
     ],
-    sitemap: "https://aeethod.com/sitemap.xml",
+    sitemap: "https://www.aeethod.com/sitemap.xml",
   };
 }

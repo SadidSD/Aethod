@@ -11,7 +11,7 @@ export const metadata = {
     title: "Custom TCG Software Engineering — Tailored Retail Systems | Aeethod",
     description:
       "Bespoke software engineering for enterprise card shops, distributors, and TCG platforms.",
-    url: "https://aeethod.com/custom-tcg-software",
+    url: "https://www.aeethod.com/custom-tcg-software",
   },
 };
 
@@ -23,7 +23,7 @@ const serviceJsonLd = {
   provider: {
     "@type": "Organization",
     name: "Aeethod",
-    url: "https://aeethod.com",
+    url: "https://www.aeethod.com",
   },
   description:
     "Tailored engineering for complex card retail workflows: POS custom connectors, private marketplace applications, and high-throughput inventory pipelines.",

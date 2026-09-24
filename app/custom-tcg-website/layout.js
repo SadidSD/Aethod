@@ -11,7 +11,7 @@ export const metadata = {
     title: "Custom TCG Website Development — Built for Card Stores | Aeethod",
     description:
       "Engineering high-performance custom TCG websites with sub-35ms card filtering, buylist integration, and zero marketplace commissions.",
-    url: "https://aeethod.com/custom-tcg-website",
+    url: "https://www.aeethod.com/custom-tcg-website",
   },
 };
 
@@ -23,7 +23,7 @@ const serviceJsonLd = {
   provider: {
     "@type": "Organization",
     name: "Aeethod",
-    url: "https://aeethod.com",
+    url: "https://www.aeethod.com",
   },
   description:
     "Turnkey custom website engineering for trading card retailers. Fast search, condition variant handling, and direct buylist integration.",

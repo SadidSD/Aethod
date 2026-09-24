@@ -11,7 +11,7 @@ export const metadata = {
     title: "TCG Marketplace Integration — TCGplayer, eBay & Shopify Sync | Aeethod",
     description:
       "Real-time bidirectional inventory synchronization across TCGplayer, eBay, Shopify, and in-store POS.",
-    url: "https://aeethod.com/tcg-marketplace-integration",
+    url: "https://www.aeethod.com/tcg-marketplace-integration",
   },
 };
 
@@ -23,7 +23,7 @@ const serviceJsonLd = {
   provider: {
     "@type": "Organization",
     name: "Aeethod",
-    url: "https://aeethod.com",
+    url: "https://www.aeethod.com",
   },
   description:
     "Real-time event pipeline synchronizing trading card inventory across TCGplayer, eBay, Cardmarket, and custom storefronts.",

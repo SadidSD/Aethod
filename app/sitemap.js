@@ -2,7 +2,7 @@ import fs from "fs";
 import path from "path";
 
 export default function sitemap() {
-  const baseUrl = "https://aeethod.com";
+  const baseUrl = "https://www.aeethod.com";
   const now = new Date();
 
   // Static core routes

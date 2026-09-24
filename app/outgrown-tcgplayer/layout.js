@@ -11,7 +11,7 @@ export const metadata = {
     title: "Has Your TCG Store Outgrown TCGplayer? | Aeethod",
     description:
       "A strategic operational breakdown for high-volume card retailers: commission costs, customer retention, and when to launch your own infrastructure.",
-    url: "https://aeethod.com/outgrown-tcgplayer",
+    url: "https://www.aeethod.com/outgrown-tcgplayer",
   },
 };
 
@@ -24,7 +24,7 @@ const articleJsonLd = {
   author: {
     "@type": "Organization",
     name: "Aeethod",
-    url: "https://aeethod.com",
+    url: "https://www.aeethod.com",
   },
 };
 

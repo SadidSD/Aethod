@@ -33,7 +33,7 @@ export async function generateMetadata({ params }) {
     openGraph: {
       title: `${post.title} | Aeethod Insights`,
       description: post.description,
-      url: `https://aeethod.com/blog/${id}`,
+      url: `https://www.aeethod.com/blog/${id}`,
       type: "article",
       images: post.illustration ? [{ url: post.illustration }] : undefined,
     },
@@ -60,19 +60,19 @@ export default async function BlogPostLayout({ children, params }) {
         author: {
           "@type": "Organization",
           name: "Aeethod",
-          url: "https://aeethod.com",
+          url: "https://www.aeethod.com",
         },
         publisher: {
           "@type": "Organization",
           name: "Aeethod",
           logo: {
             "@type": "ImageObject",
-            url: "https://aeethod.com/android-chrome-512x512.png",
+            url: "https://www.aeethod.com/android-chrome-512x512.png",
           },
         },
         mainEntityOfPage: {
           "@type": "WebPage",
-          "@id": `https://aeethod.com/blog/${id}`,
+          "@id": `https://www.aeethod.com/blog/${id}`,
         },
       }
     : null;

@@ -11,7 +11,7 @@ export const metadata = {
     title: "TCG Commerce Insights & Systems Architecture Blog | Aeethod",
     description:
       "In-depth analysis on TCG market structure, multi-agent retail architectures, inventory complexity, and modern commerce infrastructure.",
-    url: "https://aeethod.com/blog",
+    url: "https://www.aeethod.com/blog",
   },
 };
 
@@ -19,13 +19,13 @@ const blogJsonLd = {
   "@context": "https://schema.org",
   "@type": "Blog",
   name: "Aeethod Insights Blog",
-  url: "https://aeethod.com/blog",
+  url: "https://www.aeethod.com/blog",
   description:
     "Engineering insights, complexity analysis, and systems architecture for trading card commerce.",
   publisher: {
     "@type": "Organization",
     name: "Aeethod",
-    url: "https://aeethod.com",
+    url: "https://www.aeethod.com",
   },
 };
 

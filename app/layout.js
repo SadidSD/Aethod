@@ -36,7 +36,7 @@ export const viewport = {
 };
 
 export const metadata = {
-  metadataBase: new URL("https://aeethod.com"),
+  metadataBase: new URL("https://www.aeethod.com"),
   title: {
     default: "Aeethod — TCG Commerce Technology Studio",
     template: "%s | Aeethod",
@@ -65,7 +65,7 @@ export const metadata = {
     "TCG store automation",
     "TCG online store software",
   ],
-  authors: [{ name: "Aeethod Studio", url: "https://aeethod.com" }],
+  authors: [{ name: "Aeethod Studio", url: "https://www.aeethod.com" }],
   creator: "Aeethod",
   publisher: "Aeethod",
   robots: {
@@ -99,7 +99,7 @@ export const metadata = {
     title: "Aeethod — TCG Commerce Technology Studio",
     description:
       "Custom commerce platforms, marketplace integrations, operations systems, and business automation for TCG stores outgrowing their marketplaces.",
-    url: "https://aeethod.com",
+    url: "https://www.aeethod.com",
     siteName: "Aeethod",
     locale: "en_US",
     type: "website",
@@ -125,11 +125,11 @@ export const metadata = {
 const orgJsonLd = {
   "@context": "https://schema.org",
   "@type": "Organization",
-  "@id": "https://aeethod.com/#organization",
+  "@id": "https://www.aeethod.com/#organization",
   name: "Aeethod",
   alternateName: ["Aeethod Studio", "Aeethod TCG Technology Studio"],
-  url: "https://aeethod.com",
-  logo: "https://aeethod.com/android-chrome-512x512.png",
+  url: "https://www.aeethod.com",
+  logo: "https://www.aeethod.com/android-chrome-512x512.png",
   description:
     "Aeethod is a vertical technology studio engineering custom commerce platforms, marketplace inventory synchronization, buylist systems, and automation infrastructure for Trading Card Game (TCG) retailers.",
   knowsAbout: [
@@ -148,7 +148,7 @@ const orgJsonLd = {
   contactPoint: {
     "@type": "ContactPoint",
     contactType: "sales and technical consultation",
-    url: "https://aeethod.com/contact",
+    url: "https://www.aeethod.com/contact",
     availableLanguage: ["English"],
   },
 };
@@ -156,13 +156,13 @@ const orgJsonLd = {
 const webSiteJsonLd = {
   "@context": "https://schema.org",
   "@type": "WebSite",
-  "@id": "https://aeethod.com/#website",
+  "@id": "https://www.aeethod.com/#website",
   name: "Aeethod",
-  url: "https://aeethod.com",
+  url: "https://www.aeethod.com",
   description:
     "Aeethod — Custom TCG commerce platforms, inventory synchronization, and business automation.",
   publisher: {
-    "@id": "https://aeethod.com/#organization",
+    "@id": "https://www.aeethod.com/#organization",
   },
 };
 

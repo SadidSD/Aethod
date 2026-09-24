@@ -11,7 +11,7 @@ export const metadata = {
     title: "TCG AI Agents & Autonomous Retail Intelligence | Aeethod",
     description:
       "Specialized AI agents for trading card retail: condition verification, automated buylist drafting, and 24/7 collector support.",
-    url: "https://aeethod.com/tcg-ai-agents",
+    url: "https://www.aeethod.com/tcg-ai-agents",
   },
 };
 
@@ -23,7 +23,7 @@ const serviceJsonLd = {
   provider: {
     "@type": "Organization",
     name: "Aeethod",
-    url: "https://aeethod.com",
+    url: "https://www.aeethod.com",
   },
   description:
     "Domain-specific AI agents engineered for trading card game commerce, automating inventory monitoring, customer inquiries, and trade valuations.",

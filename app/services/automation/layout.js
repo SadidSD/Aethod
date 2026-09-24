@@ -11,7 +11,7 @@ export const metadata = {
     title: "TCG Business Automation — Dynamic Repricing & Batch Fulfillment | Aeethod",
     description:
       "Algorithmic market repricing, tournament spike detection, undercut defense, and automated thermal batch fulfillment for high-volume TCG retailers.",
-    url: "https://aeethod.com/services/automation",
+    url: "https://www.aeethod.com/services/automation",
   },
 };
 
@@ -23,7 +23,7 @@ const serviceJsonLd = {
   provider: {
     "@type": "Organization",
     name: "Aeethod",
-    url: "https://aeethod.com",
+    url: "https://www.aeethod.com",
   },
   description:
     "Automated dynamic repricing rules, tournament spike detection, 1-click batch thermal label generation, and high-speed scanner intake pipelines.",
