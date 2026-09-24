@@ -528,7 +528,7 @@
   align-items: center;
   justify-content: center;
   flex: 1.1;
-  max-width: 620px;
+  max-width: 660px;
   width: 100%;
   align-self: center;
 }
@@ -540,9 +540,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  transform: translateY(-20px) scale(1.065);
-  transform-origin: center center;
-  will-change: transform;
+  transform: translateY(-20px);
 }
 
 .heroAnimationVideo {

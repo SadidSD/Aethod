@@ -9,142 +9,179 @@ const tempRawDir = path.resolve('temp_raw_frames');
 const tempStackedDir = path.resolve('temp_stacked_frames');
 const outputAlphaMp4 = path.resolve('public/hero-animation-alpha.mp4');
 
-function processFrame(data, W, H) {
-  // 1. Flood fill pure white background from outer canvas edges
+function insidePoly(x, y, poly) {
+  let inside = false;
+  for (let i = 0, j = poly.length - 1; i < poly.length; j = i++) {
+    const xi = poly[i][0], yi = poly[i][1];
+    const xj = poly[j][0], yj = poly[j][1];
+    const intersect = ((yi > y) !== (yj > y)) && (x < (xj - xi) * (y - yi) / (yj - yi) + xi);
+    if (intersect) inside = !inside;
+  }
+  return inside;
+}
+
+function processFrame(raw, W, H) {
+  // 1. Dynamically locate Aeethod logo in the central diamond hub for this frame
+  let minX = W, maxX = 0, minY = H, maxY = 0;
+  for (let y = 570; y <= 690; y++) {
+    for (let x = 680; x <= 820; x++) {
+      const idx = (y * W + x) * 3;
+      if (raw[idx] < 40 && raw[idx+1] < 40 && raw[idx+2] < 80) {
+        if (x < minX) minX = x; if (x > maxX) maxX = x;
+        if (y < minY) minY = y; if (y > maxY) maxY = y;
+      }
+    }
+  }
+  const cx = (minX + maxX) / 2;
+  const cy = (minY + maxY) / 2;
+
+  // Dynamic diamond hub polygon (protects white top plate and logo)
+  const hubPoly = [
+    [cx, cy - 88],
+    [cx + 180, cy + 22],
+    [cx, cy + 130],
+    [cx - 180, cy + 22]
+  ];
+
+  // 2. Classify candidate background pixels:
+  // - Protect hub top plate
+  // - Protect purple cables
+  // - Protect glowing blue hub base
+  // - Treat pure white background & ambient floor shadow outside devices as candidate background
+  const isBgCandidate = new Uint8Array(W * H);
+  for (let y = 0; y < H; y++) {
+    for (let x = 0; x < W; x++) {
+      const i = y * W + x;
+
+      if (insidePoly(x, y, hubPoly)) continue;
+
+      const idx = i * 3;
+      const r = raw[idx], g = raw[idx+1], b = raw[idx+2];
+      const minC = Math.min(r, g, b);
+      const chroma = Math.max(r, g, b) - minC;
+
+      // Purple cable: vibrant purple chroma
+      if (chroma >= 25 && (b - g) >= 20 && b >= 150) continue;
+
+      // Glowing blue hub base
+      if (x >= cx - 200 && x <= cx + 200 && y >= cy && y <= cy + 160 && (b - r) >= 28 && (b - g) >= 28) continue;
+
+      // Pure white background
+      if (minC >= 238 && chroma < 18) {
+        isBgCandidate[i] = 1;
+      } else if (y >= 840 && chroma < 18 && minC >= 90) {
+        // Floor shadow below devices (excluding device interiors)
+        if (x > 50 && x < 450 && y < 850) {
+          // Inside phone body
+        } else if (x > 1050 && x < 1850 && y < 862) {
+          // Inside tablet body
+        } else {
+          isBgCandidate[i] = 1;
+        }
+      }
+    }
+  }
+
+  // 3. BFS flood fill starting from image top, bottom, and enclosed pocket
   const isBg = new Uint8Array(W * H);
   const queue = new Int32Array(W * H);
-  let qLen = 0;
+  let head = 0, tail = 0;
 
-  // Add outer border near-white pixels
   for (let x = 0; x < W; x++) {
-    const topIdx = x * 3;
-    const botIdx = ((H - 1) * W + x) * 3;
-    if (data[topIdx] >= 248 && data[topIdx+1] >= 248 && data[topIdx+2] >= 248) {
-      isBg[x] = 1; queue[qLen++] = x;
-    }
-    if (data[botIdx] >= 248 && data[botIdx+1] >= 248 && data[botIdx+2] >= 248) {
-      isBg[(H - 1) * W + x] = 1; queue[qLen++] = (H - 1) * W + x;
-    }
-  }
-  for (let y = 0; y < H; y++) {
-    const leftIdx = (y * W) * 3;
-    const rightIdx = (y * W + (W - 1)) * 3;
-    if (data[leftIdx] >= 248 && data[leftIdx+1] >= 248 && data[leftIdx+2] >= 248) {
-      if (!isBg[y * W]) { isBg[y * W] = 1; queue[qLen++] = y * W; }
-    }
-    if (data[rightIdx] >= 248 && data[rightIdx+1] >= 248 && data[rightIdx+2] >= 248) {
-      if (!isBg[y * W + W - 1]) { isBg[y * W + W - 1] = 1; queue[qLen++] = y * W + W - 1; }
-    }
+    if (isBgCandidate[x]) { isBg[x] = 1; queue[tail++] = x; }
+    const bIdx = (H - 1) * W + x;
+    if (isBgCandidate[bIdx] && !isBg[bIdx]) { isBg[bIdx] = 1; queue[tail++] = bIdx; }
   }
 
-  let head = 0;
-  while (head < qLen) {
+  // Seed enclosed pocket between phone and hub
+  const pIdx = 600 * W + 480;
+  if (isBgCandidate[pIdx] && !isBg[pIdx]) {
+    isBg[pIdx] = 1; queue[tail++] = pIdx;
+  }
+
+  while (head < tail) {
     const curr = queue[head++];
-    const cx = curr % W;
-    const cy = (curr / W) | 0;
+    const cx_ = curr % W;
+    const cy_ = Math.floor(curr / W);
 
     const neighbors = [
-      cy > 0 ? curr - W : -1,
-      cy < H - 1 ? curr + W : -1,
-      cx > 0 ? curr - 1 : -1,
-      cx < W - 1 ? curr + 1 : -1
+      cx_ > 0 ? curr - 1 : -1,
+      cx_ < W - 1 ? curr + 1 : -1,
+      cy_ > 0 ? curr - W : -1,
+      cy_ < H - 1 ? curr + W : -1
     ];
 
     for (const n of neighbors) {
-      if (n !== -1 && !isBg[n]) {
-        const idx = n * 3;
-        const r = data[idx], g = data[idx+1], b = data[idx+2];
-        const minC = Math.min(r, g, b);
-        const maxC = Math.max(r, g, b);
-        const chroma = maxC - minC;
-
-        // Background is pure white (min >= 251 and chroma <= 3)
-        if (minC >= 251 && chroma <= 3) {
-          isBg[n] = 1;
-          queue[qLen++] = n;
-        }
+      if (n !== -1 && isBgCandidate[n] && !isBg[n]) {
+        isBg[n] = 1;
+        queue[tail++] = n;
       }
     }
   }
 
-  // 2. Base alpha: all unreached pixels (inside devices, cables, hub) are 100% foreground (1.0)
-  const alpha = new Float32Array(W * H);
-  for (let i = 0; i < W * H; i++) {
-    if (!isBg[i]) alpha[i] = 1.0;
-  }
-
-  // 3. Find transition border pixels (foreground touching background)
-  const isBorder = new Uint8Array(W * H);
-  for (let y = 1; y < H - 1; y++) {
-    for (let x = 1; x < W - 1; x++) {
-      const i = y * W + x;
-      if (!isBg[i]) {
-        if (isBg[i - 1] || isBg[i + 1] || isBg[i - W] || isBg[i + W] ||
-            isBg[i - W - 1] || isBg[i - W + 1] || isBg[i + W - 1] || isBg[i + W + 1]) {
-          isBorder[i] = 1;
-        }
-      }
-    }
-  }
-
-  // Apply smooth anti-aliased feathering on the 1-2px border based on original subpixel luminance
-  for (let y = 1; y < H - 1; y++) {
-    for (let x = 1; x < W - 1; x++) {
-      const i = y * W + x;
-      if (isBorder[i]) {
-        const idx = i * 3;
-        const r = data[idx], g = data[idx+1], b = data[idx+2];
-        const minC = Math.min(r, g, b);
-        const maxC = Math.max(r, g, b);
-        const chroma = maxC - minC;
-
-        if (minC >= 225 && chroma <= 18) {
-          const t = (255 - minC) / 30.0;
-          alpha[i] = Math.min(1.0, Math.max(0.08, t * t * (3.0 - 2.0 * t)));
-        } else {
-          alpha[i] = 1.0;
-        }
-      }
-    }
-  }
-
-  // 4. Build Stacked Buffer (1920 x 2160 x 3)
-  // Top half: De-fringed RGB (white edge bleed removed so dark mode has zero halo)
-  // Bottom half: Grayscale Alpha
+  // 4. Compute alpha matte and build 1920x2160 stacked frame
+  // Top half: de-fringed RGB
+  // Bottom half: greyscale Alpha
   const stacked = Buffer.alloc(W * (H * 2) * 3);
 
   for (let y = 0; y < H; y++) {
     for (let x = 0; x < W; x++) {
-      const i = y * W + x;
-      const srcIdx = i * 3;
-      const aFloat = alpha[i];
-      const aByte = Math.round(aFloat * 255);
+      const idx = y * W + x;
+      const srcIdx = idx * 3;
+      const r = raw[srcIdx], g = raw[srcIdx+1], b = raw[srcIdx+2];
 
-      const topIdx = i * 3;
+      let aFloat = 0.0;
+      if (isBg[idx]) {
+        aFloat = 0.0;
+      } else {
+        // Check 3x3 neighborhood for border with isBg
+        let isBoundary = false;
+        for (let dy = -1; dy <= 1; dy++) {
+          const ny = y + dy;
+          if (ny < 0 || ny >= H) continue;
+          for (let dx = -1; dx <= 1; dx++) {
+            const nx = x + dx;
+            if (nx < 0 || nx >= W) continue;
+            if (isBg[ny * W + nx]) {
+              isBoundary = true;
+              break;
+            }
+          }
+          if (isBoundary) break;
+        }
+
+        if (!isBoundary) {
+          // Solid interior foreground (screens, hub, cables)
+          aFloat = 1.0;
+        } else {
+          // Boundary subpixel anti-aliasing
+          const minC = Math.min(r, g, b);
+          const whiteDist = 255 - minC;
+          const t = Math.max(0.0, Math.min(1.0, whiteDist / 40.0));
+          aFloat = t * t * (3.0 - 2.0 * t);
+        }
+      }
+
+      const aByte = Math.round(aFloat * 255);
+      const topIdx = idx * 3;
       const botIdx = ((H + y) * W + x) * 3;
 
       if (aByte === 0) {
-        // Transparent background in top half
         stacked[topIdx] = 0;
         stacked[topIdx+1] = 0;
         stacked[topIdx+2] = 0;
       } else {
-        const r = data[srcIdx], g = data[srcIdx+1], b = data[srcIdx+2];
         let cleanR = r, cleanG = g, cleanB = b;
-
-        // De-fringe edge pixels against white background
-        if (aFloat > 0.05 && aFloat < 0.98) {
+        if (aFloat > 0.02 && aFloat < 0.98) {
           cleanR = Math.max(0, Math.min(255, Math.round((r - (1 - aFloat) * 255) / aFloat)));
           cleanG = Math.max(0, Math.min(255, Math.round((g - (1 - aFloat) * 255) / aFloat)));
           cleanB = Math.max(0, Math.min(255, Math.round((b - (1 - aFloat) * 255) / aFloat)));
         }
-
         stacked[topIdx] = cleanR;
         stacked[topIdx+1] = cleanG;
         stacked[topIdx+2] = cleanB;
       }
 
-      // Bottom half: Grayscale Alpha
       stacked[botIdx] = aByte;
       stacked[botIdx+1] = aByte;
       stacked[botIdx+2] = aByte;
@@ -155,7 +192,7 @@ function processFrame(data, W, H) {
 }
 
 async function main() {
-  console.log('=== Starting Ultra-Smooth Anti-Aliased Alpha Video Generation ===');
+  console.log('=== Starting High-Precision Anti-Aliased Alpha Video Generation ===');
 
   if (!fs.existsSync(sourceVideo)) {
     throw new Error(`Source video not found: ${sourceVideo}`);
@@ -171,7 +208,7 @@ async function main() {
   const rawFiles = fs.readdirSync(tempRawDir).filter(f => f.endsWith('.png')).sort();
   console.log(`Extracted ${rawFiles.length} frames.`);
 
-  console.log('Step 2: Processing frames with edge anti-aliasing & white de-fringing (1920x2160)...');
+  console.log('Step 2: Processing frames with dynamic hub tracking and subpixel alpha matte (1920x2160)...');
   const concurrency = 8;
   let completed = 0;
 
@@ -206,13 +243,13 @@ async function main() {
   execSync(encodeCmd, { stdio: 'inherit' });
 
   const stats = fs.statSync(outputAlphaMp4);
-  console.log(`Generated Smooth Alpha Video: ${outputAlphaMp4} (${(stats.size / 1024 / 1024).toFixed(2)} MB)`);
+  console.log(`Generated Mathematical Alpha Video: ${outputAlphaMp4} (${(stats.size / 1024 / 1024).toFixed(2)} MB)`);
 
   console.log('Cleaning up temporary frame directories...');
   fs.rmSync(tempRawDir, { recursive: true, force: true });
   fs.rmSync(tempStackedDir, { recursive: true, force: true });
 
-  console.log('=== Ultra-Smooth Alpha Video Generation Complete! ===');
+  console.log('=== Alpha Video Generation Complete! ===');
 }
 
 main().catch(err => {
