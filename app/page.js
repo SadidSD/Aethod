@@ -55,6 +55,7 @@ function HeroEcosystemVisual() {
         alpha: true,
         premultipliedAlpha: true,
         antialias: true,
+        preserveDrawingBuffer: true,
       });
     } catch {
       gl = null;
@@ -150,6 +151,11 @@ function HeroEcosystemVisual() {
       gl.enable(gl.BLEND);
       gl.blendFunc(gl.ONE, gl.ONE_MINUS_SRC_ALPHA);
 
+      const handleEnded = () => {
+        video.pause();
+      };
+      video.addEventListener("ended", handleEnded);
+
       const render = () => {
         if (!isRunning) return;
         if (video.readyState >= 2) {
@@ -158,14 +164,16 @@ function HeroEcosystemVisual() {
           gl.clear(gl.COLOR_BUFFER_BIT);
 
           gl.bindTexture(gl.TEXTURE_2D, texture);
-          gl.texImage2D(
-            gl.TEXTURE_2D,
-            0,
-            gl.RGBA,
-            gl.RGBA,
-            gl.UNSIGNED_BYTE,
-            video
-          );
+          if (!video.ended) {
+            gl.texImage2D(
+              gl.TEXTURE_2D,
+              0,
+              gl.RGBA,
+              gl.RGBA,
+              gl.UNSIGNED_BYTE,
+              video
+            );
+          }
           gl.drawArrays(gl.TRIANGLES, 0, 6);
         }
         animId = requestAnimationFrame(render);
@@ -190,6 +198,7 @@ function HeroEcosystemVisual() {
 
     return () => {
       isRunning = false;
+      video.removeEventListener("ended", handleEnded);
       cancelAnimationFrame(animId);
     };
   }, []);
@@ -201,7 +210,6 @@ function HeroEcosystemVisual() {
           ref={videoRef}
           src="/hero-animation-alpha.mp4"
           autoPlay
-          loop
           muted
           playsInline
           preload="auto"

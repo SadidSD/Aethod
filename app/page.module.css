@@ -540,6 +540,23 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  animation: heroSubtleFloat 7s cubic-bezier(0.42, 0, 0.58, 1) infinite alternate;
+  will-change: transform;
+}
+
+@keyframes heroSubtleFloat {
+  0% {
+    transform: translateY(0px);
+  }
+  100% {
+    transform: translateY(-8px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .heroVideoWrapper {
+    animation: none !important;
+  }
 }
 
 .heroAnimationVideo {
@@ -1114,6 +1131,16 @@
     width: 100% !important;
     max-width: 540px !important;
     aspect-ratio: 16 / 9 !important;
+    animation: heroSubtleFloatTablet 7s cubic-bezier(0.42, 0, 0.58, 1) infinite alternate !important;
+  }
+
+  @keyframes heroSubtleFloatTablet {
+    0% {
+      transform: translateY(0px);
+    }
+    100% {
+      transform: translateY(-5px);
+    }
   }
 
   .heroAnimationVideo {
