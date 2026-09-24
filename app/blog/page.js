@@ -72,6 +72,7 @@ export default function BlogPage() {
     "Marketplace Strategy",
     "Pricing & ROI",
     "Inventory Sync",
+    "Operations & Buylists",
   ];
 
   const topics = [

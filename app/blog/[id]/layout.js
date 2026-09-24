@@ -13,6 +13,17 @@ function getBlogPost(id) {
   }
 }
 
+export async function generateStaticParams() {
+  try {
+    const filePath = path.join(process.cwd(), "content", "blog.json");
+    if (!fs.existsSync(filePath)) return [];
+    const posts = JSON.parse(fs.readFileSync(filePath, "utf-8"));
+    return posts.map((p) => ({ id: p.id }));
+  } catch {
+    return [];
+  }
+}
+
 export async function generateMetadata({ params }) {
   const { id } = await params;
   const post = getBlogPost(id);
