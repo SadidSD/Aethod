@@ -7,6 +7,8 @@ import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
 import Link from "next/link";
 
+import initialPosts from "../../content/blog.json";
+
 function InlineSVG({ src, className, style }) {
   const [svgContent, setSvgContent] = useState("");
   useEffect(() => {
@@ -33,7 +35,7 @@ function InlineSVG({ src, className, style }) {
 
 export default function BlogPage() {
   const { isDark, toggleTheme } = useTheme();
-  const [posts, setPosts] = useState([]);
+  const [posts, setPosts] = useState(initialPosts || []);
   const [searchQuery, setSearchQuery] = useState("");
   const [activeFilter, setActiveFilter] = useState("All");
   const [activeTopic, setActiveTopic] = useState(null);
@@ -50,31 +52,35 @@ export default function BlogPage() {
     }
   }, []);
 
-  // Fetch blog posts on mount
+  // Sync fresh blog posts on mount
   useEffect(() => {
     fetch("/api/content?type=blog")
       .then((res) => res.json())
-      .then((data) => setPosts(data))
+      .then((data) => {
+        if (Array.isArray(data) && data.length > 0) {
+          setPosts(data);
+        }
+      })
       .catch((err) => console.error("Failed to load blog posts:", err));
   }, []);
 
   const filters = [
     "All",
     "Recently Uploaded",
-    "History",
-    "By Sadid Bin Hasan",
-    "E-Commerce Related",
-    "F-Commerce",
+    "Competitor Analysis",
+    "Store Architecture",
+    "Marketplace Strategy",
+    "Pricing & ROI",
+    "Inventory Sync",
   ];
 
   const topics = [
-    { name: "AI Behavior", count: 11 },
-    { name: "Complexity Research", count: 9 },
-    { name: "Market Structure", count: 15 },
-    { name: "Future System", count: 5 },
-    { name: "Short Essays", count: 6 },
-    { name: "Diagram", count: 8 },
-    { name: "Insight", count: 4 },
+    { name: "Competitor Analysis", count: posts.filter((p) => p.topic === "Competitor Analysis").length },
+    { name: "Store Architecture", count: posts.filter((p) => p.topic === "Store Architecture").length },
+    { name: "Marketplace Strategy", count: posts.filter((p) => p.topic === "Marketplace Strategy").length },
+    { name: "Pricing & ROI", count: posts.filter((p) => p.topic === "Pricing & ROI").length },
+    { name: "Inventory Sync", count: posts.filter((p) => p.topic === "Inventory Sync").length },
+    { name: "Operations & Buylists", count: posts.filter((p) => p.topic === "Operations & Buylists").length },
   ];
 
   // Filter posts by search, topic, and active filter
@@ -91,14 +97,9 @@ export default function BlogPage() {
 
     const matchesFilter =
       activeFilter === "All" ||
-      (activeFilter === "Recently Uploaded" && true) ||
-      (activeFilter === "E-Commerce Related" &&
-        post.tags &&
-        post.tags.some(
-          (t) =>
-            t.toLowerCase().includes("e-commerce") ||
-            t.toLowerCase().includes("ecommerce")
-        ));
+      activeFilter === "Recently Uploaded" ||
+      post.topic === activeFilter ||
+      (post.tags && post.tags.some((t) => t.toLowerCase().includes(activeFilter.toLowerCase())));
 
     return matchesSearch && matchesTopic && matchesFilter;
   });

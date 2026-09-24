@@ -7,6 +7,7 @@ import styles from "./blog-detail.module.css";
 import { useTheme } from "../../context/ThemeContext";
 import Footer from "../../components/Footer";
 import Navbar from "../../components/Navbar";
+import initialBlogs from "../../../content/blog.json";
 
 function InlineSVG({ src, className, style }) {
   const [svgContent, setSvgContent] = useState("");
@@ -38,8 +39,10 @@ function InlineSVG({ src, className, style }) {
 export default function BlogDetailPage() {
   const { id } = useParams();
   const { isDark } = useTheme();
-  const [blog, setBlog] = useState(null);
-  const [loading, setLoading] = useState(true);
+  
+  const initialPost = Array.isArray(initialBlogs) ? initialBlogs.find((post) => post.id === id) : null;
+  const [blog, setBlog] = useState(initialPost || null);
+  const [loading, setLoading] = useState(!initialPost);
 
   const playClickSound = useCallback(() => {
     try {
@@ -57,7 +60,7 @@ export default function BlogDetailPage() {
       .then((res) => res.json())
       .then((data) => {
         const found = data.find((post) => post.id === id);
-        setBlog(found);
+        if (found) setBlog(found);
         setLoading(false);
       })
       .catch((err) => {
