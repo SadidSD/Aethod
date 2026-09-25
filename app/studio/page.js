@@ -188,7 +188,7 @@ export default function StudioPage() {
                 The <span className={styles.purpleHighlightText}>Builders</span>
               </h2>
               <p className={styles.teamSubtitle}>
-                Aeethod is a vertical systems studio led by collectors and engineers. We combine lifelong domain immersion in the trading card economy with deep systems engineering.
+                Aeethod is a vertical systems studio engineering sovereign commerce and real-time inventory systems for trading card retailers. We combine domain passion in the collectibles economy with deep systems engineering.
               </p>
             </div>
 
@@ -214,7 +214,7 @@ export default function StudioPage() {
                   </div>
                 </div>
                 <p className={styles.teamBio}>
-                  A lifelong Pokémon collector turned systems engineer. Sadid began programming web architectures, autonomous agents, and business automations in his teens before recognizing the critical operational bottlenecks of the TCG retail economy. Seeing store owners squeezed by marketplace fees and crippled by fragile, legacy POS software, he founded Aeethod to engineer sovereign, high-throughput digital platforms that card shops own permanently.
+                  With Pokémon card collecting as a personal hobby and a background in programming web architectures, autonomous agents, and business automations from his teenage years, Sadid recognized the critical operational bottlenecks of the TCG retail economy. Seeing store owners squeezed by marketplace fees and crippled by fragile, legacy POS software, he founded Aeethod to engineer sovereign, high-throughput digital platforms that card shops own permanently.
                 </p>
                 <div className={styles.teamTags}>
                   <span className={styles.teamTag}>Core System Architecture</span>
@@ -259,7 +259,7 @@ export default function StudioPage() {
                   </div>
                 </div>
                 <p className={styles.teamBio}>
-                  Passionate about software engineering from childhood and coding since her teenage years, Anika was scouted by Sadid at university for her exceptional systems rigor and algorithmic precision. At Aeethod, she engineers the high-reliability backend pipelines, edge caching layers, and multi-channel webhook meshes that keep 100,000+ card SKUs synced with zero race conditions and zero overselling.
+                  Bringing deep algorithmic precision and systems rigor to the studio, Anika engineers Aeethod's high-reliability backend pipelines, edge caching layers, and multi-channel webhook meshes that keep 100,000+ card SKUs synced with zero race conditions and zero overselling across in-store POS, TCGplayer, and web storefronts.
                 </p>
                 <div className={styles.teamTags}>
                   <span className={styles.teamTag}>Real-Time Webhook Mesh</span>
@@ -293,7 +293,7 @@ export default function StudioPage() {
                   </div>
                 </div>
                 <p className={styles.teamBio}>
-                  Combining sharp visual intuition with a keen commercial mindset, Nayem was scouted by Sadid at university to redefine the digital experience of card collecting. He bridges collector psychology with high-converting ecommerce flows—replacing clunky 2012-era templates with fast, tactile, mobile-first interfaces that turn casual collectors into high-LTV repeat buyers.
+                  Combining sharp visual intuition with a keen commercial mindset, Nayem redefines the digital experience of card collecting. He bridges collector psychology with high-converting ecommerce flows—replacing clunky 2012-era templates with fast, tactile, mobile-first interfaces that turn casual visitors into high-LTV repeat buyers.
                 </p>
                 <div className={styles.teamTags}>
                   <span className={styles.teamTag}>Collector Experience (CX)</span>

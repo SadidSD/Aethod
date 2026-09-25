@@ -170,7 +170,7 @@ export default function BlogDetailPage() {
             </div>
           </div>
           <p className={styles.authorBioText}>
-            Sadid is the founder of Aeethod, architecting sovereign digital commerce platforms, real-time multi-channel inventory meshes, and high-concurrency automations for high-growth TCG retailers. A lifelong Pokémon & trading card enthusiast who turned systems engineering into custom digital infrastructure for card shops.
+            Sadid is the founder of Aeethod, architecting sovereign digital commerce platforms, real-time multi-channel inventory meshes, and high-concurrency automations for high-growth TCG retailers. Having collected Pokémon cards as a hobby alongside building web architectures and automations, he turned systems engineering into custom digital infrastructure for card shops.
           </p>
           <div className={styles.authorBioFooter}>
             <Link href="/contact" className={styles.authorBioCta} onClick={playClickSound}>

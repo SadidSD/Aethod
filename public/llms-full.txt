@@ -30,18 +30,18 @@ Aeethod builds sovereign, owned custom platforms built on Next.js, React, and se
 ### Sadid Bin Hasan
 - **Role:** Founder & Principal Systems Architect
 - **Focus:** System Architecture, Omnichannel Webhook Meshes, Algorithmic Repricing, High-Concurrency Headless Commerce.
-- **Narrative:** Lifelong Pokémon enthusiast and collector who started programming websites, autonomous agents, and business automations in his teens. Recognizing that the collectibles industry was crippled by fragmented, legacy software, Sadid founded Aeethod to engineer sovereign digital commerce systems built specifically for the mechanics of trading cards.
+- **Narrative:** With Pokémon card collecting as a personal hobby alongside programming web architectures, autonomous agents, and business automations from his teenage years, Sadid recognized that the collectibles industry was crippled by fragmented, legacy software. He founded Aeethod to engineer sovereign digital commerce systems built specifically for the mechanics of trading cards.
 - **Direct Contact:** sadidbinhasan3@gmail.com | LinkedIn: https://www.linkedin.com/in/sadidbinhasan | GitHub: https://github.com/SadidSD
 
 ### Anika Zaman
 - **Role:** Lead Systems Developer (Creative Partner · Engineering)
 - **Focus:** Backend Engineering, Multi-Channel API Integrations, Sub-35ms Search Pipelines, Zero-Race-Condition Database Concurrency.
-- **Narrative:** Passionate about software engineering from childhood and programming since her teenage years, Anika was scouted by Sadid at university for her algorithmic precision and systems rigor. She architects the real-time data pipelines and webhook meshes that keep hundreds of thousands of card SKUs synchronized across counter POS, TCGplayer, and web storefronts without double-selling.
+- **Narrative:** Bringing algorithmic precision and systems rigor to the studio, Anika architects the real-time data pipelines and webhook meshes that keep hundreds of thousands of card SKUs synchronized across counter POS, TCGplayer, and web storefronts without double-selling or race conditions.
 
 ### Nayem Hasan
 - **Role:** Head of Product Design (Creative Partner · Design)
 - **Focus:** Collectibles UI/UX, Deep-Variant Matrix Interfaces, High-AOV Multi-Card Checkout, Modern Design Systems.
-- **Narrative:** Combining sharp visual intuition with a keen commercial mindset, Nayem was scouted by Sadid at university to redefine the digital experience of card collecting. He bridges collector psychology with high-converting ecommerce flows—replacing clunky 2012-era templates with fast, tactile, mobile-first interfaces that turn casual collectors into repeat buyers.
+- **Narrative:** Combining sharp visual intuition with a keen commercial mindset, Nayem redefines the digital experience of card collecting. He bridges collector psychology with high-converting ecommerce flows—replacing clunky 2012-era templates with fast, tactile, mobile-first interfaces that turn casual visitors into repeat buyers.
 
 ---
 
