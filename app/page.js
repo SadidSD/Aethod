@@ -67,7 +67,7 @@ function HeroEcosystemVisual() {
       if (!canvas) return;
       const rect = canvas.getBoundingClientRect();
       const dpr = Math.min(window.devicePixelRatio || 1, 2);
-      const displayWidth = rect.width > 0 ? rect.width : (wrapperRef.current?.getBoundingClientRect().width || 1080);
+      const displayWidth = rect.width > 0 ? rect.width : (wrapperRef.current?.getBoundingClientRect().width || 980);
       const targetWidth = Math.max(320, Math.round(displayWidth * dpr));
       const targetHeight = Math.round(targetWidth * (1080 / 1920));
       if (canvas.width !== targetWidth || canvas.height !== targetHeight) {
@@ -299,8 +299,8 @@ function HeroEcosystemVisual() {
         />
         <canvas
           ref={canvasRef}
-          width={2160}
-          height={1215}
+          width={1960}
+          height={1103}
           aria-label="AEETHOD Platform Ecosystem Animation"
           className={styles.heroAnimationVideo}
         />
@@ -598,13 +598,12 @@ export default function Home() {
                 <span>TCG & Digital Platform Architecture</span>
               </div>
               <h1 className={styles.heroHeading}>
-                You have outgrown the marketplaces,
+                <span>You have outgrown the marketplaces,</span>
                 <br className={styles.heroLineBreak} />
-                Build the{" "}
-                <span className={styles.heroHighlight}>platform</span>{" "}
-                <span className={styles.heroHighlight}>your</span>{" "}
-                <span className={styles.heroHighlight}>brand</span>{" "}
-                <span className={styles.heroHighlight}>deserves.</span>
+                <span>
+                  Build the{" "}
+                  <span className={styles.heroHighlight}>platform your brand deserves.</span>
+                </span>
               </h1>
               <p className={styles.heroSubtext}>
                 Aeethod builds custom digital platforms, ecommerce systems, and automation for growing TCG businesses—so your technology can evolve with the way your business actually works.

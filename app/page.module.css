@@ -274,19 +274,27 @@
   width: 100%;
 }
 
+.heroSection .alignContainer {
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+  position: relative;
+}
+
 .heroContent {
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
   width: 100%;
-  max-width: 1800px;
-  margin: 0 auto;
-  gap: clamp(32px, 3vw, 56px);
+  max-width: 100%;
+  margin: 0;
+  gap: clamp(24px, 3vw, 48px);
 }
 
 .heroText {
-  flex: 1;
-  max-width: 680px;
+  flex: 1.15;
+  min-width: 520px;
+  max-width: 780px;
   padding-top: 20px;
 }
 
@@ -338,11 +346,12 @@
   font-style: normal;
   font-weight: 300;
   font-size: var(--font-size-hero);
-  line-height: 1.1;
+  line-height: 1.15;
   color: #404040;
   margin-bottom: 24px;
   letter-spacing: -0.03em;
   text-shadow: none;
+  word-break: keep-all;
 }
 
 .heroHighlight {
@@ -534,8 +543,8 @@
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  flex: 1.75;
-  max-width: 1080px;
+  flex: 1.25;
+  max-width: 980px;
   width: 100%;
   align-self: center;
 }
@@ -547,13 +556,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  transform: translate(150px, -20px);
-}
-
-@media (max-width: 1200px) and (min-width: 901px) {
-  .heroVideoWrapper {
-    transform: translate(75px, -20px);
-  }
+  transform: translateY(-20px);
 }
 
 .heroAnimationVideo {
@@ -1098,6 +1101,7 @@
   }
 
   .heroText {
+    min-width: unset !important;
     max-width: 100%;
     padding-top: 0;
     display: flex;
