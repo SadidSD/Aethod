@@ -754,6 +754,7 @@
   height: 1.5px;
   background: linear-gradient(90deg, #5A69EA 0%, #BF8BCA 100%);
   pointer-events: none;
+  display: block;
 }
 
 .strikethroughSolid {
@@ -764,6 +765,7 @@
   height: 1.5px;
   background: #717171;
   pointer-events: none;
+  display: block;
 }
 
 :global([data-theme="dark"]) .strikethroughSolid {

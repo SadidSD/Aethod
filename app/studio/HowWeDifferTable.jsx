@@ -42,10 +42,10 @@ export default function HowWeDifferTable() {
             <div className={styles.colLeft}>
               <div className={styles.textLeftContainer}>
                 {row.others.map((part, pIdx) => (
-                  <span key={pIdx} className={styles.textLeftPart}>
+                  <div key={pIdx} className={styles.textLeftPart}>
                     {part}
                     {/* Strikethrough Solid Line (fades in to stay) */}
-                    <motion.div
+                    <motion.span
                       className={styles.strikethroughSolid}
                       initial={{ opacity: 0 }}
                       animate={isInView ? { opacity: 0.5 } : {}}
@@ -56,7 +56,7 @@ export default function HowWeDifferTable() {
                       }}
                     />
                     {/* Strikethrough Gradient Line (draws first, then fades out) */}
-                    <motion.div
+                    <motion.span
                       className={styles.strikethroughGradient}
                       initial={{ scaleX: 0, opacity: 1 }}
                       animate={
@@ -75,14 +75,14 @@ export default function HowWeDifferTable() {
                       }}
                       style={{ originX: 0 }}
                     />
-                  </span>
+                  </div>
                 ))}
               </div>
             </div>
 
             {/* Right Column */}
             <div className={styles.colRight}>
-              <span className={styles.textRight}>
+              <div className={styles.textRight}>
                 {/* Normal Text (fades out) */}
                 <motion.span
                   className={styles.textRightNormal}
@@ -109,7 +109,7 @@ export default function HowWeDifferTable() {
                 >
                   {row.aeethod}
                 </motion.span>
-              </span>
+              </div>
             </div>
           </div>
         );

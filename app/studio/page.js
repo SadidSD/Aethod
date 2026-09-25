@@ -9,20 +9,26 @@ import Navbar from "../components/Navbar";
 import HowWeDifferTable from "./HowWeDifferTable";
 import CapabilityGrid from "./CapabilityGrid";
 
-function InlineSVG({ src, className, isMobile, isTabletOrMobile, crop }) {
+function InlineSVG({ src, className, isMobile, isTabletOrMobile, crop, style }) {
   const [svgContent, setSvgContent] = useState("");
 
   useEffect(() => {
+    let isMounted = true;
     fetch(src)
       .then((res) => {
         if (!res.ok) throw new Error(`Failed to load SVG: ${src}`);
         return res.text();
       })
       .then((text) => {
-        const cleanText = text.replace(/<\?xml[^>]*\?>/i, "");
-        setSvgContent(cleanText);
+        if (isMounted) {
+          const cleanText = text.replace(/<\?xml[^>]*\?>/i, "");
+          setSvgContent(cleanText);
+        }
       })
       .catch((err) => console.error(err));
+    return () => {
+      isMounted = false;
+    };
   }, [src]);
 
   let processedContent = svgContent;
@@ -74,6 +80,7 @@ function InlineSVG({ src, className, isMobile, isTabletOrMobile, crop }) {
   return (
     <div
       className={className}
+      style={style}
       dangerouslySetInnerHTML={{ __html: processedContent }}
       suppressHydrationWarning={true}
     />
@@ -196,12 +203,6 @@ export default function StudioPage() {
               {/* Member 1: Sadid Bin Hasan */}
               <div className={styles.memberCard}>
                 <div className={styles.memberPhotoFrame}>
-                  <img 
-                    src="/team/sadid.jpg" 
-                    alt="Sadid Bin Hasan — Founder & Principal Systems Architect" 
-                    className={styles.memberPhotoImg}
-                    onError={(e) => { e.currentTarget.style.display = 'none'; }}
-                  />
                   <div className={styles.memberPhotoFallback}>
                     <span className={styles.monogramLarge}>SB</span>
                     <span className={styles.monogramLabel}>SYSTEMS ARCHITECT</span>
@@ -255,12 +256,6 @@ export default function StudioPage() {
               {/* Member 2: Anika Zaman */}
               <div className={styles.memberCard}>
                 <div className={styles.memberPhotoFrame}>
-                  <img 
-                    src="/team/anika.jpg" 
-                    alt="Anika Zaman — Lead Systems Developer" 
-                    className={styles.memberPhotoImg}
-                    onError={(e) => { e.currentTarget.style.display = 'none'; }}
-                  />
                   <div className={styles.memberPhotoFallback}>
                     <span className={styles.monogramLarge}>AZ</span>
                     <span className={styles.monogramLabel}>LEAD SYSTEMS DEV</span>
@@ -301,12 +296,6 @@ export default function StudioPage() {
               {/* Member 3: Nayem Hasan */}
               <div className={styles.memberCard}>
                 <div className={styles.memberPhotoFrame}>
-                  <img 
-                    src="/team/nayem.jpg" 
-                    alt="Nayem Hasan — Head of Product Design" 
-                    className={styles.memberPhotoImg}
-                    onError={(e) => { e.currentTarget.style.display = 'none'; }}
-                  />
                   <div className={styles.memberPhotoFallback}>
                     <span className={styles.monogramLarge}>NH</span>
                     <span className={styles.monogramLabel}>HEAD OF PRODUCT DESIGN</span>
@@ -412,14 +401,20 @@ export default function StudioPage() {
               <InlineSVG src="/studio/Rectangle 90.svg" className={`${styles.manifestoGridLineVert} ${gridInView ? styles.animateVert : styles.hiddenVert}`} />
               <InlineSVG src="/studio/Rectangle 91.svg" className={`${styles.manifestoGridLineHoriz} ${gridInView ? styles.animateHoriz : styles.hiddenHoriz}`} />
               
-              <InlineSVG src="/studio/Group 50.svg" className={styles.manifestoGroup01} />
-              <InlineSVG src="/studio/Group 51.svg" className={styles.manifestoGroup02} />
-              {(!isTabletOrMobile || manifestoExpanded) && (
-                <>
-                  <InlineSVG src="/studio/Group 52.svg" className={styles.manifestoGroup03} />
-                  <InlineSVG src="/studio/Group 53.svg" className={styles.manifestoGroup04} />
-                </>
-              )}
+              <InlineSVG key="manifesto-group-01" src="/studio/Group 50.svg" className={styles.manifestoGroup01} />
+              <InlineSVG key="manifesto-group-02" src="/studio/Group 51.svg" className={styles.manifestoGroup02} />
+              <InlineSVG 
+                key="manifesto-group-03"
+                src="/studio/Group 52.svg" 
+                className={styles.manifestoGroup03} 
+                style={isTabletOrMobile && !manifestoExpanded ? { display: 'none' } : undefined}
+              />
+              <InlineSVG 
+                key="manifesto-group-04"
+                src="/studio/Group 53.svg" 
+                className={styles.manifestoGroup04} 
+                style={isTabletOrMobile && !manifestoExpanded ? { display: 'none' } : undefined}
+              />
             </div>
 
             {isTabletOrMobile && (
