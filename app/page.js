@@ -67,7 +67,7 @@ function HeroEcosystemVisual() {
       if (!canvas) return;
       const rect = canvas.getBoundingClientRect();
       const dpr = Math.min(window.devicePixelRatio || 1, 2);
-      const displayWidth = rect.width > 0 ? rect.width : (wrapperRef.current?.getBoundingClientRect().width || 920);
+      const displayWidth = rect.width > 0 ? rect.width : (wrapperRef.current?.getBoundingClientRect().width || 1080);
       const targetWidth = Math.max(320, Math.round(displayWidth * dpr));
       const targetHeight = Math.round(targetWidth * (1080 / 1920));
       if (canvas.width !== targetWidth || canvas.height !== targetHeight) {
@@ -299,8 +299,8 @@ function HeroEcosystemVisual() {
         />
         <canvas
           ref={canvasRef}
-          width={1840}
-          height={1035}
+          width={2160}
+          height={1215}
           aria-label="AEETHOD Platform Ecosystem Animation"
           className={styles.heroAnimationVideo}
         />

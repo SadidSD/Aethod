@@ -534,8 +534,8 @@
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  flex: 1.45;
-  max-width: 920px;
+  flex: 1.75;
+  max-width: 1080px;
   width: 100%;
   align-self: center;
 }
@@ -1113,14 +1113,14 @@
 
   .heroVisual {
     width: 100% !important;
-    max-width: 600px !important;
+    max-width: 700px !important;
     height: auto !important;
     margin: 24px auto 16px !important;
   }
 
   .heroVideoWrapper {
     width: 100% !important;
-    max-width: 600px !important;
+    max-width: 700px !important;
     aspect-ratio: 16 / 9 !important;
     transform: none !important;
   }
@@ -1347,11 +1347,11 @@
     gap: 24px !important;
   }
   .heroVisual {
-    max-width: 520px !important;
+    max-width: 600px !important;
     width: 100% !important;
   }
   .heroVideoWrapper {
-    max-width: 520px !important;
+    max-width: 600px !important;
     width: 100% !important;
   }
   .floatingScrollBtn {
