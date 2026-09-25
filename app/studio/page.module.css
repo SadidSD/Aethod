@@ -265,7 +265,7 @@
   position: relative;
   width: 100%;
   max-width: 1440px;
-  height: 8040px;
+  height: 8840px;
   margin: 0 auto;
 }
 
@@ -482,11 +482,11 @@
   top: 972px;
 }
 
-/* SECTION 2: WHAT IS SYSTEM STUDIO */
+/* SECTION 3: WHAT IS SYSTEM STUDIO */
 .whatIsTitle {
   position: absolute;
   left: 123px;
-  top: 1446px;
+  top: 2246px;
   font-family: var(--font-sora), sans-serif;
   font-size: var(--font-size-heading);
   font-weight: 300;
@@ -500,7 +500,7 @@
   position: absolute;
   width: 600px;
   left: 126px;
-  top: 1514px;
+  top: 2314px;
   font-family: var(--font-sora), sans-serif;
   font-size: var(--font-size-subtitle);
   font-weight: 200;
@@ -513,7 +513,7 @@
 .whatIsSystemStudioContainer {
   position: absolute;
   left: 123px;
-  top: 1671px;
+  top: 2471px;
   width: 535px;
   display: flex;
   flex-direction: column;
@@ -595,7 +595,7 @@
   width: 558px;
   height: 734px;
   left: 760px;
-  top: 1604px;
+  top: 2404px;
 }
 
 .differCard {
@@ -795,13 +795,13 @@
   fill: #b0b0c8 !important;
 }
 
-/* SECTION 3: THE MANIFESTO */
+/* SECTION 4: THE MANIFESTO */
 .manifestoBg {
   position: absolute;
   width: 1442px;
   height: 1746px;
   left: -1px;
-  top: 2400px;
+  top: 3200px;
 }
 
 .manifestoLineTop {
@@ -809,13 +809,13 @@
   width: 1442px;
   height: 10px;
   left: -1px;
-  top: 2430px;
+  top: 3230px;
 }
 
 .manifestoTitle {
   position: absolute;
   left: 119px;
-  top: 2510px;
+  top: 3310px;
   font-family: var(--font-sora), sans-serif;
   font-size: var(--font-size-heading);
   font-weight: 300;
@@ -829,7 +829,7 @@
   position: absolute;
   width: 600px;
   left: 119px;
-  top: 2580px;
+  top: 3380px;
   font-family: var(--font-sora), sans-serif;
   font-size: var(--font-size-subtitle);
   font-weight: 200;
@@ -842,7 +842,7 @@
 .manifestoGridBox {
   position: absolute;
   left: 119.79px;
-  top: 2696.77px;
+  top: 3496.77px;
   width: 1231.44px;
   height: 882.48px;
   background: transparent;
@@ -1049,14 +1049,14 @@
   width: 730px;
   height: 2px;
   left: calc(50% - 730px / 2);
-  top: 3640px;
+  top: 4440px;
 }
 
 .manifestoQuote {
   position: absolute;
   width: 1000px;
   left: calc(50% - 1000px / 2);
-  top: 3710px;
+  top: 4510px;
   font-family: var(--font-sora), sans-serif;
   font-size: var(--font-size-subtitle);
   font-weight: 300;
@@ -1069,10 +1069,11 @@
 
 /* SECTION 2: THE BUILDERS & CREATIVE PARTNERS */
 .sectionTeam {
-  position: relative;
-  width: 100%;
-  max-width: 1280px;
-  margin: 0 auto;
+  position: absolute;
+  left: 104px;
+  top: 1446px;
+  width: 1232px;
+  height: auto;
   pointer-events: auto;
   z-index: 10;
   box-sizing: border-box;
@@ -1304,12 +1305,12 @@
   opacity: 0.85;
 }
 
-/* SECTION 4: HOW WE WORK */
+/* SECTION 5: HOW WE WORK */
 .howWeWorkSection {
   position: absolute;
   width: 100vw;
   left: calc(50% - 50vw);
-  top: 4306px;
+  top: 5106px;
   height: 1811px;
   display: flex;
   flex-direction: column;
@@ -1377,14 +1378,14 @@
   color: #b0b0c8;
 }
 
-/* SECTION 5: CALL TO ACTION */
+/* SECTION 6: CALL TO ACTION */
 .ctaContainer {
   box-sizing: border-box;
   position: absolute;
   width: 100vw;
   height: 190px;
   left: calc(50% - 50vw);
-  top: 6180px;
+  top: 6980px;
   background: transparent;
   display: flex;
   align-items: center;
@@ -1418,12 +1419,12 @@
   margin: 0 auto;
 }
 
-/* SECTION 6: CAPABILITIES */
+/* SECTION 7: CAPABILITIES */
 .capabilityHeader {
   position: absolute;
   width: 612px;
   left: 131px;
-  top: 6585px;
+  top: 7385px;
   font-family: var(--font-sora), sans-serif;
   font-size: var(--font-size-heading);
   font-weight: 300;
@@ -1482,7 +1483,7 @@
   width: 1308px;
   height: 1069px;
   left: 63px;
-  top: 6885px;
+  top: 7685px;
   overflow: visible;
 }
 
@@ -1519,7 +1520,7 @@
   width: 1346px;
   height: 282px;
   left: calc(50% - 1346px / 2 - 10px);
-  top: 8045px;
+  top: 8845px;
 }
 
 .footerSvg {
@@ -2160,7 +2161,7 @@
   }
 }
 
-@media (min-width: 768px) {
+@media (min-width: 768px) and (max-width: 1366px) {
   .mainContainer {
     margin-top: 0 !important;
     padding-top: 40px !important;
