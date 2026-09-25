@@ -192,117 +192,142 @@ export default function StudioPage() {
               </p>
             </div>
 
-            <div className={styles.teamGrid}>
-              {/* Member 1: Sadid Bin Hasan */}
-              <div className={styles.teamCard}>
-                <div className={styles.teamCardHeader}>
-                  <div className={styles.teamAvatarWrapper}>
+            <div className={styles.teamLayout}>
+              {/* === HERO: FOUNDER SPOTLIGHT CARD === */}
+              <div className={styles.founderCard}>
+                <div className={styles.founderPhotoColumn}>
+                  <div className={styles.founderPhotoFrame}>
                     <img 
                       src="/team/sadid.jpg" 
-                      alt="Sadid Bin Hasan" 
-                      className={styles.teamAvatarImg}
+                      alt="Sadid Bin Hasan — Founder & Principal Systems Architect" 
+                      className={styles.founderPhotoImg}
                       onError={(e) => { e.currentTarget.style.display = 'none'; }}
                     />
-                    <div className={styles.teamAvatarFallback}>
-                      <span>SB</span>
+                    <div className={styles.founderPhotoFallback}>
+                      <span className={styles.monogramLarge}>SB</span>
+                      <span className={styles.monogramLabel}>SYSTEMS ARCHITECT</span>
+                    </div>
+                    <div className={styles.nodeStatusBadge}>
+                      <span className={styles.statusDot} />
+                      <span>SYS_NODE // 01 · FOUNDER</span>
                     </div>
                   </div>
-                  <div className={styles.teamMeta}>
-                    <span className={styles.teamRoleBadge}>Founder & Principal Architect</span>
-                    <h3 className={styles.teamName}>Sadid Bin Hasan</h3>
-                    <span className={styles.teamSpecialty}>Architecture & Systems Strategy</span>
+                </div>
+
+                <div className={styles.founderInfoColumn}>
+                  <div className={styles.founderMeta}>
+                    <div className={styles.founderRoleRow}>
+                      <span className={styles.founderRoleBadge}>Founder & Principal Architect</span>
+                      <span className={styles.founderNodeChip}>NODE_01</span>
+                    </div>
+                    <h3 className={styles.founderName}>Sadid Bin Hasan</h3>
+                    <span className={styles.founderSpecialty}>Core Architecture & High-Concurrency Systems</span>
                   </div>
-                </div>
-                <p className={styles.teamBio}>
-                  With Pokémon card collecting as a personal hobby and a background in programming web architectures, autonomous agents, and business automations from his teenage years, Sadid recognized the critical operational bottlenecks of the TCG retail economy. Seeing store owners squeezed by marketplace fees and crippled by fragile, legacy POS software, he founded Aeethod to engineer sovereign, high-throughput digital platforms that card shops own permanently.
-                </p>
-                <div className={styles.teamTags}>
-                  <span className={styles.teamTag}>Core System Architecture</span>
-                  <span className={styles.teamTag}>Omnichannel Sync Meshes</span>
-                  <span className={styles.teamTag}>Sovereign E-Commerce</span>
-                  <span className={styles.teamTag}>Algorithmic Repricing</span>
-                </div>
-                <div className={styles.teamSocials}>
-                  <a href="https://www.linkedin.com/in/sadidbinhasan" target="_blank" rel="noopener noreferrer" className={styles.teamSocialLink} aria-label="Sadid Bin Hasan on LinkedIn">
-                    <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 10.9v8.37H9.2V10.9H6.46M7.83 6.45a1.62 1.62 0 0 0-1.63 1.62c0 .9.73 1.62 1.63 1.62.9 0 1.63-.72 1.63-1.62 0-.9-.73-1.62-1.63-1.62z"/></svg>
-                    <span>LinkedIn</span>
-                  </a>
-                  <a href="https://github.com/SadidSD" target="_blank" rel="noopener noreferrer" className={styles.teamSocialLink} aria-label="Sadid Bin Hasan on GitHub">
-                    <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.1-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2z"/></svg>
-                    <span>GitHub</span>
-                  </a>
-                  <a href="mailto:sadidbinhasan3@gmail.com" className={styles.teamSocialLink} aria-label="Email Sadid">
-                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-                    <span>Email</span>
-                  </a>
+
+                  <div className={styles.founderDivider} />
+
+                  <p className={styles.founderBio}>
+                    With Pokémon card collecting as a personal hobby and a background in programming web architectures, autonomous agents, and business automations from his teenage years, Sadid recognized the critical operational bottlenecks of the TCG retail economy. Seeing store owners squeezed by marketplace fees and crippled by fragile, legacy POS software, he founded Aeethod to engineer sovereign, high-throughput digital platforms that card shops own permanently.
+                  </p>
+
+                  <div className={styles.founderTags}>
+                    <span className={styles.teamTag}>Core System Architecture</span>
+                    <span className={styles.teamTag}>Omnichannel Sync Meshes</span>
+                    <span className={styles.teamTag}>Sovereign Headless Commerce</span>
+                    <span className={styles.teamTag}>Algorithmic Repricing</span>
+                  </div>
+
+                  <div className={styles.founderSocials}>
+                    <a href="https://www.linkedin.com/in/sadidbinhasan" target="_blank" rel="noopener noreferrer" className={styles.socialBtn} aria-label="Sadid Bin Hasan on LinkedIn">
+                      <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 10.9v8.37H9.2V10.9H6.46M7.83 6.45a1.62 1.62 0 0 0-1.63 1.62c0 .9.73 1.62 1.63 1.62.9 0 1.63-.72 1.63-1.62 0-.9-.73-1.62-1.63-1.62z"/></svg>
+                      <span>LinkedIn</span>
+                    </a>
+                    <a href="https://github.com/SadidSD" target="_blank" rel="noopener noreferrer" className={styles.socialBtn} aria-label="Sadid Bin Hasan on GitHub">
+                      <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.1-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2z"/></svg>
+                      <span>GitHub</span>
+                    </a>
+                    <a href="mailto:sadidbinhasan3@gmail.com" className={styles.socialBtn} aria-label="Email Sadid">
+                      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                      <span>Email</span>
+                    </a>
+                  </div>
                 </div>
               </div>
 
-              {/* Member 2: Anika Zaman */}
-              <div className={styles.teamCard}>
-                <div className={styles.teamCardHeader}>
-                  <div className={styles.teamAvatarWrapper}>
-                    <img 
-                      src="/team/anika.jpg" 
-                      alt="Anika Zaman" 
-                      className={styles.teamAvatarImg}
-                      onError={(e) => { e.currentTarget.style.display = 'none'; }}
-                    />
-                    <div className={styles.teamAvatarFallback}>
-                      <span>AZ</span>
+              {/* === CREATIVE PARTNERS STACK === */}
+              <div className={styles.partnersStack}>
+                {/* Member 2: Anika Zaman */}
+                <div className={styles.partnerCard}>
+                  <div className={styles.partnerTop}>
+                    <div className={styles.partnerAvatarFrame}>
+                      <img 
+                        src="/team/anika.jpg" 
+                        alt="Anika Zaman — Lead Systems Developer" 
+                        className={styles.partnerAvatarImg}
+                        onError={(e) => { e.currentTarget.style.display = 'none'; }}
+                      />
+                      <div className={styles.partnerAvatarFallback}>
+                        <span>AZ</span>
+                      </div>
+                    </div>
+                    <div className={styles.partnerMeta}>
+                      <div className={styles.partnerRoleRow}>
+                        <span className={styles.partnerRoleBadge}>Lead Systems Developer</span>
+                        <span className={styles.partnerNodeChip}>NODE_02</span>
+                      </div>
+                      <h3 className={styles.partnerName}>Anika Zaman</h3>
+                      <span className={styles.partnerSpecialty}>High-Throughput Engineering & Integrations</span>
                     </div>
                   </div>
-                  <div className={styles.teamMeta}>
-                    <span className={styles.teamRoleBadge}>Lead Systems Developer</span>
-                    <h3 className={styles.teamName}>Anika Zaman</h3>
-                    <span className={styles.teamSpecialty}>High-Throughput Engineering & Integrations</span>
+                  <p className={styles.partnerBio}>
+                    Bringing deep algorithmic precision and systems rigor to the studio, Anika engineers Aeethod's high-reliability backend pipelines, edge caching layers, and multi-channel webhook meshes that keep 100,000+ card SKUs synced with zero race conditions and zero overselling across in-store POS, TCGplayer, and web storefronts.
+                  </p>
+                  <div className={styles.partnerTags}>
+                    <span className={styles.teamTag}>Webhook Mesh</span>
+                    <span className={styles.teamTag}>Sub-35ms Search</span>
+                    <span className={styles.teamTag}>Multi-Channel Sync</span>
+                    <span className={styles.teamTag}>Concurrency</span>
+                  </div>
+                  <div className={styles.partnerFooter}>
+                    <span className={styles.partnerPill}>Creative Partner · Systems Development</span>
                   </div>
                 </div>
-                <p className={styles.teamBio}>
-                  Bringing deep algorithmic precision and systems rigor to the studio, Anika engineers Aeethod's high-reliability backend pipelines, edge caching layers, and multi-channel webhook meshes that keep 100,000+ card SKUs synced with zero race conditions and zero overselling across in-store POS, TCGplayer, and web storefronts.
-                </p>
-                <div className={styles.teamTags}>
-                  <span className={styles.teamTag}>Real-Time Webhook Mesh</span>
-                  <span className={styles.teamTag}>Sub-35ms Search Pipelines</span>
-                  <span className={styles.teamTag}>Multi-Channel Inventory</span>
-                  <span className={styles.teamTag}>Database Concurrency</span>
-                </div>
-                <div className={styles.teamSocials}>
-                  <span className={styles.teamPartnerBadge}>Creative Partner · Systems Development</span>
-                </div>
-              </div>
 
-              {/* Member 3: Nayem Hasan */}
-              <div className={styles.teamCard}>
-                <div className={styles.teamCardHeader}>
-                  <div className={styles.teamAvatarWrapper}>
-                    <img 
-                      src="/team/nayem.jpg" 
-                      alt="Nayem Hasan" 
-                      className={styles.teamAvatarImg}
-                      onError={(e) => { e.currentTarget.style.display = 'none'; }}
-                    />
-                    <div className={styles.teamAvatarFallback}>
-                      <span>NH</span>
+                {/* Member 3: Nayem Hasan */}
+                <div className={styles.partnerCard}>
+                  <div className={styles.partnerTop}>
+                    <div className={styles.partnerAvatarFrame}>
+                      <img 
+                        src="/team/nayem.jpg" 
+                        alt="Nayem Hasan — Head of Product Design" 
+                        className={styles.partnerAvatarImg}
+                        onError={(e) => { e.currentTarget.style.display = 'none'; }}
+                      />
+                      <div className={styles.partnerAvatarFallback}>
+                        <span>NH</span>
+                      </div>
+                    </div>
+                    <div className={styles.partnerMeta}>
+                      <div className={styles.partnerRoleRow}>
+                        <span className={styles.partnerRoleBadge}>Head of Product Design</span>
+                        <span className={styles.partnerNodeChip}>NODE_03</span>
+                      </div>
+                      <h3 className={styles.partnerName}>Nayem Hasan</h3>
+                      <span className={styles.partnerSpecialty}>Collectibles UI/UX & Commerce Strategy</span>
                     </div>
                   </div>
-                  <div className={styles.teamMeta}>
-                    <span className={styles.teamRoleBadge}>Head of Product Design</span>
-                    <h3 className={styles.teamName}>Nayem Hasan</h3>
-                    <span className={styles.teamSpecialty}>Collectibles UI/UX & Commerce Strategy</span>
+                  <p className={styles.partnerBio}>
+                    Combining sharp visual intuition with a keen commercial mindset, Nayem redefines the digital experience of card collecting. He bridges collector psychology with high-converting ecommerce flows—replacing clunky 2012-era templates with fast, tactile, mobile-first interfaces that turn casual visitors into high-LTV repeat buyers.
+                  </p>
+                  <div className={styles.partnerTags}>
+                    <span className={styles.teamTag}>Collector CX</span>
+                    <span className={styles.teamTag}>Deep-Variant Matrix</span>
+                    <span className={styles.teamTag}>High-AOV Checkout</span>
+                    <span className={styles.teamTag}>Design Systems</span>
                   </div>
-                </div>
-                <p className={styles.teamBio}>
-                  Combining sharp visual intuition with a keen commercial mindset, Nayem redefines the digital experience of card collecting. He bridges collector psychology with high-converting ecommerce flows—replacing clunky 2012-era templates with fast, tactile, mobile-first interfaces that turn casual visitors into high-LTV repeat buyers.
-                </p>
-                <div className={styles.teamTags}>
-                  <span className={styles.teamTag}>Collector Experience (CX)</span>
-                  <span className={styles.teamTag}>Deep-Variant Matrix UI</span>
-                  <span className={styles.teamTag}>High-AOV Checkout</span>
-                  <span className={styles.teamTag}>Design Systems</span>
-                </div>
-                <div className={styles.teamSocials}>
-                  <span className={styles.teamPartnerBadge}>Creative Partner · Product Design</span>
+                  <div className={styles.partnerFooter}>
+                    <span className={styles.partnerPill}>Creative Partner · Product Design</span>
+                  </div>
                 </div>
               </div>
             </div>
