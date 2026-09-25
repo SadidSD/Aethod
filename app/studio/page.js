@@ -178,99 +178,7 @@ export default function StudioPage() {
             </div>
           </div>
 
-          {/* ----- SECTION 2: WHAT IS SYSTEM STUDIO & HOW WE DIFFER ----- */}
-          <div className={styles.section2WhatIs}>
-            <h2 className={styles.whatIsTitle}>What is a vertical technology studio?</h2>
-            <p className={styles.whatIsSubtitle}>Where platforms end.</p>
-            <div className={styles.whatIsSystemStudioContainer}>
-              <div className={styles.whatIsParagraphRow}>
-                <InlineSVG src="/studio/round_arrow_card.svg" className={styles.roundArrowCard} />
-                <div className={styles.whatIsParagraphTextContainer}>
-                  <div className={`${styles.whatIsParagraphText} ${expandedParagraphs.p1 ? styles.expanded : ""}`}>
-                    An agency builds websites. An off-the-shelf platform locks you in. A vertical technology studio architects infrastructure.{" "}
-                    <span className={styles.whatIsParagraphHighlight}>
-                      When your TCG business expands across marketplaces, physical storefronts, buylists, and inventory channels, fragmented tools break down. We spend time inside your operations to unify inventory, sync sales channels, and eliminate manual friction.
-                    </span>{" "}
-                    That is the difference.
-                  </div>
-                  <button 
-                    className={styles.seeMoreBtn}
-                    onClick={() => toggleParagraph("p1")}
-                    aria-expanded={expandedParagraphs.p1}
-                  >
-                    {expandedParagraphs.p1 ? "See Less" : "See More"}
-                  </button>
-                </div>
-              </div>
-              <div className={styles.whatIsParagraphRow}>
-                <InlineSVG src="/studio/round_arrow_card.svg" className={styles.roundArrowCard} />
-                <div className={styles.whatIsParagraphTextContainer}>
-                  <div className={`${styles.whatIsParagraphText} ${expandedParagraphs.p2 ? styles.expanded : ""}`}>
-                    Platforms are built for starting. They are not the final form of a growing business.{" "}
-                    <span className={styles.whatIsParagraphHighlight}>
-                      When off-the-shelf tools can no longer handle your catalogue velocity, multi-channel stock, and fulfillment complexity, you need custom digital infrastructure engineered specifically around how your TCG business operates.
-                    </span>{" "}
-                    That is who we are.
-                  </div>
-                  <button 
-                    className={styles.seeMoreBtn}
-                    onClick={() => toggleParagraph("p2")}
-                    aria-expanded={expandedParagraphs.p2}
-                  >
-                    {expandedParagraphs.p2 ? "See Less" : "See More"}
-                  </button>
-                </div>
-              </div>
-            </div>
-            <div className={styles.howWeDifferCardWrapper}>
-              <h2 className={styles.howWeDifferTitle}>How we differ</h2>
-              <HowWeDifferTable />
-            </div>
-          </div>
-
-          {/* ----- SECTION 3: THE MANIFESTO ----- */}
-          <div className={styles.section3Manifesto}>
-            <InlineSVG src="/studio/curved_line.svg" className={styles.manifestoLineTop} />
-            <h2 className={styles.manifestoTitle}>
-              The <br className={styles.tabletOnlyBr} />
-              <span className={styles.purpleTabletAccent}>Manifesto</span>
-            </h2>
-            <p className={styles.manifestoSubtitle}>
-              Four things we believe <br className={styles.tabletOnlyBr} />
-              <span className={styles.purpleTabletAccent}>most studios won't say.</span>
-            </p>
-            
-            <div className={styles.manifestoGridBox} ref={gridRef}>
-              <InlineSVG src="/studio/Rectangle 90.svg" className={`${styles.manifestoGridLineVert} ${gridInView ? styles.animateVert : styles.hiddenVert}`} />
-              <InlineSVG src="/studio/Rectangle 91.svg" className={`${styles.manifestoGridLineHoriz} ${gridInView ? styles.animateHoriz : styles.hiddenHoriz}`} />
-              
-              <InlineSVG src="/studio/Group 50.svg" className={styles.manifestoGroup01} />
-              <InlineSVG src="/studio/Group 51.svg" className={styles.manifestoGroup02} />
-              {(!isTabletOrMobile || manifestoExpanded) && (
-                <>
-                  <InlineSVG src="/studio/Group 52.svg" className={styles.manifestoGroup03} />
-                  <InlineSVG src="/studio/Group 53.svg" className={styles.manifestoGroup04} />
-                </>
-              )}
-            </div>
-
-            {isTabletOrMobile && (
-              <button 
-                className={styles.seeMoreBtn} 
-                onClick={() => setManifestoExpanded(!manifestoExpanded)}
-                style={{ display: 'block', margin: '24px auto 0 auto' }}
-              >
-                {manifestoExpanded ? "See Less" : "See More"}
-              </button>
-            )}
-            
-            <blockquote className={styles.manifestoQuote}>
-              Platforms help you start. Custom infrastructure lets you scale.<br />
-              When your TCG business outgrows its tools, we build what comes next.
-            </blockquote>
-          </div>
-
-          {/* ----- SECTION 3.5: THE BUILDERS & CREATIVE PARTNERS ----- */}
+          {/* ----- SECTION 2: THE BUILDERS & CREATIVE PARTNERS ----- */}
           <div className={styles.sectionTeam}>
             <div className={styles.teamHeader}>
               <div className={styles.teamBadge}>
@@ -398,6 +306,98 @@ export default function StudioPage() {
                 </div>
               </div>
             </div>
+          </div>
+
+          {/* ----- SECTION 3: WHAT IS SYSTEM STUDIO & HOW WE DIFFER ----- */}
+          <div className={styles.section2WhatIs}>
+            <h2 className={styles.whatIsTitle}>What is a vertical technology studio?</h2>
+            <p className={styles.whatIsSubtitle}>Where platforms end.</p>
+            <div className={styles.whatIsSystemStudioContainer}>
+              <div className={styles.whatIsParagraphRow}>
+                <InlineSVG src="/studio/round_arrow_card.svg" className={styles.roundArrowCard} />
+                <div className={styles.whatIsParagraphTextContainer}>
+                  <div className={`${styles.whatIsParagraphText} ${expandedParagraphs.p1 ? styles.expanded : ""}`}>
+                    An agency builds websites. An off-the-shelf platform locks you in. A vertical technology studio architects infrastructure.{" "}
+                    <span className={styles.whatIsParagraphHighlight}>
+                      When your TCG business expands across marketplaces, physical storefronts, buylists, and inventory channels, fragmented tools break down. We spend time inside your operations to unify inventory, sync sales channels, and eliminate manual friction.
+                    </span>{" "}
+                    That is the difference.
+                  </div>
+                  <button 
+                    className={styles.seeMoreBtn}
+                    onClick={() => toggleParagraph("p1")}
+                    aria-expanded={expandedParagraphs.p1}
+                  >
+                    {expandedParagraphs.p1 ? "See Less" : "See More"}
+                  </button>
+                </div>
+              </div>
+              <div className={styles.whatIsParagraphRow}>
+                <InlineSVG src="/studio/round_arrow_card.svg" className={styles.roundArrowCard} />
+                <div className={styles.whatIsParagraphTextContainer}>
+                  <div className={`${styles.whatIsParagraphText} ${expandedParagraphs.p2 ? styles.expanded : ""}`}>
+                    Platforms are built for starting. They are not the final form of a growing business.{" "}
+                    <span className={styles.whatIsParagraphHighlight}>
+                      When off-the-shelf tools can no longer handle your catalogue velocity, multi-channel stock, and fulfillment complexity, you need custom digital infrastructure engineered specifically around how your TCG business operates.
+                    </span>{" "}
+                    That is who we are.
+                  </div>
+                  <button 
+                    className={styles.seeMoreBtn}
+                    onClick={() => toggleParagraph("p2")}
+                    aria-expanded={expandedParagraphs.p2}
+                  >
+                    {expandedParagraphs.p2 ? "See Less" : "See More"}
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div className={styles.howWeDifferCardWrapper}>
+              <h2 className={styles.howWeDifferTitle}>How we differ</h2>
+              <HowWeDifferTable />
+            </div>
+          </div>
+
+          {/* ----- SECTION 3: THE MANIFESTO ----- */}
+          <div className={styles.section3Manifesto}>
+            <InlineSVG src="/studio/curved_line.svg" className={styles.manifestoLineTop} />
+            <h2 className={styles.manifestoTitle}>
+              The <br className={styles.tabletOnlyBr} />
+              <span className={styles.purpleTabletAccent}>Manifesto</span>
+            </h2>
+            <p className={styles.manifestoSubtitle}>
+              Four things we believe <br className={styles.tabletOnlyBr} />
+              <span className={styles.purpleTabletAccent}>most studios won't say.</span>
+            </p>
+            
+            <div className={styles.manifestoGridBox} ref={gridRef}>
+              <InlineSVG src="/studio/Rectangle 90.svg" className={`${styles.manifestoGridLineVert} ${gridInView ? styles.animateVert : styles.hiddenVert}`} />
+              <InlineSVG src="/studio/Rectangle 91.svg" className={`${styles.manifestoGridLineHoriz} ${gridInView ? styles.animateHoriz : styles.hiddenHoriz}`} />
+              
+              <InlineSVG src="/studio/Group 50.svg" className={styles.manifestoGroup01} />
+              <InlineSVG src="/studio/Group 51.svg" className={styles.manifestoGroup02} />
+              {(!isTabletOrMobile || manifestoExpanded) && (
+                <>
+                  <InlineSVG src="/studio/Group 52.svg" className={styles.manifestoGroup03} />
+                  <InlineSVG src="/studio/Group 53.svg" className={styles.manifestoGroup04} />
+                </>
+              )}
+            </div>
+
+            {isTabletOrMobile && (
+              <button 
+                className={styles.seeMoreBtn} 
+                onClick={() => setManifestoExpanded(!manifestoExpanded)}
+                style={{ display: 'block', margin: '24px auto 0 auto' }}
+              >
+                {manifestoExpanded ? "See Less" : "See More"}
+              </button>
+            )}
+            
+            <blockquote className={styles.manifestoQuote}>
+              Platforms help you start. Custom infrastructure lets you scale.<br />
+              When your TCG business outgrows its tools, we build what comes next.
+            </blockquote>
           </div>
 
           {/* ----- SECTION 4: HOW WE WORK ----- */}
