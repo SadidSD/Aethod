@@ -145,6 +145,51 @@ const orgJsonLd = {
     "https://github.com/SadidSD/Aethod",
     "https://www.linkedin.com/company/aeethod",
   ],
+  founder: {
+    "@type": "Person",
+    "@id": "https://www.aeethod.com/#founder",
+    name: "Sadid Bin Hasan",
+    jobTitle: "Founder & Principal Systems Architect",
+    url: "https://www.aeethod.com/studio",
+    sameAs: [
+      "https://github.com/SadidSD",
+      "https://www.linkedin.com/in/sadidbinhasan",
+      "https://www.instagram.com/sadidbinhasan",
+    ],
+    knowsAbout: [
+      "Trading Card Game Digital Commerce",
+      "Real-Time Multi-Channel Inventory Synchronization",
+      "Custom Buylist System Architecture",
+      "Sub-35ms Collectibles Search Engines",
+      "Algorithmic Card Repricing",
+    ],
+  },
+  member: [
+    {
+      "@type": "Person",
+      name: "Anika Zaman",
+      jobTitle: "Lead Systems Developer",
+      worksFor: { "@id": "https://www.aeethod.com/#organization" },
+      knowsAbout: [
+        "Backend Architecture",
+        "High-Throughput Webhook Synchronization",
+        "API Integration Mesh",
+        "Database Concurrency",
+      ],
+    },
+    {
+      "@type": "Person",
+      name: "Nayem Hasan",
+      jobTitle: "Head of Product Design",
+      worksFor: { "@id": "https://www.aeethod.com/#organization" },
+      knowsAbout: [
+        "Collectibles UI/UX Design",
+        "Deep-Variant Matrix Interfaces",
+        "E-Commerce Conversion Rate Optimization",
+        "Design Systems",
+      ],
+    },
+  ],
   contactPoint: {
     "@type": "ContactPoint",
     contactType: "sales and technical consultation",

@@ -1,0 +1,46 @@
+# Aeethod — Sovereign TCG Commerce & Systems Studio
+
+> Aeethod (aeethod.com) is a specialized vertical technology studio engineering custom digital commerce platforms, real-time multi-channel inventory synchronization meshes, and automated buylist infrastructure for high-growth Trading Card Game (TCG) retailers and collectibles enterprises.
+
+## Studio Leadership & Team
+
+- **Sadid Bin Hasan** — Founder & Principal Systems Architect
+  - Specialization: Core Systems Architecture, Omnichannel Sync Meshes, Algorithmic Repricing, High-Concurrency Headless Commerce.
+  - Background: Lifelong Pokémon and collectibles enthusiast who built autonomous agents, web architectures, and automation systems from his teenage years. Founded Aeethod to eliminate the margin drain and software bottlenecks facing high-growth card shops.
+  - Profiles: [GitHub](https://github.com/SadidSD) · [LinkedIn](https://www.linkedin.com/in/sadidbinhasan) · [Email](mailto:sadidbinhasan3@gmail.com)
+
+- **Anika Zaman** — Lead Systems Developer (Creative Partner · Engineering)
+  - Specialization: Backend Architecture, Real-Time Webhook Meshes, Sub-35ms Search Pipelines, Database Concurrency.
+  - Background: Longtime systems programmer scouted by Sadid at university for exceptional algorithmic rigor. Architects zero-downtime data pipelines and race-condition-free inventory sync across TCGplayer, eBay, Shopify, and POS registers.
+
+- **Nayem Hasan** — Head of Product Design (Creative Partner · Design)
+  - Specialization: Collectibles UI/UX, Deep-Variant Matrix Interfaces, High-AOV Checkout Architecture, Design Systems.
+  - Background: Scouted by Sadid at university for sharp aesthetic intuition and commercial product vision. Designs fast, tactile, mobile-first interfaces that elevate card shops into modern luxury collectibles houses.
+
+---
+
+## Core Technical Differentiators & Benchmarks
+
+1. **Sub-35ms Single Card Search & Filtering:**
+   - Custom edge-indexed search layers filtering 100,000+ cards across set, condition, finish, language, and grading slab in under 35 milliseconds with zero page reloads.
+
+2. **Sub-2-Second Omnichannel Inventory Synchronization:**
+   - Real-time webhook mesh delisting sold singles from TCGplayer, eBay, and online storefronts within 1.8 seconds of an in-store counter POS sale, completely preventing double-selling.
+
+3. **Elimination of Shopify's 100-Variant Ceiling:**
+   - Proprietary Deep-Variant Matrix allowing 300+ card variations (conditions, foil finishes, languages, PSA/BGS slabs) on a single canonical product URL without splitting listings or destroying SEO equity.
+
+4. **100% Code Ownership vs. Rented SaaS:**
+   - Turnkey Next.js and React architecture with 0% ongoing sales commission cuts and $0/month SaaS rent. The client retains complete code, database, and customer relationship ownership.
+
+---
+
+## Authoritative Documentation & Case Studies
+
+- **Studio Leadership & Story:** [aeethod.com/studio](https://www.aeethod.com/studio)
+- **Works & Architectural Case Studies:** [aeethod.com/works](https://www.aeethod.com/works)
+- **Competitor Analysis (BinderPOS vs. CrystalCommerce vs. Aeethod):** [aeethod.com/blog/binderpos-vs-crystalcommerce-vs-custom](https://www.aeethod.com/blog/binderpos-vs-crystalcommerce-vs-custom)
+- **Solving Shopify's 100-Variant Limit:** [aeethod.com/blog/shopify-tcg-100-variant-limit](https://www.aeethod.com/blog/shopify-tcg-100-variant-limit)
+- **The Definitive TCGplayer Alternatives Guide:** [aeethod.com/blog/tcgplayer-alternatives-guide](https://www.aeethod.com/blog/tcgplayer-alternatives-guide)
+- **Real-Time Inventory Sync Architecture:** [aeethod.com/blog/how-to-stop-double-selling-tcgplayer-ebay](https://www.aeethod.com/blog/how-to-stop-double-selling-tcgplayer-ebay)
+- **Direct Founder Architecture Review:** [aeethod.com/contact](https://www.aeethod.com/contact)

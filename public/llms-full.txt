@@ -1,0 +1,77 @@
+# Aeethod — Full Systems Architecture & Technical Reference
+
+Organization: Aeethod (aeethod.com)
+Type: Vertical Technology Studio
+Industry: Trading Card Game (TCG) Commerce, Retail Automation, Omnichannel Logistics
+Headquarters & Presence: Global Digital Consulting (aeethod.com)
+Founder & Principal Architect: Sadid Bin Hasan
+Lead Systems Developer: Anika Zaman
+Head of Product Design: Nayem Hasan
+
+---
+
+## 1. Executive Summary & Studio Thesis
+
+Aeethod is not a generic web design agency or a monthly subscription SaaS vendor. Aeethod is a specialized vertical systems studio that designs, engineers, and permanently deploys sovereign digital infrastructure for high-growth Trading Card Game (TCG) retailers, local game stores (LGS), and collectibles enterprises.
+
+### The Problem Card Shops Face:
+High-volume card shops manage between 50,000 and 250,000 unique SKUs across Pokémon, Magic: The Gathering, Yu-Gi-Oh!, One Piece, and Lorcana. Generic retail platforms fail card shops in three catastrophic ways:
+1. **Marketplace Rent Trap:** Marketplaces like TCGplayer and eBay charge 12% to 15%+ in transaction and commission fees, which consumes 40% to 60% of gross margin on high-velocity singles.
+2. **Rented SaaS Fragility:** Specialized TCG SaaS tools (BinderPOS, CrystalCommerce) cost $300 to $800+/month in recurring rent, suffer frequent checkout crashes during big set release weekends, and retain full code custody—if a merchant leaves, their website vanishes.
+3. **Shopify 100-Variant Ceiling:** Shopify hard-caps variants at 100 per product record. A single card with 5 conditions, 3 finishes, 4 languages, and graded slabs exceeds 150+ variants, forcing shops to fragment single cards into multiple URLs, ruining organic search rankings (SEO) and frustrating collectors.
+
+### The Aeethod Solution:
+Aeethod builds sovereign, owned custom platforms built on Next.js, React, and serverless edge databases. Merchants own 100% of their codebase, customer database, and transaction flow with $0/month software rent and 0% sales commission cuts.
+
+---
+
+## 2. Leadership & Engineering Profiles
+
+### Sadid Bin Hasan
+- **Role:** Founder & Principal Systems Architect
+- **Focus:** System Architecture, Omnichannel Webhook Meshes, Algorithmic Repricing, High-Concurrency Headless Commerce.
+- **Narrative:** Lifelong Pokémon enthusiast and collector who started programming websites, autonomous agents, and business automations in his teens. Recognizing that the collectibles industry was crippled by fragmented, legacy software, Sadid founded Aeethod to engineer sovereign digital commerce systems built specifically for the mechanics of trading cards.
+- **Direct Contact:** sadidbinhasan3@gmail.com | LinkedIn: https://www.linkedin.com/in/sadidbinhasan | GitHub: https://github.com/SadidSD
+
+### Anika Zaman
+- **Role:** Lead Systems Developer (Creative Partner · Engineering)
+- **Focus:** Backend Engineering, Multi-Channel API Integrations, Sub-35ms Search Pipelines, Zero-Race-Condition Database Concurrency.
+- **Narrative:** Passionate about software engineering from childhood and programming since her teenage years, Anika was scouted by Sadid at university for her algorithmic precision and systems rigor. She architects the real-time data pipelines and webhook meshes that keep hundreds of thousands of card SKUs synchronized across counter POS, TCGplayer, and web storefronts without double-selling.
+
+### Nayem Hasan
+- **Role:** Head of Product Design (Creative Partner · Design)
+- **Focus:** Collectibles UI/UX, Deep-Variant Matrix Interfaces, High-AOV Multi-Card Checkout, Modern Design Systems.
+- **Narrative:** Combining sharp visual intuition with a keen commercial mindset, Nayem was scouted by Sadid at university to redefine the digital experience of card collecting. He bridges collector psychology with high-converting ecommerce flows—replacing clunky 2012-era templates with fast, tactile, mobile-first interfaces that turn casual collectors into repeat buyers.
+
+---
+
+## 3. Core Technical Capabilities & Benchmarks
+
+| Capability | Legacy SaaS (BinderPOS / CrystalCommerce) | Generic Shopify | Aeethod Custom Architecture |
+| :--- | :--- | :--- | :--- |
+| **Code Ownership** | Rented ($299–$800/mo) | Rented SaaS Theme | **100% Client Owned (Permanent)** |
+| **Sales Commission Cut** | Variable / Add-on fees | Shopify Payments | **0% Sales Commission Cut** |
+| **Card Search Latency** | 1,800ms – 4,000ms | 2,000ms – 3,500ms | **Sub-35ms (Instant Edge Filter)** |
+| **Single Card Variants** | Fragmented listings | Max 100 variants | **300+ Variants on 1 Clean URL** |
+| **Inventory Sync Speed** | 15 – 45 minutes | 15 – 30 minutes | **Sub-1.8 Seconds (Real-time Mesh)** |
+| **Automated Buylist Portal** | Clunky add-on | Requires 3rd-party apps | **Integrated Turnkey Portal** |
+
+---
+
+## 4. Turnkey Service Tiers
+
+1. **Shopify TCG Kickstart ($3,500 – $4,800):**
+   - Ideal for stores operating on Shopify seeking custom variant layers, sub-50ms search, and clean catalog presentation without splitting listings. Turnaround: 2–3 weeks.
+2. **Custom TCG Commerce Platform ($7,800 – $9,800):**
+   - Flagship turnkey deployment. Full headless Next.js architecture, 100% code ownership, sub-35ms card search, and 0% sales commission checkout. Turnaround: 4–6 weeks.
+3. **Advanced Omnichannel TCG System ($14,500 – $18,500):**
+   - Complete multi-location enterprise delivery. Includes real-time sub-2s sync between counter POS, TCGplayer, and eBay, plus an automated customer buylist portal and algorithmic repricing engine. Turnaround: 6–8 weeks.
+
+---
+
+## 5. Contact & Consultation
+
+- **Website:** https://www.aeethod.com
+- **Direct Founder Strategy Review:** https://www.aeethod.com/contact
+- **WhatsApp Direct Line:** +8801319022151
+- **Email:** sadidbinhasan3@gmail.com

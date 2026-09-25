@@ -268,6 +268,13 @@ export default function BlogPage() {
 
                     {/* Right: Text Content */}
                     <div className={styles.cardTextArea}>
+                      <div className={styles.cardAuthorMeta}>
+                        <span className={styles.cardAuthorName}>By {post.author || "Sadid Bin Hasan"}</span>
+                        <span className={styles.metaDot}>•</span>
+                        <span className={styles.cardMetaText}>{post.date}</span>
+                        <span className={styles.metaDot}>•</span>
+                        <span className={styles.cardMetaText}>{post.readTime}</span>
+                      </div>
                       <Link href={`/blog/${post.id}`} className={styles.cardTitleLink}>
                         <h2 className={styles.cardTitle}>{post.title}</h2>
                       </Link>

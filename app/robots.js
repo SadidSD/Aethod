@@ -12,6 +12,11 @@ export default function robots() {
           "/api/",
         ],
       },
+      {
+        userAgent: ["GPTBot", "PerplexityBot", "ClaudeBot", "Google-Extended"],
+        allow: ["/", "/llms.txt", "/llms-full.txt"],
+        disallow: ["/admin/", "/yamal19/", "/api/"],
+      },
     ],
     sitemap: "https://www.aeethod.com/sitemap.xml",
   };

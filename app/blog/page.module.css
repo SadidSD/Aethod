@@ -588,6 +588,34 @@
   flex-direction: column;
 }
 
+.cardAuthorMeta {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 8px;
+  font-family: var(--font-sora), sans-serif;
+  font-size: 11px;
+  color: #717171;
+}
+
+.cardAuthorName {
+  font-weight: 500;
+  color: #5A69EA;
+}
+
+:global([data-theme="dark"]) .cardAuthorName {
+  color: #B5A1E8;
+}
+
+.metaDot {
+  opacity: 0.5;
+}
+
+.cardMetaText {
+  font-weight: 300;
+  opacity: 0.85;
+}
+
 .cardTitle {
   font-family: var(--font-sora), sans-serif;
   font-size: 17px;

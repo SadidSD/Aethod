@@ -74,9 +74,14 @@ export default async function BlogPostLayout({ children, params }) {
         articleSection: post.topic,
         keywords: Array.isArray(post.tags) ? post.tags.join(", ") : undefined,
         author: {
-          "@type": "Organization",
-          name: "Aeethod",
-          url: "https://www.aeethod.com",
+          "@type": "Person",
+          name: post.author || "Sadid Bin Hasan",
+          jobTitle: post.authorRole || "Founder & Principal Systems Architect",
+          url: "https://www.aeethod.com/studio",
+          sameAs: [
+            "https://github.com/SadidSD",
+            "https://www.linkedin.com/in/sadidbinhasan",
+          ],
         },
         publisher: {
           "@type": "Organization",

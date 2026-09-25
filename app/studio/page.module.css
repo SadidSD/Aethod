@@ -1067,6 +1067,243 @@
   margin: 0;
 }
 
+/* SECTION 3.5: THE BUILDERS & CREATIVE PARTNERS */
+.sectionTeam {
+  position: absolute;
+  left: 104px;
+  top: 3820px;
+  width: 1232px;
+  height: auto;
+  pointer-events: auto;
+  z-index: 10;
+}
+
+.teamHeader {
+  text-align: center;
+  margin-bottom: 36px;
+}
+
+.teamBadge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px 16px;
+  border-radius: 9999px;
+  background: rgba(147, 51, 234, 0.1);
+  border: 1px solid rgba(147, 51, 234, 0.25);
+  font-family: var(--font-sora), sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  color: #9333ea;
+  margin-bottom: 12px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+:global([data-theme="dark"]) .teamBadge {
+  background: rgba(184, 160, 232, 0.12);
+  border-color: rgba(184, 160, 232, 0.3);
+  color: #c4b5fd;
+}
+
+.teamTitle {
+  font-family: var(--font-sora), sans-serif;
+  font-size: var(--font-size-heading);
+  font-weight: 300;
+  line-height: 1.2;
+  color: var(--text-primary);
+  margin: 0 0 12px 0;
+  letter-spacing: -0.02em;
+}
+
+.teamSubtitle {
+  font-family: var(--font-sora), sans-serif;
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 1.6;
+  color: var(--text-secondary);
+  max-width: 680px;
+  margin: 0 auto;
+}
+
+.teamGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  width: 100%;
+}
+
+.teamCard {
+  background: var(--surface-primary, rgba(255, 255, 255, 0.6));
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(113, 113, 113, 0.2);
+  border-radius: 20px;
+  padding: 28px 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.04);
+}
+
+:global([data-theme="dark"]) .teamCard {
+  background: rgba(26, 26, 46, 0.6);
+  border-color: rgba(255, 255, 255, 0.08);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.25);
+}
+
+.teamCard:hover {
+  transform: translateY(-4px);
+  border-color: rgba(147, 51, 234, 0.4);
+  box-shadow: 0 16px 40px rgba(147, 51, 234, 0.12);
+}
+
+.teamCardHeader {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.teamAvatarWrapper {
+  position: relative;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  overflow: hidden;
+  flex-shrink: 0;
+  border: 2px solid rgba(147, 51, 234, 0.3);
+  box-shadow: 0 4px 12px rgba(147, 51, 234, 0.15);
+}
+
+.teamAvatarImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.teamAvatarFallback {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #7c3aed 0%, #4f46e5 100%);
+  color: #ffffff;
+  font-family: var(--font-sora), sans-serif;
+  font-size: 20px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  z-index: 0;
+}
+
+.teamMeta {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.teamRoleBadge {
+  font-family: var(--font-sora), sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #9333ea;
+}
+
+:global([data-theme="dark"]) .teamRoleBadge {
+  color: #c4b5fd;
+}
+
+.teamName {
+  font-family: var(--font-sora), sans-serif;
+  font-size: 20px;
+  font-weight: 500;
+  color: var(--text-primary);
+  margin: 0;
+  letter-spacing: -0.01em;
+}
+
+.teamSpecialty {
+  font-family: var(--font-sora), sans-serif;
+  font-size: 13px;
+  color: var(--text-secondary);
+}
+
+.teamBio {
+  font-family: var(--font-sora), sans-serif;
+  font-size: 14px;
+  line-height: 1.65;
+  color: var(--text-secondary);
+  margin: 0 0 20px 0;
+  flex-grow: 1;
+}
+
+.teamTags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 20px;
+}
+
+.teamTag {
+  font-family: var(--font-sora), sans-serif;
+  font-size: 11px;
+  padding: 4px 10px;
+  border-radius: 6px;
+  background: rgba(113, 113, 113, 0.08);
+  color: var(--text-secondary);
+  border: 1px solid rgba(113, 113, 113, 0.15);
+}
+
+:global([data-theme="dark"]) .teamTag {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+.teamSocials {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding-top: 14px;
+  border-top: 1px solid rgba(113, 113, 113, 0.12);
+}
+
+.teamSocialLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-sora), sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--text-secondary);
+  text-decoration: none;
+  transition: all 0.2s ease;
+  padding: 4px 8px;
+  border-radius: 6px;
+}
+
+.teamSocialLink:hover {
+  color: #9333ea;
+  background: rgba(147, 51, 234, 0.08);
+}
+
+:global([data-theme="dark"]) .teamSocialLink:hover {
+  color: #c4b5fd;
+  background: rgba(196, 181, 253, 0.1);
+}
+
+.teamPartnerBadge {
+  font-family: var(--font-sora), sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--text-secondary);
+  opacity: 0.85;
+}
+
 /* SECTION 4: HOW WE WORK */
 .howWeWorkSection {
   position: absolute;
@@ -1616,7 +1853,7 @@
     width: 100% !important;
   }
 
-  .section1Hero, .section2WhatIs, .section3Manifesto, .section4HowWeWork, .section5Cta, .section6Capabilities,
+  .section1Hero, .section2WhatIs, .section3Manifesto, .sectionTeam, .section4HowWeWork, .section5Cta, .section6Capabilities,
   .aboutCardWrapper, .heroImagesWrapper,
   .studioTitle, .studioSubtitle, .rectangle158, .whoWeAre, .weAreNotAnAgencyContainer,
   .heroImageRight, .heroImageLowerLeft, .frame142, .whatIsTitle, .whatIsSubtitle,
@@ -1947,6 +2184,7 @@
   .section1Hero,
   .section2WhatIs,
   .section3Manifesto,
+  .sectionTeam,
   .section4HowWeWork,
   .section5Cta,
   .section6Capabilities {
@@ -2393,6 +2631,19 @@
       width: auto !important;
       margin: 0 !important;
       text-align: center !important;
+    }
+    .sectionTeam {
+      width: 100% !important;
+      max-width: 100% !important;
+      padding: 0 !important;
+    }
+    .teamGrid {
+      grid-template-columns: 1fr !important;
+      gap: 20px !important;
+    }
+    .teamSubtitle {
+      font-size: 15px !important;
+      padding: 0 12px !important;
     }
   }
 }

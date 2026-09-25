@@ -384,3 +384,198 @@
 [data-theme='dark'] .notFoundDesc {
   color: var(--text-secondary, #999);
 }
+
+/* Author Metadata in Header */
+.authorMeta {
+  font-family: var(--font-sora), sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  color: #5A69EA;
+}
+
+[data-theme='dark'] .authorMeta {
+  color: #B5A1E8;
+}
+
+.metaDot {
+  color: #717171;
+  opacity: 0.6;
+}
+
+/* Author Bio Box at Article Bottom */
+.authorBioBox {
+  margin-top: 56px;
+  padding: 32px 28px;
+  border-radius: 24px;
+  background: #ECECEC;
+  box-shadow:
+    -4px -4px 10px rgba(255, 255, 255, 0.9),
+    4px 4px 10px rgba(163, 177, 198, 0.8),
+    inset 1px 1px 1px rgba(255, 255, 255, 0.6);
+  border: 1px solid rgba(191, 139, 202, 0.2);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  transition: all 0.3s ease;
+}
+
+[data-theme='dark'] .authorBioBox {
+  background: rgba(26, 26, 46, 0.7);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+.authorBioHeader {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.authorBioAvatar {
+  position: relative;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  overflow: hidden;
+  flex-shrink: 0;
+  border: 2px solid rgba(147, 51, 234, 0.35);
+  box-shadow: 0 4px 12px rgba(147, 51, 234, 0.15);
+}
+
+.authorBioImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.authorBioFallback {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #7c3aed 0%, #4f46e5 100%);
+  color: #ffffff;
+  font-family: var(--font-sora), sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+}
+
+.authorBioMeta {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.authorBioRoleBadge {
+  font-family: var(--font-sora), sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #9333ea;
+}
+
+[data-theme='dark'] .authorBioRoleBadge {
+  color: #c4b5fd;
+}
+
+.authorBioName {
+  font-family: var(--font-sora), sans-serif;
+  font-size: 19px;
+  font-weight: 500;
+  color: var(--text-primary, #0d0d0d);
+  margin: 0;
+  letter-spacing: -0.01em;
+}
+
+[data-theme='dark'] .authorBioName {
+  color: #f3f4f6;
+}
+
+.authorBioTitle {
+  font-family: var(--font-sora), sans-serif;
+  font-size: 13px;
+  color: #717171;
+}
+
+[data-theme='dark'] .authorBioTitle {
+  color: #9ca3af;
+}
+
+.authorBioText {
+  font-family: var(--font-sora), sans-serif;
+  font-size: 14px;
+  line-height: 1.65;
+  color: #555555;
+  margin: 0;
+}
+
+[data-theme='dark'] .authorBioText {
+  color: #b0b0c8;
+}
+
+.authorBioFooter {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+  padding-top: 14px;
+  border-top: 1px solid rgba(113, 113, 113, 0.15);
+}
+
+.authorBioCta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  border-radius: 8px;
+  background: linear-gradient(135deg, #5A69EA 0%, #BF8BCA 100%);
+  color: #ffffff;
+  font-family: var(--font-sora), sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 4px 12px rgba(90, 105, 234, 0.25);
+}
+
+.authorBioCta:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(90, 105, 234, 0.35);
+}
+
+.authorBioLinks {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.authorSocialLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-sora), sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  color: #717171;
+  text-decoration: none;
+  transition: color 0.2s ease;
+  padding: 4px 8px;
+  border-radius: 6px;
+}
+
+.authorSocialLink:hover {
+  color: #5A69EA;
+}
+
+[data-theme='dark'] .authorSocialLink {
+  color: #9ca3af;
+}
+
+[data-theme='dark'] .authorSocialLink:hover {
+  color: #c4b5fd;
+}
