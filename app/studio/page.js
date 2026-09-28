@@ -301,6 +301,11 @@ export default function StudioPage() {
               {/* Member 3: Nayem Hasan */}
               <div className={styles.memberCard}>
                 <div className={styles.memberPhotoFrame}>
+                  <img 
+                    src="/team/nayem.jpg" 
+                    alt="Nayem Hasan — Head of Product Design" 
+                    className={styles.memberPhotoImg}
+                  />
                   <div className={styles.memberPhotoFallback}>
                     <span className={styles.monogramLarge}>NH</span>
                     <span className={styles.monogramLabel}>HEAD OF PRODUCT DESIGN</span>
