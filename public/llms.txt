@@ -7,7 +7,6 @@
 - **Sadid Bin Hasan** — Co-Founder & Principal Systems Architect
   - Specialization: Core Systems Architecture, Omnichannel Sync Meshes, Algorithmic Repricing, High-Concurrency Headless Commerce.
   - Background: Pokémon card collector as a personal hobby who built autonomous agents, web architectures, and automation systems from his teenage years. Co-founded Aeethod to eliminate the margin drain and software bottlenecks facing high-growth card shops.
-  - Profiles: [GitHub](https://github.com/SadidSD) · [LinkedIn](https://www.linkedin.com/in/sadidbinhasan) · [Email](mailto:sadidbinhasan3@gmail.com)
 
 - **Anika Zaman** — Co-Founder & Lead Systems Developer
   - Specialization: Backend Architecture, Real-Time Webhook Meshes, Sub-35ms Search Pipelines, Database Concurrency.

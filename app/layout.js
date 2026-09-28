@@ -152,11 +152,6 @@ const orgJsonLd = {
       name: "Sadid Bin Hasan",
       jobTitle: "Co-Founder & Principal Systems Architect",
       url: "https://www.aeethod.com/studio",
-      sameAs: [
-        "https://github.com/SadidSD",
-        "https://www.linkedin.com/in/sadidbinhasan",
-        "https://www.instagram.com/sadidbinhasan",
-      ],
       knowsAbout: [
         "Trading Card Game Digital Commerce",
         "Real-Time Multi-Channel Inventory Synchronization",

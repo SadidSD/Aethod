@@ -78,10 +78,6 @@ export default async function BlogPostLayout({ children, params }) {
           name: post.author || "Sadid Bin Hasan",
           jobTitle: post.authorRole || "Co-Founder & Principal Systems Architect",
           url: "https://www.aeethod.com/studio",
-          sameAs: [
-            "https://github.com/SadidSD",
-            "https://www.linkedin.com/in/sadidbinhasan",
-          ],
         },
         publisher: {
           "@type": "Organization",

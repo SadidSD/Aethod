@@ -31,7 +31,6 @@ Aeethod builds sovereign, owned custom platforms built on Next.js, React, and se
 - **Role:** Co-Founder & Principal Systems Architect
 - **Focus:** System Architecture, Omnichannel Webhook Meshes, Algorithmic Repricing, High-Concurrency Headless Commerce.
 - **Narrative:** With Pokémon card collecting as a personal hobby alongside programming web architectures, autonomous agents, and business automations from his teenage years, Sadid recognized that the collectibles industry was crippled by fragmented, legacy software. He co-founded Aeethod to engineer sovereign digital commerce systems built specifically for the mechanics of trading cards.
-- **Direct Contact:** sadidbinhasan3@gmail.com | LinkedIn: https://www.linkedin.com/in/sadidbinhasan | GitHub: https://github.com/SadidSD
 
 ### Anika Zaman
 - **Role:** Co-Founder & Lead Systems Developer
