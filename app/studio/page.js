@@ -261,6 +261,11 @@ export default function StudioPage() {
               {/* Member 2: Anika Zaman */}
               <div className={styles.memberCard}>
                 <div className={styles.memberPhotoFrame}>
+                  <img 
+                    src="/team/anika.jpg" 
+                    alt="Anika Zaman — Lead Systems Developer" 
+                    className={styles.memberPhotoImg}
+                  />
                   <div className={styles.memberPhotoFallback}>
                     <span className={styles.monogramLarge}>AZ</span>
                     <span className={styles.monogramLabel}>LEAD SYSTEMS DEV</span>
