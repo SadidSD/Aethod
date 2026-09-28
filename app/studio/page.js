@@ -205,12 +205,12 @@ export default function StudioPage() {
                 <div className={styles.memberPhotoFrame}>
                   <img 
                     src="/team/sadid-color.jpg" 
-                    alt="Sadid Bin Hasan — Founder & Principal Systems Architect (Color)" 
+                    alt="Sadid Bin Hasan — Co-Founder & Principal Systems Architect (Color)" 
                     className={styles.memberPhotoImgColor}
                   />
                   <img 
                     src="/team/sadid.jpg" 
-                    alt="Sadid Bin Hasan — Founder & Principal Systems Architect" 
+                    alt="Sadid Bin Hasan — Co-Founder & Principal Systems Architect" 
                     className={styles.memberPhotoImgBw}
                   />
                   <div className={styles.memberPhotoFallback}>
@@ -219,13 +219,13 @@ export default function StudioPage() {
                   </div>
                   <div className={styles.nodeStatusBadge}>
                     <span className={styles.statusDot} />
-                    <span>SYS_NODE // 01 · FOUNDER</span>
+                    <span>SYS_NODE // 01 · CO-FOUNDER</span>
                   </div>
                 </div>
 
                 <div className={styles.memberMeta}>
                   <div className={styles.memberRoleRow}>
-                    <span className={styles.memberRoleBadge}>Founder & Principal Architect</span>
+                    <span className={styles.memberRoleBadge}>Co-Founder & Principal Architect</span>
                     <span className={styles.memberNodeChip}>NODE_01</span>
                   </div>
                   <h3 className={styles.memberName}>Sadid Bin Hasan</h3>
@@ -235,7 +235,7 @@ export default function StudioPage() {
                 <div className={styles.memberDivider} />
 
                 <p className={styles.memberBio}>
-                  With Pokémon card collecting as a personal hobby and programming web architectures, agents, and automations from his teenage years, Sadid founded Aeethod to engineer sovereign digital platforms that card shops own permanently—eliminating marketplace fee drain and brittle legacy POS software.
+                  With Pokémon card collecting as a personal hobby and programming web architectures, agents, and automations from his teenage years, Sadid co-founded Aeethod to engineer sovereign digital platforms that card shops own permanently—eliminating marketplace fee drain and brittle legacy POS software.
                 </p>
 
                 <div className={styles.memberTags}>
@@ -268,12 +268,12 @@ export default function StudioPage() {
                 <div className={styles.memberPhotoFrame}>
                   <img 
                     src="/team/anika-color.jpg" 
-                    alt="Anika Zaman — Lead Systems Developer (Color)" 
+                    alt="Anika Zaman — Co-Founder & Lead Systems Developer (Color)" 
                     className={styles.memberPhotoImgColor}
                   />
                   <img 
                     src="/team/anika.jpg" 
-                    alt="Anika Zaman — Lead Systems Developer" 
+                    alt="Anika Zaman — Co-Founder & Lead Systems Developer" 
                     className={styles.memberPhotoImgBw}
                   />
                   <div className={styles.memberPhotoFallback}>
@@ -282,13 +282,13 @@ export default function StudioPage() {
                   </div>
                   <div className={styles.nodeStatusBadge}>
                     <span className={styles.statusDot} />
-                    <span>SYS_NODE // 02 · LEAD DEV</span>
+                    <span>SYS_NODE // 02 · CO-FOUNDER</span>
                   </div>
                 </div>
 
                 <div className={styles.memberMeta}>
                   <div className={styles.memberRoleRow}>
-                    <span className={styles.memberRoleBadge}>Lead Systems Developer</span>
+                    <span className={styles.memberRoleBadge}>Co-Founder & Lead Systems Developer</span>
                     <span className={styles.memberNodeChip}>NODE_02</span>
                   </div>
                   <h3 className={styles.memberName}>Anika Zaman</h3>
@@ -298,7 +298,7 @@ export default function StudioPage() {
                 <div className={styles.memberDivider} />
 
                 <p className={styles.memberBio}>
-                  Bringing deep algorithmic precision and systems rigor to the studio, Anika engineers Aeethod's high-reliability backend pipelines, edge caching layers, and multi-channel webhook meshes that keep 100,000+ card SKUs synced with zero race conditions and zero overselling across in-store POS, TCGplayer, and web storefronts.
+                  Bringing deep algorithmic precision and systems rigor to the studio, Anika co-founded Aeethod to engineer high-reliability backend pipelines, edge caching layers, and multi-channel webhook meshes that keep 100,000+ card SKUs synced with zero race conditions and zero overselling across in-store POS, TCGplayer, and web storefronts.
                 </p>
 
                 <div className={styles.memberTags}>
@@ -309,7 +309,7 @@ export default function StudioPage() {
                 </div>
 
                 <div className={styles.memberFooter}>
-                  <span className={styles.partnerPill}>Creative Partner · Systems Development</span>
+                  <span className={styles.partnerPill}>Co-Founder · Systems Development</span>
                 </div>
               </div>
 
@@ -318,12 +318,12 @@ export default function StudioPage() {
                 <div className={styles.memberPhotoFrame}>
                   <img 
                     src="/team/nayem-color.jpg" 
-                    alt="Nayem Hasan — Head of Product Design (Color)" 
+                    alt="Nayem Hasan — Co-Founder & Head of Product Design (Color)" 
                     className={styles.memberPhotoImgColor}
                   />
                   <img 
                     src="/team/nayem.jpg" 
-                    alt="Nayem Hasan — Head of Product Design" 
+                    alt="Nayem Hasan — Co-Founder & Head of Product Design" 
                     className={styles.memberPhotoImgBw}
                   />
                   <div className={styles.memberPhotoFallback}>
@@ -332,13 +332,13 @@ export default function StudioPage() {
                   </div>
                   <div className={styles.nodeStatusBadge}>
                     <span className={styles.statusDot} />
-                    <span>SYS_NODE // 03 · HEAD OF DESIGN</span>
+                    <span>SYS_NODE // 03 · CO-FOUNDER</span>
                   </div>
                 </div>
 
                 <div className={styles.memberMeta}>
                   <div className={styles.memberRoleRow}>
-                    <span className={styles.memberRoleBadge}>Head of Product Design</span>
+                    <span className={styles.memberRoleBadge}>Co-Founder & Head of Product Design</span>
                     <span className={styles.memberNodeChip}>NODE_03</span>
                   </div>
                   <h3 className={styles.memberName}>Nayem Hasan</h3>
@@ -348,7 +348,7 @@ export default function StudioPage() {
                 <div className={styles.memberDivider} />
 
                 <p className={styles.memberBio}>
-                  Combining sharp visual intuition with a keen commercial mindset, Nayem redefines the digital experience of card collecting. He bridges collector psychology with high-converting ecommerce flows—replacing clunky legacy templates with fast, tactile interfaces that turn casual visitors into high-LTV repeat buyers.
+                  Combining sharp visual intuition with a keen commercial mindset, Nayem co-founded Aeethod to redefine the digital experience of card collecting. He bridges collector psychology with high-converting ecommerce flows—replacing clunky legacy templates with fast, tactile interfaces that turn casual visitors into high-LTV repeat buyers.
                 </p>
 
                 <div className={styles.memberTags}>
@@ -359,7 +359,7 @@ export default function StudioPage() {
                 </div>
 
                 <div className={styles.memberFooter}>
-                  <span className={styles.partnerPill}>Creative Partner · Product Design</span>
+                  <span className={styles.partnerPill}>Co-Founder · Product Design</span>
                 </div>
               </div>
             </div>

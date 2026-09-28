@@ -4,18 +4,18 @@
 
 ## Studio Leadership & Team
 
-- **Sadid Bin Hasan** — Founder & Principal Systems Architect
+- **Sadid Bin Hasan** — Co-Founder & Principal Systems Architect
   - Specialization: Core Systems Architecture, Omnichannel Sync Meshes, Algorithmic Repricing, High-Concurrency Headless Commerce.
-  - Background: Pokémon card collector as a personal hobby who built autonomous agents, web architectures, and automation systems from his teenage years. Founded Aeethod to eliminate the margin drain and software bottlenecks facing high-growth card shops.
+  - Background: Pokémon card collector as a personal hobby who built autonomous agents, web architectures, and automation systems from his teenage years. Co-founded Aeethod to eliminate the margin drain and software bottlenecks facing high-growth card shops.
   - Profiles: [GitHub](https://github.com/SadidSD) · [LinkedIn](https://www.linkedin.com/in/sadidbinhasan) · [Email](mailto:sadidbinhasan3@gmail.com)
 
-- **Anika Zaman** — Lead Systems Developer (Creative Partner · Engineering)
+- **Anika Zaman** — Co-Founder & Lead Systems Developer
   - Specialization: Backend Architecture, Real-Time Webhook Meshes, Sub-35ms Search Pipelines, Database Concurrency.
-  - Background: Systems engineer with exceptional algorithmic rigor and precision. Architects zero-downtime data pipelines and race-condition-free inventory sync across TCGplayer, eBay, Shopify, and POS registers.
+  - Background: Systems engineer with exceptional algorithmic rigor and precision. Co-founded Aeethod to architect zero-downtime data pipelines and race-condition-free inventory sync across TCGplayer, eBay, Shopify, and POS registers.
 
-- **Nayem Hasan** — Head of Product Design (Creative Partner · Design)
+- **Nayem Hasan** — Co-Founder & Head of Product Design
   - Specialization: Collectibles UI/UX, Deep-Variant Matrix Interfaces, High-AOV Checkout Architecture, Design Systems.
-  - Background: Product designer combining sharp aesthetic intuition with commercial vision. Designs fast, tactile, mobile-first interfaces that elevate card shops into modern luxury collectibles houses.
+  - Background: Product designer combining sharp aesthetic intuition with commercial vision. Co-founded Aeethod to design fast, tactile, mobile-first interfaces that elevate card shops into modern luxury collectibles houses.
 
 ---
 

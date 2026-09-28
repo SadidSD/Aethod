@@ -166,11 +166,11 @@ export default function BlogDetailPage() {
             <div className={styles.authorBioMeta}>
               <span className={styles.authorBioRoleBadge}>Author & Lead Architect</span>
               <h3 className={styles.authorBioName}>{blog.author || "Sadid Bin Hasan"}</h3>
-              <span className={styles.authorBioTitle}>{blog.authorRole || "Founder & Principal Systems Architect at Aeethod"}</span>
+              <span className={styles.authorBioTitle}>{blog.authorRole || "Co-Founder & Principal Systems Architect at Aeethod"}</span>
             </div>
           </div>
           <p className={styles.authorBioText}>
-            Sadid is the founder of Aeethod, architecting sovereign digital commerce platforms, real-time multi-channel inventory meshes, and high-concurrency automations for high-growth TCG retailers. Having collected Pokémon cards as a hobby alongside building web architectures and automations, he turned systems engineering into custom digital infrastructure for card shops.
+            Sadid is a co-founder of Aeethod, architecting sovereign digital commerce platforms, real-time multi-channel inventory meshes, and high-concurrency automations for high-growth TCG retailers. Having collected Pokémon cards as a hobby alongside building web architectures and automations, he turned systems engineering into custom digital infrastructure for card shops.
           </p>
           <div className={styles.authorBioFooter}>
             <Link href="/contact" className={styles.authorBioCta} onClick={playClickSound}>

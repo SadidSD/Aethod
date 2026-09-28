@@ -145,31 +145,32 @@ const orgJsonLd = {
     "https://github.com/SadidSD/Aethod",
     "https://www.linkedin.com/company/aeethod",
   ],
-  founder: {
-    "@type": "Person",
-    "@id": "https://www.aeethod.com/#founder",
-    name: "Sadid Bin Hasan",
-    jobTitle: "Founder & Principal Systems Architect",
-    url: "https://www.aeethod.com/studio",
-    sameAs: [
-      "https://github.com/SadidSD",
-      "https://www.linkedin.com/in/sadidbinhasan",
-      "https://www.instagram.com/sadidbinhasan",
-    ],
-    knowsAbout: [
-      "Trading Card Game Digital Commerce",
-      "Real-Time Multi-Channel Inventory Synchronization",
-      "Custom Buylist System Architecture",
-      "Sub-35ms Collectibles Search Engines",
-      "Algorithmic Card Repricing",
-    ],
-  },
-  member: [
+  founder: [
     {
       "@type": "Person",
+      "@id": "https://www.aeethod.com/#founder-sadid",
+      name: "Sadid Bin Hasan",
+      jobTitle: "Co-Founder & Principal Systems Architect",
+      url: "https://www.aeethod.com/studio",
+      sameAs: [
+        "https://github.com/SadidSD",
+        "https://www.linkedin.com/in/sadidbinhasan",
+        "https://www.instagram.com/sadidbinhasan",
+      ],
+      knowsAbout: [
+        "Trading Card Game Digital Commerce",
+        "Real-Time Multi-Channel Inventory Synchronization",
+        "Custom Buylist System Architecture",
+        "Sub-35ms Collectibles Search Engines",
+        "Algorithmic Card Repricing",
+      ],
+    },
+    {
+      "@type": "Person",
+      "@id": "https://www.aeethod.com/#founder-anika",
       name: "Anika Zaman",
-      jobTitle: "Lead Systems Developer",
-      worksFor: { "@id": "https://www.aeethod.com/#organization" },
+      jobTitle: "Co-Founder & Lead Systems Developer",
+      url: "https://www.aeethod.com/studio",
       knowsAbout: [
         "Backend Architecture",
         "High-Throughput Webhook Synchronization",
@@ -179,15 +180,36 @@ const orgJsonLd = {
     },
     {
       "@type": "Person",
+      "@id": "https://www.aeethod.com/#founder-nayem",
       name: "Nayem Hasan",
-      jobTitle: "Head of Product Design",
-      worksFor: { "@id": "https://www.aeethod.com/#organization" },
+      jobTitle: "Co-Founder & Head of Product Design",
+      url: "https://www.aeethod.com/studio",
       knowsAbout: [
         "Collectibles UI/UX Design",
         "Deep-Variant Matrix Interfaces",
         "E-Commerce Conversion Rate Optimization",
         "Design Systems",
       ],
+    },
+  ],
+  member: [
+    {
+      "@type": "Person",
+      name: "Sadid Bin Hasan",
+      jobTitle: "Co-Founder & Principal Systems Architect",
+      worksFor: { "@id": "https://www.aeethod.com/#organization" },
+    },
+    {
+      "@type": "Person",
+      name: "Anika Zaman",
+      jobTitle: "Co-Founder & Lead Systems Developer",
+      worksFor: { "@id": "https://www.aeethod.com/#organization" },
+    },
+    {
+      "@type": "Person",
+      name: "Nayem Hasan",
+      jobTitle: "Co-Founder & Head of Product Design",
+      worksFor: { "@id": "https://www.aeethod.com/#organization" },
     },
   ],
   contactPoint: {
