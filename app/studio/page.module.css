@@ -707,6 +707,48 @@
   white-space: nowrap;
 }
 
+@keyframes strikethroughDrawAnim {
+  0% {
+    transform: scaleX(0);
+    opacity: 1;
+  }
+  50% {
+    transform: scaleX(1);
+    opacity: 1;
+  }
+  100% {
+    transform: scaleX(1);
+    opacity: 0;
+  }
+}
+
+@keyframes strikethroughFadeAnim {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0.5;
+  }
+}
+
+@keyframes textFadeOutAnim {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes textFadeInAnim {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
 .textRight {
   display: inline-grid;
   grid-template-areas: "stack";
@@ -726,9 +768,12 @@
   color: var(--text-primary);
   transition: color 0.3s ease;
   text-align: center;
+  opacity: 1;
 }
 
-
+.differCard.inView .textRightNormal {
+  animation: textFadeOutAnim 0.3s ease-in-out forwards;
+}
 
 .textRightGradient {
   grid-area: stack;
@@ -744,6 +789,11 @@
   -webkit-text-fill-color: transparent;
   pointer-events: none;
   text-align: center;
+  opacity: 0;
+}
+
+.differCard.inView .textRightGradient {
+  animation: textFadeInAnim 0.3s ease-in-out forwards;
 }
 
 .strikethroughGradient {
@@ -755,6 +805,13 @@
   background: linear-gradient(90deg, #5A69EA 0%, #BF8BCA 100%);
   pointer-events: none;
   display: block;
+  transform-origin: left center;
+  transform: scaleX(0);
+  opacity: 0;
+}
+
+.differCard.inView .strikethroughGradient {
+  animation: strikethroughDrawAnim 1s ease-in-out forwards;
 }
 
 .strikethroughSolid {
@@ -766,6 +823,11 @@
   background: #717171;
   pointer-events: none;
   display: block;
+  opacity: 0;
+}
+
+.differCard.inView .strikethroughSolid {
+  animation: strikethroughFadeAnim 0.5s ease-in-out forwards;
 }
 
 :global([data-theme="dark"]) .strikethroughSolid {

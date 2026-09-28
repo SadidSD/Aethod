@@ -1,7 +1,6 @@
 "use client";
 
-import { motion, useInView } from "framer-motion";
-import { useRef } from "react";
+import { useRef, useEffect, useState } from "react";
 import styles from "./page.module.css";
 
 const rowsData = [
@@ -15,10 +14,28 @@ const rowsData = [
 
 export default function HowWeDifferTable() {
   const containerRef = useRef(null);
-  const isInView = useInView(containerRef, { once: true, amount: 0.15 });
+  const [isInView, setIsInView] = useState(false);
+
+  useEffect(() => {
+    const el = containerRef.current;
+    if (!el) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsInView(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.15 }
+    );
+
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
 
   return (
-    <div ref={containerRef} className={styles.differCard}>
+    <div ref={containerRef} className={`${styles.differCard} ${isInView ? styles.inView : ""}`}>
       {/* Header Area Spacer */}
       <div className={styles.headerArea} />
 
@@ -34,7 +51,8 @@ export default function HowWeDifferTable() {
 
       {/* Rows */}
       {rowsData.map((row, idx) => {
-        const rowDelay = idx * 1.0; // Stagger each row by 1.0s to match the crossing timeline
+        const rowDelay = `${(idx * 1.0).toFixed(1)}s`;
+        const fadeDelay = `${(idx * 1.0 + 0.5).toFixed(1)}s`;
 
         return (
           <div key={idx} className={styles.row} style={{ height: row.height }}>
@@ -43,37 +61,16 @@ export default function HowWeDifferTable() {
               <div className={styles.textLeftContainer}>
                 {row.others.map((part, pIdx) => (
                   <div key={pIdx} className={styles.textLeftPart}>
-                    {part}
+                    <span>{part}</span>
                     {/* Strikethrough Solid Line (fades in to stay) */}
-                    <motion.span
+                    <span
                       className={styles.strikethroughSolid}
-                      initial={{ opacity: 0 }}
-                      animate={isInView ? { opacity: 0.5 } : {}}
-                      transition={{
-                        delay: rowDelay + 0.5, // Fades in as gradient line transitions out
-                        duration: 0.5,
-                        ease: "easeInOut"
-                      }}
+                      style={isInView ? { animationDelay: fadeDelay } : undefined}
                     />
                     {/* Strikethrough Gradient Line (draws first, then fades out) */}
-                    <motion.span
+                    <span
                       className={styles.strikethroughGradient}
-                      initial={{ scaleX: 0, opacity: 1 }}
-                      animate={
-                        isInView
-                          ? {
-                              scaleX: [0, 1, 1],
-                              opacity: [1, 1, 0]
-                            }
-                          : {}
-                      }
-                      transition={{
-                        delay: rowDelay,
-                        times: [0, 0.5, 1], // Draws in 0.5s, stays, fades out in next 0.5s
-                        duration: 1.0,
-                        ease: "easeInOut"
-                      }}
-                      style={{ originX: 0 }}
+                      style={isInView ? { animationDelay: rowDelay } : undefined}
                     />
                   </div>
                 ))}
@@ -84,31 +81,19 @@ export default function HowWeDifferTable() {
             <div className={styles.colRight}>
               <div className={styles.textRight}>
                 {/* Normal Text (fades out) */}
-                <motion.span
+                <span
                   className={styles.textRightNormal}
-                  initial={{ opacity: 1 }}
-                  animate={isInView ? { opacity: 0 } : { opacity: 1 }}
-                  transition={{
-                    delay: rowDelay + 0.5, // Starts fading right after horizontal line crosses
-                    duration: 0.3,
-                    ease: "easeInOut"
-                  }}
+                  style={isInView ? { animationDelay: fadeDelay } : undefined}
                 >
                   {row.aeethod}
-                </motion.span>
+                </span>
                 {/* Gradient Text Overlay (fades in and stays) */}
-                <motion.span
+                <span
                   className={styles.textRightGradient}
-                  initial={{ opacity: 0 }}
-                  animate={isInView ? { opacity: 1 } : { opacity: 0 }}
-                  transition={{
-                    delay: rowDelay + 0.5, // starts as strikethrough finishes drawing
-                    duration: 0.3,
-                    ease: "easeInOut"
-                  }}
+                  style={isInView ? { animationDelay: fadeDelay } : undefined}
                 >
                   {row.aeethod}
-                </motion.span>
+                </span>
               </div>
             </div>
           </div>

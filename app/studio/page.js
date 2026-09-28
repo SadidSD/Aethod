@@ -349,11 +349,11 @@ export default function StudioPage() {
                 <InlineSVG src="/studio/round_arrow_card.svg" className={styles.roundArrowCard} />
                 <div className={styles.whatIsParagraphTextContainer}>
                   <div className={`${styles.whatIsParagraphText} ${expandedParagraphs.p1 ? styles.expanded : ""}`}>
-                    An agency builds websites. An off-the-shelf platform locks you in. A vertical technology studio architects infrastructure.{" "}
+                    <span>An agency builds websites. An off-the-shelf platform locks you in. A vertical technology studio architects infrastructure. </span>
                     <span className={styles.whatIsParagraphHighlight}>
                       When your TCG business expands across marketplaces, physical storefronts, buylists, and inventory channels, fragmented tools break down. We spend time inside your operations to unify inventory, sync sales channels, and eliminate manual friction.
-                    </span>{" "}
-                    That is the difference.
+                    </span>
+                    <span> That is the difference.</span>
                   </div>
                   <button 
                     className={styles.seeMoreBtn}
@@ -368,11 +368,11 @@ export default function StudioPage() {
                 <InlineSVG src="/studio/round_arrow_card.svg" className={styles.roundArrowCard} />
                 <div className={styles.whatIsParagraphTextContainer}>
                   <div className={`${styles.whatIsParagraphText} ${expandedParagraphs.p2 ? styles.expanded : ""}`}>
-                    Platforms are built for starting. They are not the final form of a growing business.{" "}
+                    <span>Platforms are built for starting. They are not the final form of a growing business. </span>
                     <span className={styles.whatIsParagraphHighlight}>
                       When off-the-shelf tools can no longer handle your catalogue velocity, multi-channel stock, and fulfillment complexity, you need custom digital infrastructure engineered specifically around how your TCG business operates.
-                    </span>{" "}
-                    That is who we are.
+                    </span>
+                    <span> That is who we are.</span>
                   </div>
                   <button 
                     className={styles.seeMoreBtn}
@@ -403,8 +403,8 @@ export default function StudioPage() {
             </p>
             
             <div className={styles.manifestoGridBox} ref={gridRef}>
-              <InlineSVG src="/studio/Rectangle 90.svg" className={`${styles.manifestoGridLineVert} ${gridInView ? styles.animateVert : styles.hiddenVert}`} />
-              <InlineSVG src="/studio/Rectangle 91.svg" className={`${styles.manifestoGridLineHoriz} ${gridInView ? styles.animateHoriz : styles.hiddenHoriz}`} />
+              <InlineSVG key="manifesto-grid-vert" src="/studio/Rectangle 90.svg" className={`${styles.manifestoGridLineVert} ${gridInView ? styles.animateVert : styles.hiddenVert}`} />
+              <InlineSVG key="manifesto-grid-horiz" src="/studio/Rectangle 91.svg" className={`${styles.manifestoGridLineHoriz} ${gridInView ? styles.animateHoriz : styles.hiddenHoriz}`} />
               
               <InlineSVG key="manifesto-group-01" src="/studio/Group 50.svg" className={styles.manifestoGroup01} />
               <InlineSVG key="manifesto-group-02" src="/studio/Group 51.svg" className={styles.manifestoGroup02} />
@@ -489,7 +489,7 @@ export default function StudioPage() {
                   {char === " " ? "\u00A0" : char}
                 </span>
               ))}
-              <br className={styles.capabilityBr} />
+              <br key="capability-br" className={styles.capabilityBr} />
               {"Areas".split("").map((char, i) => (
                 <span
                   key={i + 18}
