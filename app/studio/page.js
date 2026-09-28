@@ -204,9 +204,14 @@ export default function StudioPage() {
               <div className={styles.memberCard}>
                 <div className={styles.memberPhotoFrame}>
                   <img 
+                    src="/team/sadid-color.jpg" 
+                    alt="Sadid Bin Hasan — Founder & Principal Systems Architect (Color)" 
+                    className={styles.memberPhotoImgColor}
+                  />
+                  <img 
                     src="/team/sadid.jpg" 
                     alt="Sadid Bin Hasan — Founder & Principal Systems Architect" 
-                    className={styles.memberPhotoImg}
+                    className={styles.memberPhotoImgBw}
                   />
                   <div className={styles.memberPhotoFallback}>
                     <span className={styles.monogramLarge}>SB</span>
@@ -262,9 +267,14 @@ export default function StudioPage() {
               <div className={styles.memberCard}>
                 <div className={styles.memberPhotoFrame}>
                   <img 
+                    src="/team/anika-color.jpg" 
+                    alt="Anika Zaman — Lead Systems Developer (Color)" 
+                    className={styles.memberPhotoImgColor}
+                  />
+                  <img 
                     src="/team/anika.jpg" 
                     alt="Anika Zaman — Lead Systems Developer" 
-                    className={styles.memberPhotoImg}
+                    className={styles.memberPhotoImgBw}
                   />
                   <div className={styles.memberPhotoFallback}>
                     <span className={styles.monogramLarge}>AZ</span>
@@ -307,9 +317,14 @@ export default function StudioPage() {
               <div className={styles.memberCard}>
                 <div className={styles.memberPhotoFrame}>
                   <img 
+                    src="/team/nayem-color.jpg" 
+                    alt="Nayem Hasan — Head of Product Design (Color)" 
+                    className={styles.memberPhotoImgColor}
+                  />
+                  <img 
                     src="/team/nayem.jpg" 
                     alt="Nayem Hasan — Head of Product Design" 
-                    className={styles.memberPhotoImg}
+                    className={styles.memberPhotoImgBw}
                   />
                   <div className={styles.memberPhotoFallback}>
                     <span className={styles.monogramLarge}>NH</span>
