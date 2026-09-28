@@ -203,6 +203,11 @@ export default function StudioPage() {
               {/* Member 1: Sadid Bin Hasan */}
               <div className={styles.memberCard}>
                 <div className={styles.memberPhotoFrame}>
+                  <img 
+                    src="/team/sadid.jpg" 
+                    alt="Sadid Bin Hasan — Founder & Principal Systems Architect" 
+                    className={styles.memberPhotoImg}
+                  />
                   <div className={styles.memberPhotoFallback}>
                     <span className={styles.monogramLarge}>SB</span>
                     <span className={styles.monogramLabel}>SYSTEMS ARCHITECT</span>
