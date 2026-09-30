@@ -70,6 +70,25 @@ const mockSessions = [
     country_code: "BD",
     city: "Dhaka",
   },
+  // Anika's Instagram Active Visitor #3
+  {
+    session_id: "sess_ani_1",
+    visitor_id: "vis_ani_b491",
+    started_at: twoMinAgo,
+    last_activity_at: nowIso,
+    landing_page: "https://www.aeethod.com/?ref=anika-instagram&utm_source=instagram&utm_medium=social&utm_campaign=anika_bio",
+    traffic_source: "Social",
+    referrer: "https://l.instagram.com/",
+    utm_source: "instagram",
+    utm_medium: "social",
+    utm_campaign: "anika_bio",
+    device_type: "mobile",
+    browser: "Instagram",
+    operating_system: "iOS",
+    country: "United Kingdom",
+    country_code: "GB",
+    city: "London",
+  },
 ];
 
 const mockPageViews = [
@@ -106,6 +125,23 @@ const mockPageViews = [
     path: "/",
     viewed_at: tenMinAgo,
     duration_seconds: 25,
+  },
+  // Anika Instagram Visitor pageviews
+  {
+    id: "pv_ani_1",
+    session_id: "sess_ani_1",
+    visitor_id: "vis_ani_b491",
+    path: "/",
+    viewed_at: twoMinAgo,
+    duration_seconds: 45,
+  },
+  {
+    id: "pv_ani_2",
+    session_id: "sess_ani_1",
+    visitor_id: "vis_ani_b491",
+    path: "/studio",
+    viewed_at: nowIso,
+    duration_seconds: 60,
   },
 ];
 
@@ -148,18 +184,30 @@ const mockEvents = [
     page_path: "/",
     created_at: tenMinAgo,
   },
+  // Anika Instagram Events
+  {
+    id: "ev_ani_1",
+    session_id: "sess_ani_1",
+    visitor_id: "vis_ani_b491",
+    event_name: "cta_click",
+    event_value: { buttonText: "View Builders", referralSource: "anika_instagram" },
+    page_path: "/studio",
+    created_at: nowIso,
+  },
 ];
 
 console.log("Running computePartnerTrackers...");
 const trackers = computePartnerTrackers(mockSessions, mockPageViews, mockEvents);
 
-assert.strictEqual(trackers.length, 2, "Should have exactly 2 partner trackers");
+assert.strictEqual(trackers.length, 3, "Should have exactly 3 partner trackers");
 
 const rngTracker = trackers.find((t) => t.id === "rng_gamez");
 const murTracker = trackers.find((t) => t.id === "murakkaz");
+const aniTracker = trackers.find((t) => t.id === "anika_instagram");
 
 assert.ok(rngTracker, "RNG Gamez tracker exists");
 assert.ok(murTracker, "Murakkaz tracker exists");
+assert.ok(aniTracker, "Anika's Instagram tracker exists");
 
 // Verify Separation
 console.log("Verifying Independent Partner Attribution...");
@@ -174,6 +222,13 @@ assert.strictEqual(murTracker.sessions, 1, "Murakkaz has 1 session");
 assert.strictEqual(murTracker.pageviews, 1, "Murakkaz has 1 pageview");
 assert.strictEqual(murTracker.conversions, 0, "Murakkaz has 0 conversions");
 assert.strictEqual(murTracker.isLive, false, "Murakkaz visitor inactive (> 5m ago)");
+
+assert.strictEqual(aniTracker.visitors, 1, "Anika's Instagram has 1 visitor");
+assert.strictEqual(aniTracker.sessions, 1, "Anika's Instagram has 1 session");
+assert.strictEqual(aniTracker.pageviews, 2, "Anika's Instagram has 2 pageviews");
+assert.strictEqual(aniTracker.conversions, 0, "Anika's Instagram has 0 conversions");
+assert.strictEqual(aniTracker.isLive, true, "Anika's Instagram visitor is active within 5m");
+assert.strictEqual(aniTracker.liveVisitors.length, 1, "Anika's Instagram has 1 live visitor");
 console.log("✅ Partner isolation verified");
 
 // Verify Live Visitors

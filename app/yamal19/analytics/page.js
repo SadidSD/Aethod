@@ -239,7 +239,7 @@ export default function StudioAnalyticsPage() {
                     <TrafficSourcesCard sources={data.trafficSources} />
                   </div>
 
-                  {/* 5. Inbound Partner Link Trackers (RNG Gamez & Murakkaz) */}
+                  {/* 5. Inbound Partner Link Trackers (RNG Gamez, Murakkaz & Anika's Instagram) */}
                   <PartnerTrackersCard trackers={data.partnerTrackers} />
 
                   {/* 6. Top Pages Table */}

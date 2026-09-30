@@ -121,6 +121,10 @@
   border-left: 4px solid #10B981 !important;
 }
 
+.instagramBorder {
+  border-left: 4px solid #E1306C !important;
+}
+
 /* Section Header */
 .sectionHeader {
   display: flex;
@@ -159,6 +163,12 @@
   background: rgba(16, 185, 129, 0.12);
   color: #059669;
   border: 1px solid rgba(16, 185, 129, 0.25);
+}
+
+.iconInstagram {
+  background: rgba(225, 48, 108, 0.12);
+  color: #E1306C;
+  border: 1px solid rgba(225, 48, 108, 0.25);
 }
 
 [data-theme="dark"] .iconCircle {
@@ -209,6 +219,16 @@
 
 [data-theme="dark"] .murakkazBadge {
   color: #34D399;
+}
+
+.instagramBadge {
+  background: rgba(225, 48, 108, 0.12);
+  color: #C13584;
+  border: 1px solid rgba(225, 48, 108, 0.25);
+}
+
+[data-theme="dark"] .instagramBadge {
+  color: #F472B6;
 }
 
 .partnerDesc {
@@ -708,6 +728,10 @@
 
 .liveCardMurakkaz:hover {
   border-color: #10B981;
+}
+
+.liveCardInstagram:hover {
+  border-color: #E1306C;
 }
 
 .liveCardTop {

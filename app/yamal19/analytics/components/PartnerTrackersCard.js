@@ -77,6 +77,18 @@ function PartnerIcon({ id }) {
     );
   }
 
+  if (id === "anika_instagram") {
+    return (
+      <div className={`${styles.iconCircle} ${styles.iconInstagram}`}>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+          <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+          <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+        </svg>
+      </div>
+    );
+  }
+
   // Murakkaz / Client Credit
   return (
     <div className={`${styles.iconCircle} ${styles.iconMurakkaz}`}>
@@ -103,6 +115,7 @@ function VisitorDrawer({ visitor, tracker, onClose }) {
   if (!visitor) return null;
 
   const isRng = tracker.id === "rng_gamez";
+  const isInstagram = tracker.id === "anika_instagram";
   const flag = getCountryFlag(visitor.countryCode);
 
   return (
@@ -113,7 +126,7 @@ function VisitorDrawer({ visitor, tracker, onClose }) {
           <div>
             <div className={styles.drawerTitleRow}>
               <h3 className={styles.drawerTitle}>{visitor.visitorLabel}</h3>
-              <span className={`${styles.categoryBadge} ${isRng ? styles.rngBadge : styles.murakkazBadge}`}>
+              <span className={`${styles.categoryBadge} ${isRng ? styles.rngBadge : isInstagram ? styles.instagramBadge : styles.murakkazBadge}`}>
                 {tracker.name} Inbound
               </span>
               {visitor.isCurrentlyActive ? (
@@ -250,6 +263,7 @@ function VisitorDrawer({ visitor, tracker, onClose }) {
 // ========================================================
 function LiveVisitorsStrip({ liveVisitors = [], tracker, onSelectVisitor }) {
   const isRng = tracker.id === "rng_gamez";
+  const isInstagram = tracker.id === "anika_instagram";
 
   if (!liveVisitors || liveVisitors.length === 0) {
     return (
@@ -283,7 +297,7 @@ function LiveVisitorsStrip({ liveVisitors = [], tracker, onSelectVisitor }) {
           return (
             <div
               key={v.visitorId}
-              className={`${styles.liveCard} ${isRng ? styles.liveCardRng : styles.liveCardMurakkaz}`}
+              className={`${styles.liveCard} ${isRng ? styles.liveCardRng : isInstagram ? styles.liveCardInstagram : styles.liveCardMurakkaz}`}
               onClick={() => onSelectVisitor(v)}
               role="button"
               tabIndex={0}
@@ -626,6 +640,7 @@ function VisitorsDirectoryView({ visitors = [], partnerName, onSelectVisitor }) 
 // ========================================================
 function SinglePartnerSection({ tracker }) {
   const isRng = tracker.id === "rng_gamez";
+  const isInstagram = tracker.id === "anika_instagram";
   const [activeTab, setActiveTab] = useState("activity"); // "activity" | "pages" | "countries" | "tech" | "visitors"
   const [selectedVisitor, setSelectedVisitor] = useState(null);
 
@@ -641,7 +656,7 @@ function SinglePartnerSection({ tracker }) {
   }, [tracker.allVisitorsList]);
 
   return (
-    <div className={`${styles.trackerCard} ${isRng ? styles.rngBorder : styles.murakkazBorder}`}>
+    <div className={`${styles.trackerCard} ${isRng ? styles.rngBorder : isInstagram ? styles.instagramBorder : styles.murakkazBorder}`}>
       {/* 1. Header with Name, Domain, Category and Live Pulse */}
       <div className={styles.sectionHeader}>
         <div className={styles.headerLeft}>
@@ -649,7 +664,7 @@ function SinglePartnerSection({ tracker }) {
           <div>
             <div className={styles.titleRow}>
               <h3 className={styles.partnerName}>{tracker.name}</h3>
-              <span className={`${styles.categoryBadge} ${isRng ? styles.rngBadge : styles.murakkazBadge}`}>
+              <span className={`${styles.categoryBadge} ${isRng ? styles.rngBadge : isInstagram ? styles.instagramBadge : styles.murakkazBadge}`}>
                 {tracker.badgeText}
               </span>
             </div>
@@ -922,7 +937,7 @@ export default function PartnerTrackersCard({ trackers = [] }) {
             </span>
           </div>
           <p className={styles.mainSubtext}>
-            Dedicated dual telemetry sections tracking visits, sessions, and conversions from <strong>RNG Gamez</strong> and <strong>Murakkaz</strong>.
+            Dedicated telemetry sections tracking visits, sessions, and conversions from <strong>RNG Gamez</strong>, <strong>Murakkaz</strong>, and <strong>Anika's Instagram</strong>.
           </p>
         </div>
 
@@ -932,7 +947,7 @@ export default function PartnerTrackersCard({ trackers = [] }) {
         </div>
       </div>
 
-      {/* Two Dedicated Sections / Cards */}
+      {/* Dedicated Sections / Cards */}
       <div className={styles.trackersGrid}>
         {trackers.map((tracker) => (
           <SinglePartnerSection key={tracker.id} tracker={tracker} />
